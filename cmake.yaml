@@ -1,0 +1,32 @@
+mrt_cmake_modules:
+  ubuntu: [mrt-cmake-modules]
+libsqlite3-dev:
+  cmake:
+    name: Sqlite3
+    include_dirs: [SQLITE3_INCLUDE_DIRS]
+    libraries_dirs: []
+    libraries: [SQLITE3_LIBRARIES]
+    components: []
+yaml-cpp:
+  cmake:
+    name: yaml-cpp
+    include_dirs: [yaml-cpp_INCLUDE_DIRS]
+    libraries_dirs: []
+    libraries: [yaml-cpp_LIBRARIES]
+    components: []
+eigen:
+  cmake:
+    name: Eigen3
+    include_dirs: [EIGEN3_INCLUDE_DIR]
+    libraries_dirs: []
+    libraries: []
+    components: []
+opencv:
+  ubuntu: [libopencv-dev]
+  cmake:
+    name: OpenCV
+    include_dirs: [OpenCV_INCLUDE_DIRS]
+    libraries_dirs: []
+    libraries: [OpenCV_LIBS]
+    components: []
+

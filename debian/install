@@ -1,0 +1,4 @@
+cmake_root/* /usr/share/cmake-2.8/Modules
+cmake/* /mrtsoftware/pkg/share/cmake/Modules
+ros/* /mrtsoftware/pkg/share/ros
+scripts/* /mrtsoftware/pkg/share/scripts
