@@ -1,6 +1,25 @@
-mrt-cmake-modules (1.0-ubuntu2) UNRELEASED; urgency=medium
+mrt-cmake-modules (1.0-ubuntu5) trusty; urgency=low
 
-  * Modified description of debian package.
+  * Another test
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 14 Jul 2015 15:32:02 +0200
+
+mrt-cmake-modules (1.0-ubuntu4) trusty; urgency=low
+
+  * Testing the install script
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 14 Jul 2015 15:27:50 +0200
+
+mrt-cmake-modules (1.0-ubuntu3) trusty; urgency=low
+
+  * Added new package nlopt
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 14 Jul 2015 15:03:29 +0200
+
+mrt-cmake-modules (1.0-ubuntu2) trusty; urgency=low
+
+  [ Johannes Beck ]
+  * Added new package of mrt_cmake_modules
 
  -- Johannes Beck <johannes.beck@kit.edu>  Fri, 10 Jul 2015 15:32:56 +0200
 
