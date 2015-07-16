@@ -1,5 +1,5 @@
 Source: mrt-cmake-modules
-Section: main
+Section: libs
 Priority: optional
 Maintainer: Johannes Beck <johannes.beck@kit.edu>
 Build-Depends: debhelper (>= 9.0.0)
