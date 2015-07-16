@@ -1,3 +1,9 @@
+mrt-cmake-modules (1.0-ubuntu7) trusty; urgency=low
+
+  * Update auto deps
+
+ -- Johannes beck <johannes.beck@kit.edu>  Thu, 16 Jul 2015 08:32:09 +0200
+
 mrt-cmake-modules (1.0-ubuntu6) trusty; urgency=low
 
   * Antoher test
