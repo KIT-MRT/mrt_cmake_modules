@@ -39,12 +39,12 @@ set(mrt_LIBRARIES "")
 set(mrt_EXPORT_LIBRARIES "")
 set(mrt_LIBRARY_DIRS "")
 
-if (DependendPackages_FIND_COMPONENTS)
+if (AutoDeps_FIND_COMPONENTS)
 	#extract packages packages
 	set(_CATKIN_SELECTED_PACKAGES_ "")
 	set(_OTHER_SELECTED_PACKAGES_ "")
 	
-	foreach(component ${DependendPackages_FIND_COMPONENTS})
+	foreach(component ${AutoDeps_FIND_COMPONENTS})
 		list(FIND _CATKIN_PACKAGES_ ${component} res)
 		if(NOT ${res} EQUAL -1)
 			list(APPEND _CATKIN_SELECTED_PACKAGES_ ${component})

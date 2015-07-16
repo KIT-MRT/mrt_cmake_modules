@@ -4,21 +4,21 @@ libsqlite3-dev:
   cmake:
     name: Sqlite3
     include_dirs: [SQLITE3_INCLUDE_DIRS]
-    libraries_dirs: []
+    library_dirs: []
     libraries: [SQLITE3_LIBRARIES]
     components: []
 yaml-cpp:
   cmake:
     name: yaml-cpp
     include_dirs: [yaml-cpp_INCLUDE_DIRS]
-    libraries_dirs: []
+    library_dirs: []
     libraries: [yaml-cpp_LIBRARIES]
     components: []
 eigen:
   cmake:
     name: Eigen3
     include_dirs: [EIGEN3_INCLUDE_DIR]
-    libraries_dirs: []
+    library_dirs: []
     libraries: []
     components: []
 opencv:
@@ -26,7 +26,21 @@ opencv:
   cmake:
     name: OpenCV
     include_dirs: [OpenCV_INCLUDE_DIRS]
-    libraries_dirs: []
+    library_dirs: []
     libraries: [OpenCV_LIBS]
+    components: []
+boost:
+  cmake:
+    name: Boost
+    include_dirs: [Boost_INCLUDE_DIRS]
+    library_dirs: [Boost_LIBRARY_DIRS]
+    libraries: [Boost_LIBRARIES]
+    components: [math_c99l wserialization math_tr1l thread random serialization log_setup python-py27 prg_exec_monitor wave system signals chrono math_c99 graph_parallel filesystem context mpi_python-py34 iostreams locale timer python-py34 math_tr1 date_time regex graph program_options mpi unit_test_framework mpi_python-py27 math_tr1f math_c99f log atomic]
+libgoogle-glog-dev:
+  cmake:
+    name: Glog
+    include_dirs: [GLOG_INCLUDE_DIRS]
+    library_dirs: []
+    libraries: [GLOG_LIBRARY]
     components: []
 
