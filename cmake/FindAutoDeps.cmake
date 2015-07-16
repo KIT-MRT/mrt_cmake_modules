@@ -135,6 +135,10 @@ if (DependendPackages_FIND_COMPONENTS)
 	if(mrt_INCLUDE_DIRS)
 		list(REMOVE_ITEM mrt_INCLUDE_DIRS "/usr/include" "/usr/local/include")
 	endif()
+else()
+	#even if there is no catkin package, find package catkin is required
+	#to import catkin_package etc.
+	find_package(catkin REQUIRED)
 endif()
 
 set(catkin_EXPORT_DEPENDS ${_CATKIN_EXPORT_PACKAGES_})

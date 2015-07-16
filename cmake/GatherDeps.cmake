@@ -10,8 +10,11 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${CMAKE_CURRENT_BINARY
 #gather dependencies from package.xml. The command is run in a plain shell with the ros environemnt
 #variable set. This is used, because the python script is calling some ros tools to distinguish
 #between catkin and non catkin packages
+#execute_process(COMMAND 
+#	sh ${CATKIN_ENV} python ${MRT_SOFTWARE_ROOT_PATH}/share/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MRT_SOFTWARE_ROOT_PATH}/share/ros/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/vars.cmake")
+
 execute_process(COMMAND 
-	sh ${CATKIN_ENV} python ${MRT_SOFTWARE_ROOT_PATH}/share/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MRT_SOFTWARE_ROOT_PATH}/share/ros/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/vars.cmake")
+	python ${MRT_SOFTWARE_ROOT_PATH}/share/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MRT_SOFTWARE_ROOT_PATH}/share/ros/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/vars.cmake")
 	
 #include the generated variable cmake file
 include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/vars.cmake")
