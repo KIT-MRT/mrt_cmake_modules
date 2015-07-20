@@ -167,39 +167,40 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     f.write("\n")
     
     #write all dependend packages
-    packages = ""
+    packages = set()
     for depend in depends:
-        packages += " " + depend.name
+        packages.add(depend.name)
+        #packages += " " + depend.name
     
-    f.write("set(DEPENDEND_PACKAGES%s)\n" % packages)
+    f.write("set(DEPENDEND_PACKAGES %s)\n" % ' '.join(packages))
     
     #write catin packages
-    packages = ""
+    packages = set()
     for depend in (s for s in depends if s.packageType == PackageType.catkin and s.build_depend == True):
-        packages += " " + depend.name
+        packages.add(depend.name)
         
-    f.write("set(_CATKIN_PACKAGES_%s)\n" % packages)
+    f.write("set(_CATKIN_PACKAGES_ %s)\n" % ' '.join(packages))
     
     #write catkin export packages
-    packages = ""
+    packages = set()
     for depend in (s for s in depends if s.packageType == PackageType.catkin and s.build_export_depend == True):
-        packages += " " + depend.name
+        packages.add(depend.name)
         
-    f.write("set(_CATKIN_EXPORT_PACKAGES_%s)\n" % packages)
+    f.write("set(_CATKIN_EXPORT_PACKAGES_ %s)\n" % ' '.join(packages))
         
     #write non-catkin packages
-    packages = ""
+    packages = set()
     for depend in (s for s in depends if s.packageType == PackageType.other and s.build_depend == True):
-        packages += " " + depend.name
+        packages.add(depend.name)
         
-    f.write("set(_OTHER_PACKAGES_%s)\n" % packages)
+    f.write("set(_OTHER_PACKAGES_ %s)\n" % ' '.join(packages))
 
     #write non-catkin export packages
-    packages = ""
+    packages = set()
     for depend in (s for s in depends if s.packageType == PackageType.other and s.build_export_depend == True):
-        packages += " " + depend.name
+        packages.add(depend.name)
         
-    f.write("set(_OTHER_EXPORT_PACKAGES_%s)\n" % packages)
+    f.write("set(_OTHER_EXPORT_PACKAGES_ %s)\n" % ' '.join(packages))
     
     #write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):

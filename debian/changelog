@@ -1,3 +1,35 @@
+mrt-cmake-modules (1.0-ubuntu12) trusty; urgency=low
+
+  * Bugs fixed
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Mon, 20 Jul 2015 16:59:54 +0200
+
+mrt-cmake-modules (1.0-ubuntu11) trusty; urgency=low
+
+  * PCL auto resolve added
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Mon, 20 Jul 2015 08:50:04 +0200
+
+mrt-cmake-modules (1.0-ubuntu10) trusty; urgency=low
+
+  * Test
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Fri, 17 Jul 2015 13:35:32 +0200
+
+mrt-cmake-modules (1.0-ubuntu9) trusty; urgency=low
+
+  * Added not updated yaml file
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Thu, 16 Jul 2015 12:50:25 +0200
+
+mrt-cmake-modules (1.0-ubuntu8) trusty; urgency=low
+
+  * Fixed bud in auto deps
+  * Added glog find script
+  * Added cmake vars for boost and glog
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Thu, 16 Jul 2015 12:46:20 +0200
+
 mrt-cmake-modules (1.0-ubuntu7) trusty; urgency=low
 
   * Update auto deps
