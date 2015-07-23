@@ -117,7 +117,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     if root.tag != 'package':
         raise Exception("Cannot find package node in xml file")
     if 'format' not in root.attrib:
-        raise Exception("error")
+        raise Exception("Catkin package format must be 2. Change package.xml to <package format=\"2\">")
     if root.attrib['format'] != "2":
         raise Exception("Package format must be 2")
     

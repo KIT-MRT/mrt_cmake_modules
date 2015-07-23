@@ -35,7 +35,7 @@ boost:
     include_dirs: [Boost_INCLUDE_DIRS]
     library_dirs: [Boost_LIBRARY_DIRS]
     libraries: [Boost_LIBRARIES]
-    components: [math_c99l wserialization math_tr1l thread random serialization log_setup python-py27 prg_exec_monitor wave system signals chrono math_c99 graph_parallel filesystem context mpi_python-py34 iostreams locale timer python-py34 math_tr1 date_time regex graph program_options mpi unit_test_framework mpi_python-py27 math_tr1f math_c99f log atomic]
+    components: [math_c99l wserialization math_tr1l thread random serialization log_setup prg_exec_monitor wave system signals chrono math_c99 filesystem context locale timer math_tr1 date_time regex graph program_options unit_test_framework math_tr1f math_c99f log atomic]
 libgoogle-glog-dev:
   cmake:
     name: Glog
@@ -43,4 +43,20 @@ libgoogle-glog-dev:
     library_dirs: []
     libraries: [GLOG_LIBRARY]
     components: []
+png:
+  ubuntu: [libpng12-dev]
+  cmake:
+    name: PNG
+    include_dirs: [PNG_INCLUDE_DIRS]
+    library_dirs: []
+    libraries: [PNG_LIBRARIES]
+    components: []
+ebus:
+  cmake:
+    name: ebus-sdk
+    include_dirs: [ebus-sdk_INCLUDE_DIRS]
+    library_dirs: []
+    libraries: [ebus-sdk_LIBRARIES]
+    components: []
+
 
