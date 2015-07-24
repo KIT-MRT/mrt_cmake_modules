@@ -1,4 +1,10 @@
-mrt-cmake-modules/*
-mrt-cmake-modules.debhelper.log
-mrt-cmake-modules.substvars
-files
+/*
+!/.gitignore
+!/changelog
+!/compat
+!/control
+!/copyright
+!/docs
+!/install
+!/rules
+!/source
