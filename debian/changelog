@@ -1,3 +1,15 @@
+mrt-cmake-modules (1.0-ubuntu16) trusty; urgency=low
+
+  * Added poco
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 28 Jul 2015 15:02:49 +0200
+
+mrt-cmake-modules (1.0-ubuntu15) trusty; urgency=low
+
+  * Added ebus sdk
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Fri, 24 Jul 2015 14:07:41 +0200
+
 mrt-cmake-modules (1.0-ubuntu14) trusty; urgency=low
 
   * Added cmake auto dep for png

@@ -51,12 +51,22 @@ png:
     library_dirs: []
     libraries: [PNG_LIBRARIES]
     components: []
-ebus:
+mrt_ebus:
+  ubuntu: [mrt-ebus-sdk-bin]
   cmake:
-    name: ebus-sdk
-    include_dirs: [ebus-sdk_INCLUDE_DIRS]
+    name: Mrtebus-sdk
+    include_dirs: [ebus-sdk_INCLUDE_DIR]
     library_dirs: []
     libraries: [ebus-sdk_LIBRARIES]
     components: []
+poco:
+   ubuntu: [libpoco-dev]
+   cmake:
+     name: Poco
+     include_dirs: [Poco_INCLUDE_DIRS]
+     library_dirs: []
+     libraries: [Poco_LIBRARIES]
+     components: [XML Zip Crypto Data Net]
+   
 
 
