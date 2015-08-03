@@ -1,3 +1,12 @@
+libqwt5-qt4-dev:
+  cmake:
+    components: []
+    include_dirs:
+    - QWT_INCLUDE_DIRS
+    libraries:
+    - QWT_LIBRARIES
+    library_dirs: []
+    name: Qwt
 mrt_cmake_modules:
   ubuntu: [mrt-cmake-modules]
 libsqlite3-dev:
