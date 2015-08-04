@@ -83,6 +83,13 @@ libgsl:
      library_dirs: [GSL_LINK_DIRECTORIES]
      libraries: [GSL_LIBRARIES]
      components: []
+glut:
+   cmake:
+     name: GLUT
+     include_dirs: [GLUT_INCLUDE_DIR,]
+     library_dirs: []
+     libraries: [GLUT_LIBRARIES]
+     components: []
    
 
 
