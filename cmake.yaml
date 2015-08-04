@@ -105,6 +105,12 @@ libopenscenegraph:
     library_dirs: []
     libraries: [OPENSCENEGRAPH_LIBRARIES]
     components: []
-    
+opengl:
+  cmake:
+    name: OpenGL
+    include_dirs: [OPENGL_INCLUDE_DIR]
+    library_dirs: []
+    libraries: [OPENGL_LIBRARIES]
+    components: []
 
 
