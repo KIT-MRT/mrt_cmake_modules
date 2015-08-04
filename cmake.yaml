@@ -76,6 +76,13 @@ poco:
      library_dirs: []
      libraries: [Poco_LIBRARIES]
      components: [XML Zip Crypto Data Net]
+libgsl:
+   cmake:
+     name: GSL
+     include_dirs: [GSL_INCLUDE_DIR]
+     library_dirs: [GSL_LINK_DIRECTORIES]
+     libraries: [GSL_LIBRARIES]
+     components: []
    
 
 
