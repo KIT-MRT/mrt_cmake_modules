@@ -114,7 +114,13 @@ opengl:
     components: []
 gtest:
   cmake:
-    name: MrtGTest
-    include_dirs: []
-    libraries: [GTEST_LIBRARIES]
+    name: gtest
+    include_dirs: [gtest_INCLUDE_DIRS]
+    libraries: [gtest_LIBRARIES]
+gtest-headers:
+  ubuntu: [libgtest-dev]
+  cmake:
+    name: GTest-headers
+    include_dirs: [GTest-headers_INCLUDE_DIRS]
+    libraries: []
 

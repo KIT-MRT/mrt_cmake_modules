@@ -1,3 +1,15 @@
+mrt-cmake-modules (1.1-ubuntu3) trusty; urgency=low
+
+  * Updated yaml file for gtest
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 05 Aug 2015 13:00:58 +0200
+
+mrt-cmake-modules (1.1-ubuntu2) trusty; urgency=low
+
+  * Updated gtest
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 05 Aug 2015 12:57:56 +0200
+
 mrt-cmake-modules (1.1-ubuntu1) trusty; urgency=low
 
   * Added GLUT, GTKMM, ...
