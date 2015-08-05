@@ -1,3 +1,27 @@
+mrt-cmake-modules (1.1-ubuntu1) trusty; urgency=low
+
+  * Added GLUT, GTKMM, ...
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 05 Aug 2015 07:54:36 +0200
+
+mrt-cmake-modules (1.1-ubuntu0) trusty; urgency=low
+
+  * Added test_depend to auto deps
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 05 Aug 2015 07:51:03 +0200
+
+mrt-cmake-modules (1.0-ubuntu18) trusty; urgency=low
+
+  * Added leptonica and tesseract
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Mon, 03 Aug 2015 15:53:19 +0200
+
+mrt-cmake-modules (1.0-ubuntu17) trusty; urgency=low
+
+  * Added ANN
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Mon, 03 Aug 2015 13:49:00 +0200
+
 mrt-cmake-modules (1.0-ubuntu16) trusty; urgency=low
 
   * Added poco

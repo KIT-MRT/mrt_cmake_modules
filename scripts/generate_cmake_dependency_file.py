@@ -30,9 +30,11 @@ class Dependency:
     name = ""
     build_depend = False
     build_export_depend = False
+    test_depend = False
     
     def __repr__(self):
-        return "Dependency(name:%s type:%s buld_depend:%s build_export_depend:%s)" % (self.name, self.packageType, self.build_depend, self.build_export_depend) 
+        return "Dependency(name:%s type:%s buld_depend:%s build_export_depend:%s test_depend:%s)" % (self.name, self.packageType, self.build_depend, 
+        	self.build_export_depend, self.test_depend) 
 
 class PackageCMakeData:
     """Stores information about how to find_package non-catkin packages"""
@@ -138,19 +140,26 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         if child.tag == "depend":
             depend.build_depend = True
             depend.build_export_depend = True
+            depend.test_depend = True
         elif child.tag == "build_depend":
             depend.build_depend = True
             depend.build_export_depend = False
+            depend.test_depend = False
         elif child.tag == "build_export_depend":
             depend.build_depend = True
-            depend.build_export_depend = True 
+            depend.build_export_depend = True
+            depend.test_depend = False
+        elif child.tag == "test_depend":
+            depend.build_depend = False
+            depend.build_export_depend = False
+            depend.test_depend = True
         else:
             continue
         
         #get name
         depend.name = child.text
         
-        #check it catkin package
+        #check if catkin package
         if depend.name in catkin_packages:
             depend.packageType = PackageType.catkin
         else:
@@ -174,7 +183,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     
     f.write("set(DEPENDEND_PACKAGES %s)\n" % ' '.join(packages))
     
-    #write catin packages
+    #write catkin packages
     packages = set()
     for depend in (s for s in depends if s.packageType == PackageType.catkin and s.build_depend == True):
         packages.add(depend.name)
@@ -187,6 +196,13 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         packages.add(depend.name)
         
     f.write("set(_CATKIN_EXPORT_PACKAGES_ %s)\n" % ' '.join(packages))
+    
+    #write catkin test packages
+    packages = set()
+    for depend in (s for s in depends if s.packageType == PackageType.catkin and s.test_depend == True):
+        packages.add(depend.name)
+        
+    f.write("set(_CATKIN_TEST_PACKAGES_ %s)\n" % ' '.join(packages))
         
     #write non-catkin packages
     packages = set()
@@ -201,6 +217,13 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         packages.add(depend.name)
         
     f.write("set(_OTHER_EXPORT_PACKAGES_ %s)\n" % ' '.join(packages))
+    
+    #write non-catkin test packages
+    packages = set()
+    for depend in (s for s in depends if s.packageType == PackageType.other and s.test_depend == True):
+        packages.add(depend.name)
+        
+    f.write("set(_OTHER_TEST_PACKAGES_ %s)\n" % ' '.join(packages))
     
     #write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):

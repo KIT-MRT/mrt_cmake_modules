@@ -112,5 +112,9 @@ opengl:
     library_dirs: []
     libraries: [OPENGL_LIBRARIES]
     components: []
-
+gtest:
+  cmake:
+    name: MrtGTest
+    include_dirs: []
+    libraries: [GTEST_LIBRARIES]
 
