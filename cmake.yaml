@@ -123,4 +123,14 @@ gtest-headers:
     name: GTest-headers
     include_dirs: [GTest-headers_INCLUDE_DIRS]
     libraries: []
+libmagick:
+  cmake:
+    name: ImageMagick
+    include_dirs: [ImageMagick_INCLUDE_DIRS]
+    libraries: [ImageMagick_LIBRARIES]
+liblapack-dev:
+  cmake:
+    name: LAPACK
+    include_dirs: []
+    libraries: [LAPACK_LIBRARIES]
 
