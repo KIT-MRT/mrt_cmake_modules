@@ -133,4 +133,8 @@ liblapack-dev:
     name: LAPACK
     include_dirs: []
     libraries: [LAPACK_LIBRARIES]
-
+eigen2:
+  cmake:
+    name: Eigen2
+    include_dirs: [EIGEN2_INCLUDE_DIR]
+    libraries: []
