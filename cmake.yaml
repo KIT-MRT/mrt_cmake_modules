@@ -1,10 +1,15 @@
+libcairo2-dev:
+  cmake:
+    components: []
+    include_dirs: [CAIRO_INCLUDE_DIRS]
+    libraries: [CAIRO_LIBRARIES]
+    library_dirs: []
+    name: Cairo
 libqwt5-qt4-dev:
   cmake:
     components: []
-    include_dirs:
-    - QWT_INCLUDE_DIRS
-    libraries:
-    - QWT_LIBRARIES
+    include_dirs: [QWT_INCLUDE_DIRS]
+    libraries: [QWT_LIBRARIES]
     library_dirs: []
     name: Qwt
 mrt_cmake_modules:
