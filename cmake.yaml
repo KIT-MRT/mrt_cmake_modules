@@ -74,13 +74,72 @@ mrt_ebus:
     libraries: [ebus-sdk_LIBRARIES]
     components: []
 poco:
-   ubuntu: [libpoco-dev]
-   cmake:
-     name: Poco
-     include_dirs: [Poco_INCLUDE_DIRS]
-     library_dirs: []
-     libraries: [Poco_LIBRARIES]
-     components: [XML Zip Crypto Data Net]
-   
-
-
+  ubuntu: [libpoco-dev]
+  cmake:
+    name: Poco
+    include_dirs: [Poco_INCLUDE_DIRS]
+    library_dirs: []
+    libraries: [Poco_LIBRARIES]
+    components: [XML Zip Crypto Data Net]
+libgsl:
+  cmake:
+    name: GSL
+    include_dirs: [GSL_INCLUDE_DIR]
+    library_dirs: [GSL_LINK_DIRECTORIES]
+    libraries: [GSL_LIBRARIES]
+    components: []
+glut:
+  cmake:
+    name: GLUT
+    include_dirs: [GLUT_INCLUDE_DIR]
+    library_dirs: []
+    libraries: [GLUT_LIBRARIES]
+    components: []
+gtkmm:
+  ubuntu: [libgtkmm-3.0-dev]
+  cmake:
+    name: GTKMM
+    include_dirs: [GTKMM_INCLUDE_DIRS]
+    library_dirs: [GTKMM_LIBRARY_DIRS]
+    libraries: [GTKMM_LIBRARIES]
+    components: []
+libopenscenegraph:
+  cmake:
+    name: OSG
+    include_dirs: [OPENSCENEGRAPH_INCLUDE_DIRS]
+    library_dirs: []
+    libraries: [OPENSCENEGRAPH_LIBRARIES]
+    components: []
+opengl:
+  cmake:
+    name: OpenGL
+    include_dirs: [OPENGL_INCLUDE_DIR]
+    library_dirs: []
+    libraries: [OPENGL_LIBRARIES]
+    components: []
+gtest:
+  cmake:
+    name: gtest
+    include_dirs: [gtest_INCLUDE_DIRS]
+    libraries: [gtest_LIBRARIES]
+gtest-headers:
+  ubuntu: [libgtest-dev]
+  cmake:
+    name: GTest-headers
+    include_dirs: [GTest-headers_INCLUDE_DIRS]
+    libraries: []
+libmagick:
+  cmake:
+    name: ImageMagick
+    include_dirs: [ImageMagick_INCLUDE_DIRS]
+    libraries: [ImageMagick_LIBRARIES]
+liblapack-dev:
+  cmake:
+    name: LAPACK
+    include_dirs: []
+    libraries: [LAPACK_LIBRARIES]
+eigen2:
+  cmake:
+    name: Eigen2
+    include_dirs: [EIGEN2_INCLUDE_DIR]
+    libraries: []
