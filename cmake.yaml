@@ -143,3 +143,8 @@ eigen2:
     name: Eigen2
     include_dirs: [EIGEN2_INCLUDE_DIR]
     libraries: []
+libpcap-dev:
+  cmake:
+    name: PCAP
+    include_dirs: [PCAP_INCLUDE_DIR]
+    libraries: [PCAP_LIBRARY]
