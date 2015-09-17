@@ -1,3 +1,4 @@
+#compiler flags
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++14" Cpp14CompilerFlag)
 if (${Cpp14CompilerFlag})
@@ -7,6 +8,20 @@ elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC" AND NOT CMAKE_CXX_COMPILER_VERSION 
 else()
 	message(FATAL_ERROR "Compiler does not have c++14 support. Use at least g++4.9 or Visual Studio 2013 and newer.")
 endif()
+
+#change RelWithDepInfo fomr O2 to O3 for c and c++
+macro(replace_opt_compiler_flag CMAKE_VARIABLE_NAME)
+	set(${CMAKE_VARIABLE_NAME}_NEW "${${CMAKE_VARIABLE_NAME}}")
+	#replace gcc opt flag
+	string(REPLACE -O2 -O3 ${CMAKE_VARIABLE_NAME}_NEW "${${CMAKE_VARIABLE_NAME}_NEW}")
+	#replace MSVC opt flag
+	string(REPLACE /Ob1 /Ob2 ${CMAKE_VARIABLE_NAME}_NEW "${${CMAKE_VARIABLE_NAME}_NEW}")
+	
+	set(${CMAKE_VARIABLE_NAME} "${${CMAKE_VARIABLE_NAME}_NEW}" CACHE STRING "Flags used by the compiler during release builds with debug information." FORCE)
+endmacro()
+
+replace_opt_compiler_flag(CMAKE_C_FLAGS_RELWITHDEBINFO)
+replace_opt_compiler_flag(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
