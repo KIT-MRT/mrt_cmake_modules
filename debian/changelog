@@ -1,3 +1,10 @@
+mrt-cmake-modules (1.1-ubuntu7) trusty; urgency=low
+
+  * Added PCAP
+  * Changed optimization level for release builds from O2 to O3
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Thu, 17 Sep 2015 16:42:19 +0200
+
 mrt-cmake-modules (1.1-ubuntu3) trusty; urgency=low
 
   * Updated yaml file for gtest
