@@ -31,7 +31,6 @@ endfunction()
 
 #search for subfolders in src
 function(glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
-	message("SEARCH_DIRECTORY: ${SEARCH_DIRECTORY}")
 	execute_process(COMMAND find . -mindepth 1 -type d WORKING_DIRECTORY "${SEARCH_DIRECTORY}" OUTPUT_VARIABLE DIRECTORIES)
 	
 	set(_DIRECTORY_LIST_ "")
@@ -47,4 +46,22 @@ function(glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
 		set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
 	endif()
 endfunction()
+
+macro(glob_ros_files excecutable_name extension_name)
+	file(GLOB ROS_${excecutable_name}_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${extension_name}" "${extension_name}/*.${extension_name}")
+	
+	if (ROS_${excecutable_name}_FILES)
+		#work around to execute a command wich name is given in a variable
+		#write a file with the command, include it and delete the file again
+		file(WRITE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake" "${excecutable_name}(
+			DIRECTORY ${extension_name}
+			FILES
+			${ROS_${excecutable_name}_FILES}
+		)")
+		include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
+		file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
+		
+		set(ROS_GENERATE_MESSAGES True)
+	endif()
+endmacro()
 

@@ -1,9 +1,40 @@
+mrt-cmake-modules (1.1-ubuntu9) trusty; urgency=low
+
+  * Fixed ros glob
+  * Added rpath handling for installing
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 07 Oct 2015 09:12:25 +0200
+
+mrt-cmake-modules (1.1-ubuntu8) trusty; urgency=low
+
+  * Added ros glob to auto target
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 06 Oct 2015 16:01:11 +0200
+
 mrt-cmake-modules (1.1-ubuntu7) trusty; urgency=low
 
   * Added PCAP
   * Changed optimization level for release builds from O2 to O3
 
  -- Johannes Beck <johannes.beck@kit.edu>  Thu, 17 Sep 2015 16:42:19 +0200
+
+mrt-cmake-modules (1.1-ubuntu6) trusty; urgency=low
+
+  * Added Eigen2 and f2c
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Mon, 24 Aug 2015 07:29:30 +0200
+
+mrt-cmake-modules (1.1-ubuntu5) trusty; urgency=low
+
+  * Added fix for rpath handling
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Thu, 06 Aug 2015 08:49:14 +0200
+
+mrt-cmake-modules (1.1-ubuntu4) trusty; urgency=low
+
+  * Minor bug fix in gtest
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 05 Aug 2015 13:33:23 +0200
 
 mrt-cmake-modules (1.1-ubuntu3) trusty; urgency=low
 
