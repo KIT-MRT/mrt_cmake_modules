@@ -105,11 +105,11 @@ gtkmm:
     components: []
 libopenscenegraph:
   cmake:
-    name: OSG
+    name: OpenSceneGraph
     include_dirs: [OPENSCENEGRAPH_INCLUDE_DIRS]
     library_dirs: []
     libraries: [OPENSCENEGRAPH_LIBRARIES]
-    components: []
+    components: [osg osgAnimation osgDB osgFX osgGA osgManipulator osgParticle osgPresentation osgQt osgShadow osgSim osgTerrain osgText osgUtil osgViewer osgVolume osgWidget]
 opengl:
   cmake:
     name: OpenGL
@@ -133,6 +133,7 @@ libmagick:
     name: ImageMagick
     include_dirs: [ImageMagick_INCLUDE_DIRS]
     libraries: [ImageMagick_LIBRARIES]
+    components: [Magick++ MagickWand MagickCore]
 liblapack-dev:
   cmake:
     name: LAPACK
@@ -148,3 +149,11 @@ libpcap-dev:
     name: PCAP
     include_dirs: [PCAP_INCLUDE_DIR]
     libraries: [PCAP_LIBRARY]
+mrt_qt4-dev:
+  ubuntu: [libqt4-dev]
+  cmake:
+    name: MrtQt4
+    include_dirs: [QT_INCLUDES]
+    libraries: [QT_LIBRARIES]
+    components: [QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml QtXmlPatterns]
+

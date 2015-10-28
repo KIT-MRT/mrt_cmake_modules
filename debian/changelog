@@ -1,3 +1,10 @@
+mrt-cmake-modules (1.1-ubuntu10) trusty; urgency=low
+
+  * Added Qt4
+  * Fixed OpenScenegraph and image magick
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 28 Oct 2015 15:47:17 +0100
+
 mrt-cmake-modules (1.1-ubuntu9) trusty; urgency=low
 
   * Fixed ros glob
