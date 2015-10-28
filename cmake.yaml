@@ -84,7 +84,7 @@ poco:
 libgsl:
   cmake:
     name: GSL
-    include_dirs: [GSL_INCLUDE_DIR]
+    include_dirs: [GSL_INCLUDE_DIRS]
     library_dirs: [GSL_LINK_DIRECTORIES]
     libraries: [GSL_LIBRARIES]
     components: []
