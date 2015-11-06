@@ -1,3 +1,21 @@
+mrt-cmake-modules (1.1-ubuntu13) trusty; urgency=low
+
+  * Added png++
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Fri, 06 Nov 2015 13:35:09 +0100
+
+mrt-cmake-modules (1.1-ubuntu12) trusty; urgency=low
+
+  * Added python-gdal
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Fri, 06 Nov 2015 07:10:40 +0100
+
+mrt-cmake-modules (1.1-ubuntu11) trusty; urgency=low
+
+  * Added python-vte
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Thu, 29 Oct 2015 09:12:43 +0100
+
 mrt-cmake-modules (1.1-ubuntu10) trusty; urgency=low
 
   * Added Qt4
