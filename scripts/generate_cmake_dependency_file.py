@@ -81,7 +81,10 @@ def findWorkspaceRoot(packageXmlFilename):
         pathNew = os.path.dirname(pathOld)
         
         files = os.listdir(pathNew)
-        if ".catkin_tools" in files or "CMakeLists.txt" in files:
+        if ".catkin_tools" in files:
+            return(os.path.join(pathNew, "src"))
+                    
+        if "CMakeLists.txt" in files:
             return(pathNew)
     
     return ""

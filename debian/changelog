@@ -1,3 +1,9 @@
+mrt-cmake-modules (1.1-ubuntu15) trusty; urgency=low
+
+  * Added addition search in own workspace for catkin packages
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Tue, 01 Dec 2015 16:37:19 +0100
+
 mrt-cmake-modules (1.1-ubuntu14) trusty; urgency=low
 
   * Fixed bug in MRT Qt4 find script
