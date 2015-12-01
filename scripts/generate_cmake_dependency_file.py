@@ -19,6 +19,7 @@ import sys
 import subprocess
 import xml.etree.ElementTree as ET
 import yaml
+from catkin_pkg.packages import find_packages
 
 class PackageType:
     """Package type. This can be either a catkin package or an other one."""
@@ -63,6 +64,29 @@ class PackageCMakeData:
         return "PackageCMakeData(name:" + self.name + " include_dirs:" + str(self.includeDirs) + " librariy_dirs:" + \
            str( self.libraryDirs) + " libraries:" + str(self.libraries) + " components:" + str(self.components)
 
+def findWorkspaceRoot(packageXmlFilename):
+    """
+    Tries to find the root of the workspace by search top down
+    and looking for a CMakeLists.txt or .catkin_tools file / folder. If no
+    workspace is found an empty string is returned.
+    
+    @param[in] packageXmlFilename: package xml file name
+    """
+    
+    pathOld = ""
+    pathNew = os.path.dirname(os.path.abspath(packageXmlFilename))
+    
+    while pathOld != pathNew:
+        pathOld = pathNew
+        pathNew = os.path.dirname(pathOld)
+        
+        files = os.listdir(pathNew)
+        if ".catkin_tools" in files or "CMakeLists.txt" in files:
+            return(pathNew)
+    
+    return ""
+    
+
 def readPackageCMakeData(rosDebYamlFileName):
     """
     Read the cmake meta data for packages from a rosdep yaml file.
@@ -91,10 +115,20 @@ def readPackageCMakeData(rosDebYamlFileName):
     
     return data
 
-def getCatkinPackages():
+def getCatkinPackages(workspaceRoot):
     """Get all available catkin packages using rospack"""
     args = ['rospack', 'list-names']
     catkin_packages = subprocess.check_output(args).split('\n')
+    
+    #append packages from own workspaces, because sometimes
+    #they are listed by rospack
+    if os.path.exists(workspaceRoot):
+        packages = find_packages(workspaceRoot)
+        for package_name, package in packages.items():
+            catkin_packages.append(package["name"])
+    
+    #remove duplicates
+    catkin_packages = list(set(catkin_packages))
     return catkin_packages
 
 def main(packageXmlFile, rosDepYamlFileName, outputFile):
@@ -125,7 +159,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     
     #get all catkin packages to distinguish between
     #catkin and non-catkin packages
-    catkin_packages = getCatkinPackages()
+    workspaceRoot = findWorkspaceRoot(os.path.abspath(packageXmlFile))
+    catkin_packages = getCatkinPackages(workspaceRoot)
     #read rosdep yaml file for cmake variables used for non-catkin packages
     #to automatically create a find_package(...)
     cmakeVarData = readPackageCMakeData(rosDepYamlFileName);
