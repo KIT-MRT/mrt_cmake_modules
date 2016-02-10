@@ -168,4 +168,16 @@ png++:
     libraries: []
     library_dirs: []
     components: []
+libudev-dev:
+  ubuntu: [libudev-dev]
+libxext-dev:
+  ubuntu: [libxext-dev]
+mesa-common-dev:
+  ubuntu: [mesa-common-dev]
+freeglut3-dev:
+  ubuntu: [freeglut3-dev]
+libxrandr-dev:
+  ubuntu: [libxrandr-dev]
+uuid-dev:
+  ubuntu: [uuid-dev]
 

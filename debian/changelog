@@ -1,3 +1,9 @@
+mrt-cmake-modules (1.1-ubuntu16) trusty; urgency=low
+
+  * Add dependencies for oculus SDK
+
+ -- Johannes Beck <johannes.beck@kit.edu>  Wed, 10 Feb 2016 08:21:32 +0100
+
 mrt-cmake-modules (1.1-ubuntu15) trusty; urgency=low
 
   * Added addition search in own workspace for catkin packages
