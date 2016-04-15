@@ -193,4 +193,9 @@ python:
     name: PythonLibs
     include_dirs: [PYTHON_INCLUDE_DIRS]
     libraries: [PYTHON_LIBRARIES]
-
+boost_python:
+  ubuntu: [libboost-python-dev]
+  cmake:
+    name: BoostPython
+    include_dirs: [BoostPython_INCLUDE_DIRS]
+    libraries: [BoostPython_LIBRARIES]
