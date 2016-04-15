@@ -187,3 +187,10 @@ libgps:
     name: libgps
     include_dirs: [LIBGPS_INCLUDE_DIR]
     libraries: [LIBGPS_LIBRARY]
+python:
+  ubuntu: [python-dev]
+  cmake:
+    name: PythonLibs
+    include_dirs: [PYTHON_INCLUDE_DIRS]
+    libraries: [PYTHON_LIBRARIES]
+
