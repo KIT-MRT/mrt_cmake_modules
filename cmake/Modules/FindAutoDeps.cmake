@@ -28,11 +28,6 @@
 #mrt_EXPORT_INCLUDE_DIRS: Contains all include directories which dependend packages also need for building
 #mrt_EXPORT_LIBRARIES: Contains all libraries which dependend packages also need for building
 
-#check if use mrt modules is included before resolving dependencies
-if (NOT DEFINED MRT_SOFTWARE_ROOT_PATH)
-	message(FATAL_ERROR "MRT_SOFTWARE_ROOT_PATH is not defined. Include UseMrtModules before.")
-endif()
-
 set(mrt_INCLUDE_DIRS "")
 set(mrt_EXPORT_INCLUDE_DIRS "")
 set(mrt_LIBRARIES "")
@@ -132,6 +127,8 @@ if (AutoDeps_FIND_COMPONENTS)
 	#remove duplicated include directories
 	list(REMOVE_DUPLICATES mrt_INCLUDE_DIRS)
 	
+	# TODO: Remove the following block once the MRT PPA uses the new structure
+	set(MRT_SOFTWARE_ROOT_PATH "/mrtsoftware/pkg")
 	#sort cmake include directories such that mrt-packages include dirs are first
 	set(_mrt_INCLUDE_DIRS_TEMP_ "")
 	set(_non_mrt_INCLUDE_DIRS_TEMP_ "")
@@ -143,7 +140,7 @@ if (AutoDeps_FIND_COMPONENTS)
 		endif()
 	endforeach()
 	set(mrt_INCLUDE_DIRS ${_mrt_INCLUDE_DIRS_TEMP_} ${_non_mrt_INCLUDE_DIRS_TEMP_})
-
+	
 	#remove /usr/include and /usr/local/include
 	#The compiler searches in those folders automatically and this can lead to 
 	#problems if there are different versions of the same library installed
