@@ -1,0 +1,16 @@
+<package>
+  <name>mrt_cmake_modules</name>
+  <version>0.1.0</version>
+  <description>CMake Modules which are commonly used by MRT's ROS packages.</description>
+
+  <license>GPL-3.0+</license>
+  <maintainer email="johannes.beck@kit.edu">Johannes Beck</maintainer>
+  <author email="johannes.beck@kit.edu">Johannes Beck</author>
+  <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules.git</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+    <architecture_independent/>
+  </export>
+</package>
