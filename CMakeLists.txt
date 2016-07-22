@@ -3,6 +3,8 @@ project(mrt_cmake_modules)
 
 find_package(catkin REQUIRED)
 
+catkin_python_setup()
+
 catkin_package(CFG_EXTRAS mrt_cmake_modules-extras.cmake)
 
 ## Install all cmake files
