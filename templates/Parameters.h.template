@@ -17,8 +17,11 @@ namespace ${pkgname} {
 
 template <typename T>
 inline void getParam(const std::string key, T& val) {
-  if (!ros::param::get(key, val)) {
+  if (!ros::param::has(key)) {
     ROS_ERROR_STREAM("Parameter '" << key << "' is not defined.");
+    std::exit(EXIT_FAILURE);
+  } else if (!ros::param::get(key, val)) {
+    ROS_ERROR_STREAM("Could not retrieve parameter'" << key << "'. Does it have a different type?");
     std::exit(EXIT_FAILURE);
   }
 }

@@ -5,15 +5,7 @@ import re
 # Convenience names for types
 from string import Template
 
-str_t = "str"
-bool_t = "bool"
-int_t = "int"
-double_t = "double"
-types = [str_t, bool_t, int_t, double_t]
-
-
-# TODO Add array type
-
+# TODO add enums for dynamic reconfigure
 
 class ParameterGenerator(object):
     """Automatic config file and header generator"""
@@ -21,21 +13,21 @@ class ParameterGenerator(object):
     minval = {
         'int': -0x80000000,  # 'INT_MIN',
         'double': '-std::numeric_limits<double>::infinity()',
-        'str': '',
+        'std::string': '',
         'bool': False,
     }
 
     maxval = {
         'int': 0x7FFFFFFF,  # 'INT_MAX',
         'double': 'std::numeric_limits<double>::infinity()',
-        'str': '',
+        'std::string': '',
         'bool': True,
     }
 
     defval = {
         'int': 0,
         'double': 0,
-        'str': '',
+        'std::string': '',
         'bool': False,
     }
 
@@ -66,68 +58,88 @@ class ParameterGenerator(object):
             'description': description,
             'min': min,
             'max': max,
+            'is_vector': False,
+            'is_map': False,
             'configurable': configurable,
             'global_scope': global_scope,
             'required': default is None
         }
-
-        if paramtype == "str" and (max and min):
-            raise Exception("Max or min specified for %s, which is of string type" % name)
-        pattern = r'^[a-zA-Z][a-zA-Z0-9_]*$'
-        if not re.match(pattern, name):
-            raise Exception(
-                "The name of field \'%s\' does not follow the ROS naming conventions, see http://wiki.ros.org/ROS/Patterns/Conventions" % name)
-        if global_scope and configurable:
-            raise Exception("Global Parameters can not be declared configurable! Parameter: %s" % name)
-        if global_scope and default:
-            raise Exception("Default values for global parameters should not be specified in node! Parameter: %s" %
-                            name)
-
-        self.fill_type(newparam)
-        self.check_type_fill_default(newparam, 'default', self.defval[paramtype])
-        self.check_type_fill_default(newparam, 'max', self.maxval[paramtype])
-        self.check_type_fill_default(newparam, 'min', self.minval[paramtype])
-
+        self.perform_checks(newparam)
         self.parameters.append(newparam)
 
-    @staticmethod
-    def fill_type(param):
-        param['ctype'] = {'str': 'std::string', 'int': 'int', 'double': 'double', 'bool': 'bool'}[param['type']]
-        param['cconsttype'] = \
-            {'str': 'const char * const', 'int': 'const int', 'double': 'const double', 'bool': 'const bool'}[
-                param['type']]
+    def perform_checks(self, param):
+
+        if param['type'].strip() == "std::string" and (param['max'] and param['min']):
+            raise Exception("Max or min specified for %s, which is of string type" % param['name'])
+        if (param['is_vector'] or param['is_map']) and (param['max'] or param['min'] or param['default']):
+            raise Exception("Max, min and default can not be specified for %s, which is of type %s" % (param['name'], param['type']))
+        pattern = r'^[a-zA-Z][a-zA-Z0-9_]*$'
+        if not re.match(pattern, param['name']):
+            raise Exception("The name of field \'%s\' does not follow the ROS naming conventions, "
+                            "see http://wiki.ros.org/ROS/Patterns/Conventions" % param['name'])
+        if param['configurable'] and (param['global_scope'] or param['is_vector'] or param['is_map']):
+            raise Exception("Global Parameters, vectors and maps can not be declared configurable! "
+                            "Error when setting up parameter : %s" % param['name'])
+        if param['global_scope'] and param['default']:
+            raise Exception("Default values for global parameters should not be specified in node! "
+                            "Error when setting up parameter : %s" % param['name'])
+        if param['name'] in [param['name'] for param in self.parameters]:
+            raise Exception("Parameter with the same name exists already: %s" % param['name'])
+
+        # Check type
+        in_type = param['type'].strip()
+        if in_type.startswith('std::vector'):
+            param['is_vector'] = True
+            ptype = in_type[12:-1].strip()
+            self.test_primitive_type(param['name'], ptype)
+            param['type'] = 'std::vector<{}>'.format(ptype)
+        elif in_type.startswith('std::map'):
+            param['is_map'] = True
+            ptype = in_type[9:-1].split(',')
+            if len(ptype) != 2:
+                raise Exception("Wrong syntax used for setting up std::map<... , ...>: You provided '%s' with "
+                                "parameter %s" % (in_type, param['name']))
+            ptype[0] = ptype[0].strip()
+            ptype[1] = ptype[1].strip()
+            if ptype[0] != "std::string":
+                raise Exception("Can not setup map with %s as key type. Only std::map<std::string, ...> are allowed: %s"
+                                % (ptype[0], param['name']))
+            self.test_primitive_type(param['name'], ptype[0])
+            self.test_primitive_type(param['name'], ptype[1])
+            param['type'] = 'std::map<{},{}>'.format(ptype[0], ptype[1])
+        else:
+            self.test_primitive_type(param['name'], in_type)
+            # Pytype and defaults can only be applied to primitives
+            param['pytype'] = self.pytype(in_type)
+            self.fill_default(param, 'default', self.defval[in_type])
+            self.fill_default(param, 'max', self.maxval[in_type])
+            self.fill_default(param, 'min', self.minval[in_type])
 
     @staticmethod
     def pytype(drtype):
-        return {'str': str, 'int': int, 'double': float, 'bool': bool}[drtype]
+        return {'std::string': str, 'int': int, 'double': float, 'bool': bool}[drtype]
 
-    def check_type_fill_default(self, param, field, default):
+    def fill_default(self, param, field, default):
         value = param[field]
         # If no value, use default.
         if value is None:
             param[field] = default
             return
-        # Check that value type is compatible with type.
-        self.check_type(param, field)
 
-    def check_type(self, param, field):
-        drtype = param['type']
-        pytype = self.pytype(drtype)
-        name = param['name']
-        value = param[field]
-        if param['type'] not in types:
-            raise TypeError("'%s' has type %s, but allowed are: %s" % (param['name'], param['type'], types))
-        if pytype != type(value) and (pytype != float or type(value) != int):
-            raise TypeError("'%s' has type %s, but %s is %s" % (name, drtype, field, repr(value)))
+    @staticmethod
+    def test_primitive_type(name, drtype):
+        primitive_types = ['std::string', 'int', 'bool', 'float', 'double']
+        if drtype not in primitive_types:
+            raise TypeError("'%s' has type %s, but allowed are: %s" % (name, drtype, primitive_types))
 
     @staticmethod
     def get_cdefault(param):
         value = param["default"]
-        if param['type'] == str_t:
+        if param['type'] == 'std::string':
             value = '"{}"'.format(param["default"])
-        elif param['type'] == bool_t:
+        elif param['type'] == 'bool':
             value = str(param["default"]).lower()
-        return str(param['ctype']) + "{" + str(value) + "}"
+        return str(param['type']) + "{" + str(value) + "}"
 
     def generate(self, pkgname, nodename, classname):
         self.pkgname = pkgname
@@ -135,7 +147,6 @@ class ParameterGenerator(object):
         self.classname = classname
 
         self.dynamic_params = [p for p in self.parameters if p["configurable"]]
-        self.static_params = [p for p in self.parameters if not p["configurable"]]
 
         self.generatecfg()
         self.generatecpp()
@@ -192,7 +203,7 @@ class ParameterGenerator(object):
                 default = ', {}'.format(self.get_cdefault(param))
 
             param_entries.append(Template('  ${type} ${name}; /*!< ${description} */').substitute(
-                type=param['ctype'], name=param['name'], description=param['description']))
+                type=param['type'], name=param['name'], description=param['description']))
             from_server.append(Template('    getParam("$paramname", $name$default);').substitute(
                 paramname=paramname, name=param['name'], default=default, description=param['description']))
             if param['configurable']:
