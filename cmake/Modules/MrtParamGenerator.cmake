@@ -18,6 +18,13 @@ macro(generate_parameter_files)
             set(_input ${PROJECT_SOURCE_DIR}/${_input})
         endif ()
 
+
+        # Define required input files
+        set(genparam_build_files
+                ${MCM_ROOT}/templates/ConfigType.h.template
+                ${MCM_ROOT}/templates/Parameters.h.template
+                )
+
         # Define output files
         get_filename_component(_cfgonly ${_cfg} NAME_WE)
         set(_output_cfg ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}/cfg/${_cfgonly}.cfg)
@@ -28,6 +35,7 @@ macro(generate_parameter_files)
         set(_cmd
                 ${CATKIN_ENV}
                 ${_input}
+                ${MCM_ROOT}
                 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_SHARE_DESTINATION}
                 ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_INCLUDE_DESTINATION}
         )
@@ -35,7 +43,7 @@ macro(generate_parameter_files)
         add_custom_command(OUTPUT
                 ${_output_cpp} ${_output_cfg}
                 COMMAND ${_cmd}
-                DEPENDS ${_input}
+                DEPENDS ${_input} ${genparam_build_files}
                 COMMENT "Generating parameter files from ${_cfgonly}"
                 )
 
