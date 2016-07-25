@@ -10,27 +10,6 @@ from string import Template
 class ParameterGenerator(object):
     """Automatic config file and header generator"""
 
-    minval = {
-        'int': -0x80000000,  # 'INT_MIN',
-        'double': '-std::numeric_limits<double>::infinity()',
-        'std::string': '',
-        'bool': False,
-    }
-
-    maxval = {
-        'int': 0x7FFFFFFF,  # 'INT_MAX',
-        'double': 'std::numeric_limits<double>::infinity()',
-        'std::string': '',
-        'bool': True,
-    }
-
-    defval = {
-        'int': 0,
-        'double': 0,
-        'std::string': '',
-        'bool': False,
-    }
-
     def __init__(self):
         """Constructor for ParamGenerator"""
         self.parameters = []
@@ -111,20 +90,11 @@ class ParameterGenerator(object):
             self.test_primitive_type(param['name'], in_type)
             # Pytype and defaults can only be applied to primitives
             param['pytype'] = self.pytype(in_type)
-            self.fill_default(param, 'default', self.defval[in_type])
-            self.fill_default(param, 'max', self.maxval[in_type])
-            self.fill_default(param, 'min', self.minval[in_type])
 
     @staticmethod
     def pytype(drtype):
         return {'std::string': str, 'int': int, 'double': float, 'bool': bool}[drtype]
 
-    def fill_default(self, param, field, default):
-        value = param[field]
-        # If no value, use default.
-        if value is None:
-            param[field] = default
-            return
 
     @staticmethod
     def test_primitive_type(name, drtype):
@@ -160,17 +130,20 @@ class ParameterGenerator(object):
 
         param_entries = []
         for param in self.dynamic_params:
-            param_entries.append(Template(
-                "gen.add(name = '$name', paramtype = '$paramtype', level = $level, description = '$description', "
-                "default = $default,min = $min, max = $max, edit_method = $editmethod)").substitute(
-                name=param["name"],
-                paramtype=param['type'],
-                level=0,
-                description=param['description'],
-                default=param['default'],
-                min=param['min'],
-                max=param['max'],
-                editmethod='""'))
+            content_line = Template("gen.add(name = '$name', paramtype = '$paramtype', level = $level, description = "
+                                    "'$description'").substitute(name=param["name"],
+                                                                paramtype=param['type'],
+                                                                level=0,
+                                                                description=param['description'])
+            if param['default']:
+                content_line += Template(", default=$default").substitute(default=param['default'])
+            if param['min']:
+                content_line += Template(", min=$min").substitute(min=param['min'])
+            if param['max']:
+                content_line += Template(", max=$max").substitute(max=param['max'])
+            content_line += ")"
+            param_entries.append(content_line)
+
         param_entries = "\n".join(param_entries)
 
         template = Template(template).substitute(pkgname=self.pkgname, nodename=self.nodename,
