@@ -79,7 +79,8 @@ It has the following arguments:
 1. Create `MyDummy.cfg` file in the devel/share space and call dynamic_reconfigure for you to generate `MyDummyConfig.h`.
 (It will also call `generate_dynamic_reconfigure_options` with all other `*.cfg` files in your package, so you don't need to do that in your `CMakeLists.txt` anymore.)
 2. Create a header that defines a `MyDummyParameters`-SingletonStruct that holds all your parameters.
-Include it with
+
+Include headers with
 ```cpp
 #include "my_dummy_ros_tool/MyDummyParameters.h"
 ```
