@@ -35,10 +35,7 @@ struct ${ClassName}Parameters {
 
 $parameters
 
-  static ${ClassName}Parameters& getInstance(){
-    static ${ClassName}Parameters p;
-    return p;
-  }
+  ${ClassName}Parameters(){};
 
   void fromParamServer(){
 $fromParamServer
@@ -48,8 +45,6 @@ $fromParamServer
 $fromConfig
   }
 
-private:
-  ${ClassName}Parameters(){};
 };
 
 } // namespace ${pkgname}
