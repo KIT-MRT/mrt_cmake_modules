@@ -5,7 +5,10 @@ import re
 # Convenience names for types
 from string import Template
 
+
 # TODO add enums for dynamic reconfigure
+# TODO add const
+# TODO add group
 
 class ParameterGenerator(object):
     """Automatic config file and header generator"""
@@ -27,6 +30,25 @@ class ParameterGenerator(object):
 
         self.dynamic_params = []
         self.static_params = []
+        self.const_params = []
+
+    def const(self, name, paramtype, value, description):
+        newconst = {
+            'name': name,
+            'type': paramtype,
+            'value': value,
+            'const': True,
+            'description': description
+        }
+        self.fill_type(newconst)
+        self.check_type(newconst, 'value')
+        self.const_params.append(newconst)
+        return newconst  # So that we can assign the value easily.
+
+    def enum(self, constants, description):
+        if len(set(const['type'] for const in constants)) != 1:
+            raise Exception("Inconsistent types in enum!")
+        return repr({'enum': constants, 'enum_description': description})
 
     def add(self, name, paramtype, description, default=None, min=None, max=None, configurable=False,
             global_scope=False):
@@ -51,7 +73,8 @@ class ParameterGenerator(object):
         if param['type'].strip() == "std::string" and (param['max'] and param['min']):
             raise Exception("Max or min specified for %s, which is of string type" % param['name'])
         if (param['is_vector'] or param['is_map']) and (param['max'] or param['min'] or param['default']):
-            raise Exception("Max, min and default can not be specified for %s, which is of type %s" % (param['name'], param['type']))
+            raise Exception("Max, min and default can not be specified for %s, which is of type %s" % (
+                param['name'], param['type']))
         pattern = r'^[a-zA-Z][a-zA-Z0-9_]*$'
         if not re.match(pattern, param['name']):
             raise Exception("The name of field \'%s\' does not follow the ROS naming conventions, "
@@ -95,7 +118,6 @@ class ParameterGenerator(object):
     def pytype(drtype):
         return {'std::string': str, 'int': int, 'double': float, 'bool': bool}[drtype]
 
-
     @staticmethod
     def test_primitive_type(name, drtype):
         primitive_types = ['std::string', 'int', 'bool', 'float', 'double']
@@ -132,9 +154,9 @@ class ParameterGenerator(object):
         for param in self.dynamic_params:
             content_line = Template("gen.add(name = '$name', paramtype = '$paramtype', level = $level, description = "
                                     "'$description'").substitute(name=param["name"],
-                                                                paramtype=param['type'],
-                                                                level=0,
-                                                                description=param['description'])
+                                                                 paramtype=param['type'],
+                                                                 level=0,
+                                                                 description=param['description'])
             if param['default']:
                 content_line += Template(", default=$default").substitute(default=param['default'])
             if param['min']:
@@ -162,6 +184,9 @@ class ParameterGenerator(object):
             template = f.read()
 
         param_entries = []
+        debug_output = [
+            Template('    ROS_DEBUG_STREAM("Node $nodename started with following parameters: \\n"\n').substitute(
+                nodename=self.nodename)]
         from_server = []
         from_config = []
         for param in self.parameters:
@@ -179,16 +204,20 @@ class ParameterGenerator(object):
                 type=param['type'], name=param['name'], description=param['description']))
             from_server.append(Template('    getParam("$paramname", $name$default);').substitute(
                 paramname=paramname, name=param['name'], default=default, description=param['description']))
+            debug_output.append(Template('      << ros::names::resolve("$paramname") << ": " << $param << '
+                                         '"\\n"\n').substitute(paramname=paramname, param=param["name"]))
             if param['configurable']:
                 from_config.append(Template('    $name = config.$name;').substitute(name=param['name']))
 
+        debug_output.append('    );')
         param_entries = "\n".join(param_entries)
+        debug_output = "".join(debug_output)
         from_server = "\n".join(from_server)
         from_config = "\n".join(from_config)
 
         content = Template(template).substitute(pkgname=self.pkgname, ClassName=self.classname,
                                                 parameters=param_entries, fromConfig=from_config,
-                                                fromParamServer=from_server)
+                                                fromParamServer=from_server, debug_output=debug_output)
 
         header_file = os.path.join(self.cpp_gen_dir, self.classname + "Parameters.h")
         if not os.path.exists(os.path.dirname(header_file)):
