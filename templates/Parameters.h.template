@@ -10,26 +10,11 @@
 
 #include <stdlib.h>
 #include <string>
+#include <limits>
 #include <ros/param.h>
 #include <${pkgname}/${ClassName}Config.h>
 
 namespace ${pkgname} {
-
-template <typename T>
-inline void getParam(const std::string key, T& val) {
-  if (!ros::param::has(key)) {
-    ROS_ERROR_STREAM("Parameter '" << key << "' is not defined.");
-    std::exit(EXIT_FAILURE);
-  } else if (!ros::param::get(key, val)) {
-    ROS_ERROR_STREAM("Could not retrieve parameter'" << key << "'. Does it have a different type?");
-    std::exit(EXIT_FAILURE);
-  }
-}
-
-template <typename T>
-inline void getParam(const std::string key, T& val, const T& defaultValue) {
-  ros::param::param(key, val, defaultValue);
-}
 
 struct ${ClassName}Parameters {
 
@@ -40,6 +25,7 @@ $parameters
   void fromParamServer(){
 $fromParamServer
 
+$test_limits
     // debugOutput(); // Temporarily commented out, because it produces double output (fromConfig) at node start.
   }
 
@@ -51,7 +37,53 @@ $fromConfig
 
   void debugOutput(){
     std::string ns = ros::this_node::getNamespace();
-$debug_output
+    ROS_DEBUG_STREAM("Node $nodename started with following parameters:\n"
+$debug_output    );
+  }
+
+  void missingParamsWarning(){
+    ROS_WARN_STREAM("The following parameters do not have default values and need to be specified:\n"
+$non_default_params    );
+  }
+
+  template <typename T>
+  void getParam(const std::string key, T& val) {
+    if (!ros::param::has(key)) {
+      ROS_ERROR_STREAM("Parameter '" << key << "' is not defined.");
+      missingParamsWarning();
+      std::exit(EXIT_FAILURE);
+    } else if (!ros::param::get(key, val)) {
+      ROS_ERROR_STREAM("Could not retrieve parameter'" << key << "'. Does it have a different type?");
+      missingParamsWarning();
+      std::exit(EXIT_FAILURE);
+    }
+  }
+
+  template <typename T>
+  void getParam(const std::string key, T& val, const T& defaultValue) {
+    ros::param::param(key, val, defaultValue);
+  }
+
+  void testConstParam(const std::string key){
+    if (ros::param::has(key)) {
+      ROS_WARN_STREAM("Parameter " << key << "' was set on the parameter server eventhough it was defined to be constant.");
+    }
+  }
+
+  template<typename T>
+  void testMin(const std::string key, T& val, T min = std::numeric_limits<T>::min()){
+    if (val < min){
+      ROS_WARN_STREAM("Value of " << val << " for " << key << " is smaller than minimal allowed value. Correcting value to min=" << min);
+      val = min;
+    }
+  }
+
+  template<typename T>
+  void testMax(const std::string key, T& val, T max = std::numeric_limits<T>::max()){
+    if (val > max){
+      ROS_WARN_STREAM("Value of " << val << " for " << key << " is greater than maximal allowed. Correcting value to max=" << max);
+      val = max;
+    }
   }
 
 };
