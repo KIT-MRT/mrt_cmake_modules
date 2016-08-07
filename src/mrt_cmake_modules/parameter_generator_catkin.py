@@ -147,13 +147,6 @@ class ParameterGenerator(object):
             param['type'] = 'std::map<{},{}>'.format(ptype[0], ptype[1])
         else:
             self._test_primitive_type(param['name'], in_type)
-            # Pytype and defaults can only be applied to primitives
-            param['pytype'] = self._pytype(in_type)
-
-    @staticmethod
-    def _pytype(drtype):
-        """Convert C++ type to python type"""
-        return {'std::string': str, 'int': int, 'double': float, 'bool': bool}[drtype]
 
     @staticmethod
     def _test_primitive_type(name, drtype):
