@@ -121,7 +121,7 @@ class ParameterGenerator(object):
         if param['constant'] and param['default'] is None:
             raise Exception("Constant parameters need a default value!"
                             "Error when setting up parameter : %s" % param['name'])
-        if param['name'] in [param['name'] for param in self.parameters]:
+        if param['name'] in [p['name'] for p in self.parameters]:
             raise Exception("Parameter with the same name exists already: %s" % param['name'])
 
         # Check type
