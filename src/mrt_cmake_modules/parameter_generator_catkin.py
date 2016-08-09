@@ -15,6 +15,7 @@ class ParameterGenerator(object):
 
     def __init__(self):
         """Constructor for ParamGenerator"""
+        self.enums = []
         self.parameters = []
 
         if len(sys.argv) != 4:
@@ -28,34 +29,30 @@ class ParameterGenerator(object):
         self.nodename = None
         self.classname = None
 
-        self.dynamic_params = []
-        self.static_params = []
-        self.const_params = []
+    def add_enum(self, name, description, entry_strings, default=None):
+        """
+        Add an enum to dynamic reconfigure
+        :param name: Name of enum parameter
+        :param description: Informative documentation string
+        :param entry_strings: Enum entries, must be strings! (will be numbered with increasing value)
+        :param default: Default value
+        :return:
+        """
 
-    ''' This is still work in progress
-    def const(self, name, paramtype, value, description):
-        """Add a constant to the dynamic reconfigure file"""
-        newconst = {
-            'name': name,
-            'type': paramtype,
-            'value': value,
-            'const': True,
-            'description': description
-        }
-        self.fill_type(newconst)
-        self.check_type(newconst, 'value')
-        self.const_params.append(newconst)
-        return newconst  # So that we can assign the value easily.
+        entry_strings = [str(e) for e in entry_strings]  # Make sure we only get strings
+        if default is None:
+            default = entry_strings[0]
+        else:
+            default = entry_strings.index(default)
+        self.add(name=name, paramtype="int", description=description, edit_method=name, default=default,
+                 configurable=True)
+        for e in entry_strings:
+            self.add(name=name + "_" + e, paramtype="int", description="Constant for enum {}".format(name),
+                     default=entry_strings.index(e), constant=True)
+        self.enums.append({'name': name, 'description': description, 'values': entry_strings})
 
-    def enum(self, constants, description):
-        """Add an enum to dynamic reconfigure file"""
-        if len(set(const['type'] for const in constants)) != 1:
-            raise Exception("Inconsistent types in enum!")
-        return repr({'enum': constants, 'enum_description': description})
-    '''
-
-    def add(self, name, paramtype, description, default=None, min=None, max=None, configurable=False,
-            global_scope=False, constant=False):
+    def add(self, name, paramtype, description, level=0, edit_method='""', default=None, min=None, max=None,
+            configurable=False, global_scope=False, constant=False):
         """
         Add parameters to your parameter struct. Call this method from your mrtcfg file!
 
@@ -68,6 +65,8 @@ class ParameterGenerator(object):
         :param paramtype: The C++ type of this parameter. Can be any of ['std::string', 'int', 'bool', 'float',
         'double'] or std::vector<...> or std::map<std::string, ...>
         :param description: Choose an informative documentation string for this parameter.
+        :param level: Passed to dynamic_reconfigure
+        :param edit_method: Passed to dynamic_reconfigure
         :param default: (optional) default value
         :param min: (optional)
         :param max: (optional)
@@ -81,6 +80,8 @@ class ParameterGenerator(object):
             'name': name,
             'type': paramtype,
             'default': default,
+            'level': level,
+            'edit_method': edit_method,
             'description': description,
             'min': min,
             'max': max,
@@ -112,7 +113,7 @@ class ParameterGenerator(object):
             raise Exception("The name of field \'%s\' does not follow the ROS naming conventions, "
                             "see http://wiki.ros.org/ROS/Patterns/Conventions" % param['name'])
         if param['configurable'] and (
-                    param['global_scope'] or param['is_vector'] or param['is_map'] or param['constant']):
+                            param['global_scope'] or param['is_vector'] or param['is_map'] or param['constant']):
             raise Exception("Global Parameters, vectors, maps and constant params can not be declared configurable! "
                             "Error when setting up parameter : %s" % param['name'])
         if param['global_scope'] and param['default'] is not None:
@@ -123,6 +124,8 @@ class ParameterGenerator(object):
                             "Error when setting up parameter : %s" % param['name'])
         if param['name'] in [p['name'] for p in self.parameters]:
             raise Exception("Parameter with the same name exists already: %s" % param['name'])
+        if param['edit_method'] != '""':
+            param['configurable'] = True
 
         # Check type
         in_type = param['type'].strip()
@@ -146,7 +149,14 @@ class ParameterGenerator(object):
             self._test_primitive_type(param['name'], ptype[1])
             param['type'] = 'std::map<{},{}>'.format(ptype[0], ptype[1])
         else:
+            # Pytype and defaults can only be applied to primitives
             self._test_primitive_type(param['name'], in_type)
+            param['pytype'] = self._pytype(in_type)
+
+    @staticmethod
+    def _pytype(drtype):
+        """Convert C++ type to python type"""
+        return {'std::string': "str", 'int': "int", 'double': "double", 'bool': "bool"}[drtype]
 
     @staticmethod
     def _test_primitive_type(name, drtype):
@@ -161,17 +171,31 @@ class ParameterGenerator(object):
             raise TypeError("'%s' has type %s, but allowed are: %s" % (name, drtype, primitive_types))
 
     @staticmethod
-    def _get_cdefault(param):
+    def _get_cvalue(param, field):
         """
         Helper function to convert strings and booleans to correct C++ syntax
         :param param:
         :return: C++ compatible representation
         """
-        value = param["default"]
+        value = param[field]
         if param['type'] == 'std::string':
-            value = '"{}"'.format(param["default"])
+            value = '"{}"'.format(param[field])
         elif param['type'] == 'bool':
-            value = str(param["default"]).lower()
+            value = str(param[field]).lower()
+        return str(value)
+
+    @staticmethod
+    def _get_pyvalue(param, field):
+        """
+        Helper function to convert strings and booleans to correct C++ syntax
+        :param param:
+        :return: C++ compatible representation
+        """
+        value = param[field]
+        if param['type'] == 'std::string':
+            value = '"{}"'.format(param[field])
+        elif param['type'] == 'bool':
+            value = str(param[field]).capitalize()
         return str(value)
 
     def generate(self, pkgname, nodename, classname):
@@ -186,8 +210,6 @@ class ParameterGenerator(object):
         self.pkgname = pkgname
         self.nodename = nodename
         self.classname = classname
-
-        self.dynamic_params = [p for p in self.parameters if p["configurable"]]
 
         self._generatecfg()
         self._generatecpp()
@@ -205,14 +227,28 @@ class ParameterGenerator(object):
             template = f.read()
 
         param_entries = []
-        for param in self.dynamic_params:
-            content_line = Template("gen.add(name = '$name', paramtype = '$paramtype', level = $level, description = "
-                                    "'$description'").substitute(name=param["name"],
-                                                                 paramtype=param['type'],
-                                                                 level=0,
-                                                                 description=param['description'])
+        dynamic_params = [p for p in self.parameters if p["configurable"]]
+
+        for enum in self.enums:
+            param_entries.append(Template("$name = gen.enum([").substitute(name=enum['name']))
+            i = 0
+            for value in enum['values']:
+                param_entries.append(
+                    Template("    gen.const(name='$name', type='$type', value=$value, descr='$descr'),").substitute(
+                        name=value, type="int", value=i, descr=""))
+                i += 1
+            param_entries.append(Template("    ], '$description')").substitute(description=enum["description"]))
+
+        for param in dynamic_params:
+            content_line = Template("gen.add(name = '$name', paramtype = '$paramtype', level = $level, "
+                                    "description = '$description', edit_method=$edit_method").substitute(
+                name=param["name"],
+                paramtype=param['pytype'],
+                level=param['level'],
+                edit_method=param['edit_method'],
+                description=param['description'])
             if param['default'] is not None:
-                content_line += Template(", default=$default").substitute(default=param['default'])
+                content_line += Template(", default=$default").substitute(default=self._get_pyvalue(param, "default"))
             if param['min'] is not None:
                 content_line += Template(", min=$min").substitute(min=param['min'])
             if param['max'] is not None:
@@ -221,7 +257,6 @@ class ParameterGenerator(object):
             param_entries.append(content_line)
 
         param_entries = "\n".join(param_entries)
-
         template = Template(template).substitute(pkgname=self.pkgname, nodename=self.nodename,
                                                  classname=self.classname, params=param_entries)
 
@@ -267,14 +302,14 @@ class ParameterGenerator(object):
                 non_default_params.append(Template('      << ros::names::resolve("$paramname") << " ($type) '
                                                    '\\n"\n').substitute(paramname=paramname, type=param["type"]))
             else:
-                default = ', {}'.format(str(param['type']) + "{" + self._get_cdefault(param) + "}")
+                default = ', {}'.format(str(param['type']) + "{" + self._get_cvalue(param, "default") + "}")
 
             # Test for constant value
             if param['constant']:
                 param_entries.append(Template('  static constexpr auto ${name} = $default; /*!< ${description} '
                                               '*/').substitute(type=param['type'], name=param['name'],
                                                                description=param['description'],
-                                                               default=self._get_cdefault(param)))
+                                                               default=self._get_cvalue(param, "default")))
                 from_server.append(Template('    testConstParam("$paramname");').substitute(paramname=paramname))
             else:
                 param_entries.append(Template('  ${type} ${name}; /*!< ${description} */').substitute(
@@ -316,4 +351,3 @@ class ParameterGenerator(object):
             os.makedirs(os.path.dirname(header_file))
         with open(header_file, 'w') as f:
             f.write(content)
-
