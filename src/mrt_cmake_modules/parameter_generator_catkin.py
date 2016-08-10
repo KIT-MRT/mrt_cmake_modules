@@ -76,6 +76,9 @@ class ParameterGenerator(object):
         is kept.
         :return: None
         """
+        configurable = self._make_bool(configurable)
+        global_scope = self._make_bool(global_scope)
+        constant = self._make_bool(constant)
         newparam = {
             'name': name,
             'type': paramtype,
@@ -351,3 +354,11 @@ class ParameterGenerator(object):
             os.makedirs(os.path.dirname(header_file))
         with open(header_file, 'w') as f:
             f.write(content)
+
+    @staticmethod
+    def _make_bool(param):
+        if isinstance(param,bool):
+            return bool
+        else:
+            # Pray and hope that it is a string
+            return bool(param)
