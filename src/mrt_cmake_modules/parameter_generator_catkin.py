@@ -363,7 +363,7 @@ class ParameterGenerator(object):
     @staticmethod
     def _make_bool(param):
         if isinstance(param, bool):
-            return bool
+            return param
         else:
             # Pray and hope that it is a string
             return bool(param)
