@@ -1,9 +1,18 @@
-import os
+from __future__ import print_function
 import sys
+import os
 import re
 
 # Convenience names for types
 from string import Template
+
+
+def eprint(*args, **kwargs):
+    print("************************************************", file=sys.stderr, **kwargs)
+    print("Error when setting up parameter '{}':".format(args[0]), file=sys.stderr, **kwargs)
+    print(*args[1:], file=sys.stderr, **kwargs)
+    print("************************************************", file=sys.stderr, **kwargs)
+    sys.exit(1)
 
 
 # TODO add enums for dynamic reconfigure
@@ -107,26 +116,22 @@ class ParameterGenerator(object):
         """
 
         if param['type'].strip() == "std::string" and (param['max'] is not None or param['min'] is not None):
-            raise Exception("Max or min specified for %s, which is of string type" % param['name'])
+            eprint(param['name'],"Max or min specified for for variable of type string")
         if (param['is_vector'] or param['is_map']) and (param['max'] or param['min'] or param['default']):
-            raise Exception("Max, min and default can not be specified for %s, which is of type %s" % (
-                param['name'], param['type']))
+            eprint(param['name'],"Max, min and default can not be specified for variable of type %s" % param['type'])
         pattern = r'^[a-zA-Z][a-zA-Z0-9_]*$'
         if not re.match(pattern, param['name']):
-            raise Exception("The name of field \'%s\' does not follow the ROS naming conventions, "
-                            "see http://wiki.ros.org/ROS/Patterns/Conventions" % param['name'])
+            eprint(param['name'],"The name of field does not follow the ROS naming conventions, "
+                                 "see http://wiki.ros.org/ROS/Patterns/Conventions")
         if param['configurable'] and (
                             param['global_scope'] or param['is_vector'] or param['is_map'] or param['constant']):
-            raise Exception("Global Parameters, vectors, maps and constant params can not be declared configurable! "
-                            "Error when setting up parameter : %s" % param['name'])
+            eprint(param['name'],"Global Parameters, vectors, maps and constant params can not be declared configurable! ")
         if param['global_scope'] and param['default'] is not None:
-            raise Exception("Default values for global parameters should not be specified in node! "
-                            "Error when setting up parameter : %s" % param['name'])
+            eprint(param['name'],"Default values for global parameters should not be specified in node! ")
         if param['constant'] and param['default'] is None:
-            raise Exception("Constant parameters need a default value!"
-                            "Error when setting up parameter : %s" % param['name'])
+            eprint(param['name'],"Constant parameters need a default value!")
         if param['name'] in [p['name'] for p in self.parameters]:
-            raise Exception("Parameter with the same name exists already: %s" % param['name'])
+            eprint(param['name'],"Parameter with the same name exists already")
         if param['edit_method'] != '""':
             param['configurable'] = True
 
@@ -141,13 +146,13 @@ class ParameterGenerator(object):
             param['is_map'] = True
             ptype = in_type[9:-1].split(',')
             if len(ptype) != 2:
-                raise Exception("Wrong syntax used for setting up std::map<... , ...>: You provided '%s' with "
-                                "parameter %s" % (in_type, param['name']))
+                eprint(param['name'],"Wrong syntax used for setting up std::map<... , ...>: You provided '%s' with "
+                                "parameter %s" % in_type)
             ptype[0] = ptype[0].strip()
             ptype[1] = ptype[1].strip()
             if ptype[0] != "std::string":
-                raise Exception("Can not setup map with %s as key type. Only std::map<std::string, ...> are allowed: %s"
-                                % (ptype[0], param['name']))
+                eprint(param['name'],"Can not setup map with %s as key type. Only std::map<std::string, "
+                                     "...> are allowed" % ptype[0])
             self._test_primitive_type(param['name'], ptype[0])
             self._test_primitive_type(param['name'], ptype[1])
             param['type'] = 'std::map<{},{}>'.format(ptype[0], ptype[1])
@@ -357,7 +362,7 @@ class ParameterGenerator(object):
 
     @staticmethod
     def _make_bool(param):
-        if isinstance(param,bool):
+        if isinstance(param, bool):
             return bool
         else:
             # Pray and hope that it is a string
