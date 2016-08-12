@@ -296,50 +296,52 @@ class ParameterGenerator(object):
 
         # Create dynamic parts of the header file for every parameter
         for param in self.parameters:
-            paramname = param['name']
+            name = param['name']
 
             # Adjust key for parameter server
             if param["global_scope"]:
-                paramname = "/" + paramname
+                namespace = 'std::string("/")'
             else:
-                paramname = "~" + paramname
+                namespace = 'privateNamespace'
+            full_name = '{} + "{}"'.format(namespace, param["name"])
 
             # Test for default value
             if param["default"] is None:
                 default = ""
-                non_default_params.append(Template('      << ros::names::resolve("$paramname") << " ($type) '
-                                                   '\\n"\n').substitute(paramname=paramname, type=param["type"]))
+                non_default_params.append(Template('      << "\t" << $namespace << "$name" << " ($type) '
+                                                   '\\n"\n').substitute(
+                    namespace=namespace, name=name, type=param["type"]))
             else:
                 default = ', {}'.format(str(param['type']) + "{" + self._get_cvalue(param, "default") + "}")
 
             # Test for constant value
             if param['constant']:
                 param_entries.append(Template('  static constexpr auto ${name} = $default; /*!< ${description} '
-                                              '*/').substitute(type=param['type'], name=param['name'],
+                                              '*/').substitute(type=param['type'], name=name,
                                                                description=param['description'],
                                                                default=self._get_cvalue(param, "default")))
-                from_server.append(Template('    testConstParam("$paramname");').substitute(paramname=paramname))
+                from_server.append(Template('    testConstParam($paramname);').substitute(paramname=full_name))
             else:
                 param_entries.append(Template('  ${type} ${name}; /*!< ${description} */').substitute(
-                    type=param['type'], name=param['name'], description=param['description']))
-                from_server.append(Template('    getParam("$paramname", $name$default);').substitute(
-                    paramname=paramname, name=param['name'], default=default, description=param['description']))
+                    type=param['type'], name=name, description=param['description']))
+                from_server.append(Template('    getParam($paramname, $name$default);').substitute(
+                    paramname=full_name, name=name, default=default, description=param['description']))
 
             # Test for configurable params
             if param['configurable']:
-                from_config.append(Template('    $name = config.$name;').substitute(name=param['name']))
+                from_config.append(Template('    $name = config.$name;').substitute(name=name))
 
             # Test limits
             if param['min'] is not None:
-                test_limits.append(Template('    testMin<$type>("$paramname", $name, $min);').substitute(
-                    paramname=paramname, name=param['name'], min=param['min'], type=param['type']))
+                test_limits.append(Template('    testMin<$type>($paramname, $name, $min);').substitute(
+                    paramname=full_name, name=name, min=param['min'], type=param['type']))
             if param['max'] is not None:
-                test_limits.append(Template('    testMax<$type>("$paramname", $name, $max);').substitute(
-                    paramname=paramname, name=param['name'], max=param['max'], type=param['type']))
+                test_limits.append(Template('    testMax<$type>($paramname, $name, $max);').substitute(
+                    paramname=full_name, name=name, max=param['max'], type=param['type']))
 
             # Add debug output
-            debug_output.append(Template('      << ros::names::resolve("$paramname") << ": " << $param << '
-                                         '"\\n"\n').substitute(paramname=paramname, param=param["name"]))
+            debug_output.append(Template('      << "\t" << $namespace << "$name:" << $name << '
+                                         '"\\n"\n').substitute(namespace=namespace, name=name))
 
         param_entries = "\n".join(param_entries)
         debug_output = "".join(debug_output)
