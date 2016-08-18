@@ -15,7 +15,7 @@ macro(generate_parameter_files)
     set(PARAM_FILES ${MRT_CFG_FILES} ${DYN_RECONF_CFG_FILES})
     # generate dynamic reconfigure files
     if(rosparam_handler_FOUND_CATKIN_PROJECT)
-        generate_parameter_files(${PARAM_FILES})
+        generate_ros_parameter_files(${PARAM_FILES})
     else()
         message(FATAL_ERROR "Dependency to rosparam_handler is missing. Can not build config files for project ${PROJECT_NAME}")
     endif()
