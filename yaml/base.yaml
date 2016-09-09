@@ -318,14 +318,12 @@ mrt_pcl:
 mrt_qt4-dev:
   cmake:
     components:
-    - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
-      QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
-      QtXmlPatterns
+    - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
     include_dirs:
     - QT_INCLUDES
     libraries:
     - QT_LIBRARIES
-    name: MrtQt4
+    name: MrtQt5
   ubuntu:
   - libqt4-dev
 mrt_suitesparse:
