@@ -8,7 +8,7 @@ if (EXISTS ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
 	set(PCL_DIR ${PACKAGE_PATH})
 else()
-	message(SEND_ERROR "Error: PCL package not found. Install the appropriate mrt package.")
+	message("Warning: MRT-PCL package not found. Falling back to system PCL.")
 endif()
 
 # find package component

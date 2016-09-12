@@ -8,7 +8,7 @@ if (EXISTS ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
 	set(OpenCV_DIR ${PACKAGE_PATH})
 else()
-	message(SEND_ERROR "Error: OpenCV package not found. Install the appropriate mrt package.")
+	message("Warning: MRT-OpenCV package not found. Falling back to system OpenCv.")
 endif()
 
 # find package component
