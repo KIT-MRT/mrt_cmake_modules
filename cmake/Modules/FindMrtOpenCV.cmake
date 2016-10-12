@@ -3,7 +3,7 @@
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/opencv-2.4.11/share/OpenCV")
 set(PACKAGE_PATH "/mrtsoftware/pkg/opencv-2.4.11/share/OpenCV")
 
-# old mrtsoftware-style
+#old mrtsoftware-style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
 	set(OpenCV_DIR ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
