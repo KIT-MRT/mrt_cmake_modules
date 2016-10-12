@@ -17,6 +17,7 @@ Created on Jul 1, 2015
 import os
 import sys
 import subprocess
+import platform
 import xml.etree.ElementTree as ET
 import yaml
 from catkin_pkg.packages import find_packages
@@ -97,11 +98,12 @@ def readPackageCMakeData(rosDebYamlFileName):
     package1:
       ubuntu: [ ... ]
       cmake:
-        name: ...
-        include_dirs: []
-        library_dirs: []
-        libraries: []
-        components: []
+        xenial/trusty:
+          name: ...
+          include_dirs: []
+          library_dirs: []
+          libraries: []
+          components: []
     """
     #load ros dep yaml file
     f = open(rosDebYamlFileName, "r")
@@ -114,8 +116,12 @@ def readPackageCMakeData(rosDebYamlFileName):
         #check if cmake part is available. There could also be entries with no
         #cmake part (only ubuntu, etc.)
         if "cmake" in packageCMakeData:
-            data[packageName] = PackageCMakeData(packageCMakeData["cmake"])
-    
+            # find out which distribution
+            distro = platform.dist()[2]
+            if "name" in packageCMakeData["cmake"]:
+                data[packageName] = PackageCMakeData(packageCMakeData["cmake"])
+            elif distro in packageCMakeData["cmake"]:
+                data[packageName] = PackageCMakeData(packageCMakeData["cmake"][distro])   
     return data
 
 def getCatkinPackages(workspaceRoot):

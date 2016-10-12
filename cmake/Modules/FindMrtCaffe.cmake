@@ -3,12 +3,11 @@
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/caffe-0.9/share/Caffe")
 set(PACKAGE_PATH "/mrtsoftware/pkg/caffe-0.9/share/Caffe")
 
+#old mrtsoftware-style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
 	set(Caffe_DIR ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
 	set(Caffe_DIR ${PACKAGE_PATH})
-else()
-	message(SEND_ERROR "Error: Caffe package not found. Install the appropriate mrt package.")
 endif()
 
 # find package component

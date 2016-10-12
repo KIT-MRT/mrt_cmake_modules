@@ -3,12 +3,11 @@
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/pcl-1.8/share/pcl-1.8")
 set(PACKAGE_PATH "/mrtsoftware/pkg/pcl-1.8/share/pcl-1.8")
 
+#old mrtsoftware-style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
 	set(PCL_DIR ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
 	set(PCL_DIR ${PACKAGE_PATH})
-else()
-	message("Warning: MRT-PCL package not found. Falling back to system PCL.")
 endif()
 
 # find package component
