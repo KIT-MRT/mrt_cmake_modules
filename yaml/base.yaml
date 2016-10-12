@@ -334,7 +334,7 @@ mrt_opencv:
     trusty:
     - mrt-opencv-dev
     xenial:
-    - ros-kinetic-opencv3
+    - mrt-libopencv-dev
 mrt_pcl:
   cmake:
     components: []
