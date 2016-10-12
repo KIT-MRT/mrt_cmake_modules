@@ -220,6 +220,8 @@ mrt_cereal:
   ubuntu:
     trusty:
     - mrt-cereal-dev
+    xenial:
+    - libcereal-dev
 mrt_ceres:
   cmake:
     components: []
