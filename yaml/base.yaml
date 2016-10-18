@@ -364,15 +364,6 @@ mrt_qt4-dev:
       libraries:
       - QT_LIBRARIES
       name: MrtQt4
-    xenial:
-      components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
-        QtXmlPatterns
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt4
   ubuntu:
     trusty:
     - libqt4-dev
@@ -391,7 +382,6 @@ mrt_qt-dev:
     xenial:
       components:
       - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
-        QtXmlPatterns
       include_dirs:
       - QT_INCLUDES
       libraries:
@@ -407,15 +397,12 @@ mrt_qt5-dev:
     xenial:
       components:
       - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
-        QtXmlPatterns
       include_dirs:
       - QT_INCLUDES
       libraries:
       - QT_LIBRARIES
-      name: MrtQt4
+      name: MrtQt5
   ubuntu:
-    trusty:
-    - libqt4-dev
     xenial:
     - qt5-default
 mrt_suitesparse:
