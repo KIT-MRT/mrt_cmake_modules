@@ -1,5 +1,5 @@
 set(PACKAGE_HEADER_FILES "ANN/ANN.h")
-set(PACKAGE_LIBRARIES ANN)
+set(PACKAGE_LIBRARIES ANN ann)
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/ann-1.1.2")
 set(PACKAGE_PATH "/mrtsoftware/pkg/ann-1.1.2")
 
