@@ -118,6 +118,11 @@ def readPackageCMakeData(rosDebYamlFileName):
         if "cmake" in packageCMakeData:
             # find out which distribution
             distro = platform.dist()[2]
+            if 'ROS_OS_OVERRIDE' in os.environ:
+                ros_os_override = os.environ['ROS_OS_OVERRIDE'].split(':')
+                if len(ros_os_override) == 2:
+                    distro = ros_os_override[1]
+
             if "name" in packageCMakeData["cmake"]:
                 data[packageName] = PackageCMakeData(packageCMakeData["cmake"])
             elif distro in packageCMakeData["cmake"]:
