@@ -9,9 +9,6 @@ else()
 	message(FATAL_ERROR "Compiler does not have c++14 support. Use at least g++4.9 or Visual Studio 2013 and newer.")
 endif()
 
-replace_opt_compiler_flag(CMAKE_C_FLAGS_RELWITHDEBINFO)
-replace_opt_compiler_flag(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
-
 #add OpenMP
 find_package(OpenMP REQUIRED)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
