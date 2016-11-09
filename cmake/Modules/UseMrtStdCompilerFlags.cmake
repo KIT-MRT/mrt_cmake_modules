@@ -1,8 +1,21 @@
 include(CheckCXXCompilerFlag)
 
 #Require C++14
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+if (CMAKE_VERSION VERSION_LESS "3.1")
+  CHECK_CXX_COMPILER_FLAG("-std=c++14" Cpp14CompilerFlag)
+  if (${Cpp14CompilerFlag})
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+    set(CMAKE_CXX_STANDARD 14)
+  elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC" AND NOT CMAKE_CXX_COMPILER_VERSION VERSION_LESS "17")
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    #no additional flag is required
+  else()
+    message(FATAL_ERROR "Compiler does not have c++14 support. Use at least g++4.9 or Visual Studio 2013 and newer.")
+  endif()
+else ()
+  set (CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif ()
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
