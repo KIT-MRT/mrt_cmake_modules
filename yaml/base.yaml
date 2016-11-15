@@ -153,6 +153,9 @@ libpcap-dev:
     libraries:
     - PCAP_LIBRARY
     name: PCAP
+libproj-dev:
+  ubuntu:
+  - libproj-dev
 libqwt5-qt4-dev:
   cmake:
     components: []
