@@ -9,9 +9,9 @@ find_package(catkin REQUIRED)
 #gather dependencies from package.xml. The command runs in python with the ros environemnt
 #variable set. This is used, because the python script is calling some ros tools to distinguish
 #between catkin and non catkin packages.
-execute_process(COMMAND 
-	sh ${CATKIN_ENV} python ${MCM_ROOT}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MCM_ROOT}/yaml/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
-	
+execute_process(COMMAND
+    sh ${CATKIN_ENV} python ${MCM_ROOT}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MCM_ROOT}/yaml/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
+
 #include the generated variable cmake file
 include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
 
