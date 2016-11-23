@@ -135,6 +135,9 @@ libmagick:
     libraries:
     - ImageMagick_LIBRARIES
     name: ImageMagick
+liblmdb:
+  ubuntu:
+  - liblmdb-dev
 libopenscenegraph:
   cmake:
     components:
@@ -365,6 +368,7 @@ mrt_protobuf:
   - libprotobuf-dev
   - protobuf-compiler
   - libprotoc-dev
+  - python-protobuf
 mrt_qt4-dev:
   cmake:
     trusty:
