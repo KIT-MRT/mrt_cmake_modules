@@ -352,6 +352,19 @@ mrt_pcl:
     - mrt-pcl-dev
     xenial:
     - mrt-libpcl-all-dev
+mrt_protobuf:
+  cmake:
+    components: []
+    include_dirs:
+    - PROTOBUF_INCLUDE_DIR
+    libraries:
+    - PROTOBUF_LIBRARIES
+    library_dirs: []
+    name: Protobuf
+  ubuntu:
+  - libprotobuf-dev
+  - protobuf-compiler
+  - libprotoc-dev
 mrt_qt4-dev:
   cmake:
     trusty:
