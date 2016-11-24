@@ -297,7 +297,9 @@ mrt_leptonica:
     name: MrtLeptonica
   ubuntu:
     trusty:
-     - mrt-leptonica-dev
+    - mrt-leptonica-dev
+    xenial:
+    - libleptonica-dev
 mrt_metis:
   cmake:
     components: []
