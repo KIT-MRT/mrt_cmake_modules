@@ -12,6 +12,15 @@ boost:
     library_dirs:
     - Boost_LIBRARY_DIRS
     name: Boost
+cuda:
+  cmake:
+    components: []
+    include_dirs:
+    - CUDA_INCLUDE_DIRS
+    libraries:
+    - CUDA_LIBRARIES
+    library_dirs: []
+    name: CUDA
 ebus:
   cmake:
     components: []
