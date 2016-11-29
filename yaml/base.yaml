@@ -21,6 +21,7 @@ cuda:
     - CUDA_LIBRARIES
     library_dirs: []
     name: CUDA
+  ubuntu: []
 ebus:
   cmake:
     components: []
