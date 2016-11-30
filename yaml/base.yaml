@@ -323,7 +323,7 @@ mrt_metis:
     trusty:
     - mrt-metis-dev
     xenial:
-    - libmetis
+    - libmetis-dev
 mrt_nlopt:
   cmake:
     components: []
