@@ -320,10 +320,7 @@ mrt_metis:
     library_dirs: []
     name: MrtMetis
   ubuntu:
-    trusty:
-    - mrt-metis-dev
-    xenial:
-    - libmetis-dev
+  - libmetis-dev
 mrt_nlopt:
   cmake:
     components: []
