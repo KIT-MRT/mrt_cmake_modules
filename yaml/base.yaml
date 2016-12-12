@@ -535,6 +535,9 @@ python-vte:
 uuid-dev:
   ubuntu:
   - uuid-dev
+xerces-c:
+  ubuntu:
+  - libxerces-c-dev
 yaml-cpp:
   cmake:
     components: []
