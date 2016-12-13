@@ -258,7 +258,7 @@ mrt_cgal:
       libraries:
       - CGAL_LIBRARIES
       library_dirs: []
-      name: MrtCGAL      
+      name: MrtCGAL
     xenial:
       components: []
       include_dirs:
@@ -334,7 +334,7 @@ mrt_nlopt:
     trusty:
     - mrt-nlopt-dev
     xenial:
-    - libnlopt-dev 
+    - libnlopt-dev
 mrt_opencv:
   cmake:
     components: []
@@ -444,7 +444,7 @@ mrt_suitesparse:
     trusty:
     - mrt-suitesparse-dev
     xenial:
-    - libsuitesparse-dev 
+    - libsuitesparse-dev
 mrt_tesseract:
   cmake:
     components: []
@@ -532,6 +532,17 @@ python-gdal:
 python-vte:
   ubuntu:
   - python-vte
+tinyxml:
+  cmake:
+    components: []
+    include_dirs:
+    - TINYXML_INCLUDE_DIR
+    libraries:
+    - TINYXML_LIBRARIES
+    library_dirs: []
+    name: TinyXML
+  ubuntu:
+  - libtinyxml-dev
 uuid-dev:
   ubuntu:
   - uuid-dev
