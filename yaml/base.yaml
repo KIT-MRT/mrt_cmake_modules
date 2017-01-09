@@ -429,6 +429,8 @@ mrt_qt5-dev:
       - QT_LIBRARIES
       name: MrtQt5
   ubuntu:
+    trusty:
+    - qt5-default
     xenial:
     - qt5-default
 mrt_suitesparse:
