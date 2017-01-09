@@ -427,6 +427,7 @@ mrt_qt5-dev:
       - QT_INCLUDES
       libraries:
       - QT_LIBRARIES
+      name: MrtQt5
     xenial:
       components:
       - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns
