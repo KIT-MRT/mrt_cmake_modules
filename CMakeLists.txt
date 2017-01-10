@@ -9,4 +9,4 @@ catkin_package(CFG_EXTRAS mrt_cmake_modules-extras.cmake)
 
 ## Install all cmake files
 install(DIRECTORY cmake/Modules DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/cmake)
-
+install(PROGRAMS scripts/generate_cmake_dependency_file.py DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/scripts)
