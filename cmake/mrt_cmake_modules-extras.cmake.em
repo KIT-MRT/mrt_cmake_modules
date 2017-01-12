@@ -285,7 +285,8 @@ endfunction()
 function(mrt_add_tests)
     # adds non-ros tests (with gtest) to the project
     # if a .cpp file exists with the same name it added and comiled as a gtest test.
-    # takes the folder with tests as argument
+    # takes the folder with tests as argument (package-relative).
+    # This folder will be the working directory for the tests, so place your test data there.
     # LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
     # DEPENDENCIES: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
     set(TEST_FOLDER ${ARGV0})
@@ -299,8 +300,8 @@ function(mrt_add_tests)
         set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.test")
-            message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\"")
-            catkin_add_gtest(${TEST_TARGET_NAME} ${_test})
+            message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
+            catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_TESTS_LIBRARIES} gtest_main)
             add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_TESTS_DEPENDENCIES})
         endif()
