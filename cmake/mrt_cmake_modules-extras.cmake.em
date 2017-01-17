@@ -293,6 +293,12 @@ function(mrt_add_tests)
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDENCIES" ${ARGN})
     file(GLOB _tests RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
 
+    if(MRT_ENABLE_COVERAGE)
+        include(MRTCoverage)
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fprofile-arcs -ftest-coverage")
+        SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -fprofile-arcs -ftest-coverage")
+    endif()
+
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
@@ -304,8 +310,15 @@ function(mrt_add_tests)
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_TESTS_LIBRARIES} gtest_main)
             add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_TESTS_DEPENDENCIES})
+            set(TARGET_ADDED True)
         endif()
     endforeach()
+    if(MRT_ENABLE_COVERAGE AND TARGET_ADDED)
+        setup_target_for_coverage(${PROJECT_NAME}-coverage coverage)
+        # make sure the target is built after running tests
+        add_dependencies(run_tests ${PROJECT_NAME}-coverage)
+        add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
+    endif()
 endfunction()
 
 

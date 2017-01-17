@@ -22,6 +22,13 @@ find_package(OpenMP REQUIRED)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 
+# add gcov flags
+if(MRT_ENABLE_COVERAGE)
+    include(MRTCoverage)
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
+    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
+endif()
+
 #add diagnostics color
 CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" DiagColorCompilerFlag)
 if (${DiagColorCompilerFlag})
