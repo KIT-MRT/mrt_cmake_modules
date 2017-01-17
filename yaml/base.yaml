@@ -95,6 +95,9 @@ gtkmm:
     name: GTKMM
   ubuntu:
   - libgtkmm-3.0-dev
+lcov:
+  ubuntu:
+  - lcov
 libcairo2-dev:
   cmake:
     components: []
