@@ -323,6 +323,19 @@ function(mrt_add_tests)
 endfunction()
 
 
+function(mrt_add_nosetests)
+    # Wraps the function catkin_add_nosetests
+    # DEPENDENCIES: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
+    set(TEST_FOLDER ${ARGV0})
+    cmake_parse_arguments(MRT_ADD_NOSETESTS "" "" "DEPENDENCIES" ${ARGN})
+    if(NOT IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
+        return()
+    endif()
+    
+    catkin_add_nosetests(${TEST_FOLDER} DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES})
+endfunction()
+
+
 function(mrt_install)
     # Installs all targets
     # PROGRAMS: List of all folders and files that are programs (.py files will be treated separately)
