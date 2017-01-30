@@ -52,7 +52,7 @@ The MRT version extends the GitHub version, by allowing the _mrtcfg_ fileending 
 As always, the [MRT tools](https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_build) provide templates for the config file as well as for a sample node.
 
 ## CMake API
-This package contains a lot of useful cmake functions that are automatically available in all packages using the _mrt_cmake_modules_ as dependency, e.g. `mrt_install()`, `mrt_add_node_and_nodelet()`, etc. See [here](http://htmlpreview.github.io/?https://github.com/KIT-MRT/mrt_cmake_modules/tree/master/doc/generated_cmake_api.html) for a full documentation.
+This package contains a lot of useful cmake functions that are automatically available in all packages using the _mrt_cmake_modules_ as dependency, e.g. `mrt_install()`, `mrt_add_node_and_nodelet()`, etc. See [here](http://htmlpreview.github.io/?https://github.com/KIT-MRT/mrt_cmake_modules/blob/master/doc/generated_cmake_api.html) for a full documentation.
 
 ## Base yaml
 The [base.yml](yaml/base.yaml) controls how AutoDeps and Rosdep finds thirdparty dependencies. 
