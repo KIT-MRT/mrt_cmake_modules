@@ -30,8 +30,8 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 #
 # @@public
 #
-function(mrt_add_to_ide)
-    foreach(ELEMENT ${ARGN})
+function(mrt_add_to_ide files)
+    foreach(ELEMENT ${files})
         if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
             file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/*")
             if(DIRECTORY_FILES)
@@ -90,28 +90,28 @@ endfunction()
 #
 # .. note:: This function can only be called once per package.
 #
-# The name of the module needs to be passed as first parameter.
+# :param modulename: Name of the module needs to be passed as first parameter.
+# :type modulename: string
 # :param FILES: list of C++ files defining the BOOST-Python API.
 # :type FILES: list of strings
 #
 # Example:
 # ::
 #
-#   mrt_add_python_api(
-#       example_package
+#   mrt_add_python_api( example_package
 #       FILES python_api/python.cpp
 #       )
 #
 # @@public
 #
-function(mrt_add_python_api)
+function(mrt_add_python_api modulename)
     cmake_parse_arguments(MRT_ADD_PYTHON_API "" "" "FILES" ${ARGN})
     if(NOT MRT_ADD_PYTHON_API_FILES)
         return()
     endif()
 
     #set and check target name
-    set( PYTHON_API_MODULE_NAME ${ARGV0})
+    set( PYTHON_API_MODULE_NAME ${modulename})
     set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-pyapi")
     set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_pyapi")
     if("${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
@@ -180,7 +180,8 @@ endfunction()
 #
 # The files are automatically added to the list of installable targets so that ``mrt_install`` can mark them for installation.
 #
-# First argument is the name of the library.
+# :param libname: Name of the library to generate as first argument (without lib or .so)
+# :type libname: string
 # :param INCLUDES: Include files needed for the library, absolute or relative to ${CMAKE_CURRENT_LIST_DIR}
 # :type INCLUDES: list of strings
 # :param SOURCES: Source files to be added. If empty, a header-only library is assumed
@@ -200,8 +201,8 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_library)
-    set(LIBRARY_NAME ${ARGV0})
+function(mrt_add_library libname)
+    set(LIBRARY_NAME ${libname})
     if(NOT LIBRARY_NAME)
         message(FATAL_ERROR "No executable name specified for call to mrt_add_library!")
     endif()
@@ -254,7 +255,8 @@ endfunction()
 #
 # The files are automatically added to the list of installable targets so that ``mrt_install`` can mark them for installation.
 #
-# First argument is the name of the executable.
+# :param execname: name of the executable
+# :type execname: string
 # :param FOLDER: Folder containing the .cpp/.cc-files and .h/.hh/.hpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``.
 # :type FOLDER: string
 # :param FILES: List of extra source files to add. This or the FOLDER parameter is mandatory.
@@ -271,11 +273,10 @@ endfunction()
 #       FOLDER src/example_package
 #       )
 #
-#
 # @@public
 #
-function(mrt_add_executable)
-    set(EXEC_NAME ${ARGV0})
+function(mrt_add_executable execname)
+    set(EXEC_NAME ${execname})
     if(NOT EXEC_NAME)
         message(FATAL_ERROR "No executable name specified for call to mrt_add_executable()!")
     endif()
@@ -326,10 +327,11 @@ endfunction()
 #
 # The files are automatically added to the list of installable targets so that ``mrt_install`` can mark them for installation.
 #
-# It requires a *_nodelet.cpp-File to be present in this folder.
+# It requires a ``*_nodelet.cpp``-File to be present in this folder.
 # The command will look for a ``*_node.cpp``-file and remove it from the list of files to avoid ``main()``-functions to be compiled into the library.
 #
-# First argument is the base name of the nodelet (_nodelet will be appended to the base name to avoid conflicts with library packages).
+# :param nodeletname: base name of the nodelet (_nodelet will be appended to the base name to avoid conflicts with library packages)
+# :type nodeletname: string
 # :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
 # :type FOLDER: string
 # :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
@@ -350,9 +352,9 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_nodelet)
+function(mrt_add_nodelet nodeletname)
 
-    set(NODELET_NAME ${ARGV0})
+    set(NODELET_NAME ${nodeletname})
     if(NOT NODELET_NAME)
         message(FATAL_ERROR "No nodelet name specified for call to mrt_add_nodelet()!")
     endif()
@@ -414,9 +416,10 @@ endfunction()
 #
 # The files are automatically added to the list of installable targets so that ``mrt_install`` can mark them for installation.
 #
-# It requires a *_nodelet.cpp file and a ``*_node.cpp`` file to be present in this folder. It will then compile a nodelet-library, create an executable from the ``*_node.cpp`` file and link the executable with the nodelet library.
+# It requires a ``*_nodelet.cpp`` file and a ``*_node.cpp`` file to be present in this folder. It will then compile a nodelet-library, create an executable from the ``*_node.cpp`` file and link the executable with the nodelet library.
 #
-# First argument is the base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages).
+# :param basename: base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages)
+# :type basename: string
 # :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
 # :type FOLDER: string
 # :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
@@ -435,9 +438,9 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_node_and_nodelet)
+function(mrt_add_node_and_nodelet basename)
     cmake_parse_arguments(MRT_ADD_NN "" "FOLDER" "DEPENDS;LIBRARIES" ${ARGN})
-    set(BASE_NAME ${ARGV0})
+    set(BASE_NAME ${basename})
     if(NOT BASE_NAME)
         message(FATAL_ERROR "No base name specified for call to mrt_add_node_and_nodelet()!")
     endif()
@@ -474,7 +477,8 @@ endfunction()
 # If a .cpp file exists with the same name, it will be added and comiled as a gtest test.
 # Unittests can be run with "catkin run_tests" or similar. "-test" will be appended to the name of the test node to avoid conflicts (i.e. the type argument should then be <test ... type="mytest-test"/> in a mytest.test file).
 #
-# Takes the folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as argument
+# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
 # :type LIBRARIES: list of strings
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
@@ -488,8 +492,8 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_ros_tests)
-    set(TEST_FOLDER ${ARGV0})
+function(mrt_add_ros_tests folder)
+    set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     file(GLOB _ros_tests RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
@@ -524,7 +528,8 @@ endfunction()
 #
 # Adds all gtests (without a corresponding .test file) contained in a folder as unittests.
 #
-# Takes the folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as argument
+# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
 # :type LIBRARIES: list of strings
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
@@ -538,8 +543,8 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_tests)
-    set(TEST_FOLDER ${ARGV0})
+function(mrt_add_tests folder)
+    set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     file(GLOB _tests RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
 
@@ -568,6 +573,8 @@ endfunction()
 
 # Adds python nosetest contained in a folder. Wraps the function catkin_add_nosetests.
 #
+# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :type folder: string
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
 # :type DEPENDS: list of strings
 # :param DEPENDENCIES: Alias for DEPENDS
@@ -580,8 +587,8 @@ endfunction()
 #
 # @@public
 #
-function(mrt_add_nosetests)
-    set(TEST_FOLDER ${ARGV0})
+function(mrt_add_nosetests folder)
+    set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_NOSETESTS "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
     if(NOT IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
         return()
