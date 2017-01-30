@@ -539,6 +539,17 @@ poco:
     name: Poco
   ubuntu:
   - libpoco-dev
+pugixml:
+  cmake:
+    components: []
+    include_dirs:
+    - PUGIXML_INCLUDE_DIRS
+    libraries:
+    - PUGIXML_LIBRARIES
+    library_dirs: []
+    name: pugixml
+  ubuntu:
+  - libpugixml-dev
 python-gdal:
   ubuntu:
   - python-gdal
