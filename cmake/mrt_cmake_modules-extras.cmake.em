@@ -594,6 +594,7 @@ function(mrt_add_nosetests folder)
         return()
     endif()
 
+    message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
     catkin_add_nosetests(${TEST_FOLDER}
         DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS}
         )
@@ -665,9 +666,12 @@ function(mrt_install)
     # install programs
     foreach(ELEMENT ${MRT_INSTALL_PROGRAMS})
         if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB FILES "${CMAKE_CURRENT_LIST_DIR}/${ELEMENT}/*")
+            file(GLOB FILES "${CMAKE_CURRENT_LIST_DIR}/${ELEMENT}/[^.]*")
             foreach(FILE ${FILES})
-                mrt_install_program(${FILE})
+                message("test ${FILE}")
+                if(NOT IS_DIRECTORY ${FILE})
+                    mrt_install_program(${FILE})
+                endif()
             endforeach()
         elseif(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
             mrt_install_program(${ELEMENT})
