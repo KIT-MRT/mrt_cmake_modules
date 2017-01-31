@@ -453,6 +453,9 @@ function(mrt_add_node_and_nodelet basename)
         DEPENDS ${MRT_ADD_NN_DEPENDS}
         LIBRARIES ${MRT_ADD_NN_LIBRARIES}
         )
+    # pass lists on to parent scope
+    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME})
         unset(${NODELET_TARGET_NAME})
@@ -467,6 +470,9 @@ function(mrt_add_node_and_nodelet basename)
             DEPENDS ${MRT_ADD_NN_DEPENDS} ${NODELET_TARGET_NAME}
             LIBRARIES ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
             )
+        # pass lists on to parent scope
+        set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+        set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
     endif()
 endfunction()
 
