@@ -318,7 +318,7 @@ Public CMake functions / macros
  ::
 
   mrt_add_to_ide(
-      myfile1, myfile2.txt, myFolder
+      myfile1 myfile2.txt myFolder
       )
 
 

@@ -25,15 +25,15 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 # ::
 #
 #  mrt_add_to_ide(
-#      myfile1, myfile2.txt, myFolder
+#      myfile1 myfile2.txt myFolder
 #      )
 #
 # @@public
 #
 function(mrt_add_to_ide files)
-    foreach(ELEMENT ${files})
+    foreach(ELEMENT ${ARGV})
         if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/*")
+            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*")
             if(DIRECTORY_FILES)
                 STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
                 add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
