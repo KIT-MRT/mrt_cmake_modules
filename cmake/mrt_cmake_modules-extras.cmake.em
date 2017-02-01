@@ -458,7 +458,7 @@ function(mrt_add_node_and_nodelet basename)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME})
-        unset(${NODELET_TARGET_NAME})
+        unset(NODELET_TARGET_NAME)
     endif()
 
     # find node files and add them as executable
