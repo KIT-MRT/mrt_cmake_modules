@@ -15,7 +15,7 @@
 # Note: The default search path is /opt/pleora/ebus_sdk/Ubuntu-12.04-x86_64/, however the 
 #       default search path may be overwritten by setting the variable MRT_EBUS_SDK_INSTALL_ROOT
 if(NOT MRT_EBUS_SDK_INSTALL_ROOT) 
-    set(MRT_EBUS_SDK_INSTALL_ROOT /opt/pleora/ebus_sdk/Ubuntu-12.04-x86_64/)
+    set(MRT_EBUS_SDK_INSTALL_ROOT /opt/pleora/ebus_sdk/Ubuntu-12.04-x86_64/;/opt/pleora/ebus_sdk/Ubuntu-x86_64/)
 endif ()
 
 if(CMAKE_DEBUG_MESSAGES)
