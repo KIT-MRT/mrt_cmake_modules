@@ -550,6 +550,15 @@ pugixml:
     name: pugixml
   ubuntu:
   - libpugixml-dev
+python-libs:
+  cmake:
+    components: []
+    include_dirs:
+    - PYTHON_INCLUDE_DIRS
+    libraries:
+    - PYTHON_LIBRARIES
+    library_dirs: []
+    name: PythonLibs
 python-gdal:
   ubuntu:
   - python-gdal
