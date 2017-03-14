@@ -460,13 +460,13 @@ function(mrt_add_node_and_nodelet basename)
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME})
         unset(NODELET_TARGET_NAME)
-        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*.cpp" "*.cc")
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
     else()
-        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*_node.cpp" "*_node.cc")
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     endif()
 
     # find node files and add them as executable
-    file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*.h" "*.hpp" "*.hh")
+    file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
     if(NODE_CPP)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
@@ -517,12 +517,14 @@ function(mrt_add_ros_tests folder)
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
             target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_ROS_TESTS_LIBRARIES} gtest_main)
-            add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS})
+            add_dependencies(${TEST_TARGET_NAME}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                )
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
             add_rostest(${_ros_test}
-                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
         endif()
     endforeach()
@@ -567,7 +569,9 @@ function(mrt_add_tests folder)
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_TESTS_LIBRARIES} gtest_main)
-            add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_TESTS_DEPENDS})
+            add_dependencies(${TEST_TARGET_NAME}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
+                )
             set(TARGET_ADDED True)
         endif()
     endforeach()
