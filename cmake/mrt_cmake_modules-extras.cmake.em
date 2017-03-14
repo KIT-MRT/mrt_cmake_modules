@@ -456,14 +456,17 @@ function(mrt_add_node_and_nodelet basename)
     # pass lists on to parent scope
     set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
+
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME})
         unset(NODELET_TARGET_NAME)
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*.cpp" "*.cc")
+    else()
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*_node.cpp" "*_node.cc")
     endif()
 
     # find node files and add them as executable
-    file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp")
-    file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
+    file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}/${MRT_ADD_NN_FOLDER}" "*.h" "*.hpp" "*.hh")
     if(NODE_CPP)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
