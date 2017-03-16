@@ -14,6 +14,30 @@ list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
 @[end if]@
 set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
+# Set build flags to MRT_SANITIZER_CXX_FLAGS based on the current sanitizer configuration
+# based on the configruation in the MRT_SANITIZER variable
+if(MRT_SANITIZER STREQUAL "checks")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+    endif()
+    set(MRT_SANITIZER_LINK_FLAGS ${MRT_SANITIZER_CXX_FLAGS} "-static-libasan")
+elseif(MRT_SANITIZER STREQUAL "check_race")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow")
+    endif()
+endif()
+if(MRT_SANITIZER_RECOVER STREQUAL "no_recover")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        #list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow")
+    endif()
+endif()
+
 
 #
 # Adds a file or folder or a list of each to the list of files shown by the IDE
@@ -141,11 +165,15 @@ function(mrt_add_python_api modulename)
     set_target_properties(${TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
+    target_compile_options(${TARGET_NAME}
+        PRIVATE "-fno-sanitize=all"
+        )
     target_link_libraries( ${TARGET_NAME}
         ${PYTHON_LIBRARY}
         ${BoostPython_LIBRARIES}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
+        "-Wl,-whole-archive -l:libasan.a -Wl,-no-whole-archive"
         )
     add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
@@ -229,11 +257,15 @@ function(mrt_add_library libname)
     set_target_properties(${LIBRARY_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
+    target_compile_options(${LIBRARY_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${LIBRARY_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_LIBRARY_LIBRARIES}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
     if(${PACKAGE_NAME}_PYTHON_API_TARGET)
@@ -307,11 +339,15 @@ function(mrt_add_executable execname)
     set_target_properties(${EXEC_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${EXEC_NAME}
         )
+    target_compile_options(${EXEC_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
     target_link_libraries(${EXEC_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
@@ -395,11 +431,15 @@ function(mrt_add_nodelet nodeletname)
     set_target_properties(${NODELET_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${NODELET_NAME}
         )
+    target_compile_options(${NODELET_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${NODELET_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_NODELET_DEPENDS})
     target_link_libraries(${NODELET_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_NODELET_LIBRARIES}
+        "-Wl,-whole-archive -l:libasan.a -Wl,-no-whole-archive"
         )
     # append to list of all targets in this project
     set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
@@ -516,7 +556,17 @@ function(mrt_add_ros_tests folder)
         if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
-            target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_ROS_TESTS_LIBRARIES} gtest_main)
+            target_compile_options(${TEST_TARGET_NAME}
+                PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+                )
+            target_link_libraries(${TEST_TARGET_NAME}
+                ${${PACKAGE_NAME}_LIBRARIES}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_ROS_TESTS_LIBRARIES}
+                ${MRT_SANITIZER_LINK_FLAGS}
+                gtest_main
+                )
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
@@ -568,7 +618,16 @@ function(mrt_add_tests folder)
         if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
-            target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_TESTS_LIBRARIES} gtest_main)
+            target_link_libraries(${TEST_TARGET_NAME}
+                ${${PACKAGE_NAME}_LIBRARIES}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_TESTS_LIBRARIES}
+                ${MRT_SANITIZER_LINK_FLAGS}
+                gtest_main)
+            target_compile_options(${TEST_TARGET_NAME}
+                PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+                )
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )
@@ -609,7 +668,7 @@ function(mrt_add_nosetests folder)
 
     message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
     catkin_add_nosetests(${TEST_FOLDER}
-        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS}
+        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_PYTHON_API_TARGET}
         )
 endfunction()
 
