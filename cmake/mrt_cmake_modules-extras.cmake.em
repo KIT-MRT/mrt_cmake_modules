@@ -18,23 +18,24 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 # based on the configruation in the MRT_SANITIZER variable
 if(MRT_SANITIZER STREQUAL "checks")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fno-sanitize=alignment")
      elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,float-divide-by-zero,float-cast-overflow" "-fno-sanitize=alignment")
     endif()
-    set(MRT_SANITIZER_LINK_FLAGS ${MRT_SANITIZER_CXX_FLAGS} "-static-libasan")
+    set(MRT_SANITIZER_LINK_FLAGS ${MRT_SANITIZER_CXX_FLAGS})
 elseif(MRT_SANITIZER STREQUAL "check_race")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fno-sanitize=alignment")
     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow")
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow" "-fno-sanitize=alignment")
     endif()
+    set(MRT_SANITIZER_LINK_FLAGS ${MRT_SANITIZER_CXX_FLAGS})
 endif()
 if(MRT_SANITIZER_RECOVER STREQUAL "no_recover")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
         list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
      elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        #list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow")
+        list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow")
     endif()
 endif()
 
@@ -173,7 +174,6 @@ function(mrt_add_python_api modulename)
         ${BoostPython_LIBRARIES}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
-        "-Wl,-whole-archive -l:libasan.a -Wl,-no-whole-archive"
         )
     add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
@@ -439,7 +439,6 @@ function(mrt_add_nodelet nodeletname)
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_NODELET_LIBRARIES}
-        "-Wl,-whole-archive -l:libasan.a -Wl,-no-whole-archive"
         )
     # append to list of all targets in this project
     set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
