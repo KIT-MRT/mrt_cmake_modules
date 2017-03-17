@@ -167,7 +167,7 @@ function(mrt_add_python_api modulename)
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
     target_compile_options(${TARGET_NAME}
-        PRIVATE "-fno-sanitize=all"
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
         )
     target_link_libraries( ${TARGET_NAME}
         ${PYTHON_LIBRARY}
