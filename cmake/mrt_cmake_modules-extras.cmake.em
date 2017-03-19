@@ -278,7 +278,7 @@ function(mrt_add_library libname)
     endif()
 
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
@@ -448,7 +448,7 @@ function(mrt_add_nodelet nodeletname)
         LINK_PRIVATE ${MRT_SANITIZER_STATIC_LINK_FLAGS}
         )
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
@@ -500,7 +500,7 @@ function(mrt_add_node_and_nodelet basename)
         LIBRARIES ${MRT_ADD_NN_LIBRARIES}
         )
     # pass lists on to parent scope
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
 
     # check if a target was added
@@ -520,7 +520,7 @@ function(mrt_add_node_and_nodelet basename)
             LIBRARIES ${MRT_SANITIZER_LINK_FLAGS} ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
             )
         # pass lists on to parent scope
-        set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+        set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
         set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
     endif()
 endfunction()
@@ -566,7 +566,7 @@ function(mrt_add_ros_tests folder)
                 PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
                 )
             target_link_libraries(${TEST_TARGET_NAME}
-                ${${PACKAGE_NAME}_LIBRARIES}
+                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
@@ -626,7 +626,7 @@ function(mrt_add_tests folder)
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME}
-                ${${PACKAGE_NAME}_LIBRARIES}
+                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_TESTS_LIBRARIES}
