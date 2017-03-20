@@ -19,6 +19,7 @@ if( NOT DEFINED CATKIN_DEVEL_PREFIX AND EXISTS "${CMAKE_CURRENT_BINARY_DIR}/mrt_
     message(STATUS "Non-catkin build detected. Loading cached variables from last catkin run.")
     include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake")
 else()
+    message(WARNING "Generate cache")
     set(_ENV_CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
     configure_file(${MCM_ROOT}/cmake/Templates/mrt_cached_variables.cmake.in "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake" @@ONLY)
 endif()
@@ -28,12 +29,14 @@ endif()
 # based on the configruation in the MRT_SANITIZER variable
 if(MRT_SANITIZER STREQUAL "checks")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
-     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
     endif()
-    set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
-    set(MRT_SANITIZER_STATIC_LINK_FLAGS "-Wl,-whole-archive -l:libasan.a -Wl,-no-whole-archive")
     set(MRT_SANITIZER_ENABLED 1)
 elseif(MRT_SANITIZER STREQUAL "check_race")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
@@ -41,15 +44,14 @@ elseif(MRT_SANITIZER STREQUAL "check_race")
     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
         set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow")
     endif()
-    set(MRT_SANITIZER_LINK_FLAGS "-static-libtsan" "-lubsan")
-    set(MRT_SANITIZER_STATIC_LINK_FLAGS "-Wl,-whole-archive -l:libtsan.a -Wl,-no-whole-archive")
+    set(MRT_SANITIZER_LINK_FLAGS "-static-libtsan")
     set(MRT_SANITIZER_ENABLED 1)
 endif()
 if(MRT_SANITIZER_RECOVER STREQUAL "no_recover")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
-     elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        #list(APPEND MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow")
+        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
     endif()
 endif()
 
@@ -188,7 +190,7 @@ function(mrt_add_python_api modulename)
         ${BoostPython_LIBRARIES}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
-        ${MRT_SANITIZER_STATIC_LINK_FLAGS}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
@@ -280,6 +282,7 @@ function(mrt_add_library libname)
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_LIBRARY_LIBRARIES}
+        ${MRT_SANITIZER_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
@@ -362,7 +365,7 @@ function(mrt_add_executable execname)
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
-        ${MRT_SANITIZER_CXX_FLAGS}
+        ${MRT_SANITIZER_EXE_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
@@ -452,10 +455,11 @@ function(mrt_add_nodelet nodeletname)
         )
     add_dependencies(${NODELET_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_NODELET_DEPENDS})
     target_link_libraries(${NODELET_TARGET_NAME}
-        LINK_PUBLIC ${catkin_LIBRARIES}
+        ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_NODELET_LIBRARIES}
-        LINK_PRIVATE ${MRT_SANITIZER_STATIC_LINK_FLAGS}
+        ${MRT_SANITIZER_CXX_FLAGS}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
     set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
@@ -527,7 +531,7 @@ function(mrt_add_node_and_nodelet basename)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
             DEPENDS ${MRT_ADD_NN_DEPENDS} ${NODELET_TARGET_NAME}
-            LIBRARIES ${MRT_SANITIZER_LINK_FLAGS} ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
+            LIBRARIES ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
             )
         # pass lists on to parent scope
         set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
@@ -573,14 +577,14 @@ function(mrt_add_ros_tests folder)
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
             target_compile_options(${TEST_TARGET_NAME}
-                PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
-                ${MRT_SANITIZER_CXX_FLAGS}
+                ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main
                 )
@@ -640,11 +644,11 @@ function(mrt_add_tests folder)
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_TESTS_LIBRARIES}
-                ${MRT_SANITIZER_CXX_FLAGS}
+                ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main)
             target_compile_options(${TEST_TARGET_NAME}
-                PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
