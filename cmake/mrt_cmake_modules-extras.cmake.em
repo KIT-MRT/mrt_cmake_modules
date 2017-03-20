@@ -19,7 +19,6 @@ if( NOT DEFINED CATKIN_DEVEL_PREFIX AND EXISTS "${CMAKE_CURRENT_BINARY_DIR}/mrt_
     message(STATUS "Non-catkin build detected. Loading cached variables from last catkin run.")
     include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake")
 else()
-    message(WARNING "Generate cache")
     set(_ENV_CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
     configure_file(${MCM_ROOT}/cmake/Templates/mrt_cached_variables.cmake.in "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake" @@ONLY)
 endif()
