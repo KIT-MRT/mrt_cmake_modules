@@ -14,6 +14,16 @@ list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
 @[end if]@
 set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
+# cache or load environment for non-catkin build
+if( NOT DEFINED CATKIN_DEVEL_PREFIX AND EXISTS "${CMAKE_CURRENT_BINARY_DIR}/mrt_cached_variables.cmake")
+    message(STATUS "Non-catkin build detected. Loading cached variables from last catkin run.")
+    include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake")
+else()
+    set(_ENV_CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
+    configure_file(${MCM_ROOT}/cmake/Templates/mrt_cached_variables.cmake.in "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake" @@ONLY)
+endif()
+
+
 # Set build flags to MRT_SANITIZER_CXX_FLAGS based on the current sanitizer configuration
 # based on the configruation in the MRT_SANITIZER variable
 if(MRT_SANITIZER STREQUAL "checks")
