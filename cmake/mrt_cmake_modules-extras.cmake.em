@@ -14,6 +14,46 @@ list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
 @[end if]@
 set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
+# cache or load environment for non-catkin build
+if( NOT DEFINED CATKIN_DEVEL_PREFIX AND EXISTS "${CMAKE_CURRENT_BINARY_DIR}/mrt_cached_variables.cmake")
+    message(STATUS "Non-catkin build detected. Loading cached variables from last catkin run.")
+    include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake")
+else()
+    set(_ENV_CMAKE_PREFIX_PATH $ENV{CMAKE_PREFIX_PATH})
+    configure_file(${MCM_ROOT}/cmake/Templates/mrt_cached_variables.cmake.in "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake" @@ONLY)
+endif()
+
+
+# Set build flags to MRT_SANITIZER_CXX_FLAGS based on the current sanitizer configuration
+# based on the configruation in the MRT_SANITIZER variable
+if(MRT_SANITIZER STREQUAL "checks")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
+        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
+    endif()
+    set(MRT_SANITIZER_ENABLED 1)
+elseif(MRT_SANITIZER STREQUAL "check_race")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow")
+    endif()
+    set(MRT_SANITIZER_LINK_FLAGS "-static-libtsan")
+    set(MRT_SANITIZER_ENABLED 1)
+endif()
+if(MRT_SANITIZER_RECOVER STREQUAL "no_recover")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
+    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
+        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
+    endif()
+endif()
+
 
 #
 # Adds a file or folder or a list of each to the list of files shown by the IDE
@@ -33,7 +73,7 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 function(mrt_add_to_ide files)
     foreach(ELEMENT ${ARGV})
         if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*")
+            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*[^~]")
             if(DIRECTORY_FILES)
                 STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
                 add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
@@ -141,11 +181,15 @@ function(mrt_add_python_api modulename)
     set_target_properties(${TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
+    target_compile_options(${TARGET_NAME}
+        PRIVATE "-fno-sanitize=all"
+        )
     target_link_libraries( ${TARGET_NAME}
         ${PYTHON_LIBRARY}
         ${BoostPython_LIBRARIES}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
@@ -229,11 +273,16 @@ function(mrt_add_library libname)
     set_target_properties(${LIBRARY_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
+    target_compile_options(${LIBRARY_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${LIBRARY_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_LIBRARY_LIBRARIES}
+        ${MRT_SANITIZER_CXX_FLAGS}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
     if(${PACKAGE_NAME}_PYTHON_API_TARGET)
@@ -241,7 +290,7 @@ function(mrt_add_library libname)
     endif()
 
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
@@ -287,12 +336,13 @@ function(mrt_add_executable execname)
     set(EXEC_TARGET_NAME ${PROJECT_NAME}-${EXEC_NAME}-exec)
 
     # get the files
-    file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-    file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
-
+    if(MRT_ADD_EXECUTABLE_FOLDER)
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+    endif()
     if(MRT_ADD_EXECUTABLE_FILES)
         list(APPEND EXEC_SOURCE_FILES_SRC ${MRT_ADD_EXECUTABLE_FILES})
-        list(REMOVE_DUPLICATES EXEC_SOURCE_FILES_INC)
+        list(REMOVE_DUPLICATES EXEC_SOURCE_FILES_SRC)
     endif()
     if(NOT EXEC_SOURCE_FILES_SRC)
         return()
@@ -307,11 +357,16 @@ function(mrt_add_executable execname)
     set_target_properties(${EXEC_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${EXEC_NAME}
         )
+    target_compile_options(${EXEC_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
     target_link_libraries(${EXEC_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
+        ${MRT_SANITIZER_EXE_CXX_FLAGS}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
@@ -395,14 +450,19 @@ function(mrt_add_nodelet nodeletname)
     set_target_properties(${NODELET_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${NODELET_NAME}
         )
+    target_compile_options(${NODELET_TARGET_NAME}
+        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+        )
     add_dependencies(${NODELET_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_NODELET_DEPENDS})
     target_link_libraries(${NODELET_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_NODELET_LIBRARIES}
+        ${MRT_SANITIZER_CXX_FLAGS}
+        ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
@@ -454,15 +514,18 @@ function(mrt_add_node_and_nodelet basename)
         LIBRARIES ${MRT_ADD_NN_LIBRARIES}
         )
     # pass lists on to parent scope
-    set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
     set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
+
     # check if a target was added
-    if(NOT TARGET ${NODELET_TARGET_NAME})
+    if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
         unset(NODELET_TARGET_NAME)
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
+    else()
+        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     endif()
 
     # find node files and add them as executable
-    file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp")
     file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
     if(NODE_CPP)
         mrt_add_executable(${BASE_NAME}
@@ -471,7 +534,7 @@ function(mrt_add_node_and_nodelet basename)
             LIBRARIES ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
             )
         # pass lists on to parent scope
-        set(${PACKAGE_NAME}_LIBRARIES ${${PACKAGE_NAME}_LIBRARIES} PARENT_SCOPE)
+        set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
         set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
     endif()
 endfunction()
@@ -513,13 +576,26 @@ function(mrt_add_ros_tests folder)
         if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
-            target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_ROS_TESTS_LIBRARIES} gtest_main)
-            add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS})
+            target_compile_options(${TEST_TARGET_NAME}
+                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
+                )
+            target_link_libraries(${TEST_TARGET_NAME}
+                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_ROS_TESTS_LIBRARIES}
+                ${MRT_SANITIZER_EXE_CXX_FLAGS}
+                ${MRT_SANITIZER_LINK_FLAGS}
+                gtest_main
+                )
+            add_dependencies(${TEST_TARGET_NAME}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                )
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
             add_rostest(${_ros_test}
-                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
         endif()
     endforeach()
@@ -563,8 +639,20 @@ function(mrt_add_tests folder)
         if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
-            target_link_libraries(${TEST_TARGET_NAME} ${${PACKAGE_NAME}_LIBRARIES} ${catkin_LIBRARIES} ${mrt_LIBRARIES} ${MRT_ADD_TESTS_LIBRARIES} gtest_main)
-            add_dependencies(${TEST_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_TESTS_DEPENDS})
+            target_link_libraries(${TEST_TARGET_NAME}
+                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_TESTS_LIBRARIES}
+                ${MRT_SANITIZER_EXE_CXX_FLAGS}
+                ${MRT_SANITIZER_LINK_FLAGS}
+                gtest_main)
+            target_compile_options(${TEST_TARGET_NAME}
+                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
+                )
+            add_dependencies(${TEST_TARGET_NAME}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
+                )
             set(TARGET_ADDED True)
         endif()
     endforeach()
@@ -602,7 +690,7 @@ function(mrt_add_nosetests folder)
 
     message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
     catkin_add_nosetests(${TEST_FOLDER}
-        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS}
+        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_PYTHON_API_TARGET}
         )
 endfunction()
 
@@ -672,7 +760,7 @@ function(mrt_install)
     # install programs
     foreach(ELEMENT ${MRT_INSTALL_PROGRAMS})
         if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB FILES "${CMAKE_CURRENT_LIST_DIR}/${ELEMENT}/[^.]*")
+            file(GLOB FILES "${CMAKE_CURRENT_LIST_DIR}/${ELEMENT}/[^.]*[^~]")
             foreach(FILE ${FILES})
                 if(NOT IS_DIRECTORY ${FILE})
                     mrt_install_program(${FILE})
@@ -691,7 +779,7 @@ function(mrt_install)
                 DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
                 )
             # make them show up in IDEs
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/*")
+            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*[^~]")
             if(DIRECTORY_FILES)
                 STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
                 add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
