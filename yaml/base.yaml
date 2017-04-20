@@ -561,6 +561,8 @@ python-libs:
     - PYTHON_LIBRARIES
     library_dirs: []
     name: PythonLibs
+  ubuntu:
+  - libpython2.7-dev
 python-vte:
   ubuntu:
   - python-vte
