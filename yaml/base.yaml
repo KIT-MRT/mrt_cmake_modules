@@ -552,6 +552,17 @@ pugixml:
 python-gdal:
   ubuntu:
   - python-gdal
+python-libs:
+  cmake:
+    components: []
+    include_dirs:
+    - PYTHON_INCLUDE_DIRS
+    libraries:
+    - PYTHON_LIBRARIES
+    library_dirs: []
+    name: PythonLibs
+  ubuntu:
+  - libpython2.7-dev
 python-vte:
   ubuntu:
   - python-vte

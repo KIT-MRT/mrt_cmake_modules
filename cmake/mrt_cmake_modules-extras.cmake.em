@@ -181,9 +181,6 @@ function(mrt_add_python_api modulename)
     set_target_properties(${TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
         )
-    target_compile_options(${TARGET_NAME}
-        PRIVATE "-fno-sanitize=all"
-        )
     target_link_libraries( ${TARGET_NAME}
         ${PYTHON_LIBRARY}
         ${BoostPython_LIBRARIES}
