@@ -393,6 +393,16 @@ mrt_qt4-dev:
       libraries:
       - QT_LIBRARIES
       name: MrtQt4
+    xenial:
+      components:
+      - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
+        QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
+        QtXmlPatterns
+      include_dirs:
+      - QT_INCLUDES
+      libraries:
+      - QT_LIBRARIES
+      name: MrtQt4
   ubuntu:
   - libqt4-dev
 mrt_qt-dev:
