@@ -1,3 +1,13 @@
+armadillo:
+  cmake:
+    include_dirs:
+    - ARMADILLO_INCLUDE_DIRS
+    libraries:
+    - ARMADILLO_LIBRARIES
+    library_dirs: []
+    name: Armadillo
+  ubuntu:
+  - libarmadillo-dev
 boost:
   cmake:
     components:
@@ -284,9 +294,6 @@ mrt_ebus:
     - ebus-sdk_LIBRARIES
     library_dirs: []
     name: Mrtebus-sdk
-  ubuntu:
-    trusty:
-    - mrt-ebus-sdk-bin
 mrt_f2c_old:
   cmake:
     components: []
