@@ -1,0 +1,21 @@
+# This file contains all packages that should be resolved externally
+# Note that Gitlab will always be checked first when resolving dependencies!
+# 
+# When adding new entries, please make sure that:
+# 1. The package provided there is stable and can be relied on
+# 2. The package is a normal catkin package (metapackages are not supported!)
+# 3. The package name, the name for the dependency and the name in its package.xml are all identical
+# 4. New entries are always in alphabetical order
+# 5. You know what you are doing. Pushing changes will affect all users globally.
+# 
+# Entries must look like this:
+# example_package:                                  <-- Name for the dependency (matching its package.xml)
+#   url: https://github.com/me/example_package.git  <-- required, any url pointing to a repository is possible here
+#   vcs: git                                        <-- optional (defaults to "git"), everything that wstool supports: git, hg, svn, bzr
+#   version: master                                 <-- optional (defaults to its default branch), branch, tag, commit, ...
+#
+# or this:
+# example_package: https://github.com/me/example_package.git (short version assuming git packages)
+
+image_undistort: https://github.com/ethz-asl/image_undistort.git
+
