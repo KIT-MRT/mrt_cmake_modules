@@ -583,6 +583,13 @@ python-libs:
 python-vte:
   ubuntu:
   - python-vte
+tbb:
+  cmake:
+    include_dirs:
+    - TBB_INCLUDE_DIRS
+    libraries:
+    - TBB_LIBRARIES
+    name: TBB
 tinyxml:
   cmake:
     components: []
