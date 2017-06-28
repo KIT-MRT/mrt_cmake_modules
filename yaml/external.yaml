@@ -18,4 +18,6 @@
 # example_package: https://github.com/me/example_package.git (short version assuming git packages)
 
 image_undistort: https://github.com/ethz-asl/image_undistort.git
+mrt_cmake_modules: https://github.com/KIT-MRT/mrt_cmake_modules.git
+rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 
