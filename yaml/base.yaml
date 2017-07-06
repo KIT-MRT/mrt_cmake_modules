@@ -474,6 +474,18 @@ mrt_suitesparse:
     - mrt-suitesparse-dev
     xenial:
     - libsuitesparse-dev
+mrt_tensorflow:
+  cmake:
+    components: []
+    include_dirs:
+    - TENSORFLOW_INCLUDE_DIRS
+    libraries:
+    - TENSORFLOW_LIBRARIES
+    library_dirs: []
+    name: MrtTensorflow
+  ubuntu:
+    xenial:
+    - mrt-tensorflow-dev
 mrt_tesseract:
   cmake:
     components: []
