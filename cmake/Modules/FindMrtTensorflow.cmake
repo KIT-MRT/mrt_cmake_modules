@@ -4,14 +4,10 @@ find_path(TENSORFLOW_INCLUDE_DIR tensorflow/core/public/session.h
   PATH_SUFFIXES tensorflow
   )
 
-find_path(TENSORFLOW_EIGEN_INCLUDE_DIR unsupported/Eigen/CXX11/Tensor
-  PATH_SUFFIXES tensorflow/third_party/eigen3
-  )
-
 set(TENSORFLOW_INCLUDE_DIR ${TENSORFLOW_INCLUDE_DIR} ${TENSORFLOW_EIGEN_INCLUDE_DIR})
 
 find_library(TENSORFLOW_LIBRARY
-  NAMES tensorflow tensorflow_cc
+  NAMES tensorflow_cc
   )
 
 include(FindPackageHandleStandardArgs)
