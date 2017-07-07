@@ -1,6 +1,7 @@
 set(PACKAGE_HEADER_FILES PvBase.h)
 # log4cxx
-set(PACKAGE_LIBRARIES PvBase PvDevice PvBuffer PvGUI PvPersistence PvGenICam PvStream GenApi_gcc421_v3_0 GCBase_gcc421_v3_0)
+
+set(PACKAGE_LIBRARIES PvPersistence PvGUI PvCameraBridge PvGenICam PvBase PvSystem PvDevice PvVirtualDevice PvStream PvTransmitter PvSerial PvBuffer GenApi_gcc421_v3_0 GCBase_gcc421_v3_0)
 set(PACKAGE_PATH /opt/pleora/ebus_sdk/Ubuntu-x86_64)
 set(PACKAGE_PATH_GENI  /opt/pleora/ebus_sdk/Ubuntu-x86_64/lib/genicam/bin/Linux64_x64)
 
