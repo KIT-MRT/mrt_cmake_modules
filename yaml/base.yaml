@@ -209,6 +209,17 @@ libxrandr-dev:
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
+minpack:
+  cmake:
+    components: []
+    include_dirs:
+    - MINPACK_INCLUDE_DIRS
+    libraries:
+    - MINPACK_LIBRARIES
+    library_dirs: []
+    name: Minpack
+  ubuntu:
+  - minpack-dev
 mrt_ann:
   cmake:
     components: []
