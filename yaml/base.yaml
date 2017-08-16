@@ -294,6 +294,8 @@ mrt_ebus:
     - ebus-sdk_LIBRARIES
     library_dirs: []
     name: Mrtebus-sdk
+  ubuntu:
+    xenial: ebus-sdk
 mrt_f2c_old:
   cmake:
     components: []
