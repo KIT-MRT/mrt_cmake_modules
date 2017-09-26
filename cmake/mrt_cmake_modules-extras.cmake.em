@@ -56,6 +56,31 @@ endif()
 
 
 #
+# Registers the custom check_tests command and adds a dependency for a certain unittest
+#
+# Example:
+# ::
+#
+#  _mrt_register_test(
+#      )
+#
+# @@private
+#
+function(_mrt_register_test)
+    # we need this only once per project
+    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
+        return()
+    endif()
+    add_custom_command(TARGET run_tests
+        POST_BUILD
+        COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
+        COMMENT "Showing test results"
+        )
+    set(_mrt_checks_${PROJECT_NAME} TRUE)
+endfunction()
+
+#
 # Adds a file or folder or a list of each to the list of files shown by the IDE
 # The files will not be marked for installation. Paths should be relative to ``CMAKE_CURENT_LISTS_DIR``
 #
@@ -602,6 +627,7 @@ function(mrt_add_ros_tests folder)
         add_dependencies(run_tests ${PROJECT_NAME}-coverage)
         add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
     endif()
+    _mrt_register_test()
 endfunction()
 
 #
@@ -659,6 +685,7 @@ function(mrt_add_tests folder)
         add_dependencies(run_tests ${PROJECT_NAME}-coverage)
         add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
     endif()
+    _mrt_register_test()
 endfunction()
 
 
@@ -689,6 +716,7 @@ function(mrt_add_nosetests folder)
     catkin_add_nosetests(${TEST_FOLDER}
         DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_PYTHON_API_TARGET}
         )
+    _mrt_register_test()
 endfunction()
 
 
