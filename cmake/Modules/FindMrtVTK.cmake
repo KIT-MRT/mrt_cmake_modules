@@ -1,5 +1,5 @@
-set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/vtk-6.2.0/lib/cmake/vtk-6.2")
-set(PACKAGE_PATH "/mrtsoftware/pkg/vtk-6.2.0/lib/cmake/vtk-6.2")
+set(PACKAGE_LOCAL_PATH "/opt/mrtsoftware/local/lib/cmake/vtk-6.3")
+set(PACKAGE_PATH "/opt/mrtsoftware/release/lib/cmake/vtk-6.3")
 
 # old /mrtsoftware style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
@@ -17,3 +17,4 @@ else()
 	find_package(VTK)
 endif()
 
+include(${VTK_USE_FILE})
