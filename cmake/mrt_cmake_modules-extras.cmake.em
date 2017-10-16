@@ -64,8 +64,6 @@ endif()
 #  _mrt_register_test(
 #      )
 #
-# @@private
-#
 function(_mrt_register_test)
     # we need this only once per project
     if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
@@ -82,7 +80,7 @@ endfunction()
 
 #
 # Adds a file or folder or a list of each to the list of files shown by the IDE
-# The files will not be marked for installation. Paths should be relative to ``CMAKE_CURENT_LISTS_DIR``
+# The files will not be marked for installation. Paths should be relative to ``CMAKE_CURRENT_LISTS_DIR``
 #
 # If a file or folder does not exist, it will be ignored without warning.
 #
@@ -500,6 +498,8 @@ endfunction()
 #
 # It requires a ``*_nodelet.cpp`` file and a ``*_node.cpp`` file to be present in this folder. It will then compile a nodelet-library, create an executable from the ``*_node.cpp`` file and link the executable with the nodelet library.
 #
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
+#
 # :param basename: base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages)
 # :type basename: string
 # :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
@@ -570,7 +570,9 @@ endfunction()
 #
 # Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
 #
-# If coverage information is enabled (by setting MRT_ENABLE_COVARAGE to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
+# If coverage information is enabled (by setting ``MRT_ENABLE_COVARAGE`` to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
+#
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 #
 # :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
 # :type folder: string
@@ -647,7 +649,9 @@ endfunction()
 #
 # Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
 #
-# If coverage information is enabled (by setting MRT_ENABLE_COVARAGE to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
+#
+# If coverage information is enabled (by setting ``MRT_ENABLE_COVARAGE`` to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
 #
 # Example:
 # ::

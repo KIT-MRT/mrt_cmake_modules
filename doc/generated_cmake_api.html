@@ -58,6 +58,7 @@
 <li><a class="reference internal" href="#non-public-cmake-functions-macros">Non-public CMake functions / macros</a></li>
 <li><a class="reference internal" href="#list-append-deduplicate"><cite>_list_append_deduplicate</cite></a></li>
 <li><a class="reference internal" href="#list-append-unique"><cite>_list_append_unique</cite></a></li>
+<li><a class="reference internal" href="#mrt-register-test"><cite>_mrt_register_test</cite></a></li>
 <li><a class="reference internal" href="#pack-libraries-with-build-configuration"><cite>_pack_libraries_with_build_configuration</cite></a></li>
 <li><a class="reference internal" href="#unpack-libraries-with-build-configuration"><cite>_unpack_libraries_with_build_configuration</cite></a></li>
 <li><a class="reference internal" href="#not-documented-cmake-functions-macros">Not documented CMake functions / macros</a></li>
@@ -115,9 +116,10 @@
 <li><a class="reference internal" href="#non-public-cmake-functions-macros" id="id14">Non-public CMake functions / macros</a></li>
 <li><a class="reference internal" href="#list-append-deduplicate" id="id15"><cite>_list_append_deduplicate</cite></a></li>
 <li><a class="reference internal" href="#list-append-unique" id="id16"><cite>_list_append_unique</cite></a></li>
-<li><a class="reference internal" href="#pack-libraries-with-build-configuration" id="id17"><cite>_pack_libraries_with_build_configuration</cite></a></li>
-<li><a class="reference internal" href="#unpack-libraries-with-build-configuration" id="id18"><cite>_unpack_libraries_with_build_configuration</cite></a></li>
-<li><a class="reference internal" href="#not-documented-cmake-functions-macros" id="id19">Not documented CMake functions / macros</a></li>
+<li><a class="reference internal" href="#mrt-register-test" id="id17"><cite>_mrt_register_test</cite></a></li>
+<li><a class="reference internal" href="#pack-libraries-with-build-configuration" id="id18"><cite>_pack_libraries_with_build_configuration</cite></a></li>
+<li><a class="reference internal" href="#unpack-libraries-with-build-configuration" id="id19"><cite>_unpack_libraries_with_build_configuration</cite></a></li>
+<li><a class="reference internal" href="#not-documented-cmake-functions-macros" id="id20">Not documented CMake functions / macros</a></li>
 </ul>
 </li>
 </ul>
@@ -229,6 +231,7 @@
 </div>
 <p>The files are automatically added to the list of installable targets so that <code class="docutils literal"><span class="pre">mrt_install</span></code> can mark them for installation.</p>
 <p>It requires a <code class="docutils literal"><span class="pre">*_nodelet.cpp</span></code> file and a <code class="docutils literal"><span class="pre">*_node.cpp</span></code> file to be present in this folder. It will then compile a nodelet-library, create an executable from the <code class="docutils literal"><span class="pre">*_node.cpp</span></code> file and link the executable with the nodelet library.</p>
+<p>Unless the variable <code class="docutils literal"><span class="pre">${MRT_NO_FAIL_ON_TESTS}</span></code> is set, failing unittests will result in a failed build.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -364,6 +367,9 @@ and installed from the resulting library. If this project declares any libraries
 <p>Adds all rostests (identified by a .test file) contained in a folder as unittests.</p>
 <p>If a .cpp file exists with the same name, it will be added and comiled as a gtest test.
 Unittests can be run with &#8220;catkin run_tests&#8221; or similar. &#8220;-test&#8221; will be appended to the name of the test node to avoid conflicts (i.e. the type argument should then be &lt;test ... type=&#8221;mytest-test&#8221;/&gt; in a mytest.test file).</p>
+<p>Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder &#8220;test_data&#8221;, it can simply be accessed as &#8220;test_data&#8221;.</p>
+<p>If coverage information is enabled (by setting <code class="docutils literal"><span class="pre">MRT_ENABLE_COVARAGE</span></code> to true), coverage analysis will be performed after unittests have run. The results can be found in the package&#8217;s build folder in the folder &#8220;coverage&#8221;.</p>
+<p>Unless the variable <code class="docutils literal"><span class="pre">${MRT_NO_FAIL_ON_TESTS}</span></code> is set, failing unittests will result in a failed build.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -405,6 +411,9 @@ Unittests can be run with &#8220;catkin run_tests&#8221; or similar. &#8220;-tes
 </tr>
 </tbody>
 </table>
+<p>Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder &#8220;test_data&#8221;, it can simply be accessed as &#8220;test_data&#8221;.</p>
+<p>Unless the variable <code class="docutils literal"><span class="pre">${MRT_NO_FAIL_ON_TESTS}</span></code> is set, failing unittests will result in a failed build.</p>
+<p>If coverage information is enabled (by setting <code class="docutils literal"><span class="pre">MRT_ENABLE_COVARAGE</span></code> to true), coverage analysis will be performed after unittests have run. The results can be found in the package&#8217;s build folder in the folder &#8220;coverage&#8221;.</p>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">mrt_add_tests</span><span class="p">(</span> <span class="n">test</span>
     <span class="p">)</span>
@@ -420,7 +429,7 @@ Unittests can be run with &#8220;catkin run_tests&#8221; or similar. &#8220;-tes
 <code class="descname">mrt_add_to_ide</code><span class="sig-paren">(</span><em>files</em><span class="sig-paren">)</span><a class="headerlink" href="#mrt_add_to_ide" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>[function defined in mrt_cmake_modules-extras.cmake]</em></p>
 <p>Adds a file or folder or a list of each to the list of files shown by the IDE
-The files will not be marked for installation. Paths should be relative to <code class="docutils literal"><span class="pre">CMAKE_CURENT_LISTS_DIR</span></code></p>
+The files will not be marked for installation. Paths should be relative to <code class="docutils literal"><span class="pre">CMAKE_CURRENT_LISTS_DIR</span></code></p>
 <p>If a file or folder does not exist, it will be ignored without warning.</p>
 <p>Example:</p>
 <div class="highlight-python"><div class="highlight"><pre>mrt_add_to_ide(
@@ -439,7 +448,7 @@ The files will not be marked for installation. Paths should be relative to <code
 <dd><p><em>[function defined in mrt_cmake_modules-extras.cmake]</em></p>
 <p>Installs all relevant project files.</p>
 <p>All targets added by the mrt_add_&lt;library/executable/nodelet/...&gt; commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
-Non existing files and folders will be silently ignored. All files will be marked as project flies for IDEs.</p>
+Non existing files and folders will be silently ignored. All files will be marked as project files for IDEs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -488,6 +497,7 @@ be placed elsewhere.</p>
 <div><ul class="simple">
 <li><a class="reference internal" href="#_list_append_deduplicate" title="_list_append_deduplicate"><code class="xref cmake cmake-macro docutils literal"><span class="pre">_list_append_deduplicate()</span></code></a></li>
 <li><a class="reference internal" href="#_list_append_unique" title="_list_append_unique"><code class="xref cmake cmake-macro docutils literal"><span class="pre">_list_append_unique()</span></code></a></li>
+<li><a class="reference internal" href="#_mrt_register_test" title="_mrt_register_test"><code class="xref cmake cmake-macro docutils literal"><span class="pre">_mrt_register_test()</span></code></a></li>
 <li><a class="reference internal" href="#_pack_libraries_with_build_configuration" title="_pack_libraries_with_build_configuration"><code class="xref cmake cmake-macro docutils literal"><span class="pre">_pack_libraries_with_build_configuration()</span></code></a></li>
 <li><a class="reference internal" href="#_unpack_libraries_with_build_configuration" title="_unpack_libraries_with_build_configuration"><code class="xref cmake cmake-macro docutils literal"><span class="pre">_unpack_libraries_with_build_configuration()</span></code></a></li>
 </ul>
@@ -517,8 +527,23 @@ self contained</p>
 </dd></dl>
 
 </div>
+<div class="section" id="mrt-register-test">
+<span id="mrt-register-test-ref"></span><h2><a class="toc-backref" href="#id17"><cite>_mrt_register_test</cite></a><a class="headerlink" href="#mrt-register-test" title="Permalink to this headline">¶</a></h2>
+<dl class="macro">
+<dt id="_mrt_register_test">
+<code class="descname">_mrt_register_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_mrt_register_test" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>[function defined in mrt_cmake_modules-extras.cmake]</em></p>
+<p>Registers the custom check_tests command and adds a dependency for a certain unittest</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">_mrt_register_test</span><span class="p">(</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="pack-libraries-with-build-configuration">
-<span id="pack-libraries-with-build-configuration-ref"></span><h2><a class="toc-backref" href="#id17"><cite>_pack_libraries_with_build_configuration</cite></a><a class="headerlink" href="#pack-libraries-with-build-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="pack-libraries-with-build-configuration-ref"></span><h2><a class="toc-backref" href="#id18"><cite>_pack_libraries_with_build_configuration</cite></a><a class="headerlink" href="#pack-libraries-with-build-configuration" title="Permalink to this headline">¶</a></h2>
 <dl class="macro">
 <dt id="_pack_libraries_with_build_configuration">
 <code class="descname">_pack_libraries_with_build_configuration</code><span class="sig-paren">(</span><em>VAR</em><span class="sig-paren">)</span><a class="headerlink" href="#_pack_libraries_with_build_configuration" title="Permalink to this definition">¶</a></dt>
@@ -530,7 +555,7 @@ self contained</p>
 
 </div>
 <div class="section" id="unpack-libraries-with-build-configuration">
-<span id="unpack-libraries-with-build-configuration-ref"></span><h2><a class="toc-backref" href="#id18"><cite>_unpack_libraries_with_build_configuration</cite></a><a class="headerlink" href="#unpack-libraries-with-build-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="unpack-libraries-with-build-configuration-ref"></span><h2><a class="toc-backref" href="#id19"><cite>_unpack_libraries_with_build_configuration</cite></a><a class="headerlink" href="#unpack-libraries-with-build-configuration" title="Permalink to this headline">¶</a></h2>
 <dl class="macro">
 <dt id="_unpack_libraries_with_build_configuration">
 <code class="descname">_unpack_libraries_with_build_configuration</code><span class="sig-paren">(</span><em>VAR</em><span class="sig-paren">)</span><a class="headerlink" href="#_unpack_libraries_with_build_configuration" title="Permalink to this definition">¶</a></dt>
@@ -542,7 +567,7 @@ self contained</p>
 
 </div>
 <div class="section" id="not-documented-cmake-functions-macros">
-<h2><a class="toc-backref" href="#id19">Not documented CMake functions / macros</a><a class="headerlink" href="#not-documented-cmake-functions-macros" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Not documented CMake functions / macros</a><a class="headerlink" href="#not-documented-cmake-functions-macros" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -562,7 +587,7 @@ self contained</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright MRT --  Version 074cd57803c3e429de83c4ff7899e9038fddd51a, Tue, 26 Sep 2017.
+        &copy; Copyright MRT --  Version cff199951fee2be3be2e2f627f9f052cc32afb9e, Mon, 16 Oct 2017.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
     </div>
   </body>
