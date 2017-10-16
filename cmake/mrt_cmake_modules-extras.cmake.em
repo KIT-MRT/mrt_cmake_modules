@@ -568,6 +568,10 @@ endfunction()
 # If a .cpp file exists with the same name, it will be added and comiled as a gtest test.
 # Unittests can be run with "catkin run_tests" or similar. "-test" will be appended to the name of the test node to avoid conflicts (i.e. the type argument should then be <test ... type="mytest-test"/> in a mytest.test file).
 #
+# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+#
+# If coverage information is enabled (by setting MRT_ENABLE_COVARAGE to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
+#
 # :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
 # :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
@@ -639,6 +643,11 @@ endfunction()
 # :type LIBRARIES: list of strings
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
 # :type DEPENDS: list of strings
+#
+#
+# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+#
+# If coverage information is enabled (by setting MRT_ENABLE_COVARAGE to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
 #
 # Example:
 # ::
@@ -723,7 +732,7 @@ endfunction()
 # Installs all relevant project files.
 #
 # All targets added by the mrt_add_<library/executable/nodelet/...> commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
-# Non existing files and folders will be silently ignored. All files will be marked as project flies for IDEs.
+# Non existing files and folders will be silently ignored. All files will be marked as project files for IDEs.
 #
 # :param PROGRAMS: List of all folders and files that are programs (python scripts will be indentified and treated separately). Files will be made executable.
 # :type PROGRAMS: list of strings
