@@ -56,8 +56,31 @@ endif()
 
 
 #
+# Registers the custom check_tests command and adds a dependency for a certain unittest
+#
+# Example:
+# ::
+#
+#  _mrt_register_test(
+#      )
+#
+function(_mrt_register_test)
+    # we need this only once per project
+    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
+        return()
+    endif()
+    add_custom_command(TARGET run_tests
+        POST_BUILD
+        COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
+        COMMENT "Showing test results"
+        )
+    set(_mrt_checks_${PROJECT_NAME} TRUE)
+endfunction()
+
+#
 # Adds a file or folder or a list of each to the list of files shown by the IDE
-# The files will not be marked for installation. Paths should be relative to ``CMAKE_CURENT_LISTS_DIR``
+# The files will not be marked for installation. Paths should be relative to ``CMAKE_CURRENT_LISTS_DIR``
 #
 # If a file or folder does not exist, it will be ignored without warning.
 #
@@ -475,6 +498,8 @@ endfunction()
 #
 # It requires a ``*_nodelet.cpp`` file and a ``*_node.cpp`` file to be present in this folder. It will then compile a nodelet-library, create an executable from the ``*_node.cpp`` file and link the executable with the nodelet library.
 #
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
+#
 # :param basename: base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages)
 # :type basename: string
 # :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
@@ -543,6 +568,12 @@ endfunction()
 # If a .cpp file exists with the same name, it will be added and comiled as a gtest test.
 # Unittests can be run with "catkin run_tests" or similar. "-test" will be appended to the name of the test node to avoid conflicts (i.e. the type argument should then be <test ... type="mytest-test"/> in a mytest.test file).
 #
+# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+#
+# If coverage information is enabled (by setting ``MRT_ENABLE_COVARAGE`` to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
+#
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
+#
 # :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
 # :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
@@ -602,6 +633,7 @@ function(mrt_add_ros_tests folder)
         add_dependencies(run_tests ${PROJECT_NAME}-coverage)
         add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
     endif()
+    _mrt_register_test()
 endfunction()
 
 #
@@ -613,6 +645,13 @@ endfunction()
 # :type LIBRARIES: list of strings
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
 # :type DEPENDS: list of strings
+#
+#
+# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+#
+# Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
+#
+# If coverage information is enabled (by setting ``MRT_ENABLE_COVARAGE`` to true), coverage analysis will be performed after unittests have run. The results can be found in the package's build folder in the folder "coverage".
 #
 # Example:
 # ::
@@ -667,6 +706,7 @@ function(mrt_add_tests folder)
                 )
         endif()
     endif()
+    _mrt_register_test()
 endfunction()
 
 
@@ -697,13 +737,14 @@ function(mrt_add_nosetests folder)
     catkin_add_nosetests(${TEST_FOLDER}
         DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_PYTHON_API_TARGET}
         )
+    _mrt_register_test()
 endfunction()
 
 
 # Installs all relevant project files.
 #
 # All targets added by the mrt_add_<library/executable/nodelet/...> commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
-# Non existing files and folders will be silently ignored. All files will be marked as project flies for IDEs.
+# Non existing files and folders will be silently ignored. All files will be marked as project files for IDEs.
 #
 # :param PROGRAMS: List of all folders and files that are programs (python scripts will be indentified and treated separately). Files will be made executable.
 # :type PROGRAMS: list of strings
