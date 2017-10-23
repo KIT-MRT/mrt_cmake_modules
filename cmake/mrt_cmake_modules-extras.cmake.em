@@ -75,7 +75,7 @@ function(_mrt_register_test)
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
-    set(_mrt_checks_${PROJECT_NAME} TRUE)
+    set(_mrt_checks_${PROJECT_NAME} TRUE CACHE INTERNAL "")
 endfunction()
 
 #
@@ -271,7 +271,7 @@ function(mrt_add_library libname)
         message(FATAL_ERROR "No executable name specified for call to mrt_add_library!")
     endif()
     cmake_parse_arguments(MRT_ADD_LIBRARY "" "" "INCLUDES;SOURCES;DEPENDS;LIBRARIES" ${ARGN})
-    set(LIBRARY_TARGET_NAME ${PROJECT_NAME}-${LIBRARY_NAME}-lib)
+    set(LIBRARY_TARGET_NAME ${LIBRARY_NAME})
 
     if(NOT MRT_ADD_LIBRARY_INCLUDES AND NOT MRT_ADD_LIBRARY_SOURCES)
         return()
