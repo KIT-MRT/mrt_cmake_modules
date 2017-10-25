@@ -71,7 +71,7 @@ endmacro()
 #  _mrt_register_test(
 #      )
 #
-function(_mrt_register_test)
+macro(_mrt_register_test)
     # we need this only once per project
     if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
         return()
@@ -83,8 +83,8 @@ function(_mrt_register_test)
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
-    set(_mrt_checks_${PROJECT_NAME} TRUE CACHE INTERNAL "")
-endfunction()
+    set(_mrt_checks_${PROJECT_NAME} TRUE PARENT_SCOPE)
+endmacro()
 
 #
 # Adds a file or folder or a list of each to the list of files shown by the IDE
