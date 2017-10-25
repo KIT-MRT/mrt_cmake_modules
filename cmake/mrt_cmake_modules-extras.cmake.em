@@ -54,10 +54,15 @@ if(MRT_SANITIZER_RECOVER STREQUAL "no_recover")
     endif()
 endif()
 
-# define rosparam_handler macro for backwards compability
+# define rosparam_handler macro for compability
 macro(generate_ros_parameter_files)
     if(NOT COMMAND generate_ros_interface_files)
         message(FATAL_ERROR "Dependency rosparam_handler could not be found. Did you add it to your package.xml?")
+    endif()
+endmacro()
+macro(generate_ros_interface_files)
+    if(NOT COMMAND generate_ros_parameter_files)
+        message(FATAL_ERROR "Dependency rosinterface_handler could not be found. Did you add it to your package.xml?")
     endif()
 endmacro()
 
