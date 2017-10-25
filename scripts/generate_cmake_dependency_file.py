@@ -177,7 +177,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     catkin_packages = getCatkinPackages(workspaceRoot)
     #read rosdep yaml file for cmake variables used for non-catkin packages
     #to automatically create a find_package(...)
-    cmakeVarData = readPackageCMakeData(rosDepYamlFileName);
+    cmakeVarData = readPackageCMakeData(rosDepYamlFileName)
     
     #variable used to hold the Dependency classes from the package xml
     depends = []

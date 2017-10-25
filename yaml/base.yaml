@@ -197,6 +197,14 @@ libsqlite3-dev:
     - SQLITE3_LIBRARIES
     library_dirs: []
     name: Sqlite3
+libssl-dev:
+  cmake:
+    include_dirs:
+    - OPENSSL_INCLUDE_DIR
+    libraries:
+    - OPENSSL_LIBRARIES
+    library_dirs: []
+    name: OpenSSL
 libudev-dev:
   ubuntu:
    - libudev-dev
