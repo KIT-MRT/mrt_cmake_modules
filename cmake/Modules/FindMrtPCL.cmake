@@ -12,9 +12,9 @@ endif()
 
 # find package component
 if(Mrtpcl_FIND_REQUIRED)
-	find_package(PCL REQUIRED)
+	find_package(PCL QUIET REQUIRED)
 elseif(Mrtpcl_FIND_QUIETLY)
 	find_package(PCL QUIET)
 else()
-	find_package(PCL)
+	find_package(PCL QUIET)
 endif()

@@ -13,7 +13,7 @@ if (CMAKE_VERSION VERSION_LESS "3.1")
     message(FATAL_ERROR "Compiler does not have c++14 support. Use at least g++4.9 or Visual Studio 2013 and newer.")
   endif()
 else ()
-  set (CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 14)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
@@ -25,13 +25,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
 # add gcov flags
 if(MRT_ENABLE_COVERAGE)
     include(MRTCoverage)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
 endif()
 
-#add diagnostics color
-CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" DiagColorCompilerFlag)
-if (${DiagColorCompilerFlag})
+#add compiler flags
+CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" FLAG_AVAILABLE)
+if (${FLAG_AVAILABLE})
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=auto")
 endif()
 
+if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 6)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-attributes")
+else()
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes -Wno-int-in-bool-context -Wno-expansion-to-defined")
+endif()

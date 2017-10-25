@@ -69,6 +69,7 @@ function(_mrt_register_test)
     if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
         return()
     endif()
+    cmake_policy(SET CMP0040 OLD)
     add_custom_command(TARGET run_tests
         POST_BUILD
         COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
