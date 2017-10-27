@@ -645,6 +645,13 @@ function(mrt_add_ros_tests folder)
         # make sure the target is built after running tests
         add_dependencies(run_tests ${PROJECT_NAME}-coverage)
         add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
+        if(MRT_ENABLE_COVERAGE GREATER 1)
+            add_custom_command(TARGET ${PROJECT_NAME}-coverage
+                POST_BUILD
+                COMMAND firefox ${CMAKE_CURRENT_BINARY_DIR}/coverage/index.html > /dev/null 2>&1 &
+                COMMENT "Showing coverage results"
+                )
+        endif()
     endif()
     _mrt_register_test()
 endfunction()
