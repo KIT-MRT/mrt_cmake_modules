@@ -199,7 +199,7 @@ function(mrt_add_python_api modulename)
         # in order to disable installation of generated __init__.py files in generate_messages() and generate_dynamic_reconfigure_options()
         set(${PROJECT_NAME}_CATKIN_PYTHON_SETUP_HAS_PACKAGE_INIT TRUE PARENT_SCOPE)
     endif()
-    if(${PACKAGE_NAME}_PYTHON_API_TARGET)
+    if(${PROJECT_NAME}_PYTHON_API_TARGET)
         message(FATAL_ERROR "mrt_add_python_api() was already called for this project. You can add only one python_api per project!")
     endif()
 
@@ -227,8 +227,8 @@ function(mrt_add_python_api modulename)
     add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${TARGET_NAME} PARENT_SCOPE)
-    set(${PACKAGE_NAME}_PYTHON_API_TARGET ${TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_PYTHON_API_TARGET ${TARGET_NAME} PARENT_SCOPE)
     # put in devel folder
     set(PREFIX  ${CATKIN_DEVEL_PREFIX})
     set(PYTHON_MODULE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
@@ -318,13 +318,13 @@ function(mrt_add_library libname)
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
-    if(${PACKAGE_NAME}_PYTHON_API_TARGET)
-        target_link_libraries(${${PACKAGE_NAME}_PYTHON_API_TARGET} ${LIBRARY_TARGET_NAME})
+    if(${PROJECT_NAME}_PYTHON_API_TARGET)
+        target_link_libraries(${${PROJECT_NAME}_PYTHON_API_TARGET} ${LIBRARY_TARGET_NAME})
     endif()
 
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
-    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -402,7 +402,7 @@ function(mrt_add_executable execname)
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -495,8 +495,8 @@ function(mrt_add_nodelet nodeletname)
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # append to list of all targets in this project
-    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
-    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -549,8 +549,8 @@ function(mrt_add_node_and_nodelet basename)
         LIBRARIES ${MRT_ADD_NN_LIBRARIES}
         )
     # pass lists on to parent scope
-    set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
-    set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} PARENT_SCOPE)
 
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
@@ -569,8 +569,8 @@ function(mrt_add_node_and_nodelet basename)
             LIBRARIES ${MRT_ADD_NN_LIBRARIES} ${NODELET_TARGET_NAME}
             )
         # pass lists on to parent scope
-        set(${PACKAGE_NAME}_GENERATED_LIBRARIES ${${PACKAGE_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
-        set(${PACKAGE_NAME}_MRT_TARGETS ${${PACKAGE_NAME}_MRT_TARGETS} PARENT_SCOPE)
+        set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
+        set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} PARENT_SCOPE)
     endif()
 endfunction()
 
@@ -621,7 +621,7 @@ function(mrt_add_ros_tests folder)
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
             target_link_libraries(${TEST_TARGET_NAME}
-                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
+                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
@@ -630,13 +630,13 @@ function(mrt_add_ros_tests folder)
                 gtest_main
                 )
             add_dependencies(${TEST_TARGET_NAME}
-                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
             add_rostest(${_ros_test}
-                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
+                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
         endif()
     endforeach()
@@ -696,7 +696,7 @@ function(mrt_add_tests folder)
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME}
-                ${${PACKAGE_NAME}_GENERATED_LIBRARIES}
+                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_TESTS_LIBRARIES}
@@ -707,7 +707,7 @@ function(mrt_add_tests folder)
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
             add_dependencies(${TEST_TARGET_NAME}
-                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
+                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )
             set(TARGET_ADDED True)
         endif()
@@ -755,7 +755,7 @@ function(mrt_add_nosetests folder)
 
     message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
     catkin_add_nosetests(${TEST_FOLDER}
-        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PACKAGE_NAME}_PYTHON_API_TARGET}
+        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET}
         )
     _mrt_register_test()
 endfunction()
@@ -785,9 +785,9 @@ function(mrt_install)
     cmake_parse_arguments(MRT_INSTALL "" "" "PROGRAMS;FILES" ${ARGN})
 
     # install targets
-    if(${PACKAGE_NAME}_MRT_TARGETS)
-        message(STATUS "Marking targets \"${${PACKAGE_NAME}_MRT_TARGETS}\" of package \"${PROJECT_NAME}\" for installation")
-        install(TARGETS ${${PACKAGE_NAME}_MRT_TARGETS}
+    if(${PROJECT_NAME}_MRT_TARGETS)
+        message(STATUS "Marking targets \"${${PROJECT_NAME}_MRT_TARGETS}\" of package \"${PROJECT_NAME}\" for installation")
+        install(TARGETS ${${PROJECT_NAME}_MRT_TARGETS}
             ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
             LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
             RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
