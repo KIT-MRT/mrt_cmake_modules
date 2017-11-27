@@ -66,7 +66,7 @@ macro(generate_ros_parameter_files)
         endif()
     endforeach()
     # generate dynamic reconfigure files
-    if(_${PROJECT_NAME}_pure_cfg_files)
+    if(_${PROJECT_NAME}_pure_cfg_files AND NOT TARGET ${PROJECT_NAME}_gencfg AND NOT rosinterface_handler_FOUND_CATKIN_PROJECT)
         if(dynamic_reconfigure_FOUND_CATKIN_PROJECT)
             generate_dynamic_reconfigure_options(${_${PROJECT_NAME}_pure_cfg_files})
         else()
