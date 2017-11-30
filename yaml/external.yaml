@@ -1,13 +1,13 @@
 # This file contains all packages that should be resolved externally
 # Note that Gitlab will always be checked first when resolving dependencies!
-# 
+#
 # When adding new entries, please make sure that:
 # 1. The package provided there is stable and can be relied on
 # 2. The package is a normal catkin package (metapackages are not supported!)
 # 3. The package name, the name for the dependency and the name in its package.xml are all identical
 # 4. New entries are always in alphabetical order
 # 5. You know what you are doing. Pushing changes will affect all users globally.
-# 
+#
 # Entries must look like this:
 # example_package:                                  <-- Name for the dependency (matching its package.xml)
 #   url: https://github.com/me/example_package.git  <-- required, any url pointing to a repository is possible here
@@ -21,4 +21,5 @@ image_undistort: https://github.com/ethz-asl/image_undistort.git
 mrt_cmake_modules: https://github.com/KIT-MRT/mrt_cmake_modules.git
 rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
-grid_map_core:https: //github.com/ethz-asl/grid_map.git
+grid_map_core: https://github.com/ethz-asl/grid_map.git
+pcl_ros: https://github.com/ros-perception/perception_pcl.git
