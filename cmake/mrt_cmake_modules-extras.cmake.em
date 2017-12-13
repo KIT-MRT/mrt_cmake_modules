@@ -14,6 +14,25 @@ list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
 @[end if]@
 set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
+# care for clang-tidy flags
+if(MRT_CLANG_TIDY STREQUAL "check")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option")
+elseif(MRT_CLANG_TIDY STREQUAL "fix")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors")
+endif()
+if(DEFINED MRT_CLANG_TIDY_FLAGS)
+    if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
+        message(WARNING "Using clang-tidy requires at least CMAKE 3.6.0. Please upgrade CMake.")
+    endif()
+    find_package(ClangTidy)
+    if(ClangTidy_FOUND)
+        message(STATUS "Add clang tidy flags")
+        set(CMAKE_CXX_CLANG_TIDY "${ClangTidy_EXE}" "${MRT_CLANG_TIDY_FLAGS}")
+    else()
+        message(WARNING "Failed to find clang-tidy. Is it installed?")
+    endif()
+endif()
+
 # cache or load environment for non-catkin build
 if( NOT DEFINED CATKIN_DEVEL_PREFIX AND EXISTS "${CMAKE_CURRENT_BINARY_DIR}/mrt_cached_variables.cmake")
     message(STATUS "Non-catkin build detected. Loading cached variables from last catkin run.")
