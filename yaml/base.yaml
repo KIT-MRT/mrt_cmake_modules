@@ -214,6 +214,11 @@ libxext-dev:
 libxrandr-dev:
   ubuntu:
   - libxrandr-dev
+mbed_cli:
+  ubuntu:
+    xenial:
+      pip:
+        packages: [mbed-cli]
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
@@ -327,6 +332,10 @@ mrt_f2c_old:
   ubuntu:
     trusty:
     - mrt-ftwoc-dev
+mrt_gnu_arm_embedded_toolchain:
+  ubuntu:
+    xenial:
+    - mrt-gnu-arm-embedded-toolchain
 mrt_leptonica:
   cmake:
     components: []
