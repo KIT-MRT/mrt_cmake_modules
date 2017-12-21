@@ -1,4 +1,8 @@
 # From: https://trenki2.github.io/blog/2017/06/02/using-sdl2-with-cmake/
+# This FindScript is used because the one provided by cmake causes the
+# following error:
+#    "-L/usr/lib/x86_64-linux-gnu -lSDL2 " which has leading or trailing
+#    whitespace.  This is now an error according to policy CMP0004.
 
 # Distributed under the OSI-approved BSD 3-Clause License. See accompanying
 # file Copyright.txt or https://cmake.org/licensing for details.
