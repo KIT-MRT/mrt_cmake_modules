@@ -625,6 +625,17 @@ python-libs:
 python-vte:
   ubuntu:
   - python-vte
+sdl2:
+  cmake:
+    components: []
+    include_dirs:
+    - SDL2_INCLUDE_DIRS
+    libraries:
+    - SDL2_LIBRARIES
+    library_dirs: []
+    name: sdl2
+  ubuntu:
+  - libsdl2-dev
 tbb:
   cmake:
     include_dirs:
