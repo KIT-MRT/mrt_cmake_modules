@@ -1,5 +1,8 @@
 include(CheckCXXCompilerFlag)
 
+#Clean any compiler flags to avoid issues with werr (to be removed in future)
+set(CMAKE_CXX_FLAGS "")
+
 #Require C++14
 if (CMAKE_VERSION VERSION_LESS "3.1")
   CHECK_CXX_COMPILER_FLAG("-std=c++14" Cpp14CompilerFlag)
@@ -29,14 +32,37 @@ if(MRT_ENABLE_COVERAGE)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
 endif()
 
+# add warning/error flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=maybe-uninitialized -Werror=nonnull -Werror=openmp-simd -Werror=parentheses -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
+
+if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=array-bounds=1")
+endif()
+if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-compare -Werror=init-self -Werror=logical-not-parentheses -Werror=memset-transposed-args -Werror=nonnull-compare -Werror=sizeof-pointer-memaccess -Werror=tautological-compare")
+endif()
+if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-operation -Werror=memset-elt-size")
+endif()
+
+# the following -wall flags are not an error (please update this list):
+# - catch-value: Not part of 7.2
+# - char-subscripts: Might cause false positives in openCV
+# - int-in-bool-context: Too many false positives in Eigen 3.3
+# - misleading-indentation: Too many false positives in Eigen 3.3
+# - multistatement-macros: Not part of 7.2
+# - reorder: Too many errors reported
+# - restict: Not part of 7.2
+# - sign-compare: Too many false positives in for-loops
+# - sizeof-pointer-div: Not part of 7.2
+# - strict-overflow: False positives, optimization level dependent
+# - unknown-pragmas: Pragmas might be for a different compiler
+# - unused-*: Sometimes unused declarations are desired
+
 #add compiler flags
 CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" FLAG_AVAILABLE)
 if (${FLAG_AVAILABLE})
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=auto")
 endif()
 
-if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 6)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-attributes")
-else()
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes -Wno-int-in-bool-context -Wno-expansion-to-defined")
-endif()
