@@ -33,7 +33,10 @@ if(MRT_ENABLE_COVERAGE)
 endif()
 
 # add warning/error flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
+# unused-parameter: ignored because ros_tools usually have unused parameters
+# ignored-attributes: ignored because of thousands of eigen 3.3 warnings
+# no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter -Wno-ignored-attributes -Wno-int-in-bool-context")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=maybe-uninitialized -Werror=nonnull -Werror=openmp-simd -Werror=parentheses -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
 
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
