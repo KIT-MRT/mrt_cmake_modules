@@ -33,6 +33,7 @@ if(MRT_ENABLE_COVERAGE)
 endif()
 
 # add warning/error flags
+# see here for documentation: https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
 # unused-parameter: ignored because ros_tools usually have unused parameters
 # ignored-attributes: ignored because of thousands of eigen 3.3 warnings
 # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
