@@ -490,6 +490,17 @@ mrt_qt5-dev:
     - qt5-default
     xenial:
     - qt5-default
+mrt_sdl2:
+  cmake:
+    components: []
+    include_dirs:
+    - SDL2_INCLUDE_DIRS
+    libraries:
+    - SDL2_LIBRARIES
+    library_dirs: []
+    name: MrtSDL2
+  ubuntu:
+  - libsdl2-dev
 mrt_suitesparse:
   cmake:
     components: []
