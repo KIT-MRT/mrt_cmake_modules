@@ -247,6 +247,16 @@ mrt_ann:
     - mrt-ann-dev
     xenial:
     - libann-dev
+mrt_benchmark:
+  cmake:
+    components: []
+    include_dirs: []
+    libraries:
+    - benchmark_LIBRARIES
+    library_dirs: []
+    name: Mrtbenchmark
+  ubuntu:
+    - mrt-benchmark-dev
 mrt_caffe:
   cmake:
     components: []
