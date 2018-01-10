@@ -1,8 +1,5 @@
 include(CheckCXXCompilerFlag)
 
-#Clean any compiler flags to avoid issues with werr (to be removed in future)
-set(CMAKE_CXX_FLAGS "")
-
 #Require C++14
 if (CMAKE_VERSION VERSION_LESS "3.1")
   CHECK_CXX_COMPILER_FLAG("-std=c++14" Cpp14CompilerFlag)
