@@ -7,7 +7,7 @@ set(_MRT_CMAKE_MODULES_EXTRAS_INCLUDED_ TRUE)
 # Set the cmake install path
 @[if DEVELSPACE]@
 # cmake dir in develspace
-list(APPEND CMAKE_MODULE_PATH "@(CMAKE_CURRENT_SOURCE_DIR)/cmake/Modules")
+list(APPEND CMAKE_MODULE_PATH "@(PROJECT_SOURCE_DIR)/cmake/Modules")
 @[else]@
 # cmake dir in installspace
 list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
@@ -16,9 +16,9 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter='${PROJECT_SOURCE_DIR}/.*'")
 elseif(MRT_CLANG_TIDY STREQUAL "fix")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors" "-header-filter='${PROJECT_SOURCE_DIR}/.*" "-format-style=file")
 endif()
 if(DEFINED MRT_CLANG_TIDY_FLAGS)
     if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
@@ -137,7 +137,7 @@ endmacro()
 
 #
 # Adds a file or folder or a list of each to the list of files shown by the IDE
-# The files will not be marked for installation. Paths should be relative to ``CMAKE_CURRENT_LISTS_DIR``
+# The files will not be marked for installation. Paths should be relative to ``PROJECT_SOURCE_DIR``
 #
 # If a file or folder does not exist, it will be ignored without warning.
 #
@@ -152,13 +152,13 @@ endmacro()
 #
 function(mrt_add_to_ide files)
     foreach(ELEMENT ${ARGV})
-        if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*[^~]")
+        if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
+            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${ELEMENT}/[^.]*[^~]")
             if(DIRECTORY_FILES)
                 STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
                 add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
             endif()
-        elseif(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
+        elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-show-${ELEMENT})
             add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${ELEMENT})
         endif()
@@ -189,13 +189,13 @@ function(mrt_python_module_setup)
     if(ARGN)
         message(FATAL_ERROR "mrt_python_module_setup() called with unused arguments: ${ARGN}")
     endif()
-    if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/src/${PROJECT_NAME}/__init__.py")
+    if(NOT EXISTS "${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}/__init__.py")
         return()
     endif()
     set(PKG_PYTHON_MODULE ${PROJECT_NAME})
     set(${PROJECT_NAME}_PYTHON_MODULE ${PROJECT_NAME} PARENT_SCOPE)
     set(PACKAGE_DIR "src")
-    configure_file(${MCM_ROOT}/cmake/Templates/setup.py.in "${CMAKE_CURRENT_LIST_DIR}/setup.py" @@ONLY)
+    configure_file(${MCM_ROOT}/cmake/Templates/setup.py.in "${PROJECT_SOURCE_DIR}/setup.py" @@ONLY)
     catkin_python_setup()
 endfunction()
 
@@ -303,7 +303,7 @@ endfunction()
 #
 # :param libname: Name of the library to generate as first argument (without lib or .so)
 # :type libname: string
-# :param INCLUDES: Include files needed for the library, absolute or relative to ${CMAKE_CURRENT_LIST_DIR}
+# :param INCLUDES: Include files needed for the library, absolute or relative to ${PROJECT_SOURCE_DIR}
 # :type INCLUDES: list of strings
 # :param SOURCES: Source files to be added. If empty, a header-only library is assumed
 # :type SOURCES: list of strings
@@ -383,7 +383,7 @@ endfunction()
 #
 # :param execname: name of the executable
 # :type execname: string
-# :param FOLDER: Folder containing the .cpp/.cc-files and .h/.hh/.hpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``.
+# :param FOLDER: Folder containing the .cpp/.cc-files and .h/.hh/.hpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``.
 # :type FOLDER: string
 # :param FILES: List of extra source files to add. This or the FOLDER parameter is mandatory.
 # :type FILES: list of strings
@@ -414,8 +414,8 @@ function(mrt_add_executable execname)
 
     # get the files
     if(MRT_ADD_EXECUTABLE_FOLDER)
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
     endif()
     if(MRT_ADD_EXECUTABLE_FILES)
         list(APPEND EXEC_SOURCE_FILES_SRC ${MRT_ADD_EXECUTABLE_FILES})
@@ -464,7 +464,7 @@ endfunction()
 #
 # :param nodeletname: base name of the nodelet (_nodelet will be appended to the base name to avoid conflicts with library packages)
 # :type nodeletname: string
-# :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
+# :param FOLDER: Folder with cpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``
 # :type FOLDER: string
 # :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
 # :type DEPENDS: list of strings
@@ -498,17 +498,17 @@ function(mrt_add_nodelet nodeletname)
     endif()
 
     # get the files
-    file(GLOB NODELET_SOURCE_FILES_INC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.h" "${MRT_ADD_NODELET_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-    file(GLOB NODELET_SOURCE_FILES_SRC RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+    file(GLOB NODELET_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.h" "${MRT_ADD_NODELET_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
+    file(GLOB NODELET_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
 
     # Find nodelet
-    file(GLOB NODELET_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc")
+    file(GLOB NODELET_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc")
     if(NOT NODELET_CPP)
         return()
     endif()
 
     # Remove nodes (with their main) from src-files
-    file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc")
+    file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc")
     if (NODE_CPP)
         list(REMOVE_ITEM NODELET_SOURCE_FILES_SRC ${NODE_CPP})
     endif ()
@@ -559,7 +559,7 @@ endfunction()
 #
 # :param basename: base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages)
 # :type basename: string
-# :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
+# :param FOLDER: Folder with cpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``
 # :type FOLDER: string
 # :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
 # :type DEPENDS: list of strings
@@ -599,13 +599,13 @@ function(mrt_add_node_and_nodelet basename)
     # check if a target was added
     if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
         unset(NODELET_TARGET_NAME)
-        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
+        file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
     else()
-        file(GLOB NODE_CPP RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+        file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     endif()
 
     # find node files and add them as executable
-    file(GLOB NODE_H RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
+    file(GLOB NODE_H RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
     if(NODE_CPP)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
@@ -631,7 +631,7 @@ endfunction()
 #
 # Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 #
-# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
 # :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
 # :type LIBRARIES: list of strings
@@ -649,7 +649,7 @@ endfunction()
 function(mrt_add_ros_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
-    file(GLOB _ros_tests RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${TEST_FOLDER}/*.test")
+    file(GLOB _ros_tests RELATIVE "${PROJECT_SOURCE_DIR}" "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
 
     foreach(_ros_test ${_ros_tests})
@@ -658,7 +658,7 @@ function(mrt_add_ros_tests folder)
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
         set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
         # look for a matching .cpp
-        if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
+        if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
             target_compile_options(${TEST_TARGET_NAME}
@@ -703,7 +703,7 @@ endfunction()
 #
 # Adds all gtests (without a corresponding .test file) contained in a folder as unittests.
 #
-# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
 # :type folder: string
 # :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
 # :type LIBRARIES: list of strings
@@ -728,7 +728,7 @@ endfunction()
 function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
-    file(GLOB _tests RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
+    file(GLOB _tests RELATIVE "${PROJECT_SOURCE_DIR}" "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
@@ -736,9 +736,9 @@ function(mrt_add_tests folder)
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
         set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
         # exclude cpp files with a test file (those are ros tests)
-        if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}/${_test_name}.test")
-            message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER}")
-            catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
+        if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
+            message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
+            catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
@@ -776,7 +776,7 @@ endfunction()
 
 # Adds python nosetest contained in a folder. Wraps the function catkin_add_nosetests.
 #
-# :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+# :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
 # :type folder: string
 # :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
 # :type DEPENDS: list of strings
@@ -793,7 +793,7 @@ endfunction()
 function(mrt_add_nosetests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_NOSETESTS "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
-    if(NOT IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${TEST_FOLDER})
+    if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
         return()
     endif()
 
@@ -839,7 +839,7 @@ function(mrt_install)
     endif()
 
     # install header
-    if(EXISTS ${CMAKE_CURRENT_LIST_DIR}/include/${PROJECT_NAME}/)
+    if(EXISTS ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/)
         message(STATUS "Marking HEADER FILES in \"include\" folder of package \"${PROJECT_NAME}\" for installation")
         install(DIRECTORY include/${PROJECT_NAME}/
             DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
@@ -869,32 +869,32 @@ function(mrt_install)
 
     # install programs
     foreach(ELEMENT ${MRT_INSTALL_PROGRAMS})
-        if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
-            file(GLOB FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_LIST_DIR}/${ELEMENT}/[^.]*[^~]")
+        if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
+            file(GLOB FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/${ELEMENT}/[^.]*[^~]")
             foreach(FILE ${FILES})
                 if(NOT IS_DIRECTORY ${FILE})
                     mrt_install_program(${FILE})
                 endif()
             endforeach()
-        elseif(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
+        elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             mrt_install_program(${ELEMENT})
         endif()
     endforeach()
 
     # install files
     foreach(ELEMENT ${MRT_INSTALL_FILES})
-        if(IS_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
+        if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking SHARED CONTENT FOLDER \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(DIRECTORY ${ELEMENT}
                 DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
                 )
             # make them show up in IDEs
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${ELEMENT}/[^.]*[^~]")
+            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${ELEMENT}/[^.]*[^~]")
             if(DIRECTORY_FILES)
                 STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
                 add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
             endif()
-        elseif(EXISTS ${CMAKE_CURRENT_LIST_DIR}/${ELEMENT})
+        elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking FILE \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(FILES ${ELEMENT} DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
             STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
