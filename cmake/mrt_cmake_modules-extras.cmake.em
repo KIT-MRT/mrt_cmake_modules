@@ -203,6 +203,8 @@ endfunction()
 #
 # Generates a python module from boost-python cpp files.
 #
+# Each <file>.cpp will become a seperate <file>.py submodule within <modulename>. After building and sourcing you can use the modules simply with "import <modulename>.<file>".
+#
 # The files are automatically linked with boost-python libraries and a python module is generated
 # and installed from the resulting library. If this project declares any libraries with ``mrt_add_library()``, they will automatically be linked with this library.
 #
@@ -232,8 +234,6 @@ function(mrt_add_python_api modulename)
 
     #set and check target name
     set( PYTHON_API_MODULE_NAME ${modulename})
-    set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-pyapi")
-    set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_pyapi")
     if("${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
         message(FATAL_ERROR "The name of the python_api module conflicts with the name of the python module. Please choose a different name")
     endif()
@@ -252,36 +252,44 @@ function(mrt_add_python_api modulename)
     find_package(PythonLibs 2.7 REQUIRED)
     include_directories(${PYTHON_INCLUDE_DIRS})
 
-    # add library as target
-    message(STATUS "Adding python api library \"${LIBRARY_NAME}\" as python module \"${PYTHON_API_MODULE_NAME}\"")
-    add_library( ${TARGET_NAME}
-        ${MRT_ADD_PYTHON_API_FILES}
-        )
-    target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${LIBRARY_NAME})
-    set_target_properties(${TARGET_NAME}
-        PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
-        )
-    target_link_libraries( ${TARGET_NAME}
-        ${PYTHON_LIBRARY}
-        ${BoostPython_LIBRARIES}
-        ${catkin_LIBRARIES}
-        ${mrt_LIBRARIES}
-        ${MRT_SANITIZER_LINK_FLAGS}
-        )
-    add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
-
-    # append to list of all targets in this project
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${TARGET_NAME} PARENT_SCOPE)
-    set(${PROJECT_NAME}_PYTHON_API_TARGET ${TARGET_NAME} PARENT_SCOPE)
     # put in devel folder
     set(PREFIX  ${CATKIN_DEVEL_PREFIX})
     set(PYTHON_MODULE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
-    add_custom_command(TARGET ${TARGET_NAME}
-        POST_BUILD
-        COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/__init__.py
-        WORKING_DIRECTORY ${PREFIX}
-        COMMENT "Copying library files to python directory"
-        )
+
+    # add library for each file
+    foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
+        get_filename_component(SUBMODULE_NAME ${API_FILE} NAME_WE)
+        set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
+        set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_${SUBMODULE_NAME}_pyapi")
+        message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
+        add_library( ${TARGET_NAME}
+            ${API_FILE}
+            )
+        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${LIBRARY_NAME})
+        set_target_properties(${TARGET_NAME}
+            PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+            )
+        target_link_libraries( ${TARGET_NAME}
+            ${PYTHON_LIBRARY}
+            ${BoostPython_LIBRARIES}
+            ${catkin_LIBRARIES}
+            ${mrt_LIBRARIES}
+            ${MRT_SANITIZER_LINK_FLAGS}
+            )
+        add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+
+        # append to list of all targets in this project
+        set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${TARGET_NAME} PARENT_SCOPE)
+        set(${PROJECT_NAME}_PYTHON_API_TARGET "${${PROJECT_NAME}_PYTHON_API_TARGET};${TARGET_NAME}" PARENT_SCOPE)
+        add_custom_command(TARGET ${TARGET_NAME}
+            POST_BUILD
+            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/${SUBMODULE_NAME}.py
+            WORKING_DIRECTORY ${PREFIX}
+            COMMENT "Copying library files to python directory"
+            )
+    endforeach()
+    configure_file(${MCM_ROOT}/cmake/Templates/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
+
     # configure setup.py for install
     set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
     set(PACKAGE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
