@@ -37,7 +37,8 @@ Other dependecies can be added with one of the following tags:
                           build packages that depend on this package,
                           e.g. boost, opencv.
 <exec_depend>             Execution dependency required to run this
-                          package, e.g. boost, opencv.
+                          package, e.g. boost, opencv, but also all
+                          python dependencies such as python-scipy.
 <depend>                  Build-time, exported build-time and execution
                           dependency. This is a bundled synonym for
                           <build_depend>, <build_export_depend> and
@@ -55,11 +56,11 @@ As always, the [MRT tools](https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_build) pr
 This package contains a lot of useful cmake functions that are automatically available in all packages using the _mrt_cmake_modules_ as dependency, e.g. `mrt_install()`, `mrt_add_node_and_nodelet()`, etc. See [here](http://htmlpreview.github.io/?https://github.com/KIT-MRT/mrt_cmake_modules/blob/master/doc/generated_cmake_api.html) for a full documentation.
 
 ## Base yaml
-The [base.yml](yaml/base.yaml) controls how AutoDeps and Rosdep finds thirdparty dependencies. 
+The [base.yml](yaml/base.yaml) controls how AutoDeps and Rosdep finds thirdparty dependencies.
 
-__Rosdep__ is a tool that resolves and installs dependencies in package.xml files by searching the base.yaml (those added to the list of files in `/etc/ros/rosdep/sources.list.d/20-default.list`) for a matching entry and then installing the debian package stated in the _ubuntu_ section of each entry via `apt-get`. 
+__Rosdep__ is a tool that resolves and installs dependencies in package.xml files by searching the base.yaml (those added to the list of files in `/etc/ros/rosdep/sources.list.d/20-default.list`) for a matching entry and then installing the debian package stated in the _ubuntu_ section of each entry via `apt-get`.
 
-__AutoDeps__ (provided by this package) is used to resolve dependencies in the _package.xml_ at CMAKE configure time so that the paths to all thirdparty libraries are known. It searches the _base.yaml_ for matching entries and evaluates the _cmake_ section of matching entry to find out which include/library paths will be set when calling the CMake Command `find_package()`
+__AutoDeps__ (provided by this package) is used to resolve dependencies in the _package.xml_ at CMAKE configure time so that the paths to all thirdparty libraries are known. It searches the _base.yaml_ for matching entries and evaluates the _cmake_ section of matching entry to find out which include/library paths will be set when calling the CMake Command `find_package()`. Only for `<exec_depend>`, CMAKE variables are not set.
 
 ## Findscripts
 This package also contains a collection of [find-scripts](cmake/Modules) for thirdparty dependencies that are usually not shipped with a findscript. These are required by __AutoDeps__.
