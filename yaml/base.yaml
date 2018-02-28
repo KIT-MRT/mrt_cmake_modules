@@ -647,6 +647,9 @@ python-libs:
     name: PythonLibs
   ubuntu:
   - libpython2.7-dev
+python-nlopt:
+  ubuntu:
+  - python-nlopt
 python-vte:
   ubuntu:
   - python-vte
