@@ -629,6 +629,10 @@ pugixml:
     name: pugixml
   ubuntu:
   - libpugixml-dev
+python-cvxopt:
+  ubuntu:
+    pip:
+      packages: [cvxopt]
 python-gdal:
   ubuntu:
   - python-gdal
@@ -643,6 +647,9 @@ python-libs:
     name: PythonLibs
   ubuntu:
   - libpython2.7-dev
+python-nlopt:
+  ubuntu:
+  - python-nlopt
 python-vte:
   ubuntu:
   - python-vte
