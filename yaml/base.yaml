@@ -117,6 +117,17 @@ libcairo2-dev:
     - CAIRO_LIBRARIES
     library_dirs: []
     name: Cairo
+libgeographic-dev:
+  cmake:
+    components: []
+    include_dirs:
+    - GeographicLib_INCLUDE_DIRS
+    libraries:
+    - GeographicLib_LIBRARIES
+    library_dirs: []
+    name: GeographicLib
+  ubuntu:
+  - libgeographic-dev
 libgoogle-glog-dev:
   cmake:
     components: []
