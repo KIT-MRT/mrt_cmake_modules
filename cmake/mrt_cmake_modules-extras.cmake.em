@@ -604,7 +604,7 @@ function(mrt_add_node_and_nodelet basename)
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} PARENT_SCOPE)
 
-    # check if a target was added
+    # search the files we have to build with
     if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
         unset(NODELET_TARGET_NAME)
         file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
@@ -612,9 +612,10 @@ function(mrt_add_node_and_nodelet basename)
         file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     endif()
 
-    # find node files and add them as executable
+    # find *_node file containing the main() and add the executable
     file(GLOB NODE_H RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
-    if(NODE_CPP)
+    file(GLOB NODE_MAIN RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+    if(NODE_MAIN)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
             DEPENDS ${MRT_ADD_NN_DEPENDS} ${NODELET_TARGET_NAME}
