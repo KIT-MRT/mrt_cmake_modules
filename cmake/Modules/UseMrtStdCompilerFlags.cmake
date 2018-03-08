@@ -17,10 +17,6 @@ else ()
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
-# Build for native architecture
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
-
 #add OpenMP
 find_package(OpenMP REQUIRED)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
