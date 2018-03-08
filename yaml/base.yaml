@@ -117,6 +117,17 @@ libcairo2-dev:
     - CAIRO_LIBRARIES
     library_dirs: []
     name: Cairo
+libgeographic-dev:
+  cmake:
+    components: []
+    include_dirs:
+    - GeographicLib_INCLUDE_DIRS
+    libraries:
+    - GeographicLib_LIBRARIES
+    library_dirs: []
+    name: GeographicLib
+  ubuntu:
+  - libgeographic-dev
 libgoogle-glog-dev:
   cmake:
     components: []
@@ -629,6 +640,10 @@ pugixml:
     name: pugixml
   ubuntu:
   - libpugixml-dev
+python-cvxopt:
+  ubuntu:
+    pip:
+      packages: [cvxopt]
 python-gdal:
   ubuntu:
   - python-gdal
@@ -643,6 +658,9 @@ python-libs:
     name: PythonLibs
   ubuntu:
   - libpython2.7-dev
+python-nlopt:
+  ubuntu:
+  - python-nlopt
 python-vte:
   ubuntu:
   - python-vte
