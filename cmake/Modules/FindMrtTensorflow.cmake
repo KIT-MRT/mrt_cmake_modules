@@ -9,9 +9,14 @@ find_path(TENSORFLOW_NSYNC_INCLUDE_DIR nsync_cv.h
 
 set(TENSORFLOW_INCLUDE_DIR ${TENSORFLOW_INCLUDE_DIR} ${TENSORFLOW_EIGEN_INCLUDE_DIR} ${TENSORFLOW_NSYNC_INCLUDE_DIR})
 
-find_library(TENSORFLOW_LIBRARY
+find_library(TENSORFLOW_CC_LIBRARY
   NAMES tensorflow_cc
   )
+find_library(TENSORFLOW_FRAMEWORK_LIBRARY
+  NAMES tensorflow_framework
+  )
+
+set(TENSORFLOW_LIBRARY ${TENSORFLOW_CC_LIBRARY} ${TENSORFLOW_FRAMEWORK_LIBRARY})
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(MrtTensorflow  DEFAULT_MSG
