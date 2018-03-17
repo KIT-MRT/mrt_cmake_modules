@@ -664,6 +664,14 @@ python-nlopt:
 python-vte:
   ubuntu:
   - python-vte
+range_v3:
+  cmake:
+    include_dirs:
+    - range-v3_INCLUDE_DIR
+    name: range-v3
+  ubuntu:
+  - librange-v3-dev
+  ubuntu:
 sdl2:
   cmake:
     components: []
