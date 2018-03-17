@@ -17,9 +17,17 @@ else ()
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
-# Build for native architecture
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+# Select arch flag
+if(MRT_ARCH)
+  if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
+    set(_arch "-march=${MRT_ARCH}")
+  endif()
+else()
+  # sandybridge is the lowest common cpu arch for us
+  set(_arch "-march=sandybridge")
+endif()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
