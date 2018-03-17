@@ -671,7 +671,6 @@ range_v3:
     name: range-v3
   ubuntu:
   - librange-v3-dev
-  ubuntu:
 sdl2:
   cmake:
     components: []
