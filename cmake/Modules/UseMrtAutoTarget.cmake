@@ -31,20 +31,14 @@ endfunction()
 
 #search for subfolders in src
 function(glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
-    execute_process(COMMAND find . -mindepth 1 -type d WORKING_DIRECTORY "${SEARCH_DIRECTORY}" OUTPUT_VARIABLE DIRECTORIES)
-
+    file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} ${SEARCH_DIRECTORY}/[^.]*)
     set(_DIRECTORY_LIST_ "")
-    if (NOT DIRECTORIES STREQUAL "")
-        string(REPLACE "\n" ";" DIRECTORIES ${DIRECTORIES})
-
-        foreach(SRC_DIR ${DIRECTORIES})
-            #remove trailing "./"
-            string(SUBSTRING "${SRC_DIR}" 2 -1 EXEC_NAME)
-            list(APPEND _DIRECTORY_LIST_ ${EXEC_NAME})
-        endforeach()
-
-        set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
-    endif()
+    foreach(SRC_DIR ${DIRECTORIES})
+        if(IS_DIRECTORY ${SEARCH_DIRECTORY}/${SRC_DIR})
+            list(APPEND _DIRECTORY_LIST_ ${SRC_DIR})
+        endif()
+    endforeach()
+    set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
 endfunction()
 
 macro(glob_ros_files excecutable_name extension_name)
