@@ -29,3 +29,5 @@ perception_pcl: https://github.com/ros-perception/perception_pcl.git
 rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
 vision_opencv: https://github.com/ros-perception/vision_opencv.git
+libpointmatcher: https://github.com/ethz-asl/libpointmatcher.git
+libnabo: https://github.com/ethz-asl/libnabo
