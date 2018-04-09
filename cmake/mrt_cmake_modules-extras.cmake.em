@@ -378,7 +378,6 @@ function(mrt_add_library libname)
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
-    message(WARNING "${${PROJECT_NAME}_PYTHON_API_TARGET}")
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
         target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
     endforeach()
