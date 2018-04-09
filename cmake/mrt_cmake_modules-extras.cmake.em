@@ -284,9 +284,7 @@ function(mrt_add_python_api modulename)
             )
         add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
-        # append to list of all targets in this project
-        set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${TARGET_NAME} PARENT_SCOPE)
-        set(${PROJECT_NAME}_PYTHON_API_TARGET "${${PROJECT_NAME}_PYTHON_API_TARGET};${TARGET_NAME}" PARENT_SCOPE)
+        list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
             COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/${SUBMODULE_NAME}.py
@@ -295,6 +293,10 @@ function(mrt_add_python_api modulename)
             )
     endforeach()
     configure_file(${MCM_ROOT}/cmake/Templates/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
+
+    # append to list of all targets in this project
+    set(${PROJECT_NAME}_MRT_TARGETS ${GENERATED_TARGETS} PARENT_SCOPE)
+    set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
 
     # configure setup.py for install
     set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
@@ -376,9 +378,10 @@ function(mrt_add_library libname)
         ${MRT_SANITIZER_LINK_FLAGS}
         )
     # add dependency to python_api if existing (needs to be declared before this library)
-    if(${PROJECT_NAME}_PYTHON_API_TARGET)
-        target_link_libraries(${${PROJECT_NAME}_PYTHON_API_TARGET} ${LIBRARY_TARGET_NAME})
-    endif()
+    message(WARNING "${${PROJECT_NAME}_PYTHON_API_TARGET}")
+    foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
+        target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
+    endforeach()
 
     # append to list of all targets in this project
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
