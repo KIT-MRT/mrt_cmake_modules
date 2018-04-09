@@ -4,8 +4,8 @@
   <description>CMake Functions and Modules which are commonly used by MRT's ROS packages.</description>
 
   <license>GPL-3.0+</license>
-  <maintainer email="johannes.beck@kit.edu">Johannes Beck</maintainer>
-  <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
+  <maintainer email="piotr.orzechowski@kit.edu">Piotr Orzechowski</maintainer>
+  <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
   <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules.git</url>
 

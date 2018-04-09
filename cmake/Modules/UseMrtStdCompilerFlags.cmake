@@ -17,6 +17,10 @@ else ()
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
+# use gold linker
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=gold")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
+
 # Select arch flag
 if(MRT_ARCH)
   if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
