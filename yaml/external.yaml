@@ -31,3 +31,4 @@ rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
 vision_opencv: https://github.com/ros-perception/vision_opencv.git
 libpointmatcher: https://github.com/ethz-asl/libpointmatcher.git
 libnabo: https://github.com/ethz-asl/libnabo
+iai_kinect2: https://github.com/code-iai/iai_kinect2.git
