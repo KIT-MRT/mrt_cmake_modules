@@ -253,10 +253,9 @@ function(mrt_add_python_api modulename)
         message(FATAL_ERROR "mrt_add_python_api() was already called for this project. You can add only one python_api per project!")
     endif()
 
-    # find pythonLibs
-    find_package(BoostPython REQUIRED)
-    find_package(PythonLibs 2.7 REQUIRED)
-    include_directories(${PYTHON_INCLUDE_DIRS})
+    if (NOT DEFINED BoostPython_FOUND)
+        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>boost-python</depend>' to 'package.xml'")
+    endif()
 
     # put in devel folder
     set(PREFIX  ${CATKIN_DEVEL_PREFIX})

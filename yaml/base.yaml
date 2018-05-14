@@ -22,6 +22,16 @@ boost:
     library_dirs:
     - Boost_LIBRARY_DIRS
     name: Boost
+boost-python:
+  cmake:
+    include_dirs:
+      - BoostPython_INCLUDE_DIRS
+    libraries:
+      - BoostPython_LIBRARIES
+    name: BoostPython
+  ubuntu:
+    - libpython-dev
+    - libboost-python-dev
 cuda:
   cmake:
     components: []
