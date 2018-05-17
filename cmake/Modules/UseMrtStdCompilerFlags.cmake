@@ -65,6 +65,7 @@ if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
 endif()
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-operation -Werror=memset-elt-size")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context") # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
 endif()
 
