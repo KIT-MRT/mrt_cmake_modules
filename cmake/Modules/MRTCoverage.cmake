@@ -112,12 +112,13 @@ IF ( NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "Covera
 ENDIF() # NOT CMAKE_BUILD_TYPE STREQUAL "Debug"
 
 
-# Param _targetname     The name of new the custom make target
-# Param _outputname     lcov output is generated as _outputname.info
-#                       HTML report is generated in _outputname/index.html
+# Param _targetname      The name of new the custom make target to run _after_ the executables
+# Param _outputname      lcov output is generated as _outputname.info
+#                        HTML report is generated in _outputname/index.html
+# Param _init_targetname The name of the target to run _before_ the executables
 # Optional fourth parameter is passed as arguments to _testrunner
 #   Pass them in list form, e.g.: "-j;2" for -j 2
-FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname)
+FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
 
 	IF(NOT LCOV_PATH)
 		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
@@ -127,17 +128,28 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname)
 		MESSAGE(FATAL_ERROR "genhtml not found! Aborting...")
 	ENDIF() # NOT GENHTML_PATH
 
+	SET(coverage_baseline "${CMAKE_CURRENT_BINARY_DIR}/${_outputname}.baseline")
 	SET(coverage_info "${CMAKE_CURRENT_BINARY_DIR}/${_outputname}.info")
+	SET(coverage_combined "${coverage_info}.combined")
 	SET(coverage_cleaned "${coverage_info}.cleaned")
 
+	message(STATUS "Adding initial coverage target  ${_init_targetname}")
+	ADD_CUSTOM_TARGET(${_init_targetname}
+		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --capture --initial --output-file ${coverage_baseline} -q
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMENT "Initializing code coverage counters"
+	)
+
+
 	# Setup target
-	message(STATUS "Adding coverage target ${_targetname}")
+	message(STATUS "Adding postprocess coverage target ${_targetname}")
 	ADD_CUSTOM_TARGET(${_targetname}
 		# Capturing lcov counters and generating report
 		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --capture --output-file ${coverage_info} -q
-		COMMAND ${LCOV_PATH} --extract ${coverage_info} '${CMAKE_CURRENT_LIST_DIR}/*' --output-file ${coverage_cleaned} -q
+		COMMAND ${LCOV_PATH} -a ${coverage_info} -a ${coverage_baseline} --output-file ${coverage_combined} -q
+		COMMAND ${LCOV_PATH} --extract ${coverage_combined} '${CMAKE_CURRENT_LIST_DIR}/*' --output-file ${coverage_cleaned} -q
 		COMMAND ${GENHTML_PATH} -o ${_outputname} ${coverage_cleaned} || true
-		COMMAND ${CMAKE_COMMAND} -E remove ${coverage_info} ${coverage_cleaned}
+		COMMAND ${CMAKE_COMMAND} -E remove ${coverage_info} ${coverage_combined}
 
 		# Cleanup lcov
 		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --zerocounters -q

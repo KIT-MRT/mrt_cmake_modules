@@ -116,6 +116,22 @@ macro(generate_ros_interface_files)
     endif()
 endmacro()
 
+macro(_setup_coverage_info)
+    setup_target_for_coverage(${PROJECT_NAME}-coverage coverage ${PROJECT_NAME}-pre-coverage)
+    # make sure the target is built after running tests
+    add_dependencies(run_tests ${PROJECT_NAME}-coverage)
+    add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
+    add_dependencies(clean_test_results_${PROJECT_NAME} ${PROJECT_NAME}-pre-coverage)
+    add_dependencies(${PROJECT_NAME}-pre-coverage tests)
+    if(MRT_ENABLE_COVERAGE GREATER 1)
+        add_custom_command(TARGET ${PROJECT_NAME}-coverage
+            POST_BUILD
+            COMMAND firefox ${CMAKE_CURRENT_BINARY_DIR}/coverage/index.html > /dev/null 2>&1 &
+            COMMENT "Showing coverage results"
+            )
+    endif()
+endmacro()
+
 
 #
 # Registers the custom check_tests command and adds a dependency for a certain unittest
@@ -701,17 +717,7 @@ function(mrt_add_ros_tests folder)
         set(TARGET_ADDED True)
     endforeach()
     if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        setup_target_for_coverage(${PROJECT_NAME}-coverage coverage)
-        # make sure the target is built after running tests
-        add_dependencies(run_tests ${PROJECT_NAME}-coverage)
-        add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
-        if(MRT_ENABLE_COVERAGE GREATER 1)
-            add_custom_command(TARGET ${PROJECT_NAME}-coverage
-                POST_BUILD
-                COMMAND firefox ${CMAKE_CURRENT_BINARY_DIR}/coverage/index.html > /dev/null 2>&1 &
-                COMMENT "Showing coverage results"
-                )
-        endif()
+        _setup_coverage_info()
     endif()
     _mrt_register_test()
 endfunction()
@@ -773,18 +779,7 @@ function(mrt_add_tests folder)
         endif()
     endforeach()
     if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        setup_target_for_coverage(${PROJECT_NAME}-coverage coverage)
-        # make sure the target is built after running tests
-        add_dependencies(run_tests ${PROJECT_NAME}-coverage)
-        add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
-        # show in browser
-        if(MRT_ENABLE_COVERAGE GREATER 1)
-            add_custom_command(TARGET ${PROJECT_NAME}-coverage
-                POST_BUILD
-                COMMAND firefox ${CMAKE_CURRENT_BINARY_DIR}/coverage/index.html > /dev/null 2>&1 &
-                COMMENT "Showing coverage results"
-                )
-        endif()
+        _setup_coverage_info()
     endif()
     _mrt_register_test()
 endfunction()
