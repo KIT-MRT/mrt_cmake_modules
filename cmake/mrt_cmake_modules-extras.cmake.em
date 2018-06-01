@@ -48,6 +48,10 @@ else()
     configure_file(${MCM_ROOT}/cmake/Templates/mrt_cached_variables.cmake.in "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/mrt_cached_variables.cmake" @@ONLY)
 endif()
 
+# import cotire
+if(MRT_COTIRE_ENABLED)
+    include(MRTCotire)
+endif()
 
 # Set build flags to MRT_SANITIZER_CXX_FLAGS based on the current sanitizer configuration
 # based on the configruation in the MRT_SANITIZER variable
@@ -298,6 +302,9 @@ function(mrt_add_python_api modulename)
             ${MRT_SANITIZER_LINK_FLAGS}
             )
         add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+        if(MRT_COTIRE_ENABLED)
+            cotire(${TARGET_NAME})
+        endif()
 
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
@@ -392,6 +399,13 @@ function(mrt_add_library libname)
         ${MRT_SANITIZER_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         )
+    if(MRT_COTIRE_ENABLED)
+        cotire(${LIBRARY_TARGET_NAME})
+        set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES EXCLUDE_FROM_ALL TRUE)
+        set(LIBRARY_TARGET_NAME ${LIBRARY_TARGET_NAME}_unity)
+        set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES EXCLUDE_FROM_ALL FALSE)
+        target_compile_options(${LIBRARY_TARGET_NAME} PUBLIC -fPIC) # workaround for fpic warning in unittests, etc
+    endif()
     # add dependency to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
         target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
@@ -476,6 +490,9 @@ function(mrt_add_executable execname)
         ${MRT_SANITIZER_EXE_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         )
+    if(MRT_COTIRE_ENABLED)
+        cotire(${EXEC_TARGET_NAME})
+    endif()
     # append to list of all targets in this project
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
 endfunction()
@@ -569,6 +586,9 @@ function(mrt_add_nodelet nodeletname)
         ${MRT_SANITIZER_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         )
+    if(MRT_COTIRE_ENABLED)
+        cotire(${NODELET_TARGET_NAME})
+    endif()
     # append to list of all targets in this project
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
