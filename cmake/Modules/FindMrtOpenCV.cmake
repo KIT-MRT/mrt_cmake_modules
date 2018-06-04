@@ -2,6 +2,7 @@
 #Adjust the following paths if needed.
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/opencv-2.4.11/share/OpenCV")
 set(PACKAGE_PATH "/mrtsoftware/pkg/opencv-2.4.11/share/OpenCV")
+SET(CUDA_TOOLKIT_ROOT_DIR "/usr/local/cuda-9.1")
 
 #old mrtsoftware-style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
