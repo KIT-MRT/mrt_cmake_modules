@@ -22,6 +22,16 @@ boost:
     library_dirs:
     - Boost_LIBRARY_DIRS
     name: Boost
+boost-python:
+  cmake:
+    include_dirs:
+      - BoostPython_INCLUDE_DIRS
+    libraries:
+      - BoostPython_LIBRARIES
+    name: BoostPython
+  ubuntu:
+    - libpython-dev
+    - libboost-python-dev
 cuda:
   cmake:
     components: []
@@ -664,6 +674,13 @@ python-nlopt:
 python-vte:
   ubuntu:
   - python-vte
+range_v3:
+  cmake:
+    include_dirs:
+    - range-v3_INCLUDE_DIR
+    name: range-v3
+  ubuntu:
+  - librange-v3-dev
 sdl2:
   cmake:
     components: []
@@ -708,3 +725,4 @@ yaml-cpp:
     - yaml-cpp_LIBRARIES
     library_dirs: []
     name: yaml-cpp
+
