@@ -11,6 +11,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>lcov</buildtool_depend>
+  <build_depend>rospack</build_depend>
 
   <export>
     <architecture_independent/>
