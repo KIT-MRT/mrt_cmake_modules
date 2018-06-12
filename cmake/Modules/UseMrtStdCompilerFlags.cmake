@@ -35,8 +35,6 @@ else()
   # sandybridge is the lowest common cpu arch for us
   set(_arch "-march=sandybridge")
 endif()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
