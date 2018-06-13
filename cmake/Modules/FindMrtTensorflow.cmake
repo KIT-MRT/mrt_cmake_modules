@@ -3,11 +3,8 @@ find_package(PkgConfig)
 find_path(TENSORFLOW_INCLUDE_DIR tensorflow/core/public/session.h
   PATH_SUFFIXES tensorflow
   )
-find_path(TENSORFLOW_NSYNC_INCLUDE_DIR nsync_cv.h
-  PATH_SUFFIXES tensorflow/external/nsync/public
-  )
 
-set(TENSORFLOW_INCLUDE_DIR ${TENSORFLOW_INCLUDE_DIR} ${TENSORFLOW_EIGEN_INCLUDE_DIR} ${TENSORFLOW_NSYNC_INCLUDE_DIR})
+set(TENSORFLOW_INCLUDE_DIR ${TENSORFLOW_INCLUDE_DIR})
 
 find_library(TENSORFLOW_CC_LIBRARY
   NAMES tensorflow_cc
