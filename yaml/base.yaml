@@ -172,8 +172,6 @@ libgsl:
     - GSL_INCLUDE_DIRS
     libraries:
     - GSL_LIBRARIES
-    library_dirs:
-    - GSL_LINK_DIRECTORIES
     name: GSL
   ubuntu:
   - libgsl-dev
