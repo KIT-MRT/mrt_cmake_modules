@@ -175,6 +175,8 @@ libgsl:
     library_dirs:
     - GSL_LINK_DIRECTORIES
     name: GSL
+  ubuntu:
+  - libgsl-dev
 liblapack-dev:
   cmake:
     include_dirs: []
