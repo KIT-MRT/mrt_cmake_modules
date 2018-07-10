@@ -1,3 +1,14 @@
+aravis:
+  cmake:
+    include_dirs:
+    - Aravis_INCLUDE_DIRS
+    libraries:
+    - Aravis_LIBRARIES
+    library_dirs:
+    - Aravis_LIBRARY_DIRS
+    name: Aravis
+  ubuntu:
+  - libaravis-dev
 armadillo:
   cmake:
     include_dirs:
@@ -161,9 +172,9 @@ libgsl:
     - GSL_INCLUDE_DIRS
     libraries:
     - GSL_LIBRARIES
-    library_dirs:
-    - GSL_LINK_DIRECTORIES
     name: GSL
+  ubuntu:
+  - libgsl-dev
 liblapack-dev:
   cmake:
     include_dirs: []
@@ -487,7 +498,7 @@ mrt_qt-dev:
       name: MrtQt4
     xenial:
       components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns
+      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
       include_dirs:
       - QT_INCLUDES
       libraries:
@@ -510,7 +521,7 @@ mrt_qt5-dev:
       name: MrtQt5
     xenial:
       components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns
+      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
       include_dirs:
       - QT_INCLUDES
       libraries:
