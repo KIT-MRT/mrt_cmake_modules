@@ -44,7 +44,7 @@ Public CMake functions / macros
 
  :param execname: name of the executable
  :type execname: string
- :param FOLDER: Folder containing the .cpp/.cc-files and .h/.hh/.hpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``.
+ :param FOLDER: Folder containing the .cpp/.cc-files and .h/.hh/.hpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``.
  :type FOLDER: string
  :param FILES: List of extra source files to add. This or the FOLDER parameter is mandatory.
  :type FILES: list of strings
@@ -82,7 +82,7 @@ Public CMake functions / macros
 
  :param libname: Name of the library to generate as first argument (without lib or .so)
  :type libname: string
- :param INCLUDES: Include files needed for the library, absolute or relative to ${CMAKE_CURRENT_LIST_DIR}
+ :param INCLUDES: Include files needed for the library, absolute or relative to ${PROJECT_SOURCE_DIR}
  :type INCLUDES: list of strings
  :param SOURCES: Source files to be added. If empty, a header-only library is assumed
  :type SOURCES: list of strings
@@ -125,7 +125,7 @@ Public CMake functions / macros
 
  :param basename: base name of the node/nodelet (_nodelet will be appended for the nodelet name to avoid conflicts with library packages)
  :type basename: string
- :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
+ :param FOLDER: Folder with cpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``
  :type FOLDER: string
  :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
  :type DEPENDS: list of strings
@@ -166,7 +166,7 @@ Public CMake functions / macros
 
  :param nodeletname: base name of the nodelet (_nodelet will be appended to the base name to avoid conflicts with library packages)
  :type nodeletname: string
- :param FOLDER: Folder with cpp files for the executable, relative to ``${CMAKE_CURRENT_LIST_DIR}``
+ :param FOLDER: Folder with cpp files for the executable, relative to ``${PROJECT_SOURCE_DIR}``
  :type FOLDER: string
  :param DEPENDS: List of extra (non-catkin, non-mrt) CMAKE dependencies. This should only be required for including external projects.
  :type DEPENDS: list of strings
@@ -197,7 +197,7 @@ Public CMake functions / macros
 
  Adds python nosetest contained in a folder. Wraps the function catkin_add_nosetests.
 
- :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+ :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
  :type folder: string
  :param DEPENDS: Additional (non-catkin, non-mrt) dependencies (e.g. with catkin_download_test_data)
  :type DEPENDS: list of strings
@@ -222,6 +222,8 @@ Public CMake functions / macros
 
 
  Generates a python module from boost-python cpp files.
+
+ Each <file>.cpp will become a seperate <file>.py submodule within <modulename>. After building and sourcing you can use the modules simply with "import <modulename>.<file>".
 
  The files are automatically linked with boost-python libraries and a python module is generated
  and installed from the resulting library. If this project declares any libraries with ``mrt_add_library()``, they will automatically be linked with this library.
@@ -265,7 +267,7 @@ Public CMake functions / macros
 
  Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 
- :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+ :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
  :type folder: string
  :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
  :type LIBRARIES: list of strings
@@ -292,7 +294,7 @@ Public CMake functions / macros
 
  Adds all gtests (without a corresponding .test file) contained in a folder as unittests.
 
- :param folder: folder containing the tests (relative to ``${CMAKE_CURRENT_LIST_DIR}``) as first argument
+ :param folder: folder containing the tests (relative to ``${PROJECT_SOURCE_DIR}``) as first argument
  :type folder: string
  :param LIBRARIES: Additional (non-catkin, non-mrt) libraries to link to
  :type LIBRARIES: list of strings
@@ -325,7 +327,7 @@ Public CMake functions / macros
 
 
  Adds a file or folder or a list of each to the list of files shown by the IDE
- The files will not be marked for installation. Paths should be relative to ``CMAKE_CURRENT_LISTS_DIR``
+ The files will not be marked for installation. Paths should be relative to ``PROJECT_SOURCE_DIR``
 
  If a file or folder does not exist, it will be ignored without warning.
 
@@ -402,6 +404,7 @@ Non-public CMake functions / macros
  * :cmake:macro:`_mrt_register_test`
  * :cmake:macro:`_pack_libraries_with_build_configuration`
  * :cmake:macro:`_unpack_libraries_with_build_configuration`
+ * :cmake:macro:`generate_ros_parameter_files`
 
 .. _`_list_append_deduplicate_ref`:
 
@@ -436,7 +439,7 @@ Non-public CMake functions / macros
 
 .. cmake:macro:: _mrt_register_test()
 
- *[function defined in mrt_cmake_modules-extras.cmake]*
+ *[macro defined in mrt_cmake_modules-extras.cmake]*
 
 
  Registers the custom check_tests command and adds a dependency for a certain unittest
@@ -474,5 +477,25 @@ Non-public CMake functions / macros
  copied from catkin/cmake/catkin_libraries.cmake to keep pkgConfig
  self contained
 
+.. _`generate_ros_parameter_files_ref`:
+
+`generate_ros_parameter_files`
+------------------------------
+
+.. cmake:macro:: generate_ros_parameter_files()
+
+ *[macro defined in mrt_cmake_modules-extras.cmake]*
+
+ define rosparam/rosinterface_handler macro for compability. Macros will be overriden by the actual macros defined by the packages, if existing.
+
 Not documented CMake functions / macros
 ---------------------------------------
+
+.. _`generate_ros_interface_files_ref`:
+
+`generate_ros_interface_files`
+------------------------------
+
+.. cmake:macro:: generate_ros_interface_files()
+
+ *[macro defined in mrt_cmake_modules-extras.cmake]*

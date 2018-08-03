@@ -20,6 +20,27 @@ else ()
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif ()
 
+# use gold linker
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=gold")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
+
+# export compile commands
+if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
+    set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
+endif()
+
+# Select arch flag
+if(MRT_ARCH)
+  if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
+    set(_arch "-march=${MRT_ARCH}")
+  endif()
+else()
+  # sandybridge is the lowest common cpu arch for us
+  set(_arch "-march=sandybridge")
+endif()
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
+
 #add OpenMP
 find_package(OpenMP REQUIRED)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
@@ -35,8 +56,6 @@ endif()
 # add warning/error flags
 # see here for documentation: https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
 # unused-parameter: ignored because ros_tools usually have unused parameters
-# ignored-attributes: ignored because of thousands of eigen 3.3 warnings
-# no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=enum-compare -Werror=format -Werror=maybe-uninitialized -Werror=nonnull -Werror=openmp-simd -Werror=parentheses -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
 
@@ -45,9 +64,12 @@ if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
 endif()
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-compare -Werror=init-self -Werror=logical-not-parentheses -Werror=memset-transposed-args -Werror=nonnull-compare -Werror=sizeof-pointer-memaccess -Werror=tautological-compare")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes") # ignored-attributes: ignored because of thousands of eigen 3.3 warnings
 endif()
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-operation -Werror=memset-elt-size")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context") # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
 endif()
 
 # the following -wall flags are not an error (please update this list):

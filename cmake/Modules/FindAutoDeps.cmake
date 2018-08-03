@@ -102,7 +102,7 @@ if (AutoDeps_FIND_COMPONENTS)
 		endif()
 		
 		#append library directories
-		if(DEFINED _${other_package}_CMAKE_LIBRARY_DIRS)
+		if(DEFINED _${other_package}_CMAKE_LIBRARY_DIRS_)
 			if(NOT DEFINED ${_${other_package}_CMAKE_LIBRARY_DIRS_})
 				message(FATAL_ERROR "Package ${other_package}: Specified library dirs variable ${${_${other_package}_CMAKE_LIBRARY_DIRS_}} not set.")
 			endif()
