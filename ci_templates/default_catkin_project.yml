@@ -2,7 +2,6 @@ variables:
   GIT_STRATEGY: none
 # Cache build results between building and testing
 cache:
-  key: "$CI_COMMIT_SHA"
   paths:
   - catkin_ws/
 stages:
@@ -112,6 +111,12 @@ pages:
 
 deps:
   stage: deps
+  variables:
+    MRT_CI_NO_TIDY: 1
+  cache:
+    paths:
+    - catkin_ws/
+    key: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-deps
   only:
   # only execute if this is the master branch
   - master
