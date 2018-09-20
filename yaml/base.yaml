@@ -211,6 +211,8 @@ libpcap-dev:
     libraries:
     - PCAP_LIBRARY
     name: PCAP
+  ubuntu:
+  - libpcap-dev
 libqwt5-qt4-dev:
   cmake:
     components: []
