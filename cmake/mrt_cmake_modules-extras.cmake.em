@@ -22,9 +22,9 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter='${PROJECT_SOURCE_DIR}/.*'")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter=${PROJECT_SOURCE_DIR}/.*")
 elseif(MRT_CLANG_TIDY STREQUAL "fix")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors" "-header-filter='${PROJECT_SOURCE_DIR}/.*" "-format-style=file")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors" "-header-filter=${PROJECT_SOURCE_DIR}/.*" "-format-style=file")
 endif()
 if(DEFINED MRT_CLANG_TIDY_FLAGS)
     if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
