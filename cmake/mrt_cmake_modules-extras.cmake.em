@@ -22,9 +22,9 @@ set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
 
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter='${PROJECT_SOURCE_DIR}/.*'")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter=${PROJECT_SOURCE_DIR}/.*")
 elseif(MRT_CLANG_TIDY STREQUAL "fix")
-    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors" "-header-filter='${PROJECT_SOURCE_DIR}/.*" "-format-style=file")
+    set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-fix-errors" "-header-filter=${PROJECT_SOURCE_DIR}/.*" "-format-style=file")
 endif()
 if(DEFINED MRT_CLANG_TIDY_FLAGS)
     if(${CMAKE_VERSION} VERSION_LESS "3.6.0")
@@ -728,13 +728,13 @@ function(mrt_add_ros_tests folder)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
+            set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
             add_rostest(${_ros_test}
                 DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
         endif()
-        set(TARGET_ADDED True)
     endforeach()
     if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
         _setup_coverage_info()
