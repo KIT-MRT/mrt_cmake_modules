@@ -17,6 +17,15 @@ grid_map:
 - grid_map_rviz_plugin
 - grid_map_sdf
 - grid_map_visualization
+lanelet2:
+- lanelet2
+- lanelet2_core
+- lanelet2_io
+- lanelet2_projection
+- lanelet2_traffic_rules
+- lanelet2_routing
+- lanelet2_python
+- lanelet2_maps
 vision_opencv:
 - image_geometry
 - cv_bridge
