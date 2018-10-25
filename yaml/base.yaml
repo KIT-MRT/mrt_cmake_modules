@@ -571,6 +571,18 @@ mrt_tensorflow:
   ubuntu:
     xenial:
     - mrt-tensorflow-dev
+mrt_c_tensorflow:
+  cmake:
+    components: []
+    include_dirs:
+    - TENSORFLOW_INCLUDE_DIRS
+    libraries:
+    - TENSORFLOW_LIBRARIES
+    library_dirs: []
+    name: MrtCTensorflow
+  ubuntu:
+    xenial:
+    - mrt-tensorflow-dev
 mrt_tesseract:
   cmake:
     components: []
