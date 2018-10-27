@@ -475,6 +475,7 @@ function(mrt_add_executable execname)
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
         ${MRT_SANITIZER_EXE_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
+        ${${PROJECT_NAME}_GENERATED_LIBRARIES}
         )
     # append to list of all targets in this project
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
