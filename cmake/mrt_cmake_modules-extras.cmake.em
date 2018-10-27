@@ -489,6 +489,7 @@ function(mrt_add_executable execname)
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
         ${MRT_SANITIZER_EXE_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
+        ${${PROJECT_NAME}_GENERATED_LIBRARIES}
         )
     if(MRT_COTIRE_ENABLED)
         cotire(${EXEC_TARGET_NAME})
