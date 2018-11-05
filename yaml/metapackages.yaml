@@ -26,6 +26,8 @@ lanelet2:
 - lanelet2_routing
 - lanelet2_python
 - lanelet2_maps
+- lanelet2_validation
+- lanelet2_examples
 vision_opencv:
 - image_geometry
 - cv_bridge
