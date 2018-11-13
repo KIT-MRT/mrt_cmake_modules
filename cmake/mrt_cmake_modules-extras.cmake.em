@@ -833,6 +833,9 @@ function(mrt_add_nosetests folder)
     catkin_add_nosetests(${TEST_FOLDER}
         DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET}
         )
+    if(MRT_ENABLE_COVERAGE AND MRT_FORCE_PYTHON_COVERAGE AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
+        _setup_coverage_info()
+    endif()
     _mrt_register_test()
 endfunction()
 
