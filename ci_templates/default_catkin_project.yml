@@ -89,6 +89,7 @@ code_quality:
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
   - source devel_debug/setup.bash
   - cd src/$CI_PROJECT_NAME
+  - rm codeclimate.json || true
   - cp ../../../gl-code-quality-report.json codeclimate.json || true
   - mrt ci run_clang_tidy -e $CI_PROJECT_NAME
   - cp codeclimate.json ../../../gl-code-quality-report.json
