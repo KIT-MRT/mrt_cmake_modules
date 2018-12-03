@@ -77,7 +77,7 @@ if (AutoDeps_FIND_COMPONENTS)
 	foreach(other_package ${_OTHER_SELECTED_PACKAGES_})
 		#check, if cmake variable mapping is available
 		if(NOT DEFINED _${other_package}_CMAKE_NAME_)
-			message(FATAL_ERROR "Package ${other_package} is specified for autodepend but cmake variables are not defined.")
+			message(FATAL_ERROR "Package ${other_package} is specified for autodepend but cmake variables are not defined. Did you resolve dependencies?")
 		endif()
 		
 		#find non catkin modules
