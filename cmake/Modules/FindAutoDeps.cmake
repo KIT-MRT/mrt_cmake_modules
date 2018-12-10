@@ -148,6 +148,12 @@ if (AutoDeps_FIND_COMPONENTS)
 	if(mrt_INCLUDE_DIRS)
 		list(REMOVE_ITEM mrt_INCLUDE_DIRS "/usr/include" "/usr/local/include")
 	endif()
+
+	#remove -lpthread from exports as this will not work with the catkin find package script.
+	if(mrt_EXPORT_LIBRARIES)
+		list(REMOVE_ITEM mrt_EXPORT_LIBRARIES "-lpthread")
+	endif()
+
 endif()
 
 set(catkin_EXPORT_DEPENDS ${_CATKIN_EXPORT_PACKAGES_})
