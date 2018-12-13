@@ -194,6 +194,14 @@ libgsl:
     name: GSL
   ubuntu:
   - libgsl-dev
+libigl:
+  cmake:
+    components: []
+    include_dirs: []
+    libraries:
+    - IGL_LIBRARIES
+    library_dirs: []
+    name: IGL
 liblapack-dev:
   cmake:
     include_dirs: []
