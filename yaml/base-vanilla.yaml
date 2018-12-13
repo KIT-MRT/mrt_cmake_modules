@@ -4,8 +4,7 @@ aravis:
     - Aravis_INCLUDE_DIRS
     libraries:
     - Aravis_LIBRARIES
-    library_dirs:
-    - Aravis_LIBRARY_DIRS
+    library_dirs: []
     name: Aravis
 boost:
   cmake:

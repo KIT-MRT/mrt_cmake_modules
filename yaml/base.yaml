@@ -4,8 +4,7 @@ aravis:
     - Aravis_INCLUDE_DIRS
     libraries:
     - Aravis_LIBRARIES
-    library_dirs:
-    - Aravis_LIBRARY_DIRS
+    library_dirs: []
     name: Aravis
   ubuntu:
   - libaravis-dev
@@ -76,6 +75,26 @@ eigen2:
     - EIGEN2_INCLUDE_DIR
     libraries: []
     name: Eigen2
+glew:
+  ubuntu:
+    - libglew-dev
+  cmake:
+    include_dirs:
+      - GLEW_INCLUDE_DIR
+    libraries:
+      - GLEW_LIBRARIES
+    library_dirs: []
+    name: GLEW
+glfw:
+  ubuntu:
+    - libglfw3-dev
+  cmake:
+    include_dirs:
+      - GLFW3_INCLUDE_DIR
+    libraries:
+      - GLFW3_LIBRARY
+    library_dirs: []
+    name: glfw3
 freeglut3-dev:
   ubuntu:
   - freeglut3-dev
@@ -175,6 +194,14 @@ libgsl:
     name: GSL
   ubuntu:
   - libgsl-dev
+libigl:
+  cmake:
+    components: []
+    include_dirs: []
+    libraries:
+    - IGL_LIBRARIES
+    library_dirs: []
+    name: IGL
 liblapack-dev:
   cmake:
     include_dirs: []
@@ -211,6 +238,8 @@ libpcap-dev:
     libraries:
     - PCAP_LIBRARY
     name: PCAP
+  ubuntu:
+  - libpcap-dev
 libqwt5-qt4-dev:
   cmake:
     components: []
@@ -566,6 +595,18 @@ mrt_tensorflow:
     - TENSORFLOW_LIBRARIES
     library_dirs: []
     name: MrtTensorflow
+  ubuntu:
+    xenial:
+    - mrt-tensorflow-dev
+mrt_c_tensorflow:
+  cmake:
+    components: []
+    include_dirs:
+    - TENSORFLOW_INCLUDE_DIRS
+    libraries:
+    - TENSORFLOW_LIBRARIES
+    library_dirs: []
+    name: MrtCTensorflow
   ubuntu:
     xenial:
     - mrt-tensorflow-dev
