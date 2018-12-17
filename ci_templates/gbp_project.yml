@@ -1,0 +1,115 @@
+variables:
+  GIT_STRATEGY: none
+  CONTAINER_REGISTRY: gitlab.mrt.uni-karlsruhe.de:21443/mrt/mrt_build
+
+cache:
+  key: "empty"
+  paths:
+  - .doesnotexist/
+  policy: pull
+
+stages:
+  - build_src
+  - build
+  - deploy
+
+build_src:
+  image: $CONTAINER_REGISTRY/mrt_packaging:18.04
+  stage: build_src
+  tags:
+  - packaging
+  only:
+  - xenial
+  script:
+  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - cd $CI_PROJECT_NAME
+  - pwd && ls
+  - gbp buildpackage --git-builder=/bin/true --git-cleaner=/bin/true --git-export-dir=
+  artifacts:
+    paths:
+    - ./*.xz
+    - ./*.gz
+    name: "orig"
+
+build_xenial:
+  image: $CONTAINER_REGISTRY/mrt_packaging:16.04
+  stage: build
+  tags:
+  - packaging
+  only:
+  - xenial
+  script:
+  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - cd $CI_PROJECT_NAME
+  - pwd && ls
+  - sudo apt update
+  - mrtdeb_install_build_dependencies
+  - mrtdeb_increment_version
+  - gbp buildpackage
+  artifacts:
+    paths:
+    - ./*.deb
+    - ./*.xz
+    - ./*.gz
+    - ./*.build
+    - ./*.buildinfo
+    - ./*.changes
+    - ./*.dsc
+    name: "debian_package"
+
+build_bionic:
+  image: $CONTAINER_REGISTRY/mrt_packaging:18.04
+  stage: build
+  tags:
+  - packaging
+  only:
+  - xenial
+  script:
+  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - cd $CI_PROJECT_NAME
+  - pwd && ls
+  - sudo apt update
+  - mrtdeb_install_build_dependencies
+  - mrtdeb_increment_version
+  - gbp buildpackage
+  artifacts:
+    paths:
+    - ./*.deb
+    - ./*.xz
+    - ./*.gz
+    - ./*.build
+    - ./*.buildinfo
+    - ./*.changes
+    - ./*.dsc
+    name: "debian_package"
+
+release_xenial:
+  image: $CONTAINER_REGISTRY/mrt_packaging:16.04
+  stage: deploy
+  tags:
+  - packaging
+  when: manual
+  only:
+  - xenial
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+  - build_xenial
+  script:
+  - reprepro -b $REPOSITORY -v --waitforlock 1000 --ignore=wrongdistribution include $DISTRIBUTION *.changes
+
+release_bionic:
+  image: $CONTAINER_REGISTRY/mrt_packaging:18.04
+  stage: deploy
+  tags:
+  - packaging
+  when: manual
+  only:
+  - xenial
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+  - build_bionic
+  script:
+  - reprepro -b $REPOSITORY -v --waitforlock 1000 --ignore=wrongdistribution include $DISTRIBUTION *.changes
+
