@@ -20,6 +20,7 @@ build_src:
   - packaging
   only:
   - xenial
+  - debian
   script:
   - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
@@ -38,6 +39,7 @@ build_xenial:
   - packaging
   only:
   - xenial
+  - debian
   script:
   - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
@@ -63,7 +65,8 @@ build_bionic:
   tags:
   - packaging
   only:
-  - xenial
+  - bionic
+  - debian
   script:
   - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
@@ -91,6 +94,7 @@ release_xenial:
   when: manual
   only:
   - xenial
+  - debian
   variables:
     GIT_STRATEGY: none
   dependencies:
@@ -105,7 +109,8 @@ release_bionic:
   - packaging
   when: manual
   only:
-  - xenial
+  - bionic
+  - debian
   variables:
     GIT_STRATEGY: none
   dependencies:
