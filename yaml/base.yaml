@@ -304,10 +304,7 @@ mrt_ann:
     library_dirs: []
     name: MrtANN
   ubuntu:
-    trusty:
-    - mrt-ann-dev
-    xenial:
-    - libann-dev
+  - libann-dev
 mrt_benchmark:
   cmake:
     components: []
@@ -339,10 +336,7 @@ mrt_cereal:
     library_dirs: []
     name: MrtCereal
   ubuntu:
-    trusty:
-    - mrt-cereal-dev
-    xenial:
-    - libcereal-dev
+  - libcereal-dev
 mrt_ceres:
   cmake:
     components: []
@@ -353,33 +347,18 @@ mrt_ceres:
     library_dirs: []
     name: MrtCeres
   ubuntu:
-    trusty:
-    - mrt-ceres-dev
-    xenial:
-    - mrt-libceres-dev
+  - mrt-libceres-dev
 mrt_cgal:
   cmake:
-    trusty:
-      components: []
-      include_dirs:
-      - CGAL_INCLUDE_DIRS
-      libraries:
-      - CGAL_LIBRARIES
-      library_dirs: []
-      name: MrtCGAL
-    xenial:
-      components: []
-      include_dirs:
-      - CGAL_INCLUDE_DIRS
-      libraries:
-      - CGAL_LIBRARIES
-      library_dirs: []
-      name: CGAL
+    components: []
+    include_dirs:
+    - CGAL_INCLUDE_DIRS
+    libraries:
+    - CGAL_LIBRARIES
+    library_dirs: []
+    name: CGAL
   ubuntu:
-    trusty:
-    - mrt-cgal-dev
-    xenial:
-    - libcgal-dev
+  - libcgal-dev
 mrt_ebus:
   cmake:
     components: []
@@ -390,7 +369,7 @@ mrt_ebus:
     library_dirs: []
     name: Mrtebus-sdk
   ubuntu:
-    xenial: ebus-sdk
+  - ebus-sdk
 mrt_f2c_old:
   cmake:
     components: []
@@ -405,8 +384,7 @@ mrt_f2c_old:
     - mrt-ftwoc-dev
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
-    xenial:
-    - mrt-gnu-arm-embedded-toolchain
+  - mrt-gnu-arm-embedded-toolchain
 mrt_leptonica:
   cmake:
     components: []
@@ -417,10 +395,7 @@ mrt_leptonica:
     library_dirs: []
     name: MrtLeptonica
   ubuntu:
-    trusty:
-    - mrt-leptonica-dev
-    xenial:
-    - libleptonica-dev
+  - libleptonica-dev
 mrt_metis:
   cmake:
     components: []
@@ -442,10 +417,7 @@ mrt_nlopt:
     library_dirs: []
     name: Mrtnlopt
   ubuntu:
-    trusty:
-    - mrt-nlopt-dev
-    xenial:
-    - libnlopt-dev
+  - libnlopt-dev
 mrt_opencv:
   cmake:
     components: []
@@ -456,10 +428,10 @@ mrt_opencv:
     library_dirs: []
     name: MrtOpenCV
   ubuntu:
-    trusty:
-    - mrt-opencv-dev
     xenial:
     - mrt-libopencv-dev
+    bionic:
+    - libopencv-dev
 mrt_pcl:
   cmake:
     components: []
@@ -471,10 +443,10 @@ mrt_pcl:
     - PCL_LIBRARY_DIRS
     name: MrtPCL
   ubuntu:
-    trusty:
-    - mrt-pcl-dev
     xenial:
     - mrt-libpcl-all-dev
+    bionic:
+    - libpcl-dev
 mrt_protobuf:
   cmake:
     components: []
@@ -491,76 +463,39 @@ mrt_protobuf:
   - python-protobuf
 mrt_qt4-dev:
   cmake:
-    trusty:
-      components:
-      - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
-        QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
-        QtXmlPatterns
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt4
-    xenial:
-      components:
-      - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
-        QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
-        QtXmlPatterns
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt4
+    components:
+    - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
+      QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
+      QtXmlPatterns
+    include_dirs:
+    - QT_INCLUDES
+    libraries:
+    - QT_LIBRARIES
+    name: MrtQt4
   ubuntu:
   - libqt4-dev
 mrt_qt-dev:
   cmake:
-    trusty:
-      components:
-      - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
-        QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
-        QtXmlPatterns
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt4
-    xenial:
-      components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt5
+    components:
+    - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
+    include_dirs:
+    - QT_INCLUDES
+    libraries:
+    - QT_LIBRARIES
+    name: MrtQt5
   ubuntu:
-    trusty:
-    - libqt4-dev
-    xenial:
-    - qt5-default
+  - qt5-default
 mrt_qt5-dev:
   cmake:
-    trusty:
-      components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt5
-    xenial:
-      components:
-      - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
-      include_dirs:
-      - QT_INCLUDES
-      libraries:
-      - QT_LIBRARIES
-      name: MrtQt5
+    components:
+    - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
+    include_dirs:
+    - QT_INCLUDES
+    libraries:
+    - QT_LIBRARIES
+    name: MrtQt5
   ubuntu:
-    trusty:
-    - qt5-default
-    xenial:
-    - qt5-default
+  - qt5-default
 mrt_sdl2:
   cmake:
     components: []
@@ -582,10 +517,7 @@ mrt_suitesparse:
     library_dirs: []
     name: MrtSuiteSparse
   ubuntu:
-    trusty:
-    - mrt-suitesparse-dev
-    xenial:
-    - libsuitesparse-dev
+  - libsuitesparse-dev
 mrt_tensorflow:
   cmake:
     components: []
@@ -596,8 +528,7 @@ mrt_tensorflow:
     library_dirs: []
     name: MrtTensorflow
   ubuntu:
-    xenial:
-    - mrt-tensorflow-dev
+  - mrt-tensorflow-dev
 mrt_c_tensorflow:
   cmake:
     components: []
@@ -608,8 +539,7 @@ mrt_c_tensorflow:
     library_dirs: []
     name: MrtCTensorflow
   ubuntu:
-    xenial:
-    - mrt-tensorflow-dev
+  - mrt-tensorflow-dev
 mrt_tesseract:
   cmake:
     components: []
@@ -620,10 +550,7 @@ mrt_tesseract:
     library_dirs: []
     name: MrtTesseract
   ubuntu:
-    trusty:
-    - mrt-tesseract-dev
-    xenial:
-    - libtesseract-dev
+  - libtesseract-dev
 mrt_vtk:
   cmake:
     components: []
