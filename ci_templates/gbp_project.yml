@@ -117,5 +117,9 @@ release_bionic:
   dependencies:
   - build_bionic
   script:
+  # workaround rename ddeb files to deb files (not supported by reprepro)
+  - for file in *.ddeb; mv "$file" "${file%.ddeb}.deb"; done
+  - sed -i "s/.ddeb/.deb/" *.changes
+  - debsign --re-sign *.changes
   - reprepro -b $REPOSITORY -v --waitforlock 1000 --ignore=wrongdistribution include $DISTRIBUTION *.changes
 
