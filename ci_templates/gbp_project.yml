@@ -78,6 +78,7 @@ build_bionic:
   artifacts:
     paths:
     - ./*.deb
+    - ./*.ddeb
     - ./*.xz
     - ./*.gz
     - ./*.build
