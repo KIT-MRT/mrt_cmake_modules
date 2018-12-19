@@ -12,9 +12,13 @@ if (CMAKE_VERSION VERSION_LESS "3.1")
   else()
     message(FATAL_ERROR "Compiler does not have c++14 support. Use at least g++4.9 or Visual Studio 2013 and newer.")
   endif()
-else ()
+elseif (CMAKE_VERSION VERSION_LESS "3.8")
+  # c++17 is not supported in cmake 3.7 and earlier
   set(CMAKE_CXX_STANDARD 14)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
+else()
+  # we dont require it since compilers might still support only 14
+  set(CMAKE_CXX_STANDARD 17)
 endif ()
 
 # use gold linker
