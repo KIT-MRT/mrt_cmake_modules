@@ -431,10 +431,7 @@ mrt_opencv:
     library_dirs: []
     name: MrtOpenCV
   ubuntu:
-    xenial:
-    - mrt-libopencv-dev
-    bionic:
-    - libopencv-dev
+  - mrt-libopencv-dev
 mrt_pcl:
   cmake:
     components: []
