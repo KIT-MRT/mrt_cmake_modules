@@ -120,6 +120,6 @@ release_bionic:
   # workaround rename ddeb files to deb files (not supported by reprepro)
   - for file in *.ddeb; do mv "$file" "${file%.ddeb}.deb"; done || true
   - sed -i "s/.ddeb/.deb/" *.changes
-  - debsign --re-sign *.changes
+  - debsign -kAD63A68F --re-sign *.changes
   - reprepro -b $REPOSITORY -v --waitforlock 1000 --ignore=wrongdistribution include $DISTRIBUTION *.changes
 
