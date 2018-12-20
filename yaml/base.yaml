@@ -50,8 +50,12 @@ cuda:
     libraries:
     - CUDA_LIBRARIES
     library_dirs: []
-    name: CUDA
-  ubuntu: []
+    name: MrtCUDA
+  ubuntu:
+    xenial:
+      - cuda-toolkit-9-2
+    bionic:
+      - cuda-toolkit-10-0
 ebus:
   cmake:
     components: []
