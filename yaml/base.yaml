@@ -575,7 +575,18 @@ opencv:
     library_dirs: []
     name: OpenCV
   ubuntu:
-  - libopencv-dev
+  - mrt-libopencv-dev
+libopencv-dev:
+  cmake:
+    components: []
+    include_dirs:
+    - OpenCV_INCLUDE_DIRS
+    libraries:
+    - OpenCV_LIBS
+    library_dirs: []
+    name: OpenCV
+  ubuntu:
+  - mrt-libopencv-dev
 opengl:
   cmake:
     components: []
