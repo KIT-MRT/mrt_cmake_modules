@@ -477,7 +477,7 @@ mrt_qt4-dev:
 mrt_qt-dev:
   cmake:
     components:
-    - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent Qt5XmlPatterns Qt5Svg
+    - Qt5Core Qt5Gui Qt5DBus Qt5Network Qt5OpenGL Qt5OpenGLExtensions Qt5Sql Qt5Test Qt5Xml Qt5Widgets Qt5Concurrent
     include_dirs:
     - QT_INCLUDES
     libraries:
