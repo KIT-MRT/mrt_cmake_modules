@@ -1,0 +1,6 @@
+if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
+    find_package(CUDA REQUIRED)
+else()
+    set(CUDA_INCLUDE_DIRS "${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES}")
+    set(CUDA_LIBRARIES "cuda")
+endif()
