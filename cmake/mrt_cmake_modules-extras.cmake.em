@@ -689,7 +689,7 @@ function(mrt_add_ros_tests folder)
         get_filename_component(_test_name ${_ros_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
         # look for a matching .cpp
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
@@ -757,7 +757,7 @@ function(mrt_add_tests folder)
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
