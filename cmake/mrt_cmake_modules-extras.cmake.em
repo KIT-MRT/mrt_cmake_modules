@@ -144,13 +144,18 @@ endmacro()
 #
 macro(_mrt_register_test)
     # we need this only once per project
-    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
+    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET _run_tests_${PROJECT_NAME})
         return()
     endif()
-    cmake_policy(SET CMP0040 OLD)
-    add_custom_command(TARGET run_tests
+    # pygment formats xml more nicely
+    find_program(CCAT pygmentize)
+    if(CCAT)
+        set(RUN_CCAT | ${CCAT})
+    endif()
+
+    add_custom_command(TARGET _run_tests_${PROJECT_NAME}
         POST_BUILD
-        COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
+        COMMAND catkin_test_results --verbose . ${RUN_CCAT} 1>&2 # redirect to stderr for better output in catkin
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
