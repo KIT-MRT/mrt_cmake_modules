@@ -144,13 +144,18 @@ endmacro()
 #
 macro(_mrt_register_test)
     # we need this only once per project
-    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
+    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET _run_tests_${PROJECT_NAME})
         return()
     endif()
-    cmake_policy(SET CMP0040 OLD)
-    add_custom_command(TARGET run_tests
+    # pygment formats xml more nicely
+    find_program(CCAT pygmentize)
+    if(CCAT)
+        set(RUN_CCAT | ${CCAT})
+    endif()
+
+    add_custom_command(TARGET _run_tests_${PROJECT_NAME}
         POST_BUILD
-        COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
+        COMMAND catkin_test_results --verbose . ${RUN_CCAT} 1>&2 # redirect to stderr for better output in catkin
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
@@ -689,7 +694,7 @@ function(mrt_add_ros_tests folder)
         get_filename_component(_test_name ${_ros_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
         # look for a matching .cpp
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
@@ -757,7 +762,7 @@ function(mrt_add_tests folder)
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
