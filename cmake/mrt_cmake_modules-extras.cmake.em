@@ -763,8 +763,7 @@ function(mrt_add_tests folder)
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
-        STRING(REGEX REPLACE "-test" "" TEST_NAME ${_test_name})
-        set(TEST_NAME ${TEST_NAME}-test)
+        STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
         set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_NAME})
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
@@ -784,7 +783,6 @@ function(mrt_add_tests folder)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )
-            set_target_properties(${TEST_TARGET_NAME} PROPERTIES OUTPUT_NAME ${TEST_NAME})
             set(TARGET_ADDED True)
         endif()
     endforeach()
