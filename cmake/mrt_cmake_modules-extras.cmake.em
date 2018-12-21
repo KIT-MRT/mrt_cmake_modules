@@ -163,35 +163,15 @@ macro(_mrt_register_test)
 endmacro()
 
 #
-# Adds a file or folder or a list of each to the list of files shown by the IDE
-# The files will not be marked for installation. Paths should be relative to ``PROJECT_SOURCE_DIR``
-#
-# If a file or folder does not exist, it will be ignored without warning.
-#
-# Example:
-# ::
-#
-#  mrt_add_to_ide(
-#      myfile1 myfile2.txt myFolder
-#      )
+# Once upon a time this used to make non-code files known to IDEs that parse Cmake output. But as this
+# messes up with the target determination mechanism used by most ides and garbages up the target view.
+# 
+# Therefore this function is no longer used and only here for backwards compability.
 #
 # @@public
 #
 function(mrt_add_to_ide files)
-    foreach(ELEMENT ${ARGV})
-        if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${ELEMENT}/[^.]*[^~]")
-            if(DIRECTORY_FILES)
-                STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
-                add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
-            endif()
-        elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
-            STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-show-${ELEMENT})
-            add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${ELEMENT})
-        endif()
-    endforeach()
 endfunction()
-
 
 #
 # Automatically sets up and installs python modules located under ``src/${PROJECT_NAME}``.
