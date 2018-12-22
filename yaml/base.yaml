@@ -284,6 +284,9 @@ mbed_cli:
     xenial:
       pip:
         packages: [mbed-cli]
+    bionic:
+      pip:
+        packages: [mbed-cli]
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
@@ -391,7 +394,10 @@ mrt_f2c_old:
     - mrt-ftwoc-dev
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
-  - mrt-gnu-arm-embedded-toolchain
+    trusty:
+    - mrt-gnu-arm-embedded-toolchain
+    bionic:
+    - gcc-arm-embedded
 mrt_leptonica:
   cmake:
     components: []
