@@ -58,7 +58,7 @@ endif()
 # see here for documentation: https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
 # unused-parameter: ignored because ros_tools usually have unused parameters
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=openmp-simd -Werror=parentheses -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=openmp-simd -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
 
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=array-bounds=1")
