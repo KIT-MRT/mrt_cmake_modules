@@ -37,3 +37,4 @@ libpointmatcher: https://github.com/ethz-asl/libpointmatcher.git
 libnabo: https://github.com/ethz-asl/libnabo
 iai_kinect2: https://github.com/code-iai/iai_kinect2.git
 rviz_satellite: https://github.com/gareth-cross/rviz_satellite.git
+lanelet2: https://github.com/fzi-forschungszentrum-informatik/Lanelet2.git

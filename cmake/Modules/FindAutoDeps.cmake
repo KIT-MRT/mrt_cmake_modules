@@ -77,7 +77,7 @@ if (AutoDeps_FIND_COMPONENTS)
 	foreach(other_package ${_OTHER_SELECTED_PACKAGES_})
 		#check, if cmake variable mapping is available
 		if(NOT DEFINED _${other_package}_CMAKE_NAME_)
-			message(FATAL_ERROR "Package ${other_package} is specified for autodepend but cmake variables are not defined.")
+			message(FATAL_ERROR "Package ${other_package} is specified for autodepend but cmake variables are not defined. Did you resolve dependencies?")
 		endif()
 		
 		#find non catkin modules
@@ -148,6 +148,12 @@ if (AutoDeps_FIND_COMPONENTS)
 	if(mrt_INCLUDE_DIRS)
 		list(REMOVE_ITEM mrt_INCLUDE_DIRS "/usr/include" "/usr/local/include")
 	endif()
+
+	#remove -lpthread from exports as this will not work with the catkin find package script.
+	if(mrt_EXPORT_LIBRARIES)
+		list(REMOVE_ITEM mrt_EXPORT_LIBRARIES "-lpthread")
+	endif()
+
 endif()
 
 set(catkin_EXPORT_DEPENDS ${_CATKIN_EXPORT_PACKAGES_})

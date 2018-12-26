@@ -148,13 +148,18 @@ endmacro()
 #
 macro(_mrt_register_test)
     # we need this only once per project
-    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET run_tests)
+    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET _run_tests_${PROJECT_NAME})
         return()
     endif()
-    cmake_policy(SET CMP0040 OLD)
-    add_custom_command(TARGET run_tests
+    # pygment formats xml more nicely
+    find_program(CCAT pygmentize)
+    if(CCAT)
+        set(RUN_CCAT | ${CCAT})
+    endif()
+
+    add_custom_command(TARGET _run_tests_${PROJECT_NAME}
         POST_BUILD
-        COMMAND catkin_test_results --verbose . 1>&2 # redirect to stderr for better output in catkin
+        COMMAND catkin_test_results --verbose . ${RUN_CCAT} 1>&2 # redirect to stderr for better output in catkin
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
@@ -162,35 +167,15 @@ macro(_mrt_register_test)
 endmacro()
 
 #
-# Adds a file or folder or a list of each to the list of files shown by the IDE
-# The files will not be marked for installation. Paths should be relative to ``PROJECT_SOURCE_DIR``
-#
-# If a file or folder does not exist, it will be ignored without warning.
-#
-# Example:
-# ::
-#
-#  mrt_add_to_ide(
-#      myfile1 myfile2.txt myFolder
-#      )
+# Once upon a time this used to make non-code files known to IDEs that parse Cmake output. But as this
+# messes up with the target determination mechanism used by most ides and garbages up the target view.
+# 
+# Therefore this function is no longer used and only here for backwards compability.
 #
 # @@public
 #
 function(mrt_add_to_ide files)
-    foreach(ELEMENT ${ARGV})
-        if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${ELEMENT}/[^.]*[^~]")
-            if(DIRECTORY_FILES)
-                STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
-                add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
-            endif()
-        elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
-            STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-show-${ELEMENT})
-            add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${ELEMENT})
-        endif()
-    endforeach()
 endfunction()
-
 
 #
 # Automatically sets up and installs python modules located under ``src/${PROJECT_NAME}``.
@@ -708,8 +693,9 @@ function(mrt_add_ros_tests folder)
     foreach(_ros_test ${_ros_tests})
         get_filename_component(_test_name ${_ros_test} NAME_WE)
         # make sure we add only one -test to the target
-        STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        STRING(REGEX REPLACE "-test" "" TEST_NAME ${_test_name})
+        set(TEST_NAME ${TEST_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_NAME})
         # look for a matching .cpp
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
@@ -729,6 +715,7 @@ function(mrt_add_ros_tests folder)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
+            set_target_properties(${TEST_TARGET_NAME} PROPERTIES OUTPUT_NAME ${TEST_NAME})
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
@@ -777,7 +764,7 @@ function(mrt_add_tests folder)
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
