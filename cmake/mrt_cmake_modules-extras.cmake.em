@@ -364,13 +364,14 @@ function(mrt_add_library libname)
         get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
         if ("${FILE_EXT}" STREQUAL ".cu")
             list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
+            set(_MRT_HAS_CUDA_SOURCE_FILES TRUE)
         else()
             list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
         endif()
     endforeach()
 
     # generate the target
-    message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${MRT_ADD_LIBRARY_SOURCES}")
+    message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}")
     add_library(${LIBRARY_TARGET_NAME}
         ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES}
         )
@@ -394,10 +395,13 @@ function(mrt_add_library libname)
     endforeach()
 
     # Add cuda target
-    if (NOT ${_MRT_CUDA_SOURCES_FILES})
+    if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
-        set(CUDA_TARGET_NAME ${LIBRARY_TARGET_NAME}-cuda)
-        message(STATUS "Adding CUDA library: \"${CUDA_TARGET_NAME}\"")
+        set(CUDA_TARGET_NAME _${LIBRARY_TARGET_NAME}_cuda)
+        # NVCC does not like '-' in file names.
+        string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
+
+        message(STATUS "Adding library \"${CUDA_TARGET_NAME}\" with source ${_MRT_CUDA_SOURCES_FILES}")
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
@@ -416,8 +420,8 @@ function(mrt_add_library libname)
     endif()
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -481,6 +485,7 @@ function(mrt_add_executable execname)
         get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
         if ("${FILE_EXT}" STREQUAL ".cu")
             list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
+            set(_MRT_HAS_CUDA_SOURCE_FILES TRUE)
         else()
             list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
         endif()
@@ -509,10 +514,11 @@ function(mrt_add_executable execname)
         )
 
     # Add cuda target
-    if (NOT ${_MRT_CUDA_SOURCES_FILES})
+    if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
-        set(CUDA_TARGET_NAME ${PROJECT_NAME}-${EXEC_NAME}-cuda)
-        message(STATUS "Adding CUDA library: \"${CUDA_TARGET_NAME}\"")
+        set(CUDA_TARGET_NAME _${PROJECT_NAME}_${EXEC_NAME}_cuda)
+        # NVCC does not like '-' in file names.
+        string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
@@ -532,7 +538,7 @@ function(mrt_add_executable execname)
     endif()
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 

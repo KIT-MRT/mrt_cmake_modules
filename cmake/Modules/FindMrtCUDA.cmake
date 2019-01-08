@@ -8,6 +8,12 @@ if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
     endif()
 
     set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -Wno-deprecated-gpu-targets -std=c++11")
+    if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -lineinfo -g")
+    else()
+        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -DNDEBUG -O3")
+    endif()
+
     set(CUDA_PROPAGATE_HOST_FLAGS OFF)
 else()
     set(CMAKE_CUDA_COMPILER "${CUDA_TOOLKIT_ROOT_DIR}/bin/nvcc")
