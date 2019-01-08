@@ -165,7 +165,7 @@ endmacro()
 #
 # Once upon a time this used to make non-code files known to IDEs that parse Cmake output. But as this
 # messes up with the target determination mechanism used by most ides and garbages up the target view.
-# 
+#
 # Therefore this function is no longer used and only here for backwards compability.
 #
 # @@public
@@ -358,10 +358,21 @@ function(mrt_add_library libname)
         return()
     endif()
 
+    set(_MRT_CPP_SOURCE_FILES )
+    set(_MRT_CUDA_SOURCES_FILES )
+    foreach(SOURCE_FILE ${MRT_ADD_LIBRARY_SOURCES})
+        get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
+        if ("${FILE_EXT}" STREQUAL ".cu")
+            list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
+        else()
+            list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
+        endif()
+    endforeach()
+
     # generate the target
     message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${MRT_ADD_LIBRARY_SOURCES}")
     add_library(${LIBRARY_TARGET_NAME}
-        ${MRT_ADD_LIBRARY_INCLUDES} ${MRT_ADD_LIBRARY_SOURCES}
+        ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES}
         )
     set_target_properties(${LIBRARY_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
@@ -381,6 +392,28 @@ function(mrt_add_library libname)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
         target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
     endforeach()
+
+    # Add cuda target
+    if (NOT ${_MRT_CUDA_SOURCES_FILES})
+        # generate cuda target
+        set(CUDA_TARGET_NAME ${LIBRARY_TARGET_NAME}-cuda)
+        message(STATUS "Adding CUDA library: \"${CUDA_TARGET_NAME}\"")
+
+        if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
+            cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+        else()
+            add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+        endif()
+
+        target_link_libraries(${CUDA_TARGET_NAME}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_LIBRARY_LIBRARIES}
+                )
+
+        # link cuda library to executable
+        target_link_libraries(${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME})
+    endif()
 
     # append to list of all targets in this project
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
@@ -431,7 +464,7 @@ function(mrt_add_executable execname)
     # get the files
     if(MRT_ADD_EXECUTABLE_FOLDER)
         file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cu")
     endif()
     if(MRT_ADD_EXECUTABLE_FILES)
         list(APPEND EXEC_SOURCE_FILES_SRC ${MRT_ADD_EXECUTABLE_FILES})
@@ -441,11 +474,23 @@ function(mrt_add_executable execname)
         return()
     endif()
 
+    # separate cuda files
+    set(_MRT_CPP_SOURCE_FILES )
+    set(_MRT_CUDA_SOURCES_FILES )
+    foreach(SOURCE_FILE ${EXEC_SOURCE_FILES_SRC})
+        get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
+        if ("${FILE_EXT}" STREQUAL ".cu")
+            list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
+        else()
+            list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
+        endif()
+    endforeach()
+
     # generate the target
     message(STATUS "Adding executable \"${EXEC_NAME}\"")
     add_executable(${EXEC_TARGET_NAME}
         ${EXEC_SOURCE_FILES_INC}
-        ${EXEC_SOURCE_FILES_SRC}
+        ${_MRT_CPP_SOURCE_FILES}
         )
     set_target_properties(${EXEC_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${EXEC_NAME}
@@ -462,6 +507,30 @@ function(mrt_add_executable execname)
         ${MRT_SANITIZER_LINK_FLAGS}
         ${${PROJECT_NAME}_GENERATED_LIBRARIES}
         )
+
+    # Add cuda target
+    if (NOT ${_MRT_CUDA_SOURCES_FILES})
+        # generate cuda target
+        set(CUDA_TARGET_NAME ${PROJECT_NAME}-${EXEC_NAME}-cuda)
+        message(STATUS "Adding CUDA library: \"${CUDA_TARGET_NAME}\"")
+
+        if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
+            cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+        else()
+            add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+        endif()
+
+        target_link_libraries(${CUDA_TARGET_NAME}
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_EXECUTABLE_LIBRARIES}
+                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
+                )
+
+        # link cuda library to executable
+        target_link_libraries(${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME})
+    endif()
+
     # append to list of all targets in this project
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${EXEC_TARGET_NAME} PARENT_SCOPE)
 endfunction()
