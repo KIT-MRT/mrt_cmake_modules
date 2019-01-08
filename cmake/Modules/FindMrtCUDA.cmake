@@ -1,13 +1,15 @@
 find_package(CUDA REQUIRED)
 
-if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-    if (${CUDA_VERSION_STRING} VERSION_LESS 10.0)
-        set(CUDA_HOST_COMPILER "/usr/bin/g++-5")
-    else()
-        set(CUDA_HOST_COMPILER "/usr/bin/g++-7")
-    endif()
+if (${CUDA_VERSION_STRING} VERSION_LESS 10.0)
+    set(_CUDA_HOST_COMPILER "/usr/bin/g++-6")
+else()
+    set(_CUDA_HOST_COMPILER "/usr/bin/g++-7")
+endif()
 
-    set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -Wno-deprecated-gpu-targets -std=c++11")
+if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
+    set(CUDA_HOST_COMPILER "${_CUDA_HOST_COMPILER}")
+
+    set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -Wno-deprecated-gpu-targets -std=c++14")
     if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
         set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -lineinfo -g")
     else()
@@ -17,13 +19,7 @@ if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
     set(CUDA_PROPAGATE_HOST_FLAGS OFF)
 else()
     set(CMAKE_CUDA_COMPILER "${CUDA_TOOLKIT_ROOT_DIR}/bin/nvcc")
-
-    if (${CUDA_VERSION_STRING} VERSION_LESS 10.0)
-        set(CMAKE_CUDA_HOST_COMPILER "/usr/bin/g++-5")
-    else()
-        set(CMAKE_CUDA_HOST_COMPILER "/usr/bin/g++-7")
-    endif()
-
+    set(CMAKE_CUDA_HOST_COMPILER "${_CUDA_HOST_COMPILER}")
     set(CMAKE_CUDA_FLAGS "-lineinfo")
 
     enable_language(CUDA)

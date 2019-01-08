@@ -397,7 +397,7 @@ function(mrt_add_library libname)
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
-        set(CUDA_TARGET_NAME _${LIBRARY_TARGET_NAME}_cuda)
+        set(CUDA_TARGET_NAME ${LIBRARY_TARGET_NAME}_cuda)
         # NVCC does not like '-' in file names.
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 

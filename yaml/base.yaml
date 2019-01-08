@@ -53,9 +53,9 @@ cuda:
     name: MrtCUDA
   ubuntu:
     xenial:
-      - cuda-toolkit-9-2
+      - [cuda-toolkit-9-2, g++-6]
     bionic:
-      - cuda-toolkit-10-0
+      - [cuda-toolkit-10-0, g++-7]
 ebus:
   cmake:
     components: []
