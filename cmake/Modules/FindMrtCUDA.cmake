@@ -11,9 +11,9 @@ if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
 
     set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -Wno-deprecated-gpu-targets -std=c++14")
     if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
-        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -lineinfo -g")
+        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -lineinfo -g --compiler-options -fPIC")
     else()
-        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -DNDEBUG -O3")
+        set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS} -DNDEBUG -O3 --compiler-options -fPIC")
     endif()
 
     set(CUDA_PROPAGATE_HOST_FLAGS OFF)

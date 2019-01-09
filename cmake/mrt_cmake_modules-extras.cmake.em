@@ -397,23 +397,19 @@ function(mrt_add_library libname)
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
-        set(CUDA_TARGET_NAME ${LIBRARY_TARGET_NAME}_cuda)
+        set(CUDA_TARGET_NAME _${LIBRARY_TARGET_NAME}_cuda)
         # NVCC does not like '-' in file names.
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
         message(STATUS "Adding library \"${CUDA_TARGET_NAME}\" with source ${_MRT_CUDA_SOURCES_FILES}")
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-            cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+            cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
-            add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+            add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
-
-        target_link_libraries(${CUDA_TARGET_NAME}
-                ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
-                ${MRT_ADD_LIBRARY_LIBRARIES}
-                )
 
         # link cuda library to executable
         target_link_libraries(${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME})
@@ -467,7 +463,7 @@ function(mrt_add_executable execname)
 
     # get the files
     if(MRT_ADD_EXECUTABLE_FOLDER)
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
+        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cuh")
         file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cu")
     endif()
     if(MRT_ADD_EXECUTABLE_FILES)
@@ -516,22 +512,17 @@ function(mrt_add_executable execname)
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
-        set(CUDA_TARGET_NAME _${PROJECT_NAME}_${EXEC_NAME}_cuda)
+        set(CUDA_TARGET_NAME _${EXEC_TARGET_NAME}_cuda)
         # NVCC does not like '-' in file names.
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-            cuda_add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+            cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
-            add_library(${CUDA_TARGET_NAME} ${_MRT_CUDA_SOURCES_FILES})
+            add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
-
-        target_link_libraries(${CUDA_TARGET_NAME}
-                ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
-                ${MRT_ADD_EXECUTABLE_LIBRARIES}
-                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
-                )
 
         # link cuda library to executable
         target_link_libraries(${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME})
