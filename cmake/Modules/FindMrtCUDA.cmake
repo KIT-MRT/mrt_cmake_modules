@@ -1,9 +1,9 @@
 find_package(CUDA REQUIRED)
 
 if (${CUDA_VERSION_STRING} VERSION_LESS 10.0)
-    set(_CUDA_HOST_COMPILER "/usr/bin/g++-6")
+    set(_CUDA_HOST_COMPILER "g++-6")
 else()
-    set(_CUDA_HOST_COMPILER "/usr/bin/g++-7")
+    set(_CUDA_HOST_COMPILER "g++-7")
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS "3.9.0")

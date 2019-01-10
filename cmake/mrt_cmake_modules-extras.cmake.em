@@ -513,15 +513,27 @@ function(mrt_add_executable execname)
     if (_MRT_HAS_CUDA_SOURCE_FILES)
         # generate cuda target
         set(CUDA_TARGET_NAME _${EXEC_TARGET_NAME}_cuda)
-        # NVCC does not like '-' in file names.
+
+        # NVCC does not like '-' in file names and because 'cuda_add_library' creates
+        # a helper file which contains the target name, one has to replace '-'.
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
-            add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
-            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
-            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+            # Build a separate object file and link it in a shared library file. Otherwise there
+            # are problems using gcov.
+            set(CUDA_TARGET_NAME_OBJECT _${EXEC_TARGET_NAME}_cuda_object)
+            add_library(${CUDA_TARGET_NAME_OBJECT} OBJECT ${_MRT_CUDA_SOURCES_FILES})
+            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY POSITION_INDEPENDENT_CODE ON)
+            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+
+            add_library(${CUDA_TARGET_NAME} SHARED $<TARGET_OBJECTS:${CUDA_TARGET_NAME_OBJECT}>)
+            target_link_libraries(${CUDA_TARGET_NAME} 
+                ${catkin_LIBRARIES}
+                ${mrt_LIBRARIES}
+                ${MRT_ADD_EXECUTABLE_LIBRARIES}
+                ${${PROJECT_NAME}_GENERATED_LIBRARIES})
         endif()
 
         # link cuda library to executable
