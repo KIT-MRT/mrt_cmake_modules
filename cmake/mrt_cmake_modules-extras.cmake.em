@@ -162,6 +162,90 @@ macro(_mrt_register_test)
     set(_mrt_checks_${PROJECT_NAME} TRUE PARENT_SCOPE)
 endmacro()
 
+# Glob for folders in the search directory.
+function(mrt_glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
+    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} ${SEARCH_DIRECTORY}/[^.]*)
+    else()
+        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} CONFIGURE_DEPENDS ${SEARCH_DIRECTORY}/[^.]*)
+    endif()
+
+    set(_DIRECTORY_LIST_ "")
+    foreach(SRC_DIR ${DIRECTORIES})
+        if(IS_DIRECTORY ${SEARCH_DIRECTORY}/${SRC_DIR})
+            list(APPEND _DIRECTORY_LIST_ ${SRC_DIR})
+        endif()
+    endforeach()
+    set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
+endfunction()
+
+# Deprecated function. Use 'mrt_glob_folders' instead.
+macro(glob_folders)
+    mrt_glob_folders(${ARGV})
+endmacro()
+
+# Globs for message files and calls add_message_files
+macro(mrt_add_message_files glob_expression)
+    mrt_glob_files(_ROS_MESSAGE_FILES ${glob_expression})
+    if (_ROS_MESSAGE_FILES)
+        add_message_files(FILES ${_ROS_MESSAGE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+        set(ROS_GENERATE_MESSAGES True)
+    endif()
+endmacro()
+
+# Globs for service files and calls add_service_files
+macro(mrt_add_service_files glob_expression)
+    mrt_glob_files(_ROS_SERVICE_FILES ${glob_expression})
+    if (_ROS_SERVICE_FILES)
+        add_service_files(FILES ${_ROS_SERVICE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+        set(ROS_GENERATE_MESSAGES True)
+    endif()
+endmacro()
+
+# Globs for action files and calls add_action_files
+macro(mrt_add_action_files glob_expression)
+    mrt_glob_files(_ROS_ACTION_FILES ${glob_expression})
+    if (_ROS_ACTION_FILES)
+        add_action_files(FILES ${_ROS_ACTION_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+    endif()
+endmacro()
+
+# Deprecated function. Use one of 'mrt_add_message_files', 'mrt_add_service_files' or 'mrt_add_action_files'.
+macro(glob_ros_files excecutable_name extension_name)
+    mrt_glob_files(ROS_${excecutable_name}_FILES "${extension_name}/*.${extension_name}")
+    if (ROS_${excecutable_name}_FILES)
+        #work around to execute a command wich name is given in a variable
+        #write a file with the command, include it and delete the file again
+        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake" "${excecutable_name}(
+            DIRECTORY ${extension_name}
+            FILES
+            ${ROS_${excecutable_name}_FILES}
+        )")
+        include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
+        file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
+
+        set(ROS_GENERATE_MESSAGES True)
+    endif()
+endmacro()
+
+# Globs files in the currect project dir.
+macro(mrt_glob_files varname)
+    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+        file(GLOB ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" ${ARGN})
+    else()
+        file(GLOB ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" CONFIGURE_DEPENDS ${ARGN})
+    endif()
+endmacro()
+
+# Globs files recursivly in the currect project dir.
+macro(mrt_glob_files_recurse varname)
+    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+        file(GLOB_RECURSE ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" ${ARGN})
+    else()
+        file(GLOB_RECURSE ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" CONFIGURE_DEPENDS ${ARGN})
+    endif()
+endmacro()
+
 #
 # Once upon a time this used to make non-code files known to IDEs that parse Cmake output. But as this
 # messes up with the target determination mechanism used by most ides and garbages up the target view.
@@ -422,9 +506,8 @@ function(mrt_add_library libname)
     endif()
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
-    set(mrt_EXPORT_TARGETS ${mrt_EXPORT_TARGETS} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -470,8 +553,8 @@ function(mrt_add_executable execname)
 
     # get the files
     if(MRT_ADD_EXECUTABLE_FOLDER)
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cuh")
-        file(GLOB_RECURSE EXEC_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cu")
+        mrt_glob_files_recurse(EXEC_SOURCE_FILES_INC "${MRT_ADD_EXECUTABLE_FOLDER}/*.h" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cuh")
+        mrt_glob_files_recurse(EXEC_SOURCE_FILES_SRC "${MRT_ADD_EXECUTABLE_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cu")
     endif()
     if(MRT_ADD_EXECUTABLE_FILES)
         list(APPEND EXEC_SOURCE_FILES_SRC ${MRT_ADD_EXECUTABLE_FILES})
@@ -600,17 +683,17 @@ function(mrt_add_nodelet nodeletname)
     endif()
 
     # get the files
-    file(GLOB NODELET_SOURCE_FILES_INC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.h" "${MRT_ADD_NODELET_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-    file(GLOB NODELET_SOURCE_FILES_SRC RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+    mrt_glob_files(NODELET_SOURCE_FILES_INC "${MRT_ADD_NODELET_FOLDER}/*.h" "${MRT_ADD_NODELET_FOLDER}/*.hpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
+    mrt_glob_files(NODELET_SOURCE_FILES_SRC "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
 
     # Find nodelet
-    file(GLOB NODELET_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc")
+    mrt_glob_files(NODELET_CPP "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc")
     if(NOT NODELET_CPP)
         return()
     endif()
 
     # Remove nodes (with their main) from src-files
-    file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc")
+    mrt_glob_files(NODE_CPP "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc")
     if (NODE_CPP)
         list(REMOVE_ITEM NODELET_SOURCE_FILES_SRC ${NODE_CPP})
     endif ()
@@ -701,14 +784,14 @@ function(mrt_add_node_and_nodelet basename)
     # search the files we have to build with
     if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
         unset(NODELET_TARGET_NAME)
-        file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
+        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
     else()
-        file(GLOB NODE_CPP RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     endif()
 
     # find *_node file containing the main() and add the executable
-    file(GLOB NODE_H RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
-    file(GLOB NODE_MAIN RELATIVE "${PROJECT_SOURCE_DIR}" "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+    mrt_glob_files(NODE_H "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
+    mrt_glob_files(NODE_MAIN "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
     if(NODE_MAIN)
         mrt_add_executable(${BASE_NAME}
             FILES ${NODE_CPP} ${NODE_H}
@@ -752,7 +835,7 @@ endfunction()
 function(mrt_add_ros_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
-    file(GLOB _ros_tests RELATIVE "${PROJECT_SOURCE_DIR}" "${TEST_FOLDER}/*.test")
+    mrt_glob_files(_ros_tests "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
 
     foreach(_ros_test ${_ros_tests})
@@ -823,7 +906,7 @@ endfunction()
 function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
-    file(GLOB _tests RELATIVE "${PROJECT_SOURCE_DIR}" "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
+    mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
@@ -949,15 +1032,12 @@ function(mrt_install)
                 DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
                 )
         endif()
-        # make it show up in IDEs
-        STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${program_path})
-        add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${program_path})
     endfunction()
 
     # install programs
     foreach(ELEMENT ${MRT_INSTALL_PROGRAMS})
         if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
-            file(GLOB FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}/${ELEMENT}/[^.]*[^~]")
+            mrt_glob_files(FILES "${PROJECT_SOURCE_DIR}/${ELEMENT}/[^.]*[^~]")
             foreach(FILE ${FILES})
                 if(NOT IS_DIRECTORY ${FILE})
                     mrt_install_program(${FILE})
@@ -975,17 +1055,9 @@ function(mrt_install)
             install(DIRECTORY ${ELEMENT}
                 DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
                 )
-            # make them show up in IDEs
-            file(GLOB_RECURSE DIRECTORY_FILES RELATIVE "${PROJECT_SOURCE_DIR}" "${ELEMENT}/[^.]*[^~]")
-            if(DIRECTORY_FILES)
-                STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
-                add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${DIRECTORY_FILES})
-            endif()
         elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking FILE \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(FILES ${ELEMENT} DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-            STRING(REGEX REPLACE "/" "-" CUSTOM_TARGET_NAME ${PROJECT_NAME}-${ELEMENT})
-            add_custom_target(${CUSTOM_TARGET_NAME} SOURCES ${ELEMENT})
         endif()
     endforeach()
 endfunction()
