@@ -358,8 +358,6 @@ function(mrt_add_library libname)
         return()
     endif()
 
-    set(_MRT_CPP_SOURCE_FILES )
-    set(_MRT_CUDA_SOURCES_FILES )
     foreach(SOURCE_FILE ${MRT_ADD_LIBRARY_SOURCES})
         get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
         if ("${FILE_EXT}" STREQUAL ".cu")
@@ -367,8 +365,16 @@ function(mrt_add_library libname)
             set(_MRT_HAS_CUDA_SOURCE_FILES TRUE)
         else()
             list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
+            set(_MRT_HAS_CPP_SOURCE_FILES TRUE)
         endif()
     endforeach()
+
+    # This is the easiest for a CUDA only library: Create an empty file.
+    if(NOT _MRT_HAS_CPP_SOURCE_FILES)
+        message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp" "")
+        list(APPEND _MRT_CPP_SOURCE_FILES "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp")
+    endif()
 
     # generate the target
     message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}")
@@ -404,9 +410,9 @@ function(mrt_add_library libname)
         message(STATUS "Adding library \"${CUDA_TARGET_NAME}\" with source ${_MRT_CUDA_SOURCES_FILES}")
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-            cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
+            cuda_add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
         else()
-            add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
+            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
@@ -416,8 +422,9 @@ function(mrt_add_library libname)
     endif()
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${LIBRARY_TARGET_NAME} PARENT_SCOPE)
+    set(mrt_EXPORT_TARGETS ${mrt_EXPORT_TARGETS} ${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME} PARENT_SCOPE)
 endfunction()
 
 
@@ -529,7 +536,7 @@ function(mrt_add_executable execname)
             set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
 
             add_library(${CUDA_TARGET_NAME} SHARED $<TARGET_OBJECTS:${CUDA_TARGET_NAME_OBJECT}>)
-            target_link_libraries(${CUDA_TARGET_NAME} 
+            target_link_libraries(${CUDA_TARGET_NAME}
                 ${catkin_LIBRARIES}
                 ${mrt_LIBRARIES}
                 ${MRT_ADD_EXECUTABLE_LIBRARIES}
