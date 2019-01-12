@@ -185,42 +185,44 @@ macro(glob_folders)
 endmacro()
 
 # Globs for message files and calls add_message_files
-macro(mrt_add_message_files glob_expression)
-    mrt_glob_files(_ROS_MESSAGE_FILES ${glob_expression})
+macro(mrt_add_message_files folder_name)
+    mrt_glob_files(_ROS_MESSAGE_FILES REL_FOLDER ${folder_name} ${folder_name}/*.msg)
     if (_ROS_MESSAGE_FILES)
-        add_message_files(FILES ${_ROS_MESSAGE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+        add_message_files(FILES ${_ROS_MESSAGE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/${folder_name}")
         set(ROS_GENERATE_MESSAGES True)
     endif()
 endmacro()
 
 # Globs for service files and calls add_service_files
-macro(mrt_add_service_files glob_expression)
-    mrt_glob_files(_ROS_SERVICE_FILES ${glob_expression})
+macro(mrt_add_service_files folder_name)
+    mrt_glob_files(_ROS_SERVICE_FILES REL_FOLDER ${folder_name} ${folder_name}/*.srv)
     if (_ROS_SERVICE_FILES)
-        add_service_files(FILES ${_ROS_SERVICE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+        add_service_files(FILES ${_ROS_SERVICE_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/${folder_name}")
         set(ROS_GENERATE_MESSAGES True)
     endif()
 endmacro()
 
 # Globs for action files and calls add_action_files
-macro(mrt_add_action_files glob_expression)
-    mrt_glob_files(_ROS_ACTION_FILES ${glob_expression})
+macro(mrt_add_action_files folder_name)
+    mrt_glob_files(_ROS_ACTION_FILES REL_FOLDER ${folder_name} ${folder_name}/*.action)
     if (_ROS_ACTION_FILES)
-        add_action_files(FILES ${_ROS_ACTION_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
+        add_action_files(FILES ${_ROS_ACTION_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/${folder_name}")
     endif()
 endmacro()
 
 # Deprecated function. Use one of 'mrt_add_message_files', 'mrt_add_service_files' or 'mrt_add_action_files'.
 macro(glob_ros_files excecutable_name extension_name)
-    mrt_glob_files(ROS_${excecutable_name}_FILES "${extension_name}/*.${extension_name}")
+    mrt_glob_files(ROS_${excecutable_name}_FILES REL_FOLDER ${extension_name} "${extension_name}/*.${extension_name}")
+
+    message(STATUS "The following files are found: ${ROS_${excecutable_name}_FILES}")
     if (ROS_${excecutable_name}_FILES)
         #work around to execute a command wich name is given in a variable
         #write a file with the command, include it and delete the file again
         file(WRITE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake" "${excecutable_name}(
-            DIRECTORY ${extension_name}
+            DIRECTORY \"${PROJECT_SOURCE_DIR}/${extension_name}\"
             FILES
             ${ROS_${excecutable_name}_FILES}
-        )")
+            )")
         include("${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
         file(REMOVE "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/_GLOB_ROS_TEMP_FILE.cmake")
 
@@ -229,22 +231,40 @@ macro(glob_ros_files excecutable_name extension_name)
 endmacro()
 
 # Globs files in the currect project dir.
-macro(mrt_glob_files varname)
-    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-        file(GLOB ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" ${ARGN})
+function(mrt_glob_files varname)
+    cmake_parse_arguments(PARAMS "" "REL_FOLDER" "" ${ARGN})
+
+    if (PARAMS_REL_FOLDER)
+        set(RELATIVE_PATH "${PROJECT_SOURCE_DIR}/${PARAMS_REL_FOLDER}")
     else()
-        file(GLOB ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" CONFIGURE_DEPENDS ${ARGN})
+        set(RELATIVE_PATH "${PROJECT_SOURCE_DIR}")
     endif()
-endmacro()
+
+    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+        file(GLOB files RELATIVE "${RELATIVE_PATH}" ${PARAMS_UNPARSED_ARGUMENTS})
+    else()
+        file(GLOB files RELATIVE "${RELATIVE_PATH}" CONFIGURE_DEPENDS ${PARAMS_UNPARSED_ARGUMENTS})
+    endif()
+    set(${varname} ${files} PARENT_SCOPE)
+endfunction()
 
 # Globs files recursivly in the currect project dir.
-macro(mrt_glob_files_recurse varname)
-    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-        file(GLOB_RECURSE ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" ${ARGN})
+function(mrt_glob_files_recurse varname)
+    cmake_parse_arguments(PARAMS "" "REL_FOLDER" "" ${ARGN})
+
+    if (PARAMS_REL_FOLDER)
+        set(RELATIVE_PATH "${PROJECT_SOURCE_DIR}/${PARAMS_REL_FOLDER}")
     else()
-        file(GLOB_RECURSE ${varname} RELATIVE "${PROJECT_SOURCE_DIR}" CONFIGURE_DEPENDS ${ARGN})
+        set(RELATIVE_PATH "${PROJECT_SOURCE_DIR}")
     endif()
-endmacro()
+
+    if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+        file(GLOB_RECURSE files RELATIVE "${RELATIVE_PATH}" ${PARAMS_UNPARSED_ARGUMENTS})
+    else()
+        file(GLOB_RECURSE files RELATIVE "${RELATIVE_PATH}" CONFIGURE_DEPENDS ${PARAMS_UNPARSED_ARGUMENTS})
+    endif()
+    set(${varname} ${files} PARENT_SCOPE)
+endfunction()
 
 #
 # Once upon a time this used to make non-code files known to IDEs that parse Cmake output. But as this
