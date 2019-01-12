@@ -609,6 +609,9 @@ function(mrt_add_executable execname)
     target_compile_options(${EXEC_TARGET_NAME}
         PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
         )
+    target_include_directories(${EXEC_TARGET_NAME}
+        PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
+        )
     add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
     target_link_libraries(${EXEC_TARGET_NAME}
         ${catkin_LIBRARIES}
