@@ -9,11 +9,8 @@ set(TENSORFLOW_INCLUDE_DIR ${TENSORFLOW_INCLUDE_DIR})
 find_library(TENSORFLOW_C_LIBRARY
         NAMES tensorflow
         )
-find_library(TENSORFLOW_FRAMEWORK_LIBRARY
-        NAMES tensorflow_framework
-        )
 
-set(TENSORFLOW_LIBRARY ${TENSORFLOW_C_LIBRARY} ${TENSORFLOW_FRAMEWORK_LIBRARY})
+set(TENSORFLOW_LIBRARY ${TENSORFLOW_C_LIBRARY})
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(MrtCTensorflow DEFAULT_MSG
