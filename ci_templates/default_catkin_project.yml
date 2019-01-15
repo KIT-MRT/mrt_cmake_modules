@@ -122,6 +122,7 @@ deps:
   only:
   # only execute if this is the master branch
   - master
+  - merge_request
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME
