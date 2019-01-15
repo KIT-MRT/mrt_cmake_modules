@@ -25,7 +25,7 @@ build:
   stage: build
   script:
   # Build project and resolve deps at the same time in debug mode
-  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
+  - mrt catkin build -s -rd -c --debug --default_yes --no-status $CI_PROJECT_NAME
   # generate documentation
   - mrt doc build --no-deps $CI_PROJECT_NAME
   - cp -r build_debug/$CI_PROJECT_NAME/doxygen_doc/html ../doxygen
@@ -122,6 +122,7 @@ deps:
   only:
   # only execute if this is the master branch
   - master
+  - merge_request
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME
