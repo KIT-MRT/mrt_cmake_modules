@@ -214,7 +214,6 @@ endmacro()
 macro(glob_ros_files excecutable_name extension_name)
     mrt_glob_files(ROS_${excecutable_name}_FILES REL_FOLDER ${extension_name} "${extension_name}/*.${extension_name}")
 
-    message(STATUS "The following files are found: ${ROS_${excecutable_name}_FILES}")
     if (ROS_${excecutable_name}_FILES)
         #work around to execute a command wich name is given in a variable
         #write a file with the command, include it and delete the file again
