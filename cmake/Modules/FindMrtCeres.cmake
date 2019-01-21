@@ -7,8 +7,6 @@ if (EXISTS ${PACKAGE_LOCAL_PATH})
 	set(Ceres_DIR ${PACKAGE_LOCAL_PATH})
 elseif(EXISTS ${PACKAGE_PATH})
 	set(Ceres_DIR ${PACKAGE_PATH})
-else()
-	message("Warning: Mrt-Ceres package not found. Using System version instead.")
 endif()
 
 # find package component
