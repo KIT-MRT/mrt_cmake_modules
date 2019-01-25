@@ -81,6 +81,16 @@ eigen2:
     - EIGEN2_INCLUDE_DIR
     libraries: []
     name: Eigen2
+flann:
+  ubuntu:
+    - libflann-dev
+  cmake:
+    include_dirs:
+      - FLANN_INCLUDE_DIRS
+    libraries:
+      - FLANN_LIBRARIES
+    library_dirs: []
+    name: Flann
 glew:
   ubuntu:
     - libglew-dev
