@@ -61,7 +61,7 @@ general_code_quality:
 
 test:
   stage: test
-  coverage: 'lines: \d+.\d+\%'
+  coverage: '/lines: \d+.\d+\%/'
   script:
   # Build code again, in case caching didn't work
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
