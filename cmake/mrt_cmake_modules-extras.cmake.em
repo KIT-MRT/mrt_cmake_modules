@@ -121,8 +121,10 @@ macro(_setup_coverage_info)
     # make sure the target is built after running tests
     add_dependencies(run_tests ${PROJECT_NAME}-coverage)
     add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
-    add_dependencies(clean_test_results_${PROJECT_NAME} ${PROJECT_NAME}-pre-coverage)
-    add_dependencies(${PROJECT_NAME}-pre-coverage tests)
+    if(TARGET ${PROJECT_NAME}-pre-coverage)
+        add_dependencies(clean_test_results_${PROJECT_NAME} ${PROJECT_NAME}-pre-coverage)
+        add_dependencies(${PROJECT_NAME}-pre-coverage tests)
+    endif()
     if(MRT_ENABLE_COVERAGE GREATER 1)
         add_custom_command(TARGET ${PROJECT_NAME}-coverage
             POST_BUILD
