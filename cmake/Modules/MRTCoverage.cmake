@@ -71,7 +71,7 @@
 FIND_PROGRAM( GCOV_PATH gcov )
 FIND_PROGRAM( LCOV_PATH lcov )
 FIND_PROGRAM( GENHTML_PATH genhtml )
-FIND_PROGRAM( GCOVR_PATH gcovr PATHS ${CMAKE_SOURCE_DIR}/tests)
+FIND_PROGRAM( GCOVR_PATH gcovr PATHS ${CMAKE_SOURCE_DIR}/tests /home/poggenhans/.virtualenvs/gcov/bin/gcovr)
 
 IF(NOT GCOV_PATH)
 	MESSAGE(FATAL_ERROR "gcov not found! Aborting...")
@@ -85,50 +85,12 @@ ELSEIF(NOT CMAKE_COMPILER_IS_GNUCXX)
 	MESSAGE(FATAL_ERROR "Compiler is not GNU gcc! Aborting...")
 ENDIF() # CHECK VALID COMPILER
 
-SET(CMAKE_CXX_FLAGS_COVERAGE
-    "-g -O0 --coverage -fprofile-arcs -ftest-coverage"
-    CACHE STRING "Flags used by the C++ compiler during coverage builds."
-    FORCE )
-SET(CMAKE_C_FLAGS_COVERAGE
-    "-g -O0 --coverage -fprofile-arcs -ftest-coverage"
-    CACHE STRING "Flags used by the C compiler during coverage builds."
-    FORCE )
-SET(CMAKE_EXE_LINKER_FLAGS_COVERAGE
-    ""
-    CACHE STRING "Flags used for linking binaries during coverage builds."
-    FORCE )
-SET(CMAKE_SHARED_LINKER_FLAGS_COVERAGE
-    ""
-    CACHE STRING "Flags used by the shared libraries linker during coverage builds."
-    FORCE )
-MARK_AS_ADVANCED(
-    CMAKE_CXX_FLAGS_COVERAGE
-    CMAKE_C_FLAGS_COVERAGE
-    CMAKE_EXE_LINKER_FLAGS_COVERAGE
-    CMAKE_SHARED_LINKER_FLAGS_COVERAGE )
-
-IF ( NOT (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "Coverage"))
+IF ( NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
   MESSAGE( WARNING "Code coverage results with an optimized (non-Debug) build may be misleading" )
 ENDIF() # NOT CMAKE_BUILD_TYPE STREQUAL "Debug"
 
-
-# Param _targetname      The name of new the custom make target to run _after_ the executables
-# Param _outputname      lcov output is generated as _outputname.info
-#                        HTML report is generated in _outputname/index.html
-# Param _init_targetname The name of the target to run _before_ the executables
-# Optional fourth parameter is passed as arguments to _testrunner
-#   Pass them in list form, e.g.: "-j;2" for -j 2
-FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
-
-	IF(NOT LCOV_PATH)
-		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
-	ENDIF() # NOT LCOV_PATH
-
-	IF(NOT GENHTML_PATH)
-		MESSAGE(FATAL_ERROR "genhtml not found! Aborting...")
-	ENDIF() # NOT GENHTML_PATH
-
-	SET(coverage_baseline "${CMAKE_CURRENT_BINARY_DIR}/${_outputname}.baseline")
+function(_setup_lcov_target _targetname _outputname _init_targetname)
+    	SET(coverage_baseline "${CMAKE_CURRENT_BINARY_DIR}/${_outputname}.baseline")
 	SET(coverage_info "${CMAKE_CURRENT_BINARY_DIR}/${_outputname}.info")
 	SET(coverage_combined "${coverage_info}.combined")
 	SET(coverage_cleaned "${coverage_info}.cleaned")
@@ -140,9 +102,13 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
 		COMMENT "Initializing code coverage counters"
 	)
 
+	if(NOT GENHTML_PATH)
+		MESSAGE(FATAL_ERROR "genhtml not found! Aborting...")
+	ENDIF() # NOT GENHTML_PATH
 
 	# Setup target
 	message(STATUS "Adding postprocess coverage target ${_targetname}")
+
 	ADD_CUSTOM_TARGET(${_targetname}
 		# Capturing lcov counters and generating report
 		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --capture --output-file ${coverage_info} -q
@@ -153,10 +119,41 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
 
 		# Cleanup lcov
 		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --zerocounters -q
-		
+
 		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 		COMMENT "Processing code coverage counters and generating report."
 	)
+endfunction()
+
+
+function(_setup_gcovr_target _targetname _outputname _init_targetname)
+	message(STATUS "Adding coverage target ${_targetname} using gcovr")
+	if(ENV{MRT_MIN_COVERAGE})
+        set(MIN_COVERAGE "--fail-under-line $ENV{MRT_MIN_COVERAGE} ")
+	endif()
+	ADD_CUSTOM_TARGET(${_targetname}
+	    COMMAND mkdir -p ${_outputname}
+	    COMMAND if [ ! -z "$$MRT_MIN_COVERAGE" ]; then export MIN_COVERAGE=\"--fail-under-line $$MRT_MIN_COVERAGE\"$<SEMICOLON> fi$<SEMICOLON> ${GCOVR_PATH} -j 4  -s  -r ${CMAKE_CURRENT_LIST_DIR} $$MIN_COVERAGE --object-directory ${CMAKE_CURRENT_BINARY_DIR} --html-details --html-title "${PROJECT_NAME} coverage" -o ${_outputname}/index.html || (>&2 echo "Coverage $$MRT_MIN_COVERAGE% not reached!" && false)
+	    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		COMMENT "Processing code coverage counters and generating report."
+	)
+endfunction()
+
+# Param _targetname      The name of new the custom make target to run _after_ the executables
+# Param _outputname      lcov output is generated as _outputname.info
+#                        HTML report is generated in _outputname/index.html
+# Param _init_targetname The name of the target to run _before_ the executables
+FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
+
+	IF(NOT LCOV_PATH AND NOT GCOVR_PATH)
+		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
+	ENDIF() # NOT LCOV_PATH
+
+	if(GCOVR_PATH)
+        _setup_gcovr_target(${_targetname} ${_outputname} ${_init_targetname})
+    else()
+        _setup_lcov_target(${_targetname} ${_outputname} ${_init_targetname})
+    endif()
 
 	# Show info where to find the report
 	ADD_CUSTOM_COMMAND(TARGET ${_targetname} POST_BUILD

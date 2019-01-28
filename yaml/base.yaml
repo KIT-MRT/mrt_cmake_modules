@@ -161,9 +161,12 @@ gtkmm:
     name: GTKMM
   ubuntu:
   - libgtkmm-3.0-dev
-lcov:
+gcovr:
   ubuntu:
-  - lcov
+    xenial:
+    - lcov
+    bionic:
+    - gcovr
 libcairo2-dev:
   cmake:
     components: []
