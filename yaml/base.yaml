@@ -18,6 +18,12 @@ armadillo:
     name: Armadillo
   ubuntu:
   - libarmadillo-dev
+coverage:
+  ubuntu:
+    xenial:
+    - lcov
+    bionic:
+    - gcovr
 boost:
   cmake:
     components:
@@ -161,12 +167,6 @@ gtkmm:
     name: GTKMM
   ubuntu:
   - libgtkmm-3.0-dev
-gcovr:
-  ubuntu:
-    xenial:
-    - lcov
-    bionic:
-    - gcovr
 libcairo2-dev:
   cmake:
     components: []
