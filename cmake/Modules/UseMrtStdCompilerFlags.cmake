@@ -74,6 +74,12 @@ if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized") # This causes some false positives with eigen.
 endif()
 
+if(MRT_COMPILE_ERROR)
+  if(MRT_COMPILE_ERROR STREQUAL "all")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=all")
+  endif()
+endif()
+
 # the following -wall flags are not an error (please update this list):
 # - catch-value: Not part of 7.2
 # - char-subscripts: Might cause false positives in openCV
