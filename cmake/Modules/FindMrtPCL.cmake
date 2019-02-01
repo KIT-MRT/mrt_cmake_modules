@@ -3,6 +3,11 @@
 set(PACKAGE_LOCAL_PATH "/mrtsoftware/pkg/local/pcl-1.8/share/pcl-1.8")
 set(PACKAGE_PATH "/mrtsoftware/pkg/pcl-1.8/share/pcl-1.8")
 
+cmake_policy(PUSH)
+if(POLICY CMP0074)
+	cmake_policy(SET CMP0074 NEW)
+endif()
+
 #old mrtsoftware-style
 if (EXISTS ${PACKAGE_LOCAL_PATH})
 	set(PCL_DIR ${PACKAGE_LOCAL_PATH})
@@ -18,3 +23,5 @@ elseif(Mrtpcl_FIND_QUIETLY)
 else()
 	find_package(PCL QUIET)
 endif()
+
+cmake_policy(POP)
