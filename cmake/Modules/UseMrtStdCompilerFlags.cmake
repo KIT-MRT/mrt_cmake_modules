@@ -57,28 +57,47 @@ endif()
 # add warning/error flags
 # see here for documentation: https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
 # unused-parameter: ignored because ros_tools usually have unused parameters
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=openmp-simd -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
 
-if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
+if(MRT_COMPILE_ERROR)
+  if(MRT_COMPILE_ERROR STREQUAL "all")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=all")
+    set(MRT_USE_DEFAULT_WERROR_FLAGS FALSE)
+  elseif(MRT_COMPILE_ERROR STREQUAL "off")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=all")
+    set(MRT_USE_DEFAULT_WERROR_FLAGS FALSE)
+  elseif(MRT_COMPILE_ERROR STREQUAL "auto")
+    set(MRT_USE_DEFAULT_WERROR_FLAGS TRUE)
+  else()
+    message(FATAL_ERROR "Don't know how to handle value '${MRT_COMPILE_ERROR}' in variable MRT_COMPILE_ERROR, must be one of all auto off. Exiting.")
+  endif()
+else()
+  set(MRT_USE_DEFAULT_WERROR_FLAGS TRUE)
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
+if(MRT_USE_DEFAULT_WERROR_FLAGS)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=openmp-simd -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=uninitialized -Werror=volatile-register-var")
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5 AND MRT_USE_DEFAULT_WERROR_FLAGS)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=array-bounds=1")
 endif()
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-compare -Werror=init-self -Werror=logical-not-parentheses -Werror=memset-transposed-args -Werror=nonnull-compare -Werror=sizeof-pointer-memaccess -Werror=tautological-compare")
+  if(MRT_USE_DEFAULT_WERROR_FLAGS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-compare -Werror=init-self -Werror=logical-not-parentheses -Werror=memset-transposed-args -Werror=nonnull-compare -Werror=sizeof-pointer-memaccess -Werror=tautological-compare")
+  endif()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes") # ignored-attributes: ignored because of thousands of eigen 3.3 warnings
 endif()
 if(CMAKE_COMPILER_IS_GNUCC AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-operation -Werror=memset-elt-size")
+  if(MRT_USE_DEFAULT_WERROR_FLAGS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=bool-operation -Werror=memset-elt-size")
+  endif()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context") # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized") # This causes some false positives with eigen.
 endif()
 
-if(MRT_COMPILE_ERROR)
-  if(MRT_COMPILE_ERROR STREQUAL "all")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=all")
-  endif()
-endif()
+
 
 # the following -wall flags are not an error (please update this list):
 # - catch-value: Not part of 7.2
