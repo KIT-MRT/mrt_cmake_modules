@@ -409,7 +409,7 @@ mrt_f2c_old:
     - mrt-ftwoc-dev
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
-    trusty:
+    xenial:
     - mrt-gnu-arm-embedded-toolchain
     bionic:
     - gcc-arm-embedded
