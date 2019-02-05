@@ -605,6 +605,18 @@ opencv:
     name: OpenCV
   ubuntu:
   - mrt-libopencv-dev
+python-opencv:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
+python3-opencv:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
+libopencv-contrib-dev:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
 libopencv-dev:
   cmake:
     components: []
