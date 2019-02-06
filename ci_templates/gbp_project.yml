@@ -47,6 +47,7 @@ build_xenial:
   - sudo apt update
   - mrtdeb_install_build_dependencies
   - mrtdeb_increment_version
+  - if [ -f "/opt/mrtsoftware/setup.bash" ]; then source "/opt/mrtsoftware/setup.bash"
   - gbp buildpackage --git-submodules
   artifacts:
     paths:
@@ -74,6 +75,7 @@ build_bionic:
   - sudo apt update
   - mrtdeb_install_build_dependencies
   - mrtdeb_increment_version
+  - if [ -f "/opt/mrtsoftware/setup.bash" ]; then source "/opt/mrtsoftware/setup.bash"
   - gbp buildpackage --git-submodules
   artifacts:
     paths:
