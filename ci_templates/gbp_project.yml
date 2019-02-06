@@ -22,10 +22,10 @@ build_src:
   - xenial
   - debian
   script:
-  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - git clone --recurse-submodules $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
   - pwd && ls
-  - gbp buildpackage --git-builder=/bin/true --git-cleaner=/bin/true --git-export-dir=
+  - gbp buildpackage --git-submodules --git-builder=/bin/true --git-cleaner=/bin/true --git-export-dir=
   artifacts:
     paths:
     - ./*.xz
@@ -41,13 +41,13 @@ build_xenial:
   - xenial
   - debian
   script:
-  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - git clone --recurse-submodules $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
   - pwd && ls
   - sudo apt update
   - mrtdeb_install_build_dependencies
   - mrtdeb_increment_version
-  - gbp buildpackage
+  - gbp buildpackage --git-submodules
   artifacts:
     paths:
     - ./*.deb
@@ -68,13 +68,13 @@ build_bionic:
   - bionic
   - debian
   script:
-  - git clone $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
+  - git clone --recurse-submodules $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
   - cd $CI_PROJECT_NAME
   - pwd && ls
   - sudo apt update
   - mrtdeb_install_build_dependencies
   - mrtdeb_increment_version
-  - gbp buildpackage
+  - gbp buildpackage --git-submodules
   artifacts:
     paths:
     - ./*.deb
