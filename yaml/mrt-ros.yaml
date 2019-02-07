@@ -197,7 +197,7 @@ nodelet_topic_tools:
 nodelet_tutorial_math:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 octomap:
-  ubuntu: {xenial: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 opencv3:
   ubuntu: {xenial: mrt-ros}
 orocos_kdl:
