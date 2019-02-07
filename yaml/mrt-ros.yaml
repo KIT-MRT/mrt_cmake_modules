@@ -48,6 +48,8 @@ controller_manager:
   ubuntu: {bionic: mrt-ros}
 controller_manager_msgs:
   ubuntu: {bionic: mrt-ros}
+costmap_2d:
+  ubuntu: {bionic: mrt-ros}
 cpp_common:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 cv_bridge:
@@ -77,7 +79,7 @@ dynamic_reconfigure:
 eigen_conversions:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 eigen_stl_containers:
-  ubuntu: {xenial: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 executive_smach:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 filters:
@@ -108,6 +110,10 @@ gennodejs:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 genpy:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+geodesy:
+  ubuntu: {bionic: mrt-ros}
+geographic_msgs:
+  ubuntu: {bionic: mrt-ros}
 geometric_shapes:
   ubuntu: {xenial: mrt-ros}
 geometry:
@@ -118,6 +124,8 @@ geometry_tutorials:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 gl_dependency:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+graph_msgs:
+  ubuntu: {bionic: mrt-ros}
 hardware_interface:
   ubuntu: {bionic: mrt-ros}
 image_common:
@@ -166,6 +174,8 @@ librviz_tutorial:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 map_msgs:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+map_server:
+  ubuntu: {bionic: mrt-ros}
 media_export:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 message_filters:
@@ -400,6 +410,8 @@ rviz_plugin_tutorials:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 rviz_python_tutorial:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+rviz_visual_tools:
+  ubuntu: {bionic: mrt-ros}
 self_test:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 sensor_msgs:
@@ -444,6 +456,8 @@ tf2_py:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 tf2_ros:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+tf2_sensor_msgs:
+  ubuntu: {bionic: mrt-ros}
 tf_conversions:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 theora_image_transport:
@@ -462,6 +476,8 @@ turtle_tf2:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 turtlesim:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+unique_id:
+  ubuntu: {bionic: mrt-ros}
 urdf:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 urdf_parser_plugin:
@@ -471,6 +487,8 @@ urdf_sim_tutorial:
 urdf_tutorial:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 urdfdom_py:
+  ubuntu: {bionic: mrt-ros}
+uuid_msgs:
   ubuntu: {bionic: mrt-ros}
 vision_opencv:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
@@ -482,6 +500,8 @@ visualization_tutorials:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 viz:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+voxel_grid:
+  ubuntu: {bionic: mrt-ros}
 webkit_dependency:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 xacro:
