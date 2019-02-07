@@ -369,10 +369,7 @@ mrt_ceres:
     library_dirs: []
     name: MrtCeres
   ubuntu:
-    xenial:
     - mrt-libceres-dev
-    bionic:
-    - libceres-dev
 mrt_cgal:
   cmake:
     components: []
