@@ -49,7 +49,7 @@ controller_manager:
 controller_manager_msgs:
   ubuntu: {bionic: mrt-ros}
 costmap_2d:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 cpp_common:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 cv_bridge:
@@ -111,9 +111,9 @@ gennodejs:
 genpy:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 geodesy:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 geographic_msgs:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 geometric_shapes:
   ubuntu: {xenial: mrt-ros}
 geometry:
@@ -125,7 +125,7 @@ geometry_tutorials:
 gl_dependency:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 graph_msgs:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 hardware_interface:
   ubuntu: {bionic: mrt-ros}
 image_common:
@@ -175,7 +175,7 @@ librviz_tutorial:
 map_msgs:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 map_server:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 media_export:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 message_filters:
@@ -411,7 +411,7 @@ rviz_plugin_tutorials:
 rviz_python_tutorial:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 rviz_visual_tools:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 self_test:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 sensor_msgs:
@@ -477,7 +477,7 @@ turtle_tf2:
 turtlesim:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 unique_id:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 urdf:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 urdf_parser_plugin:
@@ -489,7 +489,7 @@ urdf_tutorial:
 urdfdom_py:
   ubuntu: {bionic: mrt-ros}
 uuid_msgs:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 vision_opencv:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 visualization_marker_tutorials:
@@ -501,7 +501,7 @@ visualization_tutorials:
 viz:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 voxel_grid:
-  ubuntu: {bionic: mrt-ros}
+  ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 webkit_dependency:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 xacro:
