@@ -1,0 +1,5 @@
+#version=1.5
+include:
+   - project: 'pub/mrt_cmake_modules'
+     ref: master
+     file: '/ci_templates/default_catkin_project.yml'
