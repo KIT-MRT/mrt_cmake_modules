@@ -369,10 +369,7 @@ mrt_ceres:
     library_dirs: []
     name: MrtCeres
   ubuntu:
-    xenial:
     - mrt-libceres-dev
-    bionic:
-    - libceres-dev
 mrt_cgal:
   cmake:
     components: []
@@ -409,7 +406,7 @@ mrt_f2c_old:
     - mrt-ftwoc-dev
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
-    trusty:
+    xenial:
     - mrt-gnu-arm-embedded-toolchain
     bionic:
     - gcc-arm-embedded
@@ -605,6 +602,18 @@ opencv:
     name: OpenCV
   ubuntu:
   - mrt-libopencv-dev
+python-opencv:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
+python3-opencv:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
+libopencv-contrib-dev:
+  ubuntu:
+    bionic:
+    - mrt-libopencv-dev
 libopencv-dev:
   cmake:
     components: []
