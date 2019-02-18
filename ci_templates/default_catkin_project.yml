@@ -58,6 +58,37 @@ general_code_quality:
   artifacts:
     paths: [gl-code-quality-report.json]
 
+code_quality:
+  dependencies:
+    - general_code_quality
+  stage: test
+  only:
+  - master
+  - merge_request
+  allow_failure: true
+  artifacts:
+    paths: [gl-code-quality-report.json]
+  script:
+  # Build code again, in case caching didn't work
+  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
+  - source devel_debug/setup.bash
+  - cd src/$CI_PROJECT_NAME
+  - rm codeclimate.json || true
+  - cp ../../../gl-code-quality-report.json codeclimate.json || true
+  - mrt ci codequality $CI_PROJECT_NAME --yes
+  - cp codeclimate.json ../../../gl-code-quality-report.json
+
+check_code_quality:
+  dependencies:
+    - code_quality
+  stage: deps
+  only:
+  - master
+  - merge_request
+  # default filename is codeclimate.json
+  script: mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
+  before_script: []
+  cache: {}
 
 test:
   stage: test
@@ -88,33 +119,6 @@ report_licenses:
   - master
   - merge_request
   script: mrt ci report_licenses
-
-check_code_quality:
-  stage: build
-  only:
-  - master
-  - merge_request
-  script: mrt ci validate_codequality $MRT_QUALITY_LEVEL
-  before_script: []
-  cache: {}
-
-code_quality:
-  stage: build
-  only:
-  - master
-  - merge_request
-  allow_failure: true
-  artifacts:
-    paths: [gl-code-quality-report.json]
-  script:
-  # Build code again, in case caching didn't work
-  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
-  - source devel_debug/setup.bash
-  - cd src/$CI_PROJECT_NAME
-  - rm codeclimate.json || true
-  - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci codequality $CI_PROJECT_NAME --yes
-  - cp codeclimate.json ../../../gl-code-quality-report.json
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
