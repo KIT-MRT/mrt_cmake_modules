@@ -62,6 +62,8 @@ general_code_quality:
 test:
   stage: test
   coverage: '/lines: \d+.\d+\%/'
+  variables:
+    MRT_MIN_COVERAGE: $MRT_REQUIRED_COVERAGE
   script:
   # Build code again, in case caching didn't work
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
@@ -80,6 +82,22 @@ test:
     reports:
       junit: catkin_ws/build_debug/$CI_PROJECT_NAME/test_results/$CI_PROJECT_NAME/*.xml
 
+report_licenses:
+  stage: build
+  only:
+  - master
+  - merge_request
+  script: mrt ci report_licenses
+
+check_code_quality:
+  stage: build
+  only:
+  - master
+  - merge_request
+  script: mrt ci validate_codequality $MRT_QUALITY_LEVEL
+  before_script: []
+  cache: {}
+
 code_quality:
   stage: build
   only:
@@ -95,7 +113,7 @@ code_quality:
   - cd src/$CI_PROJECT_NAME
   - rm codeclimate.json || true
   - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci codequality $CI_PROJECT_NAME
+  - mrt ci codequality $CI_PROJECT_NAME --yes
   - cp codeclimate.json ../../../gl-code-quality-report.json
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
