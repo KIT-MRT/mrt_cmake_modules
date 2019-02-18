@@ -84,26 +84,9 @@ check_license:
   stage: build
   only:
     - merge_requests
-    refs: master
+    - master
   script: mrt ci check_license
 
-code_quality:
-  stage: build
-  only:
-    - merge_requests
-    refs: master
-  allow_failure: true
-  artifacts:
-    paths: [gl-code-quality-report.json]
-  script:
-  # Build code again, in case caching didn't work
-  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
-  - source devel_debug/setup.bash
-  - cd src/$CI_PROJECT_NAME
-  - rm codeclimate.json || true
-  - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci codequality -e $CI_PROJECT_NAME
-  - cp codeclimate.json ../../../gl-code-quality-report.json
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
