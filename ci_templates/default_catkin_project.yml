@@ -35,7 +35,7 @@ build:
     paths:
     - doxygen
     expire_in: 6 mos
-    
+
 general_code_quality:
   stage: build
   image: docker:stable
@@ -57,7 +57,7 @@ general_code_quality:
     - chmod a+rw gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
-   
+
 
 test:
   stage: test
@@ -80,7 +80,18 @@ test:
     reports:
       junit: catkin_ws/build_debug/$CI_PROJECT_NAME/test_results/$CI_PROJECT_NAME/*.xml
 
+check_license:
+  stage: build
+  only:
+    - merge_requests
+    refs: master
+  script: mrt ci check_license
+
 code_quality:
+  stage: build
+  only:
+    - merge_requests
+    refs: master
   allow_failure: true
   artifacts:
     paths: [gl-code-quality-report.json]
@@ -91,7 +102,7 @@ code_quality:
   - cd src/$CI_PROJECT_NAME
   - rm codeclimate.json || true
   - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci run_clang_tidy -e $CI_PROJECT_NAME
+  - mrt ci codequality -e $CI_PROJECT_NAME
   - cp codeclimate.json ../../../gl-code-quality-report.json
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
@@ -126,4 +137,3 @@ deps:
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME
-
