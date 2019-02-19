@@ -81,7 +81,7 @@ code_quality:
 check_code_quality:
   dependencies:
     - code_quality
-  stage: deps
+  stage: deploy
   only:
   - master
   - merge_request
@@ -118,7 +118,8 @@ report_licenses:
   only:
   - master
   - merge_request
-  script: mrt ci report_licenses
+  script: mrt ci report_licenses .
+  allow_failure: true #TODO remove this line
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
