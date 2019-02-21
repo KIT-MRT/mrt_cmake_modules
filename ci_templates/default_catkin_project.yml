@@ -125,6 +125,7 @@ report_licenses:
   - master
   - merge_request
   script:
+  - mrt ci
   - mrt ci report_licenses .
   - cat licenses.json
 
@@ -159,4 +160,4 @@ deps:
   - merge_request
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
-  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME
+  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME --namespace $MRT_NAMESPACE
