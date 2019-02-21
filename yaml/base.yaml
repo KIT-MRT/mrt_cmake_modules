@@ -744,3 +744,12 @@ yaml-cpp:
     - yaml-cpp_LIBRARIES
     library_dirs: []
     name: yaml-cpp
+zlib:
+  cmake:
+    components: []
+    include_dirs:
+    - ZLIB_INCLUDE_DIRS
+    libraries:
+    - ZLIB_LIBRARIES
+    library_dirs: []
+    name: ZLIB
