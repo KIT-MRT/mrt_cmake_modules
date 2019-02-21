@@ -76,6 +76,9 @@ code_quality:
   - rm codeclimate.json || true
   - cp ../../../gl-code-quality-report.json codeclimate.json || true
   #- mrt ci codequality $CI_PROJECT_NAME --yes
+  - mrt ci
+  - pwd
+  - mrt ci codequality
   - mrt ci codequality --this --yes
   - cp codeclimate.json ../../../gl-code-quality-report.json
 
