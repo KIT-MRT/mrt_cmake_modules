@@ -119,8 +119,8 @@ report_licenses:
   - master
   - merge_request
   script:
-  - mrt ci
   - mrt ci report_licenses .
+  - cat licenses.json
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
