@@ -82,7 +82,7 @@ code_quality:
 check_code_quality:
   dependencies:
     - code_quality
-  stage: deps
+  stage: deploy
   only:
   - master
   - merge_request
