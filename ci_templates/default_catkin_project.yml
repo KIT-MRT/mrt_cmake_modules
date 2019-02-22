@@ -164,4 +164,4 @@ deps:
   - merge_request
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
-  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME --namespace $MRT_NAMESPACE
+  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME $MRT_NAMESPACE
