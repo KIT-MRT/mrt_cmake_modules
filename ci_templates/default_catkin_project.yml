@@ -88,8 +88,6 @@ check_code_quality:
   - merge_request
   # default filename is codeclimate.json
   script:
-  - pwd
-  - ls
   - mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
