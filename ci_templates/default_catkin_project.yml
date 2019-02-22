@@ -76,7 +76,7 @@ code_quality:
   - cd src/$CI_PROJECT_NAME
   - rm codeclimate.json || true
   - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci codequality $CI_PROJECT_NAME --yes || true # TODO remove true
+  - mrt ci codequality $CI_PROJECT_NAME --yes
   - cp codeclimate.json ../../../gl-code-quality-report.json
 
 check_code_quality:
