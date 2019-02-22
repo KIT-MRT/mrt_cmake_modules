@@ -38,6 +38,9 @@ build:
 
 general_code_quality:
   stage: build
+  only:
+  - master
+  - merge_request
   image: docker:stable
   before_script: []
   cache: {}
