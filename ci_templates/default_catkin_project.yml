@@ -69,6 +69,8 @@ code_quality:
   allow_failure: true
   artifacts:
     paths: [gl-code-quality-report.json]
+    reports:
+      codequality: gl-code-quality-report.json
   script:
   # Build code again, in case caching didn't work
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
@@ -123,9 +125,13 @@ report_licenses:
   - master
   - merge_request
   script:
-  - mrt ci
+  - mrt ws resolve_deps -y
   - mrt ci report_licenses .
-  - cat licenses.json
+  - cp licenses.json ..
+  artifacts:
+    reports:
+      license_management: licenses.json
+  
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
