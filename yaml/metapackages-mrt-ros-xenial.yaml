@@ -1,0 +1,2005 @@
+abb:
+- abb
+- abb_driver
+- abb_irb2400_moveit_config
+- abb_irb2400_moveit_plugins
+- abb_irb2400_support
+- abb_irb4400_support
+- abb_irb5400_support
+- abb_irb6600_support
+- abb_irb6640_moveit_config
+- abb_irb6640_support
+- abb_resources
+agvs_common:
+- agvs_common
+- agvs_description
+- agvs_pad
+agvs_sim:
+- agvs_control
+- agvs_gazebo
+- agvs_robot_control
+- agvs_sim
+- agvs_sim_bringup
+ar_track_alvar:
+- ar_track_alvar
+- ar_track_alvar_msgs
+arbotix:
+- arbotix
+- arbotix_controllers
+- arbotix_firmware
+- arbotix_msgs
+- arbotix_python
+- arbotix_sensors
+aruco_ros:
+- aruco
+- aruco_msgs
+- aruco_ros
+astuff_sensor_msgs:
+- astuff_sensor_msgs
+- delphi_esr_msgs
+- delphi_mrr_msgs
+- delphi_srr_msgs
+- derived_object_msgs
+- ibeo_msgs
+- kartech_linear_actuator_msgs
+- mobileye_560_660_msgs
+- neobotix_usboard_msgs
+- pacmod_msgs
+- radar_msgs
+audibot:
+- audibot
+- audibot_description
+- audibot_gazebo
+audio_common:
+- audio_capture
+- audio_common
+- audio_common_msgs
+- audio_play
+- sound_play
+automotive_autonomy_msgs:
+- automotive_autonomy_msgs
+- automotive_navigation_msgs
+- automotive_platform_msgs
+barrett_hand:
+- barrett_hand
+- bhand_controller
+- rqt_bhand
+barrett_hand_common:
+- barrett_hand_common
+- barrett_hand_description
+barrett_hand_sim:
+- barrett_hand_control
+- barrett_hand_gazebo
+- barrett_hand_sim
+binpicking_utils:
+- bin_pose_emulator
+- bin_pose_msgs
+- binpicking_simple_utils
+- binpicking_utils
+calibration:
+- calibration
+- calibration_estimation
+- calibration_launch
+- calibration_msgs
+- calibration_setup_helper
+- image_cb_detector
+- interval_intersection
+- joint_states_settler
+- laser_cb_detector
+- monocam_settler
+- settlerlib
+camera_umd:
+- camera_umd
+- jpeg_streamer
+- uvc_camera
+care_o_bot:
+- care_o_bot
+- care_o_bot_desktop
+- care_o_bot_robot
+- care_o_bot_simulation
+cartographer_ros:
+- cartographer_ros
+- cartographer_ros_msgs
+- cartographer_rviz
+cloudwatch_common:
+- cloudwatch_logs_common
+- cloudwatch_metrics_common
+cob_android:
+- cob_android
+- cob_android_msgs
+- cob_android_resource_server
+- cob_android_script_server
+- cob_android_settings
+cob_command_tools:
+- cob_command_gui
+- cob_command_tools
+- cob_dashboard
+- cob_helper_tools
+- cob_interactive_teleop
+- cob_monitoring
+- cob_script_server
+- cob_teleop
+- generic_throttle
+- service_tools
+cob_common:
+- cob_common
+- cob_description
+- cob_msgs
+- cob_srvs
+- raw_description
+cob_control:
+- cob_base_velocity_smoother
+- cob_cartesian_controller
+- cob_collision_velocity_filter
+- cob_control
+- cob_control_mode_adapter
+- cob_control_msgs
+- cob_footprint_observer
+- cob_frame_tracker
+- cob_model_identifier
+- cob_obstacle_distance
+- cob_omni_drive_controller
+- cob_trajectory_controller
+- cob_twist_controller
+cob_driver:
+- cob_base_drive_chain
+- cob_bms_driver
+- cob_camera_sensors
+- cob_canopen_motor
+- cob_driver
+- cob_elmo_homing
+- cob_generic_can
+- cob_light
+- cob_mimic
+- cob_phidget_em_state
+- cob_phidget_power_state
+- cob_phidgets
+- cob_relayboard
+- cob_scan_unifier
+- cob_sick_lms1xx
+- cob_sick_s300
+- cob_sound
+- cob_undercarriage_ctrl
+- cob_utilities
+- cob_voltage_control
+cob_environments:
+- cob_default_env_config
+- cob_environments
+cob_extern:
+- cob_extern
+- libconcorde_tsp_solver
+- libdlib
+- libntcan
+- libpcan
+- libphidgets
+- libqsopt
+- opengm
+cob_gazebo_plugins:
+- cob_gazebo_plugins
+- cob_gazebo_ros_control
+cob_hand:
+- cob_hand
+- cob_hand_bridge
+cob_manipulation:
+- cob_collision_monitor
+- cob_grasp_generation
+- cob_lookat_action
+- cob_manipulation
+- cob_moveit_bringup
+- cob_moveit_interface
+- cob_obstacle_distance_moveit
+- cob_pick_place_action
+cob_navigation:
+- cob_linear_nav
+- cob_map_accessibility_analysis
+- cob_mapping_slam
+- cob_navigation
+- cob_navigation_config
+- cob_navigation_global
+- cob_navigation_local
+- cob_navigation_slam
+cob_perception_common:
+- cob_3d_mapping_msgs
+- cob_cam3d_throttle
+- cob_image_flip
+- cob_object_detection_msgs
+- cob_object_detection_visualizer
+- cob_perception_common
+- cob_perception_msgs
+- cob_vision_utils
+cob_robots:
+- cob_bringup
+- cob_default_robot_behavior
+- cob_default_robot_config
+- cob_hardware_config
+- cob_moveit_config
+- cob_robots
+cob_simulation:
+- cob_bringup_sim
+- cob_gazebo
+- cob_gazebo_objects
+- cob_gazebo_worlds
+- cob_simulation
+cob_substitute:
+- cob_docker_control
+- cob_reflector_referencing
+- cob_safety_controller
+- cob_substitute
+cost_map:
+- cost_map
+- cost_map_core
+- cost_map_cv
+- cost_map_demos
+- cost_map_msgs
+- cost_map_ros
+- cost_map_visualisations
+cpr_multimaster_tools:
+- clock_relay
+- cpr_multimaster_tools
+- message_relay
+- multimaster_launch
+- multimaster_msgs
+- tf2_relay
+dataspeed_can:
+- dataspeed_can
+- dataspeed_can_msg_filters
+- dataspeed_can_tools
+- dataspeed_can_usb
+dataspeed_pds:
+- dataspeed_pds
+- dataspeed_pds_can
+- dataspeed_pds_msgs
+- dataspeed_pds_rqt
+- dataspeed_pds_scripts
+dataspeed_ulc_ros:
+- dataspeed_ulc
+- dataspeed_ulc_can
+- dataspeed_ulc_msgs
+dbw_fca_ros:
+- dbw_fca
+- dbw_fca_can
+- dbw_fca_description
+- dbw_fca_joystick_demo
+- dbw_fca_msgs
+dbw_mkz_ros:
+- dbw_mkz
+- dbw_mkz_can
+- dbw_mkz_description
+- dbw_mkz_joystick_demo
+- dbw_mkz_msgs
+- dbw_mkz_twist_controller
+denso:
+- denso
+- denso_launch
+- denso_ros_control
+- vs060
+- vs060_gazebo
+- vs060_moveit_config
+denso_robot_ros:
+- bcap_core
+- bcap_service
+- bcap_service_test
+- denso_robot_bringup
+- denso_robot_control
+- denso_robot_core
+- denso_robot_core_test
+- denso_robot_descriptions
+- denso_robot_gazebo
+- denso_robot_moveit_config
+- denso_robot_ros
+diagnostics:
+- rosdiagnostic
+- test_diagnostic_aggregator
+dr_base:
+- dr_base
+- dr_cmake
+driver_common:
+- driver_base
+- driver_common
+- timestamp_tools
+dynamixel-workbench:
+- dynamixel_workbench
+- dynamixel_workbench_controllers
+- dynamixel_workbench_operators
+- dynamixel_workbench_single_manager
+- dynamixel_workbench_single_manager_gui
+- dynamixel_workbench_toolbox
+dynamixel_motor:
+- dynamixel_controllers
+- dynamixel_driver
+- dynamixel_motor
+- dynamixel_msgs
+- dynamixel_tutorials
+earth_rover_piksi:
+- earth_rover_piksi
+- piksi_multi_rtk
+- piksi_rtk_msgs
+ecl_core:
+- ecl_command_line
+- ecl_concepts
+- ecl_containers
+- ecl_converters
+- ecl_core
+- ecl_core_apps
+- ecl_devices
+- ecl_eigen
+- ecl_exceptions
+- ecl_filesystem
+- ecl_formatters
+- ecl_geometry
+- ecl_ipc
+- ecl_linear_algebra
+- ecl_math
+- ecl_mpl
+- ecl_sigslots
+- ecl_statistics
+- ecl_streams
+- ecl_threads
+- ecl_time
+- ecl_type_traits
+- ecl_utilities
+ecl_lite:
+- ecl_config
+- ecl_console
+- ecl_converters_lite
+- ecl_errors
+- ecl_io
+- ecl_lite
+- ecl_sigslots_lite
+- ecl_time_lite
+ecl_manipulation:
+- ecl
+- ecl_manipulation
+- ecl_manipulators
+ecl_navigation:
+- ecl_mobile_robot
+- ecl_navigation
+ecl_tools:
+- ecl_build
+- ecl_license
+- ecl_tools
+executive_smach_visualization:
+- executive_smach_visualization
+- smach_viewer
+exotica:
+- exotica
+- exotica_aico_solver
+- exotica_collision_scene_fcl
+- exotica_collision_scene_fcl_latest
+- exotica_core
+- exotica_core_task_maps
+- exotica_examples
+- exotica_ik_solver
+- exotica_levenberg_marquardt_solver
+- exotica_ompl_solver
+- exotica_python
+- exotica_time_indexed_rrt_connect_solver
+fake_joint:
+- fake_joint
+- fake_joint_driver
+- fake_joint_launch
+fiducials:
+- aruco_detect
+- fiducial_msgs
+- fiducial_slam
+- fiducials
+flexbe:
+- flexbe_behavior_engine
+- flexbe_core
+- flexbe_input
+- flexbe_mirror
+- flexbe_msgs
+- flexbe_onboard
+- flexbe_states
+- flexbe_testing
+- flexbe_widget
+flir_camera_driver:
+- flir_camera_driver
+- spinnaker_camera_driver
+flir_ptu:
+- flir_ptu_description
+- flir_ptu_driver
+- flir_ptu_viz
+franka_ros:
+- franka_control
+- franka_description
+- franka_example_controllers
+- franka_gripper
+- franka_hw
+- franka_msgs
+- franka_ros
+- franka_visualization
+freenect_stack:
+- freenect_camera
+- freenect_launch
+- freenect_stack
+gazebo_ros_pkgs:
+- gazebo_ros_control
+gcloud_speech:
+- gcloud_speech
+- gcloud_speech_msgs
+- gcloud_speech_utils
+geographic_info:
+- geographic_info
+geometry2:
+- geometry2
+- tf2_bullet
+- tf2_sensor_msgs
+- tf2_tools
+gmplot_ros:
+- gmplot
+- gmplot_msgs
+- gmplot_ros
+gps_umd:
+- gps_common
+- gps_umd
+- gpsd_client
+grid_map:
+- grid_map
+- grid_map_core
+- grid_map_costmap_2d
+- grid_map_cv
+- grid_map_demos
+- grid_map_filters
+- grid_map_loader
+- grid_map_msgs
+- grid_map_octomap
+- grid_map_pcl
+- grid_map_ros
+- grid_map_rviz_plugin
+- grid_map_sdf
+- grid_map_visualization
+grizzly:
+- grizzly_control
+- grizzly_description
+- grizzly_msgs
+- grizzly_navigation
+grizzly_desktop:
+- grizzly_desktop
+- grizzly_viz
+grizzly_simulator:
+- grizzly_gazebo
+- grizzly_simulator
+gx_sound:
+- gx_sound
+- gx_sound_msgs
+- gx_sound_player
+hector_gazebo:
+- hector_gazebo
+- hector_gazebo_plugins
+- hector_gazebo_thermal_camera
+- hector_gazebo_worlds
+- hector_sensors_gazebo
+hector_localization:
+- hector_localization
+- hector_pose_estimation
+- hector_pose_estimation_core
+- message_to_tf
+hector_models:
+- hector_components_description
+- hector_models
+- hector_sensors_description
+- hector_xacro_tools
+hector_slam:
+- hector_compressed_map_transport
+- hector_geotiff
+- hector_geotiff_plugins
+- hector_imu_attitude_to_tf
+- hector_imu_tools
+- hector_map_server
+- hector_map_tools
+- hector_mapping
+- hector_marker_drawing
+- hector_nav_msgs
+- hector_slam
+- hector_slam_launch
+- hector_trajectory_server
+hector_worldmodel:
+- hector_object_tracker
+- hector_worldmodel
+- hector_worldmodel_geotiff_plugins
+- hector_worldmodel_msgs
+heron:
+- heron_description
+- heron_msgs
+heron_desktop:
+- heron_desktop
+- heron_viz
+homer_robot_face:
+- homer_mary_tts
+- homer_robot_face
+humanoid_msgs:
+- humanoid_msgs
+- humanoid_nav_msgs
+humanoid_navigation:
+- footstep_planner
+- gridmap_2d
+- humanoid_localization
+- humanoid_navigation
+- humanoid_planner_2d
+husky:
+- husky_base
+- husky_bringup
+- husky_control
+- husky_description
+- husky_desktop
+- husky_gazebo
+- husky_msgs
+- husky_navigation
+- husky_robot
+- husky_simulator
+- husky_viz
+igvc_self_drive_sim:
+- igvc_self_drive_description
+- igvc_self_drive_gazebo
+- igvc_self_drive_gazebo_plugins
+- igvc_self_drive_sim
+image_recognition:
+- image_recognition
+- image_recognition_msgs
+- image_recognition_rqt
+- image_recognition_util
+- openface_ros
+- skybiometry_ros
+- tensorflow_ros
+- tensorflow_ros_rqt
+imagezero_transport:
+- imagezero
+- imagezero_image_transport
+- imagezero_ros
+imu_pipeline:
+- imu_pipeline
+- imu_processors
+- imu_transformer
+imu_tools:
+- imu_complementary_filter
+- imu_filter_madgwick
+- imu_tools
+- rviz_imu_plugin
+industrial_core:
+- industrial_core
+- industrial_deprecated
+- industrial_msgs
+- industrial_robot_client
+- industrial_robot_simulator
+- industrial_trajectory_filters
+- industrial_utils
+- simple_message
+ipr_extern:
+- ipr_extern
+- libmodbus
+- libreflexxestype2
+- ros_reflexxes
+jackal:
+- jackal_control
+- jackal_description
+- jackal_msgs
+- jackal_navigation
+- jackal_tutorials
+jackal_desktop:
+- jackal_desktop
+- jackal_viz
+jackal_simulator:
+- jackal_gazebo
+- jackal_simulator
+jaguar:
+- jaguar_control
+- jaguar_description
+- jaguar_msgs
+- jaguar_navigation
+jog_control:
+- jog_control
+- jog_controller
+- jog_launch
+- jog_msgs
+joystick_drivers:
+- joy
+- joystick_drivers
+- ps3joy
+- spacenav_node
+- wiimote
+jsk_3rdparty:
+- assimp_devel
+- bayesian_belief_networks
+- downward
+- ff
+- ffha
+- jsk_3rdparty
+- julius
+- julius_ros
+- libcmt
+- libsiftfast
+- lpg_planner
+- mini_maxwell
+- nlopt
+- opt_camera
+- pgm_learner
+- respeaker_ros
+- ros_speech_recognition
+- rospatlite
+- rosping
+- slic
+- voice_text
+jsk_common:
+- dynamic_tf_publisher
+- image_view2
+- jsk_common
+- jsk_data
+- jsk_network_tools
+- jsk_tilt_laser
+- jsk_tools
+- jsk_topic_tools
+- multi_map_server
+- virtual_force_publisher
+jsk_common_msgs:
+- jsk_common_msgs
+- jsk_footstep_msgs
+- jsk_gui_msgs
+- jsk_hark_msgs
+- posedetection_msgs
+- speech_recognition_msgs
+jsk_control:
+- cmd_vel_smoother
+- contact_states_observer
+- eus_nlopt
+- eus_qp
+- eus_qpoases
+- joy_mouse
+- jsk_calibration
+- jsk_control
+- jsk_footstep_controller
+- jsk_footstep_planner
+- jsk_ik_server
+- jsk_teleop_joy
+jsk_model_tools:
+- eus_assimp
+- euscollada
+- eusurdf
+- jsk_model_tools
+jsk_planning:
+- jsk_planning
+- pddl_msgs
+- pddl_planner
+- pddl_planner_viewer
+- task_compiler
+jsk_pr2eus:
+- jsk_pr2eus
+- pr2eus
+- pr2eus_moveit
+- pr2eus_tutorials
+jsk_recognition:
+- checkerboard_detector
+- imagesift
+- jsk_pcl_ros
+- jsk_pcl_ros_utils
+- jsk_perception
+- jsk_recognition
+- jsk_recognition_msgs
+- jsk_recognition_utils
+- resized_image_transport
+jsk_roseus:
+- jsk_roseus
+- roseus
+- roseus_mongo
+- roseus_smach
+- roseus_tutorials
+jsk_visualization:
+- jsk_interactive
+- jsk_interactive_marker
+- jsk_interactive_test
+- jsk_rqt_plugins
+- jsk_rviz_plugins
+- jsk_visualization
+json_transport:
+- json_msgs
+- json_transport
+katana_driver:
+- katana
+- katana_arm_gazebo
+- katana_description
+- katana_driver
+- katana_gazebo_plugins
+- katana_moveit_ikfast_plugin
+- katana_msgs
+- katana_teleop
+- katana_tutorials
+- kni
+kdl_parser:
+- kdl_parser_py
+kinesis_video_streamer:
+- kinesis_video_msgs
+- kinesis_video_streamer
+kobuki:
+- kobuki
+- kobuki_auto_docking
+- kobuki_bumper2pc
+- kobuki_capabilities
+- kobuki_controller_tutorial
+- kobuki_description
+- kobuki_keyop
+- kobuki_node
+- kobuki_random_walker
+- kobuki_rapps
+- kobuki_safety_controller
+- kobuki_testsuite
+kobuki_core:
+- kobuki_core
+- kobuki_dock_drive
+- kobuki_driver
+- kobuki_ftdi
+kobuki_desktop:
+- kobuki_dashboard
+- kobuki_desktop
+- kobuki_gazebo
+- kobuki_gazebo_plugins
+- kobuki_qtestsuite
+- kobuki_rviz_launchers
+kobuki_soft:
+- kobuki_soft
+- kobuki_softapps
+- kobuki_softnode
+laser_filtering:
+- laser_filtering
+- map_laser
+lex_node:
+- lex_common_msgs
+- lex_node
+libuvc_ros:
+- libuvc_camera
+- libuvc_ros
+linux_peripheral_interfaces:
+- laptop_battery_monitor
+- libsensors_monitor
+- linux_peripheral_interfaces
+lkh:
+- glkh_solver
+- lkh
+- lkh_solver
+loki_robot:
+- loki_bringup
+- loki_demos
+- loki_description
+- loki_nav
+- loki_robot
+- loki_teleop
+m_explore:
+- explore_lite
+- multirobot_map_merge
+magni_robot:
+- magni_bringup
+- magni_demos
+- magni_description
+- magni_nav
+- magni_robot
+- magni_teleop
+- magni_viz
+manipulator_h:
+- manipulator_h
+- manipulator_h_base_module
+- manipulator_h_base_module_msgs
+- manipulator_h_bringup
+- manipulator_h_description
+- manipulator_h_gazebo
+- manipulator_h_gui
+- manipulator_h_kinematics_dynamics
+- manipulator_h_manager
+mapviz:
+- mapviz
+- mapviz_plugins
+- multires_image
+- tile_map
+marti_common:
+- marti_data_structures
+- swri_console_util
+- swri_dbw_interface
+- swri_geometry_util
+- swri_image_util
+- swri_math_util
+- swri_nodelet
+- swri_opencv_util
+- swri_prefix_tools
+- swri_roscpp
+- swri_rospy
+- swri_route_util
+- swri_serial_util
+- swri_string_util
+- swri_system_util
+- swri_transform_util
+- swri_yaml_util
+marti_messages:
+- marti_can_msgs
+- marti_common_msgs
+- marti_nav_msgs
+- marti_perception_msgs
+- marti_sensor_msgs
+- marti_status_msgs
+- marti_visualization_msgs
+mav_comm:
+- mav_comm
+- mav_msgs
+- mav_planning_msgs
+mavros:
+- libmavconn
+- mavros
+- mavros_extras
+- mavros_msgs
+- test_mavros
+md49_base_controller:
+- md49_base_controller
+- md49_messages
+- md49_serialport
+melfa_robot:
+- melfa_description
+- melfa_driver
+- melfa_robot
+- rv4fl_moveit_config
+- rv7fl_moveit_config
+message_multiplexing:
+- message_multiplexing
+- mm_core_msgs
+- mm_eigen_msgs
+- mm_messages
+- mm_mux_demux
+- mm_radio
+minas:
+- ethercat_manager
+- minas
+- minas_control
+- tra1_bringup
+- tra1_description
+- tra1_moveit_config
+mir_robot:
+- mir_actions
+- mir_description
+- mir_driver
+- mir_gazebo
+- mir_msgs
+- mir_navigation
+- mir_robot
+mongodb_store:
+- libmongocxx_ros
+- mongodb_log
+- mongodb_store
+- mongodb_store_msgs
+move_base_flex:
+- mbf_abstract_core
+- mbf_abstract_nav
+- mbf_costmap_core
+- mbf_costmap_nav
+- mbf_msgs
+- mbf_simple_nav
+- mbf_utility
+- move_base_flex
+moveit:
+- chomp_motion_planner
+- moveit
+- moveit_commander
+- moveit_controller_manager_example
+- moveit_core
+- moveit_experimental
+- moveit_fake_controller_manager
+- moveit_kinematics
+- moveit_planners
+- moveit_planners_chomp
+- moveit_planners_ompl
+- moveit_plugins
+- moveit_ros
+- moveit_ros_benchmarks
+- moveit_ros_control_interface
+- moveit_ros_manipulation
+- moveit_ros_move_group
+- moveit_ros_perception
+- moveit_ros_planning
+- moveit_ros_planning_interface
+- moveit_ros_robot_interaction
+- moveit_ros_visualization
+- moveit_ros_warehouse
+- moveit_runtime
+- moveit_setup_assistant
+- moveit_simple_controller_manager
+moveit_pr2:
+- moveit_pr2
+- pr2_moveit_config
+- pr2_moveit_plugins
+mrpt_navigation:
+- mrpt_local_obstacles
+- mrpt_localization
+- mrpt_map
+- mrpt_navigation
+- mrpt_rawlog
+- mrpt_reactivenav2d
+- mrpt_tutorials
+mrpt_slam:
+- mrpt_ekf_slam_2d
+- mrpt_ekf_slam_3d
+- mrpt_icp_slam_2d
+- mrpt_rbpf_slam
+- mrpt_slam
+multi_jackal:
+- multi_jackal_base
+- multi_jackal_control
+- multi_jackal_description
+- multi_jackal_nav
+- multi_jackal_tutorials
+multimaster_fkie:
+- default_cfg_fkie
+- master_discovery_fkie
+- master_sync_fkie
+- multimaster_fkie
+- multimaster_msgs_fkie
+- node_manager_fkie
+multisense_ros:
+- multisense
+- multisense_bringup
+- multisense_cal_check
+- multisense_description
+- multisense_lib
+- multisense_ros
+nao_interaction:
+- nao_audio
+- nao_interaction
+- nao_interaction_launchers
+- nao_interaction_msgs
+- nao_vision
+nao_robot:
+- nao_apps
+- nao_bringup
+- nao_description
+- nao_robot
+naoqi_bridge:
+- naoqi_apps
+- naoqi_bridge
+- naoqi_driver_py
+- naoqi_pose
+- naoqi_sensors_py
+- naoqi_tools
+navigation:
+- amcl
+- base_local_planner
+- carrot_planner
+- clear_costmap_recovery
+- dwa_local_planner
+- fake_localization
+- global_planner
+- move_base
+- move_slow_and_clear
+- nav_core
+- navfn
+- navigation
+- robot_pose_ekf
+- rotate_recovery
+navigation_2d:
+- nav2d
+- nav2d_exploration
+- nav2d_karto
+- nav2d_localizer
+- nav2d_msgs
+- nav2d_navigator
+- nav2d_operator
+- nav2d_remote
+- nav2d_tutorials
+navigation_experimental:
+- assisted_teleop
+- goal_passer
+- navigation_experimental
+- pose_base_controller
+- pose_follower
+- sbpl_lattice_planner
+- sbpl_recovery
+- twist_recovery
+navigation_layers:
+- navigation_layers
+- range_sensor_layer
+- social_navigation_layers
+navigation_msgs:
+- move_base_msgs
+navigation_tutorials:
+- laser_scan_publisher_tutorial
+- navigation_stage
+- navigation_tutorials
+- odometry_publisher_tutorial
+- point_cloud_publisher_tutorial
+- robot_setup_tf_tutorial
+- roomba_stage
+- simple_navigation_goals_tutorial
+neonavigation:
+- costmap_cspace
+- joystick_interrupt
+- map_organizer
+- neonavigation
+- neonavigation_common
+- neonavigation_launch
+- obj_to_pointcloud
+- planner_cspace
+- safety_limiter
+- track_odometry
+- trajectory_tracker
+neonavigation_msgs:
+- costmap_cspace_msgs
+- map_organizer_msgs
+- neonavigation_msgs
+- planner_cspace_msgs
+- trajectory_tracker_msgs
+neonavigation_rviz_plugins:
+- neonavigation_rviz_plugins
+- trajectory_tracker_rviz_plugins
+novatel_gps_driver:
+- novatel_gps_driver
+- novatel_gps_msgs
+novatel_span_driver:
+- novatel_msgs
+- novatel_span_driver
+octomap:
+- dynamic_edt_3d
+- octovis
+octomap_mapping:
+- octomap_mapping
+- octomap_server
+open_manipulator:
+- open_manipulator
+- open_manipulator_control_gui
+- open_manipulator_controller
+- open_manipulator_description
+- open_manipulator_libs
+- open_manipulator_moveit
+- open_manipulator_teleop
+open_manipulator_perceptions:
+- open_manipulator_ar_markers
+- open_manipulator_perceptions
+open_manipulator_simulations:
+- open_manipulator_gazebo
+- open_manipulator_simulations
+open_manipulator_with_tb3:
+- open_manipulator_with_tb3
+- open_manipulator_with_tb3_description
+- open_manipulator_with_tb3_tools
+- open_manipulator_with_tb3_waffle_moveit
+- open_manipulator_with_tb3_waffle_pi_moveit
+open_manipulator_with_tb3_simulations:
+- open_manipulator_with_tb3_gazebo
+- open_manipulator_with_tb3_simulations
+open_street_map:
+- osm_cartography
+- route_network
+- test_osm
+openni2_camera:
+- openni2_camera
+- openni2_launch
+openni_camera:
+- openni_camera
+- openni_description
+- openni_launch
+openrave_planning:
+- arm_navigation_msgs
+- collada_robots
+- openrave
+- openrave_planning
+orocos_kinematics_dynamics:
+- orocos_kinematics_dynamics
+p2os:
+- p2os_doc
+- p2os_driver
+- p2os_launch
+- p2os_msgs
+- p2os_teleop
+- p2os_urdf
+people:
+- face_detector
+- leg_detector
+- people
+- people_msgs
+- people_tracking_filter
+- people_velocity_tracker
+pepper_robot:
+- pepper_bringup
+- pepper_description
+- pepper_robot
+- pepper_sensors_py
+pepper_virtual:
+- pepper_control
+- pepper_gazebo_plugin
+phidgets_drivers:
+- libphidget21
+- phidgets_api
+- phidgets_drivers
+- phidgets_high_speed_encoder
+- phidgets_ik
+- phidgets_imu
+pilz_industrial_motion:
+- pilz_extensions
+- pilz_industrial_motion
+- pilz_industrial_motion_testutils
+- pilz_msgs
+- pilz_robot_programming
+- pilz_trajectory_generation
+pilz_robots:
+- pilz_control
+- pilz_robots
+- pilz_testutils
+- prbt_gazebo
+- prbt_hardware_support
+- prbt_ikfast_manipulator_plugin
+- prbt_moveit_config
+- prbt_support
+play_motion:
+- play_motion
+- play_motion_msgs
+pointgrey_camera_driver:
+- image_exposure_msgs
+- pointgrey_camera_description
+- pointgrey_camera_driver
+- statistics_msgs
+- wfov_camera_msgs
+pr2_apps:
+- pr2_app_manager
+- pr2_apps
+- pr2_mannequin_mode
+- pr2_position_scripts
+- pr2_teleop
+- pr2_teleop_general
+- pr2_tuckarm
+pr2_calibration:
+- dense_laser_assembler
+- laser_joint_processor
+- laser_joint_projector
+- pr2_calibration
+- pr2_calibration_launch
+- pr2_dense_laser_snapshotter
+- pr2_se_calibration_launch
+pr2_common:
+- pr2_common
+- pr2_dashboard_aggregator
+- pr2_description
+- pr2_machine
+- pr2_msgs
+pr2_common_actions:
+- joint_trajectory_action_tools
+- joint_trajectory_generator
+- pr2_arm_move_ik
+- pr2_common_action_msgs
+- pr2_common_actions
+- pr2_tilt_laser_interface
+- pr2_tuck_arms_action
+pr2_controllers:
+- ethercat_trigger_controllers
+- joint_trajectory_action
+- pr2_calibration_controllers
+- pr2_controllers
+- pr2_controllers_msgs
+- pr2_gripper_action
+- pr2_head_action
+- pr2_mechanism_controllers
+- robot_mechanism_controllers
+- single_joint_position_action
+pr2_ethercat_drivers:
+- ethercat_hardware
+- fingertip_pressure
+- pr2_ethercat_drivers
+pr2_gripper_sensor:
+- pr2_gripper_sensor
+- pr2_gripper_sensor_action
+- pr2_gripper_sensor_controller
+- pr2_gripper_sensor_msgs
+pr2_kinematics:
+- pr2_arm_kinematics
+- pr2_kinematics
+pr2_mechanism:
+- pr2_controller_interface
+- pr2_controller_manager
+- pr2_hardware_interface
+- pr2_mechanism
+- pr2_mechanism_diagnostics
+- pr2_mechanism_model
+pr2_navigation:
+- laser_tilt_controller_filter
+- pr2_move_base
+- pr2_navigation
+- pr2_navigation_config
+- pr2_navigation_global
+- pr2_navigation_local
+- pr2_navigation_perception
+- pr2_navigation_self_filter
+- pr2_navigation_slam
+- pr2_navigation_teleop
+- semantic_point_annotator
+pr2_power_drivers:
+- ocean_battery_driver
+- power_monitor
+- pr2_power_board
+- pr2_power_drivers
+pr2_robot:
+- imu_monitor
+- pr2_bringup
+- pr2_camera_synchronizer
+- pr2_computer_monitor
+- pr2_controller_configuration
+- pr2_ethercat
+- pr2_robot
+- pr2_run_stop_auto_restart
+pr2_self_test:
+- joint_qualification_controllers
+- pr2_bringup_tests
+- pr2_counterbalance_check
+- pr2_self_test
+- pr2_self_test_msgs
+pr2_simulator:
+- pr2_controller_configuration_gazebo
+- pr2_gazebo
+- pr2_gazebo_plugins
+- pr2_simulator
+prbt_grippers:
+- prbt_grippers
+- prbt_pg70_support
+puma_motor_driver:
+- puma_motor_driver
+- puma_motor_msgs
+qb_chain:
+- qb_chain
+- qb_chain_control
+- qb_chain_description
+qb_device:
+- qb_device
+- qb_device_bringup
+- qb_device_control
+- qb_device_description
+- qb_device_driver
+- qb_device_hardware_interface
+- qb_device_msgs
+- qb_device_srvs
+- qb_device_utils
+qb_hand:
+- qb_hand
+- qb_hand_control
+- qb_hand_description
+- qb_hand_hardware_interface
+qb_move:
+- qb_move
+- qb_move_control
+- qb_move_description
+- qb_move_hardware_interface
+qt_gui_core:
+- qt_gui_app
+- qt_gui_core
+qt_metapackages:
+- libqt_concurrent
+- libqt_core
+- libqt_dev
+- libqt_gui
+- libqt_network
+- libqt_opengl
+- libqt_opengl_dev
+- libqt_svg_dev
+- libqt_widgets
+- qt_qmake
+qt_ros:
+- qt_build
+- qt_create
+- qt_ros
+- qt_tutorials
+raspigibbon_ros:
+- futaba_serial_servo
+- raspigibbon_bringup
+- raspigibbon_description
+- raspigibbon_msgs
+- raspigibbon_ros
+raspigibbon_sim:
+- raspigibbon_control
+- raspigibbon_gazebo
+- raspigibbon_sim
+rb1_base_common:
+- rb1_base_common
+- rb1_base_description
+- rb1_base_pad
+rb1_base_sim:
+- rb1_base_2dnav
+- rb1_base_control
+- rb1_base_gazebo
+- rb1_base_purepursuit
+- rb1_base_sim
+rbcar_common:
+- rbcar_common
+- rbcar_description
+- rbcar_pad
+rbcar_sim:
+- rbcar_control
+- rbcar_gazebo
+- rbcar_joystick
+- rbcar_robot_control
+- rbcar_sim
+- rbcar_sim_bringup
+rc_visard:
+- rc_hand_eye_calibration_client
+- rc_visard
+- rc_visard_description
+- rc_visard_driver
+rdl:
+- rdl
+- rdl_benchmark
+- rdl_cmake
+- rdl_dynamics
+- rdl_urdfreader
+rh_p12_rn:
+- rh_p12_rn
+- rh_p12_rn_base_module
+- rh_p12_rn_base_module_msgs
+- rh_p12_rn_description
+- rh_p12_rn_gazebo
+- rh_p12_rn_gui
+- rh_p12_rn_manager
+ridgeback:
+- ridgeback_control
+- ridgeback_description
+- ridgeback_msgs
+- ridgeback_navigation
+ridgeback_desktop:
+- ridgeback_desktop
+- ridgeback_viz
+ridgeback_simulator:
+- mecanum_gazebo_plugin
+- ridgeback_gazebo
+- ridgeback_gazebo_plugins
+- ridgeback_simulator
+robot_activity:
+- robot_activity
+- robot_activity_msgs
+- robot_activity_tutorials
+robot_calibration:
+- robot_calibration
+- robot_calibration_msgs
+robot_controllers:
+- robot_controllers
+- robot_controllers_interface
+- robot_controllers_msgs
+robot_navigation:
+- costmap_queue
+- dlux_global_planner
+- dlux_plugins
+- dwb_critics
+- dwb_local_planner
+- dwb_msgs
+- dwb_plugins
+- global_planner_tests
+- locomotor
+- locomotor_msgs
+- locomove_base
+- nav_2d_msgs
+- nav_2d_utils
+- nav_core2
+- nav_core_adapter
+- nav_grid
+- nav_grid_iterators
+- nav_grid_pub_sub
+- robot_navigation
+robot_recorder:
+- recordit
+- robot_recorder
+- rviz_recorder_buttons
+robotis_framework:
+- robotis_controller
+- robotis_device
+- robotis_framework
+- robotis_framework_common
+robotis_op3:
+- cm_740_module
+- op3_action_module
+- op3_balance_control
+- op3_base_module
+- op3_direct_control_module
+- op3_head_control_module
+- op3_kinematics_dynamics
+- op3_localization
+- op3_manager
+- op3_online_walking_module
+- op3_walking_module
+- open_cr_module
+- robotis_op3
+robotis_op3_common:
+- op3_description
+- op3_gazebo
+- robotis_op3_common
+robotis_op3_demo:
+- op3_ball_detector
+- op3_bringup
+- op3_demo
+- robotis_op3_demo
+robotis_op3_msgs:
+- op3_action_module_msgs
+- op3_offset_tuner_msgs
+- op3_online_walking_module_msgs
+- op3_walking_module_msgs
+- robotis_op3_msgs
+robotis_op3_tools:
+- op3_action_editor
+- op3_camera_setting_tool
+- op3_gui_demo
+- op3_navigation
+- op3_offset_tuner_client
+- op3_offset_tuner_server
+- op3_web_setting_tool
+- robotis_op3_tools
+robotis_utility:
+- robotis_utility
+- ros_madplay_player
+- ros_mpg321_player
+roch:
+- roch
+- roch_follower
+- roch_navigation
+- roch_rapps
+- roch_teleop
+roch_robot:
+- roch_base
+- roch_bringup
+- roch_capabilities
+- roch_control
+- roch_description
+- roch_ftdi
+- roch_msgs
+- roch_robot
+- roch_safety_controller
+- roch_sensorpc
+roch_simulator:
+- roch_gazebo
+- roch_simulator
+rocon_app_platform:
+- rocon_app_manager
+- rocon_app_platform
+- rocon_app_utilities
+- rocon_apps
+rocon_msgs:
+- concert_msgs
+- concert_service_msgs
+- concert_workflow_engine_msgs
+- gateway_msgs
+- rocon_app_manager_msgs
+- rocon_device_msgs
+- rocon_interaction_msgs
+- rocon_msgs
+- rocon_service_pair_msgs
+- rocon_std_msgs
+- rocon_tutorial_msgs
+- scheduler_msgs
+rocon_multimaster:
+- rocon_gateway
+- rocon_gateway_tests
+- rocon_gateway_utils
+- rocon_hub
+- rocon_hub_client
+- rocon_multimaster
+- rocon_test
+- rocon_unreliable_experiments
+rocon_tools:
+- rocon_bubble_icons
+- rocon_console
+- rocon_ebnf
+- rocon_icons
+- rocon_interactions
+- rocon_launch
+- rocon_master_info
+- rocon_python_comms
+- rocon_python_redis
+- rocon_python_utils
+- rocon_python_wifi
+- rocon_semantic_version
+- rocon_tools
+- rocon_uri
+romeo_robot:
+- romeo_bringup
+- romeo_description
+- romeo_robot
+- romeo_sensors_py
+romeo_virtual:
+- romeo_control
+- romeo_gazebo_plugin
+roomblock:
+- roomblock
+- roomblock_bringup
+- roomblock_description
+- roomblock_mapping
+- roomblock_navigation
+ros_canopen:
+- can_msgs
+- canopen_402
+- canopen_chain_node
+- canopen_master
+- canopen_motor_node
+- ros_canopen
+- socketcan_bridge
+- socketcan_interface
+ros_control:
+- combined_robot_hw
+- combined_robot_hw_tests
+- controller_interface
+- controller_manager
+- controller_manager_msgs
+- controller_manager_tests
+- hardware_interface
+- joint_limits_interface
+- ros_control
+- rqt_controller_manager
+- transmission_interface
+ros_controllers:
+- ackermann_steering_controller
+- diff_drive_controller
+- effort_controllers
+- force_torque_sensor_controller
+- forward_command_controller
+- four_wheel_steering_controller
+- gripper_action_controller
+- imu_sensor_controller
+- joint_state_controller
+- joint_trajectory_controller
+- position_controllers
+- ros_controllers
+- rqt_joint_trajectory_controller
+- velocity_controllers
+ros_emacs_utils:
+- ros_emacs_utils
+- rosemacs
+- roslisp_repl
+- slime_ros
+- slime_wrapper
+ros_realtime:
+- allocators
+- lockfree
+- ros_realtime
+- rosatomic
+- rosrt
+rosbridge_suite:
+- rosapi
+- rosbridge_library
+- rosbridge_server
+- rosbridge_suite
+roscompile:
+- ros_introspection
+- roscompile
+rosflight:
+- rosflight
+- rosflight_firmware
+- rosflight_msgs
+- rosflight_pkgs
+- rosflight_sim
+- rosflight_utils
+roslisp_common:
+- actionlib_lisp
+- cl_tf
+- cl_tf2
+- cl_transforms
+- cl_transforms_stamped
+- cl_urdf
+- cl_utils
+- roslisp_common
+- roslisp_utilities
+rosserial:
+- rosserial
+- rosserial_arduino
+- rosserial_client
+- rosserial_embeddedlinux
+- rosserial_mbed
+- rosserial_msgs
+- rosserial_python
+- rosserial_server
+- rosserial_tivac
+- rosserial_windows
+- rosserial_xbee
+rqt:
+- rqt
+rtmros_common:
+- hrpsys_ros_bridge
+- hrpsys_tools
+- openrtm_ros_bridge
+- openrtm_tools
+- rosnode_rtc
+- rtmbuild
+- rtmros_common
+rtmros_hironx:
+- hironx_calibration
+- hironx_moveit_config
+- hironx_ros_bridge
+- rtmros_hironx
+rtmros_nextage:
+- nextage_calibration
+- nextage_description
+- nextage_gazebo
+- nextage_ik_plugin
+- nextage_moveit_config
+- nextage_ros_bridge
+- rtmros_nextage
+rtt_geometry:
+- eigen_typekit
+- kdl_typekit
+- rtt_geometry
+rtt_ros_control:
+- rtt_control_msgs
+- rtt_controller_manager_msgs
+rtt_ros_integration:
+- rtt_actionlib
+- rtt_actionlib_msgs
+- rtt_common_msgs
+- rtt_diagnostic_msgs
+- rtt_dynamic_reconfigure
+- rtt_geometry_msgs
+- rtt_kdl_conversions
+- rtt_nav_msgs
+- rtt_ros
+- rtt_ros_comm
+- rtt_ros_integration
+- rtt_ros_msgs
+- rtt_rosclock
+- rtt_roscomm
+- rtt_rosdeployment
+- rtt_rosgraph_msgs
+- rtt_rosnode
+- rtt_rospack
+- rtt_rosparam
+- rtt_sensor_msgs
+- rtt_shape_msgs
+- rtt_std_msgs
+- rtt_std_srvs
+- rtt_stereo_msgs
+- rtt_tf
+- rtt_trajectory_msgs
+- rtt_visualization_msgs
+scan_tools:
+- laser_ortho_projector
+- laser_scan_matcher
+- laser_scan_sparsifier
+- laser_scan_splitter
+- ncd_parser
+- polar_scan_matcher
+- scan_to_cloud_converter
+- scan_tools
+schunk_modular_robotics:
+- schunk_description
+- schunk_libm5api
+- schunk_modular_robotics
+- schunk_powercube_chain
+- schunk_sdh
+- schunk_simulated_tactile_sensors
+shared_autonomy_manipulation:
+- safe_teleop_base
+- safe_teleop_stage
+sick_visionary_t:
+- sick_visionary_t
+- sick_visionary_t_driver
+slam_gmapping:
+- gmapping
+- slam_gmapping
+srv_tools:
+- launch_tools
+- plot_tools
+- pointcloud_tools
+- srv_tools
+- tf_tools
+stdr_simulator:
+- stdr_gui
+- stdr_launchers
+- stdr_msgs
+- stdr_parser
+- stdr_resources
+- stdr_robot
+- stdr_samples
+- stdr_server
+- stdr_simulator
+summit_x_common:
+- summit_x_common
+- summit_x_description
+summit_x_sim:
+- summit_x_control
+- summit_x_gazebo
+- summit_x_robot_control
+- summit_x_sim
+- summit_x_sim_bringup
+summit_xl_common:
+- summit_xl_common
+- summit_xl_description
+- summit_xl_localization
+- summit_xl_navigation
+- summit_xl_pad
+summit_xl_sim:
+- summit_xl_control
+- summit_xl_gazebo
+- summit_xl_robot_control
+- summit_xl_sim
+- summit_xl_sim_bringup
+swri_profiler:
+- swri_profiler
+- swri_profiler_msgs
+- swri_profiler_tools
+talos_robot:
+- talos_description
+- talos_description_calibration
+- talos_description_inertial
+teleop_tools:
+- joy_teleop
+- key_teleop
+- mouse_teleop
+- teleop_tools
+- teleop_tools_msgs
+thormang3_common:
+- thormang3_common
+- thormang3_description
+- thormang3_gazebo
+thormang3_mpc:
+- ati_ft_sensor
+- motion_module_tutorial
+- sensor_module_tutorial
+- thormang3_action_module
+- thormang3_balance_control
+- thormang3_base_module
+- thormang3_feet_ft_module
+- thormang3_gripper_module
+- thormang3_head_control_module
+- thormang3_kinematics_dynamics
+- thormang3_manager
+- thormang3_manipulation_module
+- thormang3_mpc
+- thormang3_walking_module
+thormang3_mpc_sensors:
+- thormang3_imu_3dm_gx4
+- thormang3_mpc_sensors
+thormang3_msgs:
+- thormang3_action_module_msgs
+- thormang3_feet_ft_module_msgs
+- thormang3_head_control_module_msgs
+- thormang3_manipulation_module_msgs
+- thormang3_msgs
+- thormang3_offset_tuner_msgs
+- thormang3_walking_module_msgs
+thormang3_opc:
+- thormang3_action_script_player
+- thormang3_demo
+- thormang3_foot_step_generator
+- thormang3_navigation
+- thormang3_offset_tuner_client
+- thormang3_opc
+thormang3_ppc:
+- thormang3_manipulation_demo
+- thormang3_ppc
+- thormang3_sensors
+- thormang3_walking_demo
+thormang3_tools:
+- thormang3_action_editor
+- thormang3_offset_tuner_server
+- thormang3_tools
+towr:
+- towr
+- towr_ros
+trac_ik:
+- trac_ik
+- trac_ik_examples
+- trac_ik_kinematics_plugin
+- trac_ik_lib
+- trac_ik_python
+turtlebot:
+- turtlebot
+- turtlebot_bringup
+- turtlebot_capabilities
+- turtlebot_description
+- turtlebot_teleop
+turtlebot3:
+- turtlebot3
+- turtlebot3_bringup
+- turtlebot3_description
+- turtlebot3_example
+- turtlebot3_navigation
+- turtlebot3_slam
+- turtlebot3_teleop
+turtlebot3_applications:
+- turtlebot3_applications
+- turtlebot3_automatic_parking
+- turtlebot3_automatic_parking_vision
+- turtlebot3_follow_filter
+- turtlebot3_follower
+- turtlebot3_panorama
+turtlebot3_autorace:
+- turtlebot3_autorace
+- turtlebot3_autorace_camera
+- turtlebot3_autorace_control
+- turtlebot3_autorace_core
+- turtlebot3_autorace_detect
+turtlebot3_simulations:
+- turtlebot3_fake
+- turtlebot3_gazebo
+- turtlebot3_simulations
+turtlebot_apps:
+- turtlebot_actions
+- turtlebot_apps
+- turtlebot_calibration
+- turtlebot_follower
+- turtlebot_navigation
+- turtlebot_rapps
+turtlebot_create:
+- create_description
+- create_driver
+- create_node
+- turtlebot_create
+turtlebot_interactions:
+- turtlebot_dashboard
+- turtlebot_interactions
+- turtlebot_interactive_markers
+- turtlebot_rviz_launchers
+turtlebot_simulator:
+- turtlebot_gazebo
+- turtlebot_simulator
+- turtlebot_stage
+- turtlebot_stdr
+tuw_marker_detection:
+- tuw_aruco
+- tuw_ellipses
+- tuw_marker_detection
+- tuw_marker_pose_estimation
+tuw_msgs:
+- tuw_airskin_msgs
+- tuw_gazebo_msgs
+- tuw_geometry_msgs
+- tuw_msgs
+- tuw_multi_robot_msgs
+- tuw_nav_msgs
+- tuw_object_msgs
+- tuw_vehicle_msgs
+underwater_simulation:
+- underwater_sensor_msgs
+- underwater_vehicle_dynamics
+unique_identifier:
+- unique_identifier
+universal_robot:
+- universal_robot
+- ur10_moveit_config
+- ur3_moveit_config
+- ur5_moveit_config
+- ur_bringup
+- ur_description
+- ur_driver
+- ur_gazebo
+- ur_kinematics
+- ur_msgs
+urdf_tutorial:
+- urdf_sim_tutorial
+uuv_plume_simulator:
+- uuv_cpc_sensor
+- uuv_plume_msgs
+- uuv_plume_simulator
+uuv_simulator:
+- uuv_assistants
+- uuv_auv_control_allocator
+- uuv_control_cascaded_pid
+- uuv_control_msgs
+- uuv_control_utils
+- uuv_descriptions
+- uuv_gazebo
+- uuv_gazebo_plugins
+- uuv_gazebo_ros_plugins
+- uuv_gazebo_ros_plugins_msgs
+- uuv_gazebo_worlds
+- uuv_sensor_ros_plugins
+- uuv_sensor_ros_plugins_msgs
+- uuv_simulator
+- uuv_teleop
+- uuv_thruster_manager
+- uuv_trajectory_control
+- uuv_world_plugins
+- uuv_world_ros_plugins
+- uuv_world_ros_plugins_msgs
+variant:
+- variant
+- variant_msgs
+- variant_topic_test
+- variant_topic_tools
+velodyne:
+- velodyne
+- velodyne_driver
+- velodyne_laserscan
+- velodyne_msgs
+- velodyne_pointcloud
+velodyne_simulator:
+- velodyne_description
+- velodyne_gazebo_plugins
+- velodyne_simulator
+vision_visp:
+- vision_visp
+- visp_auto_tracker
+- visp_bridge
+- visp_camera_calibration
+- visp_hand2eye_calibration
+- visp_tracker
+visualization_osg:
+- osg_interactive_markers
+- osg_markers
+- osg_utils
+- visualization_osg
+vmrc:
+- usv_gazebo_plugins
+- vmrc_gazebo
+- wamv_description
+- wamv_gazebo
+warthog:
+- warthog_control
+- warthog_description
+- warthog_msgs
+warthog_desktop:
+- warthog_desktop
+- warthog_viz
+waypoint:
+- waypoint_generator
+- waypoint_meta
+- waypoint_touring
+web_interface:
+- image_stream
+- launchman
+- pyclearsilver
+- ros_apache2
+- rosjson
+- rosweb
+- web_interface
+- web_msgs
+- webui
+webrtc_ros:
+- webrtc
+- webrtc_ros
+wge100_driver:
+- wge100_camera
+- wge100_camera_firmware
+- wge100_driver
+wireless:
+- wireless_msgs
+- wireless_watcher
+world_canvas_libs:
+- world_canvas_client_cpp
+- world_canvas_client_examples
+- world_canvas_client_py
+- world_canvas_utils
+wu_ros_tools:
+- easy_markers
+- joy_listener
+- kalman_filter
+- rosbaglive
+- wu_ros_tools
+xiaoqiang:
+- addwa_local_planner
+- xiaoqiang
+- xiaoqiang_bringup
+- xiaoqiang_controller
+- xiaoqiang_depth_image_proc
+- xiaoqiang_description
+- xiaoqiang_driver
+- xiaoqiang_freenect
+- xiaoqiang_freenect_camera
+- xiaoqiang_freenect_launch
+- xiaoqiang_monitor
+- xiaoqiang_msgs
+- xiaoqiang_navigation
+- xiaoqiang_navigation_example
+- xiaoqiang_server
+xpp:
+- xpp
+- xpp_examples
+- xpp_hyq
+- xpp_msgs
+- xpp_quadrotor
+- xpp_states
+- xpp_vis
+yujin_ocs:
+- yocs_ar_marker_tracking
+- yocs_ar_pair_approach
+- yocs_ar_pair_tracking
+- yocs_cmd_vel_mux
+- yocs_controllers
+- yocs_diff_drive_pose_controller
+- yocs_joyop
+- yocs_keyop
+- yocs_localization_manager
+- yocs_math_toolkit
+- yocs_navi_toolkit
+- yocs_navigator
+- yocs_rapps
+- yocs_safety_controller
+- yocs_velocity_smoother
+- yocs_virtual_sensor
+- yocs_waypoint_provider
+- yocs_waypoints_navi
+- yujin_ocs
+zeroconf_avahi_suite:
+- zeroconf_avahi
+- zeroconf_avahi_demos
+- zeroconf_avahi_suite
