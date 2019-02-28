@@ -809,7 +809,7 @@ household_objects_database_msgs:
 hpp-fcl:
   url: https://github.com/ipab-slmc/hpp-fcl_catkin-release.git
   vcs: git
-  version: release/kinetic/hpp-fcl/1.0.1-0
+  version: release/kinetic/hpp-fcl/1.0.1-1
 hrpsys:
   url: https://github.com/tork-a/hrpsys-release.git
   vcs: git
@@ -1098,6 +1098,10 @@ libuvc_ros:
   url: https://github.com/ros-drivers-gbp/libuvc_ros-release.git
   vcs: git
   version: release/kinetic/libuvc_ros/0.0.10-0
+linux_networking:
+  url: https://github.com/pr2-gbp/linux_networking-release.git
+  vcs: git
+  version: release/kinetic/network_traffic_control/1.0.12-0
 linux_peripheral_interfaces:
   url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
   vcs: git
@@ -1234,6 +1238,10 @@ mir_robot:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
   version: release/kinetic/mir_robot/1.0.2-0
+ml_classifiers:
+  url: https://github.com/astuff/ml_classifiers-release.git
+  vcs: git
+  version: release/kinetic/ml_classifiers/0.4.0-0
 modelica_bridge:
   url: https://github.com/ModROS/modelica_bridge-release.git
   vcs: git
@@ -1325,7 +1333,7 @@ multikey_teleop:
 multimaster_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/node_manager_fkie/0.8.9-0
+  version: release/kinetic/node_manager_fkie/0.8.11-0
 multisense_ros:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git

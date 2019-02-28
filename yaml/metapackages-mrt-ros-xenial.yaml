@@ -747,6 +747,20 @@ lex_node:
 libuvc_ros:
 - libuvc_camera
 - libuvc_ros
+linux_networking:
+- access_point_control
+- asmach
+- asmach_tutorials
+- ddwrt_access_point
+- hostapd_access_point
+- ieee80211_channels
+- linksys_access_point
+- linux_networking
+- multi_interface_roam
+- network_control_tests
+- network_detector
+- network_monitor_udp
+- network_traffic_control
 linux_peripheral_interfaces:
 - laptop_battery_monitor
 - libsensors_monitor
