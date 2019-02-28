@@ -213,7 +213,7 @@ fetch_open_auto_dock:
 fetch_robots:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/freight_bringup/0.8.4-0
+  version: release/melodic/freight_bringup/0.8.5-0
 fetch_ros:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
@@ -313,7 +313,7 @@ hls_lfcd_lds_driver:
 hpp-fcl:
   url: https://github.com/ipab-slmc/hpp-fcl_catkin-release.git
   vcs: git
-  version: release/melodic/hpp-fcl/1.0.1-0
+  version: release/melodic/hpp-fcl/1.0.1-2
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -474,6 +474,10 @@ mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
   version: release/melodic/mcl_3dl_msgs/0.1.2-0
+ml_classifiers:
+  url: https://github.com/astuff/ml_classifiers-release.git
+  vcs: git
+  version: release/melodic/ml_classifiers/0.4.0-0
 mongodb_store:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
