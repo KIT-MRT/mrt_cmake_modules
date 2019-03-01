@@ -213,7 +213,7 @@ fetch_open_auto_dock:
 fetch_robots:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/freight_bringup/0.8.5-0
+  version: release/melodic/freight_bringup/0.8.6-0
 fetch_ros:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
@@ -721,7 +721,7 @@ pid:
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.0-0
+  version: release/melodic/pilz_trajectory_generation/0.4.1-0
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -1210,6 +1210,10 @@ vrpn_client_ros:
   url: https://github.com/ros-drivers-gbp/vrpn_client_ros-release.git
   vcs: git
   version: release/melodic/vrpn_client_ros/0.2.2-0
+vrx:
+  url: https://github.com/ros-gbp/vrx-release.git
+  vcs: git
+  version: release/melodic/wamv_gazebo/1.0.0-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git

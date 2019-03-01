@@ -826,6 +826,11 @@ velodyne_simulator:
 - velodyne_description
 - velodyne_gazebo_plugins
 - velodyne_simulator
+vrx:
+- usv_gazebo_plugins
+- vrx_gazebo
+- wamv_description
+- wamv_gazebo
 webrtc_ros:
 - webrtc
 - webrtc_ros
