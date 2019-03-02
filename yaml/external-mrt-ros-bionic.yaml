@@ -721,7 +721,7 @@ pid:
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.1-0
+  version: release/melodic/pilz_trajectory_generation/0.4.0-0
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -1213,7 +1213,7 @@ vrpn_client_ros:
 vrx:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.0.0-1
+  version: release/melodic/wamv_gazebo/1.0.1-0
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
