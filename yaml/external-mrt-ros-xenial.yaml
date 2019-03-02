@@ -142,6 +142,10 @@ behaviortree_cpp:
   url: https://github.com/BehaviorTree/behaviortree_cpp-release.git
   vcs: git
   version: release/kinetic/behaviortree_cpp/2.5.1-0
+behaviortree_cpp_v3:
+  url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
+  vcs: git
+  version: release/kinetic/behaviortree_cpp_v3/3.0.1-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
