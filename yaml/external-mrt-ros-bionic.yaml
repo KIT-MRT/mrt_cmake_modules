@@ -146,6 +146,10 @@ bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
   version: release/melodic/bfl/0.8.0-1
+brics_actuator:
+  url: https://github.com/wnowak/brics_actuator-release.git
+  vcs: git
+  version: release/melodic/brics_actuator/0.7.0-0
 camera_umd:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -337,47 +341,47 @@ dataspeed_ulc_msgs:
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca/1.0.0-0
+  version: release/melodic/dbw_fca/1.0.1-0
 dbw_fca_can:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_can/1.0.0-0
+  version: release/melodic/dbw_fca_can/1.0.1-0
 dbw_fca_description:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_description/1.0.0-0
+  version: release/melodic/dbw_fca_description/1.0.1-0
 dbw_fca_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_joystick_demo/1.0.0-0
+  version: release/melodic/dbw_fca_joystick_demo/1.0.1-0
 dbw_fca_msgs:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_msgs/1.0.0-0
+  version: release/melodic/dbw_fca_msgs/1.0.1-0
 dbw_mkz:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz/1.1.0-0
+  version: release/melodic/dbw_mkz/1.1.1-0
 dbw_mkz_can:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_can/1.1.0-0
+  version: release/melodic/dbw_mkz_can/1.1.1-0
 dbw_mkz_description:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_description/1.1.0-0
+  version: release/melodic/dbw_mkz_description/1.1.1-0
 dbw_mkz_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_joystick_demo/1.1.0-0
+  version: release/melodic/dbw_mkz_joystick_demo/1.1.1-0
 dbw_mkz_msgs:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_msgs/1.1.0-0
+  version: release/melodic/dbw_mkz_msgs/1.1.1-0
 dbw_mkz_twist_controller:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_twist_controller/1.1.0-0
+  version: release/melodic/dbw_mkz_twist_controller/1.1.1-0
 ddynamic_reconfigure_python:
   url: https://github.com/pal-gbp/ddynamic_reconfigure_python-release.git
   vcs: git
@@ -1385,7 +1389,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.29.0-0
+  version: release/melodic/libmavconn/0.29.1-0
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -1549,19 +1553,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.2.2-0
+  version: release/melodic/mavlink/2019.3.3-0
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.29.0-0
+  version: release/melodic/mavros/0.29.1-0
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.29.0-0
+  version: release/melodic/mavros_extras/0.29.1-0
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.29.0-0
+  version: release/melodic/mavros_msgs/0.29.1-0
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2981,7 +2985,7 @@ sick_scan:
 sick_tim:
   url: https://github.com/uos-gbp/sick_tim-release.git
   vcs: git
-  version: release/melodic/sick_tim/0.0.14-0
+  version: release/melodic/sick_tim/0.0.15-0
 simple_grasping:
   url: https://github.com/ros-gbp/simple_grasping-release.git
   vcs: git
@@ -3173,7 +3177,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.29.0-0
+  version: release/melodic/test_mavros/0.29.1-0
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
