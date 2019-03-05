@@ -353,7 +353,7 @@ behaviortree_cpp:
 behaviortree_cpp_v3:
   url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
   vcs: git
-  version: release/kinetic/behaviortree_cpp_v3/3.0.1-0
+  version: release/kinetic/behaviortree_cpp_v3/3.0.2-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
@@ -1101,7 +1101,7 @@ cv_camera:
 darknet_ros_msgs:
   url: https://github.com/leggedrobotics/darknet_ros-release.git
   vcs: git
-  version: release/kinetic/darknet_ros_msgs/1.1.3-0
+  version: release/kinetic/darknet_ros_msgs/1.1.4-0
 dartsim:
   url: https://github.com/dartsim/ros-dartsim-release.git
   vcs: git
@@ -1157,47 +1157,47 @@ dataspeed_ulc_msgs:
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca/1.0.0-0
+  version: release/kinetic/dbw_fca/1.0.1-0
 dbw_fca_can:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_can/1.0.0-0
+  version: release/kinetic/dbw_fca_can/1.0.1-0
 dbw_fca_description:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_description/1.0.0-0
+  version: release/kinetic/dbw_fca_description/1.0.1-0
 dbw_fca_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_joystick_demo/1.0.0-0
+  version: release/kinetic/dbw_fca_joystick_demo/1.0.1-0
 dbw_fca_msgs:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_msgs/1.0.0-0
+  version: release/kinetic/dbw_fca_msgs/1.0.1-0
 dbw_mkz:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz/1.1.0-0
+  version: release/kinetic/dbw_mkz/1.1.1-0
 dbw_mkz_can:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_can/1.1.0-0
+  version: release/kinetic/dbw_mkz_can/1.1.1-0
 dbw_mkz_description:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_description/1.1.0-0
+  version: release/kinetic/dbw_mkz_description/1.1.1-0
 dbw_mkz_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_joystick_demo/1.1.0-0
+  version: release/kinetic/dbw_mkz_joystick_demo/1.1.1-0
 dbw_mkz_msgs:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_msgs/1.1.0-0
+  version: release/kinetic/dbw_mkz_msgs/1.1.1-0
 dbw_mkz_twist_controller:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_twist_controller/1.1.0-0
+  version: release/kinetic/dbw_mkz_twist_controller/1.1.1-0
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2638,6 +2638,10 @@ imu_transformer:
   url: https://github.com/ros-gbp/imu_pipeline-release.git
   vcs: git
   version: release/kinetic/imu_transformer/0.2.3-0
+indoor_localization:
+  url: https://github.com/inomuh/indoor_localization-release.git
+  vcs: git
+  version: release/kinetic/indoor_localization/0.1.0-0
 indoor_positioning:
   url: https://github.com/metratec/indoor_positioning-release.git
   vcs: git
@@ -3281,7 +3285,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/libmavconn/0.29.0-0
+  version: release/kinetic/libmavconn/0.29.1-0
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -3633,19 +3637,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/kinetic/mavlink/2019.2.2-0
+  version: release/kinetic/mavlink/2019.3.3-0
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros/0.29.0-0
+  version: release/kinetic/mavros/0.29.1-0
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_extras/0.29.0-0
+  version: release/kinetic/mavros_extras/0.29.1-0
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_msgs/0.29.0-0
+  version: release/kinetic/mavros_msgs/0.29.1-0
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -3745,31 +3749,35 @@ mini_maxwell:
 mir_actions:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_actions/1.0.2-0
+  version: release/kinetic/mir_actions/1.0.3-0
 mir_description:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_description/1.0.2-0
+  version: release/kinetic/mir_description/1.0.3-0
 mir_driver:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_driver/1.0.2-0
+  version: release/kinetic/mir_driver/1.0.3-0
+mir_dwb_critics:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/kinetic/mir_dwb_critics/1.0.3-0
 mir_gazebo:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_gazebo/1.0.2-0
+  version: release/kinetic/mir_gazebo/1.0.3-0
 mir_msgs:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_msgs/1.0.2-0
+  version: release/kinetic/mir_msgs/1.0.3-0
 mir_navigation:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_navigation/1.0.2-0
+  version: release/kinetic/mir_navigation/1.0.3-0
 mir_robot:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_robot/1.0.2-0
+  version: release/kinetic/mir_robot/1.0.3-0
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
@@ -6969,7 +6977,7 @@ sick_scan:
 sick_tim:
   url: https://github.com/uos-gbp/sick_tim-release.git
   vcs: git
-  version: release/kinetic/sick_tim/0.0.14-0
+  version: release/kinetic/sick_tim/0.0.15-0
 sick_visionary_t:
   url: https://github.com/SICKAG/sick_visionary_t-release.git
   vcs: git
@@ -7377,7 +7385,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/test_mavros/0.29.0-0
+  version: release/kinetic/test_mavros/0.29.1-0
 test_osm:
   url: https://github.com/ros-geographic-info/open_street_map-release.git
   vcs: git
