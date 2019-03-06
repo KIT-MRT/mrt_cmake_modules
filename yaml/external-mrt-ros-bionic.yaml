@@ -446,6 +446,10 @@ dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
   version: release/melodic/dynamic_edt_3d/1.9.0-1
+dynamic_robot_state_publisher:
+  url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
+  vcs: git
+  version: release/melodic/dynamic_robot_state_publisher/1.1.1-0
 dynamic_tf_publisher:
   url: https://github.com/tork-a/jsk_common-release.git
   vcs: git
@@ -1606,6 +1610,38 @@ mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/mini_maxwell/2.1.11-0
+mir_actions:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_actions/1.0.3-0
+mir_description:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_description/1.0.3-0
+mir_driver:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_driver/1.0.3-0
+mir_dwb_critics:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_dwb_critics/1.0.3-0
+mir_gazebo:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_gazebo/1.0.3-0
+mir_msgs:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_msgs/1.0.3-0
+mir_navigation:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_navigation/1.0.3-0
+mir_robot:
+  url: https://github.com/uos-gbp/mir_robot-release.git
+  vcs: git
+  version: release/melodic/mir_robot/1.0.3-0
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
@@ -3062,6 +3098,10 @@ static_tf:
   url: https://github.com/wu-robotics/static_tf_release.git
   vcs: git
   version: release/melodic/static_tf/0.0.2-0
+static_transform_mux:
+  url: https://github.com/peci1/static_transform_mux-release.git
+  vcs: git
+  version: release/melodic/static_transform_mux/1.1.0-0
 std_capabilities:
   url: https://github.com/ros-gbp/std_capabilities-release.git
   vcs: git
