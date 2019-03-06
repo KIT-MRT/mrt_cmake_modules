@@ -1350,6 +1350,10 @@ dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
   version: release/kinetic/dynamic_edt_3d/1.8.1-0
+dynamic_robot_state_publisher:
+  url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
+  vcs: git
+  version: release/kinetic/dynamic_robot_state_publisher/1.1.1-0
 dynamic_tf_publisher:
   url: https://github.com/tork-a/jsk_common-release.git
   vcs: git
@@ -1413,7 +1417,7 @@ dynpick_driver:
 earth_rover_localization:
   url: https://github.com/earthrover/earth_rover_localization-release.git
   vcs: git
-  version: release/kinetic/earth_rover_localization/1.0.1-1
+  version: release/kinetic/earth_rover_localization/1.2.0-0
 earth_rover_piksi:
   url: https://github.com/earthrover/earth_rover_piksi-release.git
   vcs: git
