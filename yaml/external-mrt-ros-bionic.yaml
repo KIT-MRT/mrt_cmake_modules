@@ -654,6 +654,10 @@ eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
   version: release/melodic/eigenpy/1.5.0-1
+eml:
+  url: https://github.com/ros-gbp/eml-release.git
+  vcs: git
+  version: release/melodic/eml/1.8.15-0
 ethercat_grant:
   url: https://github.com/shadow-robot/ethercat_grant-release.git
   vcs: git
@@ -673,7 +677,7 @@ euscollada:
 euslisp:
   url: https://github.com/tork-a/euslisp-release.git
   vcs: git
-  version: release/melodic/euslisp/9.26.0-0
+  version: release/melodic/euslisp/9.26.0-1
 eusurdf:
   url: https://github.com/tork-a/jsk_model_tools-release.git
   vcs: git
