@@ -46,6 +46,10 @@ abseil_cpp:
   url: https://github.com/Eurecat/abseil_cpp-release.git
   vcs: git
   version: release/kinetic/abseil_cpp/0.2.3-0
+acado:
+  url: https://github.com/tud-cor/acado-release.git
+  vcs: git
+  version: release/kinetic/acado/1.2.2-0
 access_point_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2645,7 +2649,7 @@ imu_transformer:
 indoor_localization:
   url: https://github.com/inomuh/indoor_localization-release.git
   vcs: git
-  version: release/kinetic/indoor_localization/0.1.0-0
+  version: release/kinetic/indoor_localization/0.1.0-1
 indoor_positioning:
   url: https://github.com/metratec/indoor_positioning-release.git
   vcs: git
@@ -2793,7 +2797,7 @@ joint_limits_interface:
 joint_qualification_controllers:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/joint_qualification_controllers/1.0.12-0
+  version: release/kinetic/joint_qualification_controllers/1.0.12-1
 joint_state_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -5173,7 +5177,7 @@ pr2_bringup:
 pr2_bringup_tests:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_bringup_tests/1.0.12-0
+  version: release/kinetic/pr2_bringup_tests/1.0.12-1
 pr2_calibration:
   url: https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release.git
   vcs: git
@@ -5233,7 +5237,7 @@ pr2_controllers_msgs:
 pr2_counterbalance_check:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_counterbalance_check/1.0.12-0
+  version: release/kinetic/pr2_counterbalance_check/1.0.12-1
 pr2_dashboard_aggregator:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -5322,6 +5326,10 @@ pr2_mechanism_msgs:
   url: https://github.com/ros-gbp/pr2_mechanism_msgs-release.git
   vcs: git
   version: release/kinetic/pr2_mechanism_msgs/1.8.2-0
+pr2_motor_diagnostic_tool:
+  url: https://github.com/pr2-gbp/pr2_self_test-release.git
+  vcs: git
+  version: release/kinetic/pr2_motor_diagnostic_tool/1.0.12-1
 pr2_move_base:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -5397,11 +5405,11 @@ pr2_se_calibration_launch:
 pr2_self_test:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test/1.0.12-0
+  version: release/kinetic/pr2_self_test/1.0.12-1
 pr2_self_test_msgs:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test_msgs/1.0.12-0
+  version: release/kinetic/pr2_self_test_msgs/1.0.12-1
 pr2_simulator:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
@@ -6393,7 +6401,7 @@ ros_wild:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosapi/0.10.1-0
+  version: release/kinetic/rosapi/0.10.2-0
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -6413,15 +6421,15 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_library/0.10.1-0
+  version: release/kinetic/rosbridge_library/0.10.2-0
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_server/0.10.1-0
+  version: release/kinetic/rosbridge_server/0.10.2-0
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_suite/0.10.1-0
+  version: release/kinetic/rosbridge_suite/0.10.2-0
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -7418,6 +7426,10 @@ tf2_web_republisher:
   url: https://github.com/RobotWebTools-release/tf2_web_republisher-release.git
   vcs: git
   version: release/kinetic/tf2_web_republisher/0.3.2-0
+tf_remapper_cpp:
+  url: https://github.com/peci1/tf_remapper_cpp-release.git
+  vcs: git
+  version: release/kinetic/tf_remapper_cpp/1.1.1-0
 tf_tools:
   url: https://github.com/srv/srv_tools-release.git
   vcs: git
