@@ -31,16 +31,6 @@ if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
 endif()
 
 # Select arch flag
-if(MRT_ARCH)
-  if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
-    set(_arch "-march=${MRT_ARCH}")
-  endif()
-else()
-  # sandybridge is the lowest common cpu arch for us
-  set(_arch "-march=sandybridge")
-endif()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
