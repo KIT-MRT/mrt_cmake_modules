@@ -357,7 +357,7 @@ behaviortree_cpp:
 behaviortree_cpp_v3:
   url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
   vcs: git
-  version: release/kinetic/behaviortree_cpp_v3/3.0.2-0
+  version: release/kinetic/behaviortree_cpp_v3/3.0.3-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
@@ -5821,23 +5821,31 @@ rc_visard_driver:
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
-  version: release/kinetic/rdl/1.0.0-0
+  version: release/kinetic/rdl/1.1.0-0
 rdl_benchmark:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
-  version: release/kinetic/rdl_benchmark/1.0.0-0
+  version: release/kinetic/rdl_benchmark/1.1.0-0
 rdl_cmake:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
-  version: release/kinetic/rdl_cmake/1.0.0-0
+  version: release/kinetic/rdl_cmake/1.1.0-0
 rdl_dynamics:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
-  version: release/kinetic/rdl_dynamics/1.0.0-0
+  version: release/kinetic/rdl_dynamics/1.1.0-0
+rdl_msgs:
+  url: https://gitlab.com/jlack/rdl_release.git
+  vcs: git
+  version: release/kinetic/rdl_msgs/1.1.0-0
+rdl_ros_tools:
+  url: https://gitlab.com/jlack/rdl_release.git
+  vcs: git
+  version: release/kinetic/rdl_ros_tools/1.1.0-0
 rdl_urdfreader:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
-  version: release/kinetic/rdl_urdfreader/1.0.0-0
+  version: release/kinetic/rdl_urdfreader/1.1.0-0
 realsense_camera:
   url: https://github.com/intel-ros/realsense-release.git
   vcs: git
