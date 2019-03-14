@@ -4862,6 +4862,10 @@ osm_cartography:
   url: https://github.com/ros-geographic-info/open_street_map-release.git
   vcs: git
   version: release/kinetic/osm_cartography/0.2.4-0
+ouster_driver:
+  url: https://github.com/CPFL/ouster-release.git
+  vcs: git
+  version: release/kinetic/ouster_driver/0.1.6-0
 oxford_gps_eth:
   url: https://github.com/DataspeedInc-release/oxford_gps_eth-release.git
   vcs: git
