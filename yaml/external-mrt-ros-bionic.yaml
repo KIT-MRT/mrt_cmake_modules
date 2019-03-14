@@ -2266,6 +2266,10 @@ orocos_kinematics_dynamics:
   url: https://github.com/orocos/orocos-kdl-release.git
   vcs: git
   version: release/melodic/orocos_kinematics_dynamics/1.4.0-0
+ouster_driver:
+  url: https://github.com/CPFL/ouster-release.git
+  vcs: git
+  version: release/melodic/ouster_driver/0.1.6-0
 oxford_gps_eth:
   url: https://github.com/DataspeedInc-release/oxford_gps_eth-release.git
   vcs: git
@@ -2362,6 +2366,10 @@ phidgets_imu:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
   version: release/melodic/phidgets_imu/0.7.7-0
+photo:
+  url: https://github.com/bosch-ros-pkg/photo-release.git
+  vcs: git
+  version: release/melodic/photo/1.0.2-0
 pid:
   url: https://github.com/AndyZe/pid-release.git
   vcs: git
@@ -2373,23 +2381,23 @@ pilz_control:
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.1-1
+  version: release/melodic/pilz_extensions/0.4.2-0
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.1-1
+  version: release/melodic/pilz_industrial_motion/0.4.2-0
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.1-1
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.2-0
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.1-1
+  version: release/melodic/pilz_msgs/0.4.2-0
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.1-1
+  version: release/melodic/pilz_robot_programming/0.4.2-0
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -2401,7 +2409,7 @@ pilz_testutils:
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.1-1
+  version: release/melodic/pilz_trajectory_generation/0.4.2-0
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
