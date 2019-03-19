@@ -53,7 +53,7 @@ acado:
 access_point_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/access_point_control/1.0.12-0
+  version: release/kinetic/access_point_control/1.0.14-0
 ackermann_controller:
   url: https://github.com/easymov/ackermann_controller-release.git
   vcs: git
@@ -189,11 +189,11 @@ aruco_ros:
 asmach:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/asmach/1.0.12-0
+  version: release/kinetic/asmach/1.0.14-0
 asmach_tutorials:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/asmach_tutorials/1.0.12-0
+  version: release/kinetic/asmach_tutorials/1.0.14-0
 assimp_devel:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -421,23 +421,23 @@ camera_umd:
 can_msgs:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/can_msgs/0.7.9-0
+  version: release/kinetic/can_msgs/0.7.10-0
 canopen_402:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_402/0.7.9-0
+  version: release/kinetic/canopen_402/0.7.10-0
 canopen_chain_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_chain_node/0.7.9-0
+  version: release/kinetic/canopen_chain_node/0.7.10-0
 canopen_master:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_master/0.7.9-0
+  version: release/kinetic/canopen_master/0.7.10-0
 canopen_motor_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_motor_node/0.7.9-0
+  version: release/kinetic/canopen_motor_node/0.7.10-0
 capabilities:
   url: https://github.com/ros-gbp/capabilities-release.git
   vcs: git
@@ -1217,7 +1217,7 @@ dbw_mkz_twist_controller:
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/ddwrt_access_point/1.0.12-0
+  version: release/kinetic/ddwrt_access_point/1.0.14-0
 ddynamic_reconfigure_python:
   url: https://github.com/pal-gbp/ddynamic_reconfigure_python-release.git
   vcs: git
@@ -2429,7 +2429,7 @@ homer_tts:
 hostapd_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/hostapd_access_point/1.0.12-0
+  version: release/kinetic/hostapd_access_point/1.0.14-0
 household_objects_database_msgs:
   url: https://github.com/ros-gbp/household_objects_database_msgs-release.git
   vcs: git
@@ -2541,7 +2541,7 @@ ibeo_msgs:
 ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/ieee80211_channels/1.0.12-0
+  version: release/kinetic/ieee80211_channels/1.0.14-0
 ifm_o3mxxx:
   url: https://github.com/takiaine/ifm_o3mxxx-release.git
   vcs: git
@@ -3413,11 +3413,11 @@ libuvc_ros:
 linksys_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/linksys_access_point/1.0.12-0
+  version: release/kinetic/linksys_access_point/1.0.14-0
 linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/linux_networking/1.0.12-0
+  version: release/kinetic/linux_networking/1.0.14-0
 linux_peripheral_interfaces:
   url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
   vcs: git
@@ -4085,7 +4085,7 @@ msp:
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/multi_interface_roam/1.0.12-0
+  version: release/kinetic/multi_interface_roam/1.0.14-0
 multi_jackal_base:
   url: https://github.com/NicksSimulationsROS/multi_jackal-release.git
   vcs: git
@@ -4409,11 +4409,11 @@ nerian_stereo:
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/network_control_tests/1.0.12-0
+  version: release/kinetic/network_control_tests/1.0.14-0
 network_detector:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/network_detector/1.0.12-0
+  version: release/kinetic/network_detector/1.0.14-0
 network_interface:
   url: https://github.com/astuff/network_interface-release.git
   vcs: git
@@ -4421,11 +4421,11 @@ network_interface:
 network_monitor_udp:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/network_monitor_udp/1.0.12-0
+  version: release/kinetic/network_monitor_udp/1.0.14-0
 network_traffic_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/kinetic/network_traffic_control/1.0.12-0
+  version: release/kinetic/network_traffic_control/1.0.14-0
 nextage_calibration:
   url: https://github.com/tork-a/rtmros_nextage-release.git
   vcs: git
@@ -5178,6 +5178,18 @@ power_monitor:
   url: https://github.com/pr2-gbp/pr2_power_drivers-release.git
   vcs: git
   version: release/kinetic/power_monitor/1.1.7-0
+pr2_2dnav:
+  url: https://github.com/pr2-gbp/pr2_navigation_apps-release.git
+  vcs: git
+  version: release/kinetic/pr2_2dnav/1.0.2-0
+pr2_2dnav_local:
+  url: https://github.com/pr2-gbp/pr2_navigation_apps-release.git
+  vcs: git
+  version: release/kinetic/pr2_2dnav_local/1.0.2-0
+pr2_2dnav_slam:
+  url: https://github.com/pr2-gbp/pr2_navigation_apps-release.git
+  vcs: git
+  version: release/kinetic/pr2_2dnav_slam/1.0.2-0
 pr2_app_manager:
   url: https://github.com/pr2-gbp/pr2_apps-release.git
   vcs: git
@@ -5374,6 +5386,10 @@ pr2_navigation:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
   version: release/kinetic/pr2_navigation/0.1.28-0
+pr2_navigation_apps:
+  url: https://github.com/pr2-gbp/pr2_navigation_apps-release.git
+  vcs: git
+  version: release/kinetic/pr2_navigation_apps/1.0.2-0
 pr2_navigation_config:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -6357,7 +6373,7 @@ ros_apache2:
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/ros_canopen/0.7.9-0
+  version: release/kinetic/ros_canopen/0.7.10-0
 ros_control:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -7101,11 +7117,11 @@ social_navigation_layers:
 socketcan_bridge:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/socketcan_bridge/0.7.9-0
+  version: release/kinetic/socketcan_bridge/0.7.10-0
 socketcan_interface:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/socketcan_interface/0.7.9-0
+  version: release/kinetic/socketcan_interface/0.7.10-0
 soem:
   url: https://github.com/smits/soem-gbp.git
   vcs: git
