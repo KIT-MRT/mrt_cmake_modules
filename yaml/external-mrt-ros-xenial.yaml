@@ -277,11 +277,11 @@ avt_vimba_camera:
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
-  version: release/kinetic/aws_common/1.0.0-6
+  version: release/kinetic/aws_common/2.0.0-1
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
-  version: release/kinetic/aws_ros1_common/1.0.0-0
+  version: release/kinetic/aws_ros1_common/2.0.0-0
 axcli:
   url: https://github.com/po1/axcli-release.git
   vcs: git
@@ -357,7 +357,7 @@ behaviortree_cpp:
 behaviortree_cpp_v3:
   url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
   vcs: git
-  version: release/kinetic/behaviortree_cpp_v3/3.0.3-0
+  version: release/kinetic/behaviortree_cpp_v3/3.0.6-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
@@ -2201,7 +2201,7 @@ gx_sound_player:
 h264_encoder_core:
   url: https://github.com/aws-gbp/h264_encoder_core-release.git
   vcs: git
-  version: release/kinetic/h264_encoder_core/1.0.0-1
+  version: release/kinetic/h264_encoder_core/2.0.0-0
 h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
@@ -3077,7 +3077,7 @@ key_teleop:
 kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
-  version: release/kinetic/kinesis_manager/1.0.0-2
+  version: release/kinetic/kinesis_manager/2.0.0-0
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
@@ -8054,6 +8054,18 @@ usb_cam:
   url: https://github.com/ros-gbp/usb_cam-release.git
   vcs: git
   version: release/kinetic/usb_cam/0.3.5-0
+usb_cam_controllers:
+  url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
+  vcs: git
+  version: release/kinetic/usb_cam_controllers/0.0.2-0
+usb_cam_hardware:
+  url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
+  vcs: git
+  version: release/kinetic/usb_cam_hardware/0.0.2-0
+usb_cam_hardware_interface:
+  url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
+  vcs: git
+  version: release/kinetic/usb_cam_hardware_interface/0.0.2-0
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vmrc-release.git
   vcs: git
