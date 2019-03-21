@@ -23,6 +23,7 @@ before_script:
 
 build:
   stage: build
+  only: [branches, tags, merge_requests] # means "always"
   script:
   # Build project and resolve deps at the same time in debug mode
   - mrt catkin build -s -rd -c --debug --default_yes --no-status $CI_PROJECT_NAME
@@ -38,9 +39,7 @@ build:
 
 general_code_quality:
   stage: build
-  only:
-  - master
-  - merge_request
+  only: [master, merge_requests]
   image: docker:stable
   before_script: []
   cache: {}
@@ -66,9 +65,7 @@ code_quality:
   dependencies:
     - general_code_quality
   stage: test
-  only:
-  - master
-  - merge_request
+  only: [master, merge_requests]
   artifacts:
     paths: [gl-code-quality-report.json]
     reports:
@@ -87,9 +84,7 @@ check_code_quality:
   dependencies:
     - code_quality
   stage: verify
-  only:
-  - master
-  - merge_request
+  only: [master, merge_requests]
   # default filename is codeclimate.json
   script:
   - mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
@@ -100,6 +95,7 @@ check_code_quality:
 
 test:
   stage: test
+  only: [branches, tags, merge_requests] # means "always"
   coverage: '/lines: \d+.\d+\%/'
   variables:
     MRT_MIN_COVERAGE: $MRT_REQUIRED_COVERAGE
@@ -123,9 +119,7 @@ test:
 
 report_licenses:
   stage: verify
-  only:
-  - master
-  - merge_request
+  only: [master, merge_requests]
   script:
   - mrt ws resolve_deps -y
   - mrt ci report_licenses .
@@ -136,16 +130,13 @@ report_licenses:
  
 deps:
   stage: verify
+  only: [master, merge_requests]
   variables:
     MRT_CI_NO_TIDY: 1
   cache:
     paths:
     - catkin_ws/
     key: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-deps
-  only:
-  # only execute if this is the master branch
-  - master
-  - merge_request
   script:
   # test all dependencies of this package. Exclude packages with -e, include with -i.
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME $MRT_NAMESPACE
