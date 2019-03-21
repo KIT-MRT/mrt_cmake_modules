@@ -142,6 +142,10 @@ aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
   version: release/melodic/aws_common/2.0.0-1
+aws_ros1_common:
+  url: https://github.com/aws-gbp/aws_ros1_common-release.git
+  vcs: git
+  version: release/melodic/aws_ros1_common/2.0.0-0
 backward_ros:
   url: https://github.com/pal-gbp/backward_ros-release.git
   vcs: git
@@ -290,6 +294,22 @@ clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
   version: release/melodic/clear_costmap_recovery/1.16.2-0
+cloudwatch_logger:
+  url: https://github.com/aws-gbp/cloudwatch_logger-release.git
+  vcs: git
+  version: release/melodic/cloudwatch_logger/2.0.0-0
+cloudwatch_logs_common:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/melodic/cloudwatch_logs_common/1.0.1-0
+cloudwatch_metrics_collector:
+  url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
+  vcs: git
+  version: release/melodic/cloudwatch_metrics_collector/2.0.0-0
+cloudwatch_metrics_common:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/melodic/cloudwatch_metrics_common/1.0.1-0
 cob_actions:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -1090,6 +1110,14 @@ h264_encoder_core:
   url: https://github.com/aws-gbp/h264_encoder_core-release.git
   vcs: git
   version: release/melodic/h264_encoder_core/2.0.0-0
+h264_video_encoder:
+  url: https://github.com/aws-gbp/h264_video_encoder-release.git
+  vcs: git
+  version: release/melodic/h264_video_encoder/1.1.1-0
+health_metric_collector:
+  url: https://github.com/aws-gbp/health_metric_collector-release.git
+  vcs: git
+  version: release/melodic/health_metric_collector/2.0.0-0
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
@@ -1450,6 +1478,14 @@ kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
   version: release/melodic/kinesis_manager/2.0.0-0
+kinesis_video_msgs:
+  url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
+  vcs: git
+  version: release/melodic/kinesis_video_msgs/2.0.0-0
+kinesis_video_streamer:
+  url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
+  vcs: git
+  version: release/melodic/kinesis_video_streamer/2.0.0-0
 kobuki_core:
   url: https://github.com/yujinrobot-release/kobuki_core-release.git
   vcs: git
@@ -1490,6 +1526,14 @@ leg_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
   version: release/melodic/leg_detector/1.1.2-0
+lex_common_msgs:
+  url: https://github.com/aws-gbp/lex_node-release.git
+  vcs: git
+  version: release/melodic/lex_common_msgs/2.0.0-0
+lex_node:
+  url: https://github.com/aws-gbp/lex_node-release.git
+  vcs: git
+  version: release/melodic/lex_node/2.0.0-0
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
@@ -2453,7 +2497,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.1.6-0
+  version: release/melodic/plotjuggler/2.1.7-0
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
@@ -3078,6 +3122,10 @@ rostwitter:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/rostwitter/2.1.11-0
+roswww:
+  url: https://github.com/ros-gbp/roswww-release.git
+  vcs: git
+  version: release/melodic/roswww/0.1.12-0
 rotate_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -3462,6 +3510,10 @@ trajectory_tracker_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
   version: release/melodic/trajectory_tracker_rviz_plugins/0.3.0-0
+tts:
+  url: https://github.com/aws-gbp/tts-release.git
+  vcs: git
+  version: release/melodic/tts/1.0.1-0
 turtlebot3:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
