@@ -281,7 +281,7 @@ aws_common:
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
-  version: release/kinetic/aws_ros1_common/2.0.0-0
+  version: release/kinetic/aws_ros1_common/2.0.0-1
 axcli:
   url: https://github.com/po1/axcli-release.git
   vcs: git
@@ -549,19 +549,19 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logger/1.0.0-0
+  version: release/kinetic/cloudwatch_logger/2.0.0-0
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logs_common/1.0.0-0
+  version: release/kinetic/cloudwatch_logs_common/1.0.1-1
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_metrics_collector/1.0.0-1
+  version: release/kinetic/cloudwatch_metrics_collector/2.0.0-0
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_metrics_common/1.0.0-0
+  version: release/kinetic/cloudwatch_metrics_common/1.0.1-1
 cm_740_module:
   url: https://github.com/ROBOTIS-GIT-release/ROBOTIS-OP3-release.git
   vcs: git
@@ -1218,6 +1218,10 @@ ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/kinetic/ddwrt_access_point/1.0.14-0
+ddynamic_reconfigure:
+  url: https://github.com/pal-gbp/ddynamic_reconfigure.git
+  vcs: git
+  version: release/kinetic/ddynamic_reconfigure/0.1.7-0
 ddynamic_reconfigure_python:
   url: https://github.com/pal-gbp/ddynamic_reconfigure_python-release.git
   vcs: git
@@ -2201,11 +2205,11 @@ gx_sound_player:
 h264_encoder_core:
   url: https://github.com/aws-gbp/h264_encoder_core-release.git
   vcs: git
-  version: release/kinetic/h264_encoder_core/2.0.0-0
+  version: release/kinetic/h264_encoder_core/2.0.0-1
 h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
-  version: release/kinetic/h264_video_encoder/1.0.0-0
+  version: release/kinetic/h264_video_encoder/1.1.1-0
 handeye:
   url: https://github.com/crigroup/handeye-release.git
   vcs: git
@@ -2221,7 +2225,7 @@ hardware_interface:
 health_metric_collector:
   url: https://github.com/aws-gbp/health_metric_collector-release.git
   vcs: git
-  version: release/kinetic/health_metric_collector/1.0.0-1
+  version: release/kinetic/health_metric_collector/2.0.0-0
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
@@ -3081,11 +3085,11 @@ kinesis_manager:
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_msgs/1.0.0-1
+  version: release/kinetic/kinesis_video_msgs/2.0.0-0
 kinesis_video_streamer:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_streamer/1.0.0-1
+  version: release/kinetic/kinesis_video_streamer/2.0.0-0
 kni:
   url: https://github.com/uos-gbp/katana_driver-release.git
   vcs: git
@@ -3273,11 +3277,11 @@ leg_detector:
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_common_msgs/1.0.0-1
+  version: release/kinetic/lex_common_msgs/2.0.0-0
 lex_node:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_node/1.0.0-1
+  version: release/kinetic/lex_node/2.0.0-0
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
@@ -5129,7 +5133,7 @@ plot_tools:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/kinetic/plotjuggler/2.1.6-0
+  version: release/kinetic/plotjuggler/2.1.7-0
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -7709,7 +7713,7 @@ transmission_interface:
 tts:
   url: https://github.com/aws-gbp/tts-release.git
   vcs: git
-  version: release/kinetic/tts/1.0.0-1
+  version: release/kinetic/tts/1.0.1-0
 turtlebot:
   url: https://github.com/turtlebot-release/turtlebot-release.git
   vcs: git
@@ -8057,15 +8061,15 @@ usb_cam:
 usb_cam_controllers:
   url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
   vcs: git
-  version: release/kinetic/usb_cam_controllers/0.0.2-0
+  version: release/kinetic/usb_cam_controllers/0.0.3-0
 usb_cam_hardware:
   url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
   vcs: git
-  version: release/kinetic/usb_cam_hardware/0.0.2-0
+  version: release/kinetic/usb_cam_hardware/0.0.3-0
 usb_cam_hardware_interface:
   url: https://github.com/yoshito-n-students/usb_cam_hardware-release.git
   vcs: git
-  version: release/kinetic/usb_cam_hardware_interface/0.0.2-0
+  version: release/kinetic/usb_cam_hardware_interface/0.0.3-0
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vmrc-release.git
   vcs: git
