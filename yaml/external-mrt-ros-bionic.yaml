@@ -141,7 +141,7 @@ automotive_platform_msgs:
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
-  version: release/melodic/aws_common/2.0.0-1
+  version: release/melodic/aws_common/2.0.0-2
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
@@ -1809,7 +1809,7 @@ mir_robot:
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
-  version: release/melodic/ml_classifiers/0.4.0-0
+  version: release/melodic/ml_classifiers/0.4.1-0
 mobileye_560_660_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -2173,11 +2173,11 @@ node_manager_fkie:
 novatel_gps_driver:
   url: https://github.com/swri-robotics-gbp/novatel_gps_driver-release.git
   vcs: git
-  version: release/melodic/novatel_gps_driver/3.6.0-0
+  version: release/melodic/novatel_gps_driver/3.7.0-0
 novatel_gps_msgs:
   url: https://github.com/swri-robotics-gbp/novatel_gps_driver-release.git
   vcs: git
-  version: release/melodic/novatel_gps_msgs/3.6.0-0
+  version: release/melodic/novatel_gps_msgs/3.7.0-0
 novatel_msgs:
   url: https://github.com/ros-drivers-gbp/novatel_span_driver-release.git
   vcs: git
