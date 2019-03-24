@@ -277,7 +277,7 @@ avt_vimba_camera:
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
-  version: release/kinetic/aws_common/2.0.0-1
+  version: release/kinetic/aws_common/2.0.0-2
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
@@ -549,7 +549,7 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logger/2.0.0-0
+  version: release/kinetic/cloudwatch_logger/2.0.0-1
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -557,7 +557,7 @@ cloudwatch_logs_common:
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_metrics_collector/2.0.0-0
+  version: release/kinetic/cloudwatch_metrics_collector/1.0.0-1
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -3085,11 +3085,11 @@ kinesis_manager:
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_msgs/2.0.0-0
+  version: release/kinetic/kinesis_video_msgs/1.0.0-1
 kinesis_video_streamer:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_streamer/2.0.0-0
+  version: release/kinetic/kinesis_video_streamer/1.0.0-1
 kni:
   url: https://github.com/uos-gbp/katana_driver-release.git
   vcs: git
@@ -3277,11 +3277,11 @@ leg_detector:
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_common_msgs/2.0.0-0
+  version: release/kinetic/lex_common_msgs/1.0.0-1
 lex_node:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_node/2.0.0-0
+  version: release/kinetic/lex_node/1.0.0-1
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
