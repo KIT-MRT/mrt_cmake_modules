@@ -297,7 +297,7 @@ clear_costmap_recovery:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logger/2.0.0-0
+  version: release/melodic/cloudwatch_logger/2.0.0-1
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -1770,6 +1770,18 @@ mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
   version: release/melodic/mcl_3dl_msgs/0.1.2-0
+md49_base_controller:
+  url: https://github.com/Scheik/md49_base_controller-release.git
+  vcs: git
+  version: release/melodic/md49_base_controller/0.1.4-1
+md49_messages:
+  url: https://github.com/Scheik/md49_base_controller-release.git
+  vcs: git
+  version: release/melodic/md49_messages/0.1.4-1
+md49_serialport:
+  url: https://github.com/Scheik/md49_base_controller-release.git
+  vcs: git
+  version: release/melodic/md49_serialport/0.1.4-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
