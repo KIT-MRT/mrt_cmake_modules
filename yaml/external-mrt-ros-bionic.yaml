@@ -261,7 +261,7 @@ catkin_virtualenv:
 checkerboard_detector:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/checkerboard_detector/1.2.9-0
+  version: release/melodic/checkerboard_detector/1.2.10-0
 chomp_motion_planner:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -1221,7 +1221,7 @@ image_view2:
 imagesift:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/imagesift/1.2.9-0
+  version: release/melodic/imagesift/1.2.10-0
 imagezero:
   url: https://github.com/swri-robotics-gbp/imagezero_transport-release.git
   vcs: git
@@ -1393,27 +1393,27 @@ jsk_network_tools:
 jsk_pcl_ros:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_pcl_ros/1.2.9-0
+  version: release/melodic/jsk_pcl_ros/1.2.10-0
 jsk_pcl_ros_utils:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_pcl_ros_utils/1.2.9-0
+  version: release/melodic/jsk_pcl_ros_utils/1.2.10-0
 jsk_perception:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_perception/1.2.9-0
+  version: release/melodic/jsk_perception/1.2.10-0
 jsk_recognition:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_recognition/1.2.9-0
+  version: release/melodic/jsk_recognition/1.2.10-0
 jsk_recognition_msgs:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_recognition_msgs/1.2.9-0
+  version: release/melodic/jsk_recognition_msgs/1.2.10-0
 jsk_recognition_utils:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/jsk_recognition_utils/1.2.9-0
+  version: release/melodic/jsk_recognition_utils/1.2.10-0
 jsk_roseus:
   url: https://github.com/tork-a/jsk_roseus-release.git
   vcs: git
@@ -2873,7 +2873,7 @@ rc_visard_driver:
 resized_image_transport:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
-  version: release/melodic/resized_image_transport/1.2.9-0
+  version: release/melodic/resized_image_transport/1.2.10-0
 respeaker_ros:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
