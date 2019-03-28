@@ -1794,6 +1794,42 @@ feed_the_troll_msgs:
   url: https://github.com/stonier/feed_the_troll_msgs-release.git
   vcs: git
   version: release/kinetic/feed_the_troll_msgs/0.1.1-0
+fetch_calibration:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_calibration/0.7.15-0
+fetch_depth_layer:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_depth_layer/0.7.15-0
+fetch_description:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_description/0.7.15-0
+fetch_ikfast_plugin:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_ikfast_plugin/0.7.15-0
+fetch_maps:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_maps/0.7.15-0
+fetch_moveit_config:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_moveit_config/0.7.15-0
+fetch_navigation:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_navigation/0.7.15-0
+fetch_ros:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_ros/0.7.15-0
+fetch_teleop:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/kinetic/fetch_teleop/0.7.15-0
 ff:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -2694,6 +2730,14 @@ industrial_robot_simulator:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
   version: release/kinetic/industrial_robot_simulator/0.7.0-0
+industrial_robot_status_controller:
+  url: https://github.com/gavanderhoorn/industrial_robot_status_controller-release.git
+  vcs: git
+  version: release/kinetic/industrial_robot_status_controller/0.1.0-0
+industrial_robot_status_interface:
+  url: https://github.com/gavanderhoorn/industrial_robot_status_controller-release.git
+  vcs: git
+  version: release/kinetic/industrial_robot_status_interface/0.1.0-0
 industrial_trajectory_filters:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
@@ -2821,7 +2865,7 @@ joint_limits_interface:
 joint_qualification_controllers:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/joint_qualification_controllers/1.0.13-0
+  version: release/kinetic/joint_qualification_controllers/1.0.14-0
 joint_state_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -5221,7 +5265,7 @@ pr2_bringup:
 pr2_bringup_tests:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_bringup_tests/1.0.13-0
+  version: release/kinetic/pr2_bringup_tests/1.0.14-0
 pr2_calibration:
   url: https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release.git
   vcs: git
@@ -5281,7 +5325,7 @@ pr2_controllers_msgs:
 pr2_counterbalance_check:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_counterbalance_check/1.0.13-0
+  version: release/kinetic/pr2_counterbalance_check/1.0.14-0
 pr2_dashboard_aggregator:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -5373,7 +5417,7 @@ pr2_mechanism_msgs:
 pr2_motor_diagnostic_tool:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_motor_diagnostic_tool/1.0.13-0
+  version: release/kinetic/pr2_motor_diagnostic_tool/1.0.14-0
 pr2_move_base:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -5453,11 +5497,11 @@ pr2_se_calibration_launch:
 pr2_self_test:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test/1.0.13-0
+  version: release/kinetic/pr2_self_test/1.0.14-0
 pr2_self_test_msgs:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test_msgs/1.0.13-0
+  version: release/kinetic/pr2_self_test_msgs/1.0.14-0
 pr2_simulator:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
