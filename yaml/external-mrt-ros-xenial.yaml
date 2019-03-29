@@ -1806,6 +1806,14 @@ fetch_description:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
   version: release/kinetic/fetch_description/0.7.15-0
+fetch_gazebo:
+  url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
+  vcs: git
+  version: release/kinetic/fetch_gazebo/0.8.2-0
+fetch_gazebo_demo:
+  url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
+  vcs: git
+  version: release/kinetic/fetch_gazebo_demo/0.8.2-0
 fetch_ikfast_plugin:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
@@ -1826,10 +1834,18 @@ fetch_ros:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
   version: release/kinetic/fetch_ros/0.7.15-0
+fetch_simulation:
+  url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
+  vcs: git
+  version: release/kinetic/fetch_simulation/0.8.2-0
 fetch_teleop:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
   version: release/kinetic/fetch_teleop/0.7.15-0
+fetchit_challenge:
+  url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
+  vcs: git
+  version: release/kinetic/fetchit_challenge/0.8.2-0
 ff:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -4937,7 +4953,7 @@ osm_cartography:
 ouster_driver:
   url: https://github.com/CPFL/ouster-release.git
   vcs: git
-  version: release/kinetic/ouster_driver/0.1.6-0
+  version: release/kinetic/ouster_driver/0.1.7-0
 oxford_gps_eth:
   url: https://github.com/DataspeedInc-release/oxford_gps_eth-release.git
   vcs: git
