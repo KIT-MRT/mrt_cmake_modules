@@ -1301,7 +1301,7 @@ denso_ros_control:
 depthcloud_encoder:
   url: https://github.com/RobotWebTools-release/depthcloud_encoder-release.git
   vcs: git
-  version: release/kinetic/depthcloud_encoder/0.0.5-0
+  version: release/kinetic/depthcloud_encoder/0.1.0-0
 depthimage_to_laserscan:
   url: https://github.com/ros-gbp/depthimage_to_laserscan-release.git
   vcs: git
@@ -4037,7 +4037,7 @@ moveit_plugins:
 moveit_pr2:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/kinetic/moveit_pr2/0.7.0-2
+  version: release/kinetic/moveit_pr2/0.7.1-0
 moveit_python:
   url: https://github.com/mikeferguson/moveit_python-release.git
   vcs: git
@@ -5278,6 +5278,10 @@ power_monitor:
   url: https://github.com/pr2-gbp/pr2_power_drivers-release.git
   vcs: git
   version: release/kinetic/power_monitor/1.1.7-0
+pr2:
+  url: https://github.com/PR2-prime/pr2_metapackages-release.git
+  vcs: git
+  version: release/kinetic/pr2/1.1.3-0
 pr2_2dnav:
   url: https://github.com/pr2-gbp/pr2_navigation_apps-release.git
   vcs: git
@@ -5306,6 +5310,10 @@ pr2_arm_move_ik:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
   version: release/kinetic/pr2_arm_move_ik/0.0.10-0
+pr2_base:
+  url: https://github.com/PR2-prime/pr2_metapackages-release.git
+  vcs: git
+  version: release/kinetic/pr2_base/1.1.3-0
 pr2_bringup:
   url: https://github.com/pr2-gbp/pr2_robot-release.git
   vcs: git
@@ -5386,6 +5394,10 @@ pr2_description:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
   version: release/kinetic/pr2_description/1.12.2-0
+pr2_desktop:
+  url: https://github.com/PR2-prime/pr2_metapackages-release.git
+  vcs: git
+  version: release/kinetic/pr2_desktop/1.1.3-0
 pr2_ethercat:
   url: https://github.com/pr2-gbp/pr2_robot-release.git
   vcs: git
@@ -5473,11 +5485,11 @@ pr2_move_base:
 pr2_moveit_config:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/kinetic/pr2_moveit_config/0.7.0-2
+  version: release/kinetic/pr2_moveit_config/0.7.1-0
 pr2_moveit_plugins:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/kinetic/pr2_moveit_plugins/0.7.0-2
+  version: release/kinetic/pr2_moveit_plugins/0.7.1-0
 pr2_msgs:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -5593,7 +5605,7 @@ prbt_gazebo:
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/kinetic/prbt_grippers/0.0.1-0
+  version: release/kinetic/prbt_grippers/0.0.2-0
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -5609,7 +5621,7 @@ prbt_moveit_config:
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/kinetic/prbt_pg70_support/0.0.1-0
+  version: release/kinetic/prbt_pg70_support/0.0.2-0
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
