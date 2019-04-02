@@ -9,7 +9,7 @@ acado:
 access_point_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/access_point_control/1.0.13-2
+  version: release/melodic/access_point_control/1.0.15-0
 ackermann_msgs:
   url: https://github.com/ros-drivers-gbp/ackermann_msgs-release.git
   vcs: git
@@ -73,11 +73,11 @@ arbotix_sensors:
 asmach:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/asmach/1.0.13-2
+  version: release/melodic/asmach/1.0.15-0
 asmach_tutorials:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/asmach_tutorials/1.0.13-2
+  version: release/melodic/asmach_tutorials/1.0.15-0
 assimp_devel:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -473,7 +473,7 @@ dbw_mkz_twist_controller:
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/ddwrt_access_point/1.0.13-2
+  version: release/melodic/ddwrt_access_point/1.0.15-0
 ddynamic_reconfigure_python:
   url: https://github.com/pal-gbp/ddynamic_reconfigure_python-release.git
   vcs: git
@@ -1185,7 +1185,7 @@ hls_lfcd_lds_driver:
 hostapd_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/hostapd_access_point/1.0.13-2
+  version: release/melodic/hostapd_access_point/1.0.15-0
 hpp-fcl:
   url: https://github.com/ipab-slmc/hpp-fcl_catkin-release.git
   vcs: git
@@ -1205,7 +1205,7 @@ ibeo_msgs:
 ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/ieee80211_channels/1.0.13-2
+  version: release/melodic/ieee80211_channels/1.0.15-0
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
@@ -1310,6 +1310,10 @@ industrial_utils:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
   version: release/melodic/industrial_utils/0.7.0-0
+interactive_marker_proxy:
+  url: https://github.com/RobotWebTools-release/interactive_marker_proxy-release.git
+  vcs: git
+  version: release/melodic/interactive_marker_proxy/0.1.2-0
 interval_intersection:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -1637,11 +1641,11 @@ libuvc_ros:
 linksys_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/linksys_access_point/1.0.13-2
+  version: release/melodic/linksys_access_point/1.0.15-0
 linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/linux_networking/1.0.13-2
+  version: release/melodic/linux_networking/1.0.15-0
 locomotor:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -2077,7 +2081,7 @@ mrpt_tutorials:
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/multi_interface_roam/1.0.13-2
+  version: release/melodic/multi_interface_roam/1.0.15-0
 multi_map_server:
   url: https://github.com/tork-a/jsk_common-release.git
   vcs: git
@@ -2205,11 +2209,11 @@ nerian_stereo:
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_control_tests/1.0.13-2
+  version: release/melodic/network_control_tests/1.0.15-0
 network_detector:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_detector/1.0.13-2
+  version: release/melodic/network_detector/1.0.15-0
 network_interface:
   url: https://github.com/astuff/network_interface-release.git
   vcs: git
@@ -2217,11 +2221,11 @@ network_interface:
 network_monitor_udp:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_monitor_udp/1.0.13-2
+  version: release/melodic/network_monitor_udp/1.0.15-0
 network_traffic_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_traffic_control/1.0.13-2
+  version: release/melodic/network_traffic_control/1.0.15-0
 nlopt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3129,7 +3133,7 @@ rospatlite:
 rospilot:
   url: https://github.com/rospilot/rospilot-release.git
   vcs: git
-  version: release/melodic/rospilot/1.5.4-0
+  version: release/melodic/rospilot/1.5.6-0
 rosping:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
