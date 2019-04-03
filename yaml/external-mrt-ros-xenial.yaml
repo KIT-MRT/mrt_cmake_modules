@@ -357,7 +357,7 @@ behaviortree_cpp:
 behaviortree_cpp_v3:
   url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
   vcs: git
-  version: release/kinetic/behaviortree_cpp_v3/3.0.6-0
+  version: release/kinetic/behaviortree_cpp_v3/3.0.7-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
@@ -6797,7 +6797,7 @@ rosweb:
 roswww:
   url: https://github.com/ros-gbp/roswww-release.git
   vcs: git
-  version: release/kinetic/roswww/0.1.10-0
+  version: release/kinetic/roswww/0.1.12-0
 rotate_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
