@@ -87,6 +87,17 @@ eigen2:
     - EIGEN2_INCLUDE_DIR
     libraries: []
     name: Eigen2
+expat:
+  cmake:
+    components: []
+    include_dirs:
+    - EXPAT_INCLUDE_DIRS
+    libraries:
+    - EXPAT_LIBRARIES
+    library_dirs:
+    name: EXPAT
+  ubuntu:
+  - libexpat1-dev
 flann:
   ubuntu:
     - libflann-dev
