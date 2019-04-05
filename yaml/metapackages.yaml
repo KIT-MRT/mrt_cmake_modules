@@ -28,9 +28,3 @@ lanelet2:
 - lanelet2_maps
 - lanelet2_validation
 - lanelet2_examples
-vision_opencv:
-- image_geometry
-- cv_bridge
-perception_pcl:
-- pcl_ros
-
