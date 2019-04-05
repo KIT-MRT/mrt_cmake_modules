@@ -30,6 +30,10 @@ agni_tf_tools:
   url: https://github.com/ubi-agni-gbp/agni_tf_tools-release.git
   vcs: git
   version: release/melodic/agni_tf_tools/0.1.1-1
+allocators:
+  url: https://github.com/ros-gbp/ros_realtime-release.git
+  vcs: git
+  version: release/melodic/allocators/1.0.25-0
 amcl:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -169,7 +173,7 @@ behaviortree_cpp:
 behaviortree_cpp_v3:
   url: https://github.com/BehaviorTree/behaviortree_cpp_v3-release.git
   vcs: git
-  version: release/melodic/behaviortree_cpp_v3/3.0.6-0
+  version: release/melodic/behaviortree_cpp_v3/3.0.7-0
 bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
@@ -494,6 +498,10 @@ delphi_srr_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
   version: release/melodic/delphi_srr_msgs/2.3.1-0
+depthcloud_encoder:
+  url: https://github.com/RobotWebTools-release/depthcloud_encoder-release.git
+  vcs: git
+  version: release/melodic/depthcloud_encoder/0.1.0-0
 depthimage_to_laserscan:
   url: https://github.com/ros-gbp/depthimage_to_laserscan-release.git
   vcs: git
@@ -1646,6 +1654,10 @@ linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/melodic/linux_networking/1.0.15-0
+lockfree:
+  url: https://github.com/ros-gbp/ros_realtime-release.git
+  vcs: git
+  version: release/melodic/lockfree/1.0.25-0
 locomotor:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -3030,6 +3042,10 @@ ros_pytest:
   url: https://github.com/machinekoder/ros_pytest-release.git
   vcs: git
   version: release/melodic/ros_pytest/0.1.2-2
+ros_realtime:
+  url: https://github.com/ros-gbp/ros_realtime-release.git
+  vcs: git
+  version: release/melodic/ros_realtime/1.0.25-0
 ros_reflexxes:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -3046,6 +3062,10 @@ rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
   version: release/melodic/rosapi/0.11.0-0
+rosatomic:
+  url: https://github.com/ros-gbp/ros_realtime-release.git
+  vcs: git
+  version: release/melodic/rosatomic/1.0.25-0
 rosauth:
   url: https://github.com/gt-rail-release/rosauth-release.git
   vcs: git
@@ -3142,6 +3162,10 @@ rospy_message_converter:
   url: https://github.com/uos-gbp/rospy_message_converter-release.git
   vcs: git
   version: release/melodic/rospy_message_converter/0.5.0-0
+rosrt:
+  url: https://github.com/ros-gbp/ros_realtime-release.git
+  vcs: git
+  version: release/melodic/rosrt/1.0.25-0
 rosserial:
   url: https://github.com/ros-gbp/rosserial-release.git
   vcs: git
