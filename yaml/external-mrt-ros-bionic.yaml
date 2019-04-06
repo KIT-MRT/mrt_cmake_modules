@@ -322,10 +322,18 @@ cob_common:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
   version: release/melodic/cob_common/0.6.10-0
+cob_default_env_config:
+  url: https://github.com/ipa320/cob_environments-release.git
+  vcs: git
+  version: release/melodic/cob_default_env_config/0.6.8-0
 cob_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
   version: release/melodic/cob_description/0.6.10-0
+cob_environments:
+  url: https://github.com/ipa320/cob_environments-release.git
+  vcs: git
+  version: release/melodic/cob_environments/0.6.8-0
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -865,15 +873,15 @@ fetch_bringup:
 fetch_calibration:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_calibration/0.8.0-0
+  version: release/melodic/fetch_calibration/0.8.1-0
 fetch_depth_layer:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_depth_layer/0.8.0-0
+  version: release/melodic/fetch_depth_layer/0.8.1-0
 fetch_description:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_description/0.8.0-0
+  version: release/melodic/fetch_description/0.8.1-0
 fetch_driver_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
@@ -885,39 +893,43 @@ fetch_drivers:
 fetch_gazebo:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_gazebo/0.9.0-0
+  version: release/melodic/fetch_gazebo/0.9.1-0
 fetch_gazebo_demo:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_gazebo_demo/0.9.0-0
+  version: release/melodic/fetch_gazebo_demo/0.9.1-0
 fetch_ikfast_plugin:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_ikfast_plugin/0.8.0-0
+  version: release/melodic/fetch_ikfast_plugin/0.8.1-0
 fetch_maps:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_maps/0.8.0-0
+  version: release/melodic/fetch_maps/0.8.1-0
 fetch_moveit_config:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_moveit_config/0.8.0-0
+  version: release/melodic/fetch_moveit_config/0.8.1-0
 fetch_navigation:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_navigation/0.8.0-0
+  version: release/melodic/fetch_navigation/0.8.1-0
 fetch_open_auto_dock:
   url: https://github.com/fetchrobotics-gbp/fetch_open_auto_dock-gbp.git
   vcs: git
   version: release/melodic/fetch_open_auto_dock/0.1.2-0
+fetch_ros:
+  url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
+  vcs: git
+  version: release/melodic/fetch_ros/0.8.1-0
 fetch_simulation:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_simulation/0.9.0-0
+  version: release/melodic/fetch_simulation/0.9.1-0
 fetch_teleop:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_teleop/0.8.0-0
+  version: release/melodic/fetch_teleop/0.8.1-0
 fetch_tools:
   url: https://github.com/fetchrobotics-gbp/fetch_tools-release.git
   vcs: git
@@ -925,7 +937,7 @@ fetch_tools:
 fetchit_challenge:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetchit_challenge/0.9.0-0
+  version: release/melodic/fetchit_challenge/0.9.1-0
 ff:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -1757,7 +1769,7 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.3.3-0
+  version: release/melodic/mavlink/2019.4.4-0
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
@@ -2110,6 +2122,30 @@ multires_image:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
   version: release/melodic/multires_image/1.1.0-0
+multisense:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense/4.0.2-0
+multisense_bringup:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense_bringup/4.0.2-0
+multisense_cal_check:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense_cal_check/4.0.2-0
+multisense_description:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense_description/4.0.2-0
+multisense_lib:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense_lib/4.0.2-0
+multisense_ros:
+  url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
+  vcs: git
+  version: release/melodic/multisense_ros/4.0.2-0
 mvsim:
   url: https://github.com/ual-arm-ros-pkg-release/mvsim-release.git
   vcs: git
@@ -2998,6 +3034,10 @@ robot_navigation:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/robot_navigation/0.2.5-1
+robot_pose_ekf:
+  url: https://github.com/ros-gbp/robot_pose_ekf-release.git
+  vcs: git
+  version: release/melodic/robot_pose_ekf/1.14.5-0
 robot_self_filter:
   url: https://github.com/pr2-gbp/robot_self_filter-gbp.git
   vcs: git
@@ -3589,11 +3629,11 @@ tile_map:
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
-  version: release/melodic/towr/1.4.0-0
+  version: release/melodic/towr/1.4.1-0
 towr_ros:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
-  version: release/melodic/towr_ros/1.4.0-0
+  version: release/melodic/towr_ros/1.4.1-0
 trac_ik:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
@@ -4049,31 +4089,31 @@ wu_ros_tools:
 xpp:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp/1.0.9-0
+  version: release/melodic/xpp/1.0.10-0
 xpp_examples:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_examples/1.0.9-0
+  version: release/melodic/xpp_examples/1.0.10-0
 xpp_hyq:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_hyq/1.0.9-0
+  version: release/melodic/xpp_hyq/1.0.10-0
 xpp_msgs:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_msgs/1.0.9-0
+  version: release/melodic/xpp_msgs/1.0.10-0
 xpp_quadrotor:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_quadrotor/1.0.9-0
+  version: release/melodic/xpp_quadrotor/1.0.10-0
 xpp_states:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_states/1.0.9-0
+  version: release/melodic/xpp_states/1.0.10-0
 xpp_vis:
   url: https://github.com/leggedrobotics/xpp-release.git
   vcs: git
-  version: release/melodic/xpp_vis/1.0.9-0
+  version: release/melodic/xpp_vis/1.0.10-0
 xsens_driver:
   url: https://github.com/ethz-asl/ethzasl_xsens_driver-release.git
   vcs: git
