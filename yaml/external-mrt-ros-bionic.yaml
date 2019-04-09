@@ -349,7 +349,7 @@ code_coverage:
 codec_image_transport:
   url: https://github.com/yoshito-n-students/codec_image_transport-release.git
   vcs: git
-  version: release/melodic/codec_image_transport/0.0.2-0
+  version: release/melodic/codec_image_transport/0.0.4-0
 collada_parser:
   url: https://github.com/ros-gbp/collada_urdf-release.git
   vcs: git
@@ -370,6 +370,18 @@ combined_robot_hw_tests:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
   version: release/melodic/combined_robot_hw_tests/0.15.1-0
+concert_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/concert_msgs/0.9.0-0
+concert_service_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/concert_service_msgs/0.9.0-0
+concert_workflow_engine_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/concert_workflow_engine_msgs/0.9.0-0
 controller_manager_tests:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -1034,6 +1046,10 @@ freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
   version: release/melodic/freight_bringup/0.8.6-0
+gateway_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/gateway_msgs/0.9.0-0
 geographic_info:
   url: https://github.com/ros-geographic-info/geographic_info-release.git
   vcs: git
@@ -2577,23 +2593,23 @@ pilz_control:
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.2-0
+  version: release/melodic/pilz_extensions/0.4.3-0
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.2-0
+  version: release/melodic/pilz_industrial_motion/0.4.3-0
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.2-0
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.3-0
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.2-0
+  version: release/melodic/pilz_msgs/0.4.3-0
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.2-0
+  version: release/melodic/pilz_robot_programming/0.4.3-0
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -2605,7 +2621,7 @@ pilz_testutils:
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.2-0
+  version: release/melodic/pilz_trajectory_generation/0.4.3-0
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -3050,6 +3066,34 @@ robotis_manipulator:
   url: https://github.com/ROBOTIS-GIT-release/robotis_manipulator-release.git
   vcs: git
   version: release/melodic/robotis_manipulator/1.0.0-0
+rocon_app_manager_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_app_manager_msgs/0.9.0-0
+rocon_device_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_device_msgs/0.9.0-0
+rocon_interaction_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_interaction_msgs/0.9.0-0
+rocon_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_msgs/0.9.0-0
+rocon_service_pair_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_service_pair_msgs/0.9.0-0
+rocon_std_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_std_msgs/0.9.0-0
+rocon_tutorial_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/rocon_tutorial_msgs/0.9.0-0
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
@@ -3362,6 +3406,10 @@ rtabmap_ros:
   url: https://github.com/introlab/rtabmap_ros-release.git
   vcs: git
   version: release/melodic/rtabmap_ros/0.17.6-0
+rtctree:
+  url: https://github.com/tork-a/rtctree-release.git
+  vcs: git
+  version: release/melodic/rtctree/3.0.1-0
 rviz_imu_plugin:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
@@ -3386,6 +3434,10 @@ sbpl_recovery:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
   version: release/melodic/sbpl_recovery/0.3.2-0
+scheduler_msgs:
+  url: https://github.com/yujinrobot-release/rocon_msgs-release.git
+  vcs: git
+  version: release/melodic/scheduler_msgs/0.9.0-0
 schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
