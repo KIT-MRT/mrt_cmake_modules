@@ -542,6 +542,14 @@ downward:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/downward/2.1.11-0
+driver_base:
+  url: https://github.com/ros-gbp/driver_common-release.git
+  vcs: git
+  version: release/melodic/driver_base/1.6.8-0
+driver_common:
+  url: https://github.com/ros-gbp/driver_common-release.git
+  vcs: git
+  version: release/melodic/driver_common/1.6.8-0
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -981,39 +989,39 @@ flatbuffers:
 flexbe_behavior_engine:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_behavior_engine/1.1.1-0
+  version: release/melodic/flexbe_behavior_engine/1.1.2-0
 flexbe_core:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_core/1.1.1-0
+  version: release/melodic/flexbe_core/1.1.2-0
 flexbe_input:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_input/1.1.1-0
+  version: release/melodic/flexbe_input/1.1.2-0
 flexbe_mirror:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_mirror/1.1.1-0
+  version: release/melodic/flexbe_mirror/1.1.2-0
 flexbe_msgs:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_msgs/1.1.1-0
+  version: release/melodic/flexbe_msgs/1.1.2-0
 flexbe_onboard:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_onboard/1.1.1-0
+  version: release/melodic/flexbe_onboard/1.1.2-0
 flexbe_states:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_states/1.1.1-0
+  version: release/melodic/flexbe_states/1.1.2-0
 flexbe_testing:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_testing/1.1.1-0
+  version: release/melodic/flexbe_testing/1.1.2-0
 flexbe_widget:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_widget/1.1.1-0
+  version: release/melodic/flexbe_widget/1.1.2-0
 flir_boson_usb:
   url: https://github.com/astuff/flir_boson_usb-release.git
   vcs: git
@@ -1846,6 +1854,10 @@ md49_serialport:
   url: https://github.com/Scheik/md49_base_controller-release.git
   vcs: git
   version: release/melodic/md49_serialport/0.1.4-1
+microstrain_3dmgx2_imu:
+  url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
+  vcs: git
+  version: release/melodic/microstrain_3dmgx2_imu/1.5.12-0
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -1885,7 +1897,7 @@ mir_robot:
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
-  version: release/melodic/ml_classifiers/0.4.1-0
+  version: release/melodic/ml_classifiers/1.0.0-0
 mobileye_560_660_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -3678,6 +3690,10 @@ tile_map:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
   version: release/melodic/tile_map/1.1.0-0
+timestamp_tools:
+  url: https://github.com/ros-gbp/driver_common-release.git
+  vcs: git
+  version: release/melodic/timestamp_tools/1.6.8-0
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -4126,6 +4142,10 @@ webrtc_ros:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
   version: release/melodic/webrtc_ros/59.0.3-0
+wifi_ddwrt:
+  url: https://github.com/ros-gbp/wifi_ddwrt-release.git
+  vcs: git
+  version: release/melodic/wifi_ddwrt/0.2.0-0
 wiimote:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
