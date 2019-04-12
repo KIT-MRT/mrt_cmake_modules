@@ -87,6 +87,14 @@ eigen2:
     - EIGEN2_INCLUDE_DIR
     libraries: []
     name: Eigen2
+ffmpeg:
+  cmake:
+    include_dirs:
+      - FFMPEG_INCLUDE_DIRS
+    libraries:
+      - FFMPEG_LIBRARIES
+    library_dirs: []
+    name: FFmpeg
 flann:
   ubuntu:
     - libflann-dev
@@ -107,6 +115,14 @@ glew:
       - GLEW_LIBRARIES
     library_dirs: []
     name: GLEW
+glib:
+  cmake:
+    include_dirs:
+      - GLIB_INCLUDE_DIRS
+    libraries:
+      - GLIB_LIBRARIES
+    library_dirs: []
+    name: GLib
 glfw:
   ubuntu:
     - libglfw3-dev
@@ -155,6 +171,16 @@ gtestsrc:
     name: MrtGTest
   ubuntu:
    - libgtest-dev
+gtk:
+  cmake:
+    components: []
+    include_dirs:
+    - GTK2_INCLUDE_DIRS
+    libraries:
+    - GTK2_LIBRARIES
+    library_dirs:
+    - GTK2_LIBRARIES
+    name: GTK2
 gtkmm:
   cmake:
     components: []
@@ -288,6 +314,15 @@ libssl-dev:
 libudev-dev:
   ubuntu:
    - libudev-dev
+libusb:
+  cmake:
+    components: []
+    include_dirs:
+      - LibUSB_INCLUDE_DIRS
+    libraries:
+      - LibUSB_LIBRARIES
+    library_dirs: []
+    name: LibUSB
 libxext-dev:
   ubuntu:
    - libxext-dev
