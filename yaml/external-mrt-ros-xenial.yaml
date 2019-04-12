@@ -1350,22 +1350,6 @@ driver_common:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
   version: release/kinetic/driver_common/1.6.8-0
-duaro_description:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/duaro_description/1.0.0-0
-duaro_gazebo:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/duaro_gazebo/1.0.0-0
-duaro_ikfast_plugin:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/duaro_ikfast_plugin/1.0.0-0
-duaro_moveit_config:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/duaro_moveit_config/1.0.0-0
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -3158,22 +3142,62 @@ key_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
   version: release/kinetic/key_teleop/0.3.0-0
+khi_duaro_description:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_duaro_description/1.1.0-1
+khi_duaro_gazebo:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_duaro_gazebo/1.1.0-1
+khi_duaro_ikfast_plugin:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_duaro_ikfast_plugin/1.1.0-1
+khi_duaro_moveit_config:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_duaro_moveit_config/1.1.0-1
 khi_robot:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot/1.0.0-0
+  version: release/kinetic/khi_robot/1.1.0-1
 khi_robot_bringup:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_bringup/1.0.0-0
+  version: release/kinetic/khi_robot_bringup/1.1.0-1
 khi_robot_control:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_control/1.0.0-0
+  version: release/kinetic/khi_robot_control/1.1.0-1
 khi_robot_msgs:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_msgs/1.0.0-0
+  version: release/kinetic/khi_robot_msgs/1.1.0-1
+khi_rs007l_moveit_config:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs007l_moveit_config/1.1.0-1
+khi_rs007n_moveit_config:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs007n_moveit_config/1.1.0-1
+khi_rs080n_moveit_config:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs080n_moveit_config/1.1.0-1
+khi_rs_description:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs_description/1.1.0-1
+khi_rs_gazebo:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs_gazebo/1.1.0-1
+khi_rs_ikfast_plugin:
+  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
+  vcs: git
+  version: release/kinetic/khi_rs_ikfast_plugin/1.1.0-1
 kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
@@ -6866,30 +6890,6 @@ rr_swiftnav_piksi:
   url: https://github.com/RoverRobotics/rr_swiftnav_piksi-release.git
   vcs: git
   version: release/kinetic/rr_swiftnav_piksi/0.0.1-1
-rs007l_moveit_config:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs007l_moveit_config/1.0.0-0
-rs007n_moveit_config:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs007n_moveit_config/1.0.0-0
-rs080n_moveit_config:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs080n_moveit_config/1.0.0-0
-rs_description:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs_description/1.0.0-0
-rs_gazebo:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs_gazebo/1.0.0-0
-rs_ikfast_plugin:
-  url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
-  vcs: git
-  version: release/kinetic/rs_ikfast_plugin/1.0.0-0
 rslidar:
   url: https://github.com/CPFL/robosense-release.git
   vcs: git
