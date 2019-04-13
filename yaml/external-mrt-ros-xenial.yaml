@@ -4165,15 +4165,15 @@ mrpt_icp_slam_2d:
 mrpt_local_obstacles:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_local_obstacles/0.1.23-0
+  version: release/kinetic/mrpt_local_obstacles/0.1.24-0
 mrpt_localization:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_localization/0.1.23-0
+  version: release/kinetic/mrpt_localization/0.1.24-0
 mrpt_map:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_map/0.1.23-0
+  version: release/kinetic/mrpt_map/0.1.24-0
 mrpt_msgs:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_msgs-release.git
   vcs: git
@@ -4181,11 +4181,11 @@ mrpt_msgs:
 mrpt_navigation:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_navigation/0.1.23-0
+  version: release/kinetic/mrpt_navigation/0.1.24-0
 mrpt_rawlog:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_rawlog/0.1.23-0
+  version: release/kinetic/mrpt_rawlog/0.1.24-0
 mrpt_rbpf_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
@@ -4193,7 +4193,7 @@ mrpt_rbpf_slam:
 mrpt_reactivenav2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_reactivenav2d/0.1.23-0
+  version: release/kinetic/mrpt_reactivenav2d/0.1.24-0
 mrpt_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
@@ -4201,7 +4201,7 @@ mrpt_slam:
 mrpt_tutorials:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/kinetic/mrpt_tutorials/0.1.23-0
+  version: release/kinetic/mrpt_tutorials/0.1.24-0
 msp:
   url: https://github.com/christianrauch/msp-release.git
   vcs: git
@@ -4293,7 +4293,7 @@ multiwii:
 mvsim:
   url: https://github.com/ual-arm-ros-pkg-release/mvsim-release.git
   vcs: git
-  version: release/kinetic/mvsim/0.2.0-0
+  version: release/kinetic/mvsim/0.2.1-0
 myahrs_driver:
   url: https://github.com/robotpilot/myahrs_driver-release.git
   vcs: git
@@ -7099,7 +7099,7 @@ sainsmart_relay_usb:
   vcs: git
   version: release/kinetic/sainsmart_relay_usb/0.0.2-0
 sbg_driver:
-  url: https://github.com/ENSTABretagneRobotics/sbg_ros_driver-release.git
+  url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
   version: release/kinetic/sbg_driver/1.1.7-0
 sbpl:
@@ -8441,7 +8441,7 @@ vision_visp:
 visp:
   url: https://github.com/lagadic/visp-release.git
   vcs: git
-  version: release/kinetic/visp/3.1.0-2
+  version: release/kinetic/visp/3.2.0-3
 visp_auto_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
