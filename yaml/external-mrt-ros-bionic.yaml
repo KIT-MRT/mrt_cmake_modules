@@ -2093,15 +2093,15 @@ mrpt_icp_slam_2d:
 mrpt_local_obstacles:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_local_obstacles/0.1.22-0
+  version: release/melodic/mrpt_local_obstacles/0.1.24-0
 mrpt_localization:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_localization/0.1.22-0
+  version: release/melodic/mrpt_localization/0.1.24-0
 mrpt_map:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_map/0.1.22-0
+  version: release/melodic/mrpt_map/0.1.24-0
 mrpt_msgs:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_msgs-release.git
   vcs: git
@@ -2109,11 +2109,11 @@ mrpt_msgs:
 mrpt_navigation:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_navigation/0.1.22-0
+  version: release/melodic/mrpt_navigation/0.1.24-0
 mrpt_rawlog:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_rawlog/0.1.22-0
+  version: release/melodic/mrpt_rawlog/0.1.24-0
 mrpt_rbpf_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
@@ -2121,7 +2121,7 @@ mrpt_rbpf_slam:
 mrpt_reactivenav2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_reactivenav2d/0.1.22-0
+  version: release/melodic/mrpt_reactivenav2d/0.1.24-0
 mrpt_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
@@ -2129,7 +2129,7 @@ mrpt_slam:
 mrpt_tutorials:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_tutorials/0.1.22-0
+  version: release/melodic/mrpt_tutorials/0.1.24-0
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2177,7 +2177,7 @@ multisense_ros:
 mvsim:
   url: https://github.com/ual-arm-ros-pkg-release/mvsim-release.git
   vcs: git
-  version: release/melodic/mvsim/0.2.0-0
+  version: release/melodic/mvsim/0.2.1-0
 nanomsg:
   url: https://github.com/yujinrobot-release/nanomsg-release.git
   vcs: git
@@ -2821,7 +2821,7 @@ prbt_gazebo:
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/melodic/prbt_grippers/0.0.1-0
+  version: release/melodic/prbt_grippers/0.0.2-0
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -2837,7 +2837,7 @@ prbt_moveit_config:
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/melodic/prbt_pg70_support/0.0.1-0
+  version: release/melodic/prbt_pg70_support/0.0.2-0
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -3241,7 +3241,7 @@ rosmon_msgs:
 rosparam_shortcuts:
   url: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
   vcs: git
-  version: release/melodic/rosparam_shortcuts/0.3.0-1
+  version: release/melodic/rosparam_shortcuts/0.3.1-1
 rospatlite:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3431,7 +3431,7 @@ sainsmart_relay_usb:
   vcs: git
   version: release/melodic/sainsmart_relay_usb/0.0.2-0
 sbg_driver:
-  url: https://github.com/ENSTABretagneRobotics/sbg_ros_driver-release.git
+  url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
   version: release/melodic/sbg_driver/1.1.7-0
 sbpl:
@@ -4102,6 +4102,10 @@ vision_msgs:
   url: https://github.com/Kukanani/vision_msgs-release.git
   vcs: git
   version: release/melodic/vision_msgs/0.0.1-0
+visp:
+  url: https://github.com/lagadic/visp-release.git
+  vcs: git
+  version: release/melodic/visp/3.2.0-1
 voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
