@@ -3933,7 +3933,7 @@ mir_robot:
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
-  version: release/kinetic/ml_classifiers/1.0.0-0
+  version: release/kinetic/ml_classifiers/1.0.1-1
 mm_core_msgs:
   url: https://github.com/yujinrobot-release/message_multiplexing-release.git
   vcs: git
