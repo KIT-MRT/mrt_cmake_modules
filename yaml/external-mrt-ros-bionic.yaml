@@ -1897,7 +1897,7 @@ mir_robot:
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
-  version: release/melodic/ml_classifiers/1.0.0-0
+  version: release/melodic/ml_classifiers/1.0.1-1
 mobileye_560_660_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
