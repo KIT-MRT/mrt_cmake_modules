@@ -4153,15 +4153,19 @@ mrpt_bridge:
 mrpt_ekf_slam_2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/kinetic/mrpt_ekf_slam_2d/0.1.6-0
+  version: release/kinetic/mrpt_ekf_slam_2d/0.1.9-0
 mrpt_ekf_slam_3d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/kinetic/mrpt_ekf_slam_3d/0.1.6-0
+  version: release/kinetic/mrpt_ekf_slam_3d/0.1.9-0
+mrpt_graphslam_2d:
+  url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
+  vcs: git
+  version: release/kinetic/mrpt_graphslam_2d/0.1.9-0
 mrpt_icp_slam_2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/kinetic/mrpt_icp_slam_2d/0.1.6-0
+  version: release/kinetic/mrpt_icp_slam_2d/0.1.9-0
 mrpt_local_obstacles:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
@@ -4189,7 +4193,7 @@ mrpt_rawlog:
 mrpt_rbpf_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/kinetic/mrpt_rbpf_slam/0.1.6-0
+  version: release/kinetic/mrpt_rbpf_slam/0.1.9-0
 mrpt_reactivenav2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
@@ -4197,7 +4201,7 @@ mrpt_reactivenav2d:
 mrpt_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/kinetic/mrpt_slam/0.1.6-0
+  version: release/kinetic/mrpt_slam/0.1.9-0
 mrpt_tutorials:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
@@ -4234,6 +4238,10 @@ multi_map_server:
   url: https://github.com/tork-a/jsk_common-release.git
   vcs: git
   version: release/kinetic/multi_map_server/2.2.10-0
+multi_object_tracking_lidar:
+  url: https://github.com/praveen-palanisamy/multi_object_tracking_lidar-release.git
+  vcs: git
+  version: release/kinetic/multi_object_tracking_lidar/1.0.0-0
 multikey_teleop:
   url: https://github.com/easymov/multikey_teleop-release.git
   vcs: git
