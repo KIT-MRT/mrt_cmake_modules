@@ -3018,6 +3018,18 @@ respeaker_ros:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/respeaker_ros/2.1.11-0
+rexrov2_control:
+  url: https://github.com/uuvsimulator/rexrov2-release.git
+  vcs: git
+  version: release/melodic/rexrov2_control/0.1.3-0
+rexrov2_description:
+  url: https://github.com/uuvsimulator/rexrov2-release.git
+  vcs: git
+  version: release/melodic/rexrov2_description/0.1.3-0
+rexrov2_gazebo:
+  url: https://github.com/uuvsimulator/rexrov2-release.git
+  vcs: git
+  version: release/melodic/rexrov2_gazebo/0.1.3-0
 rgbd_launch:
   url: https://github.com/ros-gbp/rgbd_launch-release.git
   vcs: git
@@ -3213,7 +3225,7 @@ ros_speech_recognition:
 ros_type_introspection:
   url: https://github.com/facontidavide/ros_type_introspection-release.git
   vcs: git
-  version: release/melodic/ros_type_introspection/1.3.1-0
+  version: release/melodic/ros_type_introspection/1.3.2-1
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
