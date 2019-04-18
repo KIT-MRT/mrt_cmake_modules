@@ -499,6 +499,7 @@ function(mrt_add_library libname)
         ${MRT_ADD_LIBRARY_LIBRARIES}
         ${MRT_SANITIZER_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
+        $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
         )
     # add dependency to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
@@ -621,6 +622,7 @@ function(mrt_add_executable execname)
         ${MRT_SANITIZER_EXE_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
         ${${PROJECT_NAME}_GENERATED_LIBRARIES}
+        $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
         )
 
     # Add cuda target
@@ -746,6 +748,7 @@ function(mrt_add_nodelet nodeletname)
         ${MRT_ADD_NODELET_LIBRARIES}
         ${MRT_SANITIZER_CXX_FLAGS}
         ${MRT_SANITIZER_LINK_FLAGS}
+        $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
         )
     # append to list of all targets in this project
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
@@ -883,6 +886,7 @@ function(mrt_add_ros_tests folder)
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main
+                $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
                 )
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
@@ -948,7 +952,9 @@ function(mrt_add_tests folder)
                 ${MRT_ADD_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
-                gtest_main)
+                gtest_main
+                $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>
+                )
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
