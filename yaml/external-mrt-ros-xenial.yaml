@@ -2545,47 +2545,47 @@ humanoid_planner_2d:
 husky_base:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_base/0.3.2-0
+  version: release/kinetic/husky_base/0.3.3-0
 husky_bringup:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_bringup/0.3.2-0
+  version: release/kinetic/husky_bringup/0.3.3-0
 husky_control:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_control/0.3.2-0
+  version: release/kinetic/husky_control/0.3.3-0
 husky_description:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_description/0.3.2-0
+  version: release/kinetic/husky_description/0.3.3-0
 husky_desktop:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_desktop/0.3.2-0
+  version: release/kinetic/husky_desktop/0.3.3-0
 husky_gazebo:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_gazebo/0.3.2-0
+  version: release/kinetic/husky_gazebo/0.3.3-0
 husky_msgs:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_msgs/0.3.2-0
+  version: release/kinetic/husky_msgs/0.3.3-0
 husky_navigation:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_navigation/0.3.2-0
+  version: release/kinetic/husky_navigation/0.3.3-0
 husky_robot:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_robot/0.3.2-0
+  version: release/kinetic/husky_robot/0.3.3-0
 husky_simulator:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_simulator/0.3.2-0
+  version: release/kinetic/husky_simulator/0.3.3-0
 husky_viz:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_viz/0.3.2-0
+  version: release/kinetic/husky_viz/0.3.3-0
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -2805,11 +2805,11 @@ ivcon:
 jackal_control:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
-  version: release/kinetic/jackal_control/0.6.1-0
+  version: release/kinetic/jackal_control/0.6.2-0
 jackal_description:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
-  version: release/kinetic/jackal_description/0.6.1-0
+  version: release/kinetic/jackal_description/0.6.2-0
 jackal_desktop:
   url: https://github.com/clearpath-gbp/jackal_desktop-release.git
   vcs: git
@@ -2821,11 +2821,11 @@ jackal_gazebo:
 jackal_msgs:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
-  version: release/kinetic/jackal_msgs/0.6.1-0
+  version: release/kinetic/jackal_msgs/0.6.2-0
 jackal_navigation:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
-  version: release/kinetic/jackal_navigation/0.6.1-0
+  version: release/kinetic/jackal_navigation/0.6.2-0
 jackal_simulator:
   url: https://github.com/clearpath-gbp/jackal_simulator-release.git
   vcs: git
@@ -2833,7 +2833,7 @@ jackal_simulator:
 jackal_tutorials:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
-  version: release/kinetic/jackal_tutorials/0.6.1-0
+  version: release/kinetic/jackal_tutorials/0.6.2-0
 jackal_viz:
   url: https://github.com/clearpath-gbp/jackal_desktop-release.git
   vcs: git
@@ -4721,7 +4721,7 @@ ompl:
 omron_os32c_driver:
   url: https://github.com/ros-drivers-gbp/omron-release.git
   vcs: git
-  version: release/kinetic/omron_os32c_driver/0.1.2-0
+  version: release/kinetic/omron_os32c_driver/0.1.3-0
 op3_action_editor:
   url: https://github.com/ROBOTIS-GIT-release/robotis_op3_tools-release.git
   vcs: git
@@ -6798,6 +6798,10 @@ rosserial_embeddedlinux:
   url: https://github.com/ros-gbp/rosserial-release.git
   vcs: git
   version: release/kinetic/rosserial_embeddedlinux/0.7.7-0
+rosserial_leonardo_cmake:
+  url: https://github.com/clearpath-gbp/rosserial_leonardo_cmake-release.git
+  vcs: git
+  version: release/kinetic/rosserial_leonardo_cmake/0.1.4-0
 rosserial_mbed:
   url: https://github.com/ros-gbp/rosserial-release.git
   vcs: git
@@ -7505,15 +7509,15 @@ swri_prefix_tools:
 swri_profiler:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler/0.1.0-0
+  version: release/kinetic/swri_profiler/0.2.0-0
 swri_profiler_msgs:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler_msgs/0.1.0-0
+  version: release/kinetic/swri_profiler_msgs/0.2.0-0
 swri_profiler_tools:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler_tools/0.1.0-0
+  version: release/kinetic/swri_profiler_tools/0.2.0-0
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
