@@ -74,6 +74,10 @@ arbotix_sensors:
   url: https://github.com/vanadiumlabs/arbotix_ros-release.git
   vcs: git
   version: release/melodic/arbotix_sensors/0.10.0-0
+ariles_ros:
+  url: https://github.com/asherikov/ariles-release.git
+  vcs: git
+  version: release/melodic/ariles_ros/1.1.1-1
 asmach:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
