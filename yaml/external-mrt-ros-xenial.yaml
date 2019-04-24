@@ -1310,6 +1310,18 @@ derived_object_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
   version: release/kinetic/derived_object_msgs/2.3.1-0
+desistek_saga_control:
+  url: https://github.com/uuvsimulator/desistek_saga-release.git
+  vcs: git
+  version: release/kinetic/desistek_saga_control/0.3.2-0
+desistek_saga_description:
+  url: https://github.com/uuvsimulator/desistek_saga-release.git
+  vcs: git
+  version: release/kinetic/desistek_saga_description/0.3.2-0
+desistek_saga_gazebo:
+  url: https://github.com/uuvsimulator/desistek_saga-release.git
+  vcs: git
+  version: release/kinetic/desistek_saga_gazebo/0.3.2-0
 diff_drive_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -1330,6 +1342,14 @@ dockeros:
   url: https://github.com/ct2034/dockeros-release.git
   vcs: git
   version: release/kinetic/dockeros/1.0.3-0
+doosan_robot:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/doosan_robot/0.9.6-1
+doosan_robotics:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/doosan_robotics/0.9.6-1
 downward:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -1350,6 +1370,34 @@ driver_common:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
   version: release/kinetic/driver_common/1.6.8-0
+dsr_control:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_control/0.9.6-1
+dsr_description:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_description/0.9.6-1
+dsr_example_cpp:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_example_cpp/0.9.6-1
+dsr_example_py:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_example_py/0.9.6-1
+dsr_gazebo:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_gazebo/0.9.6-1
+dsr_launcher:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_launcher/0.9.6-1
+dsr_msgs:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/dsr_msgs/0.9.6-1
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1454,6 +1502,18 @@ eband_local_planner:
   url: https://github.com/utexas-bwi-gbp/eband_local_planner-release.git
   vcs: git
   version: release/kinetic/eband_local_planner/0.3.1-0
+eca_a9_control:
+  url: https://github.com/uuvsimulator/eca_a9-release.git
+  vcs: git
+  version: release/kinetic/eca_a9_control/0.1.6-0
+eca_a9_description:
+  url: https://github.com/uuvsimulator/eca_a9-release.git
+  vcs: git
+  version: release/kinetic/eca_a9_description/0.1.6-0
+eca_a9_gazebo:
+  url: https://github.com/uuvsimulator/eca_a9-release.git
+  vcs: git
+  version: release/kinetic/eca_a9_gazebo/0.1.6-0
 ecl:
   url: https://github.com/yujinrobot-release/ecl_manipulation-release.git
   vcs: git
@@ -2406,10 +2466,14 @@ hector_xacro_tools:
   url: https://github.com/tu-darmstadt-ros-pkg-gbp/hector_models-release.git
   vcs: git
   version: release/kinetic/hector_xacro_tools/0.4.2-0
+heron_control:
+  url: https://github.com/clearpath-gbp/heron-release.git
+  vcs: git
+  version: release/kinetic/heron_control/0.3.1-0
 heron_description:
   url: https://github.com/clearpath-gbp/heron-release.git
   vcs: git
-  version: release/kinetic/heron_description/0.3.0-0
+  version: release/kinetic/heron_description/0.3.1-0
 heron_desktop:
   url: https://github.com/clearpath-gbp/heron_desktop-release.git
   vcs: git
@@ -2417,7 +2481,7 @@ heron_desktop:
 heron_msgs:
   url: https://github.com/clearpath-gbp/heron-release.git
   vcs: git
-  version: release/kinetic/heron_msgs/0.3.0-0
+  version: release/kinetic/heron_msgs/0.3.1-0
 heron_viz:
   url: https://github.com/clearpath-gbp/heron_desktop-release.git
   vcs: git
@@ -3386,6 +3450,18 @@ launchman:
   url: https://github.com/UNR-RoboticsResearchLab/web_interface-release.git
   vcs: git
   version: release/kinetic/launchman/1.0.7-0
+lauv_control:
+  url: https://github.com/uuvsimulator/lauv_gazebo-release.git
+  vcs: git
+  version: release/kinetic/lauv_control/0.1.6-0
+lauv_description:
+  url: https://github.com/uuvsimulator/lauv_gazebo-release.git
+  vcs: git
+  version: release/kinetic/lauv_description/0.1.6-0
+lauv_gazebo:
+  url: https://github.com/uuvsimulator/lauv_gazebo-release.git
+  vcs: git
+  version: release/kinetic/lauv_gazebo/0.1.6-0
 leap_motion:
   url: https://github.com/ros-gbp/leap_motion-release.git
   vcs: git
@@ -4018,6 +4094,22 @@ moveit_commander:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
   version: release/kinetic/moveit_commander/0.9.15-0
+moveit_config_m0609:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/moveit_config_m0609/0.9.6-1
+moveit_config_m0617:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/moveit_config_m0617/0.9.6-1
+moveit_config_m1013:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/moveit_config_m1013/0.9.6-1
+moveit_config_m1509:
+  url: https://github.com/doosan-robotics/doosan-robot-release.git
+  vcs: git
+  version: release/kinetic/moveit_config_m1509/0.9.6-1
 moveit_controller_manager_example:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -4913,7 +5005,7 @@ open_manipulator_with_tb3_waffle_pi_moveit:
 opencv_apps:
   url: https://github.com/ros-perception/opencv_apps-release.git
   vcs: git
-  version: release/kinetic/opencv_apps/2.0.0-0
+  version: release/kinetic/opencv_apps/2.0.1-1
 opencv_candidate:
   url: https://github.com/ros-gbp/opencv_candidate-release.git
   vcs: git
@@ -5846,6 +5938,10 @@ qt_tutorials:
   url: https://github.com/yujinrobot-release/qt_ros-release.git
   vcs: git
   version: release/kinetic/qt_tutorials/0.2.10-0
+quaternion_operation:
+  url: https://github.com/OUXT-Polaris/quaternion_operation-release.git
+  vcs: git
+  version: release/kinetic/quaternion_operation/0.0.1-1
 radar_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -7509,15 +7605,15 @@ swri_prefix_tools:
 swri_profiler:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler/0.2.0-0
+  version: release/kinetic/swri_profiler/0.1.0-0
 swri_profiler_msgs:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler_msgs/0.2.0-0
+  version: release/kinetic/swri_profiler_msgs/0.1.0-0
 swri_profiler_tools:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
-  version: release/kinetic/swri_profiler_tools/0.2.0-0
+  version: release/kinetic/swri_profiler_tools/0.1.0-0
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
