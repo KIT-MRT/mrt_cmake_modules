@@ -25,6 +25,9 @@ endif ()
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=gold")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
 
+# Add support for std::filesystem. For GCC version <= 8 one needs to link agains -lstdc++fs.
+link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
+
 # export compile commands
 if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
     set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
