@@ -2113,7 +2113,7 @@ movie_publisher:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/melodic/mrpt1/1.5.7-6
+  version: release/melodic/mrpt1/1.5.7-7
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
@@ -2185,7 +2185,7 @@ multi_map_server:
 multi_object_tracking_lidar:
   url: https://github.com/praveen-palanisamy/multi_object_tracking_lidar-release.git
   vcs: git
-  version: release/melodic/multi_object_tracking_lidar/1.0.0-0
+  version: release/melodic/multi_object_tracking_lidar/1.0.1-1
 multimaster_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
@@ -2653,7 +2653,7 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.2-0
+  version: release/melodic/pilz_control/0.5.3-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -2677,11 +2677,11 @@ pilz_robot_programming:
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.2-0
+  version: release/melodic/pilz_robots/0.5.3-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.2-0
+  version: release/melodic/pilz_testutils/0.5.3-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -2885,7 +2885,7 @@ pr2_tuckarm:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.2-0
+  version: release/melodic/prbt_gazebo/0.5.3-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -2893,15 +2893,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.2-0
+  version: release/melodic/prbt_hardware_support/0.5.3-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.2-0
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.3-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.2-0
+  version: release/melodic/prbt_moveit_config/0.5.3-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -2909,7 +2909,15 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.2-0
+  version: release/melodic/prbt_support/0.5.3-1
+prosilica_camera:
+  url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
+  vcs: git
+  version: release/melodic/prosilica_camera/1.9.4-1
+prosilica_gige_sdk:
+  url: https://github.com/ros-drivers-gbp/prosilica_gige_sdk-release.git
+  vcs: git
+  version: release/melodic/prosilica_gige_sdk/1.26.3-1
 ps3joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
@@ -3025,7 +3033,7 @@ qt_qmake:
 quaternion_operation:
   url: https://github.com/OUXT-Polaris/quaternion_operation-release.git
   vcs: git
-  version: release/melodic/quaternion_operation/0.0.1-1
+  version: release/melodic/quaternion_operation/0.0.1-2
 radar_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -3458,6 +3466,10 @@ rosserial_xbee:
   url: https://github.com/ros-gbp/rosserial-release.git
   vcs: git
   version: release/melodic/rosserial_xbee/0.8.0-0
+rostate_machine:
+  url: https://github.com/OUXT-Polaris/rostate_machine-release.git
+  vcs: git
+  version: release/melodic/rostate_machine/0.0.2-1
 rostwitter:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
