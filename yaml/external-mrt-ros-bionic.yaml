@@ -2761,7 +2761,7 @@ pr2_common_actions:
 pr2_controller_configuration_gazebo:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
-  version: release/melodic/pr2_controller_configuration_gazebo/2.0.13-1
+  version: release/melodic/pr2_controller_configuration_gazebo/2.0.14-0
 pr2_controller_interface:
   url: https://github.com/pr2-gbp/pr2_mechanism-release.git
   vcs: git
@@ -2793,11 +2793,11 @@ pr2_ethercat_drivers:
 pr2_gazebo:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
-  version: release/melodic/pr2_gazebo/2.0.13-1
+  version: release/melodic/pr2_gazebo/2.0.14-0
 pr2_gazebo_plugins:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
-  version: release/melodic/pr2_gazebo_plugins/2.0.13-1
+  version: release/melodic/pr2_gazebo_plugins/2.0.14-0
 pr2_gripper_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
@@ -2861,7 +2861,7 @@ pr2_power_drivers:
 pr2_simulator:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
-  version: release/melodic/pr2_simulator/2.0.13-1
+  version: release/melodic/pr2_simulator/2.0.14-0
 pr2_teleop:
   url: https://github.com/pr2-gbp/pr2_apps-release.git
   vcs: git
@@ -3469,7 +3469,7 @@ rosserial_xbee:
 rostate_machine:
   url: https://github.com/OUXT-Polaris/rostate_machine-release.git
   vcs: git
-  version: release/melodic/rostate_machine/0.0.2-1
+  version: release/melodic/rostate_machine/0.0.2-3
 rostwitter:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -4266,6 +4266,10 @@ voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/voice_text/2.1.11-0
+volksbot_driver:
+  url: https://github.com/uos-gbp/volksbot_driver-release.git
+  vcs: git
+  version: release/melodic/volksbot_driver/1.0.0-1
 vrpn:
   url: https://github.com/ros-drivers-gbp/vrpn-release.git
   vcs: git
