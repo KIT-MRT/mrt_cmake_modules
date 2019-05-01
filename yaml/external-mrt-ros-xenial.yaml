@@ -1237,7 +1237,7 @@ declination:
 default_cfg_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/default_cfg_fkie/0.8.11-0
+  version: release/kinetic/default_cfg_fkie/0.8.12-0
 delphi_esr_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -1705,7 +1705,7 @@ eigen_typekit:
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
-  version: release/kinetic/eigenpy/1.5.0-0
+  version: release/kinetic/eigenpy/1.5.1-1
 eml:
   url: https://github.com/ros-gbp/eml-release.git
   vcs: git
@@ -2945,7 +2945,7 @@ joint_limits_interface:
 joint_qualification_controllers:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/joint_qualification_controllers/1.0.14-0
+  version: release/kinetic/joint_qualification_controllers/1.0.15-1
 joint_state_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -3209,59 +3209,59 @@ key_teleop:
 khi_duaro_description:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_duaro_description/1.1.0-1
+  version: release/kinetic/khi_duaro_description/1.1.1-1
 khi_duaro_gazebo:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_duaro_gazebo/1.1.0-1
+  version: release/kinetic/khi_duaro_gazebo/1.1.1-1
 khi_duaro_ikfast_plugin:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_duaro_ikfast_plugin/1.1.0-1
+  version: release/kinetic/khi_duaro_ikfast_plugin/1.1.1-1
 khi_duaro_moveit_config:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_duaro_moveit_config/1.1.0-1
+  version: release/kinetic/khi_duaro_moveit_config/1.1.1-1
 khi_robot:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot/1.1.0-1
+  version: release/kinetic/khi_robot/1.1.1-1
 khi_robot_bringup:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_bringup/1.1.0-1
+  version: release/kinetic/khi_robot_bringup/1.1.1-1
 khi_robot_control:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_control/1.1.0-1
+  version: release/kinetic/khi_robot_control/1.1.1-1
 khi_robot_msgs:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_robot_msgs/1.1.0-1
+  version: release/kinetic/khi_robot_msgs/1.1.1-1
 khi_rs007l_moveit_config:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs007l_moveit_config/1.1.0-1
+  version: release/kinetic/khi_rs007l_moveit_config/1.1.1-1
 khi_rs007n_moveit_config:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs007n_moveit_config/1.1.0-1
+  version: release/kinetic/khi_rs007n_moveit_config/1.1.1-1
 khi_rs080n_moveit_config:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs080n_moveit_config/1.1.0-1
+  version: release/kinetic/khi_rs080n_moveit_config/1.1.1-1
 khi_rs_description:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs_description/1.1.0-1
+  version: release/kinetic/khi_rs_description/1.1.1-1
 khi_rs_gazebo:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs_gazebo/1.1.0-1
+  version: release/kinetic/khi_rs_gazebo/1.1.1-1
 khi_rs_ikfast_plugin:
   url: https://github.com/Kawasaki-Robotics/khi_robot-release.git
   vcs: git
-  version: release/kinetic/khi_rs_ikfast_plugin/1.1.0-1
+  version: release/kinetic/khi_rs_ikfast_plugin/1.1.1-1
 kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
@@ -3845,11 +3845,11 @@ marvelmind_nav:
 master_discovery_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/master_discovery_fkie/0.8.11-0
+  version: release/kinetic/master_discovery_fkie/0.8.12-0
 master_sync_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/master_sync_fkie/0.8.11-0
+  version: release/kinetic/master_sync_fkie/0.8.12-0
 mav_comm:
   url: https://github.com/ethz-asl/mav_comm-release.git
   vcs: git
@@ -4237,7 +4237,7 @@ mqtt_bridge:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/kinetic/mrpt1/1.5.7-4
+  version: release/kinetic/mrpt1/1.5.7-5
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
@@ -4333,7 +4333,7 @@ multi_map_server:
 multi_object_tracking_lidar:
   url: https://github.com/praveen-palanisamy/multi_object_tracking_lidar-release.git
   vcs: git
-  version: release/kinetic/multi_object_tracking_lidar/1.0.0-0
+  version: release/kinetic/multi_object_tracking_lidar/1.0.1-1
 multikey_teleop:
   url: https://github.com/easymov/multikey_teleop-release.git
   vcs: git
@@ -4341,7 +4341,7 @@ multikey_teleop:
 multimaster_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/multimaster_fkie/0.8.11-0
+  version: release/kinetic/multimaster_fkie/0.8.12-0
 multimaster_launch:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
@@ -4353,7 +4353,7 @@ multimaster_msgs:
 multimaster_msgs_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/multimaster_msgs_fkie/0.8.11-0
+  version: release/kinetic/multimaster_msgs_fkie/0.8.12-0
 multires_image:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
@@ -4693,7 +4693,7 @@ nmea_navsat_driver:
 node_manager_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
-  version: release/kinetic/node_manager_fkie/0.8.11-0
+  version: release/kinetic/node_manager_fkie/0.8.12-0
 nonpersistent_voxel_layer:
   url: https://github.com/SteveMacenski/nonpersistent_voxel_layer-release.git
   vcs: git
@@ -5293,7 +5293,7 @@ piksi_rtk_msgs:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/pilz_control/0.4.7-0
+  version: release/kinetic/pilz_control/0.4.8-0
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -5317,11 +5317,11 @@ pilz_robot_programming:
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/pilz_robots/0.4.7-0
+  version: release/kinetic/pilz_robots/0.4.8-0
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/pilz_testutils/0.4.7-0
+  version: release/kinetic/pilz_testutils/0.4.8-0
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -5329,7 +5329,7 @@ pilz_trajectory_generation:
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
-  version: release/kinetic/pinocchio/2.0.0-0
+  version: release/kinetic/pinocchio/2.1.3-1
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -5445,7 +5445,7 @@ pr2_bringup:
 pr2_bringup_tests:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_bringup_tests/1.0.14-0
+  version: release/kinetic/pr2_bringup_tests/1.0.15-1
 pr2_calibration:
   url: https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release.git
   vcs: git
@@ -5465,7 +5465,7 @@ pr2_camera_synchronizer:
 pr2_common:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
-  version: release/kinetic/pr2_common/1.12.2-0
+  version: release/kinetic/pr2_common/1.12.4-1
 pr2_common_action_msgs:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
@@ -5505,11 +5505,11 @@ pr2_controllers_msgs:
 pr2_counterbalance_check:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_counterbalance_check/1.0.14-0
+  version: release/kinetic/pr2_counterbalance_check/1.0.15-1
 pr2_dashboard_aggregator:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
-  version: release/kinetic/pr2_dashboard_aggregator/1.12.2-0
+  version: release/kinetic/pr2_dashboard_aggregator/1.12.4-1
 pr2_dense_laser_snapshotter:
   url: https://github.com/UNR-RoboticsResearchLab/pr2_calibration-release.git
   vcs: git
@@ -5517,7 +5517,7 @@ pr2_dense_laser_snapshotter:
 pr2_description:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
-  version: release/kinetic/pr2_description/1.12.2-0
+  version: release/kinetic/pr2_description/1.12.4-1
 pr2_desktop:
   url: https://github.com/PR2-prime/pr2_metapackages-release.git
   vcs: git
@@ -5573,7 +5573,7 @@ pr2_kinematics:
 pr2_machine:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
-  version: release/kinetic/pr2_machine/1.12.2-0
+  version: release/kinetic/pr2_machine/1.12.4-1
 pr2_mannequin_mode:
   url: https://github.com/pr2-gbp/pr2_apps-release.git
   vcs: git
@@ -5601,7 +5601,7 @@ pr2_mechanism_msgs:
 pr2_motor_diagnostic_tool:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_motor_diagnostic_tool/1.0.14-0
+  version: release/kinetic/pr2_motor_diagnostic_tool/1.0.15-1
 pr2_move_base:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -5617,7 +5617,7 @@ pr2_moveit_plugins:
 pr2_msgs:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
-  version: release/kinetic/pr2_msgs/1.12.2-0
+  version: release/kinetic/pr2_msgs/1.12.4-1
 pr2_navigation:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -5681,11 +5681,11 @@ pr2_se_calibration_launch:
 pr2_self_test:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test/1.0.14-0
+  version: release/kinetic/pr2_self_test/1.0.15-1
 pr2_self_test_msgs:
   url: https://github.com/pr2-gbp/pr2_self_test-release.git
   vcs: git
-  version: release/kinetic/pr2_self_test_msgs/1.0.14-0
+  version: release/kinetic/pr2_self_test_msgs/1.0.15-1
 pr2_simulator:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
@@ -5725,31 +5725,31 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/prbt_gazebo/0.4.7-0
+  version: release/kinetic/prbt_gazebo/0.4.8-0
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/kinetic/prbt_grippers/0.0.2-0
+  version: release/kinetic/prbt_grippers/0.0.3-0
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/prbt_hardware_support/0.4.7-0
+  version: release/kinetic/prbt_hardware_support/0.4.8-0
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/prbt_ikfast_manipulator_plugin/0.4.7-0
+  version: release/kinetic/prbt_ikfast_manipulator_plugin/0.4.8-0
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/prbt_moveit_config/0.4.7-0
+  version: release/kinetic/prbt_moveit_config/0.4.8-0
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
-  version: release/kinetic/prbt_pg70_support/0.0.2-0
+  version: release/kinetic/prbt_pg70_support/0.0.3-0
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/kinetic/prbt_support/0.4.7-0
+  version: release/kinetic/prbt_support/0.4.8-0
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -5941,7 +5941,7 @@ qt_tutorials:
 quaternion_operation:
   url: https://github.com/OUXT-Polaris/quaternion_operation-release.git
   vcs: git
-  version: release/kinetic/quaternion_operation/0.0.1-1
+  version: release/kinetic/quaternion_operation/0.0.1-2
 radar_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -6074,6 +6074,10 @@ rc_cloud_accumulator:
   url: https://github.com/roboception-gbp/rc_cloud_accumulator-release.git
   vcs: git
   version: release/kinetic/rc_cloud_accumulator/1.0.4-0
+rc_common_msgs:
+  url: https://github.com/roboception-gbp/rc_common_msgs-release.git
+  vcs: git
+  version: release/kinetic/rc_common_msgs/0.2.1-1
 rc_dynamics_api:
   url: https://github.com/roboception-gbp/rc_dynamics_api-release.git
   vcs: git
@@ -6926,6 +6930,10 @@ rosserial_xbee:
   url: https://github.com/ros-gbp/rosserial-release.git
   vcs: git
   version: release/kinetic/rosserial_xbee/0.7.7-0
+rostate_machine:
+  url: https://github.com/OUXT-Polaris/rostate_machine-release.git
+  vcs: git
+  version: release/kinetic/rostate_machine/0.0.2-1
 rostful:
   url: https://github.com/pyros-dev/rostful-rosrelease.git
   vcs: git
