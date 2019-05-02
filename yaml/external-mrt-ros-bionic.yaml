@@ -2113,7 +2113,7 @@ movie_publisher:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/melodic/mrpt1/1.5.7-7
+  version: release/melodic/mrpt1/1.5.7-6
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
