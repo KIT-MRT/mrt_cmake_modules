@@ -4310,6 +4310,18 @@ webrtc_ros:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
   version: release/melodic/webrtc_ros/59.0.3-0
+wge100_camera:
+  url: https://github.com/ros-drivers-gbp/wge100_driver-release.git
+  vcs: git
+  version: release/melodic/wge100_camera/1.8.2-1
+wge100_camera_firmware:
+  url: https://github.com/ros-drivers-gbp/wge100_driver-release.git
+  vcs: git
+  version: release/melodic/wge100_camera_firmware/1.8.2-1
+wge100_driver:
+  url: https://github.com/ros-drivers-gbp/wge100_driver-release.git
+  vcs: git
+  version: release/melodic/wge100_driver/1.8.2-1
 wifi_ddwrt:
   url: https://github.com/ros-gbp/wifi_ddwrt-release.git
   vcs: git
