@@ -1901,7 +1901,7 @@ md49_serialport:
 microstrain_3dmgx2_imu:
   url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
   vcs: git
-  version: release/melodic/microstrain_3dmgx2_imu/1.5.12-0
+  version: release/melodic/microstrain_3dmgx2_imu/1.5.12-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -2645,7 +2645,7 @@ phidgets_imu:
 photo:
   url: https://github.com/bosch-ros-pkg/photo-release.git
   vcs: git
-  version: release/melodic/photo/1.0.3-0
+  version: release/melodic/photo/1.0.3-1
 pid:
   url: https://github.com/AndyZe/pid-release.git
   vcs: git
@@ -3822,6 +3822,10 @@ teleop_twist_keyboard:
   url: https://github.com/ros-gbp/teleop_twist_keyboard-release.git
   vcs: git
   version: release/melodic/teleop_twist_keyboard/0.6.2-0
+teraranger:
+  url: https://github.com/Terabee/teraranger-release.git
+  vcs: git
+  version: release/melodic/teraranger/2.1.0-1
 test_diagnostic_aggregator:
   url: https://github.com/ros-gbp/diagnostics-release.git
   vcs: git
