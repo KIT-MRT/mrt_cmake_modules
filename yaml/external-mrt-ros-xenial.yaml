@@ -7717,11 +7717,11 @@ tensorflow_ros_rqt:
 teraranger:
   url: https://github.com/Terabee/teraranger-release.git
   vcs: git
-  version: release/kinetic/teraranger/2.0.1-0
+  version: release/kinetic/teraranger/2.1.0-2
 teraranger_array:
   url: https://github.com/Terabee/teraranger_array-release.git
   vcs: git
-  version: release/kinetic/teraranger_array/1.3.4-0
+  version: release/kinetic/teraranger_array/2.0.0-1
 teraranger_array_converter:
   url: https://github.com/Terabee/teraranger_array_converter-release.git
   vcs: git
@@ -8686,6 +8686,10 @@ webargs:
   url: https://github.com/asmodehn/webargs-rosrelease.git
   vcs: git
   version: release/kinetic/webargs/1.5.3-1
+webots_ros:
+  url: https://github.com/omichel/webots_ros-release.git
+  vcs: git
+  version: release/kinetic/webots_ros/2.0.1-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
