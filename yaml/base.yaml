@@ -7,7 +7,7 @@ aravis:
     library_dirs: []
     name: Aravis
   ubuntu:
-  - libaravis-dev
+  - mrt-libaravis-dev
 armadillo:
   cmake:
     include_dirs:
