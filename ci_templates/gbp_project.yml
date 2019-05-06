@@ -1,6 +1,6 @@
 variables:
   GIT_STRATEGY: none
-  CONTAINER_REGISTRY: gitlab.mrt.uni-karlsruhe.de:21443/mrt/mrt_build
+  CONTAINER_REGISTRY: ${CI_REGISTRY}/mrt/misc/mrt_build
 
 cache:
   key: "empty"
