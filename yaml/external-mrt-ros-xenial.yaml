@@ -1301,7 +1301,7 @@ denso_ros_control:
 depthcloud_encoder:
   url: https://github.com/RobotWebTools-release/depthcloud_encoder-release.git
   vcs: git
-  version: release/kinetic/depthcloud_encoder/0.1.0-0
+  version: release/kinetic/depthcloud_encoder/0.1.1-1
 depthimage_to_laserscan:
   url: https://github.com/ros-gbp/depthimage_to_laserscan-release.git
   vcs: git
