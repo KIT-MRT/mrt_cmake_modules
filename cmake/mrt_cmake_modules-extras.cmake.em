@@ -371,14 +371,15 @@ function(mrt_add_python_api modulename)
     foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
         get_filename_component(SUBMODULE_NAME ${API_FILE} NAME_WE)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
-        set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_${SUBMODULE_NAME}_pyapi")
+        set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
         add_library( ${TARGET_NAME}
             ${API_FILE}
             )
-        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${LIBRARY_NAME})
+        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         set_target_properties(${TARGET_NAME}
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+            PREFIX ""
             )
         target_link_libraries( ${TARGET_NAME}
             ${PYTHON_LIBRARY}
@@ -392,7 +393,7 @@ function(mrt_add_python_api modulename)
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
-            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/${SUBMODULE_NAME}.py
+            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}>
             WORKING_DIRECTORY ${PREFIX}
             COMMENT "Copying library files to python directory"
             )
