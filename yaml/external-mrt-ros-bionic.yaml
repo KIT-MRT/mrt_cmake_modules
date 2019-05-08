@@ -1333,11 +1333,11 @@ imagezero_ros:
 imu_complementary_filter:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/melodic/imu_complementary_filter/1.2.0-0
+  version: release/melodic/imu_complementary_filter/1.2.1-1
 imu_filter_madgwick:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/melodic/imu_filter_madgwick/1.2.0-0
+  version: release/melodic/imu_filter_madgwick/1.2.1-1
 imu_pipeline:
   url: https://github.com/ros-gbp/imu_pipeline-release.git
   vcs: git
@@ -1353,7 +1353,7 @@ imu_sensor_controller:
 imu_tools:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/melodic/imu_tools/1.2.0-0
+  version: release/melodic/imu_tools/1.2.1-1
 imu_transformer:
   url: https://github.com/ros-gbp/imu_pipeline-release.git
   vcs: git
@@ -1669,7 +1669,7 @@ libmodbus:
 libphidget21:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/libphidget21/0.7.7-0
+  version: release/melodic/libphidget21/0.7.8-1
 libqt_concurrent:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
@@ -1909,35 +1909,35 @@ mini_maxwell:
 mir_actions:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_actions/1.0.3-0
+  version: release/melodic/mir_actions/1.0.4-1
 mir_description:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_description/1.0.3-0
+  version: release/melodic/mir_description/1.0.4-1
 mir_driver:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_driver/1.0.3-0
+  version: release/melodic/mir_driver/1.0.4-1
 mir_dwb_critics:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_dwb_critics/1.0.3-0
+  version: release/melodic/mir_dwb_critics/1.0.4-1
 mir_gazebo:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_gazebo/1.0.3-0
+  version: release/melodic/mir_gazebo/1.0.4-1
 mir_msgs:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_msgs/1.0.3-0
+  version: release/melodic/mir_msgs/1.0.4-1
 mir_navigation:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_navigation/1.0.3-0
+  version: release/melodic/mir_navigation/1.0.4-1
 mir_robot:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/melodic/mir_robot/1.0.3-0
+  version: release/melodic/mir_robot/1.0.4-1
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
@@ -2113,7 +2113,7 @@ movie_publisher:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/melodic/mrpt1/1.5.7-6
+  version: release/melodic/mrpt1/1.5.8-0
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
@@ -2625,23 +2625,23 @@ pheeno_ros_description:
 phidgets_api:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/phidgets_api/0.7.7-0
+  version: release/melodic/phidgets_api/0.7.8-1
 phidgets_drivers:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/phidgets_drivers/0.7.7-0
+  version: release/melodic/phidgets_drivers/0.7.8-1
 phidgets_high_speed_encoder:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/phidgets_high_speed_encoder/0.7.7-0
+  version: release/melodic/phidgets_high_speed_encoder/0.7.8-1
 phidgets_ik:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/phidgets_ik/0.7.7-0
+  version: release/melodic/phidgets_ik/0.7.8-1
 phidgets_imu:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/melodic/phidgets_imu/0.7.7-0
+  version: release/melodic/phidgets_imu/0.7.8-1
 photo:
   url: https://github.com/bosch-ros-pkg/photo-release.git
   vcs: git
@@ -3585,7 +3585,7 @@ rtctree:
 rviz_imu_plugin:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/melodic/rviz_imu_plugin/1.2.0-0
+  version: release/melodic/rviz_imu_plugin/1.2.1-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -3633,7 +3633,7 @@ sick_scan:
 sick_tim:
   url: https://github.com/uos-gbp/sick_tim-release.git
   vcs: git
-  version: release/melodic/sick_tim/0.0.15-0
+  version: release/melodic/sick_tim/0.0.16-1
 simple_grasping:
   url: https://github.com/ros-gbp/simple_grasping-release.git
   vcs: git
