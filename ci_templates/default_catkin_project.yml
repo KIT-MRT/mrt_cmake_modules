@@ -7,8 +7,8 @@ cache:
 stages:
   - build
   - test
+  - verify
   - deploy
-  - deps
 
 # Prepare workspace and checkout the code. This will be executed before every stage
 before_script:
@@ -23,6 +23,7 @@ before_script:
 
 build:
   stage: build
+  only: [branches, tags, merge_requests] # means "always"
   script:
   # Build project and resolve deps at the same time in debug mode
   - mrt catkin build -s -rd -c --debug --default_yes --no-status $CI_PROJECT_NAME
@@ -35,9 +36,10 @@ build:
     paths:
     - doxygen
     expire_in: 6 mos
-    
+
 general_code_quality:
   stage: build
+  only: [master, merge_requests]
   image: docker:stable
   before_script: []
   cache: {}
@@ -49,19 +51,54 @@ general_code_quality:
     - docker:stable-dind
   script:
     - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
     - docker run
         --env SOURCE_CODE="$PWD"
         --volume "$PWD":/code
         --volume /var/run/docker.sock:/var/run/docker.sock
-        "registry.gitlab.com/gitlab-org/security-products/codequality:$SP_VERSION" /code
+        ${CI_REGISTRY}/mrt/mrt_build/gl_codequality /code
     - chmod a+rw gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
-   
+
+code_quality:
+  dependencies:
+    - general_code_quality
+  stage: test
+  only: [master, merge_requests]
+  artifacts:
+    paths: [gl-code-quality-report.json]
+    reports:
+      codequality: gl-code-quality-report.json
+  script:
+  # Build code again, in case caching didn't work
+  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
+  - source devel_debug/setup.bash
+  - cd src/$CI_PROJECT_NAME
+  - rm codeclimate.json || true
+  - cp ../../../gl-code-quality-report.json codeclimate.json || true
+  - mrt ci codequality $CI_PROJECT_NAME
+  - cp codeclimate.json ../../../gl-code-quality-report.json
+
+check_code_quality:
+  dependencies:
+    - code_quality
+  stage: verify
+  only: [master, merge_requests]
+  # default filename is codeclimate.json
+  script:
+  - mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
+  artifacts:
+    paths: [gl-code-quality-report.json]
+  before_script: []
+  cache: {}
 
 test:
   stage: test
+  only: [branches, tags, merge_requests] # means "always"
   coverage: '/lines: \d+.\d+\%/'
+  variables:
+    MRT_MIN_COVERAGE: $MRT_REQUIRED_COVERAGE
   script:
   # Build code again, in case caching didn't work
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
@@ -80,19 +117,29 @@ test:
     reports:
       junit: catkin_ws/build_debug/$CI_PROJECT_NAME/test_results/$CI_PROJECT_NAME/*.xml
 
-code_quality:
-  allow_failure: true
-  artifacts:
-    paths: [gl-code-quality-report.json]
+report_licenses:
+  stage: verify
+  only: [master, merge_requests]
   script:
-  # Build code again, in case caching didn't work
-  - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
-  - source devel_debug/setup.bash
-  - cd src/$CI_PROJECT_NAME
-  - rm codeclimate.json || true
-  - cp ../../../gl-code-quality-report.json codeclimate.json || true
-  - mrt ci run_clang_tidy -e $CI_PROJECT_NAME
-  - cp codeclimate.json ../../../gl-code-quality-report.json
+  - mrt ws resolve_deps -y
+  - mrt ci report_licenses .
+  - cp licenses.json ..
+  artifacts:
+    reports:
+      license_management: licenses.json
+ 
+deps:
+  stage: verify
+  only: [master, merge_requests]
+  variables:
+    MRT_CI_NO_TIDY: 1
+  cache:
+    paths:
+    - catkin_ws/
+    key: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-deps
+  script:
+  # test all dependencies of this package. Exclude packages with -e, include with -i.
+  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME $MRT_NAMESPACE -f --default-fail-on-warning
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
 # It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
@@ -110,20 +157,3 @@ pages:
   only:
   # only execute for master branch
   - master
-
-deps:
-  stage: deps
-  variables:
-    MRT_CI_NO_TIDY: 1
-  cache:
-    paths:
-    - catkin_ws/
-    key: $CI_PROJECT_NAME-$CI_COMMIT_REF_NAME-deps
-  only:
-  # only execute if this is the master branch
-  - master
-  - merge_request
-  script:
-  # test all dependencies of this package. Exclude packages with -e, include with -i.
-  - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME
-
