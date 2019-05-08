@@ -2753,11 +2753,11 @@ imu_compass:
 imu_complementary_filter:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/kinetic/imu_complementary_filter/1.1.6-0
+  version: release/kinetic/imu_complementary_filter/1.1.7-1
 imu_filter_madgwick:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/kinetic/imu_filter_madgwick/1.1.6-0
+  version: release/kinetic/imu_filter_madgwick/1.1.7-1
 imu_monitor:
   url: https://github.com/pr2-gbp/pr2_robot-release.git
   vcs: git
@@ -2777,7 +2777,7 @@ imu_sensor_controller:
 imu_tools:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/kinetic/imu_tools/1.1.6-0
+  version: release/kinetic/imu_tools/1.1.7-1
 imu_transformer:
   url: https://github.com/ros-gbp/imu_pipeline-release.git
   vcs: git
@@ -3386,6 +3386,10 @@ korg_nanokontrol:
   url: https://github.com/ros-gbp/korg_nanokontrol-release.git
   vcs: git
   version: release/kinetic/korg_nanokontrol/0.1.2-0
+ksql_airport:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/kinetic/ksql_airport/0.0.1-1
 kvh:
   url: https://github.com/ros-drivers-gbp/kvh_drivers-release.git
   vcs: git
@@ -3537,7 +3541,7 @@ libpcan:
 libphidget21:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/libphidget21/0.7.7-0
+  version: release/kinetic/libphidget21/0.7.8-1
 libphidgets:
   url: https://github.com/ipa320/cob_extern-release.git
   vcs: git
@@ -3914,6 +3918,10 @@ mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
   version: release/kinetic/mcl_3dl_msgs/0.1.2-0
+mcmillan_airfield:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/kinetic/mcmillan_airfield/0.0.1-1
 md49_base_controller:
   url: https://github.com/Scheik/md49_base_controller-release.git
   vcs: git
@@ -3977,35 +3985,35 @@ mini_maxwell:
 mir_actions:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_actions/1.0.3-0
+  version: release/kinetic/mir_actions/1.0.4-1
 mir_description:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_description/1.0.3-0
+  version: release/kinetic/mir_description/1.0.4-1
 mir_driver:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_driver/1.0.3-0
+  version: release/kinetic/mir_driver/1.0.4-1
 mir_dwb_critics:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_dwb_critics/1.0.3-0
+  version: release/kinetic/mir_dwb_critics/1.0.4-1
 mir_gazebo:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_gazebo/1.0.3-0
+  version: release/kinetic/mir_gazebo/1.0.4-1
 mir_msgs:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_msgs/1.0.3-0
+  version: release/kinetic/mir_msgs/1.0.4-1
 mir_navigation:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_navigation/1.0.3-0
+  version: release/kinetic/mir_navigation/1.0.4-1
 mir_robot:
   url: https://github.com/uos-gbp/mir_robot-release.git
   vcs: git
-  version: release/kinetic/mir_robot/1.0.3-0
+  version: release/kinetic/mir_robot/1.0.4-1
 ml_classifiers:
   url: https://github.com/astuff/ml_classifiers-release.git
   vcs: git
@@ -5261,23 +5269,23 @@ pheeno_ros_sim:
 phidgets_api:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_api/0.7.7-0
+  version: release/kinetic/phidgets_api/0.7.8-1
 phidgets_drivers:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_drivers/0.7.7-0
+  version: release/kinetic/phidgets_drivers/0.7.8-1
 phidgets_high_speed_encoder:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_high_speed_encoder/0.7.7-0
+  version: release/kinetic/phidgets_high_speed_encoder/0.7.8-1
 phidgets_ik:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_ik/0.7.7-0
+  version: release/kinetic/phidgets_ik/0.7.8-1
 phidgets_imu:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_imu/0.7.7-0
+  version: release/kinetic/phidgets_imu/0.7.8-1
 pid:
   url: https://github.com/AndyZe/pid-release.git
   vcs: git
@@ -7205,7 +7213,7 @@ rv7fl_moveit_config:
 rviz_imu_plugin:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
-  version: release/kinetic/rviz_imu_plugin/1.1.6-0
+  version: release/kinetic/rviz_imu_plugin/1.1.7-1
 rviz_recorder_buttons:
   url: https://github.com/ipa-jfh/robot_recorder-release.git
   vcs: git
@@ -7226,6 +7234,10 @@ sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
   version: release/kinetic/sainsmart_relay_usb/0.0.2-0
+sand_island:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/kinetic/sand_island/0.0.1-1
 sbg_driver:
   url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
@@ -7325,7 +7337,7 @@ sick_scan:
 sick_tim:
   url: https://github.com/uos-gbp/sick_tim-release.git
   vcs: git
-  version: release/kinetic/sick_tim/0.0.15-0
+  version: release/kinetic/sick_tim/0.0.16-1
 sick_visionary_t:
   url: https://github.com/SICKAG/sick_visionary_t-release.git
   vcs: git
@@ -8946,6 +8958,10 @@ yocs_waypoints_navi:
   url: https://github.com/yujinrobot-release/yujin_ocs-release.git
   vcs: git
   version: release/kinetic/yocs_waypoints_navi/0.8.2-0
+yosemite_valley:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/kinetic/yosemite_valley/0.0.1-1
 youbot_description:
   url: https://github.com/youbot-release/youbot_description-release.git
   vcs: git
