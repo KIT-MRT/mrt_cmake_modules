@@ -89,7 +89,6 @@ def findWorkspaceRoot(packageXmlFilename):
             return(pathNew)
     
     return ""
-    
 
 def readPackageCMakeData(rosDebYamlFileName):
     """
@@ -130,20 +129,37 @@ def readPackageCMakeData(rosDebYamlFileName):
     return data
 
 def getCatkinPackages(workspaceRoot):
-    """Get all available catkin packages using rospack"""
-    args = ['rospack', 'list-names']
-    catkin_packages = subprocess.check_output(args).split('\n')
-    
-    #append packages from own workspaces, because sometimes
-    #they are listed by rospack
-    if os.path.exists(workspaceRoot):
-        packages = find_packages(workspaceRoot)
-        for package_name, package in packages.items():
-            catkin_packages.append(package["name"])
-    
-    #remove duplicates
-    catkin_packages = list(set(catkin_packages))
-    return catkin_packages
+    """Get all available catkin packages"""
+    manifest = "package.xml"
+    catkin_ignore = "CATKIN_IGNORE"
+    nosubdirs = "rospack_nosubdirs"
+    ros_package_env = "ROS_PACKAGE_PATH"
+
+    def getPackagesInPath(packages, path):
+        for root, dirs, files in os.walk(path, topdown=True):
+            if catkin_ignore in files:
+                dirs[:] = [] # instruct walk to not recurse deeper
+                continue
+            if manifest in files: # found a package
+                package = ET.parse(os.path.join(root, manifest)).getroot()
+                export = package.find("export")
+                # ignore metapackages
+                if export is None or export.find("metapackage") is None:
+                    name = package.get("name", default=os.path.basename(root))
+                    packages.add(name)
+                dirs[:] = []
+                continue
+            if nosubdirs in files:
+                dirs[:] = [] # package is tagged to not recurse
+                continue
+
+    package_paths = set()
+    paths = os.environ.get(ros_package_env, "").split(":")
+    paths.append(workspaceRoot) #
+    packages = set()
+    for path in paths:
+        getPackagesInPath(packages, path)
+    return list(packages)
 
 def main(packageXmlFile, rosDepYamlFileName, outputFile):
     """
