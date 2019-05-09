@@ -406,6 +406,10 @@ costmap_queue:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/costmap_queue/0.2.5-1
+cv_camera:
+  url: https://github.com/OTL/cv_camera-release.git
+  vcs: git
+  version: release/melodic/cv_camera/0.4.0-1
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
@@ -1422,6 +1426,10 @@ joint_trajectory_generator:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
   version: release/melodic/joint_trajectory_generator/0.0.11-0
+jointstick:
+  url: https://github.com/gstavrinos/jointstick-release.git
+  vcs: git
+  version: release/melodic/jointstick/0.9.1-2
 joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
@@ -1606,6 +1614,10 @@ kobuki_msgs:
   url: https://github.com/yujinrobot-release/kobuki_msgs-release.git
   vcs: git
   version: release/melodic/kobuki_msgs/0.7.0-1
+ksql_airport:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/melodic/ksql_airport/0.0.1-1
 laser_cb_detector:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -1886,6 +1898,10 @@ mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
   version: release/melodic/mcl_3dl_msgs/0.1.2-0
+mcmillan_airfield:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/melodic/mcmillan_airfield/0.0.1-1
 md49_base_controller:
   url: https://github.com/Scheik/md49_base_controller-release.git
   vcs: git
@@ -3309,7 +3325,7 @@ ros_type_introspection:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosapi/0.11.0-0
+  version: release/melodic/rosapi/0.11.1-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -3333,19 +3349,19 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_library/0.11.0-0
+  version: release/melodic/rosbridge_library/0.11.1-1
 rosbridge_msgs:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_msgs/0.11.0-0
+  version: release/melodic/rosbridge_msgs/0.11.1-1
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_server/0.11.0-0
+  version: release/melodic/rosbridge_server/0.11.1-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_suite/0.11.0-0
+  version: release/melodic/rosbridge_suite/0.11.1-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -3590,6 +3606,10 @@ sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
   version: release/melodic/sainsmart_relay_usb/0.0.2-0
+sand_island:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/melodic/sand_island/0.0.1-1
 sbg_driver:
   url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
@@ -4454,6 +4474,10 @@ yocs_waypoints_navi:
   url: https://github.com/yujinrobot-release/yujin_ocs-release.git
   vcs: git
   version: release/melodic/yocs_waypoints_navi/0.8.2-0
+yosemite_valley:
+  url: https://github.com/ros-gbp/uav_testing-release.git
+  vcs: git
+  version: release/melodic/yosemite_valley/0.0.1-1
 ypspur:
   url: https://github.com/openspur/yp-spur-release.git
   vcs: git
