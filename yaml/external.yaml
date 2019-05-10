@@ -18,14 +18,15 @@
 # example_package: https://github.com/me/example_package.git (short version assuming git packages)
 
 automated_driving_msgs: https://github.com/fzi-forschungszentrum-informatik/automated_driving_msgs.git
+grid_map:
+  url: https://github.com/ethz-asl/grid_map.git
+  version: release
 iai_kinect2: https://github.com/code-iai/iai_kinect2.git
 image_undistort: https://github.com/ethz-asl/image_undistort.git
 lanelet2: https://github.com/fzi-forschungszentrum-informatik/Lanelet2.git
 libnabo: https://github.com/ethz-asl/libnabo
 libpointmatcher: https://github.com/ethz-asl/libpointmatcher.git
-grid_map:
-  url: https://github.com/ethz-asl/grid_map.git
-  version: release
+mrt_cmake_modules: https://github.com/KIT-MRT/mrt_cmake_modules.git
 rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
 rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 rviz_satellite: https://github.com/gareth-cross/rviz_satellite.git
