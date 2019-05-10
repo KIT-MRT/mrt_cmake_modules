@@ -2970,6 +2970,10 @@ joint_trajectory_generator:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
   version: release/kinetic/joint_trajectory_generator/0.0.10-0
+jointstick:
+  url: https://github.com/gstavrinos/jointstick-release.git
+  vcs: git
+  version: release/kinetic/jointstick/0.9.1-1
 joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
@@ -4245,7 +4249,7 @@ mqtt_bridge:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/kinetic/mrpt1/1.5.7-5
+  version: release/kinetic/mrpt1/1.5.8-0
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
@@ -6713,7 +6717,7 @@ ros_wild:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosapi/0.11.0-0
+  version: release/kinetic/rosapi/0.11.1-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -6737,19 +6741,19 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_library/0.11.0-0
+  version: release/kinetic/rosbridge_library/0.11.1-1
 rosbridge_msgs:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_msgs/0.11.0-0
+  version: release/kinetic/rosbridge_msgs/0.11.1-1
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_server/0.11.0-0
+  version: release/kinetic/rosbridge_server/0.11.1-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_suite/0.11.0-0
+  version: release/kinetic/rosbridge_suite/0.11.1-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -7346,6 +7350,10 @@ sick_visionary_t_driver:
   url: https://github.com/SICKAG/sick_visionary_t-release.git
   vcs: git
   version: release/kinetic/sick_visionary_t_driver/0.0.5-0
+sicktoolbox_wrapper:
+  url: https://github.com/ros-gbp/sicktoolbox_wrapper-release.git
+  vcs: git
+  version: release/kinetic/sicktoolbox_wrapper/2.5.4-1
 simple_arm:
   url: https://github.com/danielsnider/simple_arm-release.git
   vcs: git
