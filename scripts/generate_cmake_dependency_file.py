@@ -136,7 +136,7 @@ def getCatkinPackages(workspaceRoot):
     ros_package_env = "ROS_PACKAGE_PATH"
 
     def getPackagesInPath(packages, path):
-        for root, dirs, files in os.walk(path, topdown=True):
+        for root, dirs, files in os.walk(path, topdown=True, followlinks=True):
             if catkin_ignore in files:
                 dirs[:] = [] # instruct walk to not recurse deeper
                 continue
