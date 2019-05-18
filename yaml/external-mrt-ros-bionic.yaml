@@ -322,6 +322,10 @@ cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
   version: release/melodic/cloudwatch_metrics_common/1.0.1-0
+cnn_bridge:
+  url: https://github.com/wew84/cnn_bridge-release.git
+  vcs: git
+  version: release/melodic/cnn_bridge/0.8.4-4
 cob_actions:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
