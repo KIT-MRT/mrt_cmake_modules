@@ -66,6 +66,10 @@ ackermann_steering_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
   version: release/kinetic/ackermann_steering_controller/0.13.5-0
+actionlib_enhanced:
+  url: https://github.com/fannibal/actionlib-enhanced-release.git
+  vcs: git
+  version: release/kinetic/actionlib_enhanced/0.0.1-1
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
