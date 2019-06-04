@@ -100,6 +100,9 @@ if(CMAKE_COMPILER_IS_GNUCC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context") # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized") # This causes some false positives with eigen.
   endif()
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-copy") # Too many warnings in Eigen
+  endif()
 endif()
 
 
