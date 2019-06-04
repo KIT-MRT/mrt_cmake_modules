@@ -27,6 +27,7 @@ set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
 
 # Add support for std::filesystem. For GCC version <= 8 one needs to link agains -lstdc++fs.
 link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
+link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>:-Wl,--gdb-index>)
 
 # export compile commands
 if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
@@ -99,6 +100,9 @@ if(CMAKE_COMPILER_IS_GNUCC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -faligned-new")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-int-in-bool-context") # no-int-in-bool-context: ignored because of thousands of eigen 3.3 warnings
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized") # This causes some false positives with eigen.
+  endif()
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-copy") # Too many warnings in Eigen
   endif()
 endif()
 
