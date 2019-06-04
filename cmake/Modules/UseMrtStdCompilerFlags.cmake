@@ -30,6 +30,7 @@ add_compile_definitions($<$<CONFIG:Debug>:_DEBUG>)
 
 # Add support for std::filesystem. For GCC version <= 8 one needs to link agains -lstdc++fs.
 link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
+link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>:-Wl,--gdb-index>)
 
 # export compile commands
 if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
