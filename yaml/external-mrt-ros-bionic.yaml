@@ -21,7 +21,7 @@ ackermann_steering_controller:
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/actionlib_lisp/0.2.10-0
+  version: release/melodic/actionlib_lisp/0.2.11-1
 adi_driver:
   url: https://github.com/tork-a/adi_driver-release.git
   vcs: git
@@ -42,6 +42,10 @@ app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
   version: release/melodic/app_manager/1.1.0-0
+apriltag:
+  url: https://github.com/AprilRobotics/apriltag-release.git
+  vcs: git
+  version: release/melodic/apriltag/3.1.0-1
 ar_track_alvar:
   url: https://github.com/ros-gbp/ar_track_alvar-release.git
   vcs: git
@@ -277,27 +281,27 @@ chomp_motion_planner:
 cl_tf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_tf/0.2.10-0
+  version: release/melodic/cl_tf/0.2.11-1
 cl_tf2:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_tf2/0.2.10-0
+  version: release/melodic/cl_tf2/0.2.11-1
 cl_transforms:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_transforms/0.2.10-0
+  version: release/melodic/cl_transforms/0.2.11-1
 cl_transforms_stamped:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_transforms_stamped/0.2.10-0
+  version: release/melodic/cl_transforms_stamped/0.2.11-1
 cl_urdf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_urdf/0.2.10-0
+  version: release/melodic/cl_urdf/0.2.11-1
 cl_utils:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_utils/0.2.10-0
+  version: release/melodic/cl_utils/0.2.11-1
 clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -318,6 +322,10 @@ cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
   version: release/melodic/cloudwatch_metrics_common/1.0.1-0
+cnn_bridge:
+  url: https://github.com/wew84/cnn_bridge-release.git
+  vcs: git
+  version: release/melodic/cnn_bridge/0.8.4-4
 cob_actions:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -453,15 +461,15 @@ dataspeed_pds_scripts:
 dataspeed_ulc:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/melodic/dataspeed_ulc/0.0.3-0
+  version: release/melodic/dataspeed_ulc/0.0.4-1
 dataspeed_ulc_can:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/melodic/dataspeed_ulc_can/0.0.3-0
+  version: release/melodic/dataspeed_ulc_can/0.0.4-1
 dataspeed_ulc_msgs:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/melodic/dataspeed_ulc_msgs/0.0.3-0
+  version: release/melodic/dataspeed_ulc_msgs/0.0.4-1
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
@@ -3449,7 +3457,7 @@ rosfmt:
 roslisp_common:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/roslisp_common/0.2.10-0
+  version: release/melodic/roslisp_common/0.2.11-1
 roslisp_repl:
   url: https://github.com/code-iai-release/ros_emacs_utils-release.git
   vcs: git
@@ -3457,7 +3465,7 @@ roslisp_repl:
 roslisp_utilities:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/roslisp_utilities/0.2.10-0
+  version: release/melodic/roslisp_utilities/0.2.11-1
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
@@ -3550,6 +3558,10 @@ rostate_machine:
   url: https://github.com/OUXT-Polaris/rostate_machine-release.git
   vcs: git
   version: release/melodic/rostate_machine/0.0.2-3
+rosthrottle:
+  url: https://github.com/UTNuclearRoboticsPublic/rosthrottle-release.git
+  vcs: git
+  version: release/melodic/rosthrottle/1.2.0-3
 rostwitter:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3946,6 +3958,26 @@ timestamp_tools:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
   version: release/melodic/timestamp_tools/1.6.8-0
+toposens:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens/1.0.0-3
+toposens_driver:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_driver/1.0.0-3
+toposens_markers:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_markers/1.0.0-3
+toposens_msgs:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_msgs/1.0.0-3
+toposens_pointcloud:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_pointcloud/1.0.0-3
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git

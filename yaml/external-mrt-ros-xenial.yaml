@@ -66,10 +66,14 @@ ackermann_steering_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
   version: release/kinetic/ackermann_steering_controller/0.13.5-0
+actionlib_enhanced:
+  url: https://github.com/fannibal/actionlib-enhanced-release.git
+  vcs: git
+  version: release/kinetic/actionlib_enhanced/0.0.1-1
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/actionlib_lisp/0.2.10-0
+  version: release/kinetic/actionlib_lisp/0.2.11-1
 addwa_local_planner:
   url: https://github.com/BluewhaleRobot-release/xiaoqiang-release.git
   vcs: git
@@ -513,27 +517,27 @@ cht10_node:
 cl_tf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_tf/0.2.10-0
+  version: release/kinetic/cl_tf/0.2.11-1
 cl_tf2:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_tf2/0.2.10-0
+  version: release/kinetic/cl_tf2/0.2.11-1
 cl_transforms:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_transforms/0.2.10-0
+  version: release/kinetic/cl_transforms/0.2.11-1
 cl_transforms_stamped:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_transforms_stamped/0.2.10-0
+  version: release/kinetic/cl_transforms_stamped/0.2.11-1
 cl_urdf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_urdf/0.2.10-0
+  version: release/kinetic/cl_urdf/0.2.11-1
 cl_utils:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/cl_utils/0.2.10-0
+  version: release/kinetic/cl_utils/0.2.11-1
 clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1165,15 +1169,15 @@ dataspeed_pds_scripts:
 dataspeed_ulc:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/kinetic/dataspeed_ulc/0.0.3-0
+  version: release/kinetic/dataspeed_ulc/0.0.4-1
 dataspeed_ulc_can:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/kinetic/dataspeed_ulc_can/0.0.3-0
+  version: release/kinetic/dataspeed_ulc_can/0.0.4-1
 dataspeed_ulc_msgs:
   url: https://github.com/DataspeedInc-release/dataspeed_ulc_ros-release.git
   vcs: git
-  version: release/kinetic/dataspeed_ulc_msgs/0.0.3-0
+  version: release/kinetic/dataspeed_ulc_msgs/0.0.4-1
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
@@ -1701,7 +1705,7 @@ effort_controllers:
 eigen_typekit:
   url: https://github.com/orocos-gbp/rtt_geometry-release.git
   vcs: git
-  version: release/kinetic/eigen_typekit/2.9.1-0
+  version: release/kinetic/eigen_typekit/2.9.2-1
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
@@ -3205,7 +3209,7 @@ kdl_parser_py:
 kdl_typekit:
   url: https://github.com/orocos-gbp/rtt_geometry-release.git
   vcs: git
-  version: release/kinetic/kdl_typekit/2.9.1-0
+  version: release/kinetic/kdl_typekit/2.9.2-1
 key_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
@@ -3661,7 +3665,7 @@ locomove_base:
 log4cpp:
   url: https://github.com/orocos-gbp/log4cpp-release.git
   vcs: git
-  version: release/kinetic/log4cpp/2.9.0-0
+  version: release/kinetic/log4cpp/2.9.1-1
 log_server:
   url: https://github.com/easymov/log_server-release.git
   vcs: git
@@ -4777,7 +4781,7 @@ ocean_battery_driver:
 ocl:
   url: https://github.com/orocos-gbp/ocl-release.git
   vcs: git
-  version: release/kinetic/ocl/2.9.0-1
+  version: release/kinetic/ocl/2.9.1-1
 octomap_mapping:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
@@ -6849,7 +6853,7 @@ rosjson:
 roslisp_common:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/roslisp_common/0.2.10-0
+  version: release/kinetic/roslisp_common/0.2.11-1
 roslisp_repl:
   url: https://github.com/code-iai-release/ros_emacs_utils-release.git
   vcs: git
@@ -6857,7 +6861,7 @@ roslisp_repl:
 roslisp_utilities:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/kinetic/roslisp_utilities/0.2.10-0
+  version: release/kinetic/roslisp_utilities/0.2.11-1
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
@@ -7085,19 +7089,19 @@ rtsprofile:
 rtt:
   url: https://github.com/orocos-gbp/rtt-release.git
   vcs: git
-  version: release/kinetic/rtt/2.9.0-2
+  version: release/kinetic/rtt/2.9.1-1
 rtt_actionlib:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_actionlib/2.9.1-0
+  version: release/kinetic/rtt_actionlib/2.9.2-1
 rtt_actionlib_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_actionlib_msgs/2.9.1-0
+  version: release/kinetic/rtt_actionlib_msgs/2.9.2-1
 rtt_common_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_common_msgs/2.9.1-0
+  version: release/kinetic/rtt_common_msgs/2.9.2-1
 rtt_control_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_control-release.git
   vcs: git
@@ -7109,103 +7113,103 @@ rtt_controller_manager_msgs:
 rtt_diagnostic_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_diagnostic_msgs/2.9.1-0
+  version: release/kinetic/rtt_diagnostic_msgs/2.9.2-1
 rtt_dynamic_reconfigure:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_dynamic_reconfigure/2.9.1-0
+  version: release/kinetic/rtt_dynamic_reconfigure/2.9.2-1
 rtt_geometry:
   url: https://github.com/orocos-gbp/rtt_geometry-release.git
   vcs: git
-  version: release/kinetic/rtt_geometry/2.9.1-0
+  version: release/kinetic/rtt_geometry/2.9.2-1
 rtt_geometry_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_geometry_msgs/2.9.1-0
+  version: release/kinetic/rtt_geometry_msgs/2.9.2-1
 rtt_kdl_conversions:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_kdl_conversions/2.9.1-0
+  version: release/kinetic/rtt_kdl_conversions/2.9.2-1
 rtt_nav_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_nav_msgs/2.9.1-0
+  version: release/kinetic/rtt_nav_msgs/2.9.2-1
 rtt_ros:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_ros/2.9.1-0
+  version: release/kinetic/rtt_ros/2.9.2-1
 rtt_ros_comm:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_ros_comm/2.9.1-0
+  version: release/kinetic/rtt_ros_comm/2.9.2-1
 rtt_ros_integration:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_ros_integration/2.9.1-0
+  version: release/kinetic/rtt_ros_integration/2.9.2-1
 rtt_ros_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_ros_msgs/2.9.1-0
+  version: release/kinetic/rtt_ros_msgs/2.9.2-1
 rtt_rosclock:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rosclock/2.9.1-0
+  version: release/kinetic/rtt_rosclock/2.9.2-1
 rtt_roscomm:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_roscomm/2.9.1-0
+  version: release/kinetic/rtt_roscomm/2.9.2-1
 rtt_rosdeployment:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rosdeployment/2.9.1-0
+  version: release/kinetic/rtt_rosdeployment/2.9.2-1
 rtt_rosgraph_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rosgraph_msgs/2.9.1-0
+  version: release/kinetic/rtt_rosgraph_msgs/2.9.2-1
 rtt_rosnode:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rosnode/2.9.1-0
+  version: release/kinetic/rtt_rosnode/2.9.2-1
 rtt_rospack:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rospack/2.9.1-0
+  version: release/kinetic/rtt_rospack/2.9.2-1
 rtt_rosparam:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_rosparam/2.9.1-0
+  version: release/kinetic/rtt_rosparam/2.9.2-1
 rtt_sensor_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_sensor_msgs/2.9.1-0
+  version: release/kinetic/rtt_sensor_msgs/2.9.2-1
 rtt_shape_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_shape_msgs/2.9.1-0
+  version: release/kinetic/rtt_shape_msgs/2.9.2-1
 rtt_std_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_std_msgs/2.9.1-0
+  version: release/kinetic/rtt_std_msgs/2.9.2-1
 rtt_std_srvs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_std_srvs/2.9.1-0
+  version: release/kinetic/rtt_std_srvs/2.9.2-1
 rtt_stereo_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_stereo_msgs/2.9.1-0
+  version: release/kinetic/rtt_stereo_msgs/2.9.2-1
 rtt_tf:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_tf/2.9.1-0
+  version: release/kinetic/rtt_tf/2.9.2-1
 rtt_trajectory_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_trajectory_msgs/2.9.1-0
+  version: release/kinetic/rtt_trajectory_msgs/2.9.2-1
 rtt_visualization_msgs:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
-  version: release/kinetic/rtt_visualization_msgs/2.9.1-0
+  version: release/kinetic/rtt_visualization_msgs/2.9.2-1
 rv4fl_moveit_config:
   url: https://github.com/tork-a/melfa_robot-release.git
   vcs: git
