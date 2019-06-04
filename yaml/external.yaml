@@ -17,6 +17,7 @@
 # or this:
 # example_package: https://github.com/me/example_package.git (short version assuming git packages)
 
+automated_driving_msgs: https://github.com/fzi-forschungszentrum-informatik/automated_driving_msgs.git
 grid_map:
   url: https://github.com/ethz-asl/grid_map.git
   version: release
@@ -29,3 +30,23 @@ mrt_cmake_modules: https://github.com/KIT-MRT/mrt_cmake_modules.git
 rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
 rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 rviz_satellite: https://github.com/gareth-cross/rviz_satellite.git
+
+# CoInCar-Sim (https://github.com/coincar-sim/coincarsim_getting_started)
+desired_motion_rviz_plugin_ros: https://github.com/coincar-sim/desired_motion_rviz_plugin_ros.git
+lanelet_rviz_plugin_ros: https://github.com/coincar-sim/lanelet_rviz_plugin_ros.git
+lanelet2_interface_ros: https://github.com/coincar-sim/lanelet2_interface_ros.git
+motion_state_rviz_plugin_ros: https://github.com/coincar-sim/motion_state_rviz_plugin_ros.git
+object_state_array_rviz_plugin_ros: https://github.com/coincar-sim/object_state_array_rviz_plugin_ros.git
+sim_sample_actuator_ros_tool: https://github.com/coincar-sim/sim_sample_actuator_ros_tool.git
+sim_sample_communication_ros_tool: https://github.com/coincar-sim/sim_sample_communication_ros_tool.git
+sim_sample_perception_ros_tool: https://github.com/coincar-sim/sim_sample_perception_ros_tool.git
+sim_sample_planning_ros_tool: https://github.com/coincar-sim/sim_sample_planning_ros_tool.git
+sim_sample_prediction_ros_tool: https://github.com/coincar-sim/sim_sample_prediction_ros_tool.git
+simulation_initialization_ros_tool: https://github.com/coincar-sim/simulation_initialization_ros_tool.git
+simulation_management_ros_tool: https://github.com/coincar-sim/simulation_management_ros_tool.git
+simulation_only_msgs: https://github.com/coincar-sim/simulation_only_msgs.git
+util_automated_driving_msgs: https://github.com/coincar-sim/util_automated_driving_msgs.git
+util_eigen_geometry: https://github.com/coincar-sim/util_eigen_geometry.git
+util_geometry_msgs: https://github.com/coincar-sim/util_geometry_msgs.git
+util_rviz: https://github.com/coincar-sim/util_rviz.git
+util_simulation_only_msgs: https://github.com/coincar-sim/util_simulation_only_msgs.git
