@@ -21,7 +21,7 @@ ackermann_steering_controller:
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/actionlib_lisp/0.2.11-1
+  version: release/melodic/actionlib_lisp/0.2.12-1
 adi_driver:
   url: https://github.com/tork-a/adi_driver-release.git
   vcs: git
@@ -82,6 +82,10 @@ ariles_ros:
   url: https://github.com/asherikov/ariles-release.git
   vcs: git
   version: release/melodic/ariles_ros/1.1.1-1
+aruco_detect:
+  url: https://github.com/UbiquityRobotics-release/fiducials-release.git
+  vcs: git
+  version: release/melodic/aruco_detect/0.11.0-1
 asmach:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -281,27 +285,27 @@ chomp_motion_planner:
 cl_tf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_tf/0.2.11-1
+  version: release/melodic/cl_tf/0.2.12-1
 cl_tf2:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_tf2/0.2.11-1
+  version: release/melodic/cl_tf2/0.2.12-1
 cl_transforms:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_transforms/0.2.11-1
+  version: release/melodic/cl_transforms/0.2.12-1
 cl_transforms_stamped:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_transforms_stamped/0.2.11-1
+  version: release/melodic/cl_transforms_stamped/0.2.12-1
 cl_urdf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_urdf/0.2.11-1
+  version: release/melodic/cl_urdf/0.2.12-1
 cl_utils:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/cl_utils/0.2.11-1
+  version: release/melodic/cl_utils/0.2.12-1
 clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1014,6 +1018,18 @@ ffha:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/ffha/2.1.11-0
+fiducial_msgs:
+  url: https://github.com/UbiquityRobotics-release/fiducials-release.git
+  vcs: git
+  version: release/melodic/fiducial_msgs/0.11.0-1
+fiducial_slam:
+  url: https://github.com/UbiquityRobotics-release/fiducials-release.git
+  vcs: git
+  version: release/melodic/fiducial_slam/0.11.0-1
+fiducials:
+  url: https://github.com/UbiquityRobotics-release/fiducials-release.git
+  vcs: git
+  version: release/melodic/fiducials/0.11.0-1
 find_object_2d:
   url: https://github.com/introlab/find_object_2d-release.git
   vcs: git
@@ -1689,7 +1705,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.29.2-0
+  version: release/melodic/libmavconn/0.30.0-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -1805,11 +1821,11 @@ map_organizer_msgs:
 mapviz:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
-  version: release/melodic/mapviz/1.1.0-0
+  version: release/melodic/mapviz/1.1.1-1
 mapviz_plugins:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
-  version: release/melodic/mapviz_plugins/1.1.0-0
+  version: release/melodic/mapviz_plugins/1.1.1-1
 marker_msgs:
   url: https://github.com/tuw-robotics/marker_msgs-release.git
   vcs: git
@@ -1825,7 +1841,7 @@ marti_common_msgs:
 marti_data_structures:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/marti_data_structures/2.8.0-0
+  version: release/melodic/marti_data_structures/2.9.0-1
 marti_nav_msgs:
   url: https://github.com/swri-robotics-gbp/marti_messages-release.git
   vcs: git
@@ -1869,19 +1885,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.4.4-0
+  version: release/melodic/mavlink/2019.5.20-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.29.2-0
+  version: release/melodic/mavros/0.30.0-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.29.2-0
+  version: release/melodic/mavros_extras/0.30.0-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.29.2-0
+  version: release/melodic/mavros_msgs/0.30.0-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2233,7 +2249,7 @@ multimaster_msgs_fkie:
 multires_image:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
-  version: release/melodic/multires_image/1.1.0-0
+  version: release/melodic/multires_image/1.1.1-1
 multisense:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
@@ -3125,27 +3141,35 @@ rc_common_msgs:
 rc_dynamics_api:
   url: https://github.com/roboception-gbp/rc_dynamics_api-release.git
   vcs: git
-  version: release/melodic/rc_dynamics_api/0.7.1-0
+  version: release/melodic/rc_dynamics_api/0.8.0-1
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/melodic/rc_genicam_api/2.1.0-0
+  version: release/melodic/rc_genicam_api/2.2.0-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_hand_eye_calibration_client/2.5.0-0
+  version: release/melodic/rc_hand_eye_calibration_client/2.6.1-1
+rc_pick_client:
+  url: https://github.com/roboception-gbp/rc_visard-release.git
+  vcs: git
+  version: release/melodic/rc_pick_client/2.6.1-1
+rc_tagdetect_client:
+  url: https://github.com/roboception-gbp/rc_visard-release.git
+  vcs: git
+  version: release/melodic/rc_tagdetect_client/2.6.1-1
 rc_visard:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard/2.5.0-0
+  version: release/melodic/rc_visard/2.6.1-1
 rc_visard_description:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_description/2.5.0-0
+  version: release/melodic/rc_visard_description/2.6.1-1
 rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_driver/2.5.0-0
+  version: release/melodic/rc_visard_driver/2.6.1-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -3457,7 +3481,7 @@ rosfmt:
 roslisp_common:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/roslisp_common/0.2.11-1
+  version: release/melodic/roslisp_common/0.2.12-1
 roslisp_repl:
   url: https://github.com/code-iai-release/ros_emacs_utils-release.git
   vcs: git
@@ -3465,7 +3489,7 @@ roslisp_repl:
 roslisp_utilities:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
-  version: release/melodic/roslisp_utilities/0.2.11-1
+  version: release/melodic/roslisp_utilities/0.2.12-1
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
@@ -3821,67 +3845,67 @@ swri_console:
 swri_console_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_console_util/2.8.0-0
+  version: release/melodic/swri_console_util/2.9.0-1
 swri_dbw_interface:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_dbw_interface/2.8.0-0
+  version: release/melodic/swri_dbw_interface/2.9.0-1
 swri_geometry_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_geometry_util/2.8.0-0
+  version: release/melodic/swri_geometry_util/2.9.0-1
 swri_image_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_image_util/2.8.0-0
+  version: release/melodic/swri_image_util/2.9.0-1
 swri_math_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_math_util/2.8.0-0
+  version: release/melodic/swri_math_util/2.9.0-1
 swri_nodelet:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_nodelet/2.8.0-0
+  version: release/melodic/swri_nodelet/2.9.0-1
 swri_opencv_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_opencv_util/2.8.0-0
+  version: release/melodic/swri_opencv_util/2.9.0-1
 swri_prefix_tools:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_prefix_tools/2.8.0-0
+  version: release/melodic/swri_prefix_tools/2.9.0-1
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_roscpp/2.8.0-0
+  version: release/melodic/swri_roscpp/2.9.0-1
 swri_rospy:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_rospy/2.8.0-0
+  version: release/melodic/swri_rospy/2.9.0-1
 swri_route_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_route_util/2.8.0-0
+  version: release/melodic/swri_route_util/2.9.0-1
 swri_serial_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_serial_util/2.8.0-0
+  version: release/melodic/swri_serial_util/2.9.0-1
 swri_string_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_string_util/2.8.0-0
+  version: release/melodic/swri_string_util/2.9.0-1
 swri_system_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_system_util/2.8.0-0
+  version: release/melodic/swri_system_util/2.9.0-1
 swri_transform_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_transform_util/2.8.0-0
+  version: release/melodic/swri_transform_util/2.9.0-1
 swri_yaml_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_yaml_util/2.8.0-0
+  version: release/melodic/swri_yaml_util/2.9.0-1
 talos_description:
   url: https://github.com/pal-gbp/talos_robot-release.git
   vcs: git
@@ -3933,7 +3957,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.29.2-0
+  version: release/melodic/test_mavros/0.30.0-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -3953,7 +3977,7 @@ tf_remapper_cpp:
 tile_map:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
-  version: release/melodic/tile_map/1.1.0-0
+  version: release/melodic/tile_map/1.1.1-1
 timestamp_tools:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
@@ -4434,6 +4458,10 @@ web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
   version: release/melodic/web_video_server/0.2.0-0
+webots_ros:
+  url: https://github.com/omichel/webots_ros-release.git
+  vcs: git
+  version: release/melodic/webots_ros/2.0.2-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
