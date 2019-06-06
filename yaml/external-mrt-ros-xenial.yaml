@@ -130,10 +130,6 @@ app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
   version: release/kinetic/app_manager/1.0.5-0
-apriltag:
-  url: https://github.com/AprilRobotics/apriltag-release.git
-  vcs: git
-  version: release/kinetic/apriltag/3.1.0-1
 ar_track_alvar:
   url: https://github.com/ros-gbp/ar_track_alvar-release.git
   vcs: git
