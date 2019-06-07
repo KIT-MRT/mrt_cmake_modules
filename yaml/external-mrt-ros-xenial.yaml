@@ -4785,7 +4785,7 @@ ocean_battery_driver:
 ocl:
   url: https://github.com/orocos-gbp/ocl-release.git
   vcs: git
-  version: release/kinetic/ocl/2.9.1-1
+  version: release/kinetic/ocl/2.9.0-1
 octomap_mapping:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
@@ -7101,7 +7101,7 @@ rtsprofile:
 rtt:
   url: https://github.com/orocos-gbp/rtt-release.git
   vcs: git
-  version: release/kinetic/rtt/2.9.0-2
+  version: release/kinetic/rtt/2.9.2-1
 rtt_actionlib:
   url: https://github.com/orocos-gbp/rtt_ros_integration-release.git
   vcs: git
