@@ -297,7 +297,9 @@ endfunction()
 # @@public
 #
 function(mrt_python_module_setup)
-    find_package(catkin REQUIRED)
+    if(NOT catkin_FOUND)
+        find_package(catkin REQUIRED)
+    endif()
     if(ARGN)
         message(FATAL_ERROR "mrt_python_module_setup() called with unused arguments: ${ARGN}")
     endif()
@@ -373,7 +375,7 @@ function(mrt_add_python_api modulename)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
-        add_library( ${TARGET_NAME}
+        add_library( ${TARGET_NAME} SHARED
             ${API_FILE}
             )
         target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
@@ -493,7 +495,10 @@ function(mrt_add_library libname)
     target_compile_options(${LIBRARY_TARGET_NAME}
         PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
         )
-    add_dependencies(${LIBRARY_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps)
+    endif()
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
@@ -614,7 +619,10 @@ function(mrt_add_executable execname)
     target_include_directories(${EXEC_TARGET_NAME}
         PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
         )
-    add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps)
+    endif()
     target_link_libraries(${EXEC_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
