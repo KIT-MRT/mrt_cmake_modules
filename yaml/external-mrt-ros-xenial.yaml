@@ -1857,7 +1857,7 @@ fake_localization:
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
-  version: release/kinetic/fcl_catkin/0.5.96-0
+  version: release/kinetic/fcl_catkin/0.5.98-1
 feed_the_troll:
   url: https://github.com/stonier/feed_the_troll-release.git
   vcs: git
