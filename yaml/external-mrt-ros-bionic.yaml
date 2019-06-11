@@ -937,7 +937,7 @@ fake_localization:
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
-  version: release/melodic/fcl_catkin/0.5.96-0
+  version: release/melodic/fcl_catkin/0.5.98-1
 fetch_auto_dock_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
