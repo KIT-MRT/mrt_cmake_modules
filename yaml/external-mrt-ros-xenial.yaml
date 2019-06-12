@@ -69,7 +69,7 @@ ackermann_steering_controller:
 actionlib_enhanced:
   url: https://github.com/fannibal/actionlib-enhanced-release.git
   vcs: git
-  version: release/kinetic/actionlib_enhanced/0.0.5-1
+  version: release/kinetic/actionlib_enhanced/0.0.6-1
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
@@ -3986,6 +3986,10 @@ microstrain_3dmgx2_imu:
   url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
   vcs: git
   version: release/kinetic/microstrain_3dmgx2_imu/1.5.12-1
+microstrain_mips:
+  url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
+  vcs: git
+  version: release/kinetic/microstrain_mips/0.0.2-2
 minas:
   url: https://github.com/tork-a/minas-release.git
   vcs: git
@@ -6117,27 +6121,27 @@ rc_genicam_api:
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_hand_eye_calibration_client/2.6.1-1
+  version: release/kinetic/rc_hand_eye_calibration_client/2.6.2-1
 rc_pick_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_pick_client/2.6.1-1
+  version: release/kinetic/rc_pick_client/2.6.2-1
 rc_tagdetect_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_tagdetect_client/2.6.1-1
+  version: release/kinetic/rc_tagdetect_client/2.6.2-1
 rc_visard:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard/2.6.1-1
+  version: release/kinetic/rc_visard/2.6.2-1
 rc_visard_description:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard_description/2.6.1-1
+  version: release/kinetic/rc_visard_description/2.6.2-1
 rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard_driver/2.6.1-1
+  version: release/kinetic/rc_visard_driver/2.6.2-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -7494,10 +7498,6 @@ speech_recognition_msgs:
   url: https://github.com/tork-a/jsk_common_msgs-release.git
   vcs: git
   version: release/kinetic/speech_recognition_msgs/4.3.1-0
-spinnaker_camera_driver:
-  url: https://github.com/ros-drivers-gbp/flir_camera_driver-release.git
-  vcs: git
-  version: release/kinetic/spinnaker_camera_driver/0.1.3-0
 srdfdom:
   url: https://github.com/ros-gbp/srdfdom-release.git
   vcs: git
