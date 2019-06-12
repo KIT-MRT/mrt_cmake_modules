@@ -1958,6 +1958,10 @@ microstrain_3dmgx2_imu:
   url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
   vcs: git
   version: release/melodic/microstrain_3dmgx2_imu/1.5.12-1
+microstrain_mips:
+  url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
+  vcs: git
+  version: release/melodic/microstrain_mips/0.0.2-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3161,27 +3165,27 @@ rc_genicam_api:
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_hand_eye_calibration_client/2.6.1-1
+  version: release/melodic/rc_hand_eye_calibration_client/2.6.2-1
 rc_pick_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_pick_client/2.6.1-1
+  version: release/melodic/rc_pick_client/2.6.2-1
 rc_tagdetect_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_tagdetect_client/2.6.1-1
+  version: release/melodic/rc_tagdetect_client/2.6.2-1
 rc_visard:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard/2.6.1-1
+  version: release/melodic/rc_visard/2.6.2-1
 rc_visard_description:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_description/2.6.1-1
+  version: release/melodic/rc_visard_description/2.6.2-1
 rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_driver/2.6.1-1
+  version: release/melodic/rc_visard_driver/2.6.2-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
