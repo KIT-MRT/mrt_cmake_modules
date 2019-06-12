@@ -296,12 +296,7 @@ libxrandr-dev:
   - libxrandr-dev
 mbed_cli:
   ubuntu:
-    xenial:
-      pip:
-        packages: [mbed-cli]
-    bionic:
-      pip:
-        packages: [mbed-cli]
+  - mrt-mbed-cli
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
