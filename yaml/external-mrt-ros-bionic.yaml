@@ -273,7 +273,7 @@ catch_ros:
 catkin_virtualenv:
   url: https://github.com/locusrobotics/catkin_virtualenv-release.git
   vcs: git
-  version: release/melodic/catkin_virtualenv/0.4.0-0
+  version: release/melodic/catkin_virtualenv/0.4.1-1
 checkerboard_detector:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
