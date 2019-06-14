@@ -3149,7 +3149,7 @@ jsk_visualization:
 jskeus:
   url: https://github.com/tork-a/jskeus-release.git
   vcs: git
-  version: release/kinetic/jskeus/1.2.1-0
+  version: release/kinetic/jskeus/1.2.1-1
 json_msgs:
   url: https://github.com/locusrobotics/json_transport-release.git
   vcs: git
