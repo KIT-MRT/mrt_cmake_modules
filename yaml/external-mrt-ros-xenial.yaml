@@ -45,7 +45,7 @@ abb_resources:
 abseil_cpp:
   url: https://github.com/Eurecat/abseil_cpp-release.git
   vcs: git
-  version: release/kinetic/abseil_cpp/0.4.1-1
+  version: release/kinetic/abseil_cpp/0.4.2-3
 acado:
   url: https://github.com/tud-cor/acado-release.git
   vcs: git
@@ -130,6 +130,10 @@ app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
   version: release/kinetic/app_manager/1.0.5-0
+apriltag:
+  url: https://github.com/AprilRobotics/apriltag-release.git
+  vcs: git
+  version: release/kinetic/apriltag/3.1.1-1
 ar_track_alvar:
   url: https://github.com/ros-gbp/ar_track_alvar-release.git
   vcs: git
@@ -3606,6 +3610,10 @@ librealsense:
   url: https://github.com/intel-ros/librealsense-release.git
   vcs: git
   version: release/kinetic/librealsense/1.12.1-0
+librealsense2:
+  url: https://github.com/IntelRealSense/librealsense2-release.git
+  vcs: git
+  version: release/kinetic/librealsense2/2.23.0-1
 libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
