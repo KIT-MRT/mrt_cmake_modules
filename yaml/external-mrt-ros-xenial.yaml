@@ -501,7 +501,7 @@ catkin_pip:
 catkin_virtualenv:
   url: https://github.com/locusrobotics/catkin_virtualenv-release.git
   vcs: git
-  version: release/kinetic/catkin_virtualenv/0.2.0-0
+  version: release/kinetic/catkin_virtualenv/0.4.1-2
 certifi:
   url: https://github.com/asmodehn/certifi-rosrelease.git
   vcs: git
@@ -3909,31 +3909,31 @@ mavros_msgs:
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_abstract_core/0.2.3-0
+  version: release/kinetic/mbf_abstract_core/0.2.4-1
 mbf_abstract_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_abstract_nav/0.2.3-0
+  version: release/kinetic/mbf_abstract_nav/0.2.4-1
 mbf_costmap_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_costmap_core/0.2.3-0
+  version: release/kinetic/mbf_costmap_core/0.2.4-1
 mbf_costmap_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_costmap_nav/0.2.3-0
+  version: release/kinetic/mbf_costmap_nav/0.2.4-1
 mbf_msgs:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_msgs/0.2.3-0
+  version: release/kinetic/mbf_msgs/0.2.4-1
 mbf_simple_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_simple_nav/0.2.3-0
+  version: release/kinetic/mbf_simple_nav/0.2.4-1
 mbf_utility:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/mbf_utility/0.2.3-0
+  version: release/kinetic/mbf_utility/0.2.4-1
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
@@ -4105,7 +4105,7 @@ move_base:
 move_base_flex:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/kinetic/move_base_flex/0.2.3-0
+  version: release/kinetic/move_base_flex/0.2.4-1
 move_base_msgs:
   url: https://github.com/ros-gbp/navigation_msgs-release.git
   vcs: git
@@ -4718,6 +4718,10 @@ nmea_comms:
   url: https://github.com/ros-drivers-gbp/nmea_comms-release.git
   vcs: git
   version: release/kinetic/nmea_comms/1.1.0-0
+nmea_gps_plugin:
+  url: https://github.com/OUXT-Polaris/nmea_gps_plugin-release.git
+  vcs: git
+  version: release/kinetic/nmea_gps_plugin/0.0.1-1
 nmea_msgs:
   url: https://github.com/ros-drivers-gbp/nmea_msgs-release.git
   vcs: git
