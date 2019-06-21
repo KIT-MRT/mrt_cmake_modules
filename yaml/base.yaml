@@ -38,7 +38,7 @@ boost:
     library_dirs:
     - Boost_LIBRARY_DIRS
     name: Boost
-boost-python:
+libboost-python:
   cmake:
     include_dirs:
       - BoostPython_INCLUDE_DIRS
@@ -176,7 +176,7 @@ libcairo2-dev:
     - CAIRO_LIBRARIES
     library_dirs: []
     name: Cairo
-libgeographic-dev:
+geographiclib:
   cmake:
     components: []
     include_dirs:
@@ -662,7 +662,7 @@ poco:
     name: Poco
   ubuntu:
   - libpoco-dev
-pugixml:
+pugixml-dev:
   cmake:
     components: []
     include_dirs:
