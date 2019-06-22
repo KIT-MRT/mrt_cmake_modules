@@ -1,7 +1,7 @@
 abseil_cpp:
   url: https://github.com/Eurecat/abseil_cpp-release.git
   vcs: git
-  version: release/melodic/abseil_cpp/0.4.0-1
+  version: release/melodic/abseil_cpp/0.2.3-1
 acado:
   url: https://github.com/tud-cor/acado-release.git
   vcs: git
@@ -2413,7 +2413,7 @@ neonavigation_rviz_plugins:
 nerian_stereo:
   url: https://github.com/nerian-vision/nerian_stereo-release.git
   vcs: git
-  version: release/melodic/nerian_stereo/3.3.2-0
+  version: release/melodic/nerian_stereo/3.4.0-1
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2517,7 +2517,7 @@ ompl:
 omron_os32c_driver:
   url: https://github.com/ros-drivers-gbp/omron-release.git
   vcs: git
-  version: release/melodic/omron_os32c_driver/0.1.3-0
+  version: release/melodic/omron_os32c_driver/1.0.0-0
 open_karto:
   url: https://github.com/ros-gbp/open_karto-release.git
   vcs: git
@@ -2753,23 +2753,23 @@ pilz_control:
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.3-0
+  version: release/melodic/pilz_extensions/0.4.4-1
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.3-0
+  version: release/melodic/pilz_industrial_motion/0.4.4-1
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.3-0
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.4-1
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.3-0
+  version: release/melodic/pilz_msgs/0.4.4-1
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.3-0
+  version: release/melodic/pilz_robot_programming/0.4.4-1
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -2781,7 +2781,7 @@ pilz_testutils:
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.3-0
+  version: release/melodic/pilz_trajectory_generation/0.4.4-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -3189,27 +3189,27 @@ rc_genicam_api:
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_hand_eye_calibration_client/2.6.2-1
+  version: release/melodic/rc_hand_eye_calibration_client/2.6.4-1
 rc_pick_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_pick_client/2.6.2-1
+  version: release/melodic/rc_pick_client/2.6.4-1
 rc_tagdetect_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_tagdetect_client/2.6.2-1
+  version: release/melodic/rc_tagdetect_client/2.6.4-1
 rc_visard:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard/2.6.2-1
+  version: release/melodic/rc_visard/2.6.4-1
 rc_visard_description:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_description/2.6.2-1
+  version: release/melodic/rc_visard_description/2.6.4-1
 rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/melodic/rc_visard_driver/2.6.2-1
+  version: release/melodic/rc_visard_driver/2.6.4-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -4529,7 +4529,7 @@ web_video_server:
 webots_ros:
   url: https://github.com/omichel/webots_ros-release.git
   vcs: git
-  version: release/melodic/webots_ros/2.0.2-1
+  version: release/melodic/webots_ros/2.0.3-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
