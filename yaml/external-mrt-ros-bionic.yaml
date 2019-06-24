@@ -3834,10 +3834,6 @@ socketcan_bridge:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
   version: release/melodic/socketcan_bridge/0.8.0-0
-socketcan_interface:
-  url: https://github.com/ros-industrial-release/ros_canopen-release.git
-  vcs: git
-  version: release/melodic/socketcan_interface/0.8.0-0
 soem:
   url: https://github.com/mgruhler/soem-gbp.git
   vcs: git

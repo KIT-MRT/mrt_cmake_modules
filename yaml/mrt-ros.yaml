@@ -428,6 +428,8 @@ smach_ros:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 smclib:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
+socketcan_interface:
+  ubuntu: {bionic: mrt-ros}
 stage:
   ubuntu: {bionic: mrt-ros, xenial: mrt-ros}
 stage_ros:
