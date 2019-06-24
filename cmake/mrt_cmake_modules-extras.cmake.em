@@ -360,7 +360,7 @@ function(mrt_add_python_api modulename)
     endif()
 
     if (NOT DEFINED BoostPython_FOUND)
-        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>boost-python</depend>' to 'package.xml'")
+        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>libboost-python</depend>' to 'package.xml'")
     endif()
 
     # put in devel folder
