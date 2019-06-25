@@ -26,11 +26,12 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=gold")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
 
 # Add _DEBUG for debug configuration. This enables e.g. assertions in OpenCV.
-add_compile_definitions($<$<CONFIG:Debug>:_DEBUG>)
+if (CMAKE_VERSION VERSION_GREATER "3.12")
+    add_compile_definitions($<$<CONFIG:Debug>:_DEBUG>)
+endif()
 
 # Add support for std::filesystem. For GCC version <= 8 one needs to link agains -lstdc++fs.
 link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
-link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<CONFIG:Debug>>:-Wl,--gdb-index>)
 
 # export compile commands
 if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
@@ -105,6 +106,14 @@ if(CMAKE_COMPILER_IS_GNUCC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-maybe-uninitialized") # This causes some false positives with eigen.
   endif()
   if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 8)
+    if(MRT_USE_DEFAULT_WERROR_FLAGS)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=catch-value -Werror=missing-attributes -Werror=multistatement-macros -Werror=restrict -Werror=sizeof-pointer-div -Werror=misleading-indentation")
+    endif()
+  endif()
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 9)
+    if(MRT_USE_DEFAULT_WERROR_FLAGS)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=pessimizing-move")
+    endif()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-copy") # Too many warnings in Eigen
   endif()
 endif()
@@ -112,15 +121,11 @@ endif()
 
 
 # the following -wall flags are not an error (please update this list):
-# - catch-value: Not part of 7.2
 # - char-subscripts: Might cause false positives in openCV
 # - int-in-bool-context: Too many false positives in Eigen 3.3
-# - misleading-indentation: Too many false positives in Eigen 3.3
-# - multistatement-macros: Not part of 7.2
 # - reorder: Too many errors reported
 # - restict: Not part of 7.2
 # - sign-compare: Too many false positives in for-loops
-# - sizeof-pointer-div: Not part of 7.2
 # - strict-overflow: False positives, optimization level dependent
 # - unknown-pragmas: Pragmas might be for a different compiler
 # - unused-*: Sometimes unused declarations are desired

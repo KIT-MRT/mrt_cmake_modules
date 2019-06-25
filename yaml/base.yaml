@@ -48,6 +48,16 @@ boost-python:
   ubuntu:
     - libpython-dev
     - libboost-python-dev
+libboost-python: # official rosdep key
+  cmake:
+    include_dirs:
+      - BoostPython_INCLUDE_DIRS
+    libraries:
+      - BoostPython_LIBRARIES
+    name: BoostPython
+  ubuntu:
+    - libpython-dev
+    - libboost-python-dev
 cuda:
   cmake:
     components: []
@@ -187,6 +197,17 @@ libgeographic-dev:
     name: GeographicLib
   ubuntu:
   - libgeographic-dev
+geographiclib: # official rosdep key
+  cmake:
+    components: []
+    include_dirs:
+    - GeographicLib_INCLUDE_DIRS
+    libraries:
+    - GeographicLib_LIBRARIES
+    library_dirs: []
+    name: GeographicLib
+  ubuntu:
+  - libgeographic-dev
 libgoogle-glog-dev:
   cmake:
     components: []
@@ -296,12 +317,7 @@ libxrandr-dev:
   - libxrandr-dev
 mbed_cli:
   ubuntu:
-    xenial:
-      pip:
-        packages: [mbed-cli]
-    bionic:
-      pip:
-        packages: [mbed-cli]
+  - mrt-mbed-cli
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
@@ -668,6 +684,17 @@ poco:
   ubuntu:
   - libpoco-dev
 pugixml:
+  cmake:
+    components: []
+    include_dirs:
+    - PUGIXML_INCLUDE_DIRS
+    libraries:
+    - PUGIXML_LIBRARIES
+    library_dirs: []
+    name: pugixml
+  ubuntu:
+  - libpugixml-dev
+pugixml-dev: # official rosdep key
   cmake:
     components: []
     include_dirs:
