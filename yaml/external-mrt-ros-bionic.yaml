@@ -321,11 +321,11 @@ clear_costmap_recovery:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logger/2.0.0-1
+  version: release/melodic/cloudwatch_logger/2.1.0-1
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logs_common/1.0.1-0
+  version: release/melodic/cloudwatch_logs_common/1.0.2-1
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
@@ -333,7 +333,7 @@ cloudwatch_metrics_collector:
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_common/1.0.1-0
+  version: release/melodic/cloudwatch_metrics_common/1.0.2-1
 cnn_bridge:
   url: https://github.com/wew84/cnn_bridge-release.git
   vcs: git
@@ -1257,7 +1257,7 @@ h264_encoder_core:
 h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
-  version: release/melodic/h264_video_encoder/1.1.1-0
+  version: release/melodic/h264_video_encoder/1.1.2-1
 health_metric_collector:
   url: https://github.com/aws-gbp/health_metric_collector-release.git
   vcs: git
@@ -1477,7 +1477,7 @@ jointstick:
 joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
-  version: release/melodic/joy/1.12.0-0
+  version: release/melodic/joy/1.13.0-1
 joy_listener:
   url: https://github.com/wu-robotics/wu_ros_tools.git
   vcs: git
@@ -1489,7 +1489,7 @@ joy_teleop:
 joystick_drivers:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
-  version: release/melodic/joystick_drivers/1.12.0-0
+  version: release/melodic/joystick_drivers/1.13.0-1
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -3021,7 +3021,7 @@ prosilica_gige_sdk:
 ps3joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
-  version: release/melodic/ps3joy/1.12.0-0
+  version: release/melodic/ps3joy/1.13.0-1
 py_trees:
   url: https://github.com/stonier/py_trees-release.git
   vcs: git
@@ -3849,7 +3849,7 @@ sound_play:
 spacenav_node:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
-  version: release/melodic/spacenav_node/1.12.0-0
+  version: release/melodic/spacenav_node/1.13.0-1
 sparse_bundle_adjustment:
   url: https://github.com/ros-gbp/sparse_bundle_adjustment-release.git
   vcs: git
@@ -4025,23 +4025,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.0.0-3
+  version: release/melodic/toposens/1.1.0-1
+toposens_description:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_description/1.1.0-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.0.0-3
+  version: release/melodic/toposens_driver/1.1.0-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.0.0-3
+  version: release/melodic/toposens_markers/1.1.0-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.0.0-3
+  version: release/melodic/toposens_msgs/1.1.0-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.0.0-3
+  version: release/melodic/toposens_pointcloud/1.1.0-1
+toposens_sync:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_sync/1.1.0-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -4553,7 +4561,7 @@ wifi_ddwrt:
 wiimote:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
-  version: release/melodic/wiimote/1.12.0-0
+  version: release/melodic/wiimote/1.13.0-1
 willow_maps:
   url: https://github.com/ros-gbp/willow_maps-release.git
   vcs: git
