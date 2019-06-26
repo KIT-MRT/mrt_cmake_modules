@@ -18,12 +18,6 @@ armadillo:
     name: Armadillo
   ubuntu:
   - libarmadillo-dev
-coverage:
-  ubuntu:
-    xenial:
-    - lcov
-    bionic:
-    - gcovr
 boost:
   cmake:
     components:
