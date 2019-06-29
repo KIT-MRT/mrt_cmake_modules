@@ -3545,7 +3545,7 @@ libmodbus:
 libmongocxx_ros:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
-  version: release/kinetic/libmongocxx_ros/0.4.4-2
+  version: release/kinetic/libmongocxx_ros/0.4.5-1
 libmynteye:
   url: https://github.com/harjeb/libmynteye-release.git
   vcs: git
@@ -3561,7 +3561,7 @@ libpcan:
 libphidget21:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/libphidget21/0.7.8-1
+  version: release/kinetic/libphidget21/0.7.9-1
 libphidgets:
   url: https://github.com/ipa320/cob_extern-release.git
   vcs: git
@@ -4077,15 +4077,15 @@ modelica_bridge:
 mongodb_log:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
-  version: release/kinetic/mongodb_log/0.4.4-2
+  version: release/kinetic/mongodb_log/0.4.5-1
 mongodb_store:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
-  version: release/kinetic/mongodb_store/0.4.4-2
+  version: release/kinetic/mongodb_store/0.4.5-1
 mongodb_store_msgs:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
-  version: release/kinetic/mongodb_store_msgs/0.4.4-2
+  version: release/kinetic/mongodb_store_msgs/0.4.5-1
 monocam_settler:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -4805,7 +4805,7 @@ ocean_battery_driver:
 ocl:
   url: https://github.com/orocos-gbp/ocl-release.git
   vcs: git
-  version: release/kinetic/ocl/2.9.1-3
+  version: release/kinetic/ocl/2.9.2-1
 octomap_mapping:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
@@ -5301,23 +5301,23 @@ pheeno_ros_sim:
 phidgets_api:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_api/0.7.8-1
+  version: release/kinetic/phidgets_api/0.7.9-1
 phidgets_drivers:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_drivers/0.7.8-1
+  version: release/kinetic/phidgets_drivers/0.7.9-1
 phidgets_high_speed_encoder:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_high_speed_encoder/0.7.8-1
+  version: release/kinetic/phidgets_high_speed_encoder/0.7.9-1
 phidgets_ik:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_ik/0.7.8-1
+  version: release/kinetic/phidgets_ik/0.7.9-1
 phidgets_imu:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
-  version: release/kinetic/phidgets_imu/0.7.8-1
+  version: release/kinetic/phidgets_imu/0.7.9-1
 pid:
   url: https://github.com/AndyZe/pid-release.git
   vcs: git
@@ -7067,9 +7067,9 @@ rqt_wrapper:
   vcs: git
   version: release/kinetic/rqt_wrapper/0.1.4-0
 rr_openrover_basic:
-  url: https://github.com/RoverRobotics/rr_openrover_basic-release.git
+  url: https://github.com/RoverRobotics-release/rr_openrover_basic-release.git
   vcs: git
-  version: release/kinetic/rr_openrover_basic/0.6.1-0
+  version: release/kinetic/rr_openrover_basic/0.7.1-2
 rr_swiftnav_piksi:
   url: https://github.com/RoverRobotics/rr_swiftnav_piksi-release.git
   vcs: git
