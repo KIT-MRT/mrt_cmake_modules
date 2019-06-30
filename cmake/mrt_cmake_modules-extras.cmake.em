@@ -932,6 +932,7 @@ function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
+    configure_file(${MCM_ROOT}/cmake/Templates/test_path.hpp.in ${PROJECT_BINARY_DIR}/tests/test/path.hpp @@ONLY)
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
@@ -953,6 +954,9 @@ function(mrt_add_tests folder)
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
+            target_include_directories(${TEST_TARGET_NAME} 
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
+
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )

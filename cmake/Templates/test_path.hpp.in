@@ -1,0 +1,15 @@
+#pragma once
+#if __cplusplus >= 201703L
+#include <filesystem>
+
+namespace test {
+static const std::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
+}
+
+#else
+#include <boost/filesystem.hpp>
+
+namespace test {
+static const boost::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
+}
+#endif
