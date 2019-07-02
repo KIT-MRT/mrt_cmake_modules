@@ -136,7 +136,7 @@
 @xx|xx@ ## Install ##
 @xx|xx@ #############
 @xx|xx@ # Install all targets, headers by default and scripts and other files if specified (folders or files)
-@ x|xx@ mrt_install(PROGRAMS scripts FILES launch rviz maps res data nodelet_plugins.xml plugin_description.xml)
+@ x|xx@ mrt_install(PROGRAMS scripts FILES launch rviz maps res cfg data nodelet_plugins.xml plugin_description.xml)
 @x |xx@ mrt_install(PROGRAMS scripts FILES res data)
 @xx|xx@ 
 @xx|xx@ #############
