@@ -513,7 +513,7 @@ checkerboard_detector:
 chomp_motion_planner:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/chomp_motion_planner/0.9.15-0
+  version: release/kinetic/chomp_motion_planner/0.9.16-1
 cht10_node:
   url: https://github.com/Playfish/cht10_node_release.git
   vcs: git
@@ -2005,7 +2005,7 @@ flexbe_widget:
 flir_boson_usb:
   url: https://github.com/astuff/flir_boson_usb-release.git
   vcs: git
-  version: release/kinetic/flir_boson_usb/1.2.0-0
+  version: release/kinetic/flir_boson_usb/1.2.1-1
 flir_camera_driver:
   url: https://github.com/ros-drivers-gbp/flir_camera_driver-release.git
   vcs: git
@@ -3993,7 +3993,7 @@ micros_swarm_framework:
 microstrain_3dmgx2_imu:
   url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
   vcs: git
-  version: release/kinetic/microstrain_3dmgx2_imu/1.5.12-1
+  version: release/kinetic/microstrain_3dmgx2_imu/1.5.13-1
 microstrain_mips:
   url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
   vcs: git
@@ -4125,11 +4125,15 @@ move_slow_and_clear:
 moveit:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit/0.9.15-0
+  version: release/kinetic/moveit/0.9.16-1
+moveit_chomp_optimizer_adapter:
+  url: https://github.com/ros-gbp/moveit-release.git
+  vcs: git
+  version: release/kinetic/moveit_chomp_optimizer_adapter/0.9.16-1
 moveit_commander:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_commander/0.9.15-0
+  version: release/kinetic/moveit_commander/0.9.16-1
 moveit_config_m0609:
   url: https://github.com/doosan-robotics/doosan-robot-release.git
   vcs: git
@@ -4149,23 +4153,23 @@ moveit_config_m1509:
 moveit_controller_manager_example:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_controller_manager_example/0.9.15-0
+  version: release/kinetic/moveit_controller_manager_example/0.9.16-1
 moveit_core:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_core/0.9.15-0
+  version: release/kinetic/moveit_core/0.9.16-1
 moveit_experimental:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_experimental/0.9.15-0
+  version: release/kinetic/moveit_experimental/0.9.16-1
 moveit_fake_controller_manager:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_fake_controller_manager/0.9.15-0
+  version: release/kinetic/moveit_fake_controller_manager/0.9.16-1
 moveit_kinematics:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_kinematics/0.9.15-0
+  version: release/kinetic/moveit_kinematics/0.9.16-1
 moveit_msgs:
   url: https://github.com/ros-gbp/moveit_msgs-release.git
   vcs: git
@@ -4173,19 +4177,19 @@ moveit_msgs:
 moveit_planners:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners/0.9.15-0
+  version: release/kinetic/moveit_planners/0.9.16-1
 moveit_planners_chomp:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners_chomp/0.9.15-0
+  version: release/kinetic/moveit_planners_chomp/0.9.16-1
 moveit_planners_ompl:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners_ompl/0.9.15-0
+  version: release/kinetic/moveit_planners_ompl/0.9.16-1
 moveit_plugins:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_plugins/0.9.15-0
+  version: release/kinetic/moveit_plugins/0.9.16-1
 moveit_pr2:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
@@ -4201,55 +4205,55 @@ moveit_resources:
 moveit_ros:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros/0.9.15-0
+  version: release/kinetic/moveit_ros/0.9.16-1
 moveit_ros_benchmarks:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_benchmarks/0.9.15-0
+  version: release/kinetic/moveit_ros_benchmarks/0.9.16-1
 moveit_ros_control_interface:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_control_interface/0.9.15-0
+  version: release/kinetic/moveit_ros_control_interface/0.9.16-1
 moveit_ros_manipulation:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_manipulation/0.9.15-0
+  version: release/kinetic/moveit_ros_manipulation/0.9.16-1
 moveit_ros_move_group:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_move_group/0.9.15-0
+  version: release/kinetic/moveit_ros_move_group/0.9.16-1
 moveit_ros_perception:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_perception/0.9.15-0
+  version: release/kinetic/moveit_ros_perception/0.9.16-1
 moveit_ros_planning:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_planning/0.9.15-0
+  version: release/kinetic/moveit_ros_planning/0.9.16-1
 moveit_ros_planning_interface:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_planning_interface/0.9.15-0
+  version: release/kinetic/moveit_ros_planning_interface/0.9.16-1
 moveit_ros_robot_interaction:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_robot_interaction/0.9.15-0
+  version: release/kinetic/moveit_ros_robot_interaction/0.9.16-1
 moveit_ros_visualization:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_visualization/0.9.15-0
+  version: release/kinetic/moveit_ros_visualization/0.9.16-1
 moveit_ros_warehouse:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_warehouse/0.9.15-0
+  version: release/kinetic/moveit_ros_warehouse/0.9.16-1
 moveit_runtime:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_runtime/0.9.15-0
+  version: release/kinetic/moveit_runtime/0.9.16-1
 moveit_setup_assistant:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_setup_assistant/0.9.15-0
+  version: release/kinetic/moveit_setup_assistant/0.9.16-1
 moveit_sim_controller:
   url: https://github.com/davetcoleman/moveit_sim_controller-release.git
   vcs: git
@@ -4257,7 +4261,7 @@ moveit_sim_controller:
 moveit_simple_controller_manager:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_simple_controller_manager/0.9.15-0
+  version: release/kinetic/moveit_simple_controller_manager/0.9.16-1
 moveit_visual_tools:
   url: https://github.com/ros-gbp/moveit_visual_tools-release.git
   vcs: git
@@ -4721,7 +4725,7 @@ nmea_comms:
 nmea_gps_plugin:
   url: https://github.com/OUXT-Polaris/nmea_gps_plugin-release.git
   vcs: git
-  version: release/kinetic/nmea_gps_plugin/0.0.1-1
+  version: release/kinetic/nmea_gps_plugin/0.0.1-2
 nmea_msgs:
   url: https://github.com/ros-drivers-gbp/nmea_msgs-release.git
   vcs: git
@@ -5337,23 +5341,23 @@ pilz_control:
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_extensions/0.3.7-0
+  version: release/kinetic/pilz_extensions/0.3.8-0
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_industrial_motion/0.3.7-0
+  version: release/kinetic/pilz_industrial_motion/0.3.8-0
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_industrial_motion_testutils/0.3.7-0
+  version: release/kinetic/pilz_industrial_motion_testutils/0.3.8-0
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_msgs/0.3.7-0
+  version: release/kinetic/pilz_msgs/0.3.8-0
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_robot_programming/0.3.7-0
+  version: release/kinetic/pilz_robot_programming/0.3.8-0
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -5365,7 +5369,7 @@ pilz_testutils:
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/kinetic/pilz_trajectory_generation/0.3.7-0
+  version: release/kinetic/pilz_trajectory_generation/0.3.8-0
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -6182,6 +6186,14 @@ rdl_urdfreader:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
   version: release/kinetic/rdl_urdfreader/1.1.0-0
+realsense2_camera:
+  url: https://github.com/IntelRealSense/realsense-ros-release.git
+  vcs: git
+  version: release/kinetic/realsense2_camera/2.2.6-2
+realsense2_description:
+  url: https://github.com/IntelRealSense/realsense-ros-release.git
+  vcs: git
+  version: release/kinetic/realsense2_description/2.2.6-2
 realsense_camera:
   url: https://github.com/intel-ros/realsense-release.git
   vcs: git
@@ -7749,7 +7761,7 @@ tblib:
 teb_local_planner:
   url: https://github.com/rst-tu-dortmund/teb_local_planner-release.git
   vcs: git
-  version: release/kinetic/teb_local_planner/0.6.12-1
+  version: release/kinetic/teb_local_planner/0.6.13-1
 teb_local_planner_tutorials:
   url: https://github.com/rst-tu-dortmund/teb_local_planner_tutorials-release.git
   vcs: git
