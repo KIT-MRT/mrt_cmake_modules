@@ -718,7 +718,7 @@ sdl2:
 tbb:
   cmake:
     include_dirs:
-    - TBB_INCLUDE_DIRS
+    - TBB_INCLUDE_DIR
     libraries:
     - TBB_LIBRARIES
     name: TBB
