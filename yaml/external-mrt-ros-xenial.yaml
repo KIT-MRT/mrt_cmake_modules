@@ -7765,7 +7765,7 @@ teb_local_planner:
 teb_local_planner_tutorials:
   url: https://github.com/rst-tu-dortmund/teb_local_planner_tutorials-release.git
   vcs: git
-  version: release/kinetic/teb_local_planner_tutorials/0.2.2-0
+  version: release/kinetic/teb_local_planner_tutorials/0.2.4-1
 teleop_tools:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
@@ -8483,9 +8483,9 @@ usb_cam_hardware_interface:
   vcs: git
   version: release/kinetic/usb_cam_hardware_interface/0.0.3-0
 usv_gazebo_plugins:
-  url: https://github.com/ros-gbp/vmrc-release.git
+  url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/usv_gazebo_plugins/0.3.2-0
+  version: release/kinetic/usv_gazebo_plugins/1.1.1-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -8702,10 +8702,6 @@ visualstates:
   url: https://github.com/JdeRobot/VisualStates-release.git
   vcs: git
   version: release/kinetic/visualstates/0.2.2-0
-vmrc_gazebo:
-  url: https://github.com/ros-gbp/vmrc-release.git
-  vcs: git
-  version: release/kinetic/vmrc_gazebo/0.3.2-0
 voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -8718,6 +8714,10 @@ vrpn_client_ros:
   url: https://github.com/ros-drivers-gbp/vrpn_client_ros-release.git
   vcs: git
   version: release/kinetic/vrpn_client_ros/0.2.2-0
+vrx_gazebo:
+  url: https://github.com/ros-gbp/vrx-release.git
+  vcs: git
+  version: release/kinetic/vrx_gazebo/1.1.1-1
 vs060:
   url: https://github.com/start-jsk/denso-release.git
   vcs: git
@@ -8731,13 +8731,13 @@ vs060_moveit_config:
   vcs: git
   version: release/kinetic/vs060_moveit_config/2.0.3-0
 wamv_description:
-  url: https://github.com/ros-gbp/vmrc-release.git
+  url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_description/0.3.2-0
+  version: release/kinetic/wamv_description/1.1.1-1
 wamv_gazebo:
-  url: https://github.com/ros-gbp/vmrc-release.git
+  url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_gazebo/0.3.2-0
+  version: release/kinetic/wamv_gazebo/1.1.1-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -8762,6 +8762,14 @@ warthog_viz:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
   version: release/kinetic/warthog_viz/0.0.1-1
+wave_gazebo:
+  url: https://github.com/ros-gbp/vrx-release.git
+  vcs: git
+  version: release/kinetic/wave_gazebo/1.1.1-1
+wave_gazebo_plugins:
+  url: https://github.com/ros-gbp/vrx-release.git
+  vcs: git
+  version: release/kinetic/wave_gazebo_plugins/1.1.1-1
 waypoint_generator:
   url: https://github.com/jihoonl/waypoint-release.git
   vcs: git
