@@ -660,7 +660,10 @@ png:
     library_dirs: []
     name: PNG
   ubuntu:
-  - libpng12-dev
+    xenial:
+    - libpng12-dev
+    bionic:
+    - libpng-dev
 png++:
   cmake:
     components: []
