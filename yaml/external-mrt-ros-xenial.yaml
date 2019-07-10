@@ -130,10 +130,6 @@ app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
   version: release/kinetic/app_manager/1.0.5-0
-apriltag:
-  url: https://github.com/AprilRobotics/apriltag-release.git
-  vcs: git
-  version: release/kinetic/apriltag/3.1.1-1
 ar_track_alvar:
   url: https://github.com/ros-gbp/ar_track_alvar-release.git
   vcs: git
@@ -513,7 +509,7 @@ checkerboard_detector:
 chomp_motion_planner:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/chomp_motion_planner/0.9.16-1
+  version: release/kinetic/chomp_motion_planner/0.9.17-1
 cht10_node:
   url: https://github.com/Playfish/cht10_node_release.git
   vcs: git
@@ -3525,7 +3521,7 @@ libdlib:
 libfranka:
   url: https://github.com/frankaemika/libfranka-release.git
   vcs: git
-  version: release/kinetic/libfranka/0.5.0-1
+  version: release/kinetic/libfranka/0.7.1-1
 libfreenect:
   url: https://github.com/ros-drivers-gbp/libfreenect-ros-release.git
   vcs: git
@@ -3537,7 +3533,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/libmavconn/0.31.0-1
+  version: release/kinetic/libmavconn/0.32.0-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -3893,19 +3889,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/kinetic/mavlink/2019.6.7-1
+  version: release/kinetic/mavlink/2019.7.7-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros/0.31.0-1
+  version: release/kinetic/mavros/0.32.0-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_extras/0.31.0-1
+  version: release/kinetic/mavros_extras/0.32.0-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_msgs/0.31.0-1
+  version: release/kinetic/mavros_msgs/0.32.0-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -4125,15 +4121,15 @@ move_slow_and_clear:
 moveit:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit/0.9.16-1
+  version: release/kinetic/moveit/0.9.17-1
 moveit_chomp_optimizer_adapter:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_chomp_optimizer_adapter/0.9.16-1
+  version: release/kinetic/moveit_chomp_optimizer_adapter/0.9.17-1
 moveit_commander:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_commander/0.9.16-1
+  version: release/kinetic/moveit_commander/0.9.17-1
 moveit_config_m0609:
   url: https://github.com/doosan-robotics/doosan-robot-release.git
   vcs: git
@@ -4153,23 +4149,23 @@ moveit_config_m1509:
 moveit_controller_manager_example:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_controller_manager_example/0.9.16-1
+  version: release/kinetic/moveit_controller_manager_example/0.9.17-1
 moveit_core:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_core/0.9.16-1
+  version: release/kinetic/moveit_core/0.9.17-1
 moveit_experimental:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_experimental/0.9.16-1
+  version: release/kinetic/moveit_experimental/0.9.17-1
 moveit_fake_controller_manager:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_fake_controller_manager/0.9.16-1
+  version: release/kinetic/moveit_fake_controller_manager/0.9.17-1
 moveit_kinematics:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_kinematics/0.9.16-1
+  version: release/kinetic/moveit_kinematics/0.9.17-1
 moveit_msgs:
   url: https://github.com/ros-gbp/moveit_msgs-release.git
   vcs: git
@@ -4177,19 +4173,19 @@ moveit_msgs:
 moveit_planners:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners/0.9.16-1
+  version: release/kinetic/moveit_planners/0.9.17-1
 moveit_planners_chomp:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners_chomp/0.9.16-1
+  version: release/kinetic/moveit_planners_chomp/0.9.17-1
 moveit_planners_ompl:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_planners_ompl/0.9.16-1
+  version: release/kinetic/moveit_planners_ompl/0.9.17-1
 moveit_plugins:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_plugins/0.9.16-1
+  version: release/kinetic/moveit_plugins/0.9.17-1
 moveit_pr2:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
@@ -4205,55 +4201,55 @@ moveit_resources:
 moveit_ros:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros/0.9.16-1
+  version: release/kinetic/moveit_ros/0.9.17-1
 moveit_ros_benchmarks:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_benchmarks/0.9.16-1
+  version: release/kinetic/moveit_ros_benchmarks/0.9.17-1
 moveit_ros_control_interface:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_control_interface/0.9.16-1
+  version: release/kinetic/moveit_ros_control_interface/0.9.17-1
 moveit_ros_manipulation:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_manipulation/0.9.16-1
+  version: release/kinetic/moveit_ros_manipulation/0.9.17-1
 moveit_ros_move_group:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_move_group/0.9.16-1
+  version: release/kinetic/moveit_ros_move_group/0.9.17-1
 moveit_ros_perception:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_perception/0.9.16-1
+  version: release/kinetic/moveit_ros_perception/0.9.17-1
 moveit_ros_planning:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_planning/0.9.16-1
+  version: release/kinetic/moveit_ros_planning/0.9.17-1
 moveit_ros_planning_interface:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_planning_interface/0.9.16-1
+  version: release/kinetic/moveit_ros_planning_interface/0.9.17-1
 moveit_ros_robot_interaction:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_robot_interaction/0.9.16-1
+  version: release/kinetic/moveit_ros_robot_interaction/0.9.17-1
 moveit_ros_visualization:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_visualization/0.9.16-1
+  version: release/kinetic/moveit_ros_visualization/0.9.17-1
 moveit_ros_warehouse:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_ros_warehouse/0.9.16-1
+  version: release/kinetic/moveit_ros_warehouse/0.9.17-1
 moveit_runtime:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_runtime/0.9.16-1
+  version: release/kinetic/moveit_runtime/0.9.17-1
 moveit_setup_assistant:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_setup_assistant/0.9.16-1
+  version: release/kinetic/moveit_setup_assistant/0.9.17-1
 moveit_sim_controller:
   url: https://github.com/davetcoleman/moveit_sim_controller-release.git
   vcs: git
@@ -4261,7 +4257,7 @@ moveit_sim_controller:
 moveit_simple_controller_manager:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
-  version: release/kinetic/moveit_simple_controller_manager/0.9.16-1
+  version: release/kinetic/moveit_simple_controller_manager/0.9.17-1
 moveit_visual_tools:
   url: https://github.com/ros-gbp/moveit_visual_tools-release.git
   vcs: git
@@ -6158,6 +6154,10 @@ rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
   version: release/kinetic/rc_visard_driver/2.6.4-1
+rcdiscover:
+  url: https://github.com/roboception-gbp/rcdiscover-release.git
+  vcs: git
+  version: release/kinetic/rcdiscover/1.0.0-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -6769,7 +6769,7 @@ ros_wild:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosapi/0.11.1-1
+  version: release/kinetic/rosapi/0.11.2-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -6793,19 +6793,19 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_library/0.11.1-1
+  version: release/kinetic/rosbridge_library/0.11.2-1
 rosbridge_msgs:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_msgs/0.11.1-1
+  version: release/kinetic/rosbridge_msgs/0.11.2-1
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_server/0.11.1-1
+  version: release/kinetic/rosbridge_server/0.11.2-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_suite/0.11.1-1
+  version: release/kinetic/rosbridge_suite/0.11.2-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -6913,7 +6913,15 @@ roslisp_utilities:
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/kinetic/rosmon/1.0.10-0
+  version: release/kinetic/rosmon/2.1.1-1
+rosmon_core:
+  url: https://github.com/xqms/rosmon-release.git
+  vcs: git
+  version: release/kinetic/rosmon_core/2.1.1-1
+rosmon_msgs:
+  url: https://github.com/xqms/rosmon-release.git
+  vcs: git
+  version: release/kinetic/rosmon_msgs/2.1.1-1
 rosnode_rtc:
   url: https://github.com/tork-a/rtmros_common-release.git
   vcs: git
@@ -7074,6 +7082,10 @@ rqt_py_trees:
   url: https://github.com/stonier/rqt_py_trees-release.git
   vcs: git
   version: release/kinetic/rqt_py_trees/0.3.1-0
+rqt_rosmon:
+  url: https://github.com/xqms/rosmon-release.git
+  vcs: git
+  version: release/kinetic/rqt_rosmon/2.1.1-1
 rqt_wrapper:
   url: https://github.com/yujinrobot-release/rqt_wrapper-release.git
   vcs: git
@@ -7813,7 +7825,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/test_mavros/0.31.0-1
+  version: release/kinetic/test_mavros/0.32.0-1
 test_osm:
   url: https://github.com/ros-geographic-info/open_street_map-release.git
   vcs: git
@@ -8009,31 +8021,31 @@ topic_switch:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens/1.1.0-1
+  version: release/kinetic/toposens/1.2.0-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_description/1.1.0-1
+  version: release/kinetic/toposens_description/1.2.0-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_driver/1.1.0-1
+  version: release/kinetic/toposens_driver/1.2.0-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_markers/1.1.0-1
+  version: release/kinetic/toposens_markers/1.2.0-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_msgs/1.1.0-1
+  version: release/kinetic/toposens_msgs/1.2.0-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_pointcloud/1.1.0-1
+  version: release/kinetic/toposens_pointcloud/1.2.0-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_sync/1.1.0-1
+  version: release/kinetic/toposens_sync/1.2.0-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -8485,7 +8497,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/usv_gazebo_plugins/1.1.1-1
+  version: release/kinetic/usv_gazebo_plugins/1.1.2-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -8669,7 +8681,7 @@ vision_msgs:
 vision_visp:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/vision_visp/0.11.0-1
+  version: release/kinetic/vision_visp/0.11.1-1
 visp:
   url: https://github.com/lagadic/visp-release.git
   vcs: git
@@ -8677,23 +8689,23 @@ visp:
 visp_auto_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/visp_auto_tracker/0.11.0-1
+  version: release/kinetic/visp_auto_tracker/0.11.1-1
 visp_bridge:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/visp_bridge/0.11.0-1
+  version: release/kinetic/visp_bridge/0.11.1-1
 visp_camera_calibration:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/visp_camera_calibration/0.11.0-1
+  version: release/kinetic/visp_camera_calibration/0.11.1-1
 visp_hand2eye_calibration:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/visp_hand2eye_calibration/0.11.0-1
+  version: release/kinetic/visp_hand2eye_calibration/0.11.1-1
 visp_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/kinetic/visp_tracker/0.11.0-1
+  version: release/kinetic/visp_tracker/0.11.1-1
 visualization_osg:
   url: https://github.com/uji-ros-pkg/visualization_osg-release.git
   vcs: git
@@ -8717,7 +8729,7 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/vrx_gazebo/1.1.1-1
+  version: release/kinetic/vrx_gazebo/1.1.2-1
 vs060:
   url: https://github.com/start-jsk/denso-release.git
   vcs: git
@@ -8733,11 +8745,11 @@ vs060_moveit_config:
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_description/1.1.1-1
+  version: release/kinetic/wamv_description/1.1.2-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_gazebo/1.1.1-1
+  version: release/kinetic/wamv_gazebo/1.1.2-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -8765,11 +8777,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wave_gazebo/1.1.1-1
+  version: release/kinetic/wave_gazebo/1.1.2-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wave_gazebo_plugins/1.1.1-1
+  version: release/kinetic/wave_gazebo_plugins/1.1.2-1
 waypoint_generator:
   url: https://github.com/jihoonl/waypoint-release.git
   vcs: git
@@ -8801,7 +8813,7 @@ webargs:
 webots_ros:
   url: https://github.com/omichel/webots_ros-release.git
   vcs: git
-  version: release/kinetic/webots_ros/2.0.3-1
+  version: release/kinetic/webots_ros/2.0.4-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
