@@ -1714,6 +1714,10 @@ libcmt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/libcmt/2.1.12-2
+libfranka:
+  url: https://github.com/frankaemika/libfranka-release.git
+  vcs: git
+  version: release/melodic/libfranka/0.7.1-1
 libg2o:
   url: https://github.com/ros-gbp/libg2o-release.git
   vcs: git
@@ -1721,7 +1725,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.31.0-1
+  version: release/melodic/libmavconn/0.32.0-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -1901,19 +1905,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.6.7-1
+  version: release/melodic/mavlink/2019.7.7-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.31.0-1
+  version: release/melodic/mavros/0.32.0-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.31.0-1
+  version: release/melodic/mavros_extras/0.32.0-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.31.0-1
+  version: release/melodic/mavros_msgs/0.32.0-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2450,6 +2454,10 @@ nmea_navsat_driver:
   url: https://github.com/ros-drivers-gbp/nmea_navsat_driver-release.git
   vcs: git
   version: release/melodic/nmea_navsat_driver/0.5.1-0
+nmea_to_geopose:
+  url: https://github.com/OUXT-Polaris/nmea_to_geopose-release.git
+  vcs: git
+  version: release/melodic/nmea_to_geopose/0.0.1-1
 node_manager_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
@@ -2474,6 +2482,10 @@ novatel_span_driver:
   url: https://github.com/ros-drivers-gbp/novatel_span_driver-release.git
   vcs: git
   version: release/melodic/novatel_span_driver/1.1.0-0
+ntpd_driver:
+  url: https://github.com/vooon/ntpd_driver-release.git
+  vcs: git
+  version: release/melodic/ntpd_driver/1.2.0-1
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -2626,6 +2638,10 @@ openrtm_aist_python:
   url: https://github.com/tork-a/openrtm_aist_python-release.git
   vcs: git
   version: release/melodic/openrtm_aist_python/1.1.0-0
+openslam_gmapping:
+  url: https://github.com/ros-gbp/openslam_gmapping-release.git
+  vcs: git
+  version: release/melodic/openslam_gmapping/0.2.0-1
 opt_camera:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3210,6 +3226,10 @@ rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
   version: release/melodic/rc_visard_driver/2.6.4-1
+rcdiscover:
+  url: https://github.com/roboception-gbp/rcdiscover-release.git
+  vcs: git
+  version: release/melodic/rcdiscover/1.0.0-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -3457,7 +3477,7 @@ ros_type_introspection:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosapi/0.11.1-1
+  version: release/melodic/rosapi/0.11.2-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -3481,19 +3501,19 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_library/0.11.1-1
+  version: release/melodic/rosbridge_library/0.11.2-1
 rosbridge_msgs:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_msgs/0.11.1-1
+  version: release/melodic/rosbridge_msgs/0.11.2-1
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_server/0.11.1-1
+  version: release/melodic/rosbridge_server/0.11.2-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_suite/0.11.1-1
+  version: release/melodic/rosbridge_suite/0.11.2-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -3533,15 +3553,15 @@ roslisp_utilities:
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon/2.1.0-1
+  version: release/melodic/rosmon/2.1.1-1
 rosmon_core:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon_core/2.1.0-1
+  version: release/melodic/rosmon_core/2.1.1-1
 rosmon_msgs:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon_msgs/2.1.0-1
+  version: release/melodic/rosmon_msgs/2.1.1-1
 rosparam_shortcuts:
   url: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
   vcs: git
@@ -3705,7 +3725,7 @@ rqt_py_trees:
 rqt_rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rqt_rosmon/2.1.0-1
+  version: release/melodic/rqt_rosmon/2.1.1-1
 rqt_rotors:
   url: https://github.com/ethz-asl/rotors_simulator-release.git
   vcs: git
@@ -4001,7 +4021,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.31.0-1
+  version: release/melodic/test_mavros/0.32.0-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -4029,23 +4049,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.0.0-3
+  version: release/melodic/toposens/1.2.0-1
+toposens_description:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_description/1.2.0-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.0.0-3
+  version: release/melodic/toposens_driver/1.2.0-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.0.0-3
+  version: release/melodic/toposens_markers/1.2.0-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.0.0-3
+  version: release/melodic/toposens_msgs/1.2.0-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.0.0-3
+  version: release/melodic/toposens_pointcloud/1.2.0-1
+toposens_sync:
+  url: https://gitlab.com/toposens/public/toposens-release.git
+  vcs: git
+  version: release/melodic/toposens_sync/1.2.0-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -4465,7 +4493,7 @@ vision_msgs:
 vision_visp:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/vision_visp/0.11.0-1
+  version: release/melodic/vision_visp/0.11.1-1
 visp:
   url: https://github.com/lagadic/visp-release.git
   vcs: git
@@ -4473,23 +4501,23 @@ visp:
 visp_auto_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/visp_auto_tracker/0.11.0-1
+  version: release/melodic/visp_auto_tracker/0.11.1-1
 visp_bridge:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/visp_bridge/0.11.0-1
+  version: release/melodic/visp_bridge/0.11.1-1
 visp_camera_calibration:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/visp_camera_calibration/0.11.0-1
+  version: release/melodic/visp_camera_calibration/0.11.1-1
 visp_hand2eye_calibration:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/visp_hand2eye_calibration/0.11.0-1
+  version: release/melodic/visp_hand2eye_calibration/0.11.1-1
 visp_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
-  version: release/melodic/visp_tracker/0.11.0-1
+  version: release/melodic/visp_tracker/0.11.1-1
 voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -4537,7 +4565,7 @@ web_video_server:
 webots_ros:
   url: https://github.com/omichel/webots_ros-release.git
   vcs: git
-  version: release/melodic/webots_ros/2.0.3-1
+  version: release/melodic/webots_ros/2.0.4-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
