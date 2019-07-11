@@ -5,7 +5,6 @@ set(PACKAGE_LIBRARIES
     PvPersistence
     PtUtilsLib
     PtConvertersLib
-    PvGUI
     PvAppUtils
     PvCameraBridge
     EbTransportLayerLib

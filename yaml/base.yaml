@@ -74,15 +74,6 @@ cuda:
     bionic:
       - cuda-toolkit-10-0
       - g++-7
-ebus:
-  cmake:
-    components: []
-    include_dirs:
-    - ebus-sdk_INCLUDE_DIRS
-    libraries:
-    - ebus-sdk_LIBRARIES
-    library_dirs: []
-    name: ebus-sdk
 eigen:
   cmake:
     components: []
