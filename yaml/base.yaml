@@ -74,15 +74,6 @@ cuda:
     bionic:
       - cuda-toolkit-10-0
       - g++-7
-ebus:
-  cmake:
-    components: []
-    include_dirs:
-    - ebus-sdk_INCLUDE_DIRS
-    libraries:
-    - ebus-sdk_LIBRARIES
-    library_dirs: []
-    name: ebus-sdk
 eigen:
   cmake:
     components: []
@@ -660,7 +651,10 @@ png:
     library_dirs: []
     name: PNG
   ubuntu:
-  - libpng12-dev
+    xenial:
+    - libpng12-dev
+    bionic:
+    - libpng-dev
 png++:
   cmake:
     components: []
@@ -750,7 +744,7 @@ sdl2:
 tbb:
   cmake:
     include_dirs:
-    - TBB_INCLUDE_DIRS
+    - TBB_INCLUDE_DIR
     libraries:
     - TBB_LIBRARIES
     name: TBB
