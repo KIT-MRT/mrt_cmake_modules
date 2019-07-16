@@ -914,7 +914,8 @@ endfunction()
 # :type DEPENDS: list of strings
 #
 #
-# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Unittests will be executed with the folder as cwd if ctest or the run_test target is used. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Another way of getting the location of the project root folder path is to ``#include "test/test_utility.hpp"`` and use the variable ``<project_name>::test::projectRootDir``.
 #
 # Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 #
@@ -932,7 +933,7 @@ function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
-    configure_file(${MCM_ROOT}/cmake/Templates/test_path.hpp.in ${PROJECT_BINARY_DIR}/tests/test/path.hpp @@ONLY)
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)

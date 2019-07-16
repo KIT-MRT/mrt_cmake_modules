@@ -12,14 +12,20 @@
 
 #if TEST_PATH_USE_STD_FILESYSTEM
 #include <filesystem>
-namespace test {
-static const std::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
-}
 #else
 #include <boost/filesystem.hpp>
-namespace test {
-static const boost::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
-}
 #endif
+
+namespace @PROJECT_NAME@ {
+namespace test{
+
+#ifdef TEST_PATH_USE_STD_FILESYSTEM
+static const std::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
+#else
+static const boost::filesystem::path projectRootDir{"@PROJECT_SOURCE_DIR@"};
+#endif
+
+} // namespace test
+} // namespace @PROJECT_NAME@
 
 #endif
