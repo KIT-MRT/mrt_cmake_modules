@@ -862,6 +862,7 @@ function(mrt_add_ros_tests folder)
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_ros_tests "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_ros_test ${_ros_tests})
         get_filename_component(_test_name ${_ros_test} NAME_WE)
@@ -885,6 +886,8 @@ function(mrt_add_ros_tests folder)
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main
                 )
+            target_include_directories(${TEST_TARGET_NAME}
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
