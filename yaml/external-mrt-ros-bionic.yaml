@@ -1,7 +1,7 @@
 abseil_cpp:
   url: https://github.com/Eurecat/abseil_cpp-release.git
   vcs: git
-  version: release/melodic/abseil_cpp/0.2.3-1
+  version: release/melodic/abseil_cpp/0.4.2-1
 acado:
   url: https://github.com/tud-cor/acado-release.git
   vcs: git
@@ -225,23 +225,23 @@ camera_umd:
 can_msgs:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/can_msgs/0.8.0-0
+  version: release/melodic/can_msgs/0.8.1-1
 canopen_402:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/canopen_402/0.8.0-0
+  version: release/melodic/canopen_402/0.8.1-1
 canopen_chain_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/canopen_chain_node/0.8.0-0
+  version: release/melodic/canopen_chain_node/0.8.1-1
 canopen_master:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/canopen_master/0.8.0-0
+  version: release/melodic/canopen_master/0.8.1-1
 canopen_motor_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/canopen_motor_node/0.8.0-0
+  version: release/melodic/canopen_motor_node/0.8.1-1
 capabilities:
   url: https://github.com/ros-gbp/capabilities-release.git
   vcs: git
@@ -849,7 +849,7 @@ eml:
 epos2_motor_controller:
   url: https://github.com/uos-gbp/epos2_motor_controller-release.git
   vcs: git
-  version: release/melodic/epos2_motor_controller/1.0.0-1
+  version: release/melodic/epos2_motor_controller/1.0.0-4
 ethercat_grant:
   url: https://github.com/shadow-robot/ethercat_grant-release.git
   vcs: git
@@ -1158,6 +1158,10 @@ global_planner_tests:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/global_planner_tests/0.2.5-1
+gmapping:
+  url: https://github.com/ros-gbp/slam_gmapping-release.git
+  vcs: git
+  version: release/melodic/gmapping/1.4.0-1
 goal_passer:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
@@ -1438,6 +1442,10 @@ interactive_marker_proxy:
   url: https://github.com/RobotWebTools-release/interactive_marker_proxy-release.git
   vcs: git
   version: release/melodic/interactive_marker_proxy/0.1.2-0
+interactive_marker_twist_server:
+  url: https://github.com/ros-gbp/interactive_marker_twist_server-release.git
+  vcs: git
+  version: release/melodic/interactive_marker_twist_server/1.2.0-0
 interval_intersection:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -2445,7 +2453,7 @@ nlopt:
 nmea_gps_plugin:
   url: https://github.com/OUXT-Polaris/nmea_gps_plugin-release.git
   vcs: git
-  version: release/melodic/nmea_gps_plugin/0.0.1-4
+  version: release/melodic/nmea_gps_plugin/0.0.2-1
 nmea_msgs:
   url: https://github.com/ros-drivers-gbp/nmea_msgs-release.git
   vcs: git
@@ -2510,6 +2518,10 @@ octomap_ros:
   url: https://github.com/ros-gbp/octomap_ros-release.git
   vcs: git
   version: release/melodic/octomap_ros/0.4.0-0
+octomap_rviz_plugins:
+  url: https://github.com/ros-gbp/octomap_rviz_plugins-release.git
+  vcs: git
+  version: release/melodic/octomap_rviz_plugins/0.2.2-1
 octomap_server:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
@@ -2813,7 +2825,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.1.9-0
+  version: release/melodic/plotjuggler/2.3.0-1
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
@@ -3429,7 +3441,7 @@ rocon_uri:
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/ros_canopen/0.8.0-0
+  version: release/melodic/ros_canopen/0.8.1-1
 ros_control:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -3809,7 +3821,7 @@ settlerlib:
 sick_safetyscanners:
   url: https://github.com/SICKAG/sick_safetyscanners-release.git
   vcs: git
-  version: release/melodic/sick_safetyscanners/1.0.2-0
+  version: release/melodic/sick_safetyscanners/1.0.3-1
 sick_scan:
   url: https://github.com/SICKAG/sick_scan-release.git
   vcs: git
@@ -3830,6 +3842,10 @@ single_joint_position_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
   version: release/melodic/single_joint_position_action/1.10.15-1
+slam_gmapping:
+  url: https://github.com/ros-gbp/slam_gmapping-release.git
+  vcs: git
+  version: release/melodic/slam_gmapping/1.4.0-1
 slam_karto:
   url: https://github.com/ros-gbp/slam_karto-release.git
   vcs: git
@@ -3857,7 +3873,7 @@ social_navigation_layers:
 socketcan_bridge:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/melodic/socketcan_bridge/0.8.0-0
+  version: release/melodic/socketcan_bridge/0.8.1-1
 soem:
   url: https://github.com/mgruhler/soem-gbp.git
   vcs: git
@@ -3881,7 +3897,7 @@ sparse_bundle_adjustment:
 spatio_temporal_voxel_layer:
   url: https://github.com/SteveMacenski/spatio_temporal_voxel_layer-release.git
   vcs: git
-  version: release/melodic/spatio_temporal_voxel_layer/1.3.2-1
+  version: release/melodic/spatio_temporal_voxel_layer/1.3.3-3
 speech_recognition_msgs:
   url: https://github.com/tork-a/jsk_common_msgs-release.git
   vcs: git
@@ -4049,31 +4065,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.2.0-1
+  version: release/melodic/toposens/1.2.1-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/1.2.0-1
+  version: release/melodic/toposens_description/1.2.1-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.2.0-1
+  version: release/melodic/toposens_driver/1.2.1-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.2.0-1
+  version: release/melodic/toposens_markers/1.2.1-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.2.0-1
+  version: release/melodic/toposens_msgs/1.2.1-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.2.0-1
+  version: release/melodic/toposens_pointcloud/1.2.1-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/1.2.0-1
+  version: release/melodic/toposens_sync/1.2.1-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -4565,7 +4581,7 @@ web_video_server:
 webots_ros:
   url: https://github.com/omichel/webots_ros-release.git
   vcs: git
-  version: release/melodic/webots_ros/2.0.4-1
+  version: release/melodic/webots_ros/2.0.5-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
