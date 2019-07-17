@@ -425,23 +425,23 @@ camera_umd:
 can_msgs:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/can_msgs/0.7.10-0
+  version: release/kinetic/can_msgs/0.7.11-1
 canopen_402:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_402/0.7.10-0
+  version: release/kinetic/canopen_402/0.7.11-1
 canopen_chain_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_chain_node/0.7.10-0
+  version: release/kinetic/canopen_chain_node/0.7.11-1
 canopen_master:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_master/0.7.10-0
+  version: release/kinetic/canopen_master/0.7.11-1
 canopen_motor_node:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/canopen_motor_node/0.7.10-0
+  version: release/kinetic/canopen_motor_node/0.7.11-1
 capabilities:
   url: https://github.com/ros-gbp/capabilities-release.git
   vcs: git
@@ -4725,7 +4725,7 @@ nmea_comms:
 nmea_gps_plugin:
   url: https://github.com/OUXT-Polaris/nmea_gps_plugin-release.git
   vcs: git
-  version: release/kinetic/nmea_gps_plugin/0.0.1-2
+  version: release/kinetic/nmea_gps_plugin/0.0.2-1
 nmea_msgs:
   url: https://github.com/ros-drivers-gbp/nmea_msgs-release.git
   vcs: git
@@ -6709,7 +6709,7 @@ ros_apache2:
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/ros_canopen/0.7.10-0
+  version: release/kinetic/ros_canopen/0.7.11-1
 ros_control:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -7417,7 +7417,7 @@ settlerlib:
 sick_safetyscanners:
   url: https://github.com/SICKAG/sick_safetyscanners-release.git
   vcs: git
-  version: release/kinetic/sick_safetyscanners/1.0.2-0
+  version: release/kinetic/sick_safetyscanners/1.0.3-1
 sick_scan:
   url: https://github.com/SICKAG/sick_scan-release.git
   vcs: git
@@ -7513,11 +7513,11 @@ social_navigation_layers:
 socketcan_bridge:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/socketcan_bridge/0.7.10-0
+  version: release/kinetic/socketcan_bridge/0.7.11-1
 socketcan_interface:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
-  version: release/kinetic/socketcan_interface/0.7.10-0
+  version: release/kinetic/socketcan_interface/0.7.11-1
 soem:
   url: https://github.com/smits/soem-gbp.git
   vcs: git
@@ -8037,31 +8037,31 @@ topic_switch:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens/1.2.0-1
+  version: release/kinetic/toposens/1.2.1-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_description/1.2.0-1
+  version: release/kinetic/toposens_description/1.2.1-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_driver/1.2.0-1
+  version: release/kinetic/toposens_driver/1.2.1-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_markers/1.2.0-1
+  version: release/kinetic/toposens_markers/1.2.1-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_msgs/1.2.0-1
+  version: release/kinetic/toposens_msgs/1.2.1-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_pointcloud/1.2.0-1
+  version: release/kinetic/toposens_pointcloud/1.2.1-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_sync/1.2.0-1
+  version: release/kinetic/toposens_sync/1.2.1-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -8829,7 +8829,7 @@ webargs:
 webots_ros:
   url: https://github.com/omichel/webots_ros-release.git
   vcs: git
-  version: release/kinetic/webots_ros/2.0.4-1
+  version: release/kinetic/webots_ros/2.0.5-1
 webrtc:
   url: https://github.com/RobotWebTools-release/webrtc_ros-release.git
   vcs: git
