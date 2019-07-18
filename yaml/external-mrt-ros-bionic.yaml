@@ -1126,10 +1126,38 @@ four_wheel_steering_msgs:
   url: https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release.git
   vcs: git
   version: release/melodic/four_wheel_steering_msgs/1.0.0-0
+franka_control:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_control/0.6.0-1
 franka_description:
   url: https://github.com/frankaemika/franka_ros-release.git
   vcs: git
-  version: release/melodic/franka_description/0.6.0-0
+  version: release/melodic/franka_description/0.6.0-1
+franka_example_controllers:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_example_controllers/0.6.0-1
+franka_gripper:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_gripper/0.6.0-1
+franka_hw:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_hw/0.6.0-1
+franka_msgs:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_msgs/0.6.0-1
+franka_ros:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_ros/0.6.0-1
+franka_visualization:
+  url: https://github.com/frankaemika/franka_ros-release.git
+  vcs: git
+  version: release/melodic/franka_visualization/0.6.0-1
 freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
