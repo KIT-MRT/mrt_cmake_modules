@@ -158,6 +158,30 @@ automotive_platform_msgs:
   url: https://github.com/astuff/automotive_autonomy_msgs-release.git
   vcs: git
   version: release/melodic/automotive_platform_msgs/2.0.3-0
+autoware_can_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_can_msgs/1.12.0-1
+autoware_config_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_config_msgs/1.12.0-1
+autoware_external_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_external_msgs/1.12.0-1
+autoware_map_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_map_msgs/1.12.0-1
+autoware_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_msgs/1.12.0-1
+autoware_system_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_system_msgs/1.12.0-1
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
@@ -318,6 +342,10 @@ clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
   version: release/melodic/clear_costmap_recovery/1.16.2-0
+clock_relay:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/clock_relay/0.0.2-1
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
@@ -430,6 +458,10 @@ costmap_queue:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/costmap_queue/0.2.5-1
+cpr_multimaster_tools:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/cpr_multimaster_tools/0.0.2-1
 cv_camera:
   url: https://github.com/OTL/cv_camera-release.git
   vcs: git
@@ -1834,6 +1866,10 @@ linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/melodic/linux_networking/1.0.13-2
+lms1xx:
+  url: https://github.com/clearpath-gbp/lms1xx-release.git
+  vcs: git
+  version: release/melodic/lms1xx/0.2.0-1
 lockfree:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -2006,6 +2042,10 @@ md49_serialport:
   url: https://github.com/Scheik/md49_base_controller-release.git
   vcs: git
   version: release/melodic/md49_serialport/0.1.4-1
+message_relay:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/message_relay/0.0.2-1
 microstrain_3dmgx2_imu:
   url: https://github.com/ros-gbp/microstrain_3dmgx2_imu-release.git
   vcs: git
@@ -2302,6 +2342,14 @@ multimaster_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
   version: release/melodic/multimaster_fkie/0.8.12-0
+multimaster_launch:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/multimaster_launch/0.0.2-1
+multimaster_msgs:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/multimaster_msgs/0.0.2-1
 multimaster_msgs_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
@@ -3925,7 +3973,7 @@ sparse_bundle_adjustment:
 spatio_temporal_voxel_layer:
   url: https://github.com/SteveMacenski/spatio_temporal_voxel_layer-release.git
   vcs: git
-  version: release/melodic/spatio_temporal_voxel_layer/1.3.3-3
+  version: release/melodic/spatio_temporal_voxel_layer/1.3.4-1
 speech_recognition_msgs:
   url: https://github.com/tork-a/jsk_common_msgs-release.git
   vcs: git
@@ -4014,6 +4062,10 @@ swri_yaml_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
   version: release/melodic/swri_yaml_util/2.9.0-1
+tablet_socket_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/tablet_socket_msgs/1.12.0-1
 talos_description:
   url: https://github.com/pal-gbp/talos_robot-release.git
   vcs: git
@@ -4070,6 +4122,10 @@ tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
   version: release/melodic/tf2_bullet/0.6.5-0
+tf2_relay:
+  url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
+  vcs: git
+  version: release/melodic/tf2_relay/0.0.2-1
 tf2_tools:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -4330,6 +4386,10 @@ twist_recovery:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
   version: release/melodic/twist_recovery/0.3.2-0
+um6:
+  url: https://github.com/ros-drivers-gbp/um6-release.git
+  vcs: git
+  version: release/melodic/um6/1.1.2-1
 um7:
   url: https://github.com/ros-drivers-gbp/um7-release.git
   vcs: git
@@ -4482,6 +4542,10 @@ variant_topic_tools:
   url: https://github.com/anybotics/variant-release.git
   vcs: git
   version: release/melodic/variant_topic_tools/0.1.5-0
+vector_map_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/vector_map_msgs/1.12.0-1
 velocity_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
