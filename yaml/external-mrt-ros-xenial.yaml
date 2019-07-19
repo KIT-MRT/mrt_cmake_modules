@@ -270,6 +270,30 @@ automotive_platform_msgs:
   url: https://github.com/astuff/automotive_autonomy_msgs-release.git
   vcs: git
   version: release/kinetic/automotive_platform_msgs/2.0.3-0
+autoware_can_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_can_msgs/1.12.0-1
+autoware_config_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_config_msgs/1.12.0-1
+autoware_external_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_external_msgs/1.12.0-1
+autoware_map_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_map_msgs/1.12.0-1
+autoware_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_msgs/1.12.0-1
+autoware_system_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/autoware_system_msgs/1.12.0-1
 auv_msgs:
   url: https://github.com/oceansystemslab/auv_msgs-release.git
   vcs: git
@@ -549,7 +573,7 @@ click:
 clock_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/clock_relay/0.0.1-0
+  version: release/kinetic/clock_relay/0.0.2-1
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
@@ -1101,7 +1125,7 @@ costmap_queue:
 cpr_multimaster_tools:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/cpr_multimaster_tools/0.0.1-0
+  version: release/kinetic/cpr_multimaster_tools/0.0.2-1
 create_dashboard:
   url: https://github.com/turtlebot-release/turtlebot_create_desktop-release.git
   vcs: git
@@ -3981,7 +4005,7 @@ message_multiplexing:
 message_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/message_relay/0.0.1-0
+  version: release/kinetic/message_relay/0.0.2-1
 message_to_tf:
   url: https://github.com/tu-darmstadt-ros-pkg-gbp/hector_localization-release.git
   vcs: git
@@ -4385,11 +4409,11 @@ multimaster_fkie:
 multimaster_launch:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/multimaster_launch/0.0.1-0
+  version: release/kinetic/multimaster_launch/0.0.2-1
 multimaster_msgs:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/multimaster_msgs/0.0.1-0
+  version: release/kinetic/multimaster_msgs/0.0.2-1
 multimaster_msgs_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
@@ -7762,6 +7786,10 @@ sync_params:
   url: https://github.com/NicksSimulationsROS/sync_params-release.git
   vcs: git
   version: release/kinetic/sync_params/1.0.1-0
+tablet_socket_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/tablet_socket_msgs/1.12.0-1
 talos_description:
   url: https://github.com/pal-gbp/talos_robot-release.git
   vcs: git
@@ -7853,7 +7881,7 @@ tf2_bullet:
 tf2_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
-  version: release/kinetic/tf2_relay/0.0.1-0
+  version: release/kinetic/tf2_relay/0.0.2-1
 tf2_sensor_msgs:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -8642,6 +8670,10 @@ variant_topic_tools:
   url: https://github.com/anybotics/variant-release.git
   vcs: git
   version: release/kinetic/variant_topic_tools/0.1.5-0
+vector_map_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/kinetic/vector_map_msgs/1.12.0-1
 velocity_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
