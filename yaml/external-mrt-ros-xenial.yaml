@@ -1009,7 +1009,7 @@ cob_voltage_control:
 code_coverage:
   url: https://github.com/mikeferguson/code_coverage-gbp.git
   vcs: git
-  version: release/kinetic/code_coverage/0.2.3-0
+  version: release/kinetic/code_coverage/0.2.4-1
 codec_image_transport:
   url: https://github.com/yoshito-n-students/codec_image_transport-release.git
   vcs: git
@@ -1746,6 +1746,10 @@ eml:
   url: https://github.com/ros-gbp/eml-release.git
   vcs: git
   version: release/kinetic/eml/1.8.15-6
+epos2_motor_controller:
+  url: https://github.com/uos-gbp/epos2_motor_controller-release.git
+  vcs: git
+  version: release/kinetic/epos2_motor_controller/1.0.0-1
 epson_imu_driver:
   url: https://bitbucket.org/castacks/epson_g364_imu_driver-release.git
   vcs: git
@@ -6173,27 +6177,31 @@ rc_genicam_api:
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_hand_eye_calibration_client/2.6.4-1
+  version: release/kinetic/rc_hand_eye_calibration_client/2.7.0-1
 rc_pick_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_pick_client/2.6.4-1
+  version: release/kinetic/rc_pick_client/2.7.0-1
+rc_roi_manager_gui:
+  url: https://github.com/roboception-gbp/rc_visard-release.git
+  vcs: git
+  version: release/kinetic/rc_roi_manager_gui/2.7.0-1
 rc_tagdetect_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_tagdetect_client/2.6.4-1
+  version: release/kinetic/rc_tagdetect_client/2.7.0-1
 rc_visard:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard/2.6.4-1
+  version: release/kinetic/rc_visard/2.7.0-1
 rc_visard_description:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard_description/2.6.4-1
+  version: release/kinetic/rc_visard_description/2.7.0-1
 rc_visard_driver:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
-  version: release/kinetic/rc_visard_driver/2.6.4-1
+  version: release/kinetic/rc_visard_driver/2.7.0-1
 rcdiscover:
   url: https://github.com/roboception-gbp/rcdiscover-release.git
   vcs: git
@@ -7130,10 +7138,26 @@ rqt_wrapper:
   url: https://github.com/yujinrobot-release/rqt_wrapper-release.git
   vcs: git
   version: release/kinetic/rqt_wrapper/0.1.4-0
+rr_control_input_manager:
+  url: https://github.com/RoverRobotics-release/rr_openrover_stack-release.git
+  vcs: git
+  version: release/kinetic/rr_control_input_manager/0.7.2-1
 rr_openrover_basic:
   url: https://github.com/RoverRobotics-release/rr_openrover_basic-release.git
   vcs: git
   version: release/kinetic/rr_openrover_basic/0.7.1-2
+rr_openrover_driver:
+  url: https://github.com/RoverRobotics-release/rr_openrover_stack-release.git
+  vcs: git
+  version: release/kinetic/rr_openrover_driver/0.7.2-1
+rr_openrover_driver_msgs:
+  url: https://github.com/RoverRobotics-release/rr_openrover_stack-release.git
+  vcs: git
+  version: release/kinetic/rr_openrover_driver_msgs/0.7.2-1
+rr_openrover_stack:
+  url: https://github.com/RoverRobotics-release/rr_openrover_stack-release.git
+  vcs: git
+  version: release/kinetic/rr_openrover_stack/0.7.2-1
 rr_swiftnav_piksi:
   url: https://github.com/RoverRobotics/rr_swiftnav_piksi-release.git
   vcs: git
@@ -7522,6 +7546,14 @@ smach_viewer:
   url: https://github.com/jbohren/executive_smach_visualization-release.git
   vcs: git
   version: release/kinetic/smach_viewer/2.0.2-0
+smacha:
+  url: https://github.com/ReconCell/smacha-release.git
+  vcs: git
+  version: release/kinetic/smacha/0.5.0-1
+smacha_ros:
+  url: https://github.com/ReconCell/smacha-release.git
+  vcs: git
+  version: release/kinetic/smacha_ros/0.5.0-1
 smp_ros:
   url: https://github.com/ksatyaki/smp_ros-release.git
   vcs: git
@@ -8805,11 +8837,11 @@ warehouse_ros:
 warthog_control:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
-  version: release/kinetic/warthog_control/0.1.0-0
+  version: release/kinetic/warthog_control/0.1.1-1
 warthog_description:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
-  version: release/kinetic/warthog_description/0.1.0-0
+  version: release/kinetic/warthog_description/0.1.1-1
 warthog_desktop:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
@@ -8817,7 +8849,7 @@ warthog_desktop:
 warthog_msgs:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
-  version: release/kinetic/warthog_msgs/0.1.0-0
+  version: release/kinetic/warthog_msgs/0.1.1-1
 warthog_viz:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
