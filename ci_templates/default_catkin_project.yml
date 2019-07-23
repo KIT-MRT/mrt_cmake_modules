@@ -37,7 +37,7 @@ build:
     - doxygen
     expire_in: 6 mos
 
-general_code_quality:
+.general_code_quality:
   stage: build
   only: [master, merge_requests]
   image: docker:18.09
