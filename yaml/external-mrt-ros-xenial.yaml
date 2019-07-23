@@ -1406,6 +1406,10 @@ driver_common:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
   version: release/kinetic/driver_common/1.6.8-0
+drone_wrapper:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/kinetic/drone_wrapper/0.0.1-1
 dsr_control:
   url: https://github.com/doosan-robotics/doosan-robot-release.git
   vcs: git
@@ -2958,6 +2962,10 @@ jaguar_navigation:
   url: https://github.com/gstavrinos/jaguar-release.git
   vcs: git
   version: release/kinetic/jaguar_navigation/0.1.0-0
+jderobot_assets:
+  url: https://github.com/JdeRobot/assets-release.git
+  vcs: git
+  version: release/kinetic/jderobot_assets/0.0.1-1
 jog_arm:
   url: https://github.com/UTNuclearRoboticsPublic/jog_arm-release.git
   vcs: git
@@ -7098,6 +7106,10 @@ rqt_controller_manager:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
   version: release/kinetic/rqt_controller_manager/0.13.3-0
+rqt_drone_teleop:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/kinetic/rqt_drone_teleop/0.0.1-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
