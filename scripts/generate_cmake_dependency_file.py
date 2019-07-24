@@ -13,6 +13,7 @@ Created on Jul 1, 2015
 @license: GPLv3
 @version: 1.0.0
 '''
+from __future__ import print_function
 
 import os
 import sys
@@ -21,6 +22,11 @@ import platform
 import xml.etree.ElementTree as ET
 import yaml
 from catkin_pkg.packages import find_packages
+
+import sys
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 class PackageType:
     """Package type. This can be either a catkin package or an other one."""
@@ -197,6 +203,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     
     #variable used to hold the Dependency classes from the package xml
     depends = []
+    cuda_depends = []
     
     for child in root:
         depend = Dependency()
@@ -218,6 +225,10 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             depend.build_depend = False
             depend.build_export_depend = False
             depend.test_depend = True
+        elif child.tag == "export":
+            for export_child in child:
+                if export_child.tag == "cuda_depend":
+                    cuda_depends.append(export_child.text)
         else:
             continue
         
@@ -231,6 +242,21 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             depend.packageType = PackageType.other
         
         depends.append(depend)
+
+    #check CUDA depends and categorize them as either catkin or other package
+    depends_names = {d.name for d in depends}
+    cuda_catkin_depends = []
+    cuda_other_depends = []
+    for cuda_depend in cuda_depends:
+        if cuda_depend not in depends_names:
+            raise Exception(("CUDA package {0} specified as dependency but not specified "
+                             "as regular <depend...>. Please add a depend like <depend>{0}"
+                             "</depend> to your package.xml.").format(cuda_depend))
+
+        if cuda_depend in catkin_packages:
+            cuda_catkin_depends.append(cuda_depend)
+        else:
+            cuda_other_depends.append(cuda_depend)
     
     #generate output file
     f = open(outputFile, "w")
@@ -244,7 +270,6 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     packages = set()
     for depend in depends:
         packages.add(depend.name)
-        #packages += " " + depend.name
     
     f.write("set(DEPENDEND_PACKAGES %s)\n" % ' '.join(packages))
     
@@ -289,6 +314,12 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         packages.add(depend.name)
         
     f.write("set(_OTHER_TEST_PACKAGES_ %s)\n" % ' '.join(packages))
+
+    #write CUDA catkin / other packages
+    if cuda_catkin_depends:
+        f.write("set(_CUDA_CATKIN_PACKAGES_ %s)\n" % ' '.join(cuda_catkin_depends))
+    if cuda_other_depends:
+        f.write("set(_CUDA_OTHER_PACKAGES_ %s)\n" % ' '.join(cuda_other_depends))
     
     #write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):
@@ -304,4 +335,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             f.write("set(_" + depend.name + "_CMAKE_COMPONENTS_ " + ' '.join(cmakeData.components) + ")\n")
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], sys.argv[3])
+    try:
+        main(sys.argv[1], sys.argv[2], sys.argv[3])
+    except BaseException, e:
+        eprint(str(e))
+        sys.exit(1)
