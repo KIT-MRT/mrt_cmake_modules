@@ -520,6 +520,10 @@ function(mrt_add_library libname)
             cuda_add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
         else()
             add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            # We cannot link to all libraries as nvcc does not unterstand all the flags
+            # etc. which could be passed to target_link_libraries as a target. So the
+            # dependencies were added to the mrt_CUDA_LIBRARIES variable.
+            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
@@ -637,19 +641,13 @@ function(mrt_add_executable execname)
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
-            # Build a separate object file and link it in a shared library file. Otherwise there
-            # are problems using gcov.
-            set(CUDA_TARGET_NAME_OBJECT _${EXEC_TARGET_NAME}_cuda_object)
-            add_library(${CUDA_TARGET_NAME_OBJECT} OBJECT ${_MRT_CUDA_SOURCES_FILES})
-            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY POSITION_INDEPENDENT_CODE ON)
-            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
-
-            add_library(${CUDA_TARGET_NAME} SHARED $<TARGET_OBJECTS:${CUDA_TARGET_NAME_OBJECT}>)
-            target_link_libraries(${CUDA_TARGET_NAME}
-                ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
-                ${MRT_ADD_EXECUTABLE_LIBRARIES}
-                ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            # We cannot link to all libraries as nvcc does not unterstand all the flags
+            # etc. which could be passed to target_link_libraries as a target. So the
+            # dependencies were added to the mrt_CUDA_LIBRARIES variable.
+            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
 
         # link cuda library to executable
