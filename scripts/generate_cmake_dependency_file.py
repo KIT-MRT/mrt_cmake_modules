@@ -181,6 +181,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     
     #variable used to hold the Dependency classes from the package xml
     depends = []
+    cuda_depends = []
     
     for child in root:
         depend = Dependency()
@@ -202,6 +203,10 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             depend.build_depend = False
             depend.build_export_depend = False
             depend.test_depend = True
+        elif child.tag == "export":
+            for export_child in child:
+                if export_child.tag == "cuda_depend":
+                    cuda_depends.append(export_child.text)
         else:
             continue
         
@@ -215,6 +220,20 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             depend.packageType = PackageType.other
         
         depends.append(depend)
+
+    #check CUDA depends and categorize them as either catkin or other package
+    depends_names = {d.name for d in depends}
+    cuda_catkin_depends = []
+    cuda_other_depends = []
+    for cuda_depend in cuda_depends:
+        if cuda_depend not in depends_names:
+            raise Exception("CUDA package {1} specified as dependency but not specified as regular"
+                            "<depend...>. Please add a depend like <depend>{1}</depend> to your package.xml".format(cuda_depend))
+
+        if cuda_depend in catkin_packages:
+            cuda_catkin_depends.append(cuda_depend)
+        else:
+            cuda_other_depends.append(cuda_depend)
     
     #generate output file
     f = open(outputFile, "w")
@@ -228,7 +247,6 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     packages = set()
     for depend in depends:
         packages.add(depend.name)
-        #packages += " " + depend.name
     
     f.write("set(DEPENDEND_PACKAGES %s)\n" % ' '.join(packages))
     
@@ -273,6 +291,12 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         packages.add(depend.name)
         
     f.write("set(_OTHER_TEST_PACKAGES_ %s)\n" % ' '.join(packages))
+
+    #write CUDA catkin / other packages
+    if cuda_catkin_depends:
+        f.write("set(_CUDA_CATKIN_PACKAGES_ %s)\n" % ' '.join(cuda_catkin_depends))
+    if cuda_other_depends:
+        f.write("set(_CUDA_OTHER_PACKAGES_ %s)\n" % ' '.join(cuda_other_depends))
     
     #write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):
