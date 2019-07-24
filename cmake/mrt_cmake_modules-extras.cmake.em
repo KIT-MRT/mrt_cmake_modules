@@ -620,7 +620,7 @@ function(mrt_add_executable execname)
         PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
         )
     add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
-    target_link_libraries(${EXEC_TARGET_NAME}
+    target_link_libraries(${EXEC_TARGET_NAME} PRIVATE
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
@@ -641,6 +641,7 @@ function(mrt_add_executable execname)
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
+            message(STATUS "Adding ${_MRT_CUDA_SOURCES_FILES} files.")
             add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
             # We cannot link to all libraries as nvcc does not unterstand all the flags
             # etc. which could be passed to target_link_libraries as a target. So the
@@ -651,7 +652,7 @@ function(mrt_add_executable execname)
         endif()
 
         # link cuda library to executable
-        target_link_libraries(${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME})
+        target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
     endif()
 
     # append to list of all targets in this project
