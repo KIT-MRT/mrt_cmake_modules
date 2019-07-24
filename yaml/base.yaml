@@ -7,7 +7,7 @@ aravis:
     library_dirs: []
     name: Aravis
   ubuntu:
-  - libaravis-dev
+  - mrt-libaravis-dev
 armadillo:
   cmake:
     include_dirs:
@@ -48,6 +48,16 @@ boost-python:
   ubuntu:
     - libpython-dev
     - libboost-python-dev
+libboost-python: # official rosdep key
+  cmake:
+    include_dirs:
+      - BoostPython_INCLUDE_DIRS
+    libraries:
+      - BoostPython_LIBRARIES
+    name: BoostPython
+  ubuntu:
+    - libpython-dev
+    - libboost-python-dev
 cuda:
   cmake:
     components: []
@@ -64,15 +74,6 @@ cuda:
     bionic:
       - cuda-toolkit-10-0
       - g++-7
-ebus:
-  cmake:
-    components: []
-    include_dirs:
-    - ebus-sdk_INCLUDE_DIRS
-    libraries:
-    - ebus-sdk_LIBRARIES
-    library_dirs: []
-    name: ebus-sdk
 eigen:
   cmake:
     components: []
@@ -177,6 +178,17 @@ libcairo2-dev:
     library_dirs: []
     name: Cairo
 libgeographic-dev:
+  cmake:
+    components: []
+    include_dirs:
+    - GeographicLib_INCLUDE_DIRS
+    libraries:
+    - GeographicLib_LIBRARIES
+    library_dirs: []
+    name: GeographicLib
+  ubuntu:
+  - libgeographic-dev
+geographiclib: # official rosdep key
   cmake:
     components: []
     include_dirs:
@@ -296,12 +308,7 @@ libxrandr-dev:
   - libxrandr-dev
 mbed_cli:
   ubuntu:
-    xenial:
-      pip:
-        packages: [mbed-cli]
-    bionic:
-      pip:
-        packages: [mbed-cli]
+  - mrt-mbed-cli
 mesa-common-dev:
   ubuntu:
   - mesa-common-dev
@@ -644,7 +651,10 @@ png:
     library_dirs: []
     name: PNG
   ubuntu:
-  - libpng12-dev
+    xenial:
+    - libpng12-dev
+    bionic:
+    - libpng-dev
 png++:
   cmake:
     components: []
@@ -668,6 +678,17 @@ poco:
   ubuntu:
   - libpoco-dev
 pugixml:
+  cmake:
+    components: []
+    include_dirs:
+    - PUGIXML_INCLUDE_DIRS
+    libraries:
+    - PUGIXML_LIBRARIES
+    library_dirs: []
+    name: pugixml
+  ubuntu:
+  - libpugixml-dev
+pugixml-dev: # official rosdep key
   cmake:
     components: []
     include_dirs:
@@ -723,7 +744,7 @@ sdl2:
 tbb:
   cmake:
     include_dirs:
-    - TBB_INCLUDE_DIRS
+    - TBB_INCLUDE_DIR
     libraries:
     - TBB_LIBRARIES
     name: TBB

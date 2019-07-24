@@ -167,15 +167,16 @@ endmacro()
 # Glob for folders in the search directory.
 function(mrt_glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
     if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} ${SEARCH_DIRECTORY}/[^.]*)
+        file(GLOB DIRECTORIES "${SEARCH_DIRECTORY}/[^.]*")
     else()
-        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} CONFIGURE_DEPENDS ${SEARCH_DIRECTORY}/[^.]*)
+        file(GLOB DIRECTORIES CONFIGURE_DEPENDS "${SEARCH_DIRECTORY}/[^.]*")
     endif()
 
     set(_DIRECTORY_LIST_ "")
     foreach(SRC_DIR ${DIRECTORIES})
-        if(IS_DIRECTORY ${SEARCH_DIRECTORY}/${SRC_DIR})
-            list(APPEND _DIRECTORY_LIST_ ${SRC_DIR})
+        if(IS_DIRECTORY "${SRC_DIR}")
+            get_filename_component(DIRECTORY_NAME "${SRC_DIR}" NAME)
+            list(APPEND _DIRECTORY_LIST_ ${DIRECTORY_NAME})
         endif()
     endforeach()
     set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
@@ -360,7 +361,7 @@ function(mrt_add_python_api modulename)
     endif()
 
     if (NOT DEFINED BoostPython_FOUND)
-        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>boost-python</depend>' to 'package.xml'")
+        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>libboost-python</depend>' to 'package.xml'")
     endif()
 
     # put in devel folder
@@ -371,14 +372,15 @@ function(mrt_add_python_api modulename)
     foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
         get_filename_component(SUBMODULE_NAME ${API_FILE} NAME_WE)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
-        set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_${SUBMODULE_NAME}_pyapi")
+        set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
         add_library( ${TARGET_NAME}
             ${API_FILE}
             )
-        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${LIBRARY_NAME})
+        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         set_target_properties(${TARGET_NAME}
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+            PREFIX ""
             )
         target_link_libraries( ${TARGET_NAME}
             ${PYTHON_LIBRARY}
@@ -392,7 +394,7 @@ function(mrt_add_python_api modulename)
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
-            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/${SUBMODULE_NAME}.py
+            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}>
             WORKING_DIRECTORY ${PREFIX}
             COMMENT "Copying library files to python directory"
             )
@@ -859,6 +861,7 @@ function(mrt_add_ros_tests folder)
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_ros_tests "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_ros_test ${_ros_tests})
         get_filename_component(_test_name ${_ros_test} NAME_WE)
@@ -882,6 +885,8 @@ function(mrt_add_ros_tests folder)
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main
                 )
+            target_include_directories(${TEST_TARGET_NAME}
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
@@ -911,7 +916,8 @@ endfunction()
 # :type DEPENDS: list of strings
 #
 #
-# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Unittests will be executed with the folder as cwd if ctest or the run_test target is used. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Another way of getting the location of the project root folder path is to ``#include "test/test_utility.hpp"`` and use the variable ``<project_name>::test::projectRootDir``.
 #
 # Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 #
@@ -929,6 +935,7 @@ function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
@@ -950,6 +957,9 @@ function(mrt_add_tests folder)
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
+            target_include_directories(${TEST_TARGET_NAME} 
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
+
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )

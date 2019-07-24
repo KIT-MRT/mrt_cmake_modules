@@ -1,6 +1,6 @@
 variables:
   GIT_STRATEGY: none
-  CONTAINER_REGISTRY: gitlab.mrt.uni-karlsruhe.de:21443/mrt/mrt_build
+  CONTAINER_REGISTRY: ${CI_REGISTRY}/mrt/misc/mrt_build
 
 cache:
   key: "empty"
@@ -32,33 +32,6 @@ build_src:
     - ./*.gz
     name: "orig"
 
-build_xenial:
-  image: $CONTAINER_REGISTRY/mrt_packaging:16.04
-  stage: build
-  tags:
-  - packaging
-  only:
-  - xenial
-  - debian
-  script:
-  - git clone --recurse-submodules $CI_REPOSITORY_URL $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME
-  - cd $CI_PROJECT_NAME
-  - pwd && ls
-  - sudo apt update
-  - mrtdeb_install_build_dependencies
-  - mrtdeb_increment_version
-  - gbp buildpackage --git-submodules
-  artifacts:
-    paths:
-    - ./*.deb
-    - ./*.xz
-    - ./*.gz
-    - ./*.build
-    - ./*.buildinfo
-    - ./*.changes
-    - ./*.dsc
-    name: "debian_package"
-
 build_bionic:
   image: $CONTAINER_REGISTRY/mrt_packaging:18.04
   stage: build
@@ -86,22 +59,6 @@ build_bionic:
     - ./*.changes
     - ./*.dsc
     name: "debian_package"
-
-release_xenial:
-  image: $CONTAINER_REGISTRY/mrt_packaging:16.04
-  stage: deploy
-  tags:
-  - packaging
-  when: manual
-  only:
-  - xenial
-  - debian
-  variables:
-    GIT_STRATEGY: none
-  dependencies:
-  - build_xenial
-  script:
-  - reprepro -b $REPOSITORY -v --waitforlock 1000 --ignore=wrongdistribution include $DISTRIBUTION *.changes
 
 release_bionic:
   image: $CONTAINER_REGISTRY/mrt_packaging:18.04
