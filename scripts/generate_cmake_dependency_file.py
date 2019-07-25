@@ -13,6 +13,7 @@ Created on Jul 1, 2015
 @license: GPLv3
 @version: 1.0.0
 '''
+from __future__ import print_function
 
 import os
 import sys
@@ -21,6 +22,11 @@ import platform
 import xml.etree.ElementTree as ET
 import yaml
 from catkin_pkg.packages import find_packages
+
+import sys
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 class PackageType:
     """Package type. This can be either a catkin package or an other one."""
@@ -243,8 +249,9 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     cuda_other_depends = []
     for cuda_depend in cuda_depends:
         if cuda_depend not in depends_names:
-            raise Exception("CUDA package {1} specified as dependency but not specified as regular"
-                            "<depend...>. Please add a depend like <depend>{1}</depend> to your package.xml".format(cuda_depend))
+            raise Exception(("CUDA package {0} specified as dependency but not specified "
+                             "as regular <depend...>. Please add a depend like <depend>{0}"
+                             "</depend> to your package.xml.").format(cuda_depend))
 
         if cuda_depend in catkin_packages:
             cuda_catkin_depends.append(cuda_depend)
@@ -328,4 +335,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             f.write("set(_" + depend.name + "_CMAKE_COMPONENTS_ " + ' '.join(cmakeData.components) + ")\n")
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], sys.argv[3])
+    try:
+        main(sys.argv[1], sys.argv[2], sys.argv[3])
+    except BaseException, e:
+        eprint(str(e))
+        sys.exit(1)
