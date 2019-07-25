@@ -27,10 +27,9 @@ coverage:
 boost:
   cmake:
     components:
-    - math_c99l wserialization math_tr1l thread random serialization log_setup prg_exec_monitor
-      wave system signals chrono math_c99 filesystem locale timer math_tr1
-      date_time regex graph program_options unit_test_framework math_tr1f math_c99f
-      log atomic
+    - wserialization thread random serialization log_setup prg_exec_monitor
+      wave system signals chrono filesystem locale timer date_time regex graph 
+      program_options unit_test_framework log atomic
     include_dirs:
     - Boost_INCLUDE_DIRS
     libraries:
