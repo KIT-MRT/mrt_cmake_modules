@@ -185,7 +185,7 @@ autoware_system_msgs:
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
-  version: release/melodic/aws_common/2.0.0-2
+  version: release/melodic/aws_common/2.1.0-1
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
@@ -349,19 +349,19 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logger/2.1.0-1
+  version: release/melodic/cloudwatch_logger/2.1.0-2
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logs_common/1.0.2-1
+  version: release/melodic/cloudwatch_logs_common/1.1.0-1
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_collector/2.0.0-0
+  version: release/melodic/cloudwatch_metrics_collector/2.1.0-1
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_common/1.0.2-1
+  version: release/melodic/cloudwatch_metrics_common/1.1.0-1
 cnn_bridge:
   url: https://github.com/wew84/cnn_bridge-release.git
   vcs: git
@@ -466,6 +466,10 @@ cv_camera:
   url: https://github.com/OTL/cv_camera-release.git
   vcs: git
   version: release/melodic/cv_camera/0.4.0-1
+dataflow_lite:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/melodic/dataflow_lite/1.1.0-1
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
@@ -1078,6 +1082,10 @@ fiducials:
   url: https://github.com/UbiquityRobotics-release/fiducials-release.git
   vcs: git
   version: release/melodic/fiducials/0.11.0-1
+file_management:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/melodic/file_management/1.1.0-1
 find_object_2d:
   url: https://github.com/introlab/find_object_2d-release.git
   vcs: git
