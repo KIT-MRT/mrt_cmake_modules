@@ -305,7 +305,7 @@ avt_vimba_camera:
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
-  version: release/kinetic/aws_common/2.0.0-2
+  version: release/kinetic/aws_common/2.1.0-1
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
@@ -577,19 +577,19 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logger/2.1.0-2
+  version: release/kinetic/cloudwatch_logger/2.1.0-3
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logs_common/1.0.2-1
+  version: release/kinetic/cloudwatch_logs_common/1.1.0-2
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_metrics_collector/2.0.0-1
+  version: release/kinetic/cloudwatch_metrics_collector/2.1.0-1
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_metrics_common/1.0.2-1
+  version: release/kinetic/cloudwatch_metrics_common/1.1.0-2
 cm_740_module:
   url: https://github.com/ROBOTIS-GIT-release/ROBOTIS-OP3-release.git
   vcs: git
@@ -1162,6 +1162,10 @@ dartsim:
   url: https://github.com/dartsim/ros-dartsim-release.git
   vcs: git
   version: release/kinetic/dartsim/6.3.1-2
+dataflow_lite:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/kinetic/dataflow_lite/1.1.0-2
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
@@ -1970,6 +1974,10 @@ fiducials:
   url: https://github.com/UbiquityRobotics-release/fiducials-release.git
   vcs: git
   version: release/kinetic/fiducials/0.11.0-1
+file_management:
+  url: https://github.com/aws-gbp/cloudwatch_common-release.git
+  vcs: git
+  version: release/kinetic/file_management/1.1.0-2
 find_object_2d:
   url: https://github.com/introlab/find_object_2d-release.git
   vcs: git
