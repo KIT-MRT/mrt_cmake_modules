@@ -577,7 +577,7 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/kinetic/cloudwatch_logger/2.1.0-3
+  version: release/kinetic/cloudwatch_logger/2.2.0-1
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
