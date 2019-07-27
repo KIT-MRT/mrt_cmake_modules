@@ -349,7 +349,7 @@ clock_relay:
 cloudwatch_logger:
   url: https://github.com/aws-gbp/cloudwatch_logger-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logger/2.2.0-1
+  version: release/melodic/cloudwatch_logger/2.2.1-1
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -357,7 +357,7 @@ cloudwatch_logs_common:
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_collector/2.1.0-1
+  version: release/melodic/cloudwatch_metrics_collector/2.1.1-1
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -893,11 +893,11 @@ ethercat_grant:
 ethercat_hardware:
   url: https://github.com/pr2-gbp/pr2_ethercat_drivers-release.git
   vcs: git
-  version: release/melodic/ethercat_hardware/1.8.18-0
+  version: release/melodic/ethercat_hardware/1.8.19-1
 ethercat_trigger_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/ethercat_trigger_controllers/1.10.15-1
+  version: release/melodic/ethercat_trigger_controllers/1.10.16-1
 eus_assimp:
   url: https://github.com/tork-a/jsk_model_tools-release.git
   vcs: git
@@ -1093,7 +1093,7 @@ find_object_2d:
 fingertip_pressure:
   url: https://github.com/pr2-gbp/pr2_ethercat_drivers-release.git
   vcs: git
-  version: release/melodic/fingertip_pressure/1.8.18-0
+  version: release/melodic/fingertip_pressure/1.8.19-1
 fkie_message_filters:
   url: https://github.com/fkie-release/message_filters-release.git
   vcs: git
@@ -1553,7 +1553,7 @@ joint_states_settler:
 joint_trajectory_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/joint_trajectory_action/1.10.15-1
+  version: release/melodic/joint_trajectory_action/1.10.16-1
 joint_trajectory_action_tools:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
@@ -2977,7 +2977,7 @@ pr2_arm_move_ik:
 pr2_calibration_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_calibration_controllers/1.10.15-1
+  version: release/melodic/pr2_calibration_controllers/1.10.16-1
 pr2_common:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -3005,11 +3005,11 @@ pr2_controller_manager:
 pr2_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_controllers/1.10.15-1
+  version: release/melodic/pr2_controllers/1.10.16-1
 pr2_controllers_msgs:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_controllers_msgs/1.10.15-1
+  version: release/melodic/pr2_controllers_msgs/1.10.16-1
 pr2_dashboard_aggregator:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -3021,7 +3021,7 @@ pr2_description:
 pr2_ethercat_drivers:
   url: https://github.com/pr2-gbp/pr2_ethercat_drivers-release.git
   vcs: git
-  version: release/melodic/pr2_ethercat_drivers/1.8.18-0
+  version: release/melodic/pr2_ethercat_drivers/1.8.19-1
 pr2_gazebo:
   url: https://github.com/pr2-gbp/pr2_simulator-release.git
   vcs: git
@@ -3033,7 +3033,7 @@ pr2_gazebo_plugins:
 pr2_gripper_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_gripper_action/1.10.15-1
+  version: release/melodic/pr2_gripper_action/1.10.16-1
 pr2_hardware_interface:
   url: https://github.com/pr2-gbp/pr2_mechanism-release.git
   vcs: git
@@ -3041,7 +3041,7 @@ pr2_hardware_interface:
 pr2_head_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_head_action/1.10.15-1
+  version: release/melodic/pr2_head_action/1.10.16-1
 pr2_kinematics:
   url: https://github.com/pr2-gbp/pr2_kinematics-release.git
   vcs: git
@@ -3061,7 +3061,7 @@ pr2_mechanism:
 pr2_mechanism_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/pr2_mechanism_controllers/1.10.15-1
+  version: release/melodic/pr2_mechanism_controllers/1.10.16-1
 pr2_mechanism_diagnostics:
   url: https://github.com/pr2-gbp/pr2_mechanism-release.git
   vcs: git
@@ -3461,7 +3461,7 @@ robot_localization:
 robot_mechanism_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/robot_mechanism_controllers/1.10.15-1
+  version: release/melodic/robot_mechanism_controllers/1.10.16-1
 robot_navigation:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -3969,7 +3969,7 @@ simple_message:
 single_joint_position_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
-  version: release/melodic/single_joint_position_action/1.10.15-1
+  version: release/melodic/single_joint_position_action/1.10.16-1
 slam_gmapping:
   url: https://github.com/ros-gbp/slam_gmapping-release.git
   vcs: git
