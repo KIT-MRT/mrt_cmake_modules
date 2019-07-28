@@ -1729,7 +1729,7 @@ key_teleop:
 kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
-  version: release/melodic/kinesis_manager/2.0.0-0
+  version: release/melodic/kinesis_manager/2.0.1-1
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
