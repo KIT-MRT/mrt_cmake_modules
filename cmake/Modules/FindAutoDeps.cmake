@@ -27,6 +27,8 @@
 #mrt_INCLUDE_DIRS: Contains all include directories used for building the package
 #mrt_LIBRARY_DIRS: Contains all library directories used for building the package
 #mrt_LIBRARIES: Contains all libraries used for building the package
+#mrt_CUDA_LIBRARIES: Contains all libraries which needs to be linked into cuda code.
+#mrt_TEST_LIBRARIES: Contains all libraries which needs to be linked to test executables.
 #mrt_EXPORT_INCLUDE_DIRS: Contains all include directories which dependend packages also need for building
 #mrt_EXPORT_LIBRARIES: Contains all libraries which dependend packages also need for building
 
@@ -35,6 +37,7 @@ set(mrt_EXPORT_INCLUDE_DIRS "")
 set(mrt_LIBRARIES "")
 set(mrt_EXPORT_LIBRARIES "")
 set(mrt_CUDA_LIBRARIES "")
+set(mrt_TEST_LIBRARIES "")
 set(mrt_LIBRARY_DIRS "")
 
 if (AutoDeps_FIND_COMPONENTS)
@@ -48,24 +51,28 @@ if (AutoDeps_FIND_COMPONENTS)
 		list(FIND _CATKIN_PACKAGES_ ${component} res)
 		if(NOT ${res} EQUAL -1)
 			list(APPEND _CATKIN_SELECTED_PACKAGES_ ${component})
-		else()
-			list(FIND _OTHER_PACKAGES_ ${component} res)
-			if(NOT ${res} EQUAL -1)
-				list(APPEND _OTHER_SELECTED_PACKAGES_ ${component})
-			else()
-				list(FIND _CATKIN_TEST_PACKAGES_ ${component} res)
-				if(NOT ${res} EQUAL -1)
-					list(APPEND _CATKIN_TEST_SELECTED_PACKAGES_ ${component})
-				else()
-					list(FIND _OTHER_TEST_PACKAGES_ ${component} res)
-					if(NOT ${res} EQUAL -1)
-						list(APPEND _OTHER_TEST_SELECTED_PACKAGES_ ${component})
-					else()
-						message(SEND_ERROR "Package ${component} specified but not found in package.xml. This package is ignored.")
-					endif()
-				endif()
-			endif()
+			continue()
 		endif()
+
+		list(FIND _OTHER_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _OTHER_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		list(FIND _CATKIN_TEST_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _CATKIN_TEST_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		list(FIND _OTHER_TEST_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _OTHER_TEST_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		message(SEND_ERROR "Package ${component} specified but not found in package.xml. This package is ignored.")
 	endforeach()
 	
 	if(CATKIN_ENABLE_TESTING)
@@ -124,7 +131,14 @@ if (AutoDeps_FIND_COMPONENTS)
 				message(FATAL_ERROR "Package ${other_package}: Specified libraries variable ${${_${other_package}_CMAKE_LIBRARIES_}} not set.")
 			endif()
 
-			list(APPEND mrt_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+			# Append all libraries to link against a test executable (regular and test only).
+			list(APPEND mrt_TEST_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+
+			list(FIND _OTHER_PACKAGES_ ${other_package} res)
+			if(NOT ${res} EQUAL -1)
+				list(APPEND mrt_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+			endif()
+
 			list(FIND _OTHER_EXPORT_PACKAGES_ ${other_package} res)
 			if(NOT ${res} EQUAL -1)
 				list(APPEND mrt_EXPORT_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
