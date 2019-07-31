@@ -880,7 +880,7 @@ function(mrt_add_ros_tests folder)
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
+                ${mrt_TEST_LIBRARIES}
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
@@ -950,7 +950,7 @@ function(mrt_add_tests folder)
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
+                ${mrt_TEST_LIBRARIES}
                 ${MRT_ADD_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
