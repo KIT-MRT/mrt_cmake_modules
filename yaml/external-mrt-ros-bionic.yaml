@@ -1534,6 +1534,10 @@ jackal_description:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
   version: release/melodic/jackal_description/0.6.3-1
+jackal_desktop:
+  url: https://github.com/clearpath-gbp/jackal_desktop-release.git
+  vcs: git
+  version: release/melodic/jackal_desktop/0.3.2-1
 jackal_msgs:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
@@ -1546,6 +1550,10 @@ jackal_tutorials:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
   version: release/melodic/jackal_tutorials/0.6.3-1
+jackal_viz:
+  url: https://github.com/clearpath-gbp/jackal_desktop-release.git
+  vcs: git
+  version: release/melodic/jackal_viz/0.3.2-1
 joint_states_settler:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -3317,7 +3325,7 @@ rc_dynamics_api:
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/melodic/rc_genicam_api/2.2.0-1
+  version: release/melodic/rc_genicam_api/2.2.2-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
@@ -3410,6 +3418,10 @@ ridgeback_description:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
   version: release/melodic/ridgeback_description/0.2.2-2
+ridgeback_desktop:
+  url: https://github.com/clearpath-gbp/ridgeback_desktop-release.git
+  vcs: git
+  version: release/melodic/ridgeback_desktop/0.1.1-1
 ridgeback_msgs:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
@@ -3418,6 +3430,10 @@ ridgeback_navigation:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
   version: release/melodic/ridgeback_navigation/0.2.2-2
+ridgeback_viz:
+  url: https://github.com/clearpath-gbp/ridgeback_desktop-release.git
+  vcs: git
+  version: release/melodic/ridgeback_viz/0.1.1-1
 robot_activity:
   url: https://github.com/snt-robotics/robot_activity-release.git
   vcs: git
@@ -3433,7 +3449,7 @@ robot_activity_tutorials:
 robot_body_filter:
   url: https://github.com/peci1/robot_body_filter-release.git
   vcs: git
-  version: release/melodic/robot_body_filter/1.1.0-1
+  version: release/melodic/robot_body_filter/1.1.2-1
 robot_calibration:
   url: https://github.com/ros-gbp/robot_calibration-release.git
   vcs: git
@@ -4718,10 +4734,18 @@ warthog_description:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
   version: release/melodic/warthog_description/0.1.1-2
+warthog_desktop:
+  url: https://github.com/clearpath-gbp/warthog_desktop-release.git
+  vcs: git
+  version: release/melodic/warthog_desktop/0.0.1-1
 warthog_msgs:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
   version: release/melodic/warthog_msgs/0.1.1-2
+warthog_viz:
+  url: https://github.com/clearpath-gbp/warthog_desktop-release.git
+  vcs: git
+  version: release/melodic/warthog_viz/0.0.1-1
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
