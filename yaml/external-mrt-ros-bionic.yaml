@@ -189,7 +189,7 @@ aws_common:
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
-  version: release/melodic/aws_ros1_common/2.0.0-0
+  version: release/melodic/aws_ros1_common/2.0.1-1
 backward_ros:
   url: https://github.com/pal-gbp/backward_ros-release.git
   vcs: git
@@ -1325,15 +1325,15 @@ gscam:
 h264_encoder_core:
   url: https://github.com/aws-gbp/h264_encoder_core-release.git
   vcs: git
-  version: release/melodic/h264_encoder_core/2.0.0-0
+  version: release/melodic/h264_encoder_core/2.0.1-1
 h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
-  version: release/melodic/h264_video_encoder/1.1.2-1
+  version: release/melodic/h264_video_encoder/1.1.3-1
 health_metric_collector:
   url: https://github.com/aws-gbp/health_metric_collector-release.git
   vcs: git
-  version: release/melodic/health_metric_collector/2.0.0-0
+  version: release/melodic/health_metric_collector/2.0.1-1
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
@@ -1538,6 +1538,10 @@ jackal_desktop:
   url: https://github.com/clearpath-gbp/jackal_desktop-release.git
   vcs: git
   version: release/melodic/jackal_desktop/0.3.2-1
+jackal_gazebo:
+  url: https://github.com/clearpath-gbp/jackal_simulator-release.git
+  vcs: git
+  version: release/melodic/jackal_gazebo/0.3.0-1
 jackal_msgs:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
@@ -1546,6 +1550,10 @@ jackal_navigation:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
   version: release/melodic/jackal_navigation/0.6.3-1
+jackal_simulator:
+  url: https://github.com/clearpath-gbp/jackal_simulator-release.git
+  vcs: git
+  version: release/melodic/jackal_simulator/0.3.0-1
 jackal_tutorials:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
@@ -1741,11 +1749,11 @@ kinesis_manager:
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/melodic/kinesis_video_msgs/2.0.1-0
+  version: release/melodic/kinesis_video_msgs/2.0.2-1
 kinesis_video_streamer:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/melodic/kinesis_video_streamer/2.0.1-0
+  version: release/melodic/kinesis_video_streamer/2.0.2-1
 kobuki_core:
   url: https://github.com/yujinrobot-release/kobuki_core-release.git
   vcs: git
@@ -1805,11 +1813,11 @@ leg_detector:
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/melodic/lex_common_msgs/2.0.0-0
+  version: release/melodic/lex_common_msgs/2.0.1-1
 lex_node:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/melodic/lex_node/2.0.0-0
+  version: release/melodic/lex_node/2.0.1-1
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
@@ -2078,6 +2086,10 @@ md49_serialport:
   url: https://github.com/Scheik/md49_base_controller-release.git
   vcs: git
   version: release/melodic/md49_serialport/0.1.4-1
+mecanum_gazebo_plugin:
+  url: https://github.com/clearpath-gbp/ridgeback_simulator-release.git
+  vcs: git
+  version: release/melodic/mecanum_gazebo_plugin/0.1.0-1
 message_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
@@ -3422,6 +3434,14 @@ ridgeback_desktop:
   url: https://github.com/clearpath-gbp/ridgeback_desktop-release.git
   vcs: git
   version: release/melodic/ridgeback_desktop/0.1.1-1
+ridgeback_gazebo:
+  url: https://github.com/clearpath-gbp/ridgeback_simulator-release.git
+  vcs: git
+  version: release/melodic/ridgeback_gazebo/0.1.0-1
+ridgeback_gazebo_plugins:
+  url: https://github.com/clearpath-gbp/ridgeback_simulator-release.git
+  vcs: git
+  version: release/melodic/ridgeback_gazebo_plugins/0.1.0-1
 ridgeback_msgs:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
@@ -3430,6 +3450,10 @@ ridgeback_navigation:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
   version: release/melodic/ridgeback_navigation/0.2.2-2
+ridgeback_simulator:
+  url: https://github.com/clearpath-gbp/ridgeback_simulator-release.git
+  vcs: git
+  version: release/melodic/ridgeback_simulator/0.1.0-1
 ridgeback_viz:
   url: https://github.com/clearpath-gbp/ridgeback_desktop-release.git
   vcs: git
@@ -3609,7 +3633,7 @@ ros_introspection:
 ros_monitoring_msgs:
   url: https://github.com/aws-gbp/ros_monitoring_msgs-release.git
   vcs: git
-  version: release/melodic/ros_monitoring_msgs/1.0.0-0
+  version: release/melodic/ros_monitoring_msgs/1.0.1-1
 ros_pytest:
   url: https://github.com/machinekoder/ros_pytest-release.git
   vcs: git
@@ -4293,7 +4317,7 @@ trajectory_tracker_rviz_plugins:
 tts:
   url: https://github.com/aws-gbp/tts-release.git
   vcs: git
-  version: release/melodic/tts/1.0.1-0
+  version: release/melodic/tts/1.0.2-1
 turtlebot3:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
