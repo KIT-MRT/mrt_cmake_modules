@@ -39,7 +39,7 @@ build:
 
 general_code_quality:
   stage: build
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   image: docker:18.09
   before_script: []
   cache: {}
@@ -66,7 +66,7 @@ code_quality:
   dependencies:
     - general_code_quality
   stage: test
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   artifacts:
     paths: [gl-code-quality-report.json]
     reports:
@@ -85,7 +85,7 @@ check_code_quality:
   dependencies:
     - code_quality
   stage: verify
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   # default filename is codeclimate.json
   script:
   - mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
@@ -120,7 +120,7 @@ test:
 
 report_licenses:
   stage: verify
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   script:
   - mrt ws resolve_deps -y
   - mrt ci report_licenses .
@@ -131,7 +131,7 @@ report_licenses:
  
 deps:
   stage: verify
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   variables:
     MRT_CI_NO_TIDY: 1
   cache:
