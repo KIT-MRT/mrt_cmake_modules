@@ -509,6 +509,10 @@ function(mrt_add_library libname)
 
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
+        if (NOT DEFINED CUDA_FOUND)
+            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
+        endif()
+
         # generate cuda target
         set(CUDA_TARGET_NAME _${LIBRARY_TARGET_NAME}_cuda)
         # NVCC does not like '-' in file names.
@@ -631,6 +635,10 @@ function(mrt_add_executable execname)
 
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
+        if (NOT DEFINED CUDA_FOUND)
+            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
+        endif()
+
         # generate cuda target
         set(CUDA_TARGET_NAME _${EXEC_TARGET_NAME}_cuda)
 
