@@ -309,7 +309,7 @@ aws_common:
 aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
-  version: release/kinetic/aws_ros1_common/2.0.0-1
+  version: release/kinetic/aws_ros1_common/2.0.1-1
 axcli:
   url: https://github.com/po1/axcli-release.git
   vcs: git
@@ -1413,7 +1413,7 @@ driver_common:
 drone_wrapper:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/kinetic/drone_wrapper/0.0.1-1
+  version: release/kinetic/drone_wrapper/1.0.0-1
 dsr_control:
   url: https://github.com/doosan-robotics/doosan-robot-release.git
   vcs: git
@@ -2373,11 +2373,11 @@ gx_sound_player:
 h264_encoder_core:
   url: https://github.com/aws-gbp/h264_encoder_core-release.git
   vcs: git
-  version: release/kinetic/h264_encoder_core/2.0.0-1
+  version: release/kinetic/h264_encoder_core/2.0.1-1
 h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
-  version: release/kinetic/h264_video_encoder/1.1.2-1
+  version: release/kinetic/h264_video_encoder/1.1.3-1
 handeye:
   url: https://github.com/crigroup/handeye-release.git
   vcs: git
@@ -2393,7 +2393,7 @@ hardware_interface:
 health_metric_collector:
   url: https://github.com/aws-gbp/health_metric_collector-release.git
   vcs: git
-  version: release/kinetic/health_metric_collector/2.0.0-1
+  version: release/kinetic/health_metric_collector/2.0.1-1
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
@@ -2661,47 +2661,47 @@ humanoid_planner_2d:
 husky_base:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_base/0.3.3-0
+  version: release/kinetic/husky_base/0.3.4-1
 husky_bringup:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_bringup/0.3.3-0
+  version: release/kinetic/husky_bringup/0.3.4-1
 husky_control:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_control/0.3.3-0
+  version: release/kinetic/husky_control/0.3.4-1
 husky_description:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_description/0.3.3-0
+  version: release/kinetic/husky_description/0.3.4-1
 husky_desktop:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_desktop/0.3.3-0
+  version: release/kinetic/husky_desktop/0.3.4-1
 husky_gazebo:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_gazebo/0.3.3-0
+  version: release/kinetic/husky_gazebo/0.3.4-1
 husky_msgs:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_msgs/0.3.3-0
+  version: release/kinetic/husky_msgs/0.3.4-1
 husky_navigation:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_navigation/0.3.3-0
+  version: release/kinetic/husky_navigation/0.3.4-1
 husky_robot:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_robot/0.3.3-0
+  version: release/kinetic/husky_robot/0.3.4-1
 husky_simulator:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_simulator/0.3.3-0
+  version: release/kinetic/husky_simulator/0.3.4-1
 husky_viz:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/kinetic/husky_viz/0.3.3-0
+  version: release/kinetic/husky_viz/0.3.4-1
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -3329,11 +3329,11 @@ kinesis_manager:
 kinesis_video_msgs:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_msgs/2.0.1-0
+  version: release/kinetic/kinesis_video_msgs/2.0.2-1
 kinesis_video_streamer:
   url: https://github.com/aws-gbp/kinesis_video_streamer-release.git
   vcs: git
-  version: release/kinetic/kinesis_video_streamer/2.0.1-0
+  version: release/kinetic/kinesis_video_streamer/2.0.2-1
 kni:
   url: https://github.com/uos-gbp/katana_driver-release.git
   vcs: git
@@ -3541,11 +3541,11 @@ leg_detector:
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_common_msgs/2.0.0-1
+  version: release/kinetic/lex_common_msgs/2.0.1-1
 lex_node:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/kinetic/lex_node/2.0.0-1
+  version: release/kinetic/lex_node/2.0.1-1
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
@@ -4782,18 +4782,6 @@ node_manager_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
   version: release/kinetic/node_manager_fkie/0.8.12-0
-noid_typef_bringup:
-  url: https://github.com/seed-solutions/noid_ros_pkg-release.git
-  vcs: git
-  version: release/kinetic/noid_typef_bringup/0.0.5-1
-noid_typef_description:
-  url: https://github.com/seed-solutions/noid_ros_pkg-release.git
-  vcs: git
-  version: release/kinetic/noid_typef_description/0.0.5-1
-noid_typef_moveit_config:
-  url: https://github.com/seed-solutions/noid_ros_pkg-release.git
-  vcs: git
-  version: release/kinetic/noid_typef_moveit_config/0.0.5-1
 nonpersistent_voxel_layer:
   url: https://github.com/SteveMacenski/nonpersistent_voxel_layer-release.git
   vcs: git
@@ -6189,7 +6177,7 @@ rc_dynamics_api:
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/kinetic/rc_genicam_api/2.2.0-1
+  version: release/kinetic/rc_genicam_api/2.2.2-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
@@ -6793,7 +6781,7 @@ ros_madplay_player:
 ros_monitoring_msgs:
   url: https://github.com/aws-gbp/ros_monitoring_msgs-release.git
   vcs: git
-  version: release/kinetic/ros_monitoring_msgs/1.0.0-3
+  version: release/kinetic/ros_monitoring_msgs/1.0.1-1
 ros_mpg321_player:
   url: https://github.com/ROBOTIS-GIT-release/ROBOTIS-Utility-release.git
   vcs: git
@@ -7014,6 +7002,10 @@ rospy_message_converter:
   url: https://github.com/uos-gbp/rospy_message_converter-release.git
   vcs: git
   version: release/kinetic/rospy_message_converter/0.5.0-0
+rospy_wrapper:
+  url: https://github.com/sean-hackett/rospy_wrapper-release.git
+  vcs: git
+  version: release/kinetic/rospy_wrapper/1.0.0-1
 rosrt:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -7117,7 +7109,7 @@ rqt_controller_manager:
 rqt_drone_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/kinetic/rqt_drone_teleop/0.0.1-1
+  version: release/kinetic/rqt_drone_teleop/1.0.0-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
@@ -7201,11 +7193,11 @@ rslidar_pointcloud:
 rtabmap:
   url: https://github.com/introlab/rtabmap-release.git
   vcs: git
-  version: release/kinetic/rtabmap/0.17.6-0
+  version: release/kinetic/rtabmap/0.19.3-1
 rtabmap_ros:
   url: https://github.com/introlab/rtabmap_ros-release.git
   vcs: git
-  version: release/kinetic/rtabmap_ros/0.17.6-0
+  version: release/kinetic/rtabmap_ros/0.19.3-1
 rtctree:
   url: https://github.com/tork-a/rtctree-release.git
   vcs: git
@@ -7458,6 +7450,10 @@ scratch4robots:
   url: https://github.com/JdeRobot/Scratch4Robots-release.git
   vcs: git
   version: release/kinetic/scratch4robots/0.0.2-0
+seed_smartactuator_sdk:
+  url: https://github.com/seed-solutions/seed_smartactuator_sdk-release.git
+  vcs: git
+  version: release/kinetic/seed_smartactuator_sdk/0.0.3-1
 semantic_point_annotator:
   url: https://github.com/pr2-gbp/pr2_navigation-release.git
   vcs: git
@@ -8209,7 +8205,7 @@ transmission_interface:
 tts:
   url: https://github.com/aws-gbp/tts-release.git
   vcs: git
-  version: release/kinetic/tts/1.0.1-0
+  version: release/kinetic/tts/1.0.2-1
 turtlebot:
   url: https://github.com/turtlebot-release/turtlebot-release.git
   vcs: git
