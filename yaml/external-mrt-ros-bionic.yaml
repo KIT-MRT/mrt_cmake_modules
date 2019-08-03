@@ -614,6 +614,38 @@ desistek_saga_gazebo:
   url: https://github.com/uuvsimulator/desistek_saga-release.git
   vcs: git
   version: release/melodic/desistek_saga_gazebo/0.3.2-0
+distance_map:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map/0.1.0-1
+distance_map_core:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_core/0.1.0-1
+distance_map_deadreck:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_deadreck/0.1.0-1
+distance_map_msgs:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_msgs/0.1.0-1
+distance_map_node:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_node/0.1.0-1
+distance_map_opencv:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_opencv/0.1.0-1
+distance_map_rviz:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_rviz/0.1.0-1
+distance_map_tools:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/melodic/distance_map_tools/0.1.0-1
 dlux_global_planner:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -2574,6 +2606,10 @@ nlopt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/nlopt/2.1.13-1
+nmea_comms:
+  url: https://github.com/ros-drivers-gbp/nmea_comms-release.git
+  vcs: git
+  version: release/melodic/nmea_comms/1.2.0-0
 nmea_gps_plugin:
   url: https://github.com/OUXT-Polaris/nmea_gps_plugin-release.git
   vcs: git
@@ -3606,6 +3642,26 @@ rocon_uri:
   url: https://github.com/yujinrobot-release/rocon_tools-release.git
   vcs: git
   version: release/melodic/rocon_uri/0.3.2-0
+ros1_ign:
+  url: https://github.com/osrf/ros1_ign-release.git
+  vcs: git
+  version: release/melodic/ros1_ign/0.6.0-2
+ros1_ign_bridge:
+  url: https://github.com/osrf/ros1_ign-release.git
+  vcs: git
+  version: release/melodic/ros1_ign_bridge/0.6.0-2
+ros1_ign_gazebo_demos:
+  url: https://github.com/osrf/ros1_ign-release.git
+  vcs: git
+  version: release/melodic/ros1_ign_gazebo_demos/0.6.0-2
+ros1_ign_image:
+  url: https://github.com/osrf/ros1_ign-release.git
+  vcs: git
+  version: release/melodic/ros1_ign_image/0.6.0-2
+ros1_ign_point_cloud:
+  url: https://github.com/osrf/ros1_ign-release.git
+  vcs: git
+  version: release/melodic/ros1_ign_point_cloud/0.6.0-2
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
@@ -3742,6 +3798,10 @@ rosmon_msgs:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
   version: release/melodic/rosmon_msgs/2.1.1-1
+rosparam_handler:
+  url: https://github.com/cbandera/rosparam_handler-release.git
+  vcs: git
+  version: release/melodic/rosparam_handler/0.1.4-1
 rosparam_shortcuts:
   url: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
   vcs: git
@@ -4241,31 +4301,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.2.1-1
+  version: release/melodic/toposens/1.2.2-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/1.2.1-1
+  version: release/melodic/toposens_description/1.2.2-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.2.1-1
+  version: release/melodic/toposens_driver/1.2.2-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.2.1-1
+  version: release/melodic/toposens_markers/1.2.2-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.2.1-1
+  version: release/melodic/toposens_msgs/1.2.2-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.2.1-1
+  version: release/melodic/toposens_pointcloud/1.2.2-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/1.2.1-1
+  version: release/melodic/toposens_sync/1.2.2-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -4762,10 +4822,18 @@ warthog_desktop:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
   version: release/melodic/warthog_desktop/0.0.1-1
+warthog_gazebo:
+  url: https://github.com/clearpath-gbp/warthog_simulator-release.git
+  vcs: git
+  version: release/melodic/warthog_gazebo/0.2.0-1
 warthog_msgs:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
   version: release/melodic/warthog_msgs/0.1.1-2
+warthog_simulator:
+  url: https://github.com/clearpath-gbp/warthog_simulator-release.git
+  vcs: git
+  version: release/melodic/warthog_simulator/0.2.0-1
 warthog_viz:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
