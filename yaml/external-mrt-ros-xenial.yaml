@@ -1366,6 +1366,38 @@ diff_drive_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
   version: release/kinetic/diff_drive_controller/0.13.5-0
+distance_map:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map/0.1.0-1
+distance_map_core:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_core/0.1.0-1
+distance_map_deadreck:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_deadreck/0.1.0-1
+distance_map_msgs:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_msgs/0.1.0-1
+distance_map_node:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_node/0.1.0-1
+distance_map_opencv:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_opencv/0.1.0-1
+distance_map_rviz:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_rviz/0.1.0-1
+distance_map_tools:
+  url: https://github.com/artivis/distance_map-release.git
+  vcs: git
+  version: release/kinetic/distance_map_tools/0.1.0-1
 dlux_global_planner:
   url: https://github.com/locusrobotics/robot_navigation-release.git
   vcs: git
@@ -2973,7 +3005,7 @@ jaguar_navigation:
 jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
-  version: release/kinetic/jderobot_assets/0.0.1-1
+  version: release/kinetic/jderobot_assets/0.0.2-1
 jog_arm:
   url: https://github.com/UTNuclearRoboticsPublic/jog_arm-release.git
   vcs: git
@@ -8113,31 +8145,31 @@ topic_switch:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens/1.2.1-1
+  version: release/kinetic/toposens/1.2.2-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_description/1.2.1-1
+  version: release/kinetic/toposens_description/1.2.2-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_driver/1.2.1-1
+  version: release/kinetic/toposens_driver/1.2.2-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_markers/1.2.1-1
+  version: release/kinetic/toposens_markers/1.2.2-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_msgs/1.2.1-1
+  version: release/kinetic/toposens_msgs/1.2.2-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_pointcloud/1.2.1-1
+  version: release/kinetic/toposens_pointcloud/1.2.2-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/kinetic/toposens_sync/1.2.1-1
+  version: release/kinetic/toposens_sync/1.2.2-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -8862,10 +8894,18 @@ warthog_desktop:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
   version: release/kinetic/warthog_desktop/0.0.1-1
+warthog_gazebo:
+  url: https://github.com/clearpath-gbp/warthog_simulator-release.git
+  vcs: git
+  version: release/kinetic/warthog_gazebo/0.1.0-1
 warthog_msgs:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
   version: release/kinetic/warthog_msgs/0.1.1-1
+warthog_simulator:
+  url: https://github.com/clearpath-gbp/warthog_simulator-release.git
+  vcs: git
+  version: release/kinetic/warthog_simulator/0.1.0-1
 warthog_viz:
   url: https://github.com/clearpath-gbp/warthog_desktop-release.git
   vcs: git
