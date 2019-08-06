@@ -1418,6 +1418,50 @@ hpp-fcl:
   url: https://github.com/ipab-slmc/hpp-fcl_catkin-release.git
   vcs: git
   version: release/melodic/hpp-fcl/1.0.1-2
+husky_base:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_base/0.4.0-1
+husky_bringup:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_bringup/0.4.0-1
+husky_control:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_control/0.4.0-1
+husky_description:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_description/0.4.0-1
+husky_desktop:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_desktop/0.4.0-1
+husky_gazebo:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_gazebo/0.4.0-1
+husky_msgs:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_msgs/0.4.0-1
+husky_navigation:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_navigation/0.4.0-1
+husky_robot:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_robot/0.4.0-1
+husky_simulator:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_simulator/0.4.0-1
+husky_viz:
+  url: https://github.com/clearpath-gbp/husky-release.git
+  vcs: git
+  version: release/melodic/husky_viz/0.4.0-1
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -2133,7 +2177,7 @@ microstrain_3dmgx2_imu:
 microstrain_mips:
   url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
   vcs: git
-  version: release/melodic/microstrain_mips/0.0.2-1
+  version: release/melodic/microstrain_mips/0.0.3-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3645,23 +3689,23 @@ rocon_uri:
 ros1_ign:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign/0.6.0-2
+  version: release/melodic/ros1_ign/0.6.2-1
 ros1_ign_bridge:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_bridge/0.6.0-2
+  version: release/melodic/ros1_ign_bridge/0.6.2-1
 ros1_ign_gazebo_demos:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_gazebo_demos/0.6.0-2
+  version: release/melodic/ros1_ign_gazebo_demos/0.6.2-1
 ros1_ign_image:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_image/0.6.0-2
+  version: release/melodic/ros1_ign_image/0.6.2-1
 ros1_ign_point_cloud:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_point_cloud/0.6.0-2
+  version: release/melodic/ros1_ign_point_cloud/0.6.2-1
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
