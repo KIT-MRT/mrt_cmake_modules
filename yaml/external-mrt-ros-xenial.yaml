@@ -69,7 +69,7 @@ ackermann_steering_controller:
 actionlib_enhanced:
   url: https://github.com/fannibal/actionlib-enhanced-release.git
   vcs: git
-  version: release/kinetic/actionlib_enhanced/0.0.6-1
+  version: release/kinetic/actionlib_enhanced/0.0.8-1
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
@@ -4073,7 +4073,7 @@ microstrain_3dmgx2_imu:
 microstrain_mips:
   url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
   vcs: git
-  version: release/kinetic/microstrain_mips/0.0.2-2
+  version: release/kinetic/microstrain_mips/0.0.3-1
 minas:
   url: https://github.com/tork-a/minas-release.git
   vcs: git
@@ -6446,6 +6446,10 @@ robot_setup_tf_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
   version: release/kinetic/robot_setup_tf_tutorial/0.2.3-0
+robot_statemachine:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/robot_statemachine/1.1.1-1
 robot_upstart:
   url: https://github.com/clearpath-gbp/robot_upstart-release.git
   vcs: git
@@ -7222,6 +7226,26 @@ rslidar_pointcloud:
   url: https://github.com/CPFL/robosense-release.git
   vcs: git
   version: release/kinetic/rslidar_pointcloud/1.0.2-0
+rsm_additions:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/rsm_additions/1.1.1-1
+rsm_core:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/rsm_core/1.1.1-1
+rsm_msgs:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/rsm_msgs/1.1.1-1
+rsm_rqt_plugins:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/rsm_rqt_plugins/1.1.1-1
+rsm_rviz_plugins:
+  url: https://github.com/MarcoStb1993/robot_statemachine-release.git
+  vcs: git
+  version: release/kinetic/rsm_rviz_plugins/1.1.1-1
 rtabmap:
   url: https://github.com/introlab/rtabmap-release.git
   vcs: git
