@@ -366,34 +366,242 @@ cnn_bridge:
   url: https://github.com/wew84/cnn_bridge-release.git
   vcs: git
   version: release/melodic/cnn_bridge/0.8.5-1
+cob_3d_mapping_msgs:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_3d_mapping_msgs/0.6.14-1
 cob_actions:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/cob_actions/0.6.10-0
+  version: release/melodic/cob_actions/0.7.0-1
+cob_base_controller_utils:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_base_controller_utils/0.7.7-1
+cob_base_drive_chain:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_base_drive_chain/0.7.0-1
+cob_base_velocity_smoother:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_base_velocity_smoother/0.7.7-1
+cob_bms_driver:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_bms_driver/0.7.0-1
+cob_calibration_data:
+  url: https://github.com/ipa320/cob_calibration_data-release.git
+  vcs: git
+  version: release/melodic/cob_calibration_data/0.6.12-1
+cob_cam3d_throttle:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_cam3d_throttle/0.6.14-1
+cob_camera_sensors:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_camera_sensors/0.7.0-1
+cob_canopen_motor:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_canopen_motor/0.7.0-1
+cob_cartesian_controller:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_cartesian_controller/0.7.7-1
+cob_collision_velocity_filter:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_collision_velocity_filter/0.7.7-1
 cob_common:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/cob_common/0.6.10-0
+  version: release/melodic/cob_common/0.7.0-1
+cob_control:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_control/0.7.7-1
+cob_control_mode_adapter:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_control_mode_adapter/0.7.7-1
+cob_control_msgs:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_control_msgs/0.7.7-1
 cob_default_env_config:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
-  version: release/melodic/cob_default_env_config/0.6.8-0
+  version: release/melodic/cob_default_env_config/0.6.9-1
 cob_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/cob_description/0.6.10-0
+  version: release/melodic/cob_description/0.7.0-1
+cob_docker_control:
+  url: https://github.com/ipa320/cob_substitute-release.git
+  vcs: git
+  version: release/melodic/cob_docker_control/0.6.8-1
+cob_driver:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_driver/0.7.0-1
+cob_elmo_homing:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_elmo_homing/0.7.0-1
 cob_environments:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
-  version: release/melodic/cob_environments/0.6.8-0
+  version: release/melodic/cob_environments/0.6.9-1
+cob_extern:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/cob_extern/0.6.13-1
+cob_footprint_observer:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_footprint_observer/0.7.7-1
+cob_frame_tracker:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_frame_tracker/0.7.7-1
+cob_generic_can:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_generic_can/0.7.0-1
+cob_hand:
+  url: https://github.com/ipa320/cob_hand-release.git
+  vcs: git
+  version: release/melodic/cob_hand/0.6.6-1
+cob_hand_bridge:
+  url: https://github.com/ipa320/cob_hand-release.git
+  vcs: git
+  version: release/melodic/cob_hand_bridge/0.6.6-1
+cob_image_flip:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_image_flip/0.6.14-1
+cob_light:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_light/0.7.0-1
+cob_mimic:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_mimic/0.7.0-1
+cob_model_identifier:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_model_identifier/0.7.7-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/cob_msgs/0.6.10-0
+  version: release/melodic/cob_msgs/0.7.0-1
+cob_object_detection_msgs:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_object_detection_msgs/0.6.14-1
+cob_object_detection_visualizer:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_object_detection_visualizer/0.6.14-1
+cob_obstacle_distance:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_obstacle_distance/0.7.7-1
+cob_omni_drive_controller:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_omni_drive_controller/0.7.7-1
+cob_perception_common:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_perception_common/0.6.14-1
+cob_perception_msgs:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_perception_msgs/0.6.14-1
+cob_phidget_em_state:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_phidget_em_state/0.7.0-1
+cob_phidget_power_state:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_phidget_power_state/0.7.0-1
+cob_phidgets:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_phidgets/0.7.0-1
+cob_reflector_referencing:
+  url: https://github.com/ipa320/cob_substitute-release.git
+  vcs: git
+  version: release/melodic/cob_reflector_referencing/0.6.8-1
+cob_relayboard:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_relayboard/0.7.0-1
+cob_safety_controller:
+  url: https://github.com/ipa320/cob_substitute-release.git
+  vcs: git
+  version: release/melodic/cob_safety_controller/0.6.8-1
+cob_scan_unifier:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_scan_unifier/0.7.0-1
+cob_sick_lms1xx:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_sick_lms1xx/0.7.0-1
+cob_sick_s300:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_sick_s300/0.7.0-1
+cob_sound:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_sound/0.7.0-1
 cob_srvs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/cob_srvs/0.6.10-0
+  version: release/melodic/cob_srvs/0.7.0-1
+cob_substitute:
+  url: https://github.com/ipa320/cob_substitute-release.git
+  vcs: git
+  version: release/melodic/cob_substitute/0.6.8-1
+cob_supported_robots:
+  url: https://github.com/ipa320/cob_supported_robots-release.git
+  vcs: git
+  version: release/melodic/cob_supported_robots/0.6.12-1
+cob_trajectory_controller:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_trajectory_controller/0.7.7-1
+cob_tricycle_controller:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_tricycle_controller/0.7.7-1
+cob_twist_controller:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_twist_controller/0.7.7-1
+cob_undercarriage_ctrl:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_undercarriage_ctrl/0.7.0-1
+cob_utilities:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_utilities/0.7.0-1
+cob_vision_utils:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/cob_vision_utils/0.6.14-1
+cob_voltage_control:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/cob_voltage_control/0.7.0-1
 code_coverage:
   url: https://github.com/mikeferguson/code_coverage-gbp.git
   vcs: git
@@ -1021,19 +1229,19 @@ fetch_auto_dock_msgs:
 fetch_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/fetch_bringup/0.8.6-0
+  version: release/melodic/fetch_bringup/0.8.7-1
 fetch_calibration:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_calibration/0.8.1-0
+  version: release/melodic/fetch_calibration/0.8.2-1
 fetch_depth_layer:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_depth_layer/0.8.1-0
+  version: release/melodic/fetch_depth_layer/0.8.2-1
 fetch_description:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_description/0.8.1-0
+  version: release/melodic/fetch_description/0.8.2-1
 fetch_driver_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
@@ -1041,31 +1249,31 @@ fetch_driver_msgs:
 fetch_drivers:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/fetch_drivers/0.8.6-0
+  version: release/melodic/fetch_drivers/0.8.7-1
 fetch_gazebo:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_gazebo/0.9.1-0
+  version: release/melodic/fetch_gazebo/0.9.2-1
 fetch_gazebo_demo:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_gazebo_demo/0.9.1-0
+  version: release/melodic/fetch_gazebo_demo/0.9.2-1
 fetch_ikfast_plugin:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_ikfast_plugin/0.8.1-0
+  version: release/melodic/fetch_ikfast_plugin/0.8.2-1
 fetch_maps:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_maps/0.8.1-0
+  version: release/melodic/fetch_maps/0.8.2-1
 fetch_moveit_config:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_moveit_config/0.8.1-0
+  version: release/melodic/fetch_moveit_config/0.8.2-1
 fetch_navigation:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_navigation/0.8.1-0
+  version: release/melodic/fetch_navigation/0.8.2-1
 fetch_open_auto_dock:
   url: https://github.com/fetchrobotics-gbp/fetch_open_auto_dock-gbp.git
   vcs: git
@@ -1073,7 +1281,7 @@ fetch_open_auto_dock:
 fetch_ros:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_ros/0.8.1-0
+  version: release/melodic/fetch_ros/0.8.2-1
 fetch_simple_linear_controller:
   url: https://github.com/gt-rail-release/fetch_simple_linear_controller-release.git
   vcs: git
@@ -1081,11 +1289,11 @@ fetch_simple_linear_controller:
 fetch_simulation:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetch_simulation/0.9.1-0
+  version: release/melodic/fetch_simulation/0.9.2-1
 fetch_teleop:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
-  version: release/melodic/fetch_teleop/0.8.1-0
+  version: release/melodic/fetch_teleop/0.8.2-1
 fetch_tools:
   url: https://github.com/fetchrobotics-gbp/fetch_tools-release.git
   vcs: git
@@ -1093,7 +1301,7 @@ fetch_tools:
 fetchit_challenge:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
-  version: release/melodic/fetchit_challenge/0.9.1-0
+  version: release/melodic/fetchit_challenge/0.9.2-1
 ff:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -1233,7 +1441,7 @@ franka_visualization:
 freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/freight_bringup/0.8.6-0
+  version: release/melodic/freight_bringup/0.8.7-1
 gateway_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
@@ -1594,6 +1802,10 @@ interval_intersection:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
   version: release/melodic/interval_intersection/0.10.14-0
+ipa_3d_fov_visualization:
+  url: https://github.com/ipa320/cob_perception_common-release.git
+  vcs: git
+  version: release/melodic/ipa_3d_fov_visualization/0.6.14-1
 ipr_extern:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -1870,6 +2082,10 @@ laser_proc:
   url: https://github.com/ros-gbp/laser_proc-release.git
   vcs: git
   version: release/melodic/laser_proc/0.1.5-0
+laser_scan_densifier:
+  url: https://github.com/ipa320/cob_driver-release.git
+  vcs: git
+  version: release/melodic/laser_scan_densifier/0.7.0-1
 lauv_control:
   url: https://github.com/uuvsimulator/lauv_gazebo-release.git
   vcs: git
@@ -1902,6 +2118,10 @@ libcmt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
   version: release/melodic/libcmt/2.1.13-1
+libdlib:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/libdlib/0.6.13-1
 libfranka:
   url: https://github.com/frankaemika/libfranka-release.git
   vcs: git
@@ -1918,10 +2138,22 @@ libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
   version: release/melodic/libmodbus/0.8.8-1
+libntcan:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/libntcan/0.6.13-1
+libpcan:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/libpcan/0.6.13-1
 libphidget21:
   url: https://github.com/ros-drivers-gbp/phidgets_drivers-release.git
   vcs: git
   version: release/melodic/libphidget21/0.7.9-1
+libphidgets:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/libphidgets/0.6.13-1
 libqt_concurrent:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
@@ -2822,6 +3054,10 @@ opencv_apps:
   url: https://github.com/ros-perception/opencv_apps-release.git
   vcs: git
   version: release/melodic/opencv_apps/2.0.1-1
+opengm:
+  url: https://github.com/ipa320/cob_extern-release.git
+  vcs: git
+  version: release/melodic/opengm/0.6.13-1
 openhrp3:
   url: https://github.com/tork-a/openhrp3-release.git
   vcs: git
@@ -3401,7 +3637,7 @@ range_sensor_layer:
 raw_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
-  version: release/melodic/raw_description/0.6.10-0
+  version: release/melodic/raw_description/0.7.0-1
 rc_cloud_accumulator:
   url: https://github.com/roboception-gbp/rc_cloud_accumulator-release.git
   vcs: git
@@ -3553,7 +3789,7 @@ robot_activity_tutorials:
 robot_body_filter:
   url: https://github.com/peci1/robot_body_filter-release.git
   vcs: git
-  version: release/melodic/robot_body_filter/1.1.2-1
+  version: release/melodic/robot_body_filter/1.1.3-1
 robot_calibration:
   url: https://github.com/ros-gbp/robot_calibration-release.git
   vcs: git
