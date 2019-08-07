@@ -28,3 +28,8 @@ sceneshot:
 - sceneshot_io_simulation
 - sceneshot_object_detection
 - sceneshot_object_tracking
+
+sceneshot_ros_tool:
+- sceneshot_dynamic_reconfigure_ros
+- sceneshot_ros
+- sceneshot_ros_tool
