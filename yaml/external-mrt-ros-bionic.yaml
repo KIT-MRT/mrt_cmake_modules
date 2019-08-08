@@ -414,6 +414,14 @@ cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_collision_velocity_filter/0.7.7-1
+cob_command_gui:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_command_gui/0.6.14-1
+cob_command_tools:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_command_tools/0.6.14-1
 cob_common:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -430,6 +438,10 @@ cob_control_msgs:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_control_msgs/0.7.7-1
+cob_dashboard:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_dashboard/0.6.14-1
 cob_default_env_config:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
@@ -466,6 +478,14 @@ cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_frame_tracker/0.7.7-1
+cob_gazebo_plugins:
+  url: https://github.com/ipa320/cob_gazebo_plugins-release.git
+  vcs: git
+  version: release/melodic/cob_gazebo_plugins/0.7.3-1
+cob_gazebo_ros_control:
+  url: https://github.com/ipa320/cob_gazebo_plugins-release.git
+  vcs: git
+  version: release/melodic/cob_gazebo_ros_control/0.7.3-1
 cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -478,10 +498,18 @@ cob_hand_bridge:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
   version: release/melodic/cob_hand_bridge/0.6.6-1
+cob_helper_tools:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_helper_tools/0.6.14-1
 cob_image_flip:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
   version: release/melodic/cob_image_flip/0.6.14-1
+cob_interactive_teleop:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_interactive_teleop/0.6.14-1
 cob_light:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -494,6 +522,10 @@ cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_model_identifier/0.7.7-1
+cob_monitoring:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_monitoring/0.6.14-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -550,6 +582,10 @@ cob_scan_unifier:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
   version: release/melodic/cob_scan_unifier/0.7.0-1
+cob_script_server:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_script_server/0.6.14-1
 cob_sick_lms1xx:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -574,6 +610,10 @@ cob_supported_robots:
   url: https://github.com/ipa320/cob_supported_robots-release.git
   vcs: git
   version: release/melodic/cob_supported_robots/0.6.12-1
+cob_teleop:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/cob_teleop/0.6.14-1
 cob_trajectory_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -1446,6 +1486,10 @@ gateway_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
   version: release/melodic/gateway_msgs/0.9.0-0
+generic_throttle:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/generic_throttle/0.6.14-1
 geographic_info:
   url: https://github.com/ros-geographic-info/geographic_info-release.git
   vcs: git
@@ -4322,6 +4366,10 @@ serial:
   url: https://github.com/wjwwood/serial-release.git
   vcs: git
   version: release/melodic/serial/1.2.1-0
+service_tools:
+  url: https://github.com/ipa320/cob_command_tools-release.git
+  vcs: git
+  version: release/melodic/service_tools/0.6.14-1
 settlerlib:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
