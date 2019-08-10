@@ -374,10 +374,30 @@ cob_actions:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
   version: release/melodic/cob_actions/0.7.0-1
+cob_android:
+  url: https://github.com/ipa320/cob_android-release.git
+  vcs: git
+  version: release/melodic/cob_android/0.1.6-1
+cob_android_msgs:
+  url: https://github.com/ipa320/cob_android-release.git
+  vcs: git
+  version: release/melodic/cob_android_msgs/0.1.6-1
+cob_android_resource_server:
+  url: https://github.com/ipa320/cob_android-release.git
+  vcs: git
+  version: release/melodic/cob_android_resource_server/0.1.6-1
+cob_android_script_server:
+  url: https://github.com/ipa320/cob_android-release.git
+  vcs: git
+  version: release/melodic/cob_android_script_server/0.1.6-1
+cob_android_settings:
+  url: https://github.com/ipa320/cob_android-release.git
+  vcs: git
+  version: release/melodic/cob_android_settings/0.1.6-1
 cob_base_controller_utils:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_controller_utils/0.7.7-1
+  version: release/melodic/cob_base_controller_utils/0.8.0-1
 cob_base_drive_chain:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -385,7 +405,7 @@ cob_base_drive_chain:
 cob_base_velocity_smoother:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_velocity_smoother/0.7.7-1
+  version: release/melodic/cob_base_velocity_smoother/0.8.0-1
 cob_bms_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -409,11 +429,11 @@ cob_canopen_motor:
 cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_cartesian_controller/0.7.7-1
+  version: release/melodic/cob_cartesian_controller/0.8.0-1
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_collision_velocity_filter/0.7.7-1
+  version: release/melodic/cob_collision_velocity_filter/0.8.0-1
 cob_command_gui:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -429,15 +449,15 @@ cob_common:
 cob_control:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control/0.7.7-1
+  version: release/melodic/cob_control/0.8.0-1
 cob_control_mode_adapter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_mode_adapter/0.7.7-1
+  version: release/melodic/cob_control_mode_adapter/0.8.0-1
 cob_control_msgs:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_msgs/0.7.7-1
+  version: release/melodic/cob_control_msgs/0.8.0-1
 cob_dashboard:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -473,11 +493,11 @@ cob_extern:
 cob_footprint_observer:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_footprint_observer/0.7.7-1
+  version: release/melodic/cob_footprint_observer/0.8.0-1
 cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_frame_tracker/0.7.7-1
+  version: release/melodic/cob_frame_tracker/0.8.0-1
 cob_gazebo_plugins:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
@@ -514,6 +534,18 @@ cob_light:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
   version: release/melodic/cob_light/0.7.0-1
+cob_linear_nav:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_linear_nav/0.6.8-1
+cob_map_accessibility_analysis:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_map_accessibility_analysis/0.6.8-1
+cob_mapping_slam:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_mapping_slam/0.6.8-1
 cob_mimic:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -521,7 +553,7 @@ cob_mimic:
 cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_model_identifier/0.7.7-1
+  version: release/melodic/cob_model_identifier/0.8.0-1
 cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -530,6 +562,26 @@ cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
   version: release/melodic/cob_msgs/0.7.0-1
+cob_navigation:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_navigation/0.6.8-1
+cob_navigation_config:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_navigation_config/0.6.8-1
+cob_navigation_global:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_navigation_global/0.6.8-1
+cob_navigation_local:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_navigation_local/0.6.8-1
+cob_navigation_slam:
+  url: https://github.com/ipa320/cob_navigation-release.git
+  vcs: git
+  version: release/melodic/cob_navigation_slam/0.6.8-1
 cob_object_detection_msgs:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -541,11 +593,11 @@ cob_object_detection_visualizer:
 cob_obstacle_distance:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_obstacle_distance/0.7.7-1
+  version: release/melodic/cob_obstacle_distance/0.8.0-1
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_omni_drive_controller/0.7.7-1
+  version: release/melodic/cob_omni_drive_controller/0.8.0-1
 cob_perception_common:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -617,15 +669,15 @@ cob_teleop:
 cob_trajectory_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_trajectory_controller/0.7.7-1
+  version: release/melodic/cob_trajectory_controller/0.8.0-1
 cob_tricycle_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_tricycle_controller/0.7.7-1
+  version: release/melodic/cob_tricycle_controller/0.8.0-1
 cob_twist_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_twist_controller/0.7.7-1
+  version: release/melodic/cob_twist_controller/0.8.0-1
 cob_undercarriage_ctrl:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
