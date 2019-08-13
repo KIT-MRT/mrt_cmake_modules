@@ -649,11 +649,11 @@ cob_bms_driver:
 cob_bringup:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_bringup/0.7.0-1
+  version: release/kinetic/cob_bringup/0.7.1-1
 cob_bringup_sim:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/kinetic/cob_bringup_sim/0.7.1-1
+  version: release/kinetic/cob_bringup_sim/0.7.1-2
 cob_calibration_data:
   url: https://github.com/ipa320/cob_calibration_data-release.git
   vcs: git
@@ -717,11 +717,11 @@ cob_default_env_config:
 cob_default_robot_behavior:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_default_robot_behavior/0.7.0-1
+  version: release/kinetic/cob_default_robot_behavior/0.7.1-1
 cob_default_robot_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_default_robot_config/0.7.0-1
+  version: release/kinetic/cob_default_robot_config/0.7.1-1
 cob_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -757,11 +757,11 @@ cob_frame_tracker:
 cob_gazebo:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/kinetic/cob_gazebo/0.7.1-1
+  version: release/kinetic/cob_gazebo/0.7.1-2
 cob_gazebo_objects:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/kinetic/cob_gazebo_objects/0.7.1-1
+  version: release/kinetic/cob_gazebo_objects/0.7.1-2
 cob_gazebo_plugins:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
@@ -773,7 +773,7 @@ cob_gazebo_ros_control:
 cob_gazebo_worlds:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/kinetic/cob_gazebo_worlds/0.7.1-1
+  version: release/kinetic/cob_gazebo_worlds/0.7.1-2
 cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -793,7 +793,7 @@ cob_hand_bridge:
 cob_hardware_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_hardware_config/0.7.0-1
+  version: release/kinetic/cob_hardware_config/0.7.1-1
 cob_helper_tools:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -849,7 +849,7 @@ cob_moveit_bringup:
 cob_moveit_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_moveit_config/0.7.0-1
+  version: release/kinetic/cob_moveit_config/0.7.1-1
 cob_moveit_interface:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -933,7 +933,7 @@ cob_relayboard:
 cob_robots:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/kinetic/cob_robots/0.7.0-1
+  version: release/kinetic/cob_robots/0.7.1-1
 cob_safety_controller:
   url: https://github.com/ipa320/cob_substitute-release.git
   vcs: git
@@ -957,7 +957,7 @@ cob_sick_s300:
 cob_simulation:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/kinetic/cob_simulation/0.7.1-1
+  version: release/kinetic/cob_simulation/0.7.1-2
 cob_sound:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
