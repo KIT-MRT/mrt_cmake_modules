@@ -613,27 +613,27 @@ cob_actions:
 cob_android:
   url: https://github.com/ipa320/cob_android-release.git
   vcs: git
-  version: release/kinetic/cob_android/0.1.5-1
+  version: release/kinetic/cob_android/0.1.6-1
 cob_android_msgs:
   url: https://github.com/ipa320/cob_android-release.git
   vcs: git
-  version: release/kinetic/cob_android_msgs/0.1.5-1
+  version: release/kinetic/cob_android_msgs/0.1.6-1
 cob_android_resource_server:
   url: https://github.com/ipa320/cob_android-release.git
   vcs: git
-  version: release/kinetic/cob_android_resource_server/0.1.5-1
+  version: release/kinetic/cob_android_resource_server/0.1.6-1
 cob_android_script_server:
   url: https://github.com/ipa320/cob_android-release.git
   vcs: git
-  version: release/kinetic/cob_android_script_server/0.1.5-1
+  version: release/kinetic/cob_android_script_server/0.1.6-1
 cob_android_settings:
   url: https://github.com/ipa320/cob_android-release.git
   vcs: git
-  version: release/kinetic/cob_android_settings/0.1.5-1
+  version: release/kinetic/cob_android_settings/0.1.6-1
 cob_base_controller_utils:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_base_controller_utils/0.7.7-1
+  version: release/kinetic/cob_base_controller_utils/0.7.8-1
 cob_base_drive_chain:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -641,7 +641,7 @@ cob_base_drive_chain:
 cob_base_velocity_smoother:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_base_velocity_smoother/0.7.7-1
+  version: release/kinetic/cob_base_velocity_smoother/0.7.8-1
 cob_bms_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -673,7 +673,7 @@ cob_canopen_motor:
 cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_cartesian_controller/0.7.7-1
+  version: release/kinetic/cob_cartesian_controller/0.7.8-1
 cob_collision_monitor:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -681,7 +681,7 @@ cob_collision_monitor:
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_collision_velocity_filter/0.7.7-1
+  version: release/kinetic/cob_collision_velocity_filter/0.7.8-1
 cob_command_gui:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -697,15 +697,15 @@ cob_common:
 cob_control:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_control/0.7.7-1
+  version: release/kinetic/cob_control/0.7.8-1
 cob_control_mode_adapter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_control_mode_adapter/0.7.7-1
+  version: release/kinetic/cob_control_mode_adapter/0.7.8-1
 cob_control_msgs:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_control_msgs/0.7.7-1
+  version: release/kinetic/cob_control_msgs/0.7.8-1
 cob_dashboard:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -749,11 +749,11 @@ cob_extern:
 cob_footprint_observer:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_footprint_observer/0.7.7-1
+  version: release/kinetic/cob_footprint_observer/0.7.8-1
 cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_frame_tracker/0.7.7-1
+  version: release/kinetic/cob_frame_tracker/0.7.8-1
 cob_gazebo:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
@@ -837,7 +837,7 @@ cob_mimic:
 cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_model_identifier/0.7.7-1
+  version: release/kinetic/cob_model_identifier/0.7.8-1
 cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -889,7 +889,7 @@ cob_object_detection_visualizer:
 cob_obstacle_distance:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_obstacle_distance/0.7.7-1
+  version: release/kinetic/cob_obstacle_distance/0.7.8-1
 cob_obstacle_distance_moveit:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -897,7 +897,7 @@ cob_obstacle_distance_moveit:
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_omni_drive_controller/0.7.7-1
+  version: release/kinetic/cob_omni_drive_controller/0.7.8-1
 cob_perception_common:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -981,15 +981,15 @@ cob_teleop:
 cob_trajectory_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_trajectory_controller/0.7.7-1
+  version: release/kinetic/cob_trajectory_controller/0.7.8-1
 cob_tricycle_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_tricycle_controller/0.7.7-1
+  version: release/kinetic/cob_tricycle_controller/0.7.8-1
 cob_twist_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/kinetic/cob_twist_controller/0.7.7-1
+  version: release/kinetic/cob_twist_controller/0.7.8-1
 cob_undercarriage_ctrl:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -1789,7 +1789,7 @@ eml:
 epos2_motor_controller:
   url: https://github.com/uos-gbp/epos2_motor_controller-release.git
   vcs: git
-  version: release/kinetic/epos2_motor_controller/1.0.0-1
+  version: release/kinetic/epos2_motor_controller/1.0.1-1
 epson_imu_driver:
   url: https://bitbucket.org/castacks/epson_g364_imu_driver-release.git
   vcs: git
@@ -3613,7 +3613,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/libmavconn/0.32.0-1
+  version: release/kinetic/libmavconn/0.32.1-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -3969,19 +3969,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/kinetic/mavlink/2019.7.7-1
+  version: release/kinetic/mavlink/2019.8.8-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros/0.32.0-1
+  version: release/kinetic/mavros/0.32.1-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_extras/0.32.0-1
+  version: release/kinetic/mavros_extras/0.32.1-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/mavros_msgs/0.32.0-1
+  version: release/kinetic/mavros_msgs/0.32.1-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -6417,7 +6417,7 @@ robot_controllers_msgs:
 robot_localization:
   url: https://github.com/cra-ros-pkg/robot_localization-release.git
   vcs: git
-  version: release/kinetic/robot_localization/2.4.7-2
+  version: release/kinetic/robot_localization/2.4.8-1
 robot_mechanism_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
@@ -6857,7 +6857,7 @@ ros_wild:
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosapi/0.11.2-1
+  version: release/kinetic/rosapi/0.11.3-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -6881,19 +6881,19 @@ rosbash_params:
 rosbridge_library:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_library/0.11.2-1
+  version: release/kinetic/rosbridge_library/0.11.3-1
 rosbridge_msgs:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_msgs/0.11.2-1
+  version: release/kinetic/rosbridge_msgs/0.11.3-1
 rosbridge_server:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_server/0.11.2-1
+  version: release/kinetic/rosbridge_server/0.11.3-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/kinetic/rosbridge_suite/0.11.2-1
+  version: release/kinetic/rosbridge_suite/0.11.3-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
@@ -7973,7 +7973,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/kinetic/test_mavros/0.32.0-1
+  version: release/kinetic/test_mavros/0.32.1-1
 test_osm:
   url: https://github.com/ros-geographic-info/open_street_map-release.git
   vcs: git
