@@ -153,7 +153,7 @@ pages:
   # everything in the public folder will be available as website
   - mkdir public
   - cp -r coverage public/ || true
-  - cp -r doxygen public/
+  - cp -r doxygen public/ || true
   artifacts:
     paths:
     - public
