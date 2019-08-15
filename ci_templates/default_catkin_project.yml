@@ -1,5 +1,7 @@
 variables:
   GIT_STRATEGY: none
+  GIT_CLONE_PATH: $CI_BUILDS_DIR/gitlab
+
 # Cache build results between building and testing
 cache:
   paths:
