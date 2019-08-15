@@ -821,47 +821,47 @@ dataspeed_ulc_msgs:
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca/1.0.1-0
+  version: release/melodic/dbw_fca/1.0.6-1
 dbw_fca_can:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_can/1.0.1-0
+  version: release/melodic/dbw_fca_can/1.0.6-1
 dbw_fca_description:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_description/1.0.1-0
+  version: release/melodic/dbw_fca_description/1.0.6-1
 dbw_fca_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_joystick_demo/1.0.1-0
+  version: release/melodic/dbw_fca_joystick_demo/1.0.6-1
 dbw_fca_msgs:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_msgs/1.0.1-0
+  version: release/melodic/dbw_fca_msgs/1.0.6-1
 dbw_mkz:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz/1.1.1-0
+  version: release/melodic/dbw_mkz/1.2.3-1
 dbw_mkz_can:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_can/1.1.1-0
+  version: release/melodic/dbw_mkz_can/1.2.3-1
 dbw_mkz_description:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_description/1.1.1-0
+  version: release/melodic/dbw_mkz_description/1.2.3-1
 dbw_mkz_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_joystick_demo/1.1.1-0
+  version: release/melodic/dbw_mkz_joystick_demo/1.2.3-1
 dbw_mkz_msgs:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_msgs/1.1.1-0
+  version: release/melodic/dbw_mkz_msgs/1.2.3-1
 dbw_mkz_twist_controller:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_twist_controller/1.1.1-0
+  version: release/melodic/dbw_mkz_twist_controller/1.2.3-1
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -3909,7 +3909,7 @@ robot_controllers_msgs:
 robot_localization:
   url: https://github.com/cra-ros-pkg/robot_localization-release.git
   vcs: git
-  version: release/melodic/robot_localization/2.6.4-0
+  version: release/melodic/robot_localization/2.6.5-1
 robot_mechanism_controllers:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
