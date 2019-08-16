@@ -18,9 +18,6 @@
 # example_package: https://github.com/me/example_package.git (short version assuming git packages)
 
 automated_driving_msgs: https://github.com/fzi-forschungszentrum-informatik/automated_driving_msgs.git
-grid_map:
-  url: https://github.com/ethz-asl/grid_map.git
-  version: release
 iai_kinect2: https://github.com/code-iai/iai_kinect2.git
 image_undistort: https://github.com/ethz-asl/image_undistort.git
 lanelet2: https://github.com/fzi-forschungszentrum-informatik/Lanelet2.git

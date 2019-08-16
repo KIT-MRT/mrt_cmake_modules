@@ -12,6 +12,8 @@
 #
 #_OTHER_PACKAGES_: contains all other packages
 #_OTHER_EXPORT_PACKAGES_: contains only the mrt packages, which shall be exported
+#_CUDA_CATKIN_PACKAGES_: contains all packages which should be linked to cuda
+#_CUDA_OTHER_PACKAGES_: contains all packages which should be linked to cuda
 #
 #_<package name>_CMAKE_INCLUDE_DIRS_: contains the find package variable include cmake name
 #_<package name>_CMAKE_LIBRARY_DIRS_: contains the find package variable libraries cmake name
@@ -25,6 +27,8 @@
 #mrt_INCLUDE_DIRS: Contains all include directories used for building the package
 #mrt_LIBRARY_DIRS: Contains all library directories used for building the package
 #mrt_LIBRARIES: Contains all libraries used for building the package
+#mrt_CUDA_LIBRARIES: Contains all libraries which needs to be linked into cuda code.
+#mrt_TEST_LIBRARIES: Contains all libraries which needs to be linked to test executables.
 #mrt_EXPORT_INCLUDE_DIRS: Contains all include directories which dependend packages also need for building
 #mrt_EXPORT_LIBRARIES: Contains all libraries which dependend packages also need for building
 
@@ -32,6 +36,8 @@ set(mrt_INCLUDE_DIRS "")
 set(mrt_EXPORT_INCLUDE_DIRS "")
 set(mrt_LIBRARIES "")
 set(mrt_EXPORT_LIBRARIES "")
+set(mrt_CUDA_LIBRARIES "")
+set(mrt_TEST_LIBRARIES "")
 set(mrt_LIBRARY_DIRS "")
 
 if (AutoDeps_FIND_COMPONENTS)
@@ -45,24 +51,28 @@ if (AutoDeps_FIND_COMPONENTS)
 		list(FIND _CATKIN_PACKAGES_ ${component} res)
 		if(NOT ${res} EQUAL -1)
 			list(APPEND _CATKIN_SELECTED_PACKAGES_ ${component})
-		else()
-			list(FIND _OTHER_PACKAGES_ ${component} res)
-			if(NOT ${res} EQUAL -1)
-				list(APPEND _OTHER_SELECTED_PACKAGES_ ${component})
-			else()
-				list(FIND _CATKIN_TEST_PACKAGES_ ${component} res)
-				if(NOT ${res} EQUAL -1)
-					list(APPEND _CATKIN_TEST_SELECTED_PACKAGES_ ${component})
-				else()
-					list(FIND _OTHER_TEST_PACKAGES_ ${component} res)
-					if(NOT ${res} EQUAL -1)
-						list(APPEND _OTHER_TEST_SELECTED_PACKAGES_ ${component})
-					else()
-						message(SEND_ERROR "Package ${component} specified but not found in package.xml. This package is ignored.")
-					endif()
-				endif()
-			endif()
+			continue()
 		endif()
+
+		list(FIND _OTHER_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _OTHER_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		list(FIND _CATKIN_TEST_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _CATKIN_TEST_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		list(FIND _OTHER_TEST_PACKAGES_ ${component} res)
+		if(NOT ${res} EQUAL -1)
+			list(APPEND _OTHER_TEST_SELECTED_PACKAGES_ ${component})
+			continue()
+		endif()
+
+		message(SEND_ERROR "Package ${component} specified but not found in package.xml. This package is ignored.")
 	endforeach()
 	
 	if(CATKIN_ENABLE_TESTING)
@@ -72,6 +82,11 @@ if (AutoDeps_FIND_COMPONENTS)
 	
 	#find catkin packages
 	find_package(catkin REQUIRED COMPONENTS ${_CATKIN_SELECTED_PACKAGES_})
+
+	#append catkin packages libraries to CUDA libraries
+	foreach(cuda_package ${_CUDA_CATKIN_PACKAGES_})
+		list(APPEND mrt_CUDA_LIBRARIES ${${cuda_package}_LIBRARIES})
+	endforeach()
 	
 	#find other packages
 	foreach(other_package ${_OTHER_SELECTED_PACKAGES_})
@@ -116,31 +131,29 @@ if (AutoDeps_FIND_COMPONENTS)
 				message(FATAL_ERROR "Package ${other_package}: Specified libraries variable ${${_${other_package}_CMAKE_LIBRARIES_}} not set.")
 			endif()
 
-			list(APPEND mrt_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+			# Append all libraries to link against a test executable (regular and test only).
+			list(APPEND mrt_TEST_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+
+			list(FIND _OTHER_PACKAGES_ ${other_package} res)
+			if(NOT ${res} EQUAL -1)
+				list(APPEND mrt_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+			endif()
+
 			list(FIND _OTHER_EXPORT_PACKAGES_ ${other_package} res)
 			if(NOT ${res} EQUAL -1)
 				list(APPEND mrt_EXPORT_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+			endif()
+
+			list(FIND _CUDA_OTHER_PACKAGES_ ${other_package} res)
+			if(NOT ${res} EQUAL -1)
+				list(APPEND mrt_CUDA_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
 			endif()
 		endif()
 	endforeach()
 	
 	#remove duplicated include directories
 	list(REMOVE_DUPLICATES mrt_INCLUDE_DIRS)
-	
-	# TODO: Remove the following block once the MRT PPA uses the new structure
-	set(MRT_SOFTWARE_ROOT_PATH "/mrtsoftware/pkg")
-	#sort cmake include directories such that mrt-packages include dirs are first
-	set(_mrt_INCLUDE_DIRS_TEMP_ "")
-	set(_non_mrt_INCLUDE_DIRS_TEMP_ "")
-	foreach(include_dir ${mrt_INCLUDE_DIRS})
-		if(${include_dir} MATCHES "^${MRT_SOFTWARE_ROOT_PATH}.*")
-			list(APPEND _mrt_INCLUDE_DIRS_TEMP_ ${include_dir})
-		else()
-			list(APPEND _non_mrt_INCLUDE_DIRS_TEMP_ ${include_dir})
-		endif()
-	endforeach()
-	set(mrt_INCLUDE_DIRS ${_mrt_INCLUDE_DIRS_TEMP_} ${_non_mrt_INCLUDE_DIRS_TEMP_})
-	
+		
 	#remove /usr/include and /usr/local/include
 	#The compiler searches in those folders automatically and this can lead to 
 	#problems if there are different versions of the same library installed
@@ -157,4 +170,3 @@ if (AutoDeps_FIND_COMPONENTS)
 endif()
 
 set(catkin_EXPORT_DEPENDS ${_CATKIN_EXPORT_PACKAGES_})
-
