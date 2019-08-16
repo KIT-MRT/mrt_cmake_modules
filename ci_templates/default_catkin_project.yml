@@ -67,6 +67,8 @@ general_code_quality:
 code_quality:
   dependencies:
     - general_code_quality
+  cache:
+    policy: pull
   stage: test
   only: [master, release, merge_requests]
   artifacts:
@@ -86,6 +88,8 @@ code_quality:
 check_code_quality:
   dependencies:
     - code_quality
+  cache:
+    policy: pull
   stage: verify
   only: [master, release, merge_requests]
   # default filename is codeclimate.json
@@ -123,6 +127,8 @@ test:
 report_licenses:
   stage: verify
   only: [master, release, merge_requests]
+  cache:
+    policy: pull
   script:
   - mrt ws resolve_deps -y
   - mrt ci report_licenses .
@@ -145,9 +151,10 @@ deps:
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME $MRT_NAMESPACE -f --default-fail-on-warning
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
-# It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
+# It is available under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
 pages:
   before_script: []
+  cache: {}
   stage: deploy
   script:
   # everything in the public folder will be available as website
