@@ -1109,7 +1109,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/costmap_cspace/0.4.0-1
+  version: release/kinetic/costmap_cspace/0.4.1-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1217,47 +1217,47 @@ dataspeed_ulc_msgs:
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca/1.0.1-0
+  version: release/kinetic/dbw_fca/1.0.6-1
 dbw_fca_can:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_can/1.0.1-0
+  version: release/kinetic/dbw_fca_can/1.0.6-1
 dbw_fca_description:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_description/1.0.1-0
+  version: release/kinetic/dbw_fca_description/1.0.6-1
 dbw_fca_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_joystick_demo/1.0.1-0
+  version: release/kinetic/dbw_fca_joystick_demo/1.0.6-1
 dbw_fca_msgs:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_fca_msgs/1.0.1-0
+  version: release/kinetic/dbw_fca_msgs/1.0.6-1
 dbw_mkz:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz/1.1.1-0
+  version: release/kinetic/dbw_mkz/1.2.3-1
 dbw_mkz_can:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_can/1.1.1-0
+  version: release/kinetic/dbw_mkz_can/1.2.3-1
 dbw_mkz_description:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_description/1.1.1-0
+  version: release/kinetic/dbw_mkz_description/1.2.3-1
 dbw_mkz_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_joystick_demo/1.1.1-0
+  version: release/kinetic/dbw_mkz_joystick_demo/1.2.3-1
 dbw_mkz_msgs:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_msgs/1.1.1-0
+  version: release/kinetic/dbw_mkz_msgs/1.2.3-1
 dbw_mkz_twist_controller:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/kinetic/dbw_mkz_twist_controller/1.1.1-0
+  version: release/kinetic/dbw_mkz_twist_controller/1.2.3-1
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -1905,7 +1905,7 @@ ez_interactive_marker:
 face_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/face_detector/1.1.2-0
+  version: release/kinetic/face_detector/1.1.3-1
 fake_joint:
   url: https://github.com/tork-a/fake_joint-release.git
   vcs: git
@@ -3085,7 +3085,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/joystick_interrupt/0.4.0-1
+  version: release/kinetic/joystick_interrupt/0.4.1-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -3569,7 +3569,7 @@ leap_motion:
 leg_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/leg_detector/1.1.2-0
+  version: release/kinetic/leg_detector/1.1.3-1
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
@@ -3885,7 +3885,7 @@ map_laser:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/map_organizer/0.4.0-1
+  version: release/kinetic/map_organizer/0.4.1-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4013,7 +4013,7 @@ mbf_utility:
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/kinetic/mcl_3dl/0.1.4-0
+  version: release/kinetic/mcl_3dl/0.1.5-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
@@ -4721,15 +4721,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation/0.4.0-1
+  version: release/kinetic/neonavigation/0.4.1-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation_common/0.4.0-1
+  version: release/kinetic/neonavigation_common/0.4.1-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation_launch/0.4.0-1
+  version: release/kinetic/neonavigation_launch/0.4.1-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4745,7 +4745,7 @@ nerian_sp1:
 nerian_stereo:
   url: https://github.com/nerian-vision/nerian_stereo-release.git
   vcs: git
-  version: release/kinetic/nerian_stereo/3.4.0-1
+  version: release/kinetic/nerian_stereo/3.5.0-1
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -4845,7 +4845,7 @@ o3m151_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/obj_to_pointcloud/0.4.0-1
+  version: release/kinetic/obj_to_pointcloud/0.4.1-1
 object_recognition_capture:
   url: https://github.com/ros-gbp/object_recognition_capture-release.git
   vcs: git
@@ -5309,19 +5309,19 @@ pddl_planner_viewer:
 people:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/people/1.1.2-0
+  version: release/kinetic/people/1.1.3-1
 people_msgs:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/people_msgs/1.1.2-0
+  version: release/kinetic/people_msgs/1.1.3-1
 people_tracking_filter:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/people_tracking_filter/1.1.2-0
+  version: release/kinetic/people_tracking_filter/1.1.3-1
 people_velocity_tracker:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/kinetic/people_velocity_tracker/1.1.2-0
+  version: release/kinetic/people_velocity_tracker/1.1.3-1
 pepper_bringup:
   url: https://github.com/ros-naoqi/pepper_robot-release.git
   vcs: git
@@ -5453,7 +5453,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/planner_cspace/0.4.0-1
+  version: release/kinetic/planner_cspace/0.4.1-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -7433,7 +7433,7 @@ safe_teleop_stage:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/safety_limiter/0.4.0-1
+  version: release/kinetic/safety_limiter/0.4.1-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -7506,6 +7506,10 @@ scratch4robots:
   url: https://github.com/JdeRobot/Scratch4Robots-release.git
   vcs: git
   version: release/kinetic/scratch4robots/0.0.2-0
+sdhlibrary_cpp:
+  url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
+  vcs: git
+  version: release/kinetic/sdhlibrary_cpp/0.2.10-1
 seed_smartactuator_sdk:
   url: https://github.com/seed-solutions/seed_smartactuator_sdk-release.git
   vcs: git
@@ -8241,11 +8245,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/track_odometry/0.4.0-1
+  version: release/kinetic/track_odometry/0.4.1-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/trajectory_tracker/0.4.0-1
+  version: release/kinetic/trajectory_tracker/0.4.1-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -8625,7 +8629,7 @@ urg_node:
 urg_stamped:
   url: https://github.com/seqsense/urg_stamped-release.git
   vcs: git
-  version: release/kinetic/urg_stamped/0.0.2-0
+  version: release/kinetic/urg_stamped/0.0.3-1
 usb_cam:
   url: https://github.com/ros-gbp/usb_cam-release.git
   vcs: git
@@ -8649,23 +8653,23 @@ usv_gazebo_plugins:
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_assistants/0.6.12-0
+  version: release/kinetic/uuv_assistants/0.6.13-0
 uuv_auv_control_allocator:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_auv_control_allocator/0.6.12-0
+  version: release/kinetic/uuv_auv_control_allocator/0.6.13-0
 uuv_control_cascaded_pid:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_control_cascaded_pid/0.6.12-0
+  version: release/kinetic/uuv_control_cascaded_pid/0.6.13-0
 uuv_control_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_control_msgs/0.6.12-0
+  version: release/kinetic/uuv_control_msgs/0.6.13-0
 uuv_control_utils:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_control_utils/0.6.12-0
+  version: release/kinetic/uuv_control_utils/0.6.13-0
 uuv_cpc_sensor:
   url: https://github.com/uuvsimulator/uuv_plume_simulator-release.git
   vcs: git
@@ -8673,27 +8677,27 @@ uuv_cpc_sensor:
 uuv_descriptions:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_descriptions/0.6.12-0
+  version: release/kinetic/uuv_descriptions/0.6.13-0
 uuv_gazebo:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_gazebo/0.6.12-0
+  version: release/kinetic/uuv_gazebo/0.6.13-0
 uuv_gazebo_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_gazebo_plugins/0.6.12-0
+  version: release/kinetic/uuv_gazebo_plugins/0.6.13-0
 uuv_gazebo_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_gazebo_ros_plugins/0.6.12-0
+  version: release/kinetic/uuv_gazebo_ros_plugins/0.6.13-0
 uuv_gazebo_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_gazebo_ros_plugins_msgs/0.6.12-0
+  version: release/kinetic/uuv_gazebo_ros_plugins_msgs/0.6.13-0
 uuv_gazebo_worlds:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_gazebo_worlds/0.6.12-0
+  version: release/kinetic/uuv_gazebo_worlds/0.6.13-0
 uuv_plume_msgs:
   url: https://github.com/uuvsimulator/uuv_plume_simulator-release.git
   vcs: git
@@ -8705,39 +8709,39 @@ uuv_plume_simulator:
 uuv_sensor_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_sensor_ros_plugins/0.6.12-0
+  version: release/kinetic/uuv_sensor_ros_plugins/0.6.13-0
 uuv_sensor_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_sensor_ros_plugins_msgs/0.6.12-0
+  version: release/kinetic/uuv_sensor_ros_plugins_msgs/0.6.13-0
 uuv_simulator:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_simulator/0.6.12-0
+  version: release/kinetic/uuv_simulator/0.6.13-0
 uuv_teleop:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_teleop/0.6.12-0
+  version: release/kinetic/uuv_teleop/0.6.13-0
 uuv_thruster_manager:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_thruster_manager/0.6.12-0
+  version: release/kinetic/uuv_thruster_manager/0.6.13-0
 uuv_trajectory_control:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_trajectory_control/0.6.12-0
+  version: release/kinetic/uuv_trajectory_control/0.6.13-0
 uuv_world_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_world_plugins/0.6.12-0
+  version: release/kinetic/uuv_world_plugins/0.6.13-0
 uuv_world_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_world_ros_plugins/0.6.12-0
+  version: release/kinetic/uuv_world_ros_plugins/0.6.13-0
 uuv_world_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/kinetic/uuv_world_ros_plugins_msgs/0.6.12-0
+  version: release/kinetic/uuv_world_ros_plugins_msgs/0.6.13-0
 uvc_camera:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
