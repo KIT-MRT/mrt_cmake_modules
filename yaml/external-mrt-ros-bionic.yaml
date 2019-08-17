@@ -749,7 +749,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.4.0-1
+  version: release/melodic/costmap_cspace/0.4.1-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1989,7 +1989,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.4.0-1
+  version: release/melodic/joystick_interrupt/0.4.1-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2353,7 +2353,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.4.0-1
+  version: release/melodic/map_organizer/0.4.1-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2469,7 +2469,7 @@ mbf_utility:
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/melodic/mcl_3dl/0.1.4-0
+  version: release/melodic/mcl_3dl/0.1.5-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
@@ -2933,15 +2933,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.4.0-1
+  version: release/melodic/neonavigation/0.4.1-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.4.0-1
+  version: release/melodic/neonavigation_common/0.4.1-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.4.0-1
+  version: release/melodic/neonavigation_launch/0.4.1-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2953,7 +2953,7 @@ neonavigation_rviz_plugins:
 nerian_stereo:
   url: https://github.com/nerian-vision/nerian_stereo-release.git
   vcs: git
-  version: release/melodic/nerian_stereo/3.4.0-1
+  version: release/melodic/nerian_stereo/3.5.0-1
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -3029,7 +3029,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.4.0-1
+  version: release/melodic/obj_to_pointcloud/0.4.1-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3353,7 +3353,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.4.0-1
+  version: release/melodic/planner_cspace/0.4.1-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3718,6 +3718,10 @@ rail_manipulation_msgs:
   url: https://github.com/gt-rail-release/rail_manipulation_msgs-release.git
   vcs: git
   version: release/melodic/rail_manipulation_msgs/0.0.14-1
+rail_mesh_icp:
+  url: https://github.com/gt-rail-release/rail_mesh_icp-release.git
+  vcs: git
+  version: release/melodic/rail_mesh_icp/0.0.1-3
 rail_segmentation:
   url: https://github.com/gt-rail-release/rail_segmentation.git
   vcs: git
@@ -3918,6 +3922,10 @@ robot_navigation:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/robot_navigation/0.2.5-1
+robot_one:
+  url: https://github.com/AlexanderSilvaB/robot-one-ros-release.git
+  vcs: git
+  version: release/melodic/robot_one/0.1.1-1
 robot_pose_ekf:
   url: https://github.com/ros-gbp/robot_pose_ekf-release.git
   vcs: git
@@ -4021,23 +4029,23 @@ rocon_uri:
 ros1_ign:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign/0.6.2-1
+  version: release/melodic/ros1_ign/0.7.0-1
 ros1_ign_bridge:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_bridge/0.6.2-1
+  version: release/melodic/ros1_ign_bridge/0.7.0-1
 ros1_ign_gazebo_demos:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_gazebo_demos/0.6.2-1
+  version: release/melodic/ros1_ign_gazebo_demos/0.7.0-1
 ros1_ign_image:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_image/0.6.2-1
+  version: release/melodic/ros1_ign_image/0.7.0-1
 ros1_ign_point_cloud:
   url: https://github.com/osrf/ros1_ign-release.git
   vcs: git
-  version: release/melodic/ros1_ign_point_cloud/0.6.2-1
+  version: release/melodic/ros1_ign_point_cloud/0.7.0-1
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
@@ -4381,7 +4389,7 @@ rviz_imu_plugin:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.4.0-1
+  version: release/melodic/safety_limiter/0.4.1-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -4414,6 +4422,10 @@ schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
   version: release/melodic/schunk_description/0.6.12-0
+sdhlibrary_cpp:
+  url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
+  vcs: git
+  version: release/melodic/sdhlibrary_cpp/0.2.10-1
 serial:
   url: https://github.com/wjwwood/serial-release.git
   vcs: git
@@ -4741,11 +4753,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.4.0-1
+  version: release/melodic/track_odometry/0.4.1-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.4.0-1
+  version: release/melodic/trajectory_tracker/0.4.1-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4949,7 +4961,7 @@ urg_node:
 urg_stamped:
   url: https://github.com/seqsense/urg_stamped-release.git
   vcs: git
-  version: release/melodic/urg_stamped/0.0.2-0
+  version: release/melodic/urg_stamped/0.0.3-1
 usb_cam:
   url: https://github.com/ros-gbp/usb_cam-release.git
   vcs: git
@@ -4973,83 +4985,83 @@ usv_gazebo_plugins:
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_assistants/0.6.12-0
+  version: release/melodic/uuv_assistants/0.6.13-0
 uuv_auv_control_allocator:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_auv_control_allocator/0.6.12-0
+  version: release/melodic/uuv_auv_control_allocator/0.6.13-0
 uuv_control_cascaded_pid:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_control_cascaded_pid/0.6.12-0
+  version: release/melodic/uuv_control_cascaded_pid/0.6.13-0
 uuv_control_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_control_msgs/0.6.12-0
+  version: release/melodic/uuv_control_msgs/0.6.13-0
 uuv_control_utils:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_control_utils/0.6.12-0
+  version: release/melodic/uuv_control_utils/0.6.13-0
 uuv_descriptions:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_descriptions/0.6.12-0
+  version: release/melodic/uuv_descriptions/0.6.13-0
 uuv_gazebo:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_gazebo/0.6.12-0
+  version: release/melodic/uuv_gazebo/0.6.13-0
 uuv_gazebo_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_gazebo_plugins/0.6.12-0
+  version: release/melodic/uuv_gazebo_plugins/0.6.13-0
 uuv_gazebo_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_gazebo_ros_plugins/0.6.12-0
+  version: release/melodic/uuv_gazebo_ros_plugins/0.6.13-0
 uuv_gazebo_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_gazebo_ros_plugins_msgs/0.6.12-0
+  version: release/melodic/uuv_gazebo_ros_plugins_msgs/0.6.13-0
 uuv_gazebo_worlds:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_gazebo_worlds/0.6.12-0
+  version: release/melodic/uuv_gazebo_worlds/0.6.13-0
 uuv_sensor_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_sensor_ros_plugins/0.6.12-0
+  version: release/melodic/uuv_sensor_ros_plugins/0.6.13-0
 uuv_sensor_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_sensor_ros_plugins_msgs/0.6.12-0
+  version: release/melodic/uuv_sensor_ros_plugins_msgs/0.6.13-0
 uuv_simulator:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_simulator/0.6.12-0
+  version: release/melodic/uuv_simulator/0.6.13-0
 uuv_teleop:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_teleop/0.6.12-0
+  version: release/melodic/uuv_teleop/0.6.13-0
 uuv_thruster_manager:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_thruster_manager/0.6.12-0
+  version: release/melodic/uuv_thruster_manager/0.6.13-0
 uuv_trajectory_control:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_trajectory_control/0.6.12-0
+  version: release/melodic/uuv_trajectory_control/0.6.13-0
 uuv_world_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_world_plugins/0.6.12-0
+  version: release/melodic/uuv_world_plugins/0.6.13-0
 uuv_world_ros_plugins:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_world_ros_plugins/0.6.12-0
+  version: release/melodic/uuv_world_ros_plugins/0.6.13-0
 uuv_world_ros_plugins_msgs:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
-  version: release/melodic/uuv_world_ros_plugins_msgs/0.6.12-0
+  version: release/melodic/uuv_world_ros_plugins_msgs/0.6.13-0
 uvc_camera:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
