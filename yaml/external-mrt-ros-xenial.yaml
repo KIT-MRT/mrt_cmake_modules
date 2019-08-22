@@ -1109,7 +1109,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/costmap_cspace/0.4.1-1
+  version: release/kinetic/costmap_cspace/0.4.2-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1445,7 +1445,7 @@ driver_common:
 drone_wrapper:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/kinetic/drone_wrapper/1.0.0-1
+  version: release/kinetic/drone_wrapper/1.0.1-1
 dsr_control:
   url: https://github.com/doosan-robotics/doosan-robot-release.git
   vcs: git
@@ -1525,7 +1525,7 @@ dynamixel_msgs:
 dynamixel_sdk:
   url: https://github.com/ROBOTIS-GIT-release/DynamixelSDK-release.git
   vcs: git
-  version: release/kinetic/dynamixel_sdk/3.7.0-0
+  version: release/kinetic/dynamixel_sdk/3.7.11-1
 dynamixel_tutorials:
   url: https://github.com/arebgun/dynamixel_motor-release.git
   vcs: git
@@ -2429,7 +2429,7 @@ health_metric_collector:
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
-  version: release/kinetic/hebi_cpp_api/2.0.2-0
+  version: release/kinetic/hebi_cpp_api/2.1.0-1
 hebiros_description:
   url: https://github.com/HebiRobotics/hebiros-release.git
   vcs: git
@@ -3005,7 +3005,7 @@ jaguar_navigation:
 jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
-  version: release/kinetic/jderobot_assets/0.0.2-1
+  version: release/kinetic/jderobot_assets/0.1.0-1
 jog_arm:
   url: https://github.com/UTNuclearRoboticsPublic/jog_arm-release.git
   vcs: git
@@ -3085,7 +3085,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/joystick_interrupt/0.4.1-1
+  version: release/kinetic/joystick_interrupt/0.4.2-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -3689,7 +3689,7 @@ librealsense:
 librealsense2:
   url: https://github.com/IntelRealSense/librealsense2-release.git
   vcs: git
-  version: release/kinetic/librealsense2/2.23.0-1
+  version: release/kinetic/librealsense2/2.25.2-1
 libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -3885,7 +3885,7 @@ map_laser:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/map_organizer/0.4.1-1
+  version: release/kinetic/map_organizer/0.4.2-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4721,15 +4721,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation/0.4.1-1
+  version: release/kinetic/neonavigation/0.4.2-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation_common/0.4.1-1
+  version: release/kinetic/neonavigation_common/0.4.2-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/neonavigation_launch/0.4.1-1
+  version: release/kinetic/neonavigation_launch/0.4.2-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4845,7 +4845,7 @@ o3m151_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/obj_to_pointcloud/0.4.1-1
+  version: release/kinetic/obj_to_pointcloud/0.4.2-1
 object_recognition_capture:
   url: https://github.com/ros-gbp/object_recognition_capture-release.git
   vcs: git
@@ -5453,7 +5453,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/planner_cspace/0.4.1-1
+  version: release/kinetic/planner_cspace/0.4.2-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -7145,7 +7145,7 @@ rqt_controller_manager:
 rqt_drone_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/kinetic/rqt_drone_teleop/1.0.0-1
+  version: release/kinetic/rqt_drone_teleop/1.0.1-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
@@ -7154,6 +7154,10 @@ rqt_gauges:
   url: https://github.com/UTNuclearRoboticsPublic/gauges-release.git
   vcs: git
   version: release/kinetic/rqt_gauges/1.0.7-0
+rqt_ground_robot_teleop:
+  url: https://github.com/JdeRobot/ground_robots-release.git
+  vcs: git
+  version: release/kinetic/rqt_ground_robot_teleop/0.0.1-1
 rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -7433,7 +7437,7 @@ safe_teleop_stage:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/safety_limiter/0.4.1-1
+  version: release/kinetic/safety_limiter/0.4.2-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -7477,27 +7481,27 @@ schunk_canopen_driver:
 schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_description/0.6.12-0
+  version: release/kinetic/schunk_description/0.6.13-1
 schunk_libm5api:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_libm5api/0.6.12-0
+  version: release/kinetic/schunk_libm5api/0.6.13-1
 schunk_modular_robotics:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_modular_robotics/0.6.12-0
+  version: release/kinetic/schunk_modular_robotics/0.6.13-1
 schunk_powercube_chain:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_powercube_chain/0.6.12-0
+  version: release/kinetic/schunk_powercube_chain/0.6.13-1
 schunk_sdh:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_sdh/0.6.12-0
+  version: release/kinetic/schunk_sdh/0.6.13-1
 schunk_simulated_tactile_sensors:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/kinetic/schunk_simulated_tactile_sensors/0.6.12-0
+  version: release/kinetic/schunk_simulated_tactile_sensors/0.6.13-1
 schunk_svh_driver:
   url: https://github.com/fzi-forschungszentrum-informatik/schunk_svh_driver-release.git
   vcs: git
@@ -8245,11 +8249,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/track_odometry/0.4.1-1
+  version: release/kinetic/track_odometry/0.4.2-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/kinetic/trajectory_tracker/0.4.1-1
+  version: release/kinetic/trajectory_tracker/0.4.2-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -8273,7 +8277,7 @@ turtlebot:
 turtlebot3:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3/1.2.0-0
+  version: release/kinetic/turtlebot3/1.2.1-1
 turtlebot3_applications:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_applications-release.git
   vcs: git
@@ -8313,15 +8317,15 @@ turtlebot3_autorace_detect:
 turtlebot3_bringup:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_bringup/1.2.0-0
+  version: release/kinetic/turtlebot3_bringup/1.2.1-1
 turtlebot3_description:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_description/1.2.0-0
+  version: release/kinetic/turtlebot3_description/1.2.1-1
 turtlebot3_example:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_example/1.2.0-0
+  version: release/kinetic/turtlebot3_example/1.2.1-1
 turtlebot3_fake:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_simulations-release.git
   vcs: git
@@ -8345,7 +8349,7 @@ turtlebot3_msgs:
 turtlebot3_navigation:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_navigation/1.2.0-0
+  version: release/kinetic/turtlebot3_navigation/1.2.1-1
 turtlebot3_panorama:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_applications-release.git
   vcs: git
@@ -8357,11 +8361,11 @@ turtlebot3_simulations:
 turtlebot3_slam:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_slam/1.2.0-0
+  version: release/kinetic/turtlebot3_slam/1.2.1-1
 turtlebot3_teleop:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/kinetic/turtlebot3_teleop/1.2.0-0
+  version: release/kinetic/turtlebot3_teleop/1.2.1-1
 turtlebot_actions:
   url: https://github.com/turtlebot-release/turtlebot_apps-release.git
   vcs: git
@@ -8649,7 +8653,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/usv_gazebo_plugins/1.1.2-1
+  version: release/kinetic/usv_gazebo_plugins/1.2.0-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -8885,7 +8889,7 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/vrx_gazebo/1.1.2-1
+  version: release/kinetic/vrx_gazebo/1.2.0-1
 vs060:
   url: https://github.com/start-jsk/denso-release.git
   vcs: git
@@ -8901,15 +8905,15 @@ vs060_moveit_config:
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_description/1.1.2-1
+  version: release/kinetic/wamv_description/1.2.0-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wamv_gazebo/1.1.2-1
+  version: release/kinetic/wamv_gazebo/1.2.0-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
-  version: release/kinetic/warehouse_ros/0.9.2-0
+  version: release/kinetic/warehouse_ros/0.9.3-1
 warthog_control:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
@@ -8941,11 +8945,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wave_gazebo/1.1.2-1
+  version: release/kinetic/wave_gazebo/1.2.0-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/kinetic/wave_gazebo_plugins/1.1.2-1
+  version: release/kinetic/wave_gazebo_plugins/1.2.0-1
 waypoint_generator:
   url: https://github.com/jihoonl/waypoint-release.git
   vcs: git
