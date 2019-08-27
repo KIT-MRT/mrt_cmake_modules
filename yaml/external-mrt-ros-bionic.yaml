@@ -182,6 +182,10 @@ autoware_system_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
   version: release/melodic/autoware_system_msgs/1.12.0-1
+avt_vimba_camera:
+  url: https://github.com/astuff/avt_vimba_camera-release.git
+  vcs: git
+  version: release/melodic/avt_vimba_camera/0.0.11-1
 aws_common:
   url: https://github.com/aws-gbp/aws_common-release.git
   vcs: git
@@ -749,7 +753,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.4.1-1
+  version: release/melodic/costmap_cspace/0.4.2-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1001,7 +1005,7 @@ dynamic_tf_publisher:
 dynamixel_sdk:
   url: https://github.com/ROBOTIS-GIT-release/DynamixelSDK-release.git
   vcs: git
-  version: release/melodic/dynamixel_sdk/3.7.0-0
+  version: release/melodic/dynamixel_sdk/3.7.11-1
 dynamixel_workbench:
   url: https://github.com/ROBOTIS-GIT-release/dynamixel-workbench-release.git
   vcs: git
@@ -1053,7 +1057,7 @@ ecl:
 ecl_build:
   url: https://github.com/yujinrobot-release/ecl_tools-release.git
   vcs: git
-  version: release/melodic/ecl_build/0.61.7-0
+  version: release/melodic/ecl_build/0.61.8-1
 ecl_command_line:
   url: https://github.com/yujinrobot-release/ecl_core-release.git
   vcs: git
@@ -1129,7 +1133,7 @@ ecl_ipc:
 ecl_license:
   url: https://github.com/yujinrobot-release/ecl_tools-release.git
   vcs: git
-  version: release/melodic/ecl_license/0.61.7-0
+  version: release/melodic/ecl_license/0.61.8-1
 ecl_linear_algebra:
   url: https://github.com/yujinrobot-release/ecl_core-release.git
   vcs: git
@@ -1193,7 +1197,7 @@ ecl_time_lite:
 ecl_tools:
   url: https://github.com/yujinrobot-release/ecl_tools-release.git
   vcs: git
-  version: release/melodic/ecl_tools/0.61.7-0
+  version: release/melodic/ecl_tools/0.61.8-1
 ecl_type_traits:
   url: https://github.com/yujinrobot-release/ecl_core-release.git
   vcs: git
@@ -1305,7 +1309,7 @@ exotica_val_description:
 face_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/face_detector/1.1.2-0
+  version: release/melodic/face_detector/1.2.0-1
 fake_localization:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1321,7 +1325,7 @@ fetch_auto_dock_msgs:
 fetch_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/fetch_bringup/0.8.7-1
+  version: release/melodic/fetch_bringup/0.8.8-1
 fetch_calibration:
   url: https://github.com/fetchrobotics-gbp/fetch_ros-release.git
   vcs: git
@@ -1341,7 +1345,7 @@ fetch_driver_msgs:
 fetch_drivers:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/fetch_drivers/0.8.7-1
+  version: release/melodic/fetch_drivers/0.8.8-1
 fetch_gazebo:
   url: https://github.com/fetchrobotics-gbp/fetch_gazebo-release.git
   vcs: git
@@ -1533,7 +1537,7 @@ franka_visualization:
 freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
-  version: release/melodic/freight_bringup/0.8.7-1
+  version: release/melodic/freight_bringup/0.8.8-1
 gateway_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
@@ -1673,7 +1677,7 @@ health_metric_collector:
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
-  version: release/melodic/hebi_cpp_api/2.0.2-0
+  version: release/melodic/hebi_cpp_api/2.1.0-1
 hector_components_description:
   url: https://github.com/tu-darmstadt-ros-pkg-gbp/hector_models-release.git
   vcs: git
@@ -1989,7 +1993,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.4.1-1
+  version: release/melodic/joystick_interrupt/0.4.2-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2197,7 +2201,7 @@ lauv_gazebo:
 leg_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/leg_detector/1.1.2-0
+  version: release/melodic/leg_detector/1.2.0-1
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
@@ -2353,7 +2357,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.4.1-1
+  version: release/melodic/map_organizer/0.4.2-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2933,15 +2937,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.4.1-1
+  version: release/melodic/neonavigation/0.4.2-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.4.1-1
+  version: release/melodic/neonavigation_common/0.4.2-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.4.1-1
+  version: release/melodic/neonavigation_launch/0.4.2-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3029,7 +3033,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.4.1-1
+  version: release/melodic/obj_to_pointcloud/0.4.2-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3250,6 +3254,10 @@ panda_moveit_config:
   url: https://github.com/ros-gbp/panda_moveit_config-release.git
   vcs: git
   version: release/melodic/panda_moveit_config/0.7.2-1
+parameter_assertions:
+  url: https://github.com/RoboJackets/rj-ros-common-release.git
+  vcs: git
+  version: release/melodic/parameter_assertions/0.1.0-1
 parrot_arsdk:
   url: https://github.com/AutonomyLab/parrot_arsdk-release.git
   vcs: git
@@ -3257,19 +3265,19 @@ parrot_arsdk:
 people:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/people/1.1.2-0
+  version: release/melodic/people/1.2.0-1
 people_msgs:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/people_msgs/1.1.2-0
+  version: release/melodic/people_msgs/1.2.0-1
 people_tracking_filter:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/people_tracking_filter/1.1.2-0
+  version: release/melodic/people_tracking_filter/1.2.0-1
 people_velocity_tracker:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
-  version: release/melodic/people_velocity_tracker/1.1.2-0
+  version: release/melodic/people_velocity_tracker/1.2.0-1
 pepperl_fuchs_r2000:
   url: https://github.com/dillenberger/pepperl_fuchs-release.git
   vcs: git
@@ -3353,7 +3361,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.4.1-1
+  version: release/melodic/planner_cspace/0.4.2-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3721,7 +3729,7 @@ rail_manipulation_msgs:
 rail_mesh_icp:
   url: https://github.com/gt-rail-release/rail_mesh_icp-release.git
   vcs: git
-  version: release/melodic/rail_mesh_icp/0.0.1-3
+  version: release/melodic/rail_mesh_icp/0.0.2-1
 rail_segmentation:
   url: https://github.com/gt-rail-release/rail_segmentation.git
   vcs: git
@@ -4389,7 +4397,7 @@ rviz_imu_plugin:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.4.1-1
+  version: release/melodic/safety_limiter/0.4.2-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -4421,7 +4429,7 @@ scheduler_msgs:
 schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_description/0.6.12-0
+  version: release/melodic/schunk_description/0.6.13-1
 sdhlibrary_cpp:
   url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
   vcs: git
@@ -4753,11 +4761,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.4.1-1
+  version: release/melodic/track_odometry/0.4.2-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.4.1-1
+  version: release/melodic/trajectory_tracker/0.4.2-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4773,7 +4781,7 @@ tts:
 turtlebot3:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3/1.2.0-0
+  version: release/melodic/turtlebot3/1.2.2-1
 turtlebot3_applications:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_applications-release.git
   vcs: git
@@ -4813,15 +4821,15 @@ turtlebot3_autorace_detect:
 turtlebot3_bringup:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_bringup/1.2.0-0
+  version: release/melodic/turtlebot3_bringup/1.2.2-1
 turtlebot3_description:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_description/1.2.0-0
+  version: release/melodic/turtlebot3_description/1.2.2-1
 turtlebot3_example:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_example/1.2.0-0
+  version: release/melodic/turtlebot3_example/1.2.2-1
 turtlebot3_fake:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_simulations-release.git
   vcs: git
@@ -4845,7 +4853,7 @@ turtlebot3_msgs:
 turtlebot3_navigation:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_navigation/1.2.0-0
+  version: release/melodic/turtlebot3_navigation/1.2.2-1
 turtlebot3_panorama:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3_applications-release.git
   vcs: git
@@ -4857,11 +4865,11 @@ turtlebot3_simulations:
 turtlebot3_slam:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_slam/1.2.0-0
+  version: release/melodic/turtlebot3_slam/1.2.2-1
 turtlebot3_teleop:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
-  version: release/melodic/turtlebot3_teleop/1.2.0-0
+  version: release/melodic/turtlebot3_teleop/1.2.2-1
 tuw_airskin_msgs:
   url: https://github.com/tuw-robotics/tuw_msgs-release.git
   vcs: git
@@ -4981,7 +4989,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/usv_gazebo_plugins/1.1.1-1
+  version: release/melodic/usv_gazebo_plugins/1.2.0-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -5189,19 +5197,23 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/vrx_gazebo/1.1.1-1
+  version: release/melodic/vrx_gazebo/1.2.0-1
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_description/1.1.1-1
+  version: release/melodic/wamv_description/1.2.0-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.1.1-1
+  version: release/melodic/wamv_gazebo/1.2.0-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
-  version: release/melodic/warehouse_ros/0.9.2-0
+  version: release/melodic/warehouse_ros/0.9.3-1
+warehouse_ros_mongo:
+  url: https://github.com/ros-gbp/warehouse_ros_mongo-release.git
+  vcs: git
+  version: release/melodic/warehouse_ros_mongo/0.9.0-1
 warthog_control:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
@@ -5233,17 +5245,17 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo/1.1.1-1
+  version: release/melodic/wave_gazebo/1.2.0-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo_plugins/1.1.1-1
+  version: release/melodic/wave_gazebo_plugins/1.2.0-1
 web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
   version: release/melodic/web_video_server/0.2.1-1
 webots_ros:
-  url: https://github.com/omichel/webots_ros-release.git
+  url: https://github.com/cyberbotics/webots_ros-release.git
   vcs: git
   version: release/melodic/webots_ros/2.0.5-1
 webrtc:
