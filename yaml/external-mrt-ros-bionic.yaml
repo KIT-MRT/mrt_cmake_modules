@@ -3729,7 +3729,7 @@ rail_manipulation_msgs:
 rail_mesh_icp:
   url: https://github.com/gt-rail-release/rail_mesh_icp-release.git
   vcs: git
-  version: release/melodic/rail_mesh_icp/0.0.2-1
+  version: release/melodic/rail_mesh_icp/0.0.3-1
 rail_segmentation:
   url: https://github.com/gt-rail-release/rail_segmentation.git
   vcs: git
@@ -4429,7 +4429,27 @@ scheduler_msgs:
 schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_description/0.6.13-1
+  version: release/melodic/schunk_description/0.6.13-2
+schunk_libm5api:
+  url: https://github.com/ipa320/schunk_modular_robotics-release.git
+  vcs: git
+  version: release/melodic/schunk_libm5api/0.6.13-2
+schunk_modular_robotics:
+  url: https://github.com/ipa320/schunk_modular_robotics-release.git
+  vcs: git
+  version: release/melodic/schunk_modular_robotics/0.6.13-2
+schunk_powercube_chain:
+  url: https://github.com/ipa320/schunk_modular_robotics-release.git
+  vcs: git
+  version: release/melodic/schunk_powercube_chain/0.6.13-2
+schunk_sdh:
+  url: https://github.com/ipa320/schunk_modular_robotics-release.git
+  vcs: git
+  version: release/melodic/schunk_sdh/0.6.13-2
+schunk_simulated_tactile_sensors:
+  url: https://github.com/ipa320/schunk_modular_robotics-release.git
+  vcs: git
+  version: release/melodic/schunk_simulated_tactile_sensors/0.6.13-2
 sdhlibrary_cpp:
   url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
   vcs: git
