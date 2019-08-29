@@ -559,6 +559,9 @@ mrt_tensorflow:
     name: MrtTensorflow
   ubuntu:
   - mrt-tensorflow-dev
+mrt_tensorflow_addons:
+  ubuntu:
+  - mrt-tensorflow-addons
 mrt_c_tensorflow:
   cmake:
     components: []
