@@ -4390,6 +4390,10 @@ rtctree:
   url: https://github.com/tork-a/rtctree-release.git
   vcs: git
   version: release/melodic/rtctree/3.0.1-0
+rtsprofile:
+  url: https://github.com/tork-a/rtsprofile-release.git
+  vcs: git
+  version: release/melodic/rtsprofile/2.0.0-1
 rviz_imu_plugin:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
