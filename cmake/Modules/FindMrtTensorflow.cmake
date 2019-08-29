@@ -8,6 +8,7 @@ set(TENSORFLOW_INCLUDE_DIR
     ${TENSORFLOW_INCLUDE_DIR}
     ${TENSORFLOW_INCLUDE_DIR}/external/com_google_absl
     ${TENSORFLOW_INCLUDE_DIR}/external/com_google_protobuf/src
+    ${TENSORFLOW_INCLUDE_DIR}/src
     ${TENSORFLOW_INCLUDE_DIR}/bazel-out/k8-opt/bin
     )
 
