@@ -7,7 +7,6 @@ find_path(TENSORFLOW_INCLUDE_DIR tensorflow/core/public/session.h
 set(TENSORFLOW_INCLUDE_DIR
     ${TENSORFLOW_INCLUDE_DIR}
     ${TENSORFLOW_INCLUDE_DIR}/src
-    ${TENSORFLOW_INCLUDE_DIR}/bazel-out/k8-opt/bin
     )
 
 find_library(TENSORFLOW_CC_LIBRARY
