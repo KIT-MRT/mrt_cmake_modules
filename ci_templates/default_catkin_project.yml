@@ -51,6 +51,7 @@ general_code_quality:
     GIT_STRATEGY: fetch
     SOURCE_CODE: $CI_PROJECT_DIR
     CODECLIMATE_DEBUG: "True"
+  before_script: []
   script:
     - /run.sh .
   artifacts:
