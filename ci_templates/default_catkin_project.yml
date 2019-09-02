@@ -42,25 +42,18 @@ build:
 general_code_quality:
   stage: build
   only: [master, release, merge_requests]
-  image: docker:18.09
-  before_script: []
-  cache: {}
-  variables:
-    DOCKER_DRIVER: overlay2
-    GIT_STRATEGY: fetch
   allow_failure: true
-  services:
-    - docker:18.09-dind
+  cache: {}
+  image: 
+    name: ${CI_REGISTRY}/mrt/misc/mrt_build/gl_codequality
+    entrypoint: [""]
+  variables:
+    GIT_STRATEGY: fetch
+    SOURCE_CODE: $CI_PROJECT_DIR
+    CODECLIMATE_DEBUG: "True"
+  before_script: []
   script:
-    - ls
-   # - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
-   # - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-   # - docker run
-   #     --env SOURCE_CODE="$PWD"
-   #     --volume "$PWD":/code
-   #    --volume /var/run/docker.sock:/var/run/docker.sock
-   #     ${CI_REGISTRY}/mrt/misc/mrt_build/gl_codequality /code
-   # - chmod a+rw gl-code-quality-report.json
+    - /run.sh .
   artifacts:
     paths: [gl-code-quality-report.json]
 
@@ -69,6 +62,7 @@ code_quality:
     - general_code_quality
   cache:
     policy: pull
+  needs: [general_code_quality]
   stage: test
   only: [master, release, merge_requests]
   artifacts:
@@ -90,6 +84,7 @@ check_code_quality:
     - code_quality
   cache:
     policy: pull
+  needs: [code_quality]
   stage: verify
   only: [master, release, merge_requests]
   # default filename is codeclimate.json
@@ -102,6 +97,7 @@ check_code_quality:
 
 test:
   stage: test
+  needs: [build]
   only: [branches, tags, merge_requests] # means "always"
   coverage: '/lines: \d+.\d+\%/'
   variables:
@@ -127,6 +123,7 @@ test:
 report_licenses:
   stage: verify
   only: [master, release, merge_requests]
+  needs: [build]
   cache:
     policy: pull
   script:
@@ -139,6 +136,7 @@ report_licenses:
  
 deps:
   stage: verify
+  needs: [build]
   only: [master, release, merge_requests]
   variables:
     MRT_CI_NO_TIDY: 1
@@ -154,6 +152,7 @@ deps:
 # It is available under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
 pages:
   before_script: []
+  needs: [build]
   cache: {}
   stage: deploy
   script:
