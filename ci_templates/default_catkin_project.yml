@@ -54,6 +54,7 @@ general_code_quality:
   before_script: []
   script:
     - /run.sh .
+    - chmod a+rw gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
 
