@@ -4394,6 +4394,10 @@ rviz_imu_plugin:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
   version: release/melodic/rviz_imu_plugin/1.2.1-1
+rxcpp_vendor:
+  url: https://github.com/rosin-project/rxcpp_vendor-release.git
+  vcs: git
+  version: release/melodic/rxcpp_vendor/4.1.0-1
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -5013,7 +5017,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/usv_gazebo_plugins/1.2.1-1
+  version: release/melodic/usv_gazebo_plugins/1.2.2-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -5221,15 +5225,15 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/vrx_gazebo/1.2.1-1
+  version: release/melodic/vrx_gazebo/1.2.2-1
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_description/1.2.1-1
+  version: release/melodic/wamv_description/1.2.2-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.2.1-1
+  version: release/melodic/wamv_gazebo/1.2.2-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -5269,11 +5273,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo/1.2.1-1
+  version: release/melodic/wave_gazebo/1.2.2-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo_plugins/1.2.1-1
+  version: release/melodic/wave_gazebo_plugins/1.2.2-1
 web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
