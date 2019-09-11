@@ -753,7 +753,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.4.2-1
+  version: release/melodic/costmap_cspace/0.4.3-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1997,7 +1997,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.4.2-1
+  version: release/melodic/joystick_interrupt/0.4.3-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2245,7 +2245,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.32.1-1
+  version: release/melodic/libmavconn/0.32.2-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -2369,7 +2369,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.4.2-1
+  version: release/melodic/map_organizer/0.4.3-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2441,19 +2441,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.8.8-1
+  version: release/melodic/mavlink/2019.9.9-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.32.1-1
+  version: release/melodic/mavros/0.32.2-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.32.1-1
+  version: release/melodic/mavros_extras/0.32.2-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.32.1-1
+  version: release/melodic/mavros_msgs/0.32.2-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2949,15 +2949,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.4.2-1
+  version: release/melodic/neonavigation/0.4.3-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.4.2-1
+  version: release/melodic/neonavigation_common/0.4.3-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.4.2-1
+  version: release/melodic/neonavigation_launch/0.4.3-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3045,7 +3045,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.4.2-1
+  version: release/melodic/obj_to_pointcloud/0.4.3-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3333,39 +3333,39 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.7-1
+  version: release/melodic/pilz_control/0.5.8-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.6-1
+  version: release/melodic/pilz_extensions/0.4.7-1
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.6-1
+  version: release/melodic/pilz_industrial_motion/0.4.7-1
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.6-1
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.7-1
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.6-1
+  version: release/melodic/pilz_msgs/0.4.7-1
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.6-1
+  version: release/melodic/pilz_robot_programming/0.4.7-1
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.7-1
+  version: release/melodic/pilz_robots/0.5.8-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.7-1
+  version: release/melodic/pilz_testutils/0.5.8-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.6-1
+  version: release/melodic/pilz_trajectory_generation/0.4.7-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -3373,7 +3373,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.4.2-1
+  version: release/melodic/planner_cspace/0.4.3-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3569,7 +3569,7 @@ pr2_tuckarm:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.7-1
+  version: release/melodic/prbt_gazebo/0.5.8-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3577,15 +3577,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.7-1
+  version: release/melodic/prbt_hardware_support/0.5.8-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.7-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.8-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.7-1
+  version: release/melodic/prbt_moveit_config/0.5.8-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3593,7 +3593,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.7-1
+  version: release/melodic/prbt_support/0.5.8-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -4401,7 +4401,7 @@ rxcpp_vendor:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.4.2-1
+  version: release/melodic/safety_limiter/0.4.3-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -4697,7 +4697,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.32.1-1
+  version: release/melodic/test_mavros/0.32.2-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -4789,11 +4789,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.4.2-1
+  version: release/melodic/track_odometry/0.4.3-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.4.2-1
+  version: release/melodic/trajectory_tracker/0.4.3-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
