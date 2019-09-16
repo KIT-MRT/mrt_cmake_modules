@@ -20,10 +20,7 @@ armadillo:
   - libarmadillo-dev
 coverage:
   ubuntu:
-    xenial:
-    - lcov
-    bionic:
-    - gcovr
+  - lcov
 boost:
   cmake:
     components:
