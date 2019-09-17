@@ -1317,7 +1317,7 @@ fake_localization:
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
-  version: release/melodic/fcl_catkin/0.5.98-1
+  version: release/melodic/fcl_catkin/0.5.99-1
 fetch_auto_dock_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
@@ -1445,39 +1445,39 @@ flatbuffers:
 flexbe_behavior_engine:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_behavior_engine/1.2.1-1
+  version: release/melodic/flexbe_behavior_engine/1.2.2-1
 flexbe_core:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_core/1.2.1-1
+  version: release/melodic/flexbe_core/1.2.2-1
 flexbe_input:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_input/1.2.1-1
+  version: release/melodic/flexbe_input/1.2.2-1
 flexbe_mirror:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_mirror/1.2.1-1
+  version: release/melodic/flexbe_mirror/1.2.2-1
 flexbe_msgs:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_msgs/1.2.1-1
+  version: release/melodic/flexbe_msgs/1.2.2-1
 flexbe_onboard:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_onboard/1.2.1-1
+  version: release/melodic/flexbe_onboard/1.2.2-1
 flexbe_states:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_states/1.2.1-1
+  version: release/melodic/flexbe_states/1.2.2-1
 flexbe_testing:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_testing/1.2.1-1
+  version: release/melodic/flexbe_testing/1.2.2-1
 flexbe_widget:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_widget/1.2.1-1
+  version: release/melodic/flexbe_widget/1.2.2-1
 flir_boson_usb:
   url: https://github.com/astuff/flir_boson_usb-release.git
   vcs: git
