@@ -20,7 +20,7 @@ if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
 else()
     set(CMAKE_CUDA_COMPILER "${CUDA_TOOLKIT_ROOT_DIR}/bin/nvcc")
     set(CMAKE_CUDA_HOST_COMPILER "${_CUDA_HOST_COMPILER}")
-    set(CMAKE_CUDA_FLAGS "-lineinfo")
+    set(CMAKE_CUDA_FLAGS "-lineinfo --expt-relaxed-constexpr")
 
     enable_language(CUDA)
 

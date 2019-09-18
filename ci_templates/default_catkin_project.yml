@@ -1,5 +1,7 @@
 variables:
   GIT_STRATEGY: none
+  GIT_CLONE_PATH: $CI_BUILDS_DIR/gitlab
+
 # Cache build results between building and testing
 cache:
   paths:
@@ -19,7 +21,7 @@ before_script:
   - mrt ci prepare $CI_PROJECT_NAME -c $CI_COMMIT_SHA
   - cd catkin_ws
   # add current branch name to branch management
-  - mrt ws branches add $CI_COMMIT_REF_NAME
+  - mrt ws branches set $CI_COMMIT_REF_NAME
 
 build:
   stage: build
@@ -39,24 +41,19 @@ build:
 
 general_code_quality:
   stage: build
-  only: [master, merge_requests]
-  image: docker:stable
-  before_script: []
-  cache: {}
-  variables:
-    DOCKER_DRIVER: overlay2
-    GIT_STRATEGY: fetch
+  only: [master, release, merge_requests]
   allow_failure: true
-  services:
-    - docker:stable-dind
+  cache: {}
+  image: 
+    name: ${CI_REGISTRY}/mrt/misc/mrt_build/gl_codequality
+    entrypoint: [""]
+  variables:
+    GIT_STRATEGY: fetch
+    SOURCE_CODE: $CI_PROJECT_DIR
+    CODECLIMATE_DEBUG: "True"
+  before_script: []
   script:
-    - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker run
-        --env SOURCE_CODE="$PWD"
-        --volume "$PWD":/code
-        --volume /var/run/docker.sock:/var/run/docker.sock
-        ${CI_REGISTRY}/mrt/misc/mrt_build/gl_codequality /code
+    - /run.sh .
     - chmod a+rw gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
@@ -64,8 +61,11 @@ general_code_quality:
 code_quality:
   dependencies:
     - general_code_quality
+  cache:
+    policy: pull
+  needs: [general_code_quality]
   stage: test
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   artifacts:
     paths: [gl-code-quality-report.json]
     reports:
@@ -83,8 +83,11 @@ code_quality:
 check_code_quality:
   dependencies:
     - code_quality
+  cache:
+    policy: pull
+  needs: [code_quality]
   stage: verify
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
   # default filename is codeclimate.json
   script:
   - mrt ci validate_codequality $MRT_QUALITY_LEVEL --filename gl-code-quality-report.json
@@ -95,6 +98,7 @@ check_code_quality:
 
 test:
   stage: test
+  needs: [build]
   only: [branches, tags, merge_requests] # means "always"
   coverage: '/lines: \d+.\d+\%/'
   variables:
@@ -119,7 +123,10 @@ test:
 
 report_licenses:
   stage: verify
-  only: [master, merge_requests]
+  only: [master, release, merge_requests]
+  needs: [build]
+  cache:
+    policy: pull
   script:
   - mrt ws resolve_deps -y
   - mrt ci report_licenses .
@@ -130,7 +137,8 @@ report_licenses:
  
 deps:
   stage: verify
-  only: [master, merge_requests]
+  needs: [build]
+  only: [master, release, merge_requests]
   variables:
     MRT_CI_NO_TIDY: 1
   cache:
@@ -142,15 +150,17 @@ deps:
   - mrt ci test_deps -f --no-status --release $CI_PROJECT_NAME $MRT_NAMESPACE -f --default-fail-on-warning
 
 # This job will create a homepage for your project, where you can browse coverage and doxygen.
-# It is avaliable under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
+# It is available under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
 pages:
   before_script: []
+  needs: [build]
+  cache: {}
   stage: deploy
   script:
   # everything in the public folder will be available as website
   - mkdir public
   - cp -r coverage public/ || true
-  - cp -r doxygen public/
+  - cp -r doxygen public/ || true
   artifacts:
     paths:
     - public

@@ -2,21 +2,6 @@
 # This is required for resolving dependencies that are part of metapackages.
 # The format is <metapackage>: [<package1>, <package2>, ...]
 
-grid_map:
-- grid_map
-- grid_map_core
-- grid_map_costmap_2d
-- grid_map_cv
-- grid_map_demos
-- grid_map_filters
-- grid_map_loader
-- grid_map_msgs
-- grid_map_octomap
-- grid_map_pcl
-- grid_map_ros
-- grid_map_rviz_plugin
-- grid_map_sdf
-- grid_map_visualization
 lanelet2:
 - lanelet2
 - lanelet2_core
@@ -28,3 +13,23 @@ lanelet2:
 - lanelet2_maps
 - lanelet2_validation
 - lanelet2_examples
+
+sceneshot:
+- sceneshot
+- sceneshot_core
+- sceneshot_free_space
+- sceneshot_gridmap
+- sceneshot_gridmap_elevation
+- sceneshot_gridmap_fusion
+- sceneshot_gridmap_pcl
+- sceneshot_gridmap_recursion
+- sceneshot_gridmap_sensor
+- sceneshot_io
+- sceneshot_io_simulation
+- sceneshot_object_detection
+- sceneshot_object_tracking
+
+sceneshot_ros_tool:
+- sceneshot_dynamic_reconfigure_ros
+- sceneshot_ros
+- sceneshot_ros_tool

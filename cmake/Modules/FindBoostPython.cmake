@@ -19,10 +19,11 @@ endif()
 
 if(NOT Boost_FOUND)
   find_package(Boost REQUIRED COMPONENTS python)
+  find_package(Boost QUIET COMPONENTS numpy) # numpy is not available on some boost versions
   set(Python_ADDITIONAL_VERSIONS ${_python_version})
   find_package(PythonLibs REQUIRED)
   set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${PYTHON_INCLUDE_DIR})
-  set(BoostPython_LIBRARIES ${Boost_PYTHON_LIBRARIES} ${PYTHON_LIBRARIES})
+  set(BoostPython_LIBRARIES ${Boost_PYTHON_LIBRARIES} ${Boost_NUMPY_LIBRARIES} ${PYTHON_LIBRARIES})
 elseif(_python_version VERSION_LESS 3)
   find_package(Python2 REQUIRED COMPONENTS Development)
   set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${Python2_INCLUDE_DIRS})
