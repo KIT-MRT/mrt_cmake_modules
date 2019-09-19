@@ -298,7 +298,9 @@ endfunction()
 # @@public
 #
 function(mrt_python_module_setup)
-    find_package(catkin REQUIRED)
+    if(NOT catkin_FOUND)
+        find_package(catkin REQUIRED)
+    endif()
     if(ARGN)
         message(FATAL_ERROR "mrt_python_module_setup() called with unused arguments: ${ARGN}")
     endif()
@@ -374,7 +376,7 @@ function(mrt_add_python_api modulename)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
-        add_library( ${TARGET_NAME}
+        add_library( ${TARGET_NAME} SHARED
             ${API_FILE}
             )
         target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
@@ -389,8 +391,10 @@ function(mrt_add_python_api modulename)
             ${mrt_LIBRARIES}
             ${MRT_SANITIZER_LINK_FLAGS}
             )
-        add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
-
+        set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+        if(_deps)
+            add_dependencies(${TARGET_NAME} ${_deps})
+        endif()
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
@@ -402,7 +406,6 @@ function(mrt_add_python_api modulename)
     configure_file(${MCM_ROOT}/cmake/Templates/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_MRT_TARGETS ${GENERATED_TARGETS} PARENT_SCOPE)
     set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
 
     # configure setup.py for install
@@ -410,8 +413,8 @@ function(mrt_add_python_api modulename)
     set(PACKAGE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
     set(PACKAGE_DATA "*.so*")
     configure_file(${MCM_ROOT}/cmake/Templates/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @@ONLY)
-    configure_file(${MCM_ROOT}/cmake/Templates/python_api_install.sh.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.sh" @@ONLY)
-    install(CODE "execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.sh)")
+    configure_file(${MCM_ROOT}/cmake/Templates/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py" @@ONLY)
+    install(CODE "execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
 endfunction()
 
 
@@ -494,7 +497,10 @@ function(mrt_add_library libname)
     target_compile_options(${LIBRARY_TARGET_NAME}
         PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
         )
-    add_dependencies(${LIBRARY_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps})
+    endif()
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
@@ -623,7 +629,10 @@ function(mrt_add_executable execname)
     target_include_directories(${EXEC_TARGET_NAME}
         PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
         )
-    add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps})
+    endif()
     target_link_libraries(${EXEC_TARGET_NAME} PRIVATE
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}

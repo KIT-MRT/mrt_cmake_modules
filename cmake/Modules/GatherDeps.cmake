@@ -1,3 +1,8 @@
+# Detect Conan builds. In this case we don't have to do anything, conan already did the work for us.
+if(CONAN_PACKAGE_NAME OR EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    return()
+endif()
+
 #Add "watch" to package.xml. This is achieved by using configure_file. This is not necessary for catkin_make but
 #if eclipse is used and the make target is used directly
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/package.xml" COPYONLY)
