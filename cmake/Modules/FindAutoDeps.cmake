@@ -40,6 +40,15 @@ set(mrt_CUDA_LIBRARIES "")
 set(mrt_TEST_LIBRARIES "")
 set(mrt_LIBRARY_DIRS "")
 
+# Detect Conan builds. In this case we don't have to do anything, just load the conanfile and include the catkin mock.
+if(CONAN_PACKAGE_NAME OR EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    if(NOT CONAN_PACKAGE_NAME)
+        include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    endif()
+    include(CatkinMockForConan)
+    return()
+endif()
+
 if (AutoDeps_FIND_COMPONENTS)
 	#extract packages packages
 	set(_CATKIN_SELECTED_PACKAGES_ "")
