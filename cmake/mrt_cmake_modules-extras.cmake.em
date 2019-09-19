@@ -499,7 +499,7 @@ function(mrt_add_library libname)
         )
     set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
     if(_combined_deps)
-        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps)
+        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps})
     endif()
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
@@ -631,9 +631,9 @@ function(mrt_add_executable execname)
         )
     set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
     if(_combined_deps)
-        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps)
+        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps})
     endif()
-    target_link_libraries(${EXEC_TARGET_NAME}
+    target_link_libraries(${EXEC_TARGET_NAME} PRIVATE
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
@@ -669,7 +669,7 @@ function(mrt_add_executable execname)
         endif()
 
         # link cuda library to executable
-        target_link_libraries(${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME})
+        target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
     endif()
 
     # append to list of all targets in this project
