@@ -1,3 +1,47 @@
+abb:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb/1.3.1-1
+abb_driver:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_driver/1.3.1-1
+abb_irb2400_moveit_config:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb2400_moveit_config/1.3.1-1
+abb_irb2400_moveit_plugins:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb2400_moveit_plugins/1.3.1-1
+abb_irb2400_support:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb2400_support/1.3.1-1
+abb_irb4400_support:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb4400_support/1.3.1-1
+abb_irb5400_support:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb5400_support/1.3.1-1
+abb_irb6600_support:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb6600_support/1.3.1-1
+abb_irb6640_moveit_config:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb6640_moveit_config/1.3.1-1
+abb_irb6640_support:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_irb6640_support/1.3.1-1
+abb_resources:
+  url: https://github.com/ros-industrial-release/abb-release.git
+  vcs: git
+  version: release/melodic/abb_resources/1.3.1-1
 abseil_cpp:
   url: https://github.com/Eurecat/abseil_cpp-release.git
   vcs: git
@@ -309,7 +353,7 @@ catkin_pip:
 catkin_virtualenv:
   url: https://github.com/locusrobotics/catkin_virtualenv-release.git
   vcs: git
-  version: release/melodic/catkin_virtualenv/0.4.1-1
+  version: release/melodic/catkin_virtualenv/0.5.1-1
 checkerboard_detector:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -1433,7 +1477,7 @@ fingertip_pressure:
 fkie_message_filters:
   url: https://github.com/fkie-release/message_filters-release.git
   vcs: git
-  version: release/melodic/fkie_message_filters/1.0.0-0
+  version: release/melodic/fkie_message_filters/1.0.1-1
 fkie_potree_rviz_plugin:
   url: https://github.com/fkie-release/potree_rviz_plugin-release.git
   vcs: git
@@ -2721,7 +2765,7 @@ moveit_setup_assistant:
 moveit_sim_controller:
   url: https://github.com/PickNikRobotics/moveit_sim_controller-release.git
   vcs: git
-  version: release/melodic/moveit_sim_controller/0.1.0-0
+  version: release/melodic/moveit_sim_controller/0.2.0-1
 moveit_simple_controller_manager:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -3733,7 +3777,7 @@ qt_qmake:
 quaternion_operation:
   url: https://github.com/OUXT-Polaris/quaternion_operation-release.git
   vcs: git
-  version: release/melodic/quaternion_operation/0.0.3-1
+  version: release/melodic/quaternion_operation/0.0.3-2
 radar_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -3773,11 +3817,11 @@ rc_cloud_accumulator:
 rc_common_msgs:
   url: https://github.com/roboception-gbp/rc_common_msgs-release.git
   vcs: git
-  version: release/melodic/rc_common_msgs/0.2.1-1
+  version: release/melodic/rc_common_msgs/0.3.0-1
 rc_dynamics_api:
   url: https://github.com/roboception-gbp/rc_dynamics_api-release.git
   vcs: git
-  version: release/melodic/rc_dynamics_api/0.8.0-1
+  version: release/melodic/rc_dynamics_api/0.10.0-1
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
@@ -4065,7 +4109,7 @@ ros_control:
 ros_control_boilerplate:
   url: https://github.com/PickNikRobotics/ros_control_boilerplate-release.git
   vcs: git
-  version: release/melodic/ros_control_boilerplate/0.4.1-0
+  version: release/melodic/ros_control_boilerplate/0.5.0-1
 ros_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -4197,7 +4241,7 @@ rosparam_handler:
 rosparam_shortcuts:
   url: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
   vcs: git
-  version: release/melodic/rosparam_shortcuts/0.3.1-1
+  version: release/melodic/rosparam_shortcuts/0.3.2-1
 rospatlite:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
