@@ -1917,31 +1917,31 @@ imu_transformer:
 industrial_core:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_core/0.7.0-0
+  version: release/melodic/industrial_core/0.7.1-1
 industrial_deprecated:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_deprecated/0.7.0-0
+  version: release/melodic/industrial_deprecated/0.7.1-1
 industrial_msgs:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_msgs/0.7.0-0
+  version: release/melodic/industrial_msgs/0.7.1-1
 industrial_robot_client:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_robot_client/0.7.0-0
+  version: release/melodic/industrial_robot_client/0.7.1-1
 industrial_robot_simulator:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_robot_simulator/0.7.0-0
+  version: release/melodic/industrial_robot_simulator/0.7.1-1
 industrial_trajectory_filters:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_trajectory_filters/0.7.0-0
+  version: release/melodic/industrial_trajectory_filters/0.7.1-1
 industrial_utils:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/industrial_utils/0.7.0-0
+  version: release/melodic/industrial_utils/0.7.1-1
 interactive_marker_proxy:
   url: https://github.com/RobotWebTools-release/interactive_marker_proxy-release.git
   vcs: git
@@ -4541,7 +4541,7 @@ simple_grasping:
 simple_message:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
-  version: release/melodic/simple_message/0.7.0-0
+  version: release/melodic/simple_message/0.7.1-1
 single_joint_position_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
@@ -4585,7 +4585,7 @@ socketcan_bridge:
 soem:
   url: https://github.com/mgruhler/soem-gbp.git
   vcs: git
-  version: release/melodic/soem/1.3.0-0
+  version: release/melodic/soem/1.4.0-1
 sophus:
   url: https://github.com/yujinrobot-release/sophus-release.git
   vcs: git
@@ -5069,7 +5069,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/usv_gazebo_plugins/1.2.2-1
+  version: release/melodic/usv_gazebo_plugins/1.2.5-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -5277,15 +5277,15 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/vrx_gazebo/1.2.2-1
+  version: release/melodic/vrx_gazebo/1.2.5-1
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_description/1.2.2-1
+  version: release/melodic/wamv_description/1.2.5-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.2.2-1
+  version: release/melodic/wamv_gazebo/1.2.5-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -5325,11 +5325,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo/1.2.2-1
+  version: release/melodic/wave_gazebo/1.2.5-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo_plugins/1.2.2-1
+  version: release/melodic/wave_gazebo_plugins/1.2.5-1
 web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
