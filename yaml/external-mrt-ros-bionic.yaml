@@ -4437,7 +4437,7 @@ rtctree:
 rtshell:
   url: https://github.com/tork-a/rtshell-release.git
   vcs: git
-  version: release/melodic/rtshell/3.0.1-1
+  version: release/melodic/rtshell/3.0.1-2
 rtsprofile:
   url: https://github.com/tork-a/rtsprofile-release.git
   vcs: git
@@ -4450,6 +4450,14 @@ rxcpp_vendor:
   url: https://github.com/rosin-project/rxcpp_vendor-release.git
   vcs: git
   version: release/melodic/rxcpp_vendor/4.1.0-1
+rxros:
+  url: https://github.com/rosin-project/rxros-release.git
+  vcs: git
+  version: release/melodic/rxros/0.1.0-1
+rxros_tf:
+  url: https://github.com/rosin-project/rxros-release.git
+  vcs: git
+  version: release/melodic/rxros_tf/0.1.0-1
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
