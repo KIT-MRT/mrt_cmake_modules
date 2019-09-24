@@ -1934,6 +1934,14 @@ industrial_robot_simulator:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
   version: release/melodic/industrial_robot_simulator/0.7.1-1
+industrial_robot_status_controller:
+  url: https://github.com/gavanderhoorn/industrial_robot_status_controller-release.git
+  vcs: git
+  version: release/melodic/industrial_robot_status_controller/0.1.2-1
+industrial_robot_status_interface:
+  url: https://github.com/gavanderhoorn/industrial_robot_status_controller-release.git
+  vcs: git
+  version: release/melodic/industrial_robot_status_interface/0.1.2-1
 industrial_trajectory_filters:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
@@ -3126,6 +3134,10 @@ octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
   version: release/melodic/octovis/1.9.0-1
+odom_frame_publisher:
+  url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
+  vcs: git
+  version: release/melodic/odom_frame_publisher/0.0.1-1
 odva_ethernetip:
   url: https://github.com/ros-drivers-gbp/odva_ethernetip-release.git
   vcs: git
