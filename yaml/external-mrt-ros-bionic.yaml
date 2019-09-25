@@ -4253,7 +4253,7 @@ rosparam_handler:
 rosparam_shortcuts:
   url: https://github.com/PickNikRobotics/rosparam_shortcuts-release.git
   vcs: git
-  version: release/melodic/rosparam_shortcuts/0.3.2-1
+  version: release/melodic/rosparam_shortcuts/0.3.3-1
 rospatlite:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
