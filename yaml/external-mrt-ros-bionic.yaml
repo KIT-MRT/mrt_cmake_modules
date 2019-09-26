@@ -3441,7 +3441,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.3.0-1
+  version: release/melodic/plotjuggler/2.3.1-1
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
