@@ -5041,11 +5041,11 @@ twist_recovery:
 um6:
   url: https://github.com/ros-drivers-gbp/um6-release.git
   vcs: git
-  version: release/melodic/um6/1.1.2-1
+  version: release/melodic/um6/1.1.3-1
 um7:
   url: https://github.com/ros-drivers-gbp/um7-release.git
   vcs: git
-  version: release/melodic/um7/0.0.4-0
+  version: release/melodic/um7/0.0.5-1
 unique_identifier:
   url: https://github.com/ros-geographic-info/unique_identifier-release.git
   vcs: git
@@ -5313,7 +5313,7 @@ warehouse_ros:
 warehouse_ros_mongo:
   url: https://github.com/ros-gbp/warehouse_ros_mongo-release.git
   vcs: git
-  version: release/melodic/warehouse_ros_mongo/0.9.0-1
+  version: release/melodic/warehouse_ros_mongo/0.9.1-1
 warthog_control:
   url: https://github.com/clearpath-gbp/warthog-release.git
   vcs: git
@@ -5513,7 +5513,7 @@ yosemite_valley:
 ypspur:
   url: https://github.com/openspur/yp-spur-release.git
   vcs: git
-  version: release/melodic/ypspur/1.16.0-1
+  version: release/melodic/ypspur/1.17.0-1
 ypspur_ros:
   url: https://github.com/openspur/ypspur_ros-release.git
   vcs: git
