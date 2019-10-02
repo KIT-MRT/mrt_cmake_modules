@@ -108,8 +108,8 @@ test:
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
   # Run tests
   - source devel_debug/setup.bash
-  - mrt catkin build $CI_PROJECT_NAME --no-status --no-deps --catkin-make-args tests --
-  - mrt catkin build $CI_PROJECT_NAME --no-status --no-deps -v --catkin-make-args GTEST_COLOR=true CTEST_OUTPUT_ON_FAILURE=1 test --
+  - catkin build $CI_PROJECT_NAME --no-status --no-deps --catkin-make-args tests
+  - catkin build $CI_PROJECT_NAME --no-status --no-deps -v --catkin-make-args GTEST_COLOR=true CTEST_OUTPUT_ON_FAILURE=1 test
   # Summarize results
   - catkin_test_results --verbose build_debug/$CI_PROJECT_NAME
   - cp -r build_debug/$CI_PROJECT_NAME/coverage .. || true
