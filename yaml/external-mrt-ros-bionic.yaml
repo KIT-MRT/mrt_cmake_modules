@@ -1781,47 +1781,47 @@ hpp-fcl:
 husky_base:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_base/0.4.0-1
+  version: release/melodic/husky_base/0.4.1-1
 husky_bringup:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_bringup/0.4.0-1
+  version: release/melodic/husky_bringup/0.4.1-1
 husky_control:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_control/0.4.0-1
+  version: release/melodic/husky_control/0.4.1-1
 husky_description:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_description/0.4.0-1
+  version: release/melodic/husky_description/0.4.1-1
 husky_desktop:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_desktop/0.4.0-1
+  version: release/melodic/husky_desktop/0.4.1-1
 husky_gazebo:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_gazebo/0.4.0-1
+  version: release/melodic/husky_gazebo/0.4.1-1
 husky_msgs:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_msgs/0.4.0-1
+  version: release/melodic/husky_msgs/0.4.1-1
 husky_navigation:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_navigation/0.4.0-1
+  version: release/melodic/husky_navigation/0.4.1-1
 husky_robot:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_robot/0.4.0-1
+  version: release/melodic/husky_robot/0.4.1-1
 husky_simulator:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_simulator/0.4.0-1
+  version: release/melodic/husky_simulator/0.4.1-1
 husky_viz:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_viz/0.4.0-1
+  version: release/melodic/husky_viz/0.4.1-1
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -3441,7 +3441,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.3.1-1
+  version: release/melodic/plotjuggler/2.3.3-2
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
@@ -3777,11 +3777,11 @@ qpoases_vendor:
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_app/0.3.11-0
+  version: release/melodic/qt_gui_app/0.3.13-1
 qt_gui_core:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_core/0.3.11-0
+  version: release/melodic/qt_gui_core/0.3.13-1
 qt_qmake:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
@@ -4157,7 +4157,7 @@ ros_speech_recognition:
 ros_type_introspection:
   url: https://github.com/facontidavide/ros_type_introspection-release.git
   vcs: git
-  version: release/melodic/ros_type_introspection/1.3.3-1
+  version: release/melodic/ros_type_introspection/2.0.1-1
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
