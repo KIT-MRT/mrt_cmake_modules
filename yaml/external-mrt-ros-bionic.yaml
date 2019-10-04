@@ -801,7 +801,7 @@ costmap_cspace:
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/costmap_cspace_msgs/0.3.1-0
+  version: release/melodic/costmap_cspace_msgs/0.5.0-1
 costmap_queue:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -1621,15 +1621,15 @@ goal_passer:
 gps_common:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gps_common/0.2.0-0
+  version: release/melodic/gps_common/0.3.0-1
 gps_umd:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gps_umd/0.2.0-0
+  version: release/melodic/gps_umd/0.3.0-1
 gpsd_client:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gpsd_client/0.2.0-0
+  version: release/melodic/gpsd_client/0.3.0-1
 graft:
   url: https://github.com/ros-gbp/graft-release.git
   vcs: git
@@ -2118,6 +2118,10 @@ jsk_perception:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
   version: release/melodic/jsk_perception/1.2.10-0
+jsk_pr2eus:
+  url: https://github.com/tork-a/jsk_pr2eus-release.git
+  vcs: git
+  version: release/melodic/jsk_pr2eus/0.3.14-3
 jsk_recognition:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -2133,7 +2137,7 @@ jsk_recognition_utils:
 jsk_roseus:
   url: https://github.com/tork-a/jsk_roseus-release.git
   vcs: git
-  version: release/melodic/jsk_roseus/1.7.4-0
+  version: release/melodic/jsk_roseus/1.7.4-1
 jsk_rqt_plugins:
   url: https://github.com/tork-a/jsk_visualization-release.git
   vcs: git
@@ -2429,7 +2433,7 @@ map_organizer:
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/map_organizer_msgs/0.3.1-0
+  version: release/melodic/map_organizer_msgs/0.5.0-1
 mapviz:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
@@ -2710,6 +2714,10 @@ moveit_plugins:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
   version: release/melodic/moveit_plugins/1.0.2-1
+moveit_pr2:
+  url: https://github.com/ros-gbp/moveit_pr2-release.git
+  vcs: git
+  version: release/melodic/moveit_pr2/0.7.2-1
 moveit_python:
   url: https://github.com/mikeferguson/moveit_python-release.git
   vcs: git
@@ -3017,7 +3025,7 @@ neonavigation_launch:
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/neonavigation_msgs/0.3.1-0
+  version: release/melodic/neonavigation_msgs/0.5.0-1
 neonavigation_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
@@ -3437,11 +3445,11 @@ planner_cspace:
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/planner_cspace_msgs/0.3.1-0
+  version: release/melodic/planner_cspace_msgs/0.5.0-1
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.3.3-2
+  version: release/melodic/plotjuggler/2.3.4-2
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
@@ -3586,6 +3594,14 @@ pr2_mechanism_msgs:
   url: https://github.com/ros-gbp/pr2_mechanism_msgs-release.git
   vcs: git
   version: release/melodic/pr2_mechanism_msgs/1.8.2-0
+pr2_moveit_config:
+  url: https://github.com/ros-gbp/moveit_pr2-release.git
+  vcs: git
+  version: release/melodic/pr2_moveit_config/0.7.2-1
+pr2_moveit_plugins:
+  url: https://github.com/ros-gbp/moveit_pr2-release.git
+  vcs: git
+  version: release/melodic/pr2_moveit_plugins/0.7.2-1
 pr2_msgs:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -3626,6 +3642,18 @@ pr2_tuckarm:
   url: https://github.com/pr2-gbp/pr2_apps-release.git
   vcs: git
   version: release/melodic/pr2_tuckarm/0.6.1-0
+pr2eus:
+  url: https://github.com/tork-a/jsk_pr2eus-release.git
+  vcs: git
+  version: release/melodic/pr2eus/0.3.14-3
+pr2eus_moveit:
+  url: https://github.com/tork-a/jsk_pr2eus-release.git
+  vcs: git
+  version: release/melodic/pr2eus_moveit/0.3.14-3
+pr2eus_tutorials:
+  url: https://github.com/tork-a/jsk_pr2eus-release.git
+  vcs: git
+  version: release/melodic/pr2eus_tutorials/0.3.14-3
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
@@ -3777,11 +3805,11 @@ qpoases_vendor:
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_app/0.3.13-1
+  version: release/melodic/qt_gui_app/0.3.14-2
 qt_gui_core:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_core/0.3.13-1
+  version: release/melodic/qt_gui_core/0.3.14-2
 qt_qmake:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
@@ -4157,7 +4185,7 @@ ros_speech_recognition:
 ros_type_introspection:
   url: https://github.com/facontidavide/ros_type_introspection-release.git
   vcs: git
-  version: release/melodic/ros_type_introspection/2.0.1-1
+  version: release/melodic/ros_type_introspection/2.0.2-1
 rosapi:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
@@ -4217,7 +4245,19 @@ rosemacs:
 roseus:
   url: https://github.com/tork-a/jsk_roseus-release.git
   vcs: git
-  version: release/melodic/roseus/1.7.4-0
+  version: release/melodic/roseus/1.7.4-1
+roseus_mongo:
+  url: https://github.com/tork-a/jsk_roseus-release.git
+  vcs: git
+  version: release/melodic/roseus_mongo/1.7.4-1
+roseus_smach:
+  url: https://github.com/tork-a/jsk_roseus-release.git
+  vcs: git
+  version: release/melodic/roseus_smach/1.7.4-1
+roseus_tutorials:
+  url: https://github.com/tork-a/jsk_roseus-release.git
+  vcs: git
+  version: release/melodic/roseus_tutorials/1.7.4-1
 rosfmt:
   url: https://github.com/xqms/rosfmt-release.git
   vcs: git
@@ -4474,6 +4514,10 @@ safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
   version: release/melodic/safety_limiter/0.4.3-1
+safety_limiter_msgs:
+  url: https://github.com/at-wat/neonavigation_msgs-release.git
+  vcs: git
+  version: release/melodic/safety_limiter_msgs/0.5.0-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -4869,7 +4913,7 @@ trajectory_tracker:
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker_msgs/0.3.1-0
+  version: release/melodic/trajectory_tracker_msgs/0.5.0-1
 trajectory_tracker_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
