@@ -93,7 +93,7 @@ apriltag:
 apriltag_ros:
   url: https://github.com/AprilRobotics/apriltag_ros-release.git
   vcs: git
-  version: release/melodic/apriltag_ros/3.1.0-1
+  version: release/melodic/apriltag_ros/3.1.1-1
 ar_track_alvar:
   url: https://github.com/ros-gbp/ar_track_alvar-release.git
   vcs: git
@@ -2250,6 +2250,10 @@ laser_scan_densifier:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
   version: release/melodic/laser_scan_densifier/0.7.0-1
+laser_scan_publisher_tutorial:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/laser_scan_publisher_tutorial/0.2.3-1
 lauv_control:
   url: https://github.com/uuvsimulator/lauv_gazebo-release.git
   vcs: git
@@ -2717,7 +2721,7 @@ moveit_plugins:
 moveit_pr2:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/melodic/moveit_pr2/0.7.2-1
+  version: release/melodic/moveit_pr2/0.7.3-1
 moveit_python:
   url: https://github.com/mikeferguson/moveit_python-release.git
   vcs: git
@@ -2797,7 +2801,7 @@ movie_publisher:
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
-  version: release/melodic/mrpt1/1.5.8-0
+  version: release/melodic/mrpt1/1.5.9-1
 mrpt_bridge:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_bridge-release.git
   vcs: git
@@ -2805,31 +2809,31 @@ mrpt_bridge:
 mrpt_ekf_slam_2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_ekf_slam_2d/0.1.9-0
+  version: release/melodic/mrpt_ekf_slam_2d/0.1.10-1
 mrpt_ekf_slam_3d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_ekf_slam_3d/0.1.9-0
+  version: release/melodic/mrpt_ekf_slam_3d/0.1.10-1
 mrpt_graphslam_2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_graphslam_2d/0.1.9-0
+  version: release/melodic/mrpt_graphslam_2d/0.1.10-1
 mrpt_icp_slam_2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_icp_slam_2d/0.1.9-0
+  version: release/melodic/mrpt_icp_slam_2d/0.1.10-1
 mrpt_local_obstacles:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_local_obstacles/0.1.24-0
+  version: release/melodic/mrpt_local_obstacles/0.1.26-1
 mrpt_localization:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_localization/0.1.24-0
+  version: release/melodic/mrpt_localization/0.1.26-1
 mrpt_map:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_map/0.1.24-0
+  version: release/melodic/mrpt_map/0.1.26-1
 mrpt_msgs:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_msgs-release.git
   vcs: git
@@ -2837,27 +2841,27 @@ mrpt_msgs:
 mrpt_navigation:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_navigation/0.1.24-0
+  version: release/melodic/mrpt_navigation/0.1.26-1
 mrpt_rawlog:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_rawlog/0.1.24-0
+  version: release/melodic/mrpt_rawlog/0.1.26-1
 mrpt_rbpf_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_rbpf_slam/0.1.9-0
+  version: release/melodic/mrpt_rbpf_slam/0.1.10-1
 mrpt_reactivenav2d:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_reactivenav2d/0.1.24-0
+  version: release/melodic/mrpt_reactivenav2d/0.1.26-1
 mrpt_slam:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_slam-release.git
   vcs: git
-  version: release/melodic/mrpt_slam/0.1.9-0
+  version: release/melodic/mrpt_slam/0.1.10-1
 mrpt_tutorials:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
-  version: release/melodic/mrpt_tutorials/0.1.24-0
+  version: release/melodic/mrpt_tutorials/0.1.26-1
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -3006,6 +3010,14 @@ navigation_layers:
   url: https://github.com/wu-robotics/navigation_layers_release.git
   vcs: git
   version: release/melodic/navigation_layers/0.5.0-0
+navigation_stage:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/navigation_stage/0.2.3-1
+navigation_tutorials:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/navigation_tutorials/0.2.3-1
 neobotix_usboard_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -3146,6 +3158,10 @@ odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
   version: release/melodic/odom_frame_publisher/0.0.1-1
+odometry_publisher_tutorial:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/odometry_publisher_tutorial/0.2.3-1
 odva_ethernetip:
   url: https://github.com/ros-drivers-gbp/odva_ethernetip-release.git
   vcs: git
@@ -3401,7 +3417,7 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.8-1
+  version: release/melodic/pilz_control/0.5.10-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -3425,11 +3441,11 @@ pilz_robot_programming:
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.8-1
+  version: release/melodic/pilz_robots/0.5.10-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.8-1
+  version: release/melodic/pilz_testutils/0.5.10-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -3450,6 +3466,10 @@ plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
   version: release/melodic/plotjuggler/2.3.4-2
+point_cloud_publisher_tutorial:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/point_cloud_publisher_tutorial/0.2.3-1
 pointcloud_to_laserscan:
   url: https://github.com/ros-gbp/pointcloud_to_laserscan-release.git
   vcs: git
@@ -3597,11 +3617,11 @@ pr2_mechanism_msgs:
 pr2_moveit_config:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/melodic/pr2_moveit_config/0.7.2-1
+  version: release/melodic/pr2_moveit_config/0.7.3-1
 pr2_moveit_plugins:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
-  version: release/melodic/pr2_moveit_plugins/0.7.2-1
+  version: release/melodic/pr2_moveit_plugins/0.7.3-1
 pr2_msgs:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
@@ -3657,7 +3677,7 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.8-1
+  version: release/melodic/prbt_gazebo/0.5.10-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3665,15 +3685,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.8-1
+  version: release/melodic/prbt_hardware_support/0.5.10-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.8-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.10-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.8-1
+  version: release/melodic/prbt_moveit_config/0.5.10-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3681,7 +3701,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.8-1
+  version: release/melodic/prbt_support/0.5.10-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -4046,6 +4066,10 @@ robot_self_filter:
   url: https://github.com/pr2-gbp/robot_self_filter-gbp.git
   vcs: git
   version: release/melodic/robot_self_filter/0.1.31-0
+robot_setup_tf_tutorial:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/robot_setup_tf_tutorial/0.2.3-1
 robot_upstart:
   url: https://github.com/clearpath-gbp/robot_upstart-release.git
   vcs: git
@@ -4138,6 +4162,10 @@ rocon_uri:
   url: https://github.com/yujinrobot-release/rocon_tools-release.git
   vcs: git
   version: release/melodic/rocon_uri/0.3.2-0
+roomba_stage:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/roomba_stage/0.2.3-1
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
@@ -4606,6 +4634,10 @@ simple_message:
   url: https://github.com/ros-industrial-release/industrial_core-release.git
   vcs: git
   version: release/melodic/simple_message/0.7.1-1
+simple_navigation_goals_tutorial:
+  url: https://github.com/ros-gbp/navigation_tutorials-release.git
+  vcs: git
+  version: release/melodic/simple_navigation_goals_tutorial/0.2.3-1
 single_joint_position_action:
   url: https://github.com/pr2-gbp/pr2_controllers-release.git
   vcs: git
@@ -5133,7 +5165,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/usv_gazebo_plugins/1.2.5-1
+  version: release/melodic/usv_gazebo_plugins/1.2.6-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -5341,15 +5373,15 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/vrx_gazebo/1.2.5-1
+  version: release/melodic/vrx_gazebo/1.2.6-1
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_description/1.2.5-1
+  version: release/melodic/wamv_description/1.2.6-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.2.5-1
+  version: release/melodic/wamv_gazebo/1.2.6-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -5389,11 +5421,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo/1.2.5-1
+  version: release/melodic/wave_gazebo/1.2.6-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo_plugins/1.2.5-1
+  version: release/melodic/wave_gazebo_plugins/1.2.6-1
 web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
