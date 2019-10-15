@@ -152,10 +152,10 @@ FUNCTION(SETUP_TARGET_FOR_COVERAGE _targetname _outputname _init_targetname)
 		MESSAGE(FATAL_ERROR "lcov not found! Aborting...")
 	ENDIF() # NOT LCOV_PATH
 
-	if(GCOVR_PATH)
-        _setup_gcovr_target(${_targetname} ${_outputname} ${_init_targetname})
-    else()
+	if(LCOV_PATH)
         _setup_lcov_target(${_targetname} ${_outputname} ${_init_targetname})
+    else()
+        _setup_gcovr_target(${_targetname} ${_outputname} ${_init_targetname})
     endif()
 
 	# Show info where to find the report
