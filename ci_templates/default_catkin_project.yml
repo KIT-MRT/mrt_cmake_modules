@@ -109,7 +109,7 @@ test:
   # Build test
   - mrt catkin build $CI_PROJECT_NAME --no-status --no-deps --catkin-make-args tests
   # Run test
-  - bash -c 'source devel_debug/setup.bash && cd build_debug/$CI_PROJECT_NAME && export GTEST_COLOR=true && exec ctest --output-on-failure -j $(nproc --all)'
+  - bash -c 'source devel_debug/setup.bash && cd build_debug/$CI_PROJECT_NAME && export GTEST_COLOR=true && ctest --output-on-failure -j $(nproc --all)'
   # Summarize results
   - cp -r build_debug/$CI_PROJECT_NAME/coverage .. || true
   # make coverage information available in gitlab
