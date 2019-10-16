@@ -106,11 +106,11 @@ test:
   script:
   # Build code again, in case caching didn't work
   - mrt catkin build -s -rd --debug --default_yes --no-status $CI_PROJECT_NAME
-  # Build test
-  - mrt catkin build $CI_PROJECT_NAME --no-status --no-deps --catkin-make-args tests
-  # Run test
-  - bash -c 'source devel_debug/setup.bash && cd build_debug/$CI_PROJECT_NAME && export GTEST_COLOR=true && ctest --output-on-failure -j $(nproc --all)'
+  # Run tests
+  - source devel_debug/setup.bash
+  - mrt catkin run_tests --no-status $CI_PROJECT_NAME --no-deps
   # Summarize results
+  - catkin_test_results --verbose build_debug/$CI_PROJECT_NAME
   - cp -r build_debug/$CI_PROJECT_NAME/coverage .. || true
   # make coverage information available in gitlab
   artifacts:
