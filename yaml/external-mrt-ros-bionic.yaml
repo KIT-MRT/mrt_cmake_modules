@@ -149,7 +149,7 @@ assimp_devel:
 assisted_teleop:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/assisted_teleop/0.3.2-0
+  version: release/melodic/assisted_teleop/0.3.3-1
 astuff_sensor_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -797,7 +797,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.4.3-1
+  version: release/melodic/costmap_cspace/0.5.0-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -1617,7 +1617,7 @@ gmapping:
 goal_passer:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/goal_passer/0.3.2-0
+  version: release/melodic/goal_passer/0.3.3-1
 gps_common:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
@@ -2053,7 +2053,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.4.3-1
+  version: release/melodic/joystick_interrupt/0.5.0-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2309,7 +2309,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.32.2-1
+  version: release/melodic/libmavconn/0.33.0-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -2433,7 +2433,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.4.3-1
+  version: release/melodic/map_organizer/0.5.0-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2505,51 +2505,51 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.9.9-1
+  version: release/melodic/mavlink/2019.10.10-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.32.2-1
+  version: release/melodic/mavros/0.33.0-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.32.2-1
+  version: release/melodic/mavros_extras/0.33.0-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.32.2-1
+  version: release/melodic/mavros_msgs/0.33.0-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_abstract_core/0.2.4-1
+  version: release/melodic/mbf_abstract_core/0.2.5-1
 mbf_abstract_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_abstract_nav/0.2.4-1
+  version: release/melodic/mbf_abstract_nav/0.2.5-1
 mbf_costmap_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_costmap_core/0.2.4-1
+  version: release/melodic/mbf_costmap_core/0.2.5-1
 mbf_costmap_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_costmap_nav/0.2.4-1
+  version: release/melodic/mbf_costmap_nav/0.2.5-1
 mbf_msgs:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_msgs/0.2.4-1
+  version: release/melodic/mbf_msgs/0.2.5-1
 mbf_simple_nav:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_simple_nav/0.2.4-1
+  version: release/melodic/mbf_simple_nav/0.2.5-1
 mbf_utility:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/mbf_utility/0.2.4-1
+  version: release/melodic/mbf_utility/0.2.5-1
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/melodic/mcl_3dl/0.1.5-1
+  version: release/melodic/mcl_3dl/0.1.6-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
@@ -2657,7 +2657,7 @@ move_base:
 move_base_flex:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
-  version: release/melodic/move_base_flex/0.2.4-1
+  version: release/melodic/move_base_flex/0.2.5-1
 move_base_msgs:
   url: https://github.com/ros-gbp/navigation_msgs-release.git
   vcs: git
@@ -3005,7 +3005,7 @@ navigation:
 navigation_experimental:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/navigation_experimental/0.3.2-0
+  version: release/melodic/navigation_experimental/0.3.3-1
 navigation_layers:
   url: https://github.com/wu-robotics/navigation_layers_release.git
   vcs: git
@@ -3025,15 +3025,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.4.3-1
+  version: release/melodic/neonavigation/0.5.0-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.4.3-1
+  version: release/melodic/neonavigation_common/0.5.0-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.4.3-1
+  version: release/melodic/neonavigation_launch/0.5.0-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3121,7 +3121,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.4.3-1
+  version: release/melodic/obj_to_pointcloud/0.5.0-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3302,6 +3302,18 @@ orocos_kinematics_dynamics:
   url: https://github.com/orocos/orocos-kdl-release.git
   vcs: git
   version: release/melodic/orocos_kinematics_dynamics/1.4.0-0
+osg_interactive_markers:
+  url: https://github.com/uji-ros-pkg/visualization_osg-release.git
+  vcs: git
+  version: release/melodic/osg_interactive_markers/1.0.2-1
+osg_markers:
+  url: https://github.com/uji-ros-pkg/visualization_osg-release.git
+  vcs: git
+  version: release/melodic/osg_markers/1.0.2-1
+osg_utils:
+  url: https://github.com/uji-ros-pkg/visualization_osg-release.git
+  vcs: git
+  version: release/melodic/osg_utils/1.0.2-1
 ouster_driver:
   url: https://github.com/CPFL/ouster-release.git
   vcs: git
@@ -3457,7 +3469,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.4.3-1
+  version: release/melodic/planner_cspace/0.5.0-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3465,7 +3477,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.3.4-2
+  version: release/melodic/plotjuggler/2.3.6-2
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -3477,7 +3489,7 @@ pointcloud_to_laserscan:
 pose_base_controller:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/pose_base_controller/0.3.2-0
+  version: release/melodic/pose_base_controller/0.3.3-1
 pose_cov_ops:
   url: https://github.com/mrpt-ros-pkg-release/pose_cov_ops-release.git
   vcs: git
@@ -3485,7 +3497,7 @@ pose_cov_ops:
 pose_follower:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/pose_follower/0.3.2-0
+  version: release/melodic/pose_follower/0.3.3-1
 posedetection_msgs:
   url: https://github.com/tork-a/jsk_common_msgs-release.git
   vcs: git
@@ -3714,6 +3726,10 @@ ps3joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
   version: release/melodic/ps3joy/1.13.0-1
+px4_msgs:
+  url: https://github.com/PX4/px4_msgs-release.git
+  vcs: git
+  version: release/melodic/px4_msgs/1.0.0-1
 py_trees:
   url: https://github.com/stonier/py_trees-release.git
   vcs: git
@@ -3821,7 +3837,7 @@ qb_move_hardware_interface:
 qpoases_vendor:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/qpoases_vendor-release.git
   vcs: git
-  version: release/melodic/qpoases_vendor/3.2.0-2
+  version: release/melodic/qpoases_vendor/3.2.1-1
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
@@ -4226,6 +4242,14 @@ rosauth:
   url: https://github.com/gt-rail-release/rosauth-release.git
   vcs: git
   version: release/melodic/rosauth/1.0.1-0
+rosbag_editor:
+  url: https://github.com/facontidavide/rosbag_editor-release.git
+  vcs: git
+  version: release/melodic/rosbag_editor/0.3.0-1
+rosbag_fancy:
+  url: https://github.com/xqms/rosbag_fancy-release.git
+  vcs: git
+  version: release/melodic/rosbag_fancy/0.1.1-1
 rosbag_pandas:
   url: https://github.com/eurogroep/rosbag_pandas-release.git
   vcs: git
@@ -4470,6 +4494,10 @@ rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
   version: release/melodic/rqt_joint_trajectory_controller/0.15.0-0
+rqt_launchtree:
+  url: https://github.com/pschillinger/rqt_launchtree-release.git
+  vcs: git
+  version: release/melodic/rqt_launchtree/0.2.0-1
 rqt_multiplot:
   url: https://github.com/anybotics/rqt_multiplot_plugin-release.git
   vcs: git
@@ -4541,7 +4569,7 @@ rxros_tf:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.4.3-1
+  version: release/melodic/safety_limiter/0.5.0-1
 safety_limiter_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4565,11 +4593,11 @@ sbpl:
 sbpl_lattice_planner:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/sbpl_lattice_planner/0.3.2-0
+  version: release/melodic/sbpl_lattice_planner/0.3.3-1
 sbpl_recovery:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/sbpl_recovery/0.3.2-0
+  version: release/melodic/sbpl_recovery/0.3.3-1
 scheduler_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
@@ -4845,7 +4873,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.32.2-1
+  version: release/melodic/test_mavros/0.33.0-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -4937,11 +4965,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.4.3-1
+  version: release/melodic/track_odometry/0.5.0-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.4.3-1
+  version: release/melodic/trajectory_tracker/0.5.0-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -5113,7 +5141,7 @@ twist_mux_msgs:
 twist_recovery:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
-  version: release/melodic/twist_recovery/0.3.2-0
+  version: release/melodic/twist_recovery/0.3.3-1
 um6:
   url: https://github.com/ros-drivers-gbp/um6-release.git
   vcs: git
@@ -5250,6 +5278,10 @@ uvc_camera:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
   version: release/melodic/uvc_camera/0.2.7-0
+uwsim_bullet:
+  url: https://github.com/uji-ros-pkg/uwsim_bullet-release.git
+  vcs: git
+  version: release/melodic/uwsim_bullet/2.82.1-1
 vapor_master:
   url: https://github.com/roshub/vapor_master-release.git
   vcs: git
@@ -5354,6 +5386,10 @@ visp_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
   version: release/melodic/visp_tracker/0.11.1-1
+visualization_osg:
+  url: https://github.com/uji-ros-pkg/visualization_osg-release.git
+  vcs: git
+  version: release/melodic/visualization_osg/1.0.2-1
 voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
