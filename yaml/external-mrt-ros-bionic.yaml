@@ -129,7 +129,7 @@ arbotix_sensors:
 ariles_ros:
   url: https://github.com/asherikov/ariles-release.git
   vcs: git
-  version: release/melodic/ariles_ros/1.1.5-1
+  version: release/melodic/ariles_ros/1.3.1-1
 aruco_detect:
   url: https://github.com/UbiquityRobotics-release/fiducials-release.git
   vcs: git
@@ -1641,59 +1641,59 @@ grasping_msgs:
 grid_map:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map/1.6.1-0
+  version: release/melodic/grid_map/1.6.2-1
 grid_map_core:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_core/1.6.1-0
+  version: release/melodic/grid_map_core/1.6.2-1
 grid_map_costmap_2d:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_costmap_2d/1.6.1-0
+  version: release/melodic/grid_map_costmap_2d/1.6.2-1
 grid_map_cv:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_cv/1.6.1-0
+  version: release/melodic/grid_map_cv/1.6.2-1
 grid_map_demos:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_demos/1.6.1-0
+  version: release/melodic/grid_map_demos/1.6.2-1
 grid_map_filters:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_filters/1.6.1-0
+  version: release/melodic/grid_map_filters/1.6.2-1
 grid_map_loader:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_loader/1.6.1-0
+  version: release/melodic/grid_map_loader/1.6.2-1
 grid_map_msgs:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_msgs/1.6.1-0
+  version: release/melodic/grid_map_msgs/1.6.2-1
 grid_map_octomap:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_octomap/1.6.1-0
+  version: release/melodic/grid_map_octomap/1.6.2-1
 grid_map_pcl:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_pcl/1.6.1-0
+  version: release/melodic/grid_map_pcl/1.6.2-1
 grid_map_ros:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_ros/1.6.1-0
+  version: release/melodic/grid_map_ros/1.6.2-1
 grid_map_rviz_plugin:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_rviz_plugin/1.6.1-0
+  version: release/melodic/grid_map_rviz_plugin/1.6.2-1
 grid_map_sdf:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_sdf/1.6.1-0
+  version: release/melodic/grid_map_sdf/1.6.2-1
 grid_map_visualization:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
-  version: release/melodic/grid_map_visualization/1.6.1-0
+  version: release/melodic/grid_map_visualization/1.6.2-1
 gripper_action_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -5282,6 +5282,10 @@ uwsim_bullet:
   url: https://github.com/uji-ros-pkg/uwsim_bullet-release.git
   vcs: git
   version: release/melodic/uwsim_bullet/2.82.1-1
+uwsim_osgbullet:
+  url: https://github.com/uji-ros-pkg/uwsim_osgbullet-release.git
+  vcs: git
+  version: release/melodic/uwsim_osgbullet/3.0.1-1
 uwsim_osgocean:
   url: https://github.com/uji-ros-pkg/uwsim_osgocean-release.git
   vcs: git
