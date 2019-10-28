@@ -34,7 +34,7 @@ sceneshot_ros_tool:
 - sceneshot_ros
 - sceneshot_ros_tool
 
-ethz_control_toolbox:
+ct:
 - ct
 - ct_optcon
 - ct_models
