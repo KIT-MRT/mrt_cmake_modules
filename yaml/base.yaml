@@ -773,3 +773,13 @@ yaml-cpp:
     - yaml-cpp_LIBRARIES
     library_dirs: []
     name: yaml-cpp
+coinor-libipopt-dev:
+  cmake:
+    components: []
+    include_dirs:
+      - IPOPT_INCLUDE_DIRS
+    libraries:
+      - IPOPT_LIBRARIES
+    library_dirs: []
+    name: Ipopt
+  ubuntu: [coinor-libipopt-dev]
