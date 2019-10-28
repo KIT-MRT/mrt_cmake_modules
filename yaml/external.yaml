@@ -27,7 +27,7 @@ mrt_cmake_modules: https://github.com/KIT-MRT/mrt_cmake_modules.git
 rosinterface_handler: https://github.com/KIT-MRT/rosinterface_handler.git
 rosparam_handler: https://github.com/cbandera/rosparam_handler.git
 rviz_satellite: https://github.com/gareth-cross/rviz_satellite.git
-ethz_control_toolbox: https://github.com/ethz-adrl/control-toolbox.git
+ct: https://github.com/ethz-adrl/control-toolbox.git
 
 # CoInCar-Sim (https://github.com/coincar-sim/coincarsim_getting_started)
 desired_motion_rviz_plugin_ros: https://github.com/coincar-sim/desired_motion_rviz_plugin_ros.git
