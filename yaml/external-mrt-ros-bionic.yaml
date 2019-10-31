@@ -3869,7 +3869,7 @@ rail_manipulation_msgs:
 rail_mesh_icp:
   url: https://github.com/gt-rail-release/rail_mesh_icp-release.git
   vcs: git
-  version: release/melodic/rail_mesh_icp/0.0.3-1
+  version: release/melodic/rail_mesh_icp/0.0.4-1
 rail_segmentation:
   url: https://github.com/gt-rail-release/rail_segmentation.git
   vcs: git
