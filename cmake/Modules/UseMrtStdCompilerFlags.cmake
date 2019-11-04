@@ -25,12 +25,12 @@ endif ()
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=gold")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -fuse-ld=gold")
 
-# Add _DEBUG for debug configuration. This enables e.g. assertions in OpenCV.
+# Add _DEBUG and _GLIBCXX_ASSERTIONS for debug configuration. This enables e.g. assertions in OpenCV and the STL.
 if (CMAKE_VERSION VERSION_GREATER "3.12")
-    add_compile_definitions($<$<CONFIG:Debug>:_DEBUG>)
+    add_compile_definitions($<$<CONFIG:Debug>:_DEBUG> $<$<CONFIG:Debug>:_GLIBCXX_ASSERTIONS>)
 endif()
 
-# Add support for std::filesystem. For GCC version <= 8 one needs to link agains -lstdc++fs.
+# Add support for std::filesystem. For GCC version <= 8 one needs to link against -lstdc++fs.
 link_libraries($<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
 
 # export compile commands
