@@ -6,9 +6,7 @@ find_path(TENSORFLOW_INCLUDE_DIR tensorflow/core/public/session.h
 
 set(TENSORFLOW_INCLUDE_DIR
     ${TENSORFLOW_INCLUDE_DIR}
-    ${TENSORFLOW_INCLUDE_DIR}/external/com_google_absl
-    ${TENSORFLOW_INCLUDE_DIR}/external/com_google_protobuf/src
-    ${TENSORFLOW_INCLUDE_DIR}/bazel-out/k8-opt/bin
+    ${TENSORFLOW_INCLUDE_DIR}/src
     )
 
 find_library(TENSORFLOW_CC_LIBRARY

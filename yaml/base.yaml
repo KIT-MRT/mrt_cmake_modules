@@ -20,10 +20,7 @@ armadillo:
   - libarmadillo-dev
 coverage:
   ubuntu:
-    xenial:
-    - lcov
-    bionic:
-    - gcovr
+  - lcov
 boost:
   cmake:
     components:
@@ -559,11 +556,14 @@ mrt_tensorflow:
     name: MrtTensorflow
   ubuntu:
   - mrt-tensorflow-dev
+mrt_tensorflow_addons:
+  ubuntu:
+  - mrt-tensorflow-addons
 mrt_c_tensorflow:
   cmake:
     components: []
     include_dirs:
-    - TENSORFLOW_INCLUDE_DIRS
+    - TENSORFLOW_C_INCLUDE_DIRS
     libraries:
     - TENSORFLOW_LIBRARIES
     library_dirs: []
@@ -773,3 +773,13 @@ yaml-cpp:
     - yaml-cpp_LIBRARIES
     library_dirs: []
     name: yaml-cpp
+coinor-libipopt-dev:
+  cmake:
+    components: []
+    include_dirs:
+      - IPOPT_INCLUDE_DIRS
+    libraries:
+      - IPOPT_LIBRARIES
+    library_dirs: []
+    name: Ipopt
+  ubuntu: [coinor-libipopt-dev]

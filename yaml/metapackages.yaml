@@ -33,3 +33,10 @@ sceneshot_ros_tool:
 - sceneshot_dynamic_reconfigure_ros
 - sceneshot_ros
 - sceneshot_ros_tool
+
+ct:
+- ct
+- ct_optcon
+- ct_models
+- ct_core
+- ct_rbd
