@@ -115,8 +115,8 @@ function(_setup_lcov_target _targetname _outputname _init_targetname)
 	ADD_CUSTOM_TARGET(${_targetname}
 		# Capturing lcov counters and generating report
 		COMMAND ${LCOV_PATH} --directory ${CMAKE_CURRENT_BINARY_DIR} --capture --output-file ${coverage_info} -q
-		COMMAND ${LCOV_PATH} -a ${coverage_info} -a ${coverage_baseline} --output-file ${coverage_combined} -q
-		COMMAND ${LCOV_PATH} --extract ${coverage_combined} '${CMAKE_CURRENT_LIST_DIR}/*' --output-file ${coverage_cleaned} -q
+		COMMAND ${LCOV_PATH} -a ${coverage_info} -a ${coverage_baseline} --output-file ${coverage_combined} -q || true
+		COMMAND ${LCOV_PATH} --extract ${coverage_combined} '${CMAKE_CURRENT_LIST_DIR}/*' --output-file ${coverage_cleaned} -q || true
 		COMMAND ${GENHTML_PATH} -o ${_outputname} ${coverage_cleaned} || true
 		COMMAND ${CMAKE_COMMAND} -E remove ${coverage_info} ${coverage_combined}
 
