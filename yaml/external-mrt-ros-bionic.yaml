@@ -53,7 +53,7 @@ acado:
 access_point_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/access_point_control/1.0.13-2
+  version: release/melodic/access_point_control/1.0.16-1
 ackermann_msgs:
   url: https://github.com/ros-drivers-gbp/ackermann_msgs-release.git
   vcs: git
@@ -137,11 +137,11 @@ aruco_detect:
 asmach:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/asmach/1.0.13-2
+  version: release/melodic/asmach/1.0.16-1
 asmach_tutorials:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/asmach_tutorials/1.0.13-2
+  version: release/melodic/asmach_tutorials/1.0.16-1
 assimp_devel:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -401,7 +401,7 @@ cloudwatch_logger:
 cloudwatch_logs_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_logs_common/1.1.0-1
+  version: release/melodic/cloudwatch_logs_common/1.1.2-1
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
@@ -409,7 +409,7 @@ cloudwatch_metrics_collector:
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_common/1.1.0-1
+  version: release/melodic/cloudwatch_metrics_common/1.1.2-1
 cnn_bridge:
   url: https://github.com/wew84/cnn_bridge-release.git
   vcs: git
@@ -445,7 +445,7 @@ cob_android_settings:
 cob_base_controller_utils:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_controller_utils/0.8.0-1
+  version: release/melodic/cob_base_controller_utils/0.8.1-1
 cob_base_drive_chain:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -453,7 +453,7 @@ cob_base_drive_chain:
 cob_base_velocity_smoother:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_velocity_smoother/0.8.0-1
+  version: release/melodic/cob_base_velocity_smoother/0.8.1-1
 cob_bms_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -477,19 +477,19 @@ cob_canopen_motor:
 cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_cartesian_controller/0.8.0-1
+  version: release/melodic/cob_cartesian_controller/0.8.1-1
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_collision_velocity_filter/0.8.0-1
+  version: release/melodic/cob_collision_velocity_filter/0.8.1-1
 cob_command_gui:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_command_gui/0.6.14-1
+  version: release/melodic/cob_command_gui/0.6.15-1
 cob_command_tools:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_command_tools/0.6.14-1
+  version: release/melodic/cob_command_tools/0.6.15-1
 cob_common:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -497,19 +497,19 @@ cob_common:
 cob_control:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control/0.8.0-1
+  version: release/melodic/cob_control/0.8.1-1
 cob_control_mode_adapter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_mode_adapter/0.8.0-1
+  version: release/melodic/cob_control_mode_adapter/0.8.1-1
 cob_control_msgs:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_msgs/0.8.0-1
+  version: release/melodic/cob_control_msgs/0.8.1-1
 cob_dashboard:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_dashboard/0.6.14-1
+  version: release/melodic/cob_dashboard/0.6.15-1
 cob_default_env_config:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
@@ -541,11 +541,11 @@ cob_extern:
 cob_footprint_observer:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_footprint_observer/0.8.0-1
+  version: release/melodic/cob_footprint_observer/0.8.1-1
 cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_frame_tracker/0.8.0-1
+  version: release/melodic/cob_frame_tracker/0.8.1-1
 cob_gazebo_plugins:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
@@ -566,10 +566,14 @@ cob_hand_bridge:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
   version: release/melodic/cob_hand_bridge/0.6.6-1
+cob_hardware_emulation:
+  url: https://github.com/ipa320/cob_control-release.git
+  vcs: git
+  version: release/melodic/cob_hardware_emulation/0.8.1-1
 cob_helper_tools:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_helper_tools/0.6.14-1
+  version: release/melodic/cob_helper_tools/0.6.15-1
 cob_image_flip:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -577,7 +581,7 @@ cob_image_flip:
 cob_interactive_teleop:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_interactive_teleop/0.6.14-1
+  version: release/melodic/cob_interactive_teleop/0.6.15-1
 cob_light:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -601,11 +605,11 @@ cob_mimic:
 cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_model_identifier/0.8.0-1
+  version: release/melodic/cob_model_identifier/0.8.1-1
 cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_monitoring/0.6.14-1
+  version: release/melodic/cob_monitoring/0.6.15-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -641,11 +645,11 @@ cob_object_detection_visualizer:
 cob_obstacle_distance:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_obstacle_distance/0.8.0-1
+  version: release/melodic/cob_obstacle_distance/0.8.1-1
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_omni_drive_controller/0.8.0-1
+  version: release/melodic/cob_omni_drive_controller/0.8.1-1
 cob_perception_common:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -685,7 +689,7 @@ cob_scan_unifier:
 cob_script_server:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_script_server/0.6.14-1
+  version: release/melodic/cob_script_server/0.6.15-1
 cob_sick_lms1xx:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -713,19 +717,19 @@ cob_supported_robots:
 cob_teleop:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/cob_teleop/0.6.14-1
+  version: release/melodic/cob_teleop/0.6.15-1
 cob_trajectory_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_trajectory_controller/0.8.0-1
+  version: release/melodic/cob_trajectory_controller/0.8.1-1
 cob_tricycle_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_tricycle_controller/0.8.0-1
+  version: release/melodic/cob_tricycle_controller/0.8.1-1
 cob_twist_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_twist_controller/0.8.0-1
+  version: release/melodic/cob_twist_controller/0.8.1-1
 cob_undercarriage_ctrl:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -817,7 +821,7 @@ cv_camera:
 dataflow_lite:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/dataflow_lite/1.1.0-1
+  version: release/melodic/dataflow_lite/1.1.2-1
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
@@ -921,7 +925,7 @@ dccomms_ros_msgs:
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/ddwrt_access_point/1.0.13-2
+  version: release/melodic/ddwrt_access_point/1.0.16-1
 ddynamic_reconfigure:
   url: https://github.com/pal-gbp/ddynamic_reconfigure.git
   vcs: git
@@ -1473,7 +1477,7 @@ fiducials:
 file_management:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
-  version: release/melodic/file_management/1.1.0-1
+  version: release/melodic/file_management/1.1.2-1
 find_object_2d:
   url: https://github.com/introlab/find_object_2d-release.git
   vcs: git
@@ -1597,7 +1601,7 @@ gateway_msgs:
 generic_throttle:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/generic_throttle/0.6.14-1
+  version: release/melodic/generic_throttle/0.6.15-1
 geographic_info:
   url: https://github.com/ros-geographic-info/geographic_info-release.git
   vcs: git
@@ -1833,7 +1837,7 @@ hls_lfcd_lds_driver:
 hostapd_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/hostapd_access_point/1.0.13-2
+  version: release/melodic/hostapd_access_point/1.0.16-1
 hpp-fcl:
   url: https://github.com/ipab-slmc/hpp-fcl_catkin-release.git
   vcs: git
@@ -1897,7 +1901,7 @@ ibeo_msgs:
 ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/ieee80211_channels/1.0.13-2
+  version: release/melodic/ieee80211_channels/1.0.16-1
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
@@ -2449,11 +2453,11 @@ libuvc_ros:
 linksys_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/linksys_access_point/1.0.13-2
+  version: release/melodic/linksys_access_point/1.0.16-1
 linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/linux_networking/1.0.13-2
+  version: release/melodic/linux_networking/1.0.16-1
 lms1xx:
   url: https://github.com/clearpath-gbp/lms1xx-release.git
   vcs: git
@@ -2925,7 +2929,7 @@ mrpt_tutorials:
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/multi_interface_roam/1.0.13-2
+  version: release/melodic/multi_interface_roam/1.0.16-1
 multi_map_server:
   url: https://github.com/tork-a/jsk_common-release.git
   vcs: git
@@ -3113,11 +3117,11 @@ network_autoconfig:
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_control_tests/1.0.13-2
+  version: release/melodic/network_control_tests/1.0.16-1
 network_detector:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_detector/1.0.13-2
+  version: release/melodic/network_detector/1.0.16-1
 network_interface:
   url: https://github.com/astuff/network_interface-release.git
   vcs: git
@@ -3125,11 +3129,11 @@ network_interface:
 network_monitor_udp:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_monitor_udp/1.0.13-2
+  version: release/melodic/network_monitor_udp/1.0.16-1
 network_traffic_control:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
-  version: release/melodic/network_traffic_control/1.0.13-2
+  version: release/melodic/network_traffic_control/1.0.16-1
 nlopt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -4101,7 +4105,7 @@ robot_activity_tutorials:
 robot_body_filter:
   url: https://github.com/peci1/robot_body_filter-release.git
   vcs: git
-  version: release/melodic/robot_body_filter/1.1.4-1
+  version: release/melodic/robot_body_filter/1.1.5-1
 robot_calibration:
   url: https://github.com/ros-gbp/robot_calibration-release.git
   vcs: git
@@ -4393,15 +4397,15 @@ roslisp_utilities:
 rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon/2.2.0-1
+  version: release/melodic/rosmon/2.2.1-1
 rosmon_core:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon_core/2.2.0-1
+  version: release/melodic/rosmon_core/2.2.1-1
 rosmon_msgs:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rosmon_msgs/2.2.0-1
+  version: release/melodic/rosmon_msgs/2.2.1-1
 rosparam_handler:
   url: https://github.com/cbandera/rosparam_handler-release.git
   vcs: git
@@ -4573,7 +4577,7 @@ rqt_py_trees:
 rqt_rosmon:
   url: https://github.com/xqms/rosmon-release.git
   vcs: git
-  version: release/melodic/rqt_rosmon/2.2.0-1
+  version: release/melodic/rqt_rosmon/2.2.1-1
 rqt_rotors:
   url: https://github.com/ethz-asl/rotors_simulator-release.git
   vcs: git
@@ -4705,7 +4709,7 @@ serial:
 service_tools:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
-  version: release/melodic/service_tools/0.6.14-1
+  version: release/melodic/service_tools/0.6.15-1
 settlerlib:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -4854,6 +4858,18 @@ swri_prefix_tools:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
   version: release/melodic/swri_prefix_tools/2.10.0-1
+swri_profiler:
+  url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
+  vcs: git
+  version: release/melodic/swri_profiler/0.2.0-1
+swri_profiler_msgs:
+  url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
+  vcs: git
+  version: release/melodic/swri_profiler_msgs/0.2.0-1
+swri_profiler_tools:
+  url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
+  vcs: git
+  version: release/melodic/swri_profiler_tools/0.2.0-1
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
@@ -5142,6 +5158,10 @@ turtlebot3_teleop:
   url: https://github.com/ROBOTIS-GIT-release/turtlebot3-release.git
   vcs: git
   version: release/melodic/turtlebot3_teleop/1.2.2-1
+turtlesim_dash_tutorial:
+  url: https://github.com/banerjs-ros-release/turtlesim_dash_tutorial-release.git
+  vcs: git
+  version: release/melodic/turtlesim_dash_tutorial/1.0.0-2
 tuw_airskin_msgs:
   url: https://github.com/tuw-robotics/tuw_msgs-release.git
   vcs: git
