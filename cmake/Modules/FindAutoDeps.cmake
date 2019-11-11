@@ -169,6 +169,25 @@ if (AutoDeps_FIND_COMPONENTS)
 	#at different places.
 	if(mrt_INCLUDE_DIRS)
 		list(REMOVE_ITEM mrt_INCLUDE_DIRS "/usr/include" "/usr/local/include")
+
+		# Check if '/opt/mrtsoftware/release/include' and '/opt/mrtsoftware/local/include' are in mrt_INCLUDE_DIRS.
+		# If both are present, the local one must be first, otherwise a wrong header file could be used.
+		list(FIND mrt_INCLUDE_DIRS "/opt/mrtsoftware/release/include" _FOUND_MRTSOFTWARE_RELEASE_INCLUDE)
+		list(FIND mrt_INCLUDE_DIRS "/opt/mrtsoftware/local/include" _FOUND_MRTSOFTWARE_LOCAL_INCLUDE)
+
+		if (NOT ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} EQUAL -1 AND NOT ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE} EQUAL -1)
+			if (${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} LESS ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE})
+				macro(LIST_REPLACE LIST INDEX NEWVALUE)
+					list(INSERT ${LIST} ${INDEX} ${NEWVALUE})
+					MATH(EXPR __INDEX "${INDEX} + 1")
+					list (REMOVE_AT ${LIST} ${__INDEX})
+				endmacro(LIST_REPLACE)
+
+				# Swap include order
+				LIST_REPLACE(mrt_INCLUDE_DIRS ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} "/opt/mrtsoftware/local/include")
+				LIST_REPLACE(mrt_INCLUDE_DIRS ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE} "/opt/mrtsoftware/release/include")
+			endif()
+		endif()
 	endif()
 
 	#remove -lpthread from exports as this will not work with the catkin find package script.
