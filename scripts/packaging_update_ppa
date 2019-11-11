@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import argparse
+import subprocess
+import os
+import pickle
+
+from mrt_cmake_modules.packaging.utility import get_apt_package_name
+from mrt_cmake_modules.packaging.utility import get_workspace_build_root
+from mrt_cmake_modules.packaging.utility import get_workspace_packages
+from mrt_cmake_modules.packaging.debian_package_rep import DebianPackageRep
+
+
+def update_ppa(workspace_dir, apt_cache_dir, aptly_repo_config_file, aptly_repo_name):
+    workspace_build_root = get_workspace_build_root(workspace_dir)
+    workspace_packages = get_workspace_packages(workspace_dir)
+
+    if len(workspace_packages) == 0:
+        return
+
+    for pkg_name in workspace_packages:
+        apt_pkg_name = get_apt_package_name(pkg_name)
+        pkg_build_dir = os.path.join(workspace_build_root, pkg_name)
+
+        if not os.path.isdir(pkg_build_dir):
+            raise RuntimeError(
+                "Build dir of package '{}' not found ('{}').".format(pkg_name, pkg_build_dir))
+
+        pkg_deb_file = os.path.join(pkg_build_dir, apt_pkg_name + ".deb")
+        if not os.path.isfile(pkg_deb_file):
+            raise RuntimeError("Debian package file of package '{}' not found ({}).".format(
+                pkg_name, pkg_deb_file))
+
+        dep_rep_data = DebianPackageRep(pkg_deb_file)
+
+        apt_cache_file = os.path.join(apt_cache_dir, apt_pkg_name + ".bin")
+        publish = True
+        if os.path.isfile(apt_cache_file):
+            try:
+                with open(apt_cache_file, "rb") as f:
+                    cache_data = pickle.load(f)
+                if cache_data == dep_rep_data:
+                    publish = False
+            except:
+                # Something went wrong. Maybe the file cannot be read. Publish the apt package.
+                pass
+
+        if publish:
+            print("Publish: {}".format(apt_pkg_name))
+
+            cmd = ['aptly']
+            if aptly_repo_config_file:
+                cmd += ['-config=' + aptly_repo_config_file]
+            cmd += ['repo', 'add', aptly_repo_name, pkg_deb_file]
+            subprocess.check_call(cmd)
+
+            with open(apt_cache_file, "wb") as f:
+                pickle.dump(dep_rep_data, f)
+
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Mrt packaging handling.')
+    parser.add_argument('workspace_dir',
+                        help='The root workspace dir.')
+    parser.add_argument('apt_cache_dir',
+                        help='The cache dir which is used to check, if apt packages are new.')
+    parser.add_argument('--aptly-repo-config-file', '-c', default=None,
+                        help='The aptly repo configuration. See https://www.aptly.info/doc/configuration/.')
+    parser.add_argument('--aptly-repo-name', '-n', default='mrt-release',
+                        help='The aptly repository name. The repository must be created with "aptly repo create"')
+
+    args = parser.parse_args()
+    update_ppa(args.workspace_dir, args.apt_cache_dir, args.aptly_repo_config_file, args.aptly_repo_name)

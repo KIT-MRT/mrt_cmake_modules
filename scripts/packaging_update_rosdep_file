@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+from __future__ import print_function
+
+import argparse
+import os
+import yaml
+from catkin_pkg.packages import find_packages
+
+from mrt_cmake_modules.packaging.utility import get_apt_package_name
+from mrt_cmake_modules.packaging.utility import get_os_distro
+from mrt_cmake_modules.packaging.utility import get_workspace_packages
+from mrt_cmake_modules.packaging.temporary_directory import TemporaryDirectory
+from mrt_cmake_modules.packaging.git_repo import GitRepo
+
+
+def update_rosdep_file(workspace_dir, mrt_cmake_modules_git_path, rosdep_yaml_filepath, os_name="ubuntu"):
+    workspace_packages = get_workspace_packages(workspace_dir)
+
+    with TemporaryDirectory() as mrt_cmake_modules_repo_dir:
+        mrt_cmake_modules_repo = GitRepo(
+            mrt_cmake_modules_repo_dir, mrt_cmake_modules_git_path)
+
+        mrt_distro_repo_file = os.path.join(
+            mrt_cmake_modules_repo_dir, rosdep_yaml_filepath)
+
+        os_distro = get_os_distro()
+        pkgs_dict = find_packages(workspace_dir)
+        rosdeb_yaml_dict = {pkg.name: {os_name: {os_distro: get_apt_package_name(
+            pkg.name)}} for pkg in pkgs_dict.values() if pkg.name in workspace_packages}
+
+        with open(mrt_distro_repo_file, "w") as f:
+            f.write(yaml.safe_dump(rosdeb_yaml_dict))
+
+        if mrt_cmake_modules_repo.is_dirty():
+            mrt_cmake_modules_repo.commit('Update ' + mrt_distro_repo_file)
+            mrt_cmake_modules_repo.push()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Mrt packaging handling.')
+    parser.add_argument('workspace_dir',
+                        help='The root workspace dir.')
+    parser.add_argument('--mrt-cmake-modules-git-path', '-g', default="https://gitlab.mrt.uni-karlsruhe.de/pub/mrt_cmake_modules.git",
+                        help='The aptly repo configuration. See https://www.aptly.info/doc/configuration/.')
+    parser.add_argument('--rosdep-yaml-filepath', '-o', default='yaml/mrt.yaml',
+                        help='The aptly repository name. The repository must be created with "aptly repo create"')
+
+    args = parser.parse_args()
+    update_rosdep_file(args.workspace_dir, args.mrt_cmake_modules_git_path,
+                       args.rosdep_yaml_filepath)

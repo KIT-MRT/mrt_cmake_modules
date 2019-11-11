@@ -24,10 +24,7 @@ import yaml
 from catkin_pkg.packages import find_packages
 
 import sys
-
-
-def eprint(*args, **kwargs):
-    print(*args, file=sys.stderr, **kwargs)
+from mrt_cmake_modules.utility import eprint
 
 
 class PackageType:

@@ -19,6 +19,8 @@ list(APPEND CMAKE_MODULE_PATH "@(PROJECT_SOURCE_DIR)/cmake/Modules")
 list(APPEND CMAKE_MODULE_PATH "@(PKG_CMAKE_DIR)/Modules")
 @[end if]@
 set(MCM_ROOT "@(CMAKE_CURRENT_SOURCE_DIR)")
+@{import datetime}
+set(MRT_PKG_TIMESTAMP "@(datetime.datetime.today().strftime('%Y.%m.%d.%H.%M.%S.%f'))")
 
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
