@@ -40,6 +40,29 @@ set(mrt_CUDA_LIBRARIES "")
 set(mrt_TEST_LIBRARIES "")
 set(mrt_LIBRARY_DIRS "")
 
+function(_cleanup_includes var_name_include_dir)
+    if(${var_name_include_dir})
+		# remove /usr/include and /usr/local/include
+        # The compiler searches in those folders automatically and this can lead to 
+        # problems if there are different versions of the same library installed
+        # at different places.
+		list(REMOVE_ITEM ${var_name_include_dir} "/usr/include" "/usr/local/include")
+
+		# Check if '/opt/mrtsoftware/release/include' and '/opt/mrtsoftware/local/include' are in ${var_name_include_dir}.
+		# If both are present, the local one must be first, otherwise a wrong header file could be used.
+		list(FIND ${var_name_include_dir} "/opt/mrtsoftware/release/include" _FOUND_MRTSOFTWARE_RELEASE_INCLUDE)
+
+		if (NOT ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} EQUAL -1)
+			list(INSERT ${var_name_include_dir} ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} "/opt/mrtsoftware/local/include")
+			list(REMOVE_DUPLICATES ${var_name_include_dir})
+        endif()
+        
+        # Remove duplicated include directories
+        list(REMOVE_DUPLICATES ${var_name_include_dir})
+    endif()
+	set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
+endfunction()
+
 # Detect Conan builds. In this case we don't have to do anything, just load the conanfile and include the catkin mock.
 if(CONAN_PACKAGE_NAME OR EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     if(NOT CONAN_PACKAGE_NAME)
@@ -159,34 +182,24 @@ if (AutoDeps_FIND_COMPONENTS)
 			endif()
 		endif()
 	endforeach()
-	
-	#remove duplicated include directories
-	list(REMOVE_DUPLICATES mrt_INCLUDE_DIRS)
 		
-	#remove /usr/include and /usr/local/include
-	#The compiler searches in those folders automatically and this can lead to 
-	#problems if there are different versions of the same library installed
-	#at different places.
-	if(mrt_INCLUDE_DIRS)
-		list(REMOVE_ITEM mrt_INCLUDE_DIRS "/usr/include" "/usr/local/include")
+	# Cleanup include directories.
+	_cleanup_includes(mrt_INCLUDE_DIRS)
+	_cleanup_includes(mrt_EXPORT_INCLUDE_DIRS)
+	_cleanup_includes(catkin_INCLUDE_DIRS)
 
-		# Check if '/opt/mrtsoftware/release/include' and '/opt/mrtsoftware/local/include' are in mrt_INCLUDE_DIRS.
-		# If both are present, the local one must be first, otherwise a wrong header file could be used.
-		list(FIND mrt_INCLUDE_DIRS "/opt/mrtsoftware/release/include" _FOUND_MRTSOFTWARE_RELEASE_INCLUDE)
-		list(FIND mrt_INCLUDE_DIRS "/opt/mrtsoftware/local/include" _FOUND_MRTSOFTWARE_LOCAL_INCLUDE)
-
-		if (NOT ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} EQUAL -1 AND NOT ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE} EQUAL -1)
-			if (${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} LESS ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE})
-				macro(LIST_REPLACE LIST INDEX NEWVALUE)
-					list(INSERT ${LIST} ${INDEX} ${NEWVALUE})
-					MATH(EXPR __INDEX "${INDEX} + 1")
-					list (REMOVE_AT ${LIST} ${__INDEX})
-				endmacro(LIST_REPLACE)
-
-				# Swap include order
-				LIST_REPLACE(mrt_INCLUDE_DIRS ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} "/opt/mrtsoftware/local/include")
-				LIST_REPLACE(mrt_INCLUDE_DIRS ${_FOUND_MRTSOFTWARE_LOCAL_INCLUDE} "/opt/mrtsoftware/release/include")
-			endif()
+	# Mark '/opt/mrtsoftware/...' include path as system headers, otherwise
+	# the order can get messed up between 'local' and 'release'.
+	set(_ALL_INCLUDE_DIRS ${mrt_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
+	if(_ALL_INCLUDE_DIRS)
+		list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/local/include" _FOUND)
+		if (NOT ${_FOUND} EQUAL -1)
+			include_directories(SYSTEM "/opt/mrtsoftware/local/include")
+		endif()
+		
+		list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/release/include" _FOUND)
+		if (NOT ${_FOUND} EQUAL -1)
+			include_directories(SYSTEM "/opt/mrtsoftware/release/include")
 		endif()
 	endif()
 
