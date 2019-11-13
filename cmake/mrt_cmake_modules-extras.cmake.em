@@ -157,7 +157,7 @@ macro(_mrt_register_test)
 
     add_custom_command(TARGET _run_tests_${PROJECT_NAME}
         POST_BUILD
-        COMMAND catkin_test_results --verbose . ${RUN_CCAT} 1>&2 # redirect to stderr for better output in catkin
+        COMMAND /bin/bash -c \"set -o pipefail$<SEMICOLON> catkin_test_results --verbose . ${RUN_CCAT} 1>&2\" # redirect to stderr for better output in catkin
         WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
         COMMENT "Showing test results"
         )
@@ -167,15 +167,16 @@ endmacro()
 # Glob for folders in the search directory.
 function(mrt_glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
     if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} ${SEARCH_DIRECTORY}/[^.]*)
+        file(GLOB DIRECTORIES "${SEARCH_DIRECTORY}/[^.]*")
     else()
-        file(GLOB DIRECTORIES RELATIVE ${SEARCH_DIRECTORY} CONFIGURE_DEPENDS ${SEARCH_DIRECTORY}/[^.]*)
+        file(GLOB DIRECTORIES CONFIGURE_DEPENDS "${SEARCH_DIRECTORY}/[^.]*")
     endif()
 
     set(_DIRECTORY_LIST_ "")
     foreach(SRC_DIR ${DIRECTORIES})
-        if(IS_DIRECTORY ${SEARCH_DIRECTORY}/${SRC_DIR})
-            list(APPEND _DIRECTORY_LIST_ ${SRC_DIR})
+        if(IS_DIRECTORY "${SRC_DIR}")
+            get_filename_component(DIRECTORY_NAME "${SRC_DIR}" NAME)
+            list(APPEND _DIRECTORY_LIST_ ${DIRECTORY_NAME})
         endif()
     endforeach()
     set(${DIRECTORY_LIST} ${_DIRECTORY_LIST_} PARENT_SCOPE)
@@ -297,7 +298,9 @@ endfunction()
 # @@public
 #
 function(mrt_python_module_setup)
-    find_package(catkin REQUIRED)
+    if(NOT catkin_FOUND)
+        find_package(catkin REQUIRED)
+    endif()
     if(ARGN)
         message(FATAL_ERROR "mrt_python_module_setup() called with unused arguments: ${ARGN}")
     endif()
@@ -360,7 +363,7 @@ function(mrt_add_python_api modulename)
     endif()
 
     if (NOT DEFINED BoostPython_FOUND)
-        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>boost-python</depend>' to 'package.xml'")
+        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>libboost-python</depend>' to 'package.xml'")
     endif()
 
     # put in devel folder
@@ -371,14 +374,15 @@ function(mrt_add_python_api modulename)
     foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
         get_filename_component(SUBMODULE_NAME ${API_FILE} NAME_WE)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
-        set( LIBRARY_NAME "${PYTHON_API_MODULE_NAME}_${SUBMODULE_NAME}_pyapi")
+        set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
-        add_library( ${TARGET_NAME}
+        add_library( ${TARGET_NAME} SHARED
             ${API_FILE}
             )
-        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=lib${LIBRARY_NAME})
+        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         set_target_properties(${TARGET_NAME}
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+            PREFIX ""
             )
         target_link_libraries( ${TARGET_NAME}
             ${PYTHON_LIBRARY}
@@ -387,12 +391,14 @@ function(mrt_add_python_api modulename)
             ${mrt_LIBRARIES}
             ${MRT_SANITIZER_LINK_FLAGS}
             )
-        add_dependencies(${TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
-
+        set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+        if(_deps)
+            add_dependencies(${TARGET_NAME} ${_deps})
+        endif()
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
         add_custom_command(TARGET ${TARGET_NAME}
             POST_BUILD
-            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}> && echo "from lib${LIBRARY_NAME} import *" > ${PYTHON_MODULE_DIR}/${SUBMODULE_NAME}.py
+            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}>
             WORKING_DIRECTORY ${PREFIX}
             COMMENT "Copying library files to python directory"
             )
@@ -400,7 +406,6 @@ function(mrt_add_python_api modulename)
     configure_file(${MCM_ROOT}/cmake/Templates/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
 
     # append to list of all targets in this project
-    set(${PROJECT_NAME}_MRT_TARGETS ${GENERATED_TARGETS} PARENT_SCOPE)
     set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
 
     # configure setup.py for install
@@ -408,8 +413,8 @@ function(mrt_add_python_api modulename)
     set(PACKAGE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
     set(PACKAGE_DATA "*.so*")
     configure_file(${MCM_ROOT}/cmake/Templates/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @@ONLY)
-    configure_file(${MCM_ROOT}/cmake/Templates/python_api_install.sh.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.sh" @@ONLY)
-    install(CODE "execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.sh)")
+    configure_file(${MCM_ROOT}/cmake/Templates/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py" @@ONLY)
+    install(CODE "execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
 endfunction()
 
 
@@ -492,7 +497,10 @@ function(mrt_add_library libname)
     target_compile_options(${LIBRARY_TARGET_NAME}
         PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
         )
-    add_dependencies(${LIBRARY_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps})
+    endif()
     target_link_libraries(${LIBRARY_TARGET_NAME}
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
@@ -507,6 +515,10 @@ function(mrt_add_library libname)
 
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
+        if (NOT DEFINED CUDA_FOUND)
+            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
+        endif()
+
         # generate cuda target
         set(CUDA_TARGET_NAME _${LIBRARY_TARGET_NAME}_cuda)
         # NVCC does not like '-' in file names.
@@ -518,6 +530,10 @@ function(mrt_add_library libname)
             cuda_add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
         else()
             add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            # We cannot link to all libraries as nvcc does not unterstand all the flags
+            # etc. which could be passed to target_link_libraries as a target. So the
+            # dependencies were added to the mrt_CUDA_LIBRARIES variable.
+            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
@@ -613,8 +629,11 @@ function(mrt_add_executable execname)
     target_include_directories(${EXEC_TARGET_NAME}
         PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
         )
-    add_dependencies(${EXEC_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
-    target_link_libraries(${EXEC_TARGET_NAME}
+    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
+    if(_combined_deps)
+        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps})
+    endif()
+    target_link_libraries(${EXEC_TARGET_NAME} PRIVATE
         ${catkin_LIBRARIES}
         ${mrt_LIBRARIES}
         ${MRT_ADD_EXECUTABLE_LIBRARIES}
@@ -625,6 +644,10 @@ function(mrt_add_executable execname)
 
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
+        if (NOT DEFINED CUDA_FOUND)
+            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
+        endif()
+
         # generate cuda target
         set(CUDA_TARGET_NAME _${EXEC_TARGET_NAME}_cuda)
 
@@ -635,23 +658,18 @@ function(mrt_add_executable execname)
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
             cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
         else()
-            # Build a separate object file and link it in a shared library file. Otherwise there
-            # are problems using gcov.
-            set(CUDA_TARGET_NAME_OBJECT _${EXEC_TARGET_NAME}_cuda_object)
-            add_library(${CUDA_TARGET_NAME_OBJECT} OBJECT ${_MRT_CUDA_SOURCES_FILES})
-            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY POSITION_INDEPENDENT_CODE ON)
-            set_property(TARGET ${CUDA_TARGET_NAME_OBJECT} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
-
-            add_library(${CUDA_TARGET_NAME} SHARED $<TARGET_OBJECTS:${CUDA_TARGET_NAME_OBJECT}>)
-            target_link_libraries(${CUDA_TARGET_NAME}
-                ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
-                ${MRT_ADD_EXECUTABLE_LIBRARIES}
-                ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            message(STATUS "Adding ${_MRT_CUDA_SOURCES_FILES} files.")
+            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            # We cannot link to all libraries as nvcc does not unterstand all the flags
+            # etc. which could be passed to target_link_libraries as a target. So the
+            # dependencies were added to the mrt_CUDA_LIBRARIES variable.
+            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+            set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
         endif()
 
         # link cuda library to executable
-        target_link_libraries(${EXEC_TARGET_NAME} ${CUDA_TARGET_NAME})
+        target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
     endif()
 
     # append to list of all targets in this project
@@ -861,6 +879,7 @@ function(mrt_add_ros_tests folder)
     cmake_parse_arguments(MRT_ADD_ROS_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_ros_tests "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_ros_test ${_ros_tests})
         get_filename_component(_test_name ${_ros_test} NAME_WE)
@@ -878,12 +897,14 @@ function(mrt_add_ros_tests folder)
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
+                ${mrt_TEST_LIBRARIES}
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
                 gtest_main
                 )
+            target_include_directories(${TEST_TARGET_NAME}
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
                 )
@@ -913,7 +934,8 @@ endfunction()
 # :type DEPENDS: list of strings
 #
 #
-# Unittests will always be executed with the folder as cwd. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Unittests will be executed with the folder as cwd if ctest or the run_test target is used. E.g. if the test folder contains a sub-folder "test_data", it can simply be accessed as "test_data".
+# Another way of getting the location of the project root folder path is to ``#include "test/test_utility.hpp"`` and use the variable ``<project_name>::test::projectRootDir``.
 #
 # Unless the variable ``${MRT_NO_FAIL_ON_TESTS}`` is set, failing unittests will result in a failed build.
 #
@@ -931,6 +953,7 @@ function(mrt_add_tests folder)
     set(TEST_FOLDER ${folder})
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
+    configure_file(${MCM_ROOT}/cmake/Templates/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @@ONLY)
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
@@ -944,7 +967,7 @@ function(mrt_add_tests folder)
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
-                ${mrt_LIBRARIES}
+                ${mrt_TEST_LIBRARIES}
                 ${MRT_ADD_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
@@ -952,6 +975,9 @@ function(mrt_add_tests folder)
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
+            target_include_directories(${TEST_TARGET_NAME} 
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
+
             add_dependencies(${TEST_TARGET_NAME}
                 ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
                 )
@@ -1063,7 +1089,7 @@ function(mrt_install)
         if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
             mrt_glob_files(FILES "${PROJECT_SOURCE_DIR}/${ELEMENT}/[^.]*[^~]")
             foreach(FILE ${FILES})
-                if(NOT IS_DIRECTORY ${FILE})
+                if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${FILE})
                     mrt_install_program(${FILE})
                 endif()
             endforeach()

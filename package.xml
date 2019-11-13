@@ -10,8 +10,7 @@
   <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <buildtool_depend>coverage</buildtool_depend>
-  <build_depend>rospack</build_depend>
+  <buildtool_depend>lcov</buildtool_depend>
 
   <export>
     <architecture_independent/>
