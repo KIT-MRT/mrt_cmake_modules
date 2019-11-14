@@ -518,6 +518,14 @@ cob_default_env_config:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
   version: release/melodic/cob_default_env_config/0.6.10-1
+cob_default_robot_behavior:
+  url: https://github.com/ipa320/cob_robots-release.git
+  vcs: git
+  version: release/melodic/cob_default_robot_behavior/0.7.2-1
+cob_default_robot_config:
+  url: https://github.com/ipa320/cob_robots-release.git
+  vcs: git
+  version: release/melodic/cob_default_robot_config/0.7.2-1
 cob_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -550,6 +558,10 @@ cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_frame_tracker/0.8.1-1
+cob_gazebo_objects:
+  url: https://github.com/ipa320/cob_simulation-release.git
+  vcs: git
+  version: release/melodic/cob_gazebo_objects/0.7.3-1
 cob_gazebo_plugins:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
@@ -558,6 +570,14 @@ cob_gazebo_ros_control:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
   version: release/melodic/cob_gazebo_ros_control/0.7.3-1
+cob_gazebo_tools:
+  url: https://github.com/ipa320/cob_simulation-release.git
+  vcs: git
+  version: release/melodic/cob_gazebo_tools/0.7.3-1
+cob_gazebo_worlds:
+  url: https://github.com/ipa320/cob_simulation-release.git
+  vcs: git
+  version: release/melodic/cob_gazebo_worlds/0.7.3-1
 cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -570,6 +590,10 @@ cob_hand_bridge:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
   version: release/melodic/cob_hand_bridge/0.6.6-1
+cob_hardware_config:
+  url: https://github.com/ipa320/cob_robots-release.git
+  vcs: git
+  version: release/melodic/cob_hardware_config/0.7.2-1
 cob_hardware_emulation:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -614,6 +638,10 @@ cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
   version: release/melodic/cob_monitoring/0.6.15-1
+cob_moveit_config:
+  url: https://github.com/ipa320/cob_robots-release.git
+  vcs: git
+  version: release/melodic/cob_moveit_config/0.7.2-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
