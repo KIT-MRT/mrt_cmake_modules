@@ -47,18 +47,6 @@ function(_cleanup_includes var_name_include_dir)
         # problems if there are different versions of the same library installed
         # at different places.
         list(REMOVE_ITEM ${var_name_include_dir} "/usr/include" "/usr/local/include")
-
-        # Check if '/opt/mrtsoftware/release/include' and '/opt/mrtsoftware/local/include' are in ${var_name_include_dir}.
-        # If both are present, the local one must be first, otherwise a wrong header file could be used.
-        list(FIND ${var_name_include_dir} "/opt/mrtsoftware/release/include" _FOUND_MRTSOFTWARE_RELEASE_INCLUDE)
-
-        if (NOT ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} EQUAL -1)
-            list(INSERT ${var_name_include_dir} ${_FOUND_MRTSOFTWARE_RELEASE_INCLUDE} "/opt/mrtsoftware/local/include")
-            list(REMOVE_DUPLICATES ${var_name_include_dir})
-        endif()
-        
-        # Remove duplicated include directories
-        list(REMOVE_DUPLICATES ${var_name_include_dir})
     endif()
     set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
 endfunction()
@@ -192,14 +180,11 @@ if (AutoDeps_FIND_COMPONENTS)
     # the order can get messed up between 'local' and 'release'.
     set(_ALL_INCLUDE_DIRS ${mrt_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
     if(_ALL_INCLUDE_DIRS)
-        list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/local/include" _FOUND)
-        if (NOT ${_FOUND} EQUAL -1)
-            include_directories(SYSTEM "/opt/mrtsoftware/local/include")
-        endif()
-        
-        list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/release/include" _FOUND)
-        if (NOT ${_FOUND} EQUAL -1)
-            include_directories(SYSTEM "/opt/mrtsoftware/release/include")
+        list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/local/include" _FOUND_LOCAL)
+        list(FIND _ALL_INCLUDE_DIRS "/opt/mrtsoftware/release/include" _FOUND_RELEASE)
+
+        if (NOT ${_FOUND_LOCAL} EQUAL -1 OR NOT ${_FOUND_RELEASE} EQUAL -1)
+            include_directories(SYSTEM "/opt/mrtsoftware/local/include" "/opt/mrtsoftware/release/include")
         endif()
     endif()
 
