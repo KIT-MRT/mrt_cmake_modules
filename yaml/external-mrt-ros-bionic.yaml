@@ -74,6 +74,34 @@ agni_tf_tools:
   url: https://github.com/ubi-agni-gbp/agni_tf_tools-release.git
   vcs: git
   version: release/melodic/agni_tf_tools/0.1.2-1
+ainstein_radar:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar/2.0.1-1
+ainstein_radar_drivers:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_drivers/2.0.1-1
+ainstein_radar_filters:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_filters/2.0.1-1
+ainstein_radar_gazebo_plugins:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.1-1
+ainstein_radar_msgs:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_msgs/2.0.1-1
+ainstein_radar_rviz_plugins:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_rviz_plugins/2.0.1-1
+ainstein_radar_tools:
+  url: https://github.com/AinsteinAI/ainstein_radar-release.git
+  vcs: git
+  version: release/melodic/ainstein_radar_tools/2.0.1-1
 allocators:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -365,7 +393,7 @@ chomp_motion_planner:
 cis_camera:
   url: https://github.com/tork-a/cis_camera-release.git
   vcs: git
-  version: release/melodic/cis_camera/0.0.2-1
+  version: release/melodic/cis_camera/0.0.3-1
 cl_tf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
@@ -949,11 +977,11 @@ dbw_mkz_twist_controller:
 dccomms_ros:
   url: https://github.com/dcentelles/dccomms_ros_pkgs-release.git
   vcs: git
-  version: release/melodic/dccomms_ros/0.0.2-1
+  version: release/melodic/dccomms_ros/0.0.2-2
 dccomms_ros_msgs:
   url: https://github.com/dcentelles/dccomms_ros_pkgs-release.git
   vcs: git
-  version: release/melodic/dccomms_ros_msgs/0.0.2-1
+  version: release/melodic/dccomms_ros_msgs/0.0.2-2
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2405,7 +2433,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.33.0-1
+  version: release/melodic/libmavconn/0.33.3-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -2557,7 +2585,7 @@ marti_common_msgs:
 marti_data_structures:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/marti_data_structures/2.10.0-1
+  version: release/melodic/marti_data_structures/2.11.0-1
 marti_nav_msgs:
   url: https://github.com/swri-robotics-gbp/marti_messages-release.git
   vcs: git
@@ -2605,15 +2633,15 @@ mavlink:
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.33.0-1
+  version: release/melodic/mavros/0.33.3-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.33.0-1
+  version: release/melodic/mavros_extras/0.33.3-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.33.0-1
+  version: release/melodic/mavros_msgs/0.33.3-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2821,7 +2849,7 @@ moveit_pr2:
 moveit_python:
   url: https://github.com/mikeferguson/moveit_python-release.git
   vcs: git
-  version: release/melodic/moveit_python/0.3.1-0
+  version: release/melodic/moveit_python/0.3.2-1
 moveit_resources:
   url: https://github.com/ros-gbp/moveit_resources-release.git
   vcs: git
@@ -3145,7 +3173,7 @@ nerian_stereo:
 network_autoconfig:
   url: https://github.com/LucidOne-release/network_autoconfig.git
   vcs: git
-  version: release/melodic/network_autoconfig/0.1.1-1
+  version: release/melodic/network_autoconfig/0.1.1-2
 network_control_tests:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -4753,7 +4781,7 @@ sick_safetyscanners:
 sick_scan:
   url: https://github.com/SICKAG/sick_scan-release.git
   vcs: git
-  version: release/melodic/sick_scan/1.3.22-1
+  version: release/melodic/sick_scan/1.4.2-1
 sick_tim:
   url: https://github.com/uos-gbp/sick_tim-release.git
   vcs: git
@@ -4861,35 +4889,35 @@ swri_console:
 swri_console_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_console_util/2.10.0-1
+  version: release/melodic/swri_console_util/2.11.0-1
 swri_dbw_interface:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_dbw_interface/2.10.0-1
+  version: release/melodic/swri_dbw_interface/2.11.0-1
 swri_geometry_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_geometry_util/2.10.0-1
+  version: release/melodic/swri_geometry_util/2.11.0-1
 swri_image_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_image_util/2.10.0-1
+  version: release/melodic/swri_image_util/2.11.0-1
 swri_math_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_math_util/2.10.0-1
+  version: release/melodic/swri_math_util/2.11.0-1
 swri_nodelet:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_nodelet/2.10.0-1
+  version: release/melodic/swri_nodelet/2.11.0-1
 swri_opencv_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_opencv_util/2.10.0-1
+  version: release/melodic/swri_opencv_util/2.11.0-1
 swri_prefix_tools:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_prefix_tools/2.10.0-1
+  version: release/melodic/swri_prefix_tools/2.11.0-1
 swri_profiler:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
@@ -4905,35 +4933,35 @@ swri_profiler_tools:
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_roscpp/2.10.0-1
+  version: release/melodic/swri_roscpp/2.11.0-1
 swri_rospy:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_rospy/2.10.0-1
+  version: release/melodic/swri_rospy/2.11.0-1
 swri_route_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_route_util/2.10.0-1
+  version: release/melodic/swri_route_util/2.11.0-1
 swri_serial_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_serial_util/2.10.0-1
+  version: release/melodic/swri_serial_util/2.11.0-1
 swri_string_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_string_util/2.10.0-1
+  version: release/melodic/swri_string_util/2.11.0-1
 swri_system_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_system_util/2.10.0-1
+  version: release/melodic/swri_system_util/2.11.0-1
 swri_transform_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_transform_util/2.10.0-1
+  version: release/melodic/swri_transform_util/2.11.0-1
 swri_yaml_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_yaml_util/2.10.0-1
+  version: release/melodic/swri_yaml_util/2.11.0-1
 tablet_socket_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
@@ -4989,7 +5017,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.33.0-1
+  version: release/melodic/test_mavros/0.33.3-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
