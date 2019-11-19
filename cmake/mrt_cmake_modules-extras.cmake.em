@@ -362,8 +362,12 @@ function(mrt_add_python_api modulename)
         message(FATAL_ERROR "mrt_add_python_api() was already called for this project. You can add only one python_api per project!")
     endif()
 
-    if (NOT DEFINED BoostPython_FOUND)
-        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>libboost-python</depend>' to 'package.xml'")
+    if (NOT DEFINED pybind11_FOUND)
+        message(FATAL_ERROR "Missing dependency to pybind11. Add '<depend>libpybind11-dev</depend>' to 'package.xml'")
+    endif()
+
+    if (${pybind11_VERSION} VERSION_LESS "2.4.0")
+        message(FATAL_ERROR "pybind version is too old. At least version 2.4.0 is required.")
     endif()
 
     # put in devel folder
@@ -376,17 +380,17 @@ function(mrt_add_python_api modulename)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
-        add_library( ${TARGET_NAME} SHARED
-            ${API_FILE}
-            )
+
+        pybind11_add_module(${TARGET_NAME} ${API_FILE})
+
         target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         set_target_properties(${TARGET_NAME}
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
             PREFIX ""
             )
-        target_link_libraries( ${TARGET_NAME}
+        target_link_libraries( ${TARGET_NAME} PRIVATE
             ${PYTHON_LIBRARY}
-            ${BoostPython_LIBRARIES}
+            pybind11::module
             ${catkin_LIBRARIES}
             ${mrt_LIBRARIES}
             ${MRT_SANITIZER_LINK_FLAGS}
@@ -510,7 +514,7 @@ function(mrt_add_library libname)
         )
     # add dependency to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
-        target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
+        target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
     endforeach()
 
     # Add cuda target
