@@ -40,3 +40,12 @@ ct:
 - ct_models
 - ct_core
 - ct_rbd
+
+mesh_tools:
+  - hdf5_map_io
+  - label_manager
+  - mesh_msgs
+  - mesh_msgs_hdf5
+  - mesh_msgs_transform
+  - mesh_tools
+  - rviz_mesh_plugin
