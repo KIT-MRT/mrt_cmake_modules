@@ -318,6 +318,10 @@ calibration_setup_helper:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
   version: release/melodic/calibration_setup_helper/0.10.14-0
+camera_info_manager_py:
+  url: https://github.com/ros-gbp/camera_info_manager_py-release.git
+  vcs: git
+  version: release/melodic/camera_info_manager_py/0.2.3-1
 camera_umd:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
