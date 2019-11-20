@@ -50,11 +50,6 @@ endif()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
 
-#add OpenMP
-find_package(OpenMP REQUIRED)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-
 # add gcov flags
 if(MRT_ENABLE_COVERAGE)
     include(MRTCoverage)

@@ -147,26 +147,32 @@ if (AutoDeps_FIND_COMPONENTS)
         
         #append libraries
         if(DEFINED _${other_package}_CMAKE_LIBRARIES_)
-            if(NOT DEFINED ${_${other_package}_CMAKE_LIBRARIES_})
+            if(NOT DEFINED ${_${other_package}_CMAKE_LIBRARIES_} AND NOT TARGET ${_${other_package}_CMAKE_LIBRARIES_})
                 message(FATAL_ERROR "Package ${other_package}: Specified libraries variable ${${_${other_package}_CMAKE_LIBRARIES_}} not set.")
             endif()
 
+            if(TARGET ${_${other_package}_CMAKE_LIBRARIES_})
+                set(_CMAKE_LIBRARY_NAME_ ${_${other_package}_CMAKE_LIBRARIES_})
+            else()
+                set(_CMAKE_LIBRARY_NAME_ ${${_${other_package}_CMAKE_LIBRARIES_}})
+            endif()
+
             # Append all libraries to link against a test executable (regular and test only).
-            list(APPEND mrt_TEST_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+            list(APPEND mrt_TEST_LIBRARIES ${_CMAKE_LIBRARY_NAME_})
 
             list(FIND _OTHER_PACKAGES_ ${other_package} res)
             if(NOT ${res} EQUAL -1)
-                list(APPEND mrt_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+                list(APPEND mrt_LIBRARIES ${_CMAKE_LIBRARY_NAME_})
             endif()
 
             list(FIND _OTHER_EXPORT_PACKAGES_ ${other_package} res)
             if(NOT ${res} EQUAL -1)
-                list(APPEND mrt_EXPORT_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+                list(APPEND mrt_EXPORT_LIBRARIES ${_CMAKE_LIBRARY_NAME_})
             endif()
 
             list(FIND _CUDA_OTHER_PACKAGES_ ${other_package} res)
             if(NOT ${res} EQUAL -1)
-                list(APPEND mrt_CUDA_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
+                list(APPEND mrt_CUDA_LIBRARIES ${_CMAKE_LIBRARY_NAME_})
             endif()
         endif()
     endforeach()

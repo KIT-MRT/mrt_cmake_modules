@@ -498,7 +498,7 @@ mrt_qt4-dev:
     - QT_LIBRARIES
     name: MrtQt4
   ubuntu:
-  - libqt4-dev
+  - [libqt4-dev, libqtwebkit-dev]
 mrt_qt-dev:
   cmake:
     components:
@@ -640,6 +640,13 @@ opengl:
     - OPENGL_LIBRARIES
     library_dirs: []
     name: OpenGL
+openmp:
+  cmake:
+    components: []
+    include_dirs: []
+    libraries: [ "OpenMP::OpenMP_CXX" ]
+    library_dirs: []
+    name: MrtOpenMP
 png:
   cmake:
     components: []
