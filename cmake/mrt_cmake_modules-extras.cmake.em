@@ -362,12 +362,8 @@ function(mrt_add_python_api modulename)
         message(FATAL_ERROR "mrt_add_python_api() was already called for this project. You can add only one python_api per project!")
     endif()
 
-    if (NOT DEFINED pybind11_FOUND)
-        message(FATAL_ERROR "Missing dependency to pybind11. Add '<depend>libpybind11-dev</depend>' to 'package.xml'")
-    endif()
-
-    if (${pybind11_VERSION} VERSION_LESS "2.4.0")
-        message(FATAL_ERROR "pybind version is too old. At least version 2.4.0 is required.")
+    if (NOT pybind11_FOUND AND NOT BoostPython_FOUND)
+        message(FATAL_ERROR "Missing dependency to pybind11 or boost python. Add either '<depend>pybind11-dev</depend>' or '<depend>libboost-python</depend>' to 'package.xml'")
     endif()
 
     # put in devel folder
@@ -381,7 +377,11 @@ function(mrt_add_python_api modulename)
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
 
-        pybind11_add_module(${TARGET_NAME} ${API_FILE})
+        if (DEFINED pybind11_FOUND)
+            pybind11_add_module(${TARGET_NAME} ${API_FILE})
+        elseif(DEFINED BoostPython_FOUND)
+            add_library(${TARGET_NAME} SHARED ${API_FILE})
+        endif()
 
         target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         set_target_properties(${TARGET_NAME}
@@ -390,11 +390,17 @@ function(mrt_add_python_api modulename)
             )
         target_link_libraries( ${TARGET_NAME} PRIVATE
             ${PYTHON_LIBRARY}
-            pybind11::module
             ${catkin_LIBRARIES}
             ${mrt_LIBRARIES}
             ${MRT_SANITIZER_LINK_FLAGS}
             )
+
+        if(pybind11_FOUND)
+            target_link_libraries(${TARGET_NAME} PRIVATE pybind11::module)
+        elseif(BoostPython_FOUND)
+            target_link_libraries(${TARGET_NAME} PRIVATE ${BoostPython_LIBRARIES})
+        endif()
+
         set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
         if(_deps)
             add_dependencies(${TARGET_NAME} ${_deps})

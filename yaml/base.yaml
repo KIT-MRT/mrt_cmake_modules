@@ -18,7 +18,6 @@ pybind11-dev: &pybind11
     library_dirs: []
   ubuntu:
   - mrt-pybind11-dev
-pybind11: *pybind11
 armadillo:
   cmake:
     include_dirs:
