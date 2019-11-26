@@ -377,9 +377,9 @@ function(mrt_add_python_api modulename)
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
 
-        if (DEFINED pybind11_FOUND)
+        if (pybind11_FOUND)
             pybind11_add_module(${TARGET_NAME} ${API_FILE})
-        elseif(DEFINED BoostPython_FOUND)
+        elseif(BoostPython_FOUND)
             add_library(${TARGET_NAME} SHARED ${API_FILE})
         endif()
 
