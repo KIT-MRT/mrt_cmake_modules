@@ -77,31 +77,31 @@ agni_tf_tools:
 ainstein_radar:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar/2.0.1-1
+  version: release/melodic/ainstein_radar/2.0.2-1
 ainstein_radar_drivers:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_drivers/2.0.1-1
+  version: release/melodic/ainstein_radar_drivers/2.0.2-1
 ainstein_radar_filters:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_filters/2.0.1-1
+  version: release/melodic/ainstein_radar_filters/2.0.2-1
 ainstein_radar_gazebo_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.1-1
+  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.2-1
 ainstein_radar_msgs:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_msgs/2.0.1-1
+  version: release/melodic/ainstein_radar_msgs/2.0.2-1
 ainstein_radar_rviz_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_rviz_plugins/2.0.1-1
+  version: release/melodic/ainstein_radar_rviz_plugins/2.0.2-1
 ainstein_radar_tools:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_tools/2.0.1-1
+  version: release/melodic/ainstein_radar_tools/2.0.2-1
 allocators:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -109,7 +109,7 @@ allocators:
 amcl:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/amcl/1.16.2-0
+  version: release/melodic/amcl/1.16.3-1
 app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
@@ -277,7 +277,7 @@ bagger:
 base_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/base_local_planner/1.16.2-0
+  version: release/melodic/base_local_planner/1.16.3-1
 bayesian_belief_networks:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -318,6 +318,10 @@ calibration_setup_helper:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
   version: release/melodic/calibration_setup_helper/0.10.14-0
+camera_info_manager_py:
+  url: https://github.com/ros-gbp/camera_info_manager_py-release.git
+  vcs: git
+  version: release/melodic/camera_info_manager_py/0.2.3-1
 camera_umd:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -349,7 +353,7 @@ capabilities:
 carrot_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/carrot_planner/1.16.2-0
+  version: release/melodic/carrot_planner/1.16.3-1
 cartesian_msgs:
   url: https://github.com/PickNikRobotics/cartesian_msgs-release.git
   vcs: git
@@ -421,7 +425,7 @@ cl_utils:
 clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/clear_costmap_recovery/1.16.2-0
+  version: release/melodic/clear_costmap_recovery/1.16.3-1
 clock_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
@@ -809,7 +813,7 @@ cob_voltage_control:
 code_coverage:
   url: https://github.com/mikeferguson/code_coverage-gbp.git
   vcs: git
-  version: release/melodic/code_coverage/0.2.4-1
+  version: release/melodic/code_coverage/0.3.0-1
 codec_image_transport:
   url: https://github.com/yoshito-n-students/codec_image_transport-release.git
   vcs: git
@@ -977,11 +981,11 @@ dbw_mkz_twist_controller:
 dccomms_ros:
   url: https://github.com/dcentelles/dccomms_ros_pkgs-release.git
   vcs: git
-  version: release/melodic/dccomms_ros/0.0.2-2
+  version: release/melodic/dccomms_ros/0.0.2-3
 dccomms_ros_msgs:
   url: https://github.com/dcentelles/dccomms_ros_pkgs-release.git
   vcs: git
-  version: release/melodic/dccomms_ros_msgs/0.0.2-2
+  version: release/melodic/dccomms_ros_msgs/0.0.2-3
 ddwrt_access_point:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -1089,7 +1093,7 @@ driver_common:
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/dwa_local_planner/1.16.2-0
+  version: release/melodic/dwa_local_planner/1.16.3-1
 dwb_critics:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -1329,7 +1333,7 @@ effort_controllers:
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
-  version: release/melodic/eigenpy/1.6.5-1
+  version: release/melodic/eigenpy/1.6.7-1
 eml:
   url: https://github.com/ros-gbp/eml-release.git
   vcs: git
@@ -1429,7 +1433,7 @@ face_detector:
 fake_localization:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/fake_localization/1.16.2-0
+  version: release/melodic/fake_localization/1.16.3-1
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
@@ -1654,6 +1658,34 @@ freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
   version: release/melodic/freight_bringup/0.8.8-1
+fsrobo_r:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r/0.7.1-1
+fsrobo_r_bringup:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_bringup/0.7.1-1
+fsrobo_r_description:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_description/0.7.1-1
+fsrobo_r_driver:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_driver/0.7.1-1
+fsrobo_r_moveit_config:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_moveit_config/0.7.1-1
+fsrobo_r_msgs:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_msgs/0.7.1-1
+fsrobo_r_trajectory_filters:
+  url: https://github.com/FUJISOFT-Robotics/fsrobo_r-release.git
+  vcs: git
+  version: release/melodic/fsrobo_r_trajectory_filters/0.7.1-1
 gateway_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
@@ -1677,7 +1709,7 @@ geometry2:
 global_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/global_planner/1.16.2-0
+  version: release/melodic/global_planner/1.16.3-1
 global_planner_tests:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -1965,7 +1997,7 @@ ieee80211_channels:
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
-  version: release/melodic/ifopt/2.0.6-0
+  version: release/melodic/ifopt/2.0.7-1
 igvc_self_drive_description:
   url: https://github.com/robustify/igvc_self_drive_sim-release.git
   vcs: git
@@ -2354,6 +2386,10 @@ ksql_airport:
   url: https://github.com/ros-gbp/uav_testing-release.git
   vcs: git
   version: release/melodic/ksql_airport/0.0.1-1
+laptop_battery_monitor:
+  url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
+  vcs: git
+  version: release/melodic/laptop_battery_monitor/0.2.1-1
 laser_cb_detector:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -2378,6 +2414,10 @@ laser_scan_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
   version: release/melodic/laser_scan_publisher_tutorial/0.2.3-1
+laser_tilt_controller_filter:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/laser_tilt_controller_filter/0.1.28-1
 lauv_control:
   url: https://github.com/uuvsimulator/lauv_gazebo-release.git
   vcs: git
@@ -2394,6 +2434,30 @@ leg_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
   version: release/melodic/leg_detector/1.2.0-1
+leuze_bringup:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_bringup/1.0.1-1
+leuze_description:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_description/1.0.1-1
+leuze_msgs:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_msgs/1.0.1-1
+leuze_phidget_driver:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_phidget_driver/1.0.1-1
+leuze_ros_drivers:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_ros_drivers/1.0.1-1
+leuze_rsl_driver:
+  url: https://github.com/ipa-led/leuze_ros_drivers-release.git
+  vcs: git
+  version: release/melodic/leuze_rsl_driver/1.0.1-1
 lex_common:
   url: https://github.com/aws-gbp/lex_common-release.git
   vcs: git
@@ -2494,6 +2558,10 @@ libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
   version: release/melodic/libreflexxestype2/0.8.8-1
+libsensors_monitor:
+  url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
+  vcs: git
+  version: release/melodic/libsensors_monitor/0.2.1-1
 libsiftfast:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -2518,6 +2586,10 @@ linux_networking:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/melodic/linux_networking/1.0.16-1
+linux_peripheral_interfaces:
+  url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
+  vcs: git
+  version: release/melodic/linux_peripheral_interfaces/0.2.1-1
 lms1xx:
   url: https://github.com/clearpath-gbp/lms1xx-release.git
   vcs: git
@@ -2777,7 +2849,7 @@ mouse_teleop:
 move_base:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/move_base/1.16.2-0
+  version: release/melodic/move_base/1.16.3-1
 move_base_flex:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -2789,7 +2861,7 @@ move_base_msgs:
 move_slow_and_clear:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/move_slow_and_clear/1.16.2-0
+  version: release/melodic/move_slow_and_clear/1.16.3-1
 moveit:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -3097,7 +3169,7 @@ nav_2d_utils:
 nav_core:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/nav_core/1.16.2-0
+  version: release/melodic/nav_core/1.16.3-1
 nav_core2:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -3121,11 +3193,11 @@ nav_grid_pub_sub:
 navfn:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/navfn/1.16.2-0
+  version: release/melodic/navfn/1.16.3-1
 navigation:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/navigation/1.16.2-0
+  version: release/melodic/navigation/1.16.3-1
 navigation_experimental:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
@@ -3605,7 +3677,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.4.1-1
+  version: release/melodic/plotjuggler/2.4.2-1
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -3754,6 +3826,10 @@ pr2_mechanism_msgs:
   url: https://github.com/ros-gbp/pr2_mechanism_msgs-release.git
   vcs: git
   version: release/melodic/pr2_mechanism_msgs/1.8.2-0
+pr2_move_base:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_move_base/0.1.28-1
 pr2_moveit_config:
   url: https://github.com/ros-gbp/moveit_pr2-release.git
   vcs: git
@@ -3766,6 +3842,38 @@ pr2_msgs:
   url: https://github.com/pr2-gbp/pr2_common-release.git
   vcs: git
   version: release/melodic/pr2_msgs/1.12.4-1
+pr2_navigation:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation/0.1.28-1
+pr2_navigation_config:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_config/0.1.28-1
+pr2_navigation_global:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_global/0.1.28-1
+pr2_navigation_local:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_local/0.1.28-1
+pr2_navigation_perception:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_perception/0.1.28-1
+pr2_navigation_self_filter:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_self_filter/0.1.28-1
+pr2_navigation_slam:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_slam/0.1.28-1
+pr2_navigation_teleop:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/pr2_navigation_teleop/0.1.28-1
 pr2_position_scripts:
   url: https://github.com/pr2-gbp/pr2_apps-release.git
   vcs: git
@@ -4169,11 +4277,11 @@ robot_body_filter:
 robot_calibration:
   url: https://github.com/ros-gbp/robot_calibration-release.git
   vcs: git
-  version: release/melodic/robot_calibration/0.6.0-0
+  version: release/melodic/robot_calibration/0.6.1-1
 robot_calibration_msgs:
   url: https://github.com/ros-gbp/robot_calibration-release.git
   vcs: git
-  version: release/melodic/robot_calibration_msgs/0.6.0-0
+  version: release/melodic/robot_calibration_msgs/0.6.1-1
 robot_controllers:
   url: https://github.com/fetchrobotics-gbp/robot_controllers-release.git
   vcs: git
@@ -4565,7 +4673,7 @@ roswww:
 rotate_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/rotate_recovery/1.16.2-0
+  version: release/melodic/rotate_recovery/1.16.3-1
 rotors_comm:
   url: https://github.com/ethz-asl/rotors_simulator-release.git
   vcs: git
@@ -4762,6 +4870,10 @@ seed_smartactuator_sdk:
   url: https://github.com/seed-solutions/seed_smartactuator_sdk-release.git
   vcs: git
   version: release/melodic/seed_smartactuator_sdk/0.0.4-1
+semantic_point_annotator:
+  url: https://github.com/pr2-gbp/pr2_navigation-release.git
+  vcs: git
+  version: release/melodic/semantic_point_annotator/0.1.28-1
 serial:
   url: https://github.com/wjwwood/serial-release.git
   vcs: git
@@ -5049,31 +5161,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.2.3-1
+  version: release/melodic/toposens/1.3.0-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/1.2.3-1
+  version: release/melodic/toposens_description/1.3.0-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.2.3-1
+  version: release/melodic/toposens_driver/1.3.0-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.2.3-1
+  version: release/melodic/toposens_markers/1.3.0-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.2.3-1
+  version: release/melodic/toposens_msgs/1.3.0-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.2.3-1
+  version: release/melodic/toposens_pointcloud/1.3.0-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/1.2.3-1
+  version: release/melodic/toposens_sync/1.3.0-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -5294,6 +5406,22 @@ ubiquity_motor:
   url: https://github.com/UbiquityRobotics-release/ubiquity_motor-release.git
   vcs: git
   version: release/melodic/ubiquity_motor/0.10.0-1
+ublox:
+  url: https://github.com/KumarRobotics/ublox-release.git
+  vcs: git
+  version: release/melodic/ublox/1.2.0-1
+ublox_gps:
+  url: https://github.com/KumarRobotics/ublox-release.git
+  vcs: git
+  version: release/melodic/ublox_gps/1.2.0-1
+ublox_msgs:
+  url: https://github.com/KumarRobotics/ublox-release.git
+  vcs: git
+  version: release/melodic/ublox_msgs/1.2.0-1
+ublox_serialization:
+  url: https://github.com/KumarRobotics/ublox-release.git
+  vcs: git
+  version: release/melodic/ublox_serialization/1.2.0-1
 um6:
   url: https://github.com/ros-drivers-gbp/um6-release.git
   vcs: git
