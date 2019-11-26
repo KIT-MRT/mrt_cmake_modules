@@ -366,6 +366,10 @@ function(mrt_add_python_api modulename)
         message(FATAL_ERROR "Missing dependency to pybind11 or boost python. Add either '<depend>pybind11-dev</depend>' or '<depend>libboost-python</depend>' to 'package.xml'")
     endif()
 
+    if (pybind11_FOUND AND BoostPython_FOUND)
+        message(FATAL_ERROR "Found pybind11 and boost python. Only one is allowed.")
+    endif()
+
     # put in devel folder
     set(PREFIX  ${CATKIN_DEVEL_PREFIX})
     set(PYTHON_MODULE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
