@@ -509,6 +509,8 @@ mrt_qt4-dev:
     name: MrtQt4
   ubuntu:
   - libqt4-dev
+  - libqt4-opengl-dev
+  - libqtwebkit-dev
 mrt_qt-dev:
   cmake:
     components:
