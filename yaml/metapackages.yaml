@@ -21,12 +21,12 @@ sceneshot:
 - sceneshot_grid_map
 - sceneshot_grid_map_elevation
 - sceneshot_grid_map_fusion
+- sceneshot_grid_map_object_detection
 - sceneshot_grid_map_pcl
 - sceneshot_grid_map_recursion
 - sceneshot_grid_map_sensor
 - sceneshot_io
 - sceneshot_io_simulation
-- sceneshot_object_detection
 - sceneshot_object_tracking
 
 sceneshot_ros_tool:
