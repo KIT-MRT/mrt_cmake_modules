@@ -8,6 +8,16 @@ aravis:
     name: Aravis
   ubuntu:
   - mrt-libaravis-dev
+pybind11-dev:
+  cmake:
+    # Only find_package pybind as it is needed only for python cpp files.
+    # This is linked manually.
+    name: pybind11
+    include_dirs: []
+    libraries: []
+    library_dirs: []
+  ubuntu:
+  - mrt-pybind11-dev
 armadillo:
   cmake:
     include_dirs:

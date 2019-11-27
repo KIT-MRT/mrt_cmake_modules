@@ -362,13 +362,17 @@ function(mrt_add_python_api modulename)
         message(FATAL_ERROR "mrt_add_python_api() was already called for this project. You can add only one python_api per project!")
     endif()
 
-    if (NOT DEFINED BoostPython_FOUND)
-        message(FATAL_ERROR "missing dependency to boost python. Add '<depend>libboost-python</depend>' to 'package.xml'")
+    if (NOT pybind11_FOUND AND NOT BoostPython_FOUND)
+        message(FATAL_ERROR "Missing dependency to pybind11 or boost python. Add either '<depend>pybind11-dev</depend>' or '<depend>libboost-python</depend>' to 'package.xml'")
+    endif()
+
+    if (pybind11_FOUND AND BoostPython_FOUND)
+        message(FATAL_ERROR "Found pybind11 and boost python. Only one is allowed.")
     endif()
 
     # put in devel folder
-    set(PREFIX  ${CATKIN_DEVEL_PREFIX})
-    set(PYTHON_MODULE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
+    set(DEVEL_PREFIX  ${CATKIN_DEVEL_PREFIX})
+    set(PYTHON_MODULE_DIR ${DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
 
     # add library for each file
     foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
@@ -376,32 +380,35 @@ function(mrt_add_python_api modulename)
         set( TARGET_NAME "${PROJECT_NAME}-${PYTHON_API_MODULE_NAME}-${SUBMODULE_NAME}-pyapi")
         set( LIBRARY_NAME ${SUBMODULE_NAME})
         message(STATUS "Adding python api library \"${LIBRARY_NAME}\" to python module \"${PYTHON_API_MODULE_NAME}\"")
-        add_library( ${TARGET_NAME} SHARED
-            ${API_FILE}
-            )
-        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
+
+        if (pybind11_FOUND)
+            pybind11_add_module(${TARGET_NAME} MODULE ${API_FILE})
+            target_link_libraries(${TARGET_NAME} PRIVATE pybind11::module)
+        elseif(BoostPython_FOUND)
+            add_library(${TARGET_NAME} SHARED ${API_FILE})
+            target_link_libraries(${TARGET_NAME} PRIVATE ${BoostPython_LIBRARIES} ${PYTHON_LIBRARY})
+        endif()
+
         set_target_properties(${TARGET_NAME}
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
             PREFIX ""
             )
-        target_link_libraries( ${TARGET_NAME}
-            ${PYTHON_LIBRARY}
-            ${BoostPython_LIBRARIES}
+        
+        set_target_properties(${TARGET_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PYTHON_MODULE_DIR}")
+
+        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
+        
+        target_link_libraries( ${TARGET_NAME} PRIVATE
             ${catkin_LIBRARIES}
             ${mrt_LIBRARIES}
             ${MRT_SANITIZER_LINK_FLAGS}
             )
+
         set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
         if(_deps)
             add_dependencies(${TARGET_NAME} ${_deps})
         endif()
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
-        add_custom_command(TARGET ${TARGET_NAME}
-            POST_BUILD
-            COMMAND mkdir -p ${PYTHON_MODULE_DIR} && cp -v $<TARGET_FILE:${TARGET_NAME}> ${PYTHON_MODULE_DIR}/$<TARGET_FILE_NAME:${TARGET_NAME}>
-            WORKING_DIRECTORY ${PREFIX}
-            COMMENT "Copying library files to python directory"
-            )
     endforeach()
     configure_file(${MCM_ROOT}/cmake/Templates/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
 
@@ -410,7 +417,7 @@ function(mrt_add_python_api modulename)
 
     # configure setup.py for install
     set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
-    set(PACKAGE_DIR ${PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
+    set(PACKAGE_DIR ${DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
     set(PACKAGE_DATA "*.so*")
     configure_file(${MCM_ROOT}/cmake/Templates/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @@ONLY)
     configure_file(${MCM_ROOT}/cmake/Templates/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py" @@ONLY)
@@ -510,13 +517,13 @@ function(mrt_add_library libname)
         )
     # add dependency to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
-        target_link_libraries(${_py_api_target} ${LIBRARY_TARGET_NAME})
+        target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
     endforeach()
 
     # Add cuda target
     if (_MRT_HAS_CUDA_SOURCE_FILES)
         if (NOT DEFINED CUDA_FOUND)
-            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
+            message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>cuda</depend> to your package.xml.")
         endif()
 
         # generate cuda target
