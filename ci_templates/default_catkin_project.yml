@@ -57,6 +57,7 @@ general_code_quality:
     - chmod a+rw gl-code-quality-report.json
   artifacts:
     paths: [gl-code-quality-report.json]
+    expire_in: 6 mos
 
 code_quality:
   dependencies:
