@@ -1113,7 +1113,7 @@ dwb_plugins:
 dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/dynamic_edt_3d/1.9.0-1
+  version: release/melodic/dynamic_edt_3d/1.9.1-1
 dynamic_robot_state_publisher:
   url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
   vcs: git
@@ -1333,7 +1333,7 @@ effort_controllers:
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
-  version: release/melodic/eigenpy/1.6.7-1
+  version: release/melodic/eigenpy/1.6.9-1
 eml:
   url: https://github.com/ros-gbp/eml-release.git
   vcs: git
@@ -2921,7 +2921,7 @@ moveit_pr2:
 moveit_python:
   url: https://github.com/mikeferguson/moveit_python-release.git
   vcs: git
-  version: release/melodic/moveit_python/0.3.2-1
+  version: release/melodic/moveit_python/0.3.3-1
 moveit_resources:
   url: https://github.com/ros-gbp/moveit_resources-release.git
   vcs: git
@@ -3353,7 +3353,7 @@ octomap_server:
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/octovis/1.9.0-1
+  version: release/melodic/octovis/1.9.1-1
 odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
@@ -3369,7 +3369,7 @@ odva_ethernetip:
 ompl:
   url: https://github.com/ros-gbp/ompl-release.git
   vcs: git
-  version: release/melodic/ompl/1.4.2-2
+  version: release/melodic/ompl/1.4.2-3
 omron_os32c_driver:
   url: https://github.com/ros-drivers-gbp/omron-release.git
   vcs: git
@@ -3561,7 +3561,7 @@ pacmod_msgs:
 panda_moveit_config:
   url: https://github.com/ros-gbp/panda_moveit_config-release.git
   vcs: git
-  version: release/melodic/panda_moveit_config/0.7.2-1
+  version: release/melodic/panda_moveit_config/0.7.3-1
 parameter_assertions:
   url: https://github.com/RoboJackets/rj-ros-common-release.git
   vcs: git
@@ -3629,43 +3629,47 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.10-1
+  version: release/melodic/pilz_control/0.5.11-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.7-1
+  version: release/melodic/pilz_extensions/0.4.8-1
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.7-1
+  version: release/melodic/pilz_industrial_motion/0.4.8-1
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.7-1
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.8-1
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.7-1
+  version: release/melodic/pilz_msgs/0.4.8-1
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.7-1
+  version: release/melodic/pilz_robot_programming/0.4.8-1
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.10-1
+  version: release/melodic/pilz_robots/0.5.11-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.10-1
+  version: release/melodic/pilz_testutils/0.5.11-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.7-1
+  version: release/melodic/pilz_trajectory_generation/0.4.8-1
+pilz_utils:
+  url: https://github.com/PilzDE/pilz_robots-release.git
+  vcs: git
+  version: release/melodic/pilz_utils/0.5.11-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
-  version: release/melodic/pinocchio/2.1.3-1
+  version: release/melodic/pinocchio/2.2.1-1
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -3677,7 +3681,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.4.2-1
+  version: release/melodic/plotjuggler/2.4.3-1
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -3925,7 +3929,7 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.10-1
+  version: release/melodic/prbt_gazebo/0.5.11-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3933,15 +3937,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.10-1
+  version: release/melodic/prbt_hardware_support/0.5.11-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.10-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.11-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.10-1
+  version: release/melodic/prbt_moveit_config/0.5.11-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3949,7 +3953,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.10-1
+  version: release/melodic/prbt_support/0.5.11-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -3962,6 +3966,10 @@ ps3joy:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
   version: release/melodic/ps3joy/1.13.0-1
+psen_scan:
+  url: https://github.com/PilzDE/psen_scan-release.git
+  vcs: git
+  version: release/melodic/psen_scan/1.0.1-1
 px4_msgs:
   url: https://github.com/PX4/px4_msgs-release.git
   vcs: git
@@ -4841,27 +4849,27 @@ scheduler_msgs:
 schunk_description:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_description/0.6.13-2
+  version: release/melodic/schunk_description/0.6.14-1
 schunk_libm5api:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_libm5api/0.6.13-2
+  version: release/melodic/schunk_libm5api/0.6.14-1
 schunk_modular_robotics:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_modular_robotics/0.6.13-2
+  version: release/melodic/schunk_modular_robotics/0.6.14-1
 schunk_powercube_chain:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_powercube_chain/0.6.13-2
+  version: release/melodic/schunk_powercube_chain/0.6.14-1
 schunk_sdh:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_sdh/0.6.13-2
+  version: release/melodic/schunk_sdh/0.6.14-1
 schunk_simulated_tactile_sensors:
   url: https://github.com/ipa320/schunk_modular_robotics-release.git
   vcs: git
-  version: release/melodic/schunk_simulated_tactile_sensors/0.6.13-2
+  version: release/melodic/schunk_simulated_tactile_sensors/0.6.14-1
 sdhlibrary_cpp:
   url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
   vcs: git
@@ -4925,7 +4933,7 @@ slam_karto:
 slam_toolbox:
   url: https://github.com/SteveMacenski/slam_toolbox-release.git
   vcs: git
-  version: release/melodic/slam_toolbox/1.1.1-1
+  version: release/melodic/slam_toolbox/1.1.2-1
 slic:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
