@@ -8,6 +8,16 @@ aravis:
     name: Aravis
   ubuntu:
   - mrt-libaravis-dev
+pybind11-dev:
+  cmake:
+    # Only find_package pybind as it is needed only for python cpp files.
+    # This is linked manually.
+    name: pybind11
+    include_dirs: []
+    libraries: []
+    library_dirs: []
+  ubuntu:
+  - mrt-pybind11-dev
 armadillo:
   cmake:
     include_dirs:
@@ -20,10 +30,7 @@ armadillo:
   - libarmadillo-dev
 coverage:
   ubuntu:
-    xenial:
-    - lcov
-    bionic:
-    - gcovr
+  - lcov
 boost:
   cmake:
     components:
@@ -502,6 +509,8 @@ mrt_qt4-dev:
     name: MrtQt4
   ubuntu:
   - libqt4-dev
+  - libqt4-opengl-dev
+  - libqtwebkit-dev
 mrt_qt-dev:
   cmake:
     components:
@@ -559,11 +568,14 @@ mrt_tensorflow:
     name: MrtTensorflow
   ubuntu:
   - mrt-tensorflow-dev
+mrt_tensorflow_addons:
+  ubuntu:
+  - mrt-tensorflow-addons
 mrt_c_tensorflow:
   cmake:
     components: []
     include_dirs:
-    - TENSORFLOW_INCLUDE_DIRS
+    - TENSORFLOW_C_INCLUDE_DIRS
     libraries:
     - TENSORFLOW_LIBRARIES
     library_dirs: []
@@ -773,3 +785,13 @@ yaml-cpp:
     - yaml-cpp_LIBRARIES
     library_dirs: []
     name: yaml-cpp
+coinor-libipopt-dev:
+  cmake:
+    components: []
+    include_dirs:
+      - IPOPT_INCLUDE_DIRS
+    libraries:
+      - IPOPT_LIBRARIES
+    library_dirs: []
+    name: Ipopt
+  ubuntu: [coinor-libipopt-dev]
