@@ -1742,62 +1742,18 @@ grasping_msgs:
   url: https://github.com/mikeferguson/grasping_msgs-gbp.git
   vcs: git
   version: release/melodic/grasping_msgs/0.3.1-0
-grid_map:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map/1.6.2-1
-grid_map_core:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_core/1.6.2-1
 grid_map_costmap_2d:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
   version: release/melodic/grid_map_costmap_2d/1.6.2-1
-grid_map_cv:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_cv/1.6.2-1
-grid_map_demos:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_demos/1.6.2-1
-grid_map_filters:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_filters/1.6.2-1
-grid_map_loader:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_loader/1.6.2-1
-grid_map_msgs:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_msgs/1.6.2-1
-grid_map_octomap:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_octomap/1.6.2-1
 grid_map_pcl:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
   version: release/melodic/grid_map_pcl/1.6.2-1
-grid_map_ros:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_ros/1.6.2-1
-grid_map_rviz_plugin:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_rviz_plugin/1.6.2-1
 grid_map_sdf:
   url: https://github.com/anybotics/grid_map-release.git
   vcs: git
   version: release/melodic/grid_map_sdf/1.6.2-1
-grid_map_visualization:
-  url: https://github.com/anybotics/grid_map-release.git
-  vcs: git
-  version: release/melodic/grid_map_visualization/1.6.2-1
 gripper_action_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -3334,10 +3290,6 @@ octomap_mapping:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
   version: release/melodic/octomap_mapping/0.6.3-0
-octomap_msgs:
-  url: https://github.com/ros-gbp/octomap_msgs-release.git
-  vcs: git
-  version: release/melodic/octomap_msgs/0.3.3-1
 octomap_ros:
   url: https://github.com/ros-gbp/octomap_ros-release.git
   vcs: git
