@@ -78,8 +78,8 @@ cuda:
       - cuda-toolkit-9-2
       - g++-6
     bionic:
-      - cuda-toolkit-10-0
-      - g++-7
+      - cuda-toolkit-10-2
+      - g++-8
 eigen:
   cmake:
     components: []
