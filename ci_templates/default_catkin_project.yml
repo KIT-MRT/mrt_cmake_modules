@@ -101,7 +101,7 @@ test:
   stage: test
   needs: [build]
   only: [branches, tags, merge_requests] # means "always"
-  coverage: '/lines: \d+.\d+\%/'
+  coverage: '/lines......: \d+.\d+\%/'
   variables:
     MRT_MIN_COVERAGE: $MRT_REQUIRED_COVERAGE
   script:
