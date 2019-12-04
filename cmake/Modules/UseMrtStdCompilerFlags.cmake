@@ -41,14 +41,29 @@ endif()
 # Select arch flag
 if(MRT_ARCH)
   if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
-    set(_arch "-march=${MRT_ARCH}")
+    set(_arch "${MRT_ARCH}")
   endif()
 else()
-  # sandybridge is the lowest common cpu arch for us
-  set(_arch "-march=sandybridge")
+  # On X86, sandybridge is the lowest common cpu arch for us
+  set(_x86_arch_list "i386" "amd64" "AMD64" "x86_64" "i686" "x86" "x64" "EM64T")
+
+  list(FIND _x86_arch_list ${CMAKE_SYSTEM_PROCESSOR} _index)
+
+  if(${_index} GREATER -1)
+    message(STATUS "MRT_ARCH not set and X86 target detected (${CMAKE_SYSTEM_PROCESSOR})")
+    set(_arch "sandybridge")
+  endif()
+
+  unset(_x86_arch_list)
+  unset(_index)
 endif()
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_arch}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_arch}")
+
+if(_arch)
+  message(STATUS "Setting -march to " ${_arch})
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=${_arch}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=${_arch}")
+  unset(_arch)
+endif()
 
 #add OpenMP
 find_package(OpenMP REQUIRED)
