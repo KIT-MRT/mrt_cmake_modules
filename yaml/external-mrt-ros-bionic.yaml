@@ -861,7 +861,7 @@ convex_decomposition:
 costmap_converter:
   url: https://github.com/rst-tu-dortmund/costmap_converter-release.git
   vcs: git
-  version: release/melodic/costmap_converter/0.0.11-1
+  version: release/melodic/costmap_converter/0.0.12-1
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -1113,7 +1113,7 @@ dwb_plugins:
 dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/dynamic_edt_3d/1.9.1-1
+  version: release/melodic/dynamic_edt_3d/1.9.2-1
 dynamic_robot_state_publisher:
   url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
   vcs: git
@@ -3025,7 +3025,7 @@ multi_map_server:
 multi_object_tracking_lidar:
   url: https://github.com/praveen-palanisamy/multi_object_tracking_lidar-release.git
   vcs: git
-  version: release/melodic/multi_object_tracking_lidar/1.0.1-1
+  version: release/melodic/multi_object_tracking_lidar/1.0.2-1
 multimaster_fkie:
   url: https://github.com/fkie-release/multimaster_fkie-release.git
   vcs: git
@@ -3305,7 +3305,7 @@ octomap_server:
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/octovis/1.9.1-1
+  version: release/melodic/octovis/1.9.2-1
 odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
@@ -3581,43 +3581,43 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.11-1
+  version: release/melodic/pilz_control/0.5.12-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.8-1
+  version: release/melodic/pilz_extensions/0.4.9-1
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.8-1
+  version: release/melodic/pilz_industrial_motion/0.4.9-1
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.8-1
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.9-1
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.8-1
+  version: release/melodic/pilz_msgs/0.4.9-1
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.8-1
+  version: release/melodic/pilz_robot_programming/0.4.9-1
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.11-1
+  version: release/melodic/pilz_robots/0.5.12-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.11-1
+  version: release/melodic/pilz_testutils/0.5.12-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.8-1
+  version: release/melodic/pilz_trajectory_generation/0.4.9-1
 pilz_utils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_utils/0.5.11-1
+  version: release/melodic/pilz_utils/0.5.12-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -3881,7 +3881,7 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.11-1
+  version: release/melodic/prbt_gazebo/0.5.12-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3889,15 +3889,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.11-1
+  version: release/melodic/prbt_hardware_support/0.5.12-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.11-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.12-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.11-1
+  version: release/melodic/prbt_moveit_config/0.5.12-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3905,7 +3905,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.11-1
+  version: release/melodic/prbt_support/0.5.12-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -4426,18 +4426,10 @@ ros_type_introspection:
   url: https://github.com/facontidavide/ros_type_introspection-release.git
   vcs: git
   version: release/melodic/ros_type_introspection/2.0.4-1
-rosapi:
-  url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
-  vcs: git
-  version: release/melodic/rosapi/0.11.3-1
 rosatomic:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
   version: release/melodic/rosatomic/1.0.25-0
-rosauth:
-  url: https://github.com/gt-rail-release/rosauth-release.git
-  vcs: git
-  version: release/melodic/rosauth/1.0.1-0
 rosbag_editor:
   url: https://github.com/facontidavide/rosbag_editor-release.git
   vcs: git
@@ -4458,18 +4450,6 @@ rosbash_params:
   url: https://github.com/peci1/rosbash_params-release.git
   vcs: git
   version: release/melodic/rosbash_params/1.0.2-0
-rosbridge_library:
-  url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
-  vcs: git
-  version: release/melodic/rosbridge_library/0.11.3-1
-rosbridge_msgs:
-  url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
-  vcs: git
-  version: release/melodic/rosbridge_msgs/0.11.3-1
-rosbridge_server:
-  url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
-  vcs: git
-  version: release/melodic/rosbridge_server/0.11.3-1
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
@@ -5053,7 +5033,7 @@ talos_description_inertial:
 teb_local_planner:
   url: https://github.com/rst-tu-dortmund/teb_local_planner-release.git
   vcs: git
-  version: release/melodic/teb_local_planner/0.8.3-1
+  version: release/melodic/teb_local_planner/0.8.4-1
 teb_local_planner_tutorials:
   url: https://github.com/rst-tu-dortmund/teb_local_planner_tutorials-release.git
   vcs: git

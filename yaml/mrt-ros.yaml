@@ -282,6 +282,10 @@ ros_environment:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 ros_tutorials:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+rosapi:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosauth:
+  ubuntu: {bionic: mrt-ros-bionic}
 rosbag:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosbag_migration_rule:
@@ -292,6 +296,12 @@ rosbash:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosboost_cfg:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+rosbridge_library:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosbridge_msgs:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosbridge_server:
+  ubuntu: {bionic: mrt-ros-bionic}
 rosbuild:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosclean:
