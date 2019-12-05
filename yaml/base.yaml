@@ -467,7 +467,7 @@ mrt_opencv:
     name: MrtOpenCV
   ubuntu:
   - mrt-libopencv-dev
-mrt_pcl:
+mrt_pcl: &pcl
   cmake:
     components: []
     include_dirs:
@@ -478,10 +478,11 @@ mrt_pcl:
     - PCL_LIBRARY_DIRS
     name: MrtPCL
   ubuntu:
-    xenial:
-    - mrt-libpcl-all-dev
-    bionic:
-    - libpcl-dev
+  - mrt-libpcl-all-dev
+libpcl-all-dev: *pcl
+libpcl-all:
+  ubuntu:
+    mrt-libpcl-all
 mrt_protobuf:
   cmake:
     components: []
