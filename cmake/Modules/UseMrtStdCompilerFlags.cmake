@@ -147,6 +147,7 @@ endif()
 # - strict-overflow: False positives, optimization level dependent
 # - unknown-pragmas: Pragmas might be for a different compiler
 # - unused-*: Sometimes unused declarations are desired
+# - comment: Report errors in vtkMath.h for VTK6.
 
 #add compiler flags
 CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" FLAG_AVAILABLE)
