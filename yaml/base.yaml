@@ -608,7 +608,7 @@ mrt_vtk:
     xenial:
     - mrt-libvtk-dev
     bionic:
-    - libvtk6-dev
+    - libvtk7-dev
 opencv:
   cmake:
     components: []
