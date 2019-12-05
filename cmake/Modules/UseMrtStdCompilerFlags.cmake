@@ -102,7 +102,7 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-unused-parameter")
 if(MRT_USE_DEFAULT_WERROR_FLAGS)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=comment -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=volatile-register-var")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=address -Werror=enum-compare -Werror=format -Werror=nonnull -Werror=return-type -Werror=sequence-point -Werror=strict-aliasing -Werror=switch -Werror=trigraphs -Werror=volatile-register-var")
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC)
@@ -147,6 +147,7 @@ endif()
 # - strict-overflow: False positives, optimization level dependent
 # - unknown-pragmas: Pragmas might be for a different compiler
 # - unused-*: Sometimes unused declarations are desired
+# - comment: Report errors in vtkMath.h for VTK6.
 
 #add compiler flags
 CHECK_CXX_COMPILER_FLAG("-fdiagnostics-color=auto" FLAG_AVAILABLE)
