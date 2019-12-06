@@ -233,27 +233,31 @@ automotive_platform_msgs:
 autoware_can_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_can_msgs/1.12.0-1
+  version: release/melodic/autoware_can_msgs/1.13.0-1
 autoware_config_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_config_msgs/1.12.0-1
+  version: release/melodic/autoware_config_msgs/1.13.0-1
 autoware_external_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_external_msgs/1.12.0-1
+  version: release/melodic/autoware_external_msgs/1.13.0-1
+autoware_lanelet2_msgs:
+  url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
+  vcs: git
+  version: release/melodic/autoware_lanelet2_msgs/1.13.0-1
 autoware_map_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_map_msgs/1.12.0-1
+  version: release/melodic/autoware_map_msgs/1.13.0-1
 autoware_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_msgs/1.12.0-1
+  version: release/melodic/autoware_msgs/1.13.0-1
 autoware_system_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/autoware_system_msgs/1.12.0-1
+  version: release/melodic/autoware_system_msgs/1.13.0-1
 avt_vimba_camera:
   url: https://github.com/astuff/avt_vimba_camera-release.git
   vcs: git
@@ -274,6 +278,10 @@ bagger:
   url: https://github.com/squarerobot/bagger-release.git
   vcs: git
   version: release/melodic/bagger/0.1.3-0
+baldor:
+  url: https://github.com/crigroup/baldor-release.git
+  vcs: git
+  version: release/melodic/baldor/0.1.2-1
 base_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -294,6 +302,10 @@ bfl:
   url: https://github.com/ros-gbp/bfl-release.git
   vcs: git
   version: release/melodic/bfl/0.8.0-1
+blender_gazebo:
+  url: https://github.com/david0429-gbp/blender_gazebo_gbp.git
+  vcs: git
+  version: release/melodic/blender_gazebo/0.0.3-1
 brics_actuator:
   url: https://github.com/wnowak/brics_actuator-release.git
   vcs: git
@@ -514,6 +526,10 @@ cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_cartesian_controller/0.8.1-1
+cob_collision_monitor:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_collision_monitor/0.7.3-1
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -614,6 +630,10 @@ cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
   version: release/melodic/cob_generic_can/0.7.1-1
+cob_grasp_generation:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_grasp_generation/0.7.3-1
 cob_hand:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
@@ -650,6 +670,14 @@ cob_linear_nav:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
   version: release/melodic/cob_linear_nav/0.6.9-1
+cob_lookat_action:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_lookat_action/0.7.3-1
+cob_manipulation:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_manipulation/0.7.3-1
 cob_map_accessibility_analysis:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
@@ -670,10 +698,18 @@ cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
   version: release/melodic/cob_monitoring/0.6.15-1
+cob_moveit_bringup:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_moveit_bringup/0.7.3-1
 cob_moveit_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
   version: release/melodic/cob_moveit_config/0.7.2-1
+cob_moveit_interface:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_moveit_interface/0.7.3-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -710,6 +746,10 @@ cob_obstacle_distance:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
   version: release/melodic/cob_obstacle_distance/0.8.1-1
+cob_obstacle_distance_moveit:
+  url: https://github.com/ipa320/cob_manipulation-release.git
+  vcs: git
+  version: release/melodic/cob_obstacle_distance_moveit/0.7.3-1
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -878,6 +918,10 @@ cpr_multimaster_tools:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
   version: release/melodic/cpr_multimaster_tools/0.0.2-1
+criutils:
+  url: https://github.com/crigroup/criutils-release.git
+  vcs: git
+  version: release/melodic/criutils/0.1.3-1
 cv_camera:
   url: https://github.com/OTL/cv_camera-release.git
   vcs: git
@@ -1078,6 +1122,10 @@ dlux_plugins:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
   version: release/melodic/dlux_plugins/0.2.5-1
+dockeros:
+  url: https://github.com/ct2034/dockeros-release.git
+  vcs: git
+  version: release/melodic/dockeros/1.1.0-1
 downward:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -1113,7 +1161,7 @@ dwb_plugins:
 dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/dynamic_edt_3d/1.9.2-1
+  version: release/melodic/dynamic_edt_3d/1.9.0-1
 dynamic_robot_state_publisher:
   url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
   vcs: git
@@ -1774,6 +1822,10 @@ h264_video_encoder:
   url: https://github.com/aws-gbp/h264_video_encoder-release.git
   vcs: git
   version: release/melodic/h264_video_encoder/1.1.4-1
+handeye:
+  url: https://github.com/crigroup/handeye-release.git
+  vcs: git
+  version: release/melodic/handeye/0.1.1-1
 haros_catkin:
   url: https://github.com/rosin-project/haros_catkin-release.git
   vcs: git
@@ -1785,7 +1837,7 @@ health_metric_collector:
 hebi_cpp_api:
   url: https://github.com/HebiRobotics/hebi_cpp_api_ros-release.git
   vcs: git
-  version: release/melodic/hebi_cpp_api/2.1.0-1
+  version: release/melodic/hebi_cpp_api/3.1.0-1
 hebi_description:
   url: https://github.com/HebiRobotics/hebi_description-release.git
   vcs: git
@@ -3197,7 +3249,7 @@ neonavigation_rviz_plugins:
 nerian_stereo:
   url: https://github.com/nerian-vision/nerian_stereo-release.git
   vcs: git
-  version: release/melodic/nerian_stereo/3.5.0-1
+  version: release/melodic/nerian_stereo/3.6.0-1
 network_autoconfig:
   url: https://github.com/LucidOne-release/network_autoconfig.git
   vcs: git
@@ -3305,7 +3357,7 @@ octomap_server:
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/octovis/1.9.2-1
+  version: release/melodic/octovis/1.9.0-1
 odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
@@ -3581,43 +3633,43 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.12-1
+  version: release/melodic/pilz_control/0.5.13-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_extensions/0.4.9-1
+  version: release/melodic/pilz_extensions/0.4.10-1
 pilz_industrial_motion:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion/0.4.9-1
+  version: release/melodic/pilz_industrial_motion/0.4.10-1
 pilz_industrial_motion_testutils:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_industrial_motion_testutils/0.4.9-1
+  version: release/melodic/pilz_industrial_motion_testutils/0.4.10-1
 pilz_msgs:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_msgs/0.4.9-1
+  version: release/melodic/pilz_msgs/0.4.10-1
 pilz_robot_programming:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_robot_programming/0.4.9-1
+  version: release/melodic/pilz_robot_programming/0.4.10-1
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.12-1
+  version: release/melodic/pilz_robots/0.5.13-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.12-1
+  version: release/melodic/pilz_testutils/0.5.13-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
-  version: release/melodic/pilz_trajectory_generation/0.4.9-1
+  version: release/melodic/pilz_trajectory_generation/0.4.10-1
 pilz_utils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_utils/0.5.12-1
+  version: release/melodic/pilz_utils/0.5.13-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -3881,7 +3933,7 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.12-1
+  version: release/melodic/prbt_gazebo/0.5.13-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3889,15 +3941,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.12-1
+  version: release/melodic/prbt_hardware_support/0.5.13-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.12-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.13-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.12-1
+  version: release/melodic/prbt_moveit_config/0.5.13-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -3905,7 +3957,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.12-1
+  version: release/melodic/prbt_support/0.5.13-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -4037,11 +4089,11 @@ qpoases_vendor:
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_app/0.3.15-1
+  version: release/melodic/qt_gui_app/0.3.16-1
 qt_gui_core:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_core/0.3.15-1
+  version: release/melodic/qt_gui_core/0.3.16-1
 qt_qmake:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
@@ -4806,6 +4858,42 @@ sdhlibrary_cpp:
   url: https://github.com/ipab-slmc/SDHLibrary-CPP-release.git
   vcs: git
   version: release/melodic/sdhlibrary_cpp/0.2.10-1
+seed_r7_bringup:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_bringup/0.3.3-1
+seed_r7_description:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_description/0.3.3-1
+seed_r7_moveit_config:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_moveit_config/0.3.3-1
+seed_r7_navigation:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_navigation/0.3.3-1
+seed_r7_robot_interface:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_robot_interface/0.3.3-1
+seed_r7_ros_controller:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_ros_controller/0.3.3-1
+seed_r7_ros_pkg:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_ros_pkg/0.3.3-1
+seed_r7_samples:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_samples/0.3.3-1
+seed_r7_typef_moveit_config:
+  url: https://github.com/seed-solutions/seed_r7_ros_pkg-release.git
+  vcs: git
+  version: release/melodic/seed_r7_typef_moveit_config/0.3.3-1
 seed_smartactuator_sdk:
   url: https://github.com/seed-solutions/seed_smartactuator_sdk-release.git
   vcs: git
@@ -5017,7 +5105,7 @@ swri_yaml_util:
 tablet_socket_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/tablet_socket_msgs/1.12.0-1
+  version: release/melodic/tablet_socket_msgs/1.13.0-1
 talos_description:
   url: https://github.com/pal-gbp/talos_robot-release.git
   vcs: git
@@ -5137,23 +5225,23 @@ towr_ros:
 trac_ik:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
-  version: release/melodic/trac_ik/1.5.0-1
+  version: release/melodic/trac_ik/1.5.1-1
 trac_ik_examples:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
-  version: release/melodic/trac_ik_examples/1.5.0-1
+  version: release/melodic/trac_ik_examples/1.5.1-1
 trac_ik_kinematics_plugin:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
-  version: release/melodic/trac_ik_kinematics_plugin/1.5.0-1
+  version: release/melodic/trac_ik_kinematics_plugin/1.5.1-1
 trac_ik_lib:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
-  version: release/melodic/trac_ik_lib/1.5.0-1
+  version: release/melodic/trac_ik_lib/1.5.1-1
 trac_ik_python:
   url: https://github.com/traclabs/trac_ik-release.git
   vcs: git
-  version: release/melodic/trac_ik_python/1.5.0-1
+  version: release/melodic/trac_ik_python/1.5.1-1
 tracetools:
   url: https://github.com/bosch-robotics-cr/tracetools-release.git
   vcs: git
@@ -5549,7 +5637,7 @@ variant_topic_tools:
 vector_map_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
-  version: release/melodic/vector_map_msgs/1.12.0-1
+  version: release/melodic/vector_map_msgs/1.13.0-1
 velocity_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
