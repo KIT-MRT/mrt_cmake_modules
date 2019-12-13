@@ -305,7 +305,7 @@ bfl:
 blender_gazebo:
   url: https://github.com/david0429-gbp/blender_gazebo_gbp.git
   vcs: git
-  version: release/melodic/blender_gazebo/0.0.3-1
+  version: release/melodic/blender_gazebo/0.0.4-1
 brics_actuator:
   url: https://github.com/wnowak/brics_actuator-release.git
   vcs: git
@@ -409,7 +409,7 @@ chomp_motion_planner:
 cis_camera:
   url: https://github.com/tork-a/cis_camera-release.git
   vcs: git
-  version: release/melodic/cis_camera/0.0.3-1
+  version: release/melodic/cis_camera/0.0.4-1
 cl_tf:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
@@ -1421,7 +1421,7 @@ eusurdf:
 executive_smach_visualization:
   url: https://github.com/jbohren/executive_smach_visualization-release.git
   vcs: git
-  version: release/melodic/executive_smach_visualization/2.0.2-0
+  version: release/melodic/executive_smach_visualization/3.0.0-1
 exotica:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
@@ -1945,47 +1945,47 @@ hpp-fcl:
 husky_base:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_base/0.4.1-1
+  version: release/melodic/husky_base/0.4.2-1
 husky_bringup:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_bringup/0.4.1-1
+  version: release/melodic/husky_bringup/0.4.2-1
 husky_control:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_control/0.4.1-1
+  version: release/melodic/husky_control/0.4.2-1
 husky_description:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_description/0.4.1-1
+  version: release/melodic/husky_description/0.4.2-1
 husky_desktop:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_desktop/0.4.1-1
+  version: release/melodic/husky_desktop/0.4.2-1
 husky_gazebo:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_gazebo/0.4.1-1
+  version: release/melodic/husky_gazebo/0.4.2-1
 husky_msgs:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_msgs/0.4.1-1
+  version: release/melodic/husky_msgs/0.4.2-1
 husky_navigation:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_navigation/0.4.1-1
+  version: release/melodic/husky_navigation/0.4.2-1
 husky_robot:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_robot/0.4.1-1
+  version: release/melodic/husky_robot/0.4.2-1
 husky_simulator:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_simulator/0.4.1-1
+  version: release/melodic/husky_simulator/0.4.2-1
 husky_viz:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
-  version: release/melodic/husky_viz/0.4.1-1
+  version: release/melodic/husky_viz/0.4.2-1
 ibeo_core:
   url: https://github.com/astuff/ibeo_core-release.git
   vcs: git
@@ -2505,7 +2505,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.33.3-1
+  version: release/melodic/libmavconn/0.33.4-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -2709,19 +2709,19 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.11.11-1
+  version: release/melodic/mavlink/2019.12.12-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.33.3-1
+  version: release/melodic/mavros/0.33.4-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.33.3-1
+  version: release/melodic/mavros_extras/0.33.4-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.33.3-1
+  version: release/melodic/mavros_msgs/0.33.4-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -3373,7 +3373,7 @@ odva_ethernetip:
 ompl:
   url: https://github.com/ros-gbp/ompl-release.git
   vcs: git
-  version: release/melodic/ompl/1.4.2-3
+  version: release/melodic/ompl/1.4.2-5
 omron_os32c_driver:
   url: https://github.com/ros-drivers-gbp/omron-release.git
   vcs: git
@@ -4141,7 +4141,7 @@ rc_cloud_accumulator:
 rc_common_msgs:
   url: https://github.com/roboception-gbp/rc_common_msgs-release.git
   vcs: git
-  version: release/melodic/rc_common_msgs/0.3.0-1
+  version: release/melodic/rc_common_msgs/0.4.0-1
 rc_dynamics_api:
   url: https://github.com/roboception-gbp/rc_dynamics_api-release.git
   vcs: git
@@ -4149,7 +4149,7 @@ rc_dynamics_api:
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/melodic/rc_genicam_api/2.2.2-1
+  version: release/melodic/rc_genicam_api/2.2.3-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
@@ -4969,7 +4969,7 @@ slime_wrapper:
 smach_viewer:
   url: https://github.com/jbohren/executive_smach_visualization-release.git
   vcs: git
-  version: release/melodic/smach_viewer/2.0.2-0
+  version: release/melodic/smach_viewer/3.0.0-1
 social_navigation_layers:
   url: https://github.com/wu-robotics/navigation_layers_release.git
   vcs: git
@@ -5157,7 +5157,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.33.3-1
+  version: release/melodic/test_mavros/0.33.4-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
