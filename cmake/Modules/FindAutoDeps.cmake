@@ -169,6 +169,26 @@ if (AutoDeps_FIND_COMPONENTS)
                 list(APPEND mrt_CUDA_LIBRARIES ${${_${other_package}_CMAKE_LIBRARIES_}})
             endif()
         endif()
+        # append targets
+        if(DEFINED _${other_package}_CMAKE_TARGETS_)
+            # Append all libraries to link against a test executable (regular and test only).
+            list(APPEND mrt_TEST_LIBRARIES ${_${other_package}_CMAKE_TARGETS_})
+
+            list(FIND _OTHER_PACKAGES_ ${other_package} res)
+            if(NOT ${res} EQUAL -1)
+                list(APPEND mrt_LIBRARIES ${_${other_package}_CMAKE_TARGETS_})
+            endif()
+
+            list(FIND _OTHER_EXPORT_PACKAGES_ ${other_package} res)
+            if(NOT ${res} EQUAL -1)
+                list(APPEND mrt_EXPORT_LIBRARIES ${_${other_package}_CMAKE_TARGETS_})
+            endif()
+
+            list(FIND _CUDA_OTHER_PACKAGES_ ${other_package} res)
+            if(NOT ${res} EQUAL -1)
+                list(APPEND mrt_CUDA_LIBRARIES ${_${other_package}_CMAKE_TARGETS_})
+            endif()
+        endif()
     endforeach()
         
     # Cleanup include directories.
