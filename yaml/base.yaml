@@ -13,46 +13,24 @@ flann:
   ubuntu: [libflann-dev]
 freeglut3-dev:
   ubuntu: [freeglut3-dev]
-glew:
-  ubuntu: [libglew-dev]
-glfw:
-  ubuntu: [libglfw3-dev]
-gtest-headers:
-  ubuntu: [libgtest-dev]
-gtestsrc:
-  ubuntu: [libgtest-dev]
-gtkmm:
-  ubuntu: [libgtkmm-3.0-dev]
 libboost-python:
   ubuntu: [libpython-dev, libboost-python-dev]
 libgeographic-dev:
   ubuntu: [libgeographic-dev]
 liblmdb:
   ubuntu: [liblmdb-dev]
-libopencv-contrib-dev:
-  ubuntu:
-    bionic: [mrt-libopencv-dev]
-libopencv-dev:
-  ubuntu: [mrt-libopencv-dev]
-libpcap-dev:
-  ubuntu: [libpcap-dev]
 libxext-dev:
   ubuntu: [libxext-dev]
 libxrandr-dev:
   ubuntu: [libxrandr-dev]
 mbed_cli:
   ubuntu: [mrt-mbed-cli]
-minpack:
-  ubuntu: [minpack-dev]
 mrt_ann:
   ubuntu: [libann-dev]
 mrt_benchmark:
   ubuntu: [mrt-benchmark-dev]
 mrt_c_tensorflow:
   ubuntu: [mrt-tensorflow-dev]
-mrt_caffe:
-  ubuntu:
-    trusty: [mrt-caffe-dev]
 mrt_cereal:
   ubuntu: [libcereal-dev]
 mrt_ceres:
@@ -61,9 +39,6 @@ mrt_cgal:
   ubuntu: [libcgal-dev]
 mrt_ebus:
   ubuntu: [ebus-sdk]
-mrt_f2c_old:
-  ubuntu:
-    trusty: [mrt-ftwoc-dev]
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
     bionic: [gcc-arm-embedded]
@@ -105,39 +80,17 @@ mrt_vtk:
     xenial: [mrt-libvtk-dev]
 opencv:
   ubuntu: [mrt-libopencv-dev]
-png:
-  ubuntu:
-    bionic: [libpng-dev]
-    xenial: [libpng12-dev]
 png++:
   ubuntu: [libpng++-dev]
-poco:
-  ubuntu: [libpoco-dev]
 pugixml:
   ubuntu: [libpugixml-dev]
 pybind11-dev:
   ubuntu: [mrt-pybind11-dev]
-python-cvxopt:
-  ubuntu:
-    pip:
-      packages: [cvxopt]
 python-gdal:
   ubuntu: [python-gdal]
-python-libs:
-  ubuntu: [libpython2.7-dev]
 python-nlopt:
   ubuntu: [python-nlopt]
-python-opencv:
-  ubuntu:
-    bionic: [mrt-libopencv-dev]
-python-vte:
-  ubuntu: [python-vte]
-python3-opencv:
-  ubuntu:
-    bionic: [mrt-libopencv-dev]
 range_v3:
   ubuntu: [librange-v3-dev]
 uuid-dev:
   ubuntu: [uuid-dev]
-xerces-c:
-  ubuntu: [libxerces-c-dev]
