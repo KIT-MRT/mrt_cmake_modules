@@ -14,7 +14,7 @@ find_package(catkin REQUIRED)
 #gather dependencies from package.xml. The command runs in python with the ros environemnt
 #variable set. This is used, because the python script is calling some ros tools to distinguish
 #between catkin and non catkin packages.
-set(_gather_cmd  sh ${CATKIN_ENV} python ${MCM_ROOT}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MCM_ROOT}/yaml/cmake.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
+set(_gather_cmd  sh ${CATKIN_ENV} python ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MRT_CMAKE_MODULES_ROOT_PATH}/yaml/cmake.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
 
 execute_process(
     COMMAND ${_gather_cmd}
@@ -22,6 +22,8 @@ execute_process(
 
 if (NOT _GEN_DEPS_RES_ EQUAL 0)
     message(FATAL_ERROR "Gather depenencies faild: ${_GEN_DEPS_ERROR_}")
+elseif(_GEN_DEPS_ERROR_)
+    message(WARNING ${_GEN_DEPS_ERROR_})
 endif()
 
 #include the generated variable cmake file
