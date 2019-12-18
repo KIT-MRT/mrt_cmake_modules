@@ -7,16 +7,12 @@
 # include_dirs (optional): [<list of variables set by findscript containing the packages include dirs>]
 # libraries (optional): [<list of variables set by findscript containing the packages libraries>]
 # library_dirs (optional): [<list of variables set by findscript containing the packages library dirs>]
+
 aravis:
   include_dirs: [Aravis_INCLUDE_DIRS]
   libraries: [Aravis_LIBRARIES]
   library_dirs: []
   name: Aravis
-armadillo:
-  include_dirs: [ARMADILLO_INCLUDE_DIRS]
-  libraries: [ARMADILLO_LIBRARIES]
-  library_dirs: []
-  name: Armadillo
 boost:
   components: [wserialization thread random serialization log_setup prg_exec_monitor
       wave system signals chrono filesystem locale timer date_time regex graph program_options
@@ -47,31 +43,11 @@ eigen:
   libraries: []
   library_dirs: []
   name: Eigen3
-eigen2:
-  include_dirs: [EIGEN2_INCLUDE_DIR]
-  libraries: []
-  name: Eigen2
 flann:
   include_dirs: [FLANN_INCLUDE_DIRS]
   libraries: [FLANN_LIBRARIES]
   library_dirs: []
   name: Flann
-geographiclib:
-  components: []
-  include_dirs: [GeographicLib_INCLUDE_DIRS]
-  libraries: [GeographicLib_LIBRARIES]
-  library_dirs: []
-  name: GeographicLib
-glew:
-  include_dirs: [GLEW_INCLUDE_DIR]
-  libraries: [GLEW_LIBRARIES]
-  library_dirs: []
-  name: GLEW
-glfw:
-  include_dirs: [GLFW3_INCLUDE_DIR]
-  libraries: [GLFW3_LIBRARY]
-  library_dirs: []
-  name: glfw3
 glut:
   components: []
   include_dirs: [GLUT_INCLUDE_DIR]
@@ -82,20 +58,6 @@ gtest:
   include_dirs: [gtest_INCLUDE_DIRS]
   libraries: [gtest_LIBRARIES]
   name: gtest
-gtest-headers:
-  include_dirs: [GTest-headers_INCLUDE_DIRS]
-  libraries: []
-  name: GTest-headers
-gtestsrc:
-  include_dirs: []
-  libraries: [GTEST_LIBRARIES]
-  name: MrtGTest
-gtkmm:
-  components: []
-  include_dirs: [GTKMM_INCLUDE_DIRS]
-  libraries: [GTKMM_LIBRARIES]
-  library_dirs: [GTKMM_LIBRARY_DIRS]
-  name: GTKMM
 libboost-python:
   include_dirs: [BoostPython_INCLUDE_DIRS]
   libraries: [BoostPython_LIBRARIES]
@@ -137,34 +99,6 @@ liblapack-dev:
   include_dirs: []
   libraries: [LAPACK_LIBRARIES]
   name: MrtLAPACK
-libmagick:
-  components: [Magick++ MagickWand MagickCore]
-  include_dirs: [ImageMagick_INCLUDE_DIRS]
-  libraries: [ImageMagick_LIBRARIES]
-  name: ImageMagick
-libopencv-dev:
-  components: []
-  include_dirs: [OpenCV_INCLUDE_DIRS]
-  libraries: [OpenCV_LIBS]
-  library_dirs: []
-  name: OpenCV
-libopenscenegraph:
-  components: [osg osgAnimation osgDB osgFX osgGA osgManipulator osgParticle osgPresentation
-      osgQt osgShadow osgSim osgTerrain osgText osgUtil osgViewer osgVolume osgWidget]
-  include_dirs: [OPENSCENEGRAPH_INCLUDE_DIRS]
-  libraries: [OPENSCENEGRAPH_LIBRARIES]
-  library_dirs: []
-  name: OpenSceneGraph
-libpcap-dev:
-  include_dirs: [PCAP_INCLUDE_DIR]
-  libraries: [PCAP_LIBRARY]
-  name: PCAP
-libqwt5-qt4-dev:
-  components: []
-  include_dirs: [QWT_INCLUDE_DIRS]
-  libraries: [QWT_LIBRARIES]
-  library_dirs: []
-  name: Qwt
 libsqlite3-dev:
   components: []
   include_dirs: [SQLITE3_INCLUDE_DIRS]
@@ -176,12 +110,6 @@ libssl-dev:
   libraries: [OPENSSL_LIBRARIES]
   library_dirs: []
   name: OpenSSL
-minpack:
-  components: []
-  include_dirs: [MINPACK_INCLUDE_DIRS]
-  libraries: [MINPACK_LIBRARIES]
-  library_dirs: []
-  name: Minpack
 mrt_ann:
   components: []
   include_dirs: [ANN_INCLUDE_DIR]
@@ -200,12 +128,6 @@ mrt_c_tensorflow:
   libraries: [TENSORFLOW_LIBRARIES]
   library_dirs: []
   name: MrtCTensorflow
-mrt_caffe:
-  components: []
-  include_dirs: [Caffe_INCLUDE_DIRS]
-  libraries: [Caffe_LIBRARIES]
-  library_dirs: []
-  name: MrtCaffe
 mrt_cereal:
   components: []
   include_dirs: [Cereal_INCLUDE_DIR]
@@ -230,12 +152,6 @@ mrt_ebus:
   libraries: [ebus-sdk_LIBRARIES]
   library_dirs: []
   name: Mrtebus-sdk
-mrt_f2c_old:
-  components: []
-  include_dirs: [f2c_INCLUDE_DIR]
-  libraries: [f2c_LIBRARIES]
-  library_dirs: []
-  name: Mrtf2c
 mrt_leptonica:
   components: []
   include_dirs: [Leptonica_INCLUDE_DIR]
@@ -333,24 +249,12 @@ opengl:
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
   name: OpenGL
-png:
-  components: []
-  include_dirs: [PNG_INCLUDE_DIRS]
-  libraries: [PNG_LIBRARIES]
-  library_dirs: []
-  name: PNG
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
   libraries: []
   library_dirs: []
   name: PNG++
-poco:
-  components: [XML Zip Crypto Data Net]
-  include_dirs: [Poco_INCLUDE_DIRS]
-  libraries: [Poco_LIBRARIES]
-  library_dirs: []
-  name: Poco
 pugixml:
   components: []
   include_dirs: [PUGIXML_INCLUDE_DIRS]
@@ -368,21 +272,9 @@ pybind11-dev:
   libraries: []
   library_dirs: []
   name: pybind11
-python-libs:
-  components: []
-  include_dirs: [PYTHON_INCLUDE_DIRS]
-  libraries: [PYTHON_LIBRARIES]
-  library_dirs: []
-  name: PythonLibs
 range_v3:
   include_dirs: [range-v3_INCLUDE_DIR]
   name: range-v3
-sdl2:
-  components: []
-  include_dirs: [SDL2_INCLUDE_DIRS]
-  libraries: [SDL2_LIBRARIES]
-  library_dirs: []
-  name: sdl2
 tbb:
   include_dirs: [TBB_INCLUDE_DIR]
   libraries: [TBB_LIBRARIES]
