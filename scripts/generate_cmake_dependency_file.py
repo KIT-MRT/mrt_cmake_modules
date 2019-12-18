@@ -125,21 +125,17 @@ def readPackageCMakeData(rosDebYamlFileName):
     # e.g. { "<package name 1>" -> PackageCMakeData, "<package name 2>" -> PackageCMakeData ... }
     data = {}
     for packageName, packageCMakeData in rosDebYamlData.items():
-        # check if cmake part is available. There could also be entries with no
-        # cmake part (only ubuntu, etc.)
-        if "cmake" in packageCMakeData:
-            # find out which distribution
-            distro = platform.dist()[2]
-            if 'ROS_OS_OVERRIDE' in os.environ:
-                ros_os_override = os.environ['ROS_OS_OVERRIDE'].split(':')
-                if len(ros_os_override) == 2:
-                    distro = ros_os_override[1]
+        # find out which distribution
+        distro = platform.dist()[2]
+        if 'ROS_OS_OVERRIDE' in os.environ:
+            ros_os_override = os.environ['ROS_OS_OVERRIDE'].split(':')
+            if len(ros_os_override) == 2:
+                distro = ros_os_override[1]
 
-            if "name" in packageCMakeData["cmake"]:
-                data[packageName] = PackageCMakeData(packageCMakeData["cmake"])
-            elif distro in packageCMakeData["cmake"]:
-                data[packageName] = PackageCMakeData(
-                    packageCMakeData["cmake"][distro])
+        if "name" in packageCMakeData:
+            data[packageName] = PackageCMakeData(packageCMakeData)
+        elif distro in packageCMakeData:
+            data[packageName] = PackageCMakeData(packageCMakeData[distro])
     return data
 
 
