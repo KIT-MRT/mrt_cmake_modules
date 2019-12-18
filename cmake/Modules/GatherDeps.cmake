@@ -15,7 +15,7 @@ find_package(catkin REQUIRED)
 #variable set. This is used, because the python script is calling some ros tools to distinguish
 #between catkin and non catkin packages.
 execute_process(
-    COMMAND sh ${CATKIN_ENV} python ${MCM_ROOT}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MCM_ROOT}/yaml/base.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake"
+    COMMAND sh ${CATKIN_ENV} python ${MCM_ROOT}/scripts/generate_cmake_dependency_file.py "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MCM_ROOT}/yaml/cmake.yaml" "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake"
     RESULT_VARIABLE _GEN_DEPS_RES_ ERROR_VARIABLE _GEN_DEPS_ERROR_)
 
 if (NOT _GEN_DEPS_RES_ EQUAL 0)
