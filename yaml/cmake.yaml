@@ -7,7 +7,7 @@
 # include_dirs (optional): [<list of variables set by findscript containing the packages include dirs>]
 # libraries (optional): [<list of variables set by findscript containing the packages libraries>]
 # library_dirs (optional): [<list of variables set by findscript containing the packages library dirs>]
-
+# targets (optional): [<list of cmake targets defined by findscript (for newer versions)>]
 aravis:
   include_dirs: [Aravis_INCLUDE_DIRS]
   libraries: [Aravis_LIBRARIES]
@@ -96,9 +96,8 @@ libigl:
   library_dirs: []
   name: IGL
 liblapack-dev:
-  include_dirs: []
-  libraries: [LAPACK_LIBRARIES]
-  name: MrtLAPACK
+  targets: [lapack]
+  name: LAPACK
 libsqlite3-dev:
   components: []
   include_dirs: [SQLITE3_INCLUDE_DIRS]
@@ -117,11 +116,8 @@ mrt_ann:
   library_dirs: []
   name: MrtANN
 mrt_benchmark:
-  components: []
-  include_dirs: []
-  libraries: [benchmark_LIBRARIES]
-  library_dirs: []
-  name: Mrtbenchmark
+  targets: ["benchmark::benchmark"]
+  name: benchmark
 mrt_c_tensorflow:
   components: []
   include_dirs: [TENSORFLOW_C_INCLUDE_DIRS]
@@ -135,11 +131,8 @@ mrt_cereal:
   library_dirs: []
   name: MrtCereal
 mrt_ceres:
-  components: []
-  include_dirs: [CERES_INCLUDE_DIRS]
-  libraries: [CERES_LIBRARIES]
-  library_dirs: []
-  name: MrtCeres
+  targets: [ceres]
+  name: Ceres
 mrt_cgal:
   components: []
   include_dirs: [CGAL_INCLUDE_DIRS]
@@ -175,7 +168,7 @@ mrt_opencv:
   include_dirs: [OpenCV_INCLUDE_DIRS]
   libraries: [OpenCV_LIBS]
   library_dirs: []
-  name: MrtOpenCV
+  name: OpenCV
 mrt_pcl:
   components: []
   include_dirs: [PCL_INCLUDE_DIRS]
@@ -273,7 +266,7 @@ pybind11-dev:
   library_dirs: []
   name: pybind11
 range_v3:
-  include_dirs: [range-v3_INCLUDE_DIR]
+  targets: [range-v3]
   name: range-v3
 tbb:
   include_dirs: [TBB_INCLUDE_DIR]
@@ -286,8 +279,5 @@ tinyxml:
   library_dirs: []
   name: TinyXML
 yaml-cpp:
-  components: []
-  include_dirs: [yaml-cpp_INCLUDE_DIRS]
-  libraries: [yaml-cpp_LIBRARIES]
-  library_dirs: []
+  targets: [yaml-cpp]
   name: yaml-cpp
