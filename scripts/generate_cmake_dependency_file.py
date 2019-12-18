@@ -63,16 +63,20 @@ class PackageCMakeData:
     components = list()
     """contains the components, which are used in find_package (e.g. defined by a call to find_package(<name> COMPONENTS ...))"""
 
+    targets = list()
+    """contains the targets which are defined when calling find_package(...)"""
+
     def __init__(self, data):
         """Init cmake package data from a dict"""
         self.name = data["name"]
-        self.includeDirs = data["include_dirs"]
+        self.includeDirs = data.get("include_dirs", list())
         self.libraryDirs = data.get("library_dirs", list())
         self.libraries = data.get("libraries", list())
         self.components = data.get("components", list())
+        self.targets = data.get("targets", list())
 
     def __repr__(self):
-        return "PackageCMakeData(name:" + self.name + " include_dirs:" + str(self.includeDirs) + " librariy_dirs:" + \
+        return "PackageCMakeData(name:" + self.name + " include_dirs:" + str(self.includeDirs) + " library_dirs:" + \
             str(self.libraryDirs) + " libraries:" + \
             str(self.libraries) + " components:" + str(self.components)
 
@@ -346,6 +350,9 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         if cmakeData.components:
             f.write("set(_" + depend.name + "_CMAKE_COMPONENTS_ " +
                     ' '.join(cmakeData.components) + ")\n")
+        if cmakeData.targets:
+            f.write("set(_" + depend.name + "_CMAKE_TARGETS_ " +
+                    ' '.join(cmakeData.targets) + ")\n")
 
 
 if __name__ == "__main__":
