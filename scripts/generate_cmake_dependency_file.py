@@ -74,6 +74,7 @@ class PackageCMakeData:
         self.libraries = data.get("libraries", list())
         self.components = data.get("components", list())
         self.targets = data.get("targets", list())
+        self.warning = data.get("warning", "")
 
     def __repr__(self):
         return "PackageCMakeData(name:" + self.name + " include_dirs:" + str(self.includeDirs) + " library_dirs:" + \
@@ -353,6 +354,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         if cmakeData.targets:
             f.write("set(_" + depend.name + "_CMAKE_TARGETS_ " +
                     ' '.join(cmakeData.targets) + ")\n")
+        if cmakeData.warning:
+            eprint(cmakeData.warning)
 
 
 if __name__ == "__main__":
