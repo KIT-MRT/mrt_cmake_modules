@@ -36,6 +36,6 @@ clean:
 	-rm -rf latex
 
 cmakeapi:
-	./generate_cmake_rst.py -o generated_cmake_api.rst  ../../../../devel/share/mrt_cmake_modules/cmake
+	./generate_cmake_rst.py -o generated_cmake_api.rst  ../../cmake
 
 
