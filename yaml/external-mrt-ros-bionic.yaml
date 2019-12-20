@@ -1478,6 +1478,18 @@ face_detector:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
   version: release/melodic/face_detector/1.2.0-1
+fake_joint:
+  url: https://github.com/tork-a/fake_joint-release.git
+  vcs: git
+  version: release/melodic/fake_joint/0.0.4-1
+fake_joint_driver:
+  url: https://github.com/tork-a/fake_joint-release.git
+  vcs: git
+  version: release/melodic/fake_joint_driver/0.0.4-1
+fake_joint_launch:
+  url: https://github.com/tork-a/fake_joint-release.git
+  vcs: git
+  version: release/melodic/fake_joint_launch/0.0.4-1
 fake_localization:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -3133,7 +3145,7 @@ nanomsg:
 naoqi_libqi:
   url: https://github.com/ros-naoqi/libqi-release.git
   vcs: git
-  version: release/melodic/naoqi_libqi/2.9.0-5
+  version: release/melodic/naoqi_libqi/2.9.0-7
 nav2d:
   url: https://github.com/skasperski/navigation_2d-release.git
   vcs: git
@@ -3977,7 +3989,7 @@ ps3joy:
 psen_scan:
   url: https://github.com/PilzDE/psen_scan-release.git
   vcs: git
-  version: release/melodic/psen_scan/1.0.1-1
+  version: release/melodic/psen_scan/1.0.2-1
 px4_msgs:
   url: https://github.com/PX4/px4_msgs-release.git
   vcs: git
@@ -4798,6 +4810,18 @@ rxros_tf:
   url: https://github.com/rosin-project/rxros-release.git
   vcs: git
   version: release/melodic/rxros_tf/0.1.0-1
+safe_teleop_base:
+  url: https://github.com/ros-gbp/shared_autonomy_manipulation-release.git
+  vcs: git
+  version: release/melodic/safe_teleop_base/0.0.3-1
+safe_teleop_pr2:
+  url: https://github.com/ros-gbp/shared_autonomy_manipulation-release.git
+  vcs: git
+  version: release/melodic/safe_teleop_pr2/0.0.3-1
+safe_teleop_stage:
+  url: https://github.com/ros-gbp/shared_autonomy_manipulation-release.git
+  vcs: git
+  version: release/melodic/safe_teleop_stage/0.0.3-1
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
