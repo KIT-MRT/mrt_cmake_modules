@@ -1,3 +1,5 @@
+include(${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules/MrtTesting.cmake)
+
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
     set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter=${PROJECT_SOURCE_DIR}/.*")
@@ -147,7 +149,6 @@ endmacro()
 #
 function(mrt_add_links target)
     cmake_parse_arguments(ARG "CUDA;NO_SANITIZER;TEST" "" "" ${ARGN})
-    cmake_policy(SET CMP0023 OLD) # rostest still uses the old target_link_libraries approach...
     get_target_property(target_type ${target} TYPE)
 
     # add dependencies
@@ -516,6 +517,14 @@ function(mrt_add_python_api modulename)
         mrt_add_links(${TARGET_NAME} NO_SANITIZER) # you really don't wont to debug python...
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
     endforeach()
+    if(NOT "${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
+        configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
+        if(GENERATE_ENVIRONMENT_CACHE_COMMAND)
+            # regenerate the environment cache. This makes sure PYTHONPATH is set correctly for nosetests
+            safe_execute_process(COMMAND ${GENERATE_ENVIRONMENT_CACHE_COMMAND})
+        endif()
+    endif()
+
     configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
 
     # append to list of all targets in this project
@@ -986,19 +995,24 @@ function(mrt_add_ros_tests folder)
     mrt_glob_files(_ros_tests "${TEST_FOLDER}/*.test")
     add_custom_target(${PROJECT_NAME}-rostest_test_files SOURCES ${_ros_tests})
     configure_file(${MCM_TEMPLATE_DIR}/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @ONLY)
+    mrt_init_testing()
 
     foreach(_ros_test ${_ros_tests})
         get_filename_component(_test_name ${_ros_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_NAME ${_test_name})
         set(TEST_NAME ${TEST_NAME}-test)
-        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_NAME})
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-rostest-${TEST_NAME})
         # look for a matching .cpp
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
-            add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
+            mrt_add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
             mrt_add_links(${TEST_TARGET_NAME} TEST)
-            target_link_libraries(${TEST_TARGET_NAME} PRIVATE gtest_main ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            target_include_directories(${TEST_TARGET_NAME}
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
+            if(${PROJECT_NAME}_GENERATED_LIBRARIES)
+                target_link_libraries(${TEST_TARGET_NAME} PRIVATE ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            endif()
             if(MRT_ADD_ROS_TESTS_DEPENDS)
                 add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_ROS_TESTS_DEPENDS})
             endif()
@@ -1006,15 +1020,9 @@ function(mrt_add_ros_tests folder)
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
-            add_rostest(${_ros_test}
-                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
-                )
+            mrt_add_rostest(${TEST_TARGET_NAME} ${_ros_test})
         endif()
     endforeach()
-    if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
 endfunction()
 
 #
@@ -1048,28 +1056,29 @@ function(mrt_add_tests folder)
     cmake_parse_arguments(MRT_ADD_TESTS "" "" "LIBRARIES;DEPENDS" ${ARGN})
     mrt_glob_files(_tests "${TEST_FOLDER}/*.cpp" "${TEST_FOLDER}/*.cc")
     configure_file(${MCM_TEMPLATE_DIR}/test_utility.hpp.in ${PROJECT_BINARY_DIR}/tests/test/test_utility.hpp @ONLY)
+    mrt_init_testing()
 
     foreach(_test ${_tests})
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-gtest-${TEST_TARGET_NAME})
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
-            catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
+            mrt_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
             mrt_add_links(${TEST_TARGET_NAME} TEST)
-            target_link_libraries(${TEST_TARGET_NAME} PRIVATE gtest_main ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            target_include_directories(${TEST_TARGET_NAME}
+                PRIVATE ${PROJECT_BINARY_DIR}/tests)
+            if(${PROJECT_NAME}_GENERATED_LIBRARIES)
+                target_link_libraries(${TEST_TARGET_NAME} PRIVATE ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            endif()
             if(MRT_ADD_TESTS_DEPENDS)
                 add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_TESTS_DEPENDS})
             endif()
             set(TARGET_ADDED True)
         endif()
     endforeach()
-    if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
 endfunction()
 
 
@@ -1090,20 +1099,15 @@ endfunction()
 # @public
 #
 function(mrt_add_nosetests folder)
+    mrt_init_testing()
     set(TEST_FOLDER ${folder})
-    cmake_parse_arguments(MRT_ADD_NOSETESTS "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
+    cmake_parse_arguments(ARG "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
     if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
         return()
     endif()
 
     message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
-    catkin_add_nosetests(${TEST_FOLDER}
-        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET}
-        )
-    if(MRT_ENABLE_COVERAGE AND MRT_FORCE_PYTHON_COVERAGE AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
+    _mrt_add_nosetests_impl(${TEST_FOLDER} DEPENDS ${ARG_DEPENDS} ${ARG_DEPENDENCIES})
 endfunction()
 
 
