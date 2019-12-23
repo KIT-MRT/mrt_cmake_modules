@@ -1,3 +1,8 @@
+include(${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules/MrtTesting.cmake)
+if(NOT COMMAND mrt_add_gtest)
+    message(WARNING "wtf")
+endif()
+
 # care for clang-tidy flags
 if(MRT_CLANG_TIDY STREQUAL "check")
     set(MRT_CLANG_TIDY_FLAGS "-extra-arg=-Wno-unknown-warning-option" "-header-filter=${PROJECT_SOURCE_DIR}/.*")
@@ -82,54 +87,6 @@ macro(generate_ros_interface_files)
     if(_${PROJECT_NAME}_rosif_other_param_files AND NOT rosparam_handler_FOUND_CATKIN_PROJECT)
         message(FATAL_ERROR "Dependency rosinterface_handler or rosparam_handler could not be found. Did you add it to your package.xml?")
     endif()
-endmacro()
-
-macro(_setup_coverage_info)
-    setup_target_for_coverage(${PROJECT_NAME}-coverage coverage ${PROJECT_NAME}-pre-coverage)
-    # make sure the target is built after running tests
-    add_dependencies(run_tests ${PROJECT_NAME}-coverage)
-    add_dependencies(${PROJECT_NAME}-coverage _run_tests_${PROJECT_NAME})
-    if(TARGET ${PROJECT_NAME}-pre-coverage)
-        add_dependencies(clean_test_results_${PROJECT_NAME} ${PROJECT_NAME}-pre-coverage)
-        add_dependencies(${PROJECT_NAME}-pre-coverage tests)
-    endif()
-    if(MRT_ENABLE_COVERAGE GREATER 1)
-        add_custom_command(TARGET ${PROJECT_NAME}-coverage
-            POST_BUILD
-            COMMAND firefox ${CMAKE_CURRENT_BINARY_DIR}/coverage/index.html > /dev/null 2>&1 &
-            COMMENT "Showing coverage results"
-            )
-    endif()
-endmacro()
-
-
-#
-# Registers the custom check_tests command and adds a dependency for a certain unittest
-#
-# Example:
-# ::
-#
-#  _mrt_register_test(
-#      )
-#
-macro(_mrt_register_test)
-    # we need this only once per project
-    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET _run_tests_${PROJECT_NAME})
-        return()
-    endif()
-    # pygment formats xml more nicely
-    find_program(CCAT pygmentize)
-    if(CCAT)
-        set(RUN_CCAT | ${CCAT})
-    endif()
-
-    add_custom_command(TARGET _run_tests_${PROJECT_NAME}
-        POST_BUILD
-        COMMAND /bin/bash -c \"set -o pipefail$<SEMICOLON> catkin_test_results --verbose . ${RUN_CCAT} 1>&2\" # redirect to stderr for better output in catkin
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
-        COMMENT "Showing test results"
-        )
-    set(_mrt_checks_${PROJECT_NAME} TRUE PARENT_SCOPE)
 endmacro()
 
 # Glob for folders in the search directory.
@@ -317,10 +274,6 @@ function(mrt_add_python_api modulename)
 
     #set and check target name
     set( PYTHON_API_MODULE_NAME ${modulename})
-    if("${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
-        message(FATAL_ERROR "The name of the python_api module conflicts with the name of the python module. Please choose a different name")
-    endif()
-
     if("${PYTHON_API_MODULE_NAME}" STREQUAL "${PROJECT_NAME}")
         # mark that catkin_python_setup() was called and the setup.py file contains a package with the same name as the current project
         # in order to disable installation of generated __init__.py files in generate_messages() and generate_dynamic_reconfigure_options()
@@ -378,7 +331,10 @@ function(mrt_add_python_api modulename)
         endif()
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
     endforeach()
-    configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
+    if(NOT "${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
+        configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
+    endif()
+
 
     # append to list of all targets in this project
     set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
@@ -861,11 +817,11 @@ function(mrt_add_ros_tests folder)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_NAME ${_test_name})
         set(TEST_NAME ${TEST_NAME}-test)
-        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_NAME})
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-rostest-${TEST_NAME})
         # look for a matching .cpp
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
-            add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
+            mrt_add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
@@ -876,7 +832,6 @@ function(mrt_add_ros_tests folder)
                 ${MRT_ADD_ROS_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
-                gtest_main
                 )
             target_include_directories(${TEST_TARGET_NAME}
                 PRIVATE ${PROJECT_BINARY_DIR}/tests)
@@ -887,15 +842,9 @@ function(mrt_add_ros_tests folder)
             set(TARGET_ADDED True)
         else()
             message(STATUS "Adding plain rostest \"${_ros_test}\"")
-            add_rostest(${_ros_test}
-                DEPENDENCIES ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
-                )
+            mrt_add_rostest(${TEST_TARGET_NAME} ${_ros_test})
         endif()
     endforeach()
-    if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
 endfunction()
 
 #
@@ -934,11 +883,11 @@ function(mrt_add_tests folder)
         get_filename_component(_test_name ${_test} NAME_WE)
         # make sure we add only one -test to the target
         STRING(REGEX REPLACE "-test" "" TEST_TARGET_NAME ${_test_name})
-        set(TEST_TARGET_NAME ${PROJECT_NAME}-${TEST_TARGET_NAME}-test)
+        set(TEST_TARGET_NAME ${PROJECT_NAME}-gtest-${TEST_TARGET_NAME})
         # exclude cpp files with a test file (those are ros tests)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
-            catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
+            mrt_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
             target_link_libraries(${TEST_TARGET_NAME}
                 ${${PROJECT_NAME}_GENERATED_LIBRARIES}
                 ${catkin_LIBRARIES}
@@ -946,7 +895,7 @@ function(mrt_add_tests folder)
                 ${MRT_ADD_TESTS_LIBRARIES}
                 ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 ${MRT_SANITIZER_LINK_FLAGS}
-                gtest_main)
+                )
             target_compile_options(${TEST_TARGET_NAME}
                 PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
                 )
@@ -959,10 +908,7 @@ function(mrt_add_tests folder)
             set(TARGET_ADDED True)
         endif()
     endforeach()
-    if(MRT_ENABLE_COVERAGE AND TARGET_ADDED AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
+
 endfunction()
 
 
@@ -984,19 +930,13 @@ endfunction()
 #
 function(mrt_add_nosetests folder)
     set(TEST_FOLDER ${folder})
-    cmake_parse_arguments(MRT_ADD_NOSETESTS "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
+    cmake_parse_arguments(ARG "" "" "DEPENDS;DEPENDENCIES" ${ARGN})
     if(NOT IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
         return()
     endif()
 
     message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
-    catkin_add_nosetests(${TEST_FOLDER}
-        DEPENDENCIES ${MRT_ADD_NOSETESTS_DEPENDENCIES} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET}
-        )
-    if(MRT_ENABLE_COVERAGE AND MRT_FORCE_PYTHON_COVERAGE AND NOT TARGET ${PROJECT_NAME}-coverage AND TARGET run_tests)
-        _setup_coverage_info()
-    endif()
-    _mrt_register_test()
+    _mrt_add_nosetests_impl(${TEST_FOLDER} DEPENDS ${ARG_DEPENDS} ${ARG_DEPENDENCIES})
 endfunction()
 
 
