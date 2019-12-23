@@ -47,7 +47,6 @@ set(gcc_like_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,Apple
 set(gcc_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>>")
 set(gcc_like_c "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,AppleClang,Clang,GNU>>")
 if(MRT_ENABLE_COVERAGE)
-    include(MRTCoverage)
     target_compile_options(${PROJECT_NAME}_private_compiler_flags INTERFACE
         $<${gcc_like_cxx}:-g;--coverage>
         $<${gcc_like_c}:-g;--coverage>
