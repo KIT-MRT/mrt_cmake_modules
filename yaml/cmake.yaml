@@ -46,7 +46,7 @@ cuda:
   include_dirs: [CUDA_INCLUDE_DIRS]
   libraries: [CUDA_LIBRARIES]
   library_dirs: []
-  name: CUDA
+  name: MrtCUDA
 eigen:
   components: []
   include_dirs: [EIGEN3_INCLUDE_DIR]
@@ -140,7 +140,7 @@ libpcl-all-dev:
   include_dirs: [PCL_INCLUDE_DIRS]
   libraries: [PCL_LIBRARIES]
   library_dirs: [PCL_LIBRARY_DIRS]
-  name: PCL
+  name: MrtPCL
 libsqlite3-dev:
   components: []
   include_dirs: [SQLITE3_INCLUDE_DIRS]
@@ -163,7 +163,7 @@ libvtk:
   include_dirs: [VTK_INCLUDE_DIRS]
   libraries: [VTK_LIBRARIES]
   library_dirs: []
-  name: VTK
+  name: MrtVTK
 livpng++-dev:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
@@ -236,7 +236,7 @@ mrt_pcl:
   include_dirs: [PCL_INCLUDE_DIRS]
   libraries: [PCL_LIBRARIES]
   library_dirs: [PCL_LIBRARY_DIRS]
-  name: PCL
+  name: MrtPCL
   warning: Usage of mrt_pcl in package.xml is deprecated. Use 'libpcl-all-dev' instead!
 mrt_protobuf:
   components: []
@@ -251,21 +251,21 @@ mrt_qt-dev:
       Concurrent Svg]
   include_dirs: [QT_INCLUDES]
   libraries: [QT_LIBRARIES]
-  name: Qt5
+  name: MrtQt5
 mrt_qt4-dev:
   components: [QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp
       QtNetwork QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit
       QtXml QtXmlPatterns]
   include_dirs: [QT_INCLUDES]
   libraries: [QT_LIBRARIES]
-  name: Qt4
+  name: MrtQt4
   warning: Usage of mrt_qt4-dev in package.xml is deprecated. Use 'mrt_qt-dev' instead!
 mrt_qt5-dev:
   components: [Core Gui DBus Network OpenGL OpenGLExtensions Sql Test Xml Widgets
       Concurrent Svg]
   include_dirs: [QT_INCLUDES]
   libraries: [QT_LIBRARIES]
-  name: Qt5
+  name: MrtQt5
 mrt_sdl2:
   components: []
   include_dirs: [SDL2_INCLUDE_DIRS]
@@ -300,7 +300,7 @@ mrt_vtk:
   include_dirs: [VTK_INCLUDE_DIRS]
   libraries: [VTK_LIBRARIES]
   library_dirs: []
-  name: VTK
+  name: MrtVTK
   warning: Usage of mrt_vtk in package.xml is deprecated. Use 'libvtk' instead!
 opencv:
   components: []
