@@ -49,6 +49,7 @@ class Dependency:
     build_depend = False
     build_export_depend = False
     test_depend = False
+    optional = True
 
     def isCatkin(self):
         return self.packageType == PackageType.catkin
@@ -234,6 +235,8 @@ def gatherDependeciesRecursive(manifest, catkin_packages, ignored_packages=set()
             continue
         if not first_pass and not dep.build_export_depend:
             continue
+        # only first-level dependencies have to be resolved, all others are resolved if possible.
+        dep.optional |= first_pass
         ignored_packages.add(dep.name)
         if first_pass or not dep.isCatkin():
             depends.append(dep) # catkin complains if we report catkin dependencies not mentioned in package.xml
@@ -303,6 +306,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     cmakeVarData = readPackageCMakeData(rosDepYamlFileName)
 
     depends, cuda_depends = gatherDependeciesRecursive(tree, catkin_packages)
+    # clear optional deps for which no cmake data is available
+    depends = [d for d in depends if d.isCatkin() or not d.optional or d.name in cmakeVarData]
     # check CUDA depends and categorize them as either catkin or other package
     depends_names = {d.name for d in depends}
     cuda_catkin_depends = []
