@@ -329,7 +329,6 @@ opengl:
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
   name: OpenGL
-pkg-config: []
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
@@ -361,8 +360,6 @@ pybind11-dev:
   libraries: []
   library_dirs: []
   name: pybind11
-python: []
-python3: []
 range_v3:
   name: range-v3
   targets: [range-v3]
@@ -394,7 +391,6 @@ tinyxml2:
   libraries: [TinyXML2_LIBRARIES]
   library_dirs: []
   name: TinyXML2
-uuid: []
 yaml-cpp:
   name: yaml-cpp
   targets: [yaml-cpp]
