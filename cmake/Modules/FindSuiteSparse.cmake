@@ -1,6 +1,6 @@
 # Ceres Solver - A fast non-linear least squares minimizer
-# Copyright 2013 Google Inc. All rights reserved.
-# http://code.google.com/p/ceres-solver/
+# Copyright 2015 Google Inc. All rights reserved.
+# http://ceres-solver.org/
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -105,429 +105,343 @@
 # == Serial Graph Partitioning and Fill-reducing Matrix Ordering (METIS)
 # METIS_FOUND
 # METIS_LIBRARY
-#
-# == Intel Thread Building Blocks (TBB)
-# TBB_FOUND
-# TBB_LIBRARIES
+
+# Reset CALLERS_CMAKE_FIND_LIBRARY_PREFIXES to its value when
+# FindSuiteSparse was invoked.
+macro(SUITESPARSE_RESET_FIND_LIBRARY_PREFIX)
+  if (MSVC)
+    set(CMAKE_FIND_LIBRARY_PREFIXES "${CALLERS_CMAKE_FIND_LIBRARY_PREFIXES}")
+  endif (MSVC)
+endmacro(SUITESPARSE_RESET_FIND_LIBRARY_PREFIX)
 
 # Called if we failed to find SuiteSparse or any of it's required dependencies,
 # unsets all public (designed to be used externally) variables and reports
 # error message at priority depending upon [REQUIRED/QUIET/<NONE>] argument.
-MACRO(SUITESPARSE_REPORT_NOT_FOUND REASON_MSG)
-  UNSET(SUITESPARSE_FOUND)
-  UNSET(SUITESPARSE_INCLUDE_DIRS)
-  UNSET(SUITESPARSE_LIBRARIES)
-  UNSET(SUITESPARSE_VERSION)
-  UNSET(SUITESPARSE_MAIN_VERSION)
-  UNSET(SUITESPARSE_SUB_VERSION)
-  UNSET(SUITESPARSE_SUBSUB_VERSION)
+macro(SUITESPARSE_REPORT_NOT_FOUND REASON_MSG)
+  unset(SUITESPARSE_FOUND)
+  unset(SUITESPARSE_INCLUDE_DIRS)
+  unset(SUITESPARSE_LIBRARIES)
+  unset(SUITESPARSE_VERSION)
+  unset(SUITESPARSE_MAIN_VERSION)
+  unset(SUITESPARSE_SUB_VERSION)
+  unset(SUITESPARSE_SUBSUB_VERSION)
   # Do NOT unset SUITESPARSE_FOUND_REQUIRED_VARS here, as it is used by
   # FindPackageHandleStandardArgs() to generate the automatic error message on
   # failure which highlights which components are missing.
 
+  suitesparse_reset_find_library_prefix()
+
   # Note <package>_FIND_[REQUIRED/QUIETLY] variables defined by FindPackage()
   # use the camelcase library name, not uppercase.
-  IF (SuiteSparse_FIND_QUIETLY)
-    MESSAGE(STATUS "Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
-  ELSEIF (SuiteSparse_FIND_REQUIRED)
-    MESSAGE(FATAL_ERROR "Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
-  ELSE()
+  if (SuiteSparse_FIND_QUIETLY)
+    message(STATUS "Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
+  elseif (SuiteSparse_FIND_REQUIRED)
+    message(FATAL_ERROR "Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
+  else()
     # Neither QUIETLY nor REQUIRED, use no priority which emits a message
     # but continues configuration and allows generation.
-    MESSAGE("-- Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
-  ENDIF (SuiteSparse_FIND_QUIETLY)
+    message("-- Failed to find SuiteSparse - " ${REASON_MSG} ${ARGN})
+  endif (SuiteSparse_FIND_QUIETLY)
 
-  # Do not call RETURN(), s/t we keep processing if not called with REQUIRED.
-ENDMACRO(SUITESPARSE_REPORT_NOT_FOUND)
+  # Do not call return(), s/t we keep processing if not called with REQUIRED
+  # and report all missing components, rather than bailing after failing to find
+  # the first.
+endmacro(SUITESPARSE_REPORT_NOT_FOUND)
+
+# Protect against any alternative find_package scripts for this library having
+# been called previously (in a client project) which set SUITESPARSE_FOUND, but
+# not the other variables we require / set here which could cause the search
+# logic here to fail.
+unset(SUITESPARSE_FOUND)
+
+# Handle possible presence of lib prefix for libraries on MSVC, see
+# also SUITESPARSE_RESET_FIND_LIBRARY_PREFIX().
+if (MSVC)
+  # Preserve the caller's original values for CMAKE_FIND_LIBRARY_PREFIXES
+  # s/t we can set it back before returning.
+  set(CALLERS_CMAKE_FIND_LIBRARY_PREFIXES "${CMAKE_FIND_LIBRARY_PREFIXES}")
+  # The empty string in this list is important, it represents the case when
+  # the libraries have no prefix (shared libraries / DLLs).
+  set(CMAKE_FIND_LIBRARY_PREFIXES "lib" "" "${CMAKE_FIND_LIBRARY_PREFIXES}")
+endif (MSVC)
+
+# On macOS, add the Homebrew prefix (with appropriate suffixes) to the
+# respective HINTS directories (after any user-specified locations).  This
+# handles Homebrew installations into non-standard locations (not /usr/local).
+# We do not use CMAKE_PREFIX_PATH for this as given the search ordering of
+# find_xxx(), doing so would override any user-specified HINTS locations with
+# the Homebrew version if it exists.
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+  find_program(HOMEBREW_EXECUTABLE brew)
+  mark_as_advanced(FORCE HOMEBREW_EXECUTABLE)
+  if (HOMEBREW_EXECUTABLE)
+    # Detected a Homebrew install, query for its install prefix.
+    execute_process(COMMAND ${HOMEBREW_EXECUTABLE} --prefix
+      OUTPUT_VARIABLE HOMEBREW_INSTALL_PREFIX
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    message(STATUS "Detected Homebrew with install prefix: "
+      "${HOMEBREW_INSTALL_PREFIX}, adding to CMake search paths.")
+    list(APPEND SUITESPARSE_INCLUDE_DIR_HINTS "${HOMEBREW_INSTALL_PREFIX}/include")
+    list(APPEND SUITESPARSE_LIBRARY_DIR_HINTS "${HOMEBREW_INSTALL_PREFIX}/lib")
+  endif()
+endif()
 
 # Specify search directories for include files and libraries (this is the union
 # of the search directories for all OSs).  Search user-specified hint
 # directories first if supplied, and search user-installed locations first
 # so that we prefer user installs to system installs where both exist.
-LIST(APPEND SUITESPARSE_CHECK_INCLUDE_DIRS
-  /mrtsoftware/pkg/local/suitesparse-4.4.4/include
-  /mrtsoftware/pkg/suitesparse-4.4.4/include
+list(APPEND SUITESPARSE_CHECK_INCLUDE_DIRS
+  /opt/local/include
+  /opt/local/include/ufsparse # Mac OS X
+  /usr/local/homebrew/include # Mac OS X
   /usr/local/include
-  /usr/local/include/suitesparse
-  /usr/include/suitesparse # Ubuntu
   /usr/include)
-LIST(APPEND SUITESPARSE_CHECK_LIBRARY_DIRS
-  /mrtsoftware/pkg/local/suitesparse-4.4.4/lib
-  /mrtsoftware/pkg/suitesparse-4.4.4/lib
+list(APPEND SUITESPARSE_CHECK_LIBRARY_DIRS
+  /opt/local/lib
+  /opt/local/lib/ufsparse # Mac OS X
+  /usr/local/homebrew/lib # Mac OS X
   /usr/local/lib
-  /usr/local/lib/suitesparse
-  /usr/lib/suitesparse # Ubuntu
   /usr/lib)
+# Additional suffixes to try appending to each search path.
+list(APPEND SUITESPARSE_CHECK_PATH_SUFFIXES
+  suitesparse) # Windows/Ubuntu
+
+# Wrappers to find_path/library that pass the SuiteSparse search hints/paths.
+#
+# suitesparse_find_component(<component> [FILES name1 [name2 ...]]
+#                                        [LIBRARIES name1 [name2 ...]]
+#                                        [REQUIRED])
+macro(suitesparse_find_component COMPONENT)
+  include(CMakeParseArguments)
+  set(OPTIONS REQUIRED)
+  set(MULTI_VALUE_ARGS FILES LIBRARIES)
+  cmake_parse_arguments(SUITESPARSE_FIND_${COMPONENT}
+    "${OPTIONS}" "" "${MULTI_VALUE_ARGS}" ${ARGN})
+
+  if (SUITESPARSE_FIND_${COMPONENT}_REQUIRED)
+    list(APPEND SUITESPARSE_FOUND_REQUIRED_VARS ${COMPONENT}_FOUND)
+  endif()
+
+  set(${COMPONENT}_FOUND TRUE)
+  if (SUITESPARSE_FIND_${COMPONENT}_FILES)
+    find_path(${COMPONENT}_INCLUDE_DIR
+      NAMES ${SUITESPARSE_FIND_${COMPONENT}_FILES}
+      HINTS ${SUITESPARSE_INCLUDE_DIR_HINTS}
+      PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS}
+      PATH_SUFFIXES ${SUITESPARSE_CHECK_PATH_SUFFIXES})
+    if (${COMPONENT}_INCLUDE_DIR)
+      message(STATUS "Found ${COMPONENT} headers in: "
+        "${${COMPONENT}_INCLUDE_DIR}")
+      mark_as_advanced(${COMPONENT}_INCLUDE_DIR)
+    else()
+      # Specified headers not found.
+      set(${COMPONENT}_FOUND FALSE)
+      if (SUITESPARSE_FIND_${COMPONENT}_REQUIRED)
+        suitesparse_report_not_found(
+          "Did not find ${COMPONENT} header (required SuiteSparse component).")
+      else()
+        message(STATUS "Did not find ${COMPONENT} header (optional "
+          "SuiteSparse component).")
+        # Hide optional vars from CMake GUI even if not found.
+        mark_as_advanced(${COMPONENT}_INCLUDE_DIR)
+      endif()
+    endif()
+  endif()
+
+  if (SUITESPARSE_FIND_${COMPONENT}_LIBRARIES)
+    find_library(${COMPONENT}_LIBRARY
+      NAMES ${SUITESPARSE_FIND_${COMPONENT}_LIBRARIES}
+      HINTS ${SUITESPARSE_LIBRARY_DIR_HINTS}
+      PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS}
+      PATH_SUFFIXES ${SUITESPARSE_CHECK_PATH_SUFFIXES})
+    if (${COMPONENT}_LIBRARY)
+      message(STATUS "Found ${COMPONENT} library: ${${COMPONENT}_LIBRARY}")
+      mark_as_advanced(${COMPONENT}_LIBRARY)
+    else ()
+      # Specified libraries not found.
+      set(${COMPONENT}_FOUND FALSE)
+      if (SUITESPARSE_FIND_${COMPONENT}_REQUIRED)
+        suitesparse_report_not_found(
+          "Did not find ${COMPONENT} library (required SuiteSparse component).")
+      else()
+        message(STATUS "Did not find ${COMPONENT} library (optional SuiteSparse "
+          "dependency)")
+        # Hide optional vars from CMake GUI even if not found.
+        mark_as_advanced(${COMPONENT}_LIBRARY)
+      endif()
+    endif()
+  endif()
+endmacro()
 
 # Given the number of components of SuiteSparse, and to ensure that the
 # automatic failure message generated by FindPackageHandleStandardArgs()
 # when not all required components are found is helpful, we maintain a list
 # of all variables that must be defined for SuiteSparse to be considered found.
-UNSET(SUITESPARSE_FOUND_REQUIRED_VARS)
+unset(SUITESPARSE_FOUND_REQUIRED_VARS)
 
 # BLAS.
-FIND_PACKAGE(BLAS QUIET)
-IF (NOT BLAS_FOUND)
-  SUITESPARSE_REPORT_NOT_FOUND(
+find_package(BLAS QUIET)
+if (NOT BLAS_FOUND)
+  suitesparse_report_not_found(
     "Did not find BLAS library (required for SuiteSparse).")
-ENDIF (NOT BLAS_FOUND)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS BLAS_FOUND)
+endif (NOT BLAS_FOUND)
+list(APPEND SUITESPARSE_FOUND_REQUIRED_VARS BLAS_FOUND)
 
 # LAPACK.
-FIND_PACKAGE(LAPACK QUIET)
-IF (NOT LAPACK_FOUND)
-  SUITESPARSE_REPORT_NOT_FOUND(
+find_package(LAPACK QUIET)
+if (NOT LAPACK_FOUND)
+  suitesparse_report_not_found(
     "Did not find LAPACK library (required for SuiteSparse).")
-ENDIF (NOT LAPACK_FOUND)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS LAPACK_FOUND)
+endif (NOT LAPACK_FOUND)
+list(APPEND SUITESPARSE_FOUND_REQUIRED_VARS LAPACK_FOUND)
 
-# AMD.
-SET(AMD_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS AMD_FOUND)
-FIND_LIBRARY(AMD_LIBRARY NAMES amd
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${AMD_LIBRARY})
-  MESSAGE(STATUS "Found AMD library: ${AMD_LIBRARY}")
-ELSE (EXISTS ${AMD_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find AMD library (required SuiteSparse component).")
-  SET(AMD_FOUND FALSE)
-ENDIF (EXISTS ${AMD_LIBRARY})
-MARK_AS_ADVANCED(AMD_LIBRARY)
-
-FIND_PATH(AMD_INCLUDE_DIR NAMES amd.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${AMD_INCLUDE_DIR})
-  MESSAGE(STATUS "Found AMD header in: ${AMD_INCLUDE_DIR}")
-ELSE (EXISTS ${AMD_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find AMD header (required SuiteSparse component).")
-  SET(AMD_FOUND FALSE)
-ENDIF (EXISTS ${AMD_INCLUDE_DIR})
-MARK_AS_ADVANCED(AMD_INCLUDE_DIR)
-
-# CAMD.
-SET(CAMD_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS CAMD_FOUND)
-FIND_LIBRARY(CAMD_LIBRARY NAMES camd
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${CAMD_LIBRARY})
-  MESSAGE(STATUS "Found CAMD library: ${CAMD_LIBRARY}")
-ELSE (EXISTS ${CAMD_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CAMD library (required SuiteSparse component).")
-  SET(CAMD_FOUND FALSE)
-ENDIF (EXISTS ${CAMD_LIBRARY})
-MARK_AS_ADVANCED(CAMD_LIBRARY)
-
-FIND_PATH(CAMD_INCLUDE_DIR NAMES camd.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${CAMD_INCLUDE_DIR})
-  MESSAGE(STATUS "Found CAMD header in: ${CAMD_INCLUDE_DIR}")
-ELSE (EXISTS ${CAMD_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CAMD header (required SuiteSparse component).")
-  SET(CAMD_FOUND FALSE)
-ENDIF (EXISTS ${CAMD_INCLUDE_DIR})
-MARK_AS_ADVANCED(CAMD_INCLUDE_DIR)
-
-# COLAMD.
-SET(COLAMD_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS COLAMD_FOUND)
-FIND_LIBRARY(COLAMD_LIBRARY NAMES colamd
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${COLAMD_LIBRARY})
-  MESSAGE(STATUS "Found COLAMD library: ${COLAMD_LIBRARY}")
-ELSE (EXISTS ${COLAMD_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find COLAMD library (required SuiteSparse component).")
-  SET(COLAMD_FOUND FALSE)
-ENDIF (EXISTS ${COLAMD_LIBRARY})
-MARK_AS_ADVANCED(COLAMD_LIBRARY)
-
-FIND_PATH(COLAMD_INCLUDE_DIR NAMES colamd.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${COLAMD_INCLUDE_DIR})
-  MESSAGE(STATUS "Found COLAMD header in: ${COLAMD_INCLUDE_DIR}")
-ELSE (EXISTS ${COLAMD_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find COLAMD header (required SuiteSparse component).")
-  SET(COLAMD_FOUND FALSE)
-ENDIF (EXISTS ${COLAMD_INCLUDE_DIR})
-MARK_AS_ADVANCED(COLAMD_INCLUDE_DIR)
-
-# CCOLAMD.
-SET(CCOLAMD_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS CCOLAMD_FOUND)
-FIND_LIBRARY(CCOLAMD_LIBRARY NAMES ccolamd
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${CCOLAMD_LIBRARY})
-  MESSAGE(STATUS "Found CCOLAMD library: ${CCOLAMD_LIBRARY}")
-ELSE (EXISTS ${CCOLAMD_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CCOLAMD library (required SuiteSparse component).")
-  SET(CCOLAMD_FOUND FALSE)
-ENDIF (EXISTS ${CCOLAMD_LIBRARY})
-MARK_AS_ADVANCED(CCOLAMD_LIBRARY)
-
-FIND_PATH(CCOLAMD_INCLUDE_DIR NAMES ccolamd.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${CCOLAMD_INCLUDE_DIR})
-  MESSAGE(STATUS "Found CCOLAMD header in: ${CCOLAMD_INCLUDE_DIR}")
-ELSE (EXISTS ${CCOLAMD_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CCOLAMD header (required SuiteSparse component).")
-  SET(CCOLAMD_FOUND FALSE)
-ENDIF (EXISTS ${CCOLAMD_INCLUDE_DIR})
-MARK_AS_ADVANCED(CCOLAMD_INCLUDE_DIR)
-
-# CHOLMOD.
-SET(CHOLMOD_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS CHOLMOD_FOUND)
-FIND_LIBRARY(CHOLMOD_LIBRARY NAMES cholmod
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${CHOLMOD_LIBRARY})
-  MESSAGE(STATUS "Found CHOLMOD library: ${CHOLMOD_LIBRARY}")
-ELSE (EXISTS ${CHOLMOD_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CHOLMOD library (required SuiteSparse component).")
-  SET(CHOLMOD_FOUND FALSE)
-ENDIF (EXISTS ${CHOLMOD_LIBRARY})
-MARK_AS_ADVANCED(CHOLMOD_LIBRARY)
-
-FIND_PATH(CHOLMOD_INCLUDE_DIR NAMES cholmod.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${CHOLMOD_INCLUDE_DIR})
-  MESSAGE(STATUS "Found CHOLMOD header in: ${CHOLMOD_INCLUDE_DIR}")
-ELSE (EXISTS ${CHOLMOD_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find CHOLMOD header (required SuiteSparse component).")
-  SET(CHOLMOD_FOUND FALSE)
-ENDIF (EXISTS ${CHOLMOD_INCLUDE_DIR})
-MARK_AS_ADVANCED(CHOLMOD_INCLUDE_DIR)
-
-# SuiteSparseQR.
-SET(SUITESPARSEQR_FOUND TRUE)
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS SUITESPARSEQR_FOUND)
-FIND_LIBRARY(SUITESPARSEQR_LIBRARY NAMES spqr
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${SUITESPARSEQR_LIBRARY})
-  MESSAGE(STATUS "Found SuiteSparseQR library: ${SUITESPARSEQR_LIBRARY}")
-ELSE (EXISTS ${SUITESPARSEQR_LIBRARY})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find SuiteSparseQR library (required SuiteSparse component).")
-  SET(SUITESPARSEQR_FOUND FALSE)
-ENDIF (EXISTS ${SUITESPARSEQR_LIBRARY})
-MARK_AS_ADVANCED(SUITESPARSEQR_LIBRARY)
-
-FIND_PATH(SUITESPARSEQR_INCLUDE_DIR NAMES SuiteSparseQR.hpp
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${SUITESPARSEQR_INCLUDE_DIR})
-  MESSAGE(STATUS "Found SuiteSparseQR header in: ${SUITESPARSEQR_INCLUDE_DIR}")
-ELSE (EXISTS ${SUITESPARSEQR_INCLUDE_DIR})
-  SUITESPARSE_REPORT_NOT_FOUND(
-    "Did not find SUITESPARSEQR header (required SuiteSparse component).")
-  SET(SUITESPARSEQR_FOUND FALSE)
-ENDIF (EXISTS ${SUITESPARSEQR_INCLUDE_DIR})
-MARK_AS_ADVANCED(SUITESPARSEQR_INCLUDE_DIR)
-
-IF (SUITESPARSEQR_FOUND)
+suitesparse_find_component(AMD REQUIRED FILES amd.h LIBRARIES amd)
+suitesparse_find_component(CAMD REQUIRED FILES camd.h LIBRARIES camd)
+suitesparse_find_component(COLAMD REQUIRED FILES colamd.h LIBRARIES colamd)
+suitesparse_find_component(CCOLAMD REQUIRED FILES ccolamd.h LIBRARIES ccolamd)
+suitesparse_find_component(CHOLMOD REQUIRED FILES cholmod.h LIBRARIES cholmod)
+suitesparse_find_component(
+  SUITESPARSEQR REQUIRED FILES SuiteSparseQR.hpp LIBRARIES spqr)
+if (SUITESPARSEQR_FOUND)
   # SuiteSparseQR may be compiled with Intel Threading Building Blocks,
   # we assume that if TBB is installed, SuiteSparseQR was compiled with
   # support for it, this will do no harm if it wasn't.
-  SET(TBB_FOUND TRUE)
-  FIND_LIBRARY(TBB_LIBRARIES NAMES tbb
-    PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-  IF (EXISTS ${TBB_LIBRARIES})
-    MESSAGE(STATUS "Found Intel Thread Building Blocks (TBB) library: "
-      "${TBB_LIBRARIES}, assuming SuiteSparseQR was compiled with TBB.")
-  ELSE (EXISTS ${TBB_LIBRARIES})
-    MESSAGE(STATUS "Did not find Intel TBB library, assuming SuiteSparseQR was "
+  find_package(TBB QUIET)
+  if (TBB_FOUND)
+    message(STATUS "Found Intel Thread Building Blocks (TBB) library "
+      "(${TBB_VERSION}) assuming SuiteSparseQR was compiled "
+      "with TBB.")
+    # Add the TBB target to the SuiteSparseQR libraries (the only
+    # libraries to optionally depend on TBB).
+    list(APPEND SUITESPARSEQR_LIBRARY tbb)
+  else()
+    message(STATUS "Did not find Intel TBB library, assuming SuiteSparseQR was "
       "not compiled with TBB.")
-    SET(TBB_FOUND FALSE)
-  ENDIF (EXISTS ${TBB_LIBRARIES})
-  MARK_AS_ADVANCED(TBB_LIBRARIES)
-
-  IF (TBB_FOUND)
-    FIND_LIBRARY(TBB_MALLOC_LIB NAMES tbbmalloc
-      PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-    IF (EXISTS ${TBB_MALLOC_LIB})
-      MESSAGE(STATUS "Found Intel Thread Building Blocks (TBB) Malloc library: "
-        "${TBB_MALLOC_LIB}")
-      # Append TBB malloc library to TBB libraries list whilst retaining
-      # any CMake generated help string (cache variable).
-      LIST(APPEND TBB_LIBRARIES ${TBB_MALLOC_LIB})
-      GET_PROPERTY(HELP_STRING CACHE TBB_LIBRARIES PROPERTY HELPSTRING)
-      SET(TBB_LIBRARIES "${TBB_LIBRARIES}" CACHE STRING "${HELP_STRING}")
-
-      # Add the TBB libraries to the SuiteSparseQR libraries (the only
-      # libraries to optionally depend on TBB).
-      LIST(APPEND SUITESPARSEQR_LIBRARY ${TBB_LIBRARIES})
-
-    ELSE (EXISTS ${TBB_MALLOC_LIB})
-      # If we cannot find all required TBB components do not include it as
-      # a dependency.
-      MESSAGE(STATUS "Did not find Intel Thread Building Blocks (TBB) Malloc "
-        "Library, discarding TBB as a dependency.")
-      SET(TBB_FOUND FALSE)
-    ENDIF (EXISTS ${TBB_MALLOC_LIB})
-    MARK_AS_ADVANCED(TBB_MALLOC_LIB)
-  ENDIF (TBB_FOUND)
-ENDIF(SUITESPARSEQR_FOUND)
+  endif()
+endif(SUITESPARSEQR_FOUND)
 
 # UFconfig / SuiteSparse_config.
 #
 # If SuiteSparse version is >= 4 then SuiteSparse_config is required.
 # For SuiteSparse 3, UFconfig.h is required.
-FIND_LIBRARY(SUITESPARSE_CONFIG_LIBRARY NAMES suitesparseconfig
-  PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-IF (EXISTS ${SUITESPARSE_CONFIG_LIBRARY})
-  MESSAGE(STATUS "Found SuiteSparse_config library: "
-    "${SUITESPARSE_CONFIG_LIBRARY}")
-ENDIF (EXISTS ${SUITESPARSE_CONFIG_LIBRARY})
-MARK_AS_ADVANCED(SUITESPARSE_CONFIG_LIBRARY)
+suitesparse_find_component(
+  SUITESPARSE_CONFIG FILES SuiteSparse_config.h LIBRARIES suitesparseconfig)
 
-FIND_PATH(SUITESPARSE_CONFIG_INCLUDE_DIR NAMES SuiteSparse_config.h
-  PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-IF (EXISTS ${SUITESPARSE_CONFIG_INCLUDE_DIR})
-  MESSAGE(STATUS "Found SuiteSparse_config header in: "
-    "${SUITESPARSE_CONFIG_INCLUDE_DIR}")
-ENDIF (EXISTS ${SUITESPARSE_CONFIG_INCLUDE_DIR})
-MARK_AS_ADVANCED(SUITESPARSE_CONFIG_INCLUDE_DIR)
-
-SET(SUITESPARSE_CONFIG_FOUND FALSE)
-SET(UFCONFIG_FOUND FALSE)
-
-IF (EXISTS ${SUITESPARSE_CONFIG_LIBRARY} AND
-    EXISTS ${SUITESPARSE_CONFIG_INCLUDE_DIR})
-  SET(SUITESPARSE_CONFIG_FOUND TRUE)
+if (SUITESPARSE_CONFIG_FOUND)
   # SuiteSparse_config (SuiteSparse version >= 4) requires librt library for
   # timing by default when compiled on Linux or Unix, but not on OSX (which
   # does not have librt).
-  IF (CMAKE_SYSTEM_NAME MATCHES "Linux" OR UNIX AND NOT APPLE)
-    FIND_LIBRARY(LIBRT_LIBRARY NAMES rt
-      PATHS ${SUITESPARSE_CHECK_LIBRARY_DIRS})
-    IF (LIBRT_LIBRARY)
-      MESSAGE(STATUS "Adding librt: ${LIBRT_LIBRARY} to "
+  if (CMAKE_SYSTEM_NAME MATCHES "Linux" OR UNIX AND NOT APPLE)
+    suitesparse_find_component(LIBRT LIBRARIES rt)
+    if (LIBRT_FOUND)
+      message(STATUS "Adding librt: ${LIBRT_LIBRARY} to "
         "SuiteSparse_config libraries (required on Linux & Unix [not OSX] if "
         "SuiteSparse is compiled with timing).")
-    ELSE (LIBRT_LIBRARY)
-      MESSAGE(STATUS "Could not find librt, but found SuiteSparse_config, "
+      list(APPEND SUITESPARSE_CONFIG_LIBRARY ${LIBRT_LIBRARY})
+    else()
+      message(STATUS "Could not find librt, but found SuiteSparse_config, "
         "assuming that SuiteSparse was compiled without timing.")
-    ENDIF (LIBRT_LIBRARY)
-    MARK_AS_ADVANCED(LIBRT_LIBRARY)
-    LIST(APPEND SUITESPARSE_CONFIG_LIBRARY ${LIBRT_LIBRARY})
-  ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux" OR UNIX AND NOT APPLE)
-
-ELSE (EXISTS ${SUITESPARSE_CONFIG_LIBRARY} AND
-      EXISTS ${SUITESPARSE_CONFIG_INCLUDE_DIR})
+    endif ()
+  endif (CMAKE_SYSTEM_NAME MATCHES "Linux" OR UNIX AND NOT APPLE)
+else()
   # Failed to find SuiteSparse_config (>= v4 installs), instead look for
   # UFconfig header which should be present in < v4 installs.
-  SET(SUITESPARSE_CONFIG_FOUND FALSE)
-  FIND_PATH(UFCONFIG_INCLUDE_DIR NAMES UFconfig.h
-    PATHS ${SUITESPARSE_CHECK_INCLUDE_DIRS})
-  IF (EXISTS ${UFCONFIG_INCLUDE_DIR})
-    MESSAGE(STATUS "Found UFconfig header in: ${UFCONFIG_INCLUDE_DIR}")
-    SET(UFCONFIG_FOUND TRUE)
-  ENDIF (EXISTS ${UFCONFIG_INCLUDE_DIR})
-  MARK_AS_ADVANCED(UFCONFIG_INCLUDE_DIR)
-ENDIF (EXISTS ${SUITESPARSE_CONFIG_LIBRARY} AND
-       EXISTS ${SUITESPARSE_CONFIG_INCLUDE_DIR})
+  suitesparse_find_component(UFCONFIG FILES UFconfig.h)
+endif ()
 
-IF (NOT SUITESPARSE_CONFIG_FOUND AND
+if (NOT SUITESPARSE_CONFIG_FOUND AND
     NOT UFCONFIG_FOUND)
-  SUITESPARSE_REPORT_NOT_FOUND(
+  suitesparse_report_not_found(
     "Failed to find either: SuiteSparse_config header & library (should be "
     "present in all SuiteSparse >= v4 installs), or UFconfig header (should "
     "be present in all SuiteSparse < v4 installs).")
-ENDIF (NOT SUITESPARSE_CONFIG_FOUND AND
-       NOT UFCONFIG_FOUND)
+endif()
 
 # Extract the SuiteSparse version from the appropriate header (UFconfig.h for
 # <= v3, SuiteSparse_config.h for >= v4).
-LIST(APPEND SUITESPARSE_FOUND_REQUIRED_VARS SUITESPARSE_VERSION)
+list(APPEND SUITESPARSE_FOUND_REQUIRED_VARS SUITESPARSE_VERSION)
 
-IF (UFCONFIG_FOUND)
+if (UFCONFIG_FOUND)
   # SuiteSparse version <= 3.
-  SET(SUITESPARSE_VERSION_FILE ${UFCONFIG_INCLUDE_DIR}/UFconfig.h)
-  IF (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-    SUITESPARSE_REPORT_NOT_FOUND(
+  set(SUITESPARSE_VERSION_FILE ${UFCONFIG_INCLUDE_DIR}/UFconfig.h)
+  if (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+    suitesparse_report_not_found(
       "Could not find file: ${SUITESPARSE_VERSION_FILE} containing version "
       "information for <= v3 SuiteSparse installs, but UFconfig was found "
       "(only present in <= v3 installs).")
-  ELSE (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-    FILE(READ ${SUITESPARSE_VERSION_FILE} UFCONFIG_CONTENTS)
+  else (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+    file(READ ${SUITESPARSE_VERSION_FILE} UFCONFIG_CONTENTS)
 
-    STRING(REGEX MATCH "#define SUITESPARSE_MAIN_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_MAIN_VERSION [0-9]+"
       SUITESPARSE_MAIN_VERSION "${UFCONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_MAIN_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_MAIN_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_MAIN_VERSION "${SUITESPARSE_MAIN_VERSION}")
 
-    STRING(REGEX MATCH "#define SUITESPARSE_SUB_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_SUB_VERSION [0-9]+"
       SUITESPARSE_SUB_VERSION "${UFCONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_SUB_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_SUB_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_SUB_VERSION "${SUITESPARSE_SUB_VERSION}")
 
-    STRING(REGEX MATCH "#define SUITESPARSE_SUBSUB_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_SUBSUB_VERSION [0-9]+"
       SUITESPARSE_SUBSUB_VERSION "${UFCONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_SUBSUB_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_SUBSUB_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_SUBSUB_VERSION "${SUITESPARSE_SUBSUB_VERSION}")
 
     # This is on a single line s/t CMake does not interpret it as a list of
     # elements and insert ';' separators which would result in 4.;2.;1 nonsense.
-    SET(SUITESPARSE_VERSION
+    set(SUITESPARSE_VERSION
       "${SUITESPARSE_MAIN_VERSION}.${SUITESPARSE_SUB_VERSION}.${SUITESPARSE_SUBSUB_VERSION}")
-  ENDIF (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-ENDIF (UFCONFIG_FOUND)
+  endif (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+endif (UFCONFIG_FOUND)
 
-IF (SUITESPARSE_CONFIG_FOUND)
+if (SUITESPARSE_CONFIG_FOUND)
   # SuiteSparse version >= 4.
-  SET(SUITESPARSE_VERSION_FILE
+  set(SUITESPARSE_VERSION_FILE
     ${SUITESPARSE_CONFIG_INCLUDE_DIR}/SuiteSparse_config.h)
-  IF (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-    SUITESPARSE_REPORT_NOT_FOUND(
+  if (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+    suitesparse_report_not_found(
       "Could not find file: ${SUITESPARSE_VERSION_FILE} containing version "
       "information for >= v4 SuiteSparse installs, but SuiteSparse_config was "
       "found (only present in >= v4 installs).")
-  ELSE (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-    FILE(READ ${SUITESPARSE_VERSION_FILE} SUITESPARSE_CONFIG_CONTENTS)
+  else (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+    file(READ ${SUITESPARSE_VERSION_FILE} SUITESPARSE_CONFIG_CONTENTS)
 
-    STRING(REGEX MATCH "#define SUITESPARSE_MAIN_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_MAIN_VERSION [0-9]+"
       SUITESPARSE_MAIN_VERSION "${SUITESPARSE_CONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_MAIN_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_MAIN_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_MAIN_VERSION "${SUITESPARSE_MAIN_VERSION}")
 
-    STRING(REGEX MATCH "#define SUITESPARSE_SUB_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_SUB_VERSION [0-9]+"
       SUITESPARSE_SUB_VERSION "${SUITESPARSE_CONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_SUB_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_SUB_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_SUB_VERSION "${SUITESPARSE_SUB_VERSION}")
 
-    STRING(REGEX MATCH "#define SUITESPARSE_SUBSUB_VERSION [0-9]+"
+    string(REGEX MATCH "#define SUITESPARSE_SUBSUB_VERSION [0-9]+"
       SUITESPARSE_SUBSUB_VERSION "${SUITESPARSE_CONFIG_CONTENTS}")
-    STRING(REGEX REPLACE "#define SUITESPARSE_SUBSUB_VERSION ([0-9]+)" "\\1"
+    string(REGEX REPLACE "#define SUITESPARSE_SUBSUB_VERSION ([0-9]+)" "\\1"
       SUITESPARSE_SUBSUB_VERSION "${SUITESPARSE_SUBSUB_VERSION}")
 
     # This is on a single line s/t CMake does not interpret it as a list of
     # elements and insert ';' separators which would result in 4.;2.;1 nonsense.
-    SET(SUITESPARSE_VERSION
+    set(SUITESPARSE_VERSION
       "${SUITESPARSE_MAIN_VERSION}.${SUITESPARSE_SUB_VERSION}.${SUITESPARSE_SUBSUB_VERSION}")
-  ENDIF (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
-ENDIF (SUITESPARSE_CONFIG_FOUND)
+  endif (NOT EXISTS ${SUITESPARSE_VERSION_FILE})
+endif (SUITESPARSE_CONFIG_FOUND)
 
 # METIS (Optional dependency).
-find_package(MrtMetis QUIET)
+suitesparse_find_component(METIS LIBRARIES metis)
 
 # Only mark SuiteSparse as found if all required components and dependencies
 # have been found.
-SET(SUITESPARSE_FOUND TRUE)
-FOREACH(REQUIRED_VAR ${SUITESPARSE_FOUND_REQUIRED_VARS})
-  IF (NOT ${REQUIRED_VAR})
-    SET(SUITESPARSE_FOUND FALSE)
-  ENDIF (NOT ${REQUIRED_VAR})
-ENDFOREACH(REQUIRED_VAR ${SUITESPARSE_FOUND_REQUIRED_VARS})
+set(SUITESPARSE_FOUND TRUE)
+foreach(REQUIRED_VAR ${SUITESPARSE_FOUND_REQUIRED_VARS})
+  if (NOT ${REQUIRED_VAR})
+    set(SUITESPARSE_FOUND FALSE)
+  endif (NOT ${REQUIRED_VAR})
+endforeach(REQUIRED_VAR ${SUITESPARSE_FOUND_REQUIRED_VARS})
 
-IF (SUITESPARSE_FOUND)
-  LIST(APPEND SUITESPARSE_INCLUDE_DIRS
+if (SUITESPARSE_FOUND)
+  list(APPEND SUITESPARSE_INCLUDE_DIRS
     ${AMD_INCLUDE_DIR}
     ${CAMD_INCLUDE_DIR}
     ${COLAMD_INCLUDE_DIR}
@@ -536,21 +450,21 @@ IF (SUITESPARSE_FOUND)
     ${SUITESPARSEQR_INCLUDE_DIR})
   # Handle config separately, as otherwise at least one of them will be set
   # to NOTFOUND which would cause any check on SUITESPARSE_INCLUDE_DIRS to fail.
-  IF (SUITESPARSE_CONFIG_FOUND)
-    LIST(APPEND SUITESPARSE_INCLUDE_DIRS
+  if (SUITESPARSE_CONFIG_FOUND)
+    list(APPEND SUITESPARSE_INCLUDE_DIRS
       ${SUITESPARSE_CONFIG_INCLUDE_DIR})
-  ENDIF (SUITESPARSE_CONFIG_FOUND)
-  IF (UFCONFIG_FOUND)
-    LIST(APPEND SUITESPARSE_INCLUDE_DIRS
+  endif (SUITESPARSE_CONFIG_FOUND)
+  if (UFCONFIG_FOUND)
+    list(APPEND SUITESPARSE_INCLUDE_DIRS
       ${UFCONFIG_INCLUDE_DIR})
-  ENDIF (UFCONFIG_FOUND)
+  endif (UFCONFIG_FOUND)
   # As SuiteSparse includes are often all in the same directory, remove any
   # repetitions.
-  LIST(REMOVE_DUPLICATES SUITESPARSE_INCLUDE_DIRS)
+  list(REMOVE_DUPLICATES SUITESPARSE_INCLUDE_DIRS)
 
   # Important: The ordering of these libraries is *NOT* arbitrary, as these
   # could potentially be static libraries their link ordering is important.
-  LIST(APPEND SUITESPARSE_LIBRARIES
+  list(APPEND SUITESPARSE_LIBRARIES
     ${SUITESPARSEQR_LIBRARY}
     ${CHOLMOD_LIBRARY}
     ${CCOLAMD_LIBRARY}
@@ -559,62 +473,58 @@ IF (SUITESPARSE_FOUND)
     ${AMD_LIBRARY}
     ${LAPACK_LIBRARIES}
     ${BLAS_LIBRARIES})
-  IF (SUITESPARSE_CONFIG_FOUND)
-    LIST(APPEND SUITESPARSE_LIBRARIES
+  if (SUITESPARSE_CONFIG_FOUND)
+    list(APPEND SUITESPARSE_LIBRARIES
       ${SUITESPARSE_CONFIG_LIBRARY})
-  ENDIF (SUITESPARSE_CONFIG_FOUND)
-  IF (METIS_FOUND)
-    LIST(APPEND SUITESPARSE_LIBRARIES
+  endif (SUITESPARSE_CONFIG_FOUND)
+  if (METIS_FOUND)
+    list(APPEND SUITESPARSE_LIBRARIES
       ${METIS_LIBRARY})
-  ENDIF (METIS_FOUND)
-ENDIF()
+  endif (METIS_FOUND)
+endif()
 
 # Determine if we are running on Ubuntu with the package install of SuiteSparse
 # which is broken and does not support linking a shared library.
-SET(SUITESPARSE_IS_BROKEN_SHARED_LINKING_UBUNTU_SYSTEM_VERSION FALSE)
-IF (CMAKE_SYSTEM_NAME MATCHES "Linux" AND
+set(SUITESPARSE_IS_BROKEN_SHARED_LINKING_UBUNTU_SYSTEM_VERSION FALSE)
+if (CMAKE_SYSTEM_NAME MATCHES "Linux" AND
     SUITESPARSE_VERSION VERSION_EQUAL 3.4.0)
-  FIND_PROGRAM(LSB_RELEASE_EXECUTABLE lsb_release)
-  IF (LSB_RELEASE_EXECUTABLE)
+  find_program(LSB_RELEASE_EXECUTABLE lsb_release)
+  if (LSB_RELEASE_EXECUTABLE)
     # Any even moderately recent Ubuntu release (likely to be affected by
     # this bug) should have lsb_release, if it isn't present we are likely
     # on a different Linux distribution (should be fine).
-
-    EXECUTE_PROCESS(COMMAND ${LSB_RELEASE_EXECUTABLE} -si
+    execute_process(COMMAND ${LSB_RELEASE_EXECUTABLE} -si
       OUTPUT_VARIABLE LSB_DISTRIBUTOR_ID
       OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-    IF (LSB_DISTRIBUTOR_ID MATCHES "Ubuntu" AND
+    if (LSB_DISTRIBUTOR_ID MATCHES "Ubuntu" AND
         SUITESPARSE_LIBRARIES MATCHES "/usr/lib/libamd")
       # We are on Ubuntu, and the SuiteSparse version matches the broken
       # system install version and is a system install.
-      SET(SUITESPARSE_IS_BROKEN_SHARED_LINKING_UBUNTU_SYSTEM_VERSION TRUE)
-      MESSAGE(STATUS "Found system install of SuiteSparse "
+      set(SUITESPARSE_IS_BROKEN_SHARED_LINKING_UBUNTU_SYSTEM_VERSION TRUE)
+      message(STATUS "Found system install of SuiteSparse "
         "${SUITESPARSE_VERSION} running on Ubuntu, which has a known bug "
         "preventing linking of shared libraries (static linking unaffected).")
-    ENDIF (LSB_DISTRIBUTOR_ID MATCHES "Ubuntu" AND
+    endif (LSB_DISTRIBUTOR_ID MATCHES "Ubuntu" AND
       SUITESPARSE_LIBRARIES MATCHES "/usr/lib/libamd")
-  ENDIF (LSB_RELEASE_EXECUTABLE)
-ENDIF (CMAKE_SYSTEM_NAME MATCHES "Linux" AND
+  endif (LSB_RELEASE_EXECUTABLE)
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux" AND
   SUITESPARSE_VERSION VERSION_EQUAL 3.4.0)
 
+suitesparse_reset_find_library_prefix()
+
 # Handle REQUIRED and QUIET arguments to FIND_PACKAGE
-INCLUDE(FindPackageHandleStandardArgs)
-IF (SUITESPARSE_FOUND)
-  FIND_PACKAGE_HANDLE_STANDARD_ARGS(SuiteSparse
+include(FindPackageHandleStandardArgs)
+if (SUITESPARSE_FOUND)
+  find_package_handle_standard_args(SuiteSparse
     REQUIRED_VARS ${SUITESPARSE_FOUND_REQUIRED_VARS}
     VERSION_VAR SUITESPARSE_VERSION
     FAIL_MESSAGE "Failed to find some/all required components of SuiteSparse.")
-    
-  IF (SUITESPARSE_FOUND)
-  	list(APPEND MRT_INCLUDE_DIRS ${SUITESPARSE_INCLUDE_DIRS})
-	list(APPEND MRT_LIBRARIES ${SUITESPARSE_LIBRARIES})
-  ENDIF()
-ELSE (SUITESPARSE_FOUND)
+else (SUITESPARSE_FOUND)
   # Do not pass VERSION_VAR to FindPackageHandleStandardArgs() if we failed to
   # find SuiteSparse to avoid a confusing autogenerated failure message
   # that states 'not found (missing: FOO) (found version: x.y.z)'.
-  FIND_PACKAGE_HANDLE_STANDARD_ARGS(SuiteSparse
+  find_package_handle_standard_args(SuiteSparse
     REQUIRED_VARS ${SUITESPARSE_FOUND_REQUIRED_VARS}
     FAIL_MESSAGE "Failed to find some/all required components of SuiteSparse.")
-ENDIF (SUITESPARSE_FOUND)
+endif (SUITESPARSE_FOUND)

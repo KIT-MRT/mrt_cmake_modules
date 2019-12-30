@@ -328,7 +328,7 @@ opengl:
   include_dirs: [OPENGL_INCLUDE_DIR]
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
-  name: OpenGL
+  name: MrtOpenGL
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
@@ -376,9 +376,8 @@ suitesparse:
   library_dirs: []
   name: SuiteSparse
 tbb:
-  include_dirs: [TBB_INCLUDE_DIR]
-  libraries: [TBB_LIBRARIES]
   name: TBB
+  targets: [tbb]
 tinyxml:
   components: []
   include_dirs: [TINYXML_INCLUDE_DIR]

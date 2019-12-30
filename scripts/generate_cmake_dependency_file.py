@@ -228,19 +228,20 @@ def parseManifest(parsed_xml, catkin_packages, validate=True):
 def gatherDependeciesRecursive(manifest, catkin_packages, ignored_packages=set()):
     first_pass = not ignored_packages
     all_deps, cuda_depends = parseManifest(manifest, catkin_packages, validate=first_pass)
-    depends = []
+    depends = all_deps if first_pass else []
+    for dep in depends:
+        # only first-level dependencies have to be resolved, all others are resolved if possible.
+        dep.optional = False
     # recursively gather the build_export_depends of these dependencies
     for dep in all_deps:
-        if dep.name in ignored_packages:
-            continue
         if not first_pass and not dep.build_export_depend:
             continue
-        # only first-level dependencies have to be resolved, all others are resolved if possible.
-        dep.optional |= first_pass
+        if dep.name in ignored_packages:
+            continue
         ignored_packages.add(dep.name)
-        if first_pass or not dep.isCatkin():
-            depends.append(dep) # catkin complains if we report catkin dependencies not mentioned in package.xml
-        if dep.packageType == PackageType.catkin:
+        if not first_pass and not dep.isCatkin():
+            depends.append(dep)
+        if dep.isCatkin():
             depends += gatherDependeciesRecursive(catkin_packages[dep.name], catkin_packages, ignored_packages)[0]
     return depends, cuda_depends
 
@@ -382,7 +383,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         if cmakeData.targets:
             f.write("set(_" + depend.name + "_CMAKE_TARGETS_ " +
                     ' '.join(cmakeData.targets) + ")\n")
-        if cmakeData.warning:
+        if cmakeData.warning and not depend.optional:
             eprint(cmakeData.warning)
 
 
