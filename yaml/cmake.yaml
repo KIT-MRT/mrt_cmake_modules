@@ -328,7 +328,7 @@ opengl:
   include_dirs: [OPENGL_INCLUDE_DIR]
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
-  name: OpenGL
+  name: MrtOpenGL
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
