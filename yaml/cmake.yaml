@@ -99,6 +99,9 @@ libcereal-dev:
 libceres-dev:
   name: Ceres
   targets: [ceres]
+libconsole-bridge-dev:
+  targets: ["console_bridge"]
+  name: console_bridge
 libgeographic-dev:
   components: []
   include_dirs: [GeographicLib_INCLUDE_DIRS]
@@ -148,6 +151,10 @@ libpcl-all-dev:
   libraries: [PCL_LIBRARIES]
   library_dirs: [PCL_LIBRARY_DIRS]
   name: MrtPCL
+libpoco-dev:
+  components: [Foundation]
+  libraries: [Poco_LIBRARIES]
+  name: Poco
 libsqlite3-dev:
   components: []
   include_dirs: [SQLITE3_INCLUDE_DIRS]
@@ -322,6 +329,7 @@ opengl:
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
   name: OpenGL
+pkg-config: []
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
@@ -353,6 +361,8 @@ pybind11-dev:
   libraries: []
   library_dirs: []
   name: pybind11
+python: []
+python3: []
 range_v3:
   name: range-v3
   targets: [range-v3]
@@ -378,6 +388,13 @@ tinyxml:
   libraries: [TINYXML_LIBRARIES]
   library_dirs: []
   name: TinyXML
+tinyxml2:
+  components: []
+  include_dirs: [TinyXML2_INCLUDE_DIR]
+  libraries: [TinyXML2_LIBRARIES]
+  library_dirs: []
+  name: TinyXML2
+uuid: []
 yaml-cpp:
   name: yaml-cpp
   targets: [yaml-cpp]

@@ -1,4 +1,4 @@
-<package>
+<package format="2">
   <name>mrt_cmake_modules</name>
   <version>1.0.0</version>
   <description>CMake Functions and Modules for automating CMake</description>

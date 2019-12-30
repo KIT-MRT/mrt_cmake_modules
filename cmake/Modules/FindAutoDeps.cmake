@@ -66,7 +66,7 @@ if (AutoDeps_FIND_COMPONENTS)
     set(_OTHER_SELECTED_PACKAGES_ "")
     set(_CATKIN_TEST_SELECTED_PACKAGES_ "")
     set(_OTHER_TEST_SELECTED_PACKAGES_ "")
-    
+
     foreach(component ${AutoDeps_FIND_COMPONENTS})
         list(FIND _CATKIN_PACKAGES_ ${component} res)
         if(NOT ${res} EQUAL -1)
@@ -111,8 +111,11 @@ if (AutoDeps_FIND_COMPONENTS)
     #find other packages
     foreach(other_package ${_OTHER_SELECTED_PACKAGES_})
         #check, if cmake variable mapping is available
+        if(_${other_package}_NO_CMAKE_)
+            continue() # package is known to set no variables
+        endif()
         if(NOT DEFINED _${other_package}_CMAKE_NAME_)
-            message(FATAL_ERROR "Package ${other_package} is specified for autodepend but cmake variables are not defined. Did you resolve dependencies?")
+            message(FATAL_ERROR "Package ${other_package} is specified for autodepend but no cmake definition was found. Did you resolve dependencies?")
         endif()
         
         #find non catkin modules
