@@ -157,7 +157,7 @@ arbotix_sensors:
 ariles_ros:
   url: https://github.com/asherikov/ariles-release.git
   vcs: git
-  version: release/melodic/ariles_ros/1.3.1-1
+  version: release/melodic/ariles_ros/1.3.2-1
 aruco_detect:
   url: https://github.com/UbiquityRobotics-release/fiducials-release.git
   vcs: git
@@ -1161,7 +1161,7 @@ dwb_plugins:
 dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/dynamic_edt_3d/1.9.0-1
+  version: release/melodic/dynamic_edt_3d/1.9.3-1
 dynamic_robot_state_publisher:
   url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
   vcs: git
@@ -2638,6 +2638,10 @@ lusb:
   url: https://github.com/DataspeedInc-release/lusb-release.git
   vcs: git
   version: release/melodic/lusb/1.1.0-0
+lvr2:
+  url: https://github.com/uos-gbp/lvr2-release.git
+  vcs: git
+  version: release/melodic/lvr2/19.12.0-1
 map_laser:
   url: https://github.com/wu-robotics/laser_filtering_release.git
   vcs: git
@@ -2721,7 +2725,7 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.12.12-1
+  version: release/melodic/mavlink/2019.12.30-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
@@ -3373,7 +3377,7 @@ octomap_server:
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/octovis/1.9.0-1
+  version: release/melodic/octovis/1.9.3-1
 odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
@@ -4009,7 +4013,7 @@ py_trees_ros:
 pybind11_catkin:
   url: https://github.com/wxmerkt/pybind11_catkin-release.git
   vcs: git
-  version: release/melodic/pybind11_catkin/2.2.4-6
+  version: release/melodic/pybind11_catkin/2.4.3-1
 pyros_test:
   url: https://github.com/pyros-dev/pyros-test-release.git
   vcs: git
@@ -4098,6 +4102,10 @@ qb_move_hardware_interface:
   url: https://bitbucket.org/qbrobotics/qbmove-ros-release.git
   vcs: git
   version: release/melodic/qb_move_hardware_interface/2.0.0-1
+qpmad:
+  url: https://github.com/asherikov/qpmad-release.git
+  vcs: git
+  version: release/melodic/qpmad/1.0.1-1
 qpoases_vendor:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/qpoases_vendor-release.git
   vcs: git
@@ -5537,7 +5545,7 @@ usb_cam_hardware_interface:
 usv_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/usv_gazebo_plugins/1.2.6-1
+  version: release/melodic/usv_gazebo_plugins/1.3.0-1
 uuv_assistants:
   url: https://github.com/uuvsimulator/uuv_simulator-release.git
   vcs: git
@@ -5769,15 +5777,15 @@ vrpn_client_ros:
 vrx_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/vrx_gazebo/1.2.6-1
+  version: release/melodic/vrx_gazebo/1.3.0-1
 wamv_description:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_description/1.2.6-1
+  version: release/melodic/wamv_description/1.3.0-1
 wamv_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wamv_gazebo/1.2.6-1
+  version: release/melodic/wamv_gazebo/1.3.0-1
 warehouse_ros:
   url: https://github.com/ros-gbp/warehouse_ros-release.git
   vcs: git
@@ -5817,11 +5825,11 @@ warthog_viz:
 wave_gazebo:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo/1.2.6-1
+  version: release/melodic/wave_gazebo/1.3.0-1
 wave_gazebo_plugins:
   url: https://github.com/ros-gbp/vrx-release.git
   vcs: git
-  version: release/melodic/wave_gazebo_plugins/1.2.6-1
+  version: release/melodic/wave_gazebo_plugins/1.3.0-1
 web_video_server:
   url: https://github.com/RobotWebTools-release/web_video_server-release.git
   vcs: git
