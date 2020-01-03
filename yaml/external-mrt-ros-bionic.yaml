@@ -2517,7 +2517,7 @@ libg2o:
 libmavconn:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/libmavconn/0.33.4-1
+  version: release/melodic/libmavconn/1.0.0-1
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -2729,15 +2729,15 @@ mavlink:
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros/0.33.4-1
+  version: release/melodic/mavros/1.0.0-1
 mavros_extras:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_extras/0.33.4-1
+  version: release/melodic/mavros_extras/1.0.0-1
 mavros_msgs:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/mavros_msgs/0.33.4-1
+  version: release/melodic/mavros_msgs/1.0.0-1
 mbf_abstract_core:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -3146,10 +3146,14 @@ nanomsg:
   url: https://github.com/yujinrobot-release/nanomsg-release.git
   vcs: git
   version: release/melodic/nanomsg/0.4.1-0
+naoqi_bridge_msgs:
+  url: https://github.com/ros-naoqi/naoqi_bridge_msgs-release.git
+  vcs: git
+  version: release/melodic/naoqi_bridge_msgs/0.0.8-0
 naoqi_libqi:
   url: https://github.com/ros-naoqi/libqi-release.git
   vcs: git
-  version: release/melodic/naoqi_libqi/2.9.0-7
+  version: release/melodic/naoqi_libqi/2.9.0-8
 nav2d:
   url: https://github.com/skasperski/navigation_2d-release.git
   vcs: git
@@ -3705,7 +3709,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.4.3-1
+  version: release/melodic/plotjuggler/2.5.0-1
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -4105,7 +4109,7 @@ qb_move_hardware_interface:
 qpmad:
   url: https://github.com/asherikov/qpmad-release.git
   vcs: git
-  version: release/melodic/qpmad/1.0.1-1
+  version: release/melodic/qpmad/1.0.2-1
 qpoases_vendor:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/qpoases_vendor-release.git
   vcs: git
@@ -5193,7 +5197,7 @@ test_diagnostic_aggregator:
 test_mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
-  version: release/melodic/test_mavros/0.33.4-1
+  version: release/melodic/test_mavros/1.0.0-1
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
