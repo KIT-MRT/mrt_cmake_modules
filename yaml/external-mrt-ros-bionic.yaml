@@ -2645,7 +2645,7 @@ lusb:
 lvr2:
   url: https://github.com/uos-gbp/lvr2-release.git
   vcs: git
-  version: release/melodic/lvr2/19.12.0-1
+  version: release/melodic/lvr2/19.12.1-1
 map_laser:
   url: https://github.com/wu-robotics/laser_filtering_release.git
   vcs: git
