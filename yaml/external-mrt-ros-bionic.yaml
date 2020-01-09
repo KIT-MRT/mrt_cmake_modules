@@ -225,15 +225,15 @@ audio_play:
 automotive_autonomy_msgs:
   url: https://github.com/astuff/automotive_autonomy_msgs-release.git
   vcs: git
-  version: release/melodic/automotive_autonomy_msgs/3.0.1-1
+  version: release/melodic/automotive_autonomy_msgs/3.0.3-1
 automotive_navigation_msgs:
   url: https://github.com/astuff/automotive_autonomy_msgs-release.git
   vcs: git
-  version: release/melodic/automotive_navigation_msgs/3.0.1-1
+  version: release/melodic/automotive_navigation_msgs/3.0.3-1
 automotive_platform_msgs:
   url: https://github.com/astuff/automotive_autonomy_msgs-release.git
   vcs: git
-  version: release/melodic/automotive_platform_msgs/3.0.1-1
+  version: release/melodic/automotive_platform_msgs/3.0.3-1
 autoware_can_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
@@ -909,7 +909,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.5.0-1
+  version: release/melodic/costmap_cspace/0.5.1-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2233,7 +2233,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.5.0-1
+  version: release/melodic/joystick_interrupt/0.5.1-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2657,7 +2657,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.5.0-1
+  version: release/melodic/map_organizer/0.5.1-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2773,7 +2773,7 @@ mbf_utility:
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/melodic/mcl_3dl/0.1.6-1
+  version: release/melodic/mcl_3dl/0.1.7-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
@@ -3121,27 +3121,27 @@ multires_image:
 multisense:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense/4.0.2-0
+  version: release/melodic/multisense/4.0.3-1
 multisense_bringup:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense_bringup/4.0.2-0
+  version: release/melodic/multisense_bringup/4.0.3-1
 multisense_cal_check:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense_cal_check/4.0.2-0
+  version: release/melodic/multisense_cal_check/4.0.3-1
 multisense_description:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense_description/4.0.2-0
+  version: release/melodic/multisense_description/4.0.3-1
 multisense_lib:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense_lib/4.0.2-0
+  version: release/melodic/multisense_lib/4.0.3-1
 multisense_ros:
   url: https://github.com/carnegieroboticsllc/multisense_ros-release.git
   vcs: git
-  version: release/melodic/multisense_ros/4.0.2-0
+  version: release/melodic/multisense_ros/4.0.3-1
 mvsim:
   url: https://github.com/ual-arm-ros-pkg-release/mvsim-release.git
   vcs: git
@@ -3150,14 +3150,26 @@ nanomsg:
   url: https://github.com/yujinrobot-release/nanomsg-release.git
   vcs: git
   version: release/melodic/nanomsg/0.4.1-0
+nao_meshes:
+  url: https://github.com/ros-naoqi/nao_meshes-release.git
+  vcs: git
+  version: release/melodic/nao_meshes/0.1.12-2
 naoqi_bridge_msgs:
   url: https://github.com/ros-naoqi/naoqi_bridge_msgs-release.git
   vcs: git
   version: release/melodic/naoqi_bridge_msgs/0.0.8-0
+naoqi_driver:
+  url: https://github.com/ros-naoqi/naoqi_driver-release.git
+  vcs: git
+  version: release/melodic/naoqi_driver/0.5.11-0
 naoqi_libqi:
   url: https://github.com/ros-naoqi/libqi-release.git
   vcs: git
   version: release/melodic/naoqi_libqi/2.9.0-8
+naoqi_libqicore:
+  url: https://github.com/ros-naoqi/libqicore-release.git
+  vcs: git
+  version: release/melodic/naoqi_libqicore/2.9.0-5
 nav2d:
   url: https://github.com/skasperski/navigation_2d-release.git
   vcs: git
@@ -3257,15 +3269,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.5.0-1
+  version: release/melodic/neonavigation/0.5.1-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.5.0-1
+  version: release/melodic/neonavigation_common/0.5.1-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.5.0-1
+  version: release/melodic/neonavigation_launch/0.5.1-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3357,7 +3369,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.5.0-1
+  version: release/melodic/obj_to_pointcloud/0.5.1-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3369,7 +3381,7 @@ ocean_battery_driver:
 octomap_mapping:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
-  version: release/melodic/octomap_mapping/0.6.3-0
+  version: release/melodic/octomap_mapping/0.6.4-1
 octomap_ros:
   url: https://github.com/ros-gbp/octomap_ros-release.git
   vcs: git
@@ -3381,7 +3393,7 @@ octomap_rviz_plugins:
 octomap_server:
   url: https://github.com/ros-gbp/octomap_mapping-release.git
   vcs: git
-  version: release/melodic/octomap_server/0.6.3-0
+  version: release/melodic/octomap_server/0.6.4-1
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
@@ -3618,6 +3630,10 @@ people_velocity_tracker:
   url: https://github.com/OSUrobotics/people-release.git
   vcs: git
   version: release/melodic/people_velocity_tracker/1.2.0-1
+pepper_meshes:
+  url: https://github.com/ros-naoqi/pepper_meshes-release.git
+  vcs: git
+  version: release/melodic/pepper_meshes/0.2.4-3
 pepperl_fuchs_r2000:
   url: https://github.com/dillenberger/pepperl_fuchs-release.git
   vcs: git
@@ -3705,7 +3721,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.5.0-1
+  version: release/melodic/planner_cspace/0.5.1-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4841,7 +4857,7 @@ safe_teleop_stage:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.5.0-1
+  version: release/melodic/safety_limiter/0.5.1-1
 safety_limiter_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4857,7 +4873,7 @@ sand_island:
 sbg_driver:
   url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
-  version: release/melodic/sbg_driver/1.1.7-0
+  version: release/melodic/sbg_driver/2.0.0-1
 sbpl:
   url: https://github.com/ros-gbp/sbpl-release.git
   vcs: git
@@ -5293,11 +5309,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.5.0-1
+  version: release/melodic/track_odometry/0.5.1-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.5.0-1
+  version: release/melodic/trajectory_tracker/0.5.1-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
