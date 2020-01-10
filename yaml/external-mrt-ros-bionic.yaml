@@ -2578,6 +2578,10 @@ libqt_widgets:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
   version: release/melodic/libqt_widgets/1.0.1-0
+librealsense2:
+  url: https://github.com/IntelRealSense/librealsense2-release.git
+  vcs: git
+  version: release/melodic/librealsense2/2.31.0-3
 libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -4258,6 +4262,14 @@ rdl_urdfreader:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
   version: release/melodic/rdl_urdfreader/3.2.0-1
+realsense2_camera:
+  url: https://github.com/IntelRealSense/realsense-ros-release.git
+  vcs: git
+  version: release/melodic/realsense2_camera/2.2.11-1
+realsense2_description:
+  url: https://github.com/IntelRealSense/realsense-ros-release.git
+  vcs: git
+  version: release/melodic/realsense2_description/2.2.11-1
 resized_image_transport:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -4589,7 +4601,7 @@ roseus_tutorials:
 rosfmt:
   url: https://github.com/xqms/rosfmt-release.git
   vcs: git
-  version: release/melodic/rosfmt/6.1.0-1
+  version: release/melodic/rosfmt/6.2.0-1
 roslisp_common:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
