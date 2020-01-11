@@ -1165,7 +1165,7 @@ dwb_plugins:
 dynamic_edt_3d:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/dynamic_edt_3d/1.9.3-1
+  version: release/melodic/dynamic_edt_3d/1.9.0-1
 dynamic_robot_state_publisher:
   url: https://github.com/peci1/dynamic_robot_state_publisher-release.git
   vcs: git
@@ -3401,7 +3401,7 @@ octomap_server:
 octovis:
   url: https://github.com/ros-gbp/octomap-release.git
   vcs: git
-  version: release/melodic/octovis/1.9.3-1
+  version: release/melodic/octovis/1.9.0-1
 odom_frame_publisher:
   url: https://github.com/OUXT-Polaris/odom_frame_publisher-release.git
   vcs: git
