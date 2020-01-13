@@ -16,36 +16,41 @@ if(DEFINED MRT_CLANG_TIDY_FLAGS)
         message(WARNING "Failed to find clang-tidy. Is it installed?")
     endif()
 endif()
+unset(MRT_CLANG_TIDY_FLAGS)
 
-# Set build flags to MRT_SANITIZER_CXX_FLAGS based on the current sanitizer configuration
-# based on the configruation in the MRT_SANITIZER variable
-if(MRT_SANITIZER STREQUAL "checks")
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
-        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
-        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
-    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
-        set(MRT_SANITIZER_EXE_CXX_FLAGS "-fsanitize=address,leak,undefined,float-divide-by-zero,float-cast-overflow" "-fsanitize-recover=alignment")
-        set(MRT_SANITIZER_LINK_FLAGS "-static-libasan" "-lubsan")
+# construct the mrt_sanitizer_lib_flags and  mrt_sanitizer_exe_flags target based on the configuation in the MRT_SANITIZER variable
+if(NOT TARGET ${PROJECT_NAME}_sanitizer_lib_flags AND NOT TARGET ${PROJECT_NAME}_sanitizer_exe_flags)
+    add_library(${PROJECT_NAME}_sanitizer_lib_flags INTERFACE)
+    add_library(${PROJECT_NAME}_sanitizer_exe_flags INTERFACE)
+    set(gcc_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>,$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,6.3>>")
+    if(MRT_SANITIZER STREQUAL "checks" OR MRT_SANITIZER STREQUAL "check_race")
+        target_compile_options(${PROJECT_NAME}_sanitizer_lib_flags INTERFACE
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+            )
+        target_compile_options(${PROJECT_NAME}_sanitizer_exe_flags INTERFACE
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+            )
+        target_link_options(${PROJECT_NAME}_sanitizer_lib_flags INTERFACE
+            $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+            $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+            )
+        target_link_options(${PROJECT_NAME}_sanitizer_exe_flags INTERFACE
+            $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+            $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow>
+            )
+        # your brain just exploded due to all this? mine did too...
     endif()
-    set(MRT_SANITIZER_ENABLED 1)
-elseif(MRT_SANITIZER STREQUAL "check_race")
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow")
-    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow")
-    endif()
-    set(MRT_SANITIZER_LINK_FLAGS "-static-libtsan")
-    set(MRT_SANITIZER_ENABLED 1)
-endif()
-if(MRT_SANITIZER_ENABLED AND MRT_SANITIZER_RECOVER STREQUAL "no_recover")
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.3)
-        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
-    elseif(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9)
-        set(MRT_SANITIZER_CXX_FLAGS "-fno-sanitize-recover=undefined,float-divide-by-zero,float-cast-overflow" ${MRT_SANITIZER_CXX_FLAGS})
-    endif()
-endif()
+endif() # create sanitizer target
+
+# set some global variables needed/modified by the functions below
+set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "include")  # where we can find includes. This variable my be extended by future function calls
+set(${PROJECT_NAME}_PYTHON_API_TARGET "")          # contains the list of python api targets
+set(${PROJECT_NAME}_GENERATED_LIBRARIES "")        # the list of library targets built and installed by the tools
+set(${PROJECT_NAME}_MRT_TARGETS "")                # list of all public installable targets created by the functions here
 
 # define rosparam/rosinterface_handler macro for compability. Macros will be overriden by the actual macros defined by the packages, if existing.
 macro(generate_ros_parameter_files)
@@ -59,7 +64,7 @@ macro(generate_ros_parameter_files)
         endif()
     endforeach()
     # generate dynamic reconfigure files
-    if(_${PROJECT_NAME}_pure_cfg_files AND NOT TARGET ${PROJECT_NAME}_gencfg AND NOT rosinterface_handler_FOUND_CATKIN_PROJECT)
+    if(_${PROJECT_NAME}_pure_cfg_files AND NOT TARGET ${PROJECT_NAME}_gencfg AND NOT (rosinterface_handler_FOUND_CATKIN_PROJECT OR rosinterface_handler_FOUND))
         if(dynamic_reconfigure_FOUND_CATKIN_PROJECT)
             generate_dynamic_reconfigure_options(${_${PROJECT_NAME}_pure_cfg_files})
         else()
@@ -67,7 +72,7 @@ macro(generate_ros_parameter_files)
         endif()
     endif()
     # if there are other config files, someone will have forgotten to include the rosparam/rosinterface handler
-    if(_${PROJECT_NAME}_rosparam_other_param_files AND NOT rosinterface_handler_FOUND_CATKIN_PROJECT)
+    if(_${PROJECT_NAME}_rosparam_other_param_files AND NOT (rosinterface_handler_FOUND_CATKIN_PROJECT OR rosinterface_handler_FOUND))
         message(FATAL_ERROR "Dependency rosinterface_handler or rosparam_handler could not be found. Did you add it to your package.xml?")
     endif()
 endmacro()
@@ -102,6 +107,90 @@ macro(_setup_coverage_info)
     endif()
 endmacro()
 
+#
+# Adds all the librares and targets that this target should be linked against. This includes dependencies found by AutoDeps, compiler flags and sanitizers.
+#
+# This function is automatically called for all targets created with mrt_add_(executable/library/test/...).
+#
+# :param CUDA: indicates this is cuda and not C++ code
+#
+# Example:
+# ::
+#
+#  mrt_add_links(my_target [CUDA]
+#      )
+#
+# @public
+#
+function(mrt_add_links target)
+    cmake_parse_arguments(ARG "CUDA;NO_SANITIZER;TEST" "" "" ${ARGN})
+    cmake_policy(SET CMP0023 OLD) # rostest still uses the old target_link_libraries approach...
+    get_target_property(target_type ${target} TYPE)
+
+    # add dependencies
+    if(ARG_CUDA)
+        # this is a cuda target
+        if(TARGET auto_deps_cuda)
+            target_link_libraries(${target} PRIVATE auto_deps_cuda)
+        endif()
+    else()
+        if(NOT target_type STREQUAL "INTERFACE_LIBRARY")
+            if(TARGET auto_deps)
+                target_link_libraries(${target} PRIVATE auto_deps)
+            endif()
+            if(TARGET auto_deps_export)
+                target_link_libraries(${target} PUBLIC auto_deps_export)
+            endif()
+        elseif()
+            if(TARGET auto_deps_export)
+                target_link_libraries(${target} INTERFACE auto_deps_export)
+            endif()
+        endif()
+
+    endif()
+    # add test depends
+    if(ARG_TEST AND TARGET auto_deps_test)
+        target_link_libraries(${target} PRIVATE auto_deps_test)
+    endif()
+
+    # add sanitizer flags if set
+    if(NOT ARG_NO_SANITIZER)
+        if(target_type STREQUAL "EXECUTABLE")
+            if(TARGET ${PROJECT_NAME}_sanitizer_exe_flags)
+                target_link_libraries(${target} PRIVATE ${PROJECT_NAME}_sanitizer_exe_flags)
+            endif()
+        elseif(NOT target_type STREQUAL "INTERFACE_LIBRARY")
+            if(TARGET ${PROJECT_NAME}_sanitizer_lib_flags)
+                target_link_libraries(${target} PRIVATE ${PROJECT_NAME}_sanitizer_lib_flags)
+            endif()
+        endif()
+    endif()
+
+    # add compile flags
+    if(ARG_CUDA)
+        # below cmake 3.17, setting cpp standard also affects the cuda standard. So we cannot use the normal compiler_flags.
+        if(TARGET cuda_compiler_flags)
+            target_link_libraries(${target} PRIVATE cuda_compiler_flags)
+        endif()
+    elseif(NOT target_type STREQUAL "INTERFACE_LIBRARY")
+        if(TARGET ${PROJECT_NAME}_compiler_flags)
+            target_link_libraries(${target} PUBLIC ${PROJECT_NAME}_compiler_flags)
+        endif()
+        if(TARGET ${PROJECT_NAME}_private_compiler_flags)
+            target_link_libraries(${target} PRIVATE ${PROJECT_NAME}_private_compiler_flags)
+        endif()
+    else()
+        if(TARGET ${PROJECT_NAME}_compiler_flags)
+            target_link_libraries(${target} INTERFACE ${PROJECT_NAME}_compiler_flags)
+        endif()
+    endif() # interface library or not
+
+    # set dependencies to exported targets like messages and such
+    set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+    if(_deps)
+        add_dependencies(${target} ${_deps})
+    endif()
+endfunction()
 
 #
 # Registers the custom check_tests command and adds a dependency for a certain unittest
@@ -364,25 +453,14 @@ function(mrt_add_python_api modulename)
 
         set_target_properties(${TARGET_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PYTHON_MODULE_DIR}")
 
-        target_compile_definitions(${TARGET_NAME} PRIVATE -DPYTHON_API_MODULE_NAME=${LIBRARY_NAME})
-
-        target_link_libraries( ${TARGET_NAME} PRIVATE
-            ${catkin_LIBRARIES}
-            ${mrt_LIBRARIES}
-            ${MRT_SANITIZER_LINK_FLAGS}
-            )
-
-        set(_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
-        if(_deps)
-            add_dependencies(${TARGET_NAME} ${_deps})
-        endif()
+        target_compile_definitions(${TARGET_NAME} PRIVATE PYTHON_API_MODULE_NAME=${LIBRARY_NAME})
+        mrt_add_links(${TARGET_NAME} NO_SANITIZER) # you really don't wont to debug python...
         list(APPEND GENERATED_TARGETS ${TARGET_NAME} )
     endforeach()
     configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
 
     # append to list of all targets in this project
     set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
-
     # configure setup.py for install
     set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
     set(PACKAGE_DIR ${DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
@@ -404,9 +482,9 @@ endfunction()
 #
 # :param libname: Name of the library to generate as first argument (without lib or .so)
 # :type libname: string
-# :param INCLUDES: Include files needed for the library, absolute or relative to ${PROJECT_SOURCE_DIR}
+# :param INCLUDES: Public include files needed to use the library, absolute or relative to ${PROJECT_SOURCE_DIR}
 # :type INCLUDES: list of strings
-# :param SOURCES: Source files to be added. If empty, a header-only library is assumed
+# :param SOURCES: Source files and private headers to be added. If no source files are passed, a header-only library is assumed
 # :type SOURCES: list of strings
 # :param DEPENDS: List of extra (non-catkin, non-mrt) dependencies. This should only be required for including external projects.
 # :type DEPENDS: list of strings
@@ -426,7 +504,7 @@ endfunction()
 function(mrt_add_library libname)
     set(LIBRARY_NAME ${libname})
     if(NOT LIBRARY_NAME)
-        message(FATAL_ERROR "No executable name specified for call to mrt_add_library!")
+        message(FATAL_ERROR "No library name specified for call to mrt_add_library!")
     endif()
     cmake_parse_arguments(MRT_ADD_LIBRARY "" "" "INCLUDES;SOURCES;DEPENDS;LIBRARIES" ${ARGN})
     set(LIBRARY_TARGET_NAME ${LIBRARY_NAME})
@@ -435,61 +513,69 @@ function(mrt_add_library libname)
         return()
     endif()
 
-    # catch header-only libraries
+    # generate the library target
     if(NOT MRT_ADD_LIBRARY_SOURCES)
-        # we only set a fake target to make the files show up in IDEs
+        # build a "header-only" library
         message(STATUS "Adding header-only library with files ${MRT_ADD_LIBRARY_INCLUDES}")
-        add_custom_target(${LIBRARY_TARGET_NAME} SOURCES ${MRT_ADD_LIBRARY_INCLUDES})
-        return()
+        add_library(${LIBRARY_TARGET_NAME} INTERFACE)
+    else()
+        # normal library (potentially with cuda sources)
+        foreach(SOURCE_FILE ${MRT_ADD_LIBRARY_SOURCES})
+            get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
+            if ("${FILE_EXT}" STREQUAL ".cu")
+                list(APPEND _MRT_CUDA_SOURCE_FILES "${SOURCE_FILE}")
+            else()
+                list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
+            endif()
+        endforeach()
+
+        # This is the easiest for a CUDA only library: Create an empty file.
+        if(NOT _MRT_CPP_SOURCE_FILES)
+            message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+            file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp" "")
+            list(APPEND _MRT_CPP_SOURCE_FILES "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp")
+        endif()
+
+        # generate the target
+        message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}")
+        add_library(${LIBRARY_TARGET_NAME}
+            ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES}
+            )
+        set_target_properties(${LIBRARY_TARGET_NAME}
+            PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+            )
+        target_compile_options(${LIBRARY_TARGET_NAME}
+            PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
+            )
+        if(MRT_ADD_LIBRARY_LIBRARIES)
+            target_link_libraries(${LIBRARY_TARGET_NAME} PRIVATE
+                ${MRT_ADD_LIBRARY_LIBRARIES}
+                )
+        endif()
+        get_target_property(idirs ${LIBRARY_TARGET_NAME} INCLUDE_DIRECTORIES)
+        message("idirs after: ${idirs}")
+        # link to python_api if existing (needs to be declared before this library)
+        foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
+            target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
+        endforeach()
+        set(${PROJECT_NAME}_EXPORTED_TARGETS ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET} PARENT_SCOPE)
     endif()
 
-    foreach(SOURCE_FILE ${MRT_ADD_LIBRARY_SOURCES})
-        get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
-        if ("${FILE_EXT}" STREQUAL ".cu")
-            list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
-            set(_MRT_HAS_CUDA_SOURCE_FILES TRUE)
-        else()
-            list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
-            set(_MRT_HAS_CPP_SOURCE_FILES TRUE)
+    # set the include dir for installation and dependent targets
+    foreach(dir ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
+        if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir})
+            target_include_directories(${LIBRARY_TARGET_NAME} INTERFACE
+                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${dir}>
+                )
         endif()
     endforeach()
-
-    # This is the easiest for a CUDA only library: Create an empty file.
-    if(NOT _MRT_HAS_CPP_SOURCE_FILES)
-        message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
-        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp" "")
-        list(APPEND _MRT_CPP_SOURCE_FILES "${CMAKE_CURRENT_BINARY_DIR}/empty.cpp")
-    endif()
-
-    # generate the target
-    message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}")
-    add_library(${LIBRARY_TARGET_NAME}
-        ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES}
+    target_include_directories(${LIBRARY_TARGET_NAME} INTERFACE
+        $<INSTALL_INTERFACE:include>
         )
-    set_target_properties(${LIBRARY_TARGET_NAME}
-        PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
-        )
-    target_compile_options(${LIBRARY_TARGET_NAME}
-        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
-        )
-    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_LIBRARY_DEPENDS})
-    if(_combined_deps)
-        add_dependencies(${LIBRARY_TARGET_NAME} ${_combined_deps})
-    endif()
-    target_link_libraries(${LIBRARY_TARGET_NAME}
-        ${catkin_LIBRARIES}
-        ${mrt_LIBRARIES}
-        ${MRT_ADD_LIBRARY_LIBRARIES}
-        ${MRT_SANITIZER_CXX_FLAGS}
-        ${MRT_SANITIZER_LINK_FLAGS}
-        )
-    # add dependency to python_api if existing (needs to be declared before this library)
-    foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
-        target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
-    endforeach()
+    mrt_add_links(${LIBRARY_TARGET_NAME})
 
     # Add cuda target
-    if (_MRT_HAS_CUDA_SOURCE_FILES)
+    if (_MRT_CUDA_SOURCE_FILES)
         if (NOT DEFINED CUDA_FOUND)
             message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>cuda</depend> to your package.xml.")
         endif()
@@ -499,18 +585,18 @@ function(mrt_add_library libname)
         # NVCC does not like '-' in file names.
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
-        message(STATUS "Adding library \"${CUDA_TARGET_NAME}\" with source ${_MRT_CUDA_SOURCES_FILES}")
+        message(STATUS "Adding library \"${CUDA_TARGET_NAME}\" with source ${_MRT_CUDA_SOURCE_FILES}")
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-            cuda_add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            cuda_add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCE_FILES})
         else()
-            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCE_FILES})
             # We cannot link to all libraries as nvcc does not unterstand all the flags
             # etc. which could be passed to target_link_libraries as a target. So the
             # dependencies were added to the mrt_CUDA_LIBRARIES variable.
-            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+            mrt_add_links(${CUDA_TARGET_NAME} CUDA)
         endif()
 
         # link cuda library to executable
@@ -583,14 +669,13 @@ function(mrt_add_executable execname)
         get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
         if ("${FILE_EXT}" STREQUAL ".cu")
             list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
-            set(_MRT_HAS_CUDA_SOURCE_FILES TRUE)
         else()
             list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
         endif()
     endforeach()
 
     # generate the target
-    message(STATUS "Adding executable \"${EXEC_NAME}\"")
+    message(STATUS "Adding executable \"${EXEC_NAME}\" with source: ${_MRT_CPP_SOURCE_FILES}")
     add_executable(${EXEC_TARGET_NAME}
         ${EXEC_SOURCE_FILES_INC}
         ${_MRT_CPP_SOURCE_FILES}
@@ -604,21 +689,19 @@ function(mrt_add_executable execname)
     target_include_directories(${EXEC_TARGET_NAME}
         PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
         )
-    set(_combined_deps ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_EXECUTABLE_DEPENDS})
-    if(_combined_deps)
-        add_dependencies(${EXEC_TARGET_NAME} ${_combined_deps})
+    mrt_add_links(${EXEC_TARGET_NAME})
+    if(MRT_ADD_EXECUTABLE_DEPENDS)
+        add_dependencies(${EXEC_TARGET_NAME} ${MRT_ADD_EXECUTABLE_DEPENDS})
     endif()
-    target_link_libraries(${EXEC_TARGET_NAME} PRIVATE
-        ${catkin_LIBRARIES}
-        ${mrt_LIBRARIES}
-        ${MRT_ADD_EXECUTABLE_LIBRARIES}
-        ${MRT_SANITIZER_EXE_CXX_FLAGS}
-        ${MRT_SANITIZER_LINK_FLAGS}
-        ${${PROJECT_NAME}_GENERATED_LIBRARIES}
-        )
+    if(MRT_ADD_EXECUTABLE_LIBRARIES)
+        target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${MRT_ADD_EXECUTABLE_LIBRARIES})
+    endif()
+    if(${PROJECT_NAME}_GENERATED_LIBRARIES)
+        target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+    endif()
 
     # Add cuda target
-    if (_MRT_HAS_CUDA_SOURCE_FILES)
+    if (_MRT_CUDA_SOURCE_FILES)
         if (NOT DEFINED CUDA_FOUND)
             message(FATAL_ERROR "Found CUDA source file but no dependency to CUDA. Please add <depend>CUDA</depend> to your package.xml.")
         endif()
@@ -638,13 +721,15 @@ function(mrt_add_executable execname)
             # We cannot link to all libraries as nvcc does not unterstand all the flags
             # etc. which could be passed to target_link_libraries as a target. So the
             # dependencies were added to the mrt_CUDA_LIBRARIES variable.
-            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${mrt_CUDA_LIBRARIES})
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
+            mrt_add_links(${CUDA_TARGET_NAME} CUDA)
+            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${MRT_ADD_EXECUTABLE_LIBRARIES})
         endif()
 
         # link cuda library to executable
         target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
+        set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${CUDA_TARGET_NAME} PARENT_SCOPE)
     endif()
 
     # append to list of all targets in this project
@@ -682,7 +767,7 @@ endfunction()
 #       FOLDER src/example_package
 #       )
 #
-# The resulting entry in the ``nodelet_plugins.xml`` is thus: <library path="lib/libexample_package_nodelet">
+# The resulting entry in the ``nodelet_plugins.xml`` is thus: <library path="lib/libexample_package-example_package-nodelet">
 #
 # @public
 #
@@ -716,33 +801,36 @@ function(mrt_add_nodelet nodeletname)
     endif ()
 
     # determine library name
-    STRING(REGEX REPLACE "_node" "" NODELET_NAME ${NODELET_NAME})
-    STRING(REGEX REPLACE "_nodelet" "" NODELET_NAME ${NODELET_NAME})
-    set(NODELET_NAME ${NODELET_NAME}_nodelet)
 
     # generate the target
     message(STATUS "Adding nodelet \"${NODELET_NAME}\"")
-    add_library(${NODELET_TARGET_NAME}
-        ${NODELET_SOURCE_FILES_INC}
-        ${NODELET_SOURCE_FILES_SRC}
+    mrt_add_library(${NODELET_TARGET_NAME}
+        INCLUDES ${NODELET_SOURCE_FILES_INC}
+        SOURCES ${NODELET_SOURCE_FILES_SRC}
+        DEPENDS ${MRT_ADD_NODELET_DEPENDS}
+        LIBRARIES ${MRT_ADD_NODELET_LIBRARIES}
         )
-    set_target_properties(${NODELET_TARGET_NAME}
-        PROPERTIES OUTPUT_NAME ${NODELET_NAME}
+
+
+    # the nodelet library used to be referenced as lib"nodeletname" in ros. For backward compability we still provide a symlink to older versions
+    if(MRT_PKG_VERSION VERSION_LESS 3.1)
+        STRING(REGEX REPLACE "_node" "" OLD_NODELET_NAME ${nodeletname})
+        STRING(REGEX REPLACE "_nodelet" "" OLD_NODELET_NAME ${OLD_NODELET_NAME})
+        set(OLD_NODELET_NAME ${OLD_NODELET_NAME}_nodelet)
+        add_custom_command(TARGET ${NODELET_TARGET_NAME} POST_BUILD
+            COMMAND ln -sf $<TARGET_FILE_NAME:${NODELET_TARGET_NAME}> lib${OLD_NODELET_NAME}.so
+            WORKING_DIRECTORY $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>
+            )
+        install(FILES $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>/lib${OLD_NODELET_NAME}.so DESTINATION lib)
+    endif()
+    # make nodelet headers available in unittests
+    target_include_directories(${NODELET_TARGET_NAME} INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${MRT_ADD_NODELET_FOLDER}>
         )
-    target_compile_options(${NODELET_TARGET_NAME}
-        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
-        )
-    add_dependencies(${NODELET_TARGET_NAME} ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${MRT_ADD_NODELET_DEPENDS})
-    target_link_libraries(${NODELET_TARGET_NAME}
-        ${catkin_LIBRARIES}
-        ${mrt_LIBRARIES}
-        ${MRT_ADD_NODELET_LIBRARIES}
-        ${MRT_SANITIZER_CXX_FLAGS}
-        ${MRT_SANITIZER_LINK_FLAGS}
-        )
-    # append to list of all targets in this project
-    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${NODELET_TARGET_NAME} PARENT_SCOPE)
-    set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} ${NODELET_TARGET_NAME} PARENT_SCOPE)
+    # pass lists on to parent scope. We are not exporting the library, because they are not supposed to be used by external projects
+    set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
+    get_filename_component(folder ${MRT_ADD_NODELET_FOLDER} DIRECTORY)
+    set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/${folder} PARENT_SCOPE)
 endfunction()
 
 
@@ -786,7 +874,6 @@ function(mrt_add_node_and_nodelet basename)
         message(FATAL_ERROR "No base name specified for call to mrt_add_node_and_nodelet()!")
     endif()
     set(NODELET_TARGET_NAME ${PROJECT_NAME}-${BASE_NAME}-nodelet)
-
     # add nodelet
     mrt_add_nodelet(${BASE_NAME}
         FOLDER ${MRT_ADD_NN_FOLDER}
@@ -799,7 +886,7 @@ function(mrt_add_node_and_nodelet basename)
     set(${PROJECT_NAME}_MRT_TARGETS ${${PROJECT_NAME}_MRT_TARGETS} PARENT_SCOPE)
 
     # search the files we have to build with
-    if(NOT TARGET ${NODELET_TARGET_NAME} OR DEFINED MRT_SANITIZER_ENABLED)
+    if(NOT TARGET ${NODELET_TARGET_NAME})
         unset(NODELET_TARGET_NAME)
         mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
     else()
@@ -866,23 +953,12 @@ function(mrt_add_ros_tests folder)
         if(EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.cpp")
             message(STATUS "Adding gtest-rostest \"${TEST_TARGET_NAME}\" with test file ${_ros_test}")
             add_rostest_gtest(${TEST_TARGET_NAME} ${_ros_test} "${TEST_FOLDER}/${_test_name}.cpp")
-            target_compile_options(${TEST_TARGET_NAME}
-                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
-                )
-            target_link_libraries(${TEST_TARGET_NAME}
-                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
-                ${catkin_LIBRARIES}
-                ${mrt_TEST_LIBRARIES}
-                ${MRT_ADD_ROS_TESTS_LIBRARIES}
-                ${MRT_SANITIZER_EXE_CXX_FLAGS}
-                ${MRT_SANITIZER_LINK_FLAGS}
-                gtest_main
-                )
-            target_include_directories(${TEST_TARGET_NAME}
-                PRIVATE ${PROJECT_BINARY_DIR}/tests)
-            add_dependencies(${TEST_TARGET_NAME}
-                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_ROS_TESTS_DEPENDS}
-                )
+            mrt_add_links(${TEST_TARGET_NAME} TEST)
+            target_link_libraries(${TEST_TARGET_NAME} PRIVATE gtest_main ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+            if(MRT_ADD_ROS_TESTS_DEPENDS)
+                add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_ROS_TESTS_DEPENDS})
+            endif()
+            target_include_directories(${TEST_TARGET_NAME} PRIVATE ${PROJECT_BINARY_DIR}/tests)
             set_target_properties(${TEST_TARGET_NAME} PROPERTIES OUTPUT_NAME ${TEST_NAME})
             set(TARGET_ADDED True)
         else()
@@ -939,23 +1015,13 @@ function(mrt_add_tests folder)
         if(NOT EXISTS "${PROJECT_SOURCE_DIR}/${TEST_FOLDER}/${_test_name}.test")
             message(STATUS "Adding gtest unittest \"${TEST_TARGET_NAME}\" with working dir ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
-            target_link_libraries(${TEST_TARGET_NAME}
-                ${${PROJECT_NAME}_GENERATED_LIBRARIES}
-                ${catkin_LIBRARIES}
-                ${mrt_TEST_LIBRARIES}
-                ${MRT_ADD_TESTS_LIBRARIES}
-                ${MRT_SANITIZER_EXE_CXX_FLAGS}
-                ${MRT_SANITIZER_LINK_FLAGS}
-                gtest_main)
-            target_compile_options(${TEST_TARGET_NAME}
-                PRIVATE ${MRT_SANITIZER_EXE_CXX_FLAGS}
-                )
+            mrt_add_links(${TEST_TARGET_NAME} TEST)
+            target_link_libraries(${TEST_TARGET_NAME} PRIVATE gtest_main ${${PROJECT_NAME}_GENERATED_LIBRARIES})
             target_include_directories(${TEST_TARGET_NAME}
                 PRIVATE ${PROJECT_BINARY_DIR}/tests)
-
-            add_dependencies(${TEST_TARGET_NAME}
-                ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_MRT_TARGETS} ${MRT_ADD_TESTS_DEPENDS}
-                )
+            if(MRT_ADD_TESTS_DEPENDS)
+                add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_TESTS_DEPENDS})
+            endif()
             set(TARGET_ADDED True)
         endif()
     endforeach()
@@ -1034,13 +1100,15 @@ function(mrt_install)
     endif()
 
     # install header
-    if(EXISTS ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/)
-        message(STATUS "Marking HEADER FILES in \"include\" folder of package \"${PROJECT_NAME}\" for installation")
-        install(DIRECTORY include/${PROJECT_NAME}/
-            DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-            PATTERN ".gitignore" EXCLUDE
-            )
-    endif()
+    foreach(include_dir ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
+        if(EXISTS ${PROJECT_SOURCE_DIR}/${include_dir}/)
+            message(STATUS "Marking HEADER FILES in \"include\" folder of package \"${PROJECT_NAME}\" for installation")
+            install(DIRECTORY ${include_dir}
+                DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+                FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hh" PATTERN "*.cuh"
+                )
+        endif()
+    endforeach()
 
     # helper function for installing programs
     function(mrt_install_program program_path)
