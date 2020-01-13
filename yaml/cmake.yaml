@@ -132,7 +132,7 @@ libigl:
   name: IGL
 liblapack-dev:
   name: LAPACK
-  targets: [lapack]
+  libraries: [LAPACK_LIBRARIES]
 libnlopt-dev:
   components: []
   include_dirs: [nlopt_INCLUDE_DIR]
