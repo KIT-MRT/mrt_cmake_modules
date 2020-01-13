@@ -19,10 +19,13 @@ import os
 import sys
 import subprocess
 import platform
-import xml.etree.ElementTree as ET
 import yaml
 from catkin_pkg.packages import find_packages
 from string import Template
+try:
+    import xml.etree.cElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
 try:
     from yaml import CLoader as Loader
 except ImportError:
@@ -124,17 +127,14 @@ def findWorkspaceRoot(packageXmlFilename):
 
 def readPackageCMakeData(rosDebYamlFileName):
     """
-    Read the cmake meta data for packages from a rosdep yaml file.
-    The yaml file format is extended with a cmake node:
+    Read the cmake meta data for packages from a cmake yaml file:
     package1:
-      ubuntu: [ ... ]
-      cmake:
         xenial/trusty:
-          name: ...
-          include_dirs: []
-          library_dirs: []
-          libraries: []
-          components: []
+            name: ...
+            include_dirs: []
+            library_dirs: []
+            libraries: []
+            components: []
     """
     # load ros dep yaml file
     f = open(rosDebYamlFileName, "r")
@@ -160,16 +160,15 @@ def readPackageCMakeData(rosDebYamlFileName):
     return data
 
 
-def parseManifest(parsed_xml, catkin_packages, validate=True):
+def parseManifest(parsed_xml, catkin_packages):
     # check catkin package xml file
-    if validate:
-        if parsed_xml.tag != 'package':
-            raise Exception("Cannot find package node in xml file")
-        if 'format' not in parsed_xml.attrib:
-            raise Exception(
-                "Catkin package format must be 2. Change package.xml to <package format=\"2\">")
-        if not (parsed_xml.attrib['format'] == "2" or parsed_xml.attrib['format'] == "3"):
-            raise Exception("Package format must be 2 or 3")
+    if parsed_xml.tag != 'package':
+        raise Exception("Cannot find package node in xml file")
+    if 'format' not in parsed_xml.attrib:
+        raise Exception(
+            "Catkin package format must be 2. Change package.xml to <package format=\"2\">")
+    if not (parsed_xml.attrib['format'] == "2" or parsed_xml.attrib['format'] == "3"):
+        raise Exception("Package format must be 2 or 3")
 
     # variable used to hold the Dependency classes from the package xml
     depends = []
@@ -181,12 +180,7 @@ def parseManifest(parsed_xml, catkin_packages, validate=True):
         # check conditions
         condition = child.get("condition")
         if condition:
-            try:
-                is_fulfilled = eval_expr(Template(condition).substitute(os.environ))
-            except:
-                if validate:
-                    raise
-                is_fulfilled = True
+            is_fulfilled = eval_expr(Template(condition).substitute(os.environ))
             if not is_fulfilled:
                 continue
 
@@ -225,27 +219,6 @@ def parseManifest(parsed_xml, catkin_packages, validate=True):
     return depends, cuda_depends
 
 
-def gatherDependeciesRecursive(manifest, catkin_packages, ignored_packages=set()):
-    first_pass = not ignored_packages
-    all_deps, cuda_depends = parseManifest(manifest, catkin_packages, validate=first_pass)
-    depends = all_deps if first_pass else []
-    for dep in depends:
-        # only first-level dependencies have to be resolved, all others are resolved if possible.
-        dep.optional = False
-    # recursively gather the build_export_depends of these dependencies
-    for dep in all_deps:
-        if not first_pass and not dep.build_export_depend:
-            continue
-        if dep.name in ignored_packages:
-            continue
-        ignored_packages.add(dep.name)
-        if not first_pass and not dep.isCatkin():
-            depends.append(dep)
-        if dep.isCatkin():
-            depends += gatherDependeciesRecursive(catkin_packages[dep.name], catkin_packages, ignored_packages)[0]
-    return depends, cuda_depends
-
-
 def getCatkinPackages(workspaceRoot):
     """Get all available catkin packages"""
     manifest = "package.xml"
@@ -263,7 +236,7 @@ def getCatkinPackages(workspaceRoot):
                 export = package.find("export")
                 # ignore metapackages
                 if export is None or export.find("metapackage") is None:
-                    name = package.findtext("name", default=os.path.basename(root))
+                    name = package.find("name").text
                     if not name in packages:
                         packages[name] = package
                 dirs[:] = []
@@ -306,33 +279,24 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     # to automatically create a find_package(...)
     cmakeVarData = readPackageCMakeData(rosDepYamlFileName)
 
-    depends, cuda_depends = gatherDependeciesRecursive(tree, catkin_packages)
+    depends, cuda_depends = parseManifest(tree, catkin_packages)
     # clear optional deps for which no cmake data is available
     depends = [d for d in depends if d.isCatkin() or not d.optional or d.name in cmakeVarData]
     # check CUDA depends and categorize them as either catkin or other package
     depends_names = {d.name for d in depends}
-    cuda_catkin_depends = []
-    cuda_other_depends = []
     for cuda_depend in cuda_depends:
         if cuda_depend not in depends_names:
             raise Exception(("CUDA package {0} specified as dependency but not specified "
                              "as regular <depend...>. Please add a depend like <depend>{0}"
                              "</depend> to your package.xml.").format(cuda_depend))
 
-        if cuda_depend in catkin_packages:
-            cuda_catkin_depends.append(cuda_depend)
-        else:
-            cuda_other_depends.append(cuda_depend)
-
     # output variables
     out = {}
     out["dependend_packages"] = " ".join(depend.name for depend in depends)
-    out["catkin_pkgs"] = " ".join(s.name  for s in depends if s.isCatkin() and s.build_depend)
-    out["catkin_exp_pkgs"] = " ".join(s.name  for s in depends if s.isCatkin() and s.build_export_depend)
-    out["catkin_test_pkgs"] = " ".join(s.name  for s in depends if s.isCatkin() and s.test_depend)
-    out["other_pkgs"] = " ".join(s.name  for s in depends if not s.isCatkin() and s.build_depend)
-    out["other_exp_pkgs"] = " ".join(s.name  for s in depends if not s.isCatkin() and s.build_export_depend)
-    out["other_test_pkgs"] = " ".join(s.name  for s in depends if not s.isCatkin() and s.test_depend)
+    out["catkin_pkgs"] = " ".join(s.name for s in depends if s.isCatkin())
+    out["pkgs"] = " ".join(s.name  for s in depends if s.build_depend)
+    out["exp_pkgs"] = " ".join(s.name  for s in depends if s.build_export_depend)
+    out["test_pkgs"] = " ".join(s.name  for s in depends if s.test_depend)
 
     # generate output file
     f = open(outputFile, "w")
@@ -342,22 +306,17 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             "\n"
             "set(DEPENDEND_PACKAGES $dependend_packages)\n"
             "set(_CATKIN_PACKAGES_ $catkin_pkgs)\n"
-            "set(_CATKIN_EXPORT_PACKAGES_ $catkin_exp_pkgs)\n"
-            "set(_CATKIN_TEST_PACKAGES_ $catkin_test_pkgs)\n"
-            "set(_OTHER_PACKAGES_ $other_pkgs)\n"
-            "set(_OTHER_EXPORT_PACKAGES_ $other_exp_pkgs)\n"
-            "set(_OTHER_TEST_PACKAGES_ $other_test_pkgs)\n\n"
+            "set(_MRT_PACKAGES_ $pkgs)\n"
+            "set(_MRT_EXPORT_PACKAGES_ $exp_pkgs)\n"
+            "set(_MRT_TEST_PACKAGES_ $test_pkgs)\n"
             )
 
     f.write(Template(text).substitute(out))
 
     # write CUDA catkin / other packages
-    if cuda_catkin_depends:
-        f.write("set(_CUDA_CATKIN_PACKAGES_ %s)\n" %
-                ' '.join(cuda_catkin_depends))
-    if cuda_other_depends:
-        f.write("set(_CUDA_OTHER_PACKAGES_ %s)\n" %
-                ' '.join(cuda_other_depends))
+    if cuda_depends:
+        f.write("set(_MRT_CUDA_PACKAGES_ %s)\n" %
+                ' '.join(cuda_depends))
 
     # write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):
