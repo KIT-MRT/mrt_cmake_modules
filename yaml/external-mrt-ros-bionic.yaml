@@ -5509,19 +5509,19 @@ ubiquity_motor:
 ublox:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox/1.2.0-1
+  version: release/melodic/ublox/1.3.0-1
 ublox_gps:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_gps/1.2.0-1
+  version: release/melodic/ublox_gps/1.3.0-1
 ublox_msgs:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_msgs/1.2.0-1
+  version: release/melodic/ublox_msgs/1.3.0-1
 ublox_serialization:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_serialization/1.2.0-1
+  version: release/melodic/ublox_serialization/1.3.0-1
 um6:
   url: https://github.com/ros-drivers-gbp/um6-release.git
   vcs: git
