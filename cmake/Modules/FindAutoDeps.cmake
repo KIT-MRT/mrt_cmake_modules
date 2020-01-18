@@ -24,9 +24,16 @@
 # <prefix>auto_deps_export: A target that contains all libraries which need to be linked publically
 # <prefix>auto_deps_test: A target that contains all libraries which need to be additionally linked by tests. Contains no libraries if enable_testing is off.
 #
-# The prefix will be chosen based on the value of the variable AutoDeps_PREFIX if set.
+# The prefix will be chosen based on the value of the variable AutoDeps_PREFIX if set. Otherwise it is set to "${PROJECT_NAME}::"
 #
 # Also creates a target that has the name component::component for each component passed as an input unless the component itself already defines targets.
+#
+# For compability with catkin, this file also sets mrt_EXPORT_INCLUDE_DIRS and mrt_EXPORT_LIBRARIES to contain all headers
+# and libraries that were found. These can be passed on to catkin_package. This behaviour can be disabled by setting AutoDeps_NO_CATKIN_EXPORT.
+
+if(NOT AutoDeps_PREFIX)
+    set(AutoDeps_PREFIX ${PROJECT_NAME}::)
+endif()
 
 add_library(${AutoDeps_PREFIX}auto_deps INTERFACE IMPORTED)
 add_library(${AutoDeps_PREFIX}auto_deps_test INTERFACE IMPORTED)
@@ -42,16 +49,6 @@ function(_cleanup_includes var_name_include_dir)
         list(REMOVE_ITEM ${var_name_include_dir} "/usr/include" "/usr/local/include")
     endif()
     set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
-endfunction()
-
-function(_add_system_includes targetname)
-    list(FIND ARGN "/opt/mrtsoftware/local/include" _FOUND_LOCAL)
-    list(FIND ARGN "/opt/mrtsoftware/release/include" _FOUND_RELEASE)
-    if(NOT ${_FOUND_LOCAL} EQUAL -1 OR NOT ${_FOUND_RELEASE} EQUAL -1)
-        target_include_directories(${targetname} SYSTEM INTERFACE
-            /opt/mrtsoftware/local/include;/opt/mrtsoftware/release/include
-            )
-    endif()
 endfunction()
 
 function(_remove_debug_libs libs_arg)
@@ -72,15 +69,18 @@ endfunction()
 macro(_find_target output_target component)
     set(_targetname ${component}::${component})
     list(FIND _CATKIN_PACKAGES_ ${component} _is_catkin_package)
-    message(STATUS "Finding target ${component}")
-    if(TARGET ${_targetname})
-        target_link_libraries(${output_target} INTERFACE ${_targetname})
-        message("--> Already exists")
-    elseif(NOT ${_is_catkin_package} EQUAL -1)
+    if(NOT ${_is_catkin_package} EQUAL -1)
         # is catkin package
         find_package(${component} REQUIRED)
-        if(NOT TARGET ${_targetname})
-            # we have to create a new target. catkin does not create them.
+        if(${component}_EXPORTS_TARGETS)
+            # Simple case: Its another package that export targets
+            if(${component}_LIBRARIES)
+                set(_targetname ${${component}_LIBRARIES})
+            else()
+                unset(_targetname) # the imported project seems to be empty
+            endif()
+        elseif(NOT TARGET ${_targetname})
+            # A normal catkin package that doesnt create targets. we have to create a new target.
             add_library(${_targetname} INTERFACE IMPORTED)
             if(${component}_INCLUDE_DIRS)
                 target_include_directories(${_targetname} INTERFACE ${${component}_INCLUDE_DIRS})
@@ -94,17 +94,15 @@ macro(_find_target output_target component)
             if(${component}_EXPORTED_TARGETS)
                 add_dependencies(${_targetname} ${${component}_EXPORTED_TARGETS})
             endif()
-            _add_system_includes(${_targetname} ${${component}_INCLUDE_DIRS})
+            # TODO: All headers in imported targets are automatically "system" in cmake. In a future cmake version, this behaviour might be overridable.
         endif()
-        target_link_libraries(${output_target} INTERFACE ${_targetname})
-        message(STATUS "--> Is catkin package with include: ${${component}_INCLUDE_DIRS}, lib: ${${component}_LIBRARIES}")
-        message(STATUS "found it at ${${component}_DIR}")
     else()
         # its an external package
         if(_${component}_NO_CMAKE_)
             # package is known to set no variables. do nothing.
+            unset(_targetname)
         elseif(NOT DEFINED _${component}_CMAKE_NAME_)
-            message(FATAL_ERROR "Package ${component} is specified for autodepend but no cmake definition was found. Did you resolve dependencies?")
+            message(FATAL_ERROR "Package ${component} was not found. If it is a catkin package: Make sure it is present. If it is an external package: Make sure it is listed in mrt_cmake_modules/yaml/cmake.yaml!")
         else()
             #find non-catkin modules
             if(DEFINED _${component}_CMAKE_COMPONENTS_)
@@ -116,13 +114,11 @@ macro(_find_target output_target component)
             # add them to auto_deps target
             if(DEFINED _${component}_CMAKE_TARGETS_)
                 # the library already defines a target for us. Everything is good.
-                target_link_libraries(${output_target} INTERFACE ${_${component}_CMAKE_TARGETS_})
-                message(STATUS "--> Is externally defined target: ${_${component}_CMAKE_TARGETS_}")
-            else()
+                set(_targetname ${_${component}_CMAKE_TARGETS_})
+            elseif(NOT TARGET ${_targetname})
                 # the library defines no target. Create it from the variables it sets.
                 add_library(${_targetname} INTERFACE IMPORTED)
                 set(_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
-                message("HAVE includes: ${_includes}")
                 _cleanup_includes(_includes)
                 if(_includes)
                     target_include_directories(${_targetname} INTERFACE ${_includes})
@@ -133,15 +129,16 @@ macro(_find_target output_target component)
                 if(${_${component}_CMAKE_LIBRARIES_})
                     target_link_libraries(${_targetname} INTERFACE ${${_${component}_CMAKE_LIBRARIES_}})
                 endif()
-                _add_system_includes(${_targetname} ${includes})
                 unset(_includes)
-                target_link_libraries(${output_target} INTERFACE ${_targetname})
-                message(STATUS "--> Is externally defined variables: include: ${_includes}, libs: ${${_${component}_CMAKE_LIBRARIES_}}")
             endif() # package defines targets
         endif() # package definition is valid
     endif() # catkin vs normal package
-    # cleanup
-    unset(_targetname)
+    # add the target(s) to the output target and cleanup
+    if(_targetname)
+        message(STATUS "Adding ${_targetname} to ${output_target}")
+        target_link_libraries(${output_target} INTERFACE ${_targetname})
+        unset(_targetname)
+    endif()
     unset(_is_catkin_package)
 endmacro()
 
@@ -153,7 +150,6 @@ if(CONAN_PACKAGE_NAME OR EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(CatkinMockForConan)
     return()
 endif()
-
 if (AutoDeps_FIND_COMPONENTS)
     set(_CATKIN_SELECTED_PACKAGES_)
     foreach(_component ${AutoDeps_FIND_COMPONENTS})
@@ -188,6 +184,9 @@ if (AutoDeps_FIND_COMPONENTS)
     endforeach()
 
     # set the variables as expected by catkin_package (for backwards compability)
+    if(AutoDeps_NO_CATKIN_EXPORT)
+        return()
+    endif()
     set(mrt_EXPORT_INCLUDE_DIRS "")
     set(mrt_EXPORT_LIBRARIES "")
     set(catkin_EXPORT_DEPENDS ${_CATKIN_SELECTED_PACKAGES_})
