@@ -46,8 +46,14 @@ if(NOT TARGET ${PROJECT_NAME}_sanitizer_lib_flags AND NOT TARGET ${PROJECT_NAME}
     endif()
 endif() # create sanitizer target
 
+# set install dirs (CMAKE_INSTALL_<dir>). We use them over catkins dirs, but use the same layout as catkin does by default.
+include(GNUInstallDirs)
+if(NOT CATKIN_DEVEL_PREFIX)
+    set(CATKIN_DEVEL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/devel)
+endif()
+
 # set some global variables needed/modified by the functions below
-set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "include")  # where we can find includes. This variable my be extended by future function calls
+set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")  # list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
 set(${PROJECT_NAME}_PYTHON_API_TARGET "")          # contains the list of python api targets
 set(${PROJECT_NAME}_GENERATED_LIBRARIES "")        # the list of library targets built and installed by the tools
 set(${PROJECT_NAME}_MRT_TARGETS "")                # list of all public installable targets created by the functions here
@@ -84,7 +90,7 @@ macro(generate_ros_interface_files)
             list(APPEND _${PROJECT_NAME}_rosif_other_param_files "${_cfg}")
         endif()
     endforeach()
-    if(_${PROJECT_NAME}_rosif_other_param_files AND NOT rosparam_handler_FOUND_CATKIN_PROJECT)
+    if(_${PROJECT_NAME}_rosif_other_param_files AND NOT (rosparam_handler_FOUND_CATKIN_PROJECT OR rosinterface_handler_FOUND))
         message(FATAL_ERROR "Dependency rosinterface_handler or rosparam_handler could not be found. Did you add it to your package.xml?")
     endif()
 endmacro()
@@ -108,7 +114,24 @@ macro(_setup_coverage_info)
 endmacro()
 
 #
+# Parses the package.xml and sets its information in form of cmake variables as ${PACKAGE_NAME}_<info>, where info is
+# one of version, VERSION, MAINTAINER, PACKAGE_FORMAT, <BUILD/BUILD_EXPORT/TEST/EXEC/...>_DEPENDS, URL_<WEBSITE/BUGTRACKER/REPOSITORY>
+#
+# This function must be called before any other of the mrt_* functions can be called.
+#
+# @public
+#
+macro(mrt_parse_package_xml)
+    if(COMMAND catkin_package_xml)
+        find_package(catkin)
+    endif()
+    # TODO: replace this by our own stuff.
+    catkin_package_xml()
+endmacro()
+
+#
 # Adds all the librares and targets that this target should be linked against. This includes dependencies found by AutoDeps, compiler flags and sanitizers.
+# Also sets all local include directories usually required by the target
 #
 # This function is automatically called for all targets created with mrt_add_(executable/library/test/...).
 #
@@ -130,27 +153,63 @@ function(mrt_add_links target)
     # add dependencies
     if(ARG_CUDA)
         # this is a cuda target
-        if(TARGET auto_deps_cuda)
-            target_link_libraries(${target} PRIVATE auto_deps_cuda)
+        if(TARGET ${PROJECT_NAME}::auto_deps_cuda)
+            target_link_libraries(${target} PRIVATE ${PROJECT_NAME}::auto_deps_cuda)
         endif()
     else()
         if(NOT target_type STREQUAL "INTERFACE_LIBRARY")
-            if(TARGET auto_deps)
-                target_link_libraries(${target} PRIVATE auto_deps)
+            if(TARGET ${PROJECT_NAME}::auto_deps)
+                target_link_libraries(${target} PRIVATE ${PROJECT_NAME}::auto_deps)
             endif()
-            if(TARGET auto_deps_export)
-                target_link_libraries(${target} PUBLIC auto_deps_export)
+            if(TARGET ${PROJECT_NAME}::auto_deps_export)
+                # we use the namespaced alias here, because this is how other subdirectories see it
+                target_link_libraries(${target} PUBLIC ${PROJECT_NAME}::auto_deps_export)
             endif()
-        elseif()
-            if(TARGET auto_deps_export)
-                target_link_libraries(${target} INTERFACE auto_deps_export)
+        else()
+            if(TARGET ${PROJECT_NAME}::auto_deps_export)
+                if((MRT_PKG_VERSION AND MRT_PKG_VERSION VERSION_GREATER "3.0.2") OR NOT TARGET ${PROJECT_NAME}_compiler_flags)
+                    target_link_libraries(${target} INTERFACE ${PROJECT_NAME}::auto_deps_export)
+                else()
+                    # we need a workaround for a bug in catkin with interface libraries: they can only have one single link_library...
+                    target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE ${PROJECT_NAME}::auto_deps_export)
+                endif()
             endif()
         endif()
 
     endif()
     # add test depends
-    if(ARG_TEST AND TARGET auto_deps_test)
-        target_link_libraries(${target} PRIVATE auto_deps_test)
+    if(ARG_TEST AND TARGET ${PROJECT_NAME}::auto_deps_test)
+        target_link_libraries(${target} PRIVATE ${PROJECT_NAME}::auto_deps_test)
+    endif()
+
+    # add include dirs
+    if(NOT target_type STREQUAL "INTERFACE_LIBRARY")
+        # For convenience, targets within the project can omit the project name in the include statement for local headers
+        if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
+            target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
+        endif()
+        # set the include dir for installation and dependent targets.
+        foreach(include ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
+            if(EXISTS ${include})
+                target_include_directories(${target} PUBLIC
+                    $<BUILD_INTERFACE:${include}>
+                    )
+            endif()
+        endforeach()
+    else()
+        # set the include dir for installation and dependent targets.
+        foreach(include ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
+            if(EXISTS ${include})
+                target_include_directories(${target} INTERFACE
+                    $<BUILD_INTERFACE:${include}>
+                    )
+            endif()
+        endforeach()
+    endif()
+    if(NOT target_type STREQUAL "EXECUTABLE")
+        target_include_directories(${target} INTERFACE
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+            )
     endif()
 
     # add sanitizer flags if set
@@ -537,12 +596,17 @@ function(mrt_add_library libname)
         endif()
 
         # generate the target
-        message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}")
+        message(STATUS "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}, includes ${MRT_ADD_LIBRARY_INCLUDES}")
         add_library(${LIBRARY_TARGET_NAME}
             ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES}
             )
-        set_target_properties(${LIBRARY_TARGET_NAME}
-            PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+        # extract the major version
+        string(REPLACE "." ";" versions ${${PROJECT_NAME}_VERSION})
+        list(GET versions 0 version_major)
+        set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES
+            OUTPUT_NAME ${LIBRARY_NAME}
+            SOVERSION ${version_major}
+            VERSION ${${PROJECT_NAME}_VERSION}
             )
         target_compile_options(${LIBRARY_TARGET_NAME}
             PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
@@ -552,26 +616,14 @@ function(mrt_add_library libname)
                 ${MRT_ADD_LIBRARY_LIBRARIES}
                 )
         endif()
-        get_target_property(idirs ${LIBRARY_TARGET_NAME} INCLUDE_DIRECTORIES)
-        message("idirs after: ${idirs}")
-        # link to python_api if existing (needs to be declared before this library)
-        foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
-            target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
-        endforeach()
-        set(${PROJECT_NAME}_EXPORTED_TARGETS ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET} PARENT_SCOPE)
+        set(public PUBLIC)
     endif()
-
-    # set the include dir for installation and dependent targets
-    foreach(dir ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
-        if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${dir})
-            target_include_directories(${LIBRARY_TARGET_NAME} INTERFACE
-                $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${dir}>
-                )
-        endif()
+    # link to python_api if existing (needs to be declared before this library)
+    foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
+        target_link_libraries(${_py_api_target} PRIVATE ${LIBRARY_TARGET_NAME})
     endforeach()
-    target_include_directories(${LIBRARY_TARGET_NAME} INTERFACE
-        $<INSTALL_INTERFACE:include>
-        )
+    set(${PROJECT_NAME}_EXPORTED_TARGETS ${${PROJECT_NAME}_EXPORTED_TARGETS} ${${PROJECT_NAME}_PYTHON_API_TARGET} PARENT_SCOPE)
+
     mrt_add_links(${LIBRARY_TARGET_NAME})
 
     # Add cuda target
@@ -683,12 +735,6 @@ function(mrt_add_executable execname)
     set_target_properties(${EXEC_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${EXEC_NAME}
         )
-    target_compile_options(${EXEC_TARGET_NAME}
-        PRIVATE ${MRT_SANITIZER_CXX_FLAGS}
-        )
-    target_include_directories(${EXEC_TARGET_NAME}
-        PRIVATE "${MRT_ADD_EXECUTABLE_FOLDER}"
-        )
     mrt_add_links(${EXEC_TARGET_NAME})
     if(MRT_ADD_EXECUTABLE_DEPENDS)
         add_dependencies(${EXEC_TARGET_NAME} ${MRT_ADD_EXECUTABLE_DEPENDS})
@@ -723,9 +769,9 @@ function(mrt_add_executable execname)
             # dependencies were added to the mrt_CUDA_LIBRARIES variable.
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
-            mrt_add_links(${CUDA_TARGET_NAME} CUDA)
-            target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${MRT_ADD_EXECUTABLE_LIBRARIES})
         endif()
+        mrt_add_links(${CUDA_TARGET_NAME} CUDA)
+        target_link_libraries(${CUDA_TARGET_NAME} PRIVATE ${MRT_ADD_EXECUTABLE_LIBRARIES})
 
         # link cuda library to executable
         target_link_libraries(${EXEC_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
@@ -740,7 +786,7 @@ endfunction()
 #
 # Adds a nodelet.
 #
-# This command ensures the nodelet is compiled with all necessary dependencies. Make sure to add lib{NAME}_nodelet to the ``nodelet_plugins.xml`` file.
+# This command ensures the nodelet is compiled with all necessary dependencies. Make sure to add lib{PROJECT_NAME}-{NAME}-nodelet to the ``nodelet_plugins.xml`` file.
 #
 # .. note:: Make sure to call this after all messages and parameter generation CMAKE-Commands so that all dependencies are visible.
 #
@@ -821,7 +867,7 @@ function(mrt_add_nodelet nodeletname)
             COMMAND ln -sf $<TARGET_FILE_NAME:${NODELET_TARGET_NAME}> lib${OLD_NODELET_NAME}.so
             WORKING_DIRECTORY $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>
             )
-        install(FILES $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>/lib${OLD_NODELET_NAME}.so DESTINATION lib)
+        install(FILES $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>/lib${OLD_NODELET_NAME}.so DESTINATION ${CMAKE_INSTALL_LIBDIR})
     endif()
     # make nodelet headers available in unittests
     target_include_directories(${NODELET_TARGET_NAME} INTERFACE
@@ -829,8 +875,6 @@ function(mrt_add_nodelet nodeletname)
         )
     # pass lists on to parent scope. We are not exporting the library, because they are not supposed to be used by external projects
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
-    get_filename_component(folder ${MRT_ADD_NODELET_FOLDER} DIRECTORY)
-    set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/${folder} PARENT_SCOPE)
 endfunction()
 
 
@@ -958,7 +1002,6 @@ function(mrt_add_ros_tests folder)
             if(MRT_ADD_ROS_TESTS_DEPENDS)
                 add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_ROS_TESTS_DEPENDS})
             endif()
-            target_include_directories(${TEST_TARGET_NAME} PRIVATE ${PROJECT_BINARY_DIR}/tests)
             set_target_properties(${TEST_TARGET_NAME} PROPERTIES OUTPUT_NAME ${TEST_NAME})
             set(TARGET_ADDED True)
         else()
@@ -1017,8 +1060,6 @@ function(mrt_add_tests folder)
             catkin_add_gtest(${TEST_TARGET_NAME} ${_test} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/${TEST_FOLDER})
             mrt_add_links(${TEST_TARGET_NAME} TEST)
             target_link_libraries(${TEST_TARGET_NAME} PRIVATE gtest_main ${${PROJECT_NAME}_GENERATED_LIBRARIES})
-            target_include_directories(${TEST_TARGET_NAME}
-                PRIVATE ${PROJECT_BINARY_DIR}/tests)
             if(MRT_ADD_TESTS_DEPENDS)
                 add_dependencies(${TEST_TARGET_NAME} ${MRT_ADD_TESTS_DEPENDS})
             endif()
@@ -1069,12 +1110,14 @@ endfunction()
 # Installs all relevant project files.
 #
 # All targets added by the mrt_add_<library/executable/nodelet/...> commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
-# Non existing files and folders will be silently ignored. All files will be marked as project files for IDEs.
+# Non existing files and folders will be silently ignored.
 #
 # :param PROGRAMS: List of all folders and files that are programs (python scripts will be indentified and treated separately). Files will be made executable.
 # :type PROGRAMS: list of strings
 # :param FILES: List of non-executable files and folders. Subfolders will be installed recursively.
 # :type FILES: list of strings
+# :param EXPORT_LIBS: List of non-mrt-created libraries that should be installed and exported
+# :type EXPORT_LIBS: list of (interface) library targets
 #
 # Example:
 # ::
@@ -1087,28 +1130,49 @@ endfunction()
 # @public
 #
 function(mrt_install)
-    cmake_parse_arguments(MRT_INSTALL "" "" "PROGRAMS;FILES" ${ARGN})
-
+    cmake_parse_arguments(MRT_INSTALL "" "" "PROGRAMS;FILES;EXPORT_LIBS" ${ARGN})
     # install targets
-    if(${PROJECT_NAME}_MRT_TARGETS)
-        message(STATUS "Marking targets \"${${PROJECT_NAME}_MRT_TARGETS}\" of package \"${PROJECT_NAME}\" for installation")
-        install(TARGETS ${${PROJECT_NAME}_MRT_TARGETS}
-            ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-            LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-            RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+    set(export_targets ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${EXPORT_EXPORT_LIBS})
+    if(export_targets AND TARGET ${PROJECT_NAME}_compiler_flags)
+        # export the public compiler flags of this project
+        list(APPEND export_targets ${PROJECT_NAME}_compiler_flags)
+    endif()
+    set(install_bin ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}) # this is how catkin does it (instead of "bin"). We might think about adding a way to override this...
+    if(export_targets)
+        message(STATUS "Marking libraries \"${${PROJECT_NAME}_MRT_TARGETS}\" of package \"${PROJECT_NAME}\" for installation")
+        install(TARGETS ${export_targets}
+            EXPORT ${PROJECT_NAME}_EXPORTS
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            RUNTIME DESTINATION ${install_bin}
             )
+        set(package_exports ${PROJECT_NAME}_EXPORTS)
+    endif()
+    set(remaining_targets ${${PROJECT_NAME}_MRT_TARGETS})
+    if(${PROJECT_NAME}_GENERATED_LIBRARIES)
+        list(REMOVE_ITEM remaining_targets ${${PROJECT_NAME}_GENERATED_LIBRARIES})
+    endif()
+    if(remaining_targets)
+        if(${PROJECT_NAME}_MRT_TARGETS)
+            message(STATUS "Marking targets \"${remaining_targets}\" of package \"${PROJECT_NAME}\" for installation")
+            install(TARGETS ${remaining_targets}
+                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                RUNTIME DESTINATION ${install_bin}
+                )
+        endif()
     endif()
 
     # install header
-    foreach(include_dir ${${PROJECT_NAME}_LOCAL_INCLUDE_DIRS})
-        if(EXISTS ${PROJECT_SOURCE_DIR}/${include_dir}/)
-            message(STATUS "Marking HEADER FILES in \"include\" folder of package \"${PROJECT_NAME}\" for installation")
-            install(DIRECTORY ${include_dir}
-                DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-                FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hh" PATTERN "*.cuh"
-                )
-        endif()
-    endforeach()
+    if(EXISTS ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME})
+        message(STATUS "Marking HEADER FILES in \"include/${PROJECT_NAME}\" folder of package \"${PROJECT_NAME}\" for installation")
+        # the "/" at the end of the path matters!
+        # TODO: Cmake 3.10(?) supports installing with "TYPE HEADER". That removes the need of "FILES_MATCHING PATTERN".
+        install(DIRECTORY include/${PROJECT_NAME}/
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+            FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hh" PATTERN "*.cuh"
+            )
+    endif()
 
     # helper function for installing programs
     function(mrt_install_program program_path)
@@ -1117,12 +1181,12 @@ function(mrt_install)
         if("${extension}" STREQUAL ".py")
             message(STATUS "Marking PYTHON PROGRAM \"${program}\" of package \"${PROJECT_NAME}\" for installation")
             catkin_install_python(PROGRAMS ${program_path}
-                DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+                DESTINATION ${install_bin}
                 )
         else()
             message(STATUS "Marking PROGRAM \"${program}\" of package \"${PROJECT_NAME}\" for installation")
             install(PROGRAMS ${program_path}
-                DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+                DESTINATION ${install_bin}
                 )
         endif()
     endfunction()
@@ -1146,11 +1210,23 @@ function(mrt_install)
         if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking SHARED CONTENT FOLDER \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(DIRECTORY ${ELEMENT}
-                DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+                DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}
                 )
         elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking FILE \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
-            install(FILES ${ELEMENT} DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+            install(FILES ${ELEMENT} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
         endif()
     endforeach()
+
+    # export the config
+    # ensure catkin_package wasnt already called before. It should already have generated a configuration.
+    if(NOT ${PROJECT_NAME}_CATKIN_PACKAGE)
+        set(${PROJECT_NAME}_CATKIN_PACKAGE TRUE)
+        include(${CMAKE_MODULE_PATH}/ExportPackage.cmake)
+        _mrt_export_package(
+            EXPORTS ${package_exports}
+            LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${EXPORT_TARGETS}
+            TARGETS ${remaining_targets} ${${PROJECT_NAME}_EXPORTED_TARGETS}
+            )
+    endif()
 endfunction()
