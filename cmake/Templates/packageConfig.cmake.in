@@ -16,20 +16,28 @@ set(@PROJECT_NAME@_EXPORTED_TARGETS)
 set(@PROJECT_NAME@_FOUND_CATKIN_PROJECT TRUE)
 set(@PROJECT_NAME@_EXPORTS_TARGETS TRUE)
 
-function(_init_package_dependencies)
+macro(_init_package_dependencies)
     # gets all targets that this package export_depends on and sets var to the name of these targets.
-    # this is in a separate function so that variables set by find_package calls do not escape into the scope of the CMakeLists
+    # because this config file might be used recursively we have to be extra careful that variables set here do not affect each other
+    if(TARGET @PROJECT_NAME@::auto_deps_export)
+        return()
+    endif()
     if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/auto_dep_vars.cmake")
         message(FATAL_ERROR "Project @PROJECT_NAME@ did not export its dependencies properly! No auto_dep file was found.")
     endif()
     # Resolve deps in the same style they were resolved when this project was built
-    include("${CMAKE_CURRENT_LIST_DIR}/auto_dep_vars.cmake") # sets _MRT_EXPORT_PACKAGES_
-    set(AutoDeps_PREFIX "@PROJECT_NAME@::")
-    set(AutoDeps_FIND_COMPONENTS ${_MRT_EXPORT_PACKAGES_})
-    set(AutoDeps_NO_CATKIN_EXPORT TRUE) # disable variable export because catkin is not listening here
-    include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@FindAutoDeps.cmake")
+    include("${CMAKE_CURRENT_LIST_DIR}/auto_dep_vars.cmake") # sets _@PROJECT_NAME@_EXPORT_PACKAGES_
+    
+    set(@PROJECT_NAME@AutoDeps_PREFIX "@PROJECT_NAME@")
+    set(@PROJECT_NAME@AutoDeps_NO_CATKIN_EXPORT TRUE) # disable variable export because catkin is not listening here
+    find_package(@PROJECT_NAME@AutoDeps REQUIRED
+        COMPONENTS ${_@PROJECT_NAME@_EXPORT_PACKAGES_} 
+        PATHS ${CMAKE_CURRENT_LIST_DIR} NO_DEFAULT_PATH
+        )
     find_package(OpenMP) # openmp is by default always a dependency
-endfunction()
+    unset(@PROJECT_NAME@AutoDeps_PREFIX)
+    unset(@PROJECT_NAME@AutoDeps_NO_CATKIN_EXPORT)
+endmacro()
 
 if(@PROJECT_NAME@_LIBRARIES)
     _init_package_dependencies()

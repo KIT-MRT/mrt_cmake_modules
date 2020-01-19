@@ -270,6 +270,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     """
     # read package xml file
     tree = ET.parse(packageXmlFile).getroot()
+    pkg_name = tree.find("name").text
 
     # get all catkin packages to distinguish between
     # catkin and non-catkin packages
@@ -297,6 +298,8 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     out["pkgs"] = " ".join(s.name  for s in depends if s.build_depend)
     out["exp_pkgs"] = " ".join(s.name  for s in depends if s.build_export_depend)
     out["test_pkgs"] = " ".join(s.name  for s in depends if s.test_depend)
+    out["cuda_pkgs"] = " ".join(cuda_depends)
+    out["pkg_name"] = pkg_name
 
     # generate output file
     f = open(outputFile, "w")
@@ -305,18 +308,17 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
             "#Changes will be overritten the next time cmake runs.\n"
             "\n"
             "set(DEPENDEND_PACKAGES $dependend_packages)\n"
-            "set(_CATKIN_PACKAGES_ $catkin_pkgs)\n"
-            "set(_MRT_PACKAGES_ $pkgs)\n"
-            "set(_MRT_EXPORT_PACKAGES_ $exp_pkgs)\n"
-            "set(_MRT_TEST_PACKAGES_ $test_pkgs)\n"
+            "set(_${pkg_name}_CATKIN_PACKAGES_ $catkin_pkgs)\n"
+            "set(_${pkg_name}_PACKAGES_ $pkgs)\n"
+            "set(_${pkg_name}_EXPORT_PACKAGES_ $exp_pkgs)\n"
+            "set(_${pkg_name}_TEST_PACKAGES_ $test_pkgs)\n"
             )
 
     f.write(Template(text).substitute(out))
 
     # write CUDA catkin / other packages
     if cuda_depends:
-        f.write("set(_MRT_CUDA_PACKAGES_ %s)\n" %
-                ' '.join(cuda_depends))
+        f.write(Template("set(_${pkg_name}_CUDA_PACKAGES_ $cuda_pkgs)\n").substitute(out))
 
     # write cmake variables (only those which are used in this package)
     for depend in (s for s in depends if s.name in cmakeVarData):
