@@ -53,6 +53,10 @@ include(GNUInstallDirs)
 if(NOT CATKIN_DEVEL_PREFIX)
     set(CATKIN_DEVEL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/devel)
 endif()
+if(NOT EXISTS ${CATKIN_DEVEL_PREFIX}/include)
+    # ensure that the devel include folder exists
+    file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
+endif()
 
 # set some global variables needed/modified by the functions below
 set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")  # list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
@@ -167,13 +171,10 @@ function(mrt_add_links target)
                 target_link_libraries(${target} PUBLIC ${PROJECT_NAME}::auto_deps_export)
             endif()
         else()
-            if(TARGET ${PROJECT_NAME}::auto_deps_export)
-                if((MRT_PKG_VERSION AND MRT_PKG_VERSION VERSION_GREATER "3.0.2") OR NOT TARGET ${PROJECT_NAME}_compiler_flags)
-                    target_link_libraries(${target} INTERFACE ${PROJECT_NAME}::auto_deps_export)
-                else()
-                    # we need a workaround for a bug in catkin with interface libraries: they can only have one single link_library...
-                    target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE ${PROJECT_NAME}::auto_deps_export)
-                endif()
+            if(NOT (MRT_PKG_VERSION AND MRT_PKG_VERSION VERSION_LESS "3.0.2") AND TARGET ${PROJECT_NAME}::auto_deps_export)
+                # On old cmakelists still using catkin_package, we cannot use the export target on interface libraries,
+                # because catkin tries to interpret generator expressions as libraries. We instead export them though mrt_EXPORTED_LIBRARIES.
+                target_link_libraries(${target} INTERFACE ${PROJECT_NAME}::auto_deps_export)
             endif()
         endif()
 
@@ -186,7 +187,7 @@ function(mrt_add_links target)
     # add include dirs
     if(NOT target_type STREQUAL "INTERFACE_LIBRARY")
         # For convenience, targets within the project can omit the project name in the include statement for local headers
-        if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
+        if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} AND NOT MRT_NO_LOCAL_INCLUDE)
             target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
         endif()
         # set the include dir for installation and dependent targets.
@@ -240,7 +241,9 @@ function(mrt_add_links target)
             target_link_libraries(${target} PRIVATE ${PROJECT_NAME}_private_compiler_flags)
         endif()
     else()
-        if(TARGET ${PROJECT_NAME}_compiler_flags)
+        if(NOT (MRT_PKG_VERSION AND MRT_PKG_VERSION VERSION_LESS "3.0.2") AND TARGET ${PROJECT_NAME}_compiler_flags)
+            # We can not add flags with generator expression to interface libraries because catkin interprets them as libraries.
+            # Its not a problem though, because catkin wouldn't export these flags anyways.
             target_link_libraries(${target} INTERFACE ${PROJECT_NAME}_compiler_flags)
         endif()
     endif() # interface library or not
@@ -327,6 +330,7 @@ macro(mrt_add_action_files folder_name)
     mrt_glob_files(_ROS_ACTION_FILES REL_FOLDER ${folder_name} ${folder_name}/*.action)
     if (_ROS_ACTION_FILES)
         add_action_files(FILES ${_ROS_ACTION_FILES} DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/${folder_name}")
+        set(ROS_GENERATE_ACTION True)
     endif()
 endmacro()
 
@@ -577,13 +581,9 @@ function(mrt_add_library libname)
     cmake_parse_arguments(MRT_ADD_LIBRARY "" "" "INCLUDES;SOURCES;DEPENDS;LIBRARIES" ${ARGN})
     set(LIBRARY_TARGET_NAME ${LIBRARY_NAME})
 
-    if(NOT MRT_ADD_LIBRARY_INCLUDES AND NOT MRT_ADD_LIBRARY_SOURCES)
-        return()
-    endif()
-
     # generate the library target
     if(NOT MRT_ADD_LIBRARY_SOURCES)
-        # build a "header-only" library
+        # build a "header-only" library. This is done even when there are no files at all, so that pure message packages have something other packages can depend on.
         message(STATUS "Adding header-only library with files ${MRT_ADD_LIBRARY_INCLUDES}")
         add_library(${LIBRARY_TARGET_NAME} INTERFACE)
     else()
@@ -625,7 +625,6 @@ function(mrt_add_library libname)
                 ${MRT_ADD_LIBRARY_LIBRARIES}
                 )
         endif()
-        set(public PUBLIC)
     endif()
     # link to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
@@ -655,13 +654,14 @@ function(mrt_add_library libname)
             # We cannot link to all libraries as nvcc does not unterstand all the flags
             # etc. which could be passed to target_link_libraries as a target. So the
             # dependencies were added to the mrt_CUDA_LIBRARIES variable.
+            target_compile_options(${CUDA_TARGET_NAME} PRIVATE --compiler-options -fPIC)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
             set_property(TARGET ${CUDA_TARGET_NAME} PROPERTY CUDA_SEPARABLE_COMPILATION ON)
             mrt_add_links(${CUDA_TARGET_NAME} CUDA)
         endif()
 
-        # link cuda library to executable
-        target_link_libraries(${LIBRARY_TARGET_NAME} ${CUDA_TARGET_NAME})
+        # link cuda library to normal library
+        target_link_libraries(${LIBRARY_TARGET_NAME} PRIVATE ${CUDA_TARGET_NAME})
     endif()
 
     # append to list of all targets in this project
@@ -744,6 +744,10 @@ function(mrt_add_executable execname)
     set_target_properties(${EXEC_TARGET_NAME}
         PROPERTIES OUTPUT_NAME ${EXEC_NAME}
         )
+    # seems superfluous but is necessary to avoid quirks with autmoc'ed files
+    if(MRT_ADD_EXECUTABLE_FOLDER)
+        target_include_directories(${EXEC_TARGET_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${MRT_ADD_EXECUTABLE_FOLDER}")
+    endif()
     mrt_add_links(${EXEC_TARGET_NAME})
     if(MRT_ADD_EXECUTABLE_DEPENDS)
         add_dependencies(${EXEC_TARGET_NAME} ${MRT_ADD_EXECUTABLE_DEPENDS})
@@ -879,8 +883,9 @@ function(mrt_add_nodelet nodeletname)
         install(FILES $<TARGET_FILE_DIR:${NODELET_TARGET_NAME}>/lib${OLD_NODELET_NAME}.so DESTINATION ${CMAKE_INSTALL_LIBDIR})
     endif()
     # make nodelet headers available in unittests
+    get_filename_component(nodelet_dir ${CMAKE_CURRENT_SOURCE_DIR}/${MRT_ADD_NODELET_FOLDER} DIRECTORY)
     target_include_directories(${NODELET_TARGET_NAME} INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${MRT_ADD_NODELET_FOLDER}>
+        $<BUILD_INTERFACE:${nodelet_dir}>
         )
     # pass lists on to parent scope. We are not exporting the library, because they are not supposed to be used by external projects
     set(${PROJECT_NAME}_GENERATED_LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} PARENT_SCOPE)
@@ -1214,11 +1219,11 @@ function(mrt_install)
         if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking SHARED CONTENT FOLDER \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(DIRECTORY ${ELEMENT}
-                DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}
+                DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}
                 )
         elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking FILE \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
-            install(FILES ${ELEMENT} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+            install(FILES ${ELEMENT} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
         endif()
     endforeach()
 
@@ -1226,7 +1231,7 @@ function(mrt_install)
     # ensure catkin_package wasnt already called before. It should already have generated a configuration.
     if(NOT ${PROJECT_NAME}_CATKIN_PACKAGE)
         set(${PROJECT_NAME}_CATKIN_PACKAGE TRUE)
-        include(${CMAKE_MODULE_PATH}/ExportPackage.cmake)
+        include(${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules/ExportPackage.cmake)
         _mrt_export_package(
             EXPORTS ${package_exports}
             LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${EXPORT_TARGETS}

@@ -23,7 +23,6 @@ endif()
 # Add support for std::filesystem. For GCC version <= 8 one needs to link against -lstdc++fs.
 target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
 
-
 # add OpenMP if present
 # it would be great to have this in package.xmls instead, but catkin cannot handle setting the required cmake flags for dependencies
 find_package(OpenMP)
