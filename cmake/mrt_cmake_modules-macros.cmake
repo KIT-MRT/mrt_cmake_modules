@@ -1214,11 +1214,11 @@ function(mrt_install)
         if(IS_DIRECTORY ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking SHARED CONTENT FOLDER \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
             install(DIRECTORY ${ELEMENT}
-                DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}
+                DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}
                 )
         elseif(EXISTS ${PROJECT_SOURCE_DIR}/${ELEMENT})
             message(STATUS "Marking FILE \"${ELEMENT}\" of package \"${PROJECT_NAME}\" for installation")
-            install(FILES ${ELEMENT} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+            install(FILES ${ELEMENT} DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME})
         endif()
     endforeach()
 

@@ -22,6 +22,7 @@ function(_mrt_export_package)
         set(DEVELSPACE TRUE)
         set(INSTALLSPACE FALSE)
         set(PROJECT_SPACE_DIR ${CATKIN_DEVEL_PREFIX})
+        set(PKG_CMAKE_DIR ${PROJECT_SPACE_DIR}/share/${PROJECT_NAME}/cmake)
         set(PKG_INCLUDE_PREFIX ${CMAKE_CURRENT_SOURCE_DIR})
         configure_file(${extras_base_name}.in
             ${CATKIN_DEVEL_PREFIX}/share/${PROJECT_NAME}/cmake/${PROJECT_NAME}-extras.cmake
@@ -30,6 +31,7 @@ function(_mrt_export_package)
         set(DEVELSPACE FALSE)
         set(INSTALLSPACE TRUE)
         set(PROJECT_SPACE_DIR ${CMAKE_INSTALL_PREFIX})
+        set(PKG_CMAKE_DIR "\${${PROJECT_NAME}_DIR}")
         set(PKG_INCLUDE_PREFIX "\\\${prefix}")
         configure_file(${extras_base_name}.in
             ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}-extras.cmake
@@ -46,6 +48,7 @@ function(_mrt_export_package)
         set(INSTALLSPACE FALSE)
         set(PROJECT_SPACE_DIR ${CATKIN_DEVEL_PREFIX})
         set(PKG_INCLUDE_PREFIX ${CMAKE_CURRENT_SOURCE_DIR})
+        set(PKG_CMAKE_DIR ${PROJECT_SPACE_DIR}/share/${PROJECT_NAME}/cmake)
         em_expand(${catkin_EXTRAS_DIR}/templates/cfg-extras.context.py.in
             ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${extra}.installspace.context.cmake.py
             ${extras_base_name}.em
@@ -55,6 +58,7 @@ function(_mrt_export_package)
         set(INSTALLSPACE TRUE)
         set(PROJECT_SPACE_DIR ${CMAKE_INSTALL_PREFIX})
         set(PKG_INCLUDE_PREFIX "\\\${prefix}")
+        set(PKG_CMAKE_DIR "\${${PROJECT_NAME}_DIR}")
         em_expand(${catkin_EXTRAS_DIR}/templates/cfg-extras.context.py.in
             ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${extra}.installspace.context.cmake.py
             ${extras_base_name}.em
