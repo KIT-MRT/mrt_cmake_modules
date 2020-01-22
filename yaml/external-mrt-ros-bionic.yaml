@@ -274,6 +274,10 @@ aws_ros1_common:
   url: https://github.com/aws-gbp/aws_ros1_common-release.git
   vcs: git
   version: release/melodic/aws_ros1_common/2.0.1-1
+axis_camera:
+  url: https://github.com/ros-drivers-gbp/axis_camera-release.git
+  vcs: git
+  version: release/melodic/axis_camera/0.3.0-1
 backward_ros:
   url: https://github.com/pal-gbp/backward_ros-release.git
   vcs: git
@@ -909,7 +913,7 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.5.1-1
+  version: release/melodic/costmap_cspace/0.6.0-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -937,19 +941,19 @@ dataflow_lite:
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can/1.0.12-0
+  version: release/melodic/dataspeed_can/1.0.14-1
 dataspeed_can_msg_filters:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_msg_filters/1.0.12-0
+  version: release/melodic/dataspeed_can_msg_filters/1.0.14-1
 dataspeed_can_tools:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_tools/1.0.12-0
+  version: release/melodic/dataspeed_can_tools/1.0.14-1
 dataspeed_can_usb:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_usb/1.0.12-0
+  version: release/melodic/dataspeed_can_usb/1.0.14-1
 dataspeed_pds:
   url: https://github.com/DataspeedInc-release/dataspeed_pds-release.git
   vcs: git
@@ -1142,6 +1146,10 @@ driver_common:
   url: https://github.com/ros-gbp/driver_common-release.git
   vcs: git
   version: release/melodic/driver_common/1.6.8-0
+drone_wrapper:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/melodic/drone_wrapper/1.1.0-1
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1769,7 +1777,7 @@ geometric_shapes:
 geometry2:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
-  version: release/melodic/geometry2/0.6.6-1
+  version: release/melodic/geometry2/0.6.5-0
 global_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -2233,7 +2241,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.5.1-1
+  version: release/melodic/joystick_interrupt/0.6.0-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2661,7 +2669,7 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.5.1-1
+  version: release/melodic/map_organizer/0.6.0-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -2777,11 +2785,11 @@ mbf_utility:
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/melodic/mcl_3dl/0.1.7-1
+  version: release/melodic/mcl_3dl/0.2.0-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
-  version: release/melodic/mcl_3dl_msgs/0.1.2-0
+  version: release/melodic/mcl_3dl_msgs/0.2.0-1
 mcmillan_airfield:
   url: https://github.com/ros-gbp/uav_testing-release.git
   vcs: git
@@ -3273,15 +3281,15 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.5.1-1
+  version: release/melodic/neonavigation/0.6.0-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.5.1-1
+  version: release/melodic/neonavigation_common/0.6.0-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.5.1-1
+  version: release/melodic/neonavigation_launch/0.6.0-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -3373,7 +3381,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.5.1-1
+  version: release/melodic/obj_to_pointcloud/0.6.0-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3729,7 +3737,7 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.5.1-1
+  version: release/melodic/planner_cspace/0.6.0-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -4025,7 +4033,7 @@ ps3joy:
 psen_scan:
   url: https://github.com/PilzDE/psen_scan-release.git
   vcs: git
-  version: release/melodic/psen_scan/1.0.2-1
+  version: release/melodic/psen_scan/1.0.3-1
 px4_msgs:
   url: https://github.com/PX4/px4_msgs-release.git
   vcs: git
@@ -4782,6 +4790,10 @@ rqt_controller_manager:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
   version: release/melodic/rqt_controller_manager/0.15.1-0
+rqt_drone_teleop:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/melodic/rqt_drone_teleop/1.1.0-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
@@ -4877,7 +4889,7 @@ safe_teleop_stage:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.5.1-1
+  version: release/melodic/safety_limiter/0.6.0-1
 safety_limiter_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
@@ -5245,15 +5257,19 @@ test_osm:
 tf2_bullet:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
-  version: release/melodic/tf2_bullet/0.6.6-1
+  version: release/melodic/tf2_bullet/0.6.5-0
 tf2_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
   version: release/melodic/tf2_relay/0.0.2-1
+tf2_server:
+  url: https://github.com/peci1/tf2_server-release.git
+  vcs: git
+  version: release/melodic/tf2_server/1.0.3-1
 tf2_tools:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
-  version: release/melodic/tf2_tools/0.6.6-1
+  version: release/melodic/tf2_tools/0.6.5-0
 tf2_web_republisher:
   url: https://github.com/RobotWebTools-release/tf2_web_republisher-release.git
   vcs: git
@@ -5333,11 +5349,11 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.5.1-1
+  version: release/melodic/track_odometry/0.6.0-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.5.1-1
+  version: release/melodic/trajectory_tracker/0.6.0-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
