@@ -38,32 +38,6 @@ if(${CMAKE_VERSION} VERSION_GREATER "3.5.0")
     set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 endif()
 
-# Select arch flag
-if(MRT_ARCH)
-  if(NOT MRT_ARCH STREQUAL "None" AND NOT MRT_ARCH STREQUAL "none")
-    set(_arch "${MRT_ARCH}")
-  endif()
-else()
-  # On X86, sandybridge is the lowest common cpu arch for us
-  set(_x86_arch_list "i386" "amd64" "AMD64" "x86_64" "i686" "x86" "x64" "EM64T")
-
-  list(FIND _x86_arch_list ${CMAKE_SYSTEM_PROCESSOR} _index)
-
-  if(${_index} GREATER -1)
-    message(STATUS "MRT_ARCH not set and X86 target detected (${CMAKE_SYSTEM_PROCESSOR})")
-    set(_arch "sandybridge")
-  endif()
-
-  unset(_x86_arch_list)
-  unset(_index)
-endif()
-
-if(_arch)
-  message(STATUS "Setting -march to " ${_arch})
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=${_arch}")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=${_arch}")
-  unset(_arch)
-endif()
 
 # add OpenMP if present
 # it would be great to have this in package.xmls instead, but catkin cannot handle setting the required cmake flags for dependencies
