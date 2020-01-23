@@ -2198,6 +2198,10 @@ jackal_viz:
   url: https://github.com/clearpath-gbp/jackal_desktop-release.git
   vcs: git
   version: release/melodic/jackal_viz/0.3.2-1
+joint_state_publisher_gui:
+  url: https://github.com/ros-gbp/joint_state_publisher-release.git
+  vcs: git
+  version: release/melodic/joint_state_publisher_gui/1.12.14-1
 joint_states_settler:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -5289,31 +5293,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/2.0.0-1
+  version: release/melodic/toposens/1.3.0-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/2.0.0-1
+  version: release/melodic/toposens_description/1.3.0-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/2.0.0-1
+  version: release/melodic/toposens_driver/1.3.0-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/2.0.0-1
+  version: release/melodic/toposens_markers/1.3.0-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/2.0.0-1
+  version: release/melodic/toposens_msgs/1.3.0-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/2.0.0-1
+  version: release/melodic/toposens_pointcloud/1.3.0-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/2.0.0-1
+  version: release/melodic/toposens_sync/1.3.0-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
