@@ -185,7 +185,7 @@ assisted_teleop:
 astuff_sensor_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/astuff_sensor_msgs/2.3.1-0
+  version: release/melodic/astuff_sensor_msgs/3.0.1-1
 async_comm:
   url: https://github.com/dpkoch/async_comm-release.git
   vcs: git
@@ -461,7 +461,7 @@ cloudwatch_logs_common:
 cloudwatch_metrics_collector:
   url: https://github.com/aws-gbp/cloudwatch_metrics_collector-release.git
   vcs: git
-  version: release/melodic/cloudwatch_metrics_collector/2.1.1-1
+  version: release/melodic/cloudwatch_metrics_collector/2.2.0-1
 cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
@@ -1057,15 +1057,15 @@ default_cfg_fkie:
 delphi_esr_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/delphi_esr_msgs/2.3.1-0
+  version: release/melodic/delphi_esr_msgs/3.0.1-1
 delphi_mrr_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/delphi_mrr_msgs/2.3.1-0
+  version: release/melodic/delphi_mrr_msgs/3.0.1-1
 delphi_srr_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/delphi_srr_msgs/2.3.1-0
+  version: release/melodic/delphi_srr_msgs/3.0.1-1
 depthcloud_encoder:
   url: https://github.com/RobotWebTools-release/depthcloud_encoder-release.git
   vcs: git
@@ -1077,7 +1077,7 @@ depthimage_to_laserscan:
 derived_object_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/derived_object_msgs/2.3.1-0
+  version: release/melodic/derived_object_msgs/3.0.1-1
 desistek_saga_control:
   url: https://github.com/uuvsimulator/desistek_saga-release.git
   vcs: git
@@ -2021,7 +2021,7 @@ ibeo_lux:
 ibeo_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/ibeo_msgs/2.3.1-0
+  version: release/melodic/ibeo_msgs/3.0.1-1
 ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -2381,7 +2381,7 @@ kalman_filter:
 kartech_linear_actuator_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/kartech_linear_actuator_msgs/2.3.1-0
+  version: release/melodic/kartech_linear_actuator_msgs/3.0.1-1
 key_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
@@ -2501,11 +2501,11 @@ lex_common:
 lex_common_msgs:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/melodic/lex_common_msgs/2.0.1-1
+  version: release/melodic/lex_common_msgs/2.0.2-1
 lex_node:
   url: https://github.com/aws-gbp/lex_node-release.git
   vcs: git
-  version: release/melodic/lex_node/2.0.1-1
+  version: release/melodic/lex_node/2.0.2-1
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
@@ -2869,7 +2869,7 @@ ml_classifiers:
 mobileye_560_660_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/mobileye_560_660_msgs/2.3.1-0
+  version: release/melodic/mobileye_560_660_msgs/3.0.1-1
 mongodb_log:
   url: https://github.com/strands-project-releases/mongodb_store.git
   vcs: git
@@ -3281,7 +3281,7 @@ navigation_tutorials:
 neobotix_usboard_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/neobotix_usboard_msgs/2.3.1-0
+  version: release/melodic/neobotix_usboard_msgs/3.0.1-1
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -3621,7 +3621,7 @@ pacmod_game_control:
 pacmod_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/pacmod_msgs/2.3.1-0
+  version: release/melodic/pacmod_msgs/3.0.1-1
 panda_moveit_config:
   url: https://github.com/ros-gbp/panda_moveit_config-release.git
   vcs: git
@@ -4173,7 +4173,7 @@ quaternion_operation:
 radar_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
-  version: release/melodic/radar_msgs/2.3.1-0
+  version: release/melodic/radar_msgs/3.0.1-1
 radar_omnipresense:
   url: https://github.com/SCU-RSL-ROS/radar_omnipresense-release.git
   vcs: git
@@ -5293,31 +5293,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/1.3.0-1
+  version: release/melodic/toposens/2.0.1-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/1.3.0-1
+  version: release/melodic/toposens_description/2.0.1-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/1.3.0-1
+  version: release/melodic/toposens_driver/2.0.1-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/1.3.0-1
+  version: release/melodic/toposens_markers/2.0.1-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/1.3.0-1
+  version: release/melodic/toposens_msgs/2.0.1-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/1.3.0-1
+  version: release/melodic/toposens_pointcloud/2.0.1-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/1.3.0-1
+  version: release/melodic/toposens_sync/2.0.1-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
