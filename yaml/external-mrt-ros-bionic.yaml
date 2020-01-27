@@ -466,10 +466,6 @@ cloudwatch_metrics_common:
   url: https://github.com/aws-gbp/cloudwatch_common-release.git
   vcs: git
   version: release/melodic/cloudwatch_metrics_common/1.1.2-1
-cnn_bridge:
-  url: https://github.com/wew84/cnn_bridge-release.git
-  vcs: git
-  version: release/melodic/cnn_bridge/0.8.5-1
 cob_3d_mapping_msgs:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -941,19 +937,19 @@ dataflow_lite:
 dataspeed_can:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can/1.0.14-1
+  version: release/melodic/dataspeed_can/1.0.15-1
 dataspeed_can_msg_filters:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_msg_filters/1.0.14-1
+  version: release/melodic/dataspeed_can_msg_filters/1.0.15-1
 dataspeed_can_tools:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_tools/1.0.14-1
+  version: release/melodic/dataspeed_can_tools/1.0.15-1
 dataspeed_can_usb:
   url: https://github.com/DataspeedInc-release/dataspeed_can-release.git
   vcs: git
-  version: release/melodic/dataspeed_can_usb/1.0.14-1
+  version: release/melodic/dataspeed_can_usb/1.0.15-1
 dataspeed_pds:
   url: https://github.com/DataspeedInc-release/dataspeed_pds-release.git
   vcs: git
@@ -4909,7 +4905,7 @@ sand_island:
 sbg_driver:
   url: https://github.com/SBG-Systems/sbg_ros_driver-release.git
   vcs: git
-  version: release/melodic/sbg_driver/2.0.0-1
+  version: release/melodic/sbg_driver/2.0.2-1
 sbpl:
   url: https://github.com/ros-gbp/sbpl-release.git
   vcs: git
