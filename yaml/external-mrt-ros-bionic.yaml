@@ -2194,6 +2194,10 @@ jackal_viz:
   url: https://github.com/clearpath-gbp/jackal_desktop-release.git
   vcs: git
   version: release/melodic/jackal_viz/0.3.2-1
+jderobot_assets:
+  url: https://github.com/JdeRobot/assets-release.git
+  vcs: git
+  version: release/melodic/jderobot_assets/0.1.0-1
 joint_state_publisher_gui:
   url: https://github.com/ros-gbp/joint_state_publisher-release.git
   vcs: git
