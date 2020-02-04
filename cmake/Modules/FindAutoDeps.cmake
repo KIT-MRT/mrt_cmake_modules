@@ -19,10 +19,10 @@
 #_<package name>_CMAKE_COMPONENTS_: components used in find_package(...) for the package
 #
 # Sets the following targets:
-# <prefix>auto_deps: A target that contains all targets that should be linked against internally
-# <prefix>auto_deps_cuda: A target that contains all targets which needs to be linked into cuda code.
-# <prefix>auto_deps_export: A target that contains all libraries which need to be linked publically
-# <prefix>auto_deps_test: A target that contains all libraries which need to be additionally linked by tests. Contains no libraries if enable_testing is off.
+# <prefix>::auto_deps: A target that contains all targets that should be linked against internally
+# <prefix>::auto_deps_cuda: A target that contains all targets which needs to be linked into cuda code.
+# <prefix>::auto_deps_export: A target that contains all libraries which need to be linked publically
+# <prefix>::auto_deps_test: A target that contains all libraries which need to be additionally linked by tests. Contains no libraries if enable_testing is off.
 #
 # The prefix will be chosen based on the value of the variable ${AutoDeps}_PREFIX if set. Otherwise it is set to "${PROJECT_NAME}"
 #
@@ -100,7 +100,7 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
     set(${out_incs} ${${out_incs}} ${inc} PARENT_SCOPE)
 endfunction()
 
-macro(_find_target output_target component)
+macro(_find_dep output_target component)
     set(${CMAKE_FIND_PACKAGE_NAME}_targetname ${component}::${component})
     list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${component} ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
     if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package} EQUAL -1)
@@ -192,23 +192,23 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
         list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_TEST_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_test_package)
         list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CUDA_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_cuda_package)
         if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_export_package} EQUAL -1)
-            _find_target(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export ${${CMAKE_FIND_PACKAGE_NAME}_component})
+            _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export ${${CMAKE_FIND_PACKAGE_NAME}_component})
             list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
             if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package} EQUAL -1)
                 list(APPEND ${CMAKE_FIND_PACKAGE_NAME}_CATKIN_SELECTED_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component})
             endif()
             unset(${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
         elseif(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_package} EQUAL -1)
-            _find_target(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps ${${CMAKE_FIND_PACKAGE_NAME}_component})
+            _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps ${${CMAKE_FIND_PACKAGE_NAME}_component})
         elseif(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_test_package} EQUAL -1)
             if(CATKIN_ENABLE_TESTING)
-                _find_target(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test ${${CMAKE_FIND_PACKAGE_NAME}_component})
+                _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test ${${CMAKE_FIND_PACKAGE_NAME}_component})
             endif()
         else()
             message(SEND_ERROR "Package ${${CMAKE_FIND_PACKAGE_NAME}_component} specified but not found in package.xml. This package is ignored.")
         endif()
         if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_cuda_package} EQUAL -1)
-            _find_target(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda ${${CMAKE_FIND_PACKAGE_NAME}_component})
+            _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda ${${CMAKE_FIND_PACKAGE_NAME}_component})
         endif()
         unset(${CMAKE_FIND_PACKAGE_NAME}_is_package)
         unset(${CMAKE_FIND_PACKAGE_NAME}_is_export_package)
@@ -240,4 +240,5 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
     list(REMOVE_DUPLICATES mrt_EXPORT_INCLUDE_DIRS)
     list(REMOVE_DUPLICATES mrt_EXPORT_LIBRARIES)
     _remove_generator_expressions(mrt_EXPORT_LIBRARIES) # catkin cannot handle generator expressions (of type $<CONFIG::DEBUG:...>)
+    _remove_generator_expressions(mrt_EXPORT_INCLUDE_DIRS)
 endif()

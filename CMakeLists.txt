@@ -13,7 +13,7 @@ install(PROGRAMS scripts/generate_cmakelists.py DESTINATION ${CATKIN_PACKAGE_BIN
 install(FILES yaml/cmake.yaml DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/yaml)
 install(FILES ci_templates/CMakeLists.txt DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
 
-# Make sure the same test targets exist as in other projects
+# Make sure the same test targets exist as in other projects. This is so that "catkin run_tests" works, etc.
 if (CATKIN_ENABLE_TESTING)
     if(NOT TARGET tests)
         add_custom_target(tests)

@@ -10,8 +10,7 @@
   <url type="repository">https://github.com/KIT-MRT/mrt_cmake_modules.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <buildtool_depend>lcov</buildtool_depend>
-  <buildtool_depend>gtest</buildtool_depend>
+  <depend>catkin</depend>
 
   <export>
     <architecture_independent/>

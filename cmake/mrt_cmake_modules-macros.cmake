@@ -1121,6 +1121,9 @@ endfunction()
 # All targets added by the mrt_add_<library/executable/nodelet/...> commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
 # Non existing files and folders will be silently ignored.
 #
+# If the project contains a file cmake/<project-name>-extras.cmake[.in], it will be automatically included by all depending projects. This allows to export cmake functions, etc. If the file ends with [.in], it will be configured by cmake
+# and the variables "@DEVELSPACE@" "@INSTALLSPACE@" will be replaced by true or files depending on the build type, @PROJECT_SPACE_DIR@ to the devel/install folder and @PKT_CMAKE_DIR@ to the cmake folder
+#
 # :param PROGRAMS: List of all folders and files that are programs (python scripts will be indentified and treated separately). Files will be made executable.
 # :type PROGRAMS: list of strings
 # :param FILES: List of non-executable files and folders. Subfolders will be installed recursively.
