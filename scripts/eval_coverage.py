@@ -42,7 +42,9 @@ def build_coverage(args):
     if not args.coverage_dir:
         return 0
     lcov_baseline = os.path.join(args.coverage_dir, "baseline.lcov")
-    if not os.path.exists(lcov_baseline) or os.path.getsize(lcov_baseline) == 0:
+    # check with --summary that the tracefile has valid records
+    cmd = ["lcov", "-q", "--summary", lcov_baseline]
+    if not os.path.exists(lcov_baseline) or subprocess.call(cmd):
         # lcov generates an empty file if there is no code for the baseline
         return 0
 

@@ -34,7 +34,9 @@ macro(_init_package_dependencies)
         COMPONENTS ${_@PROJECT_NAME@_EXPORT_PACKAGES_} 
         PATHS ${CMAKE_CURRENT_LIST_DIR} NO_DEFAULT_PATH
         )
-    find_package(OpenMP) # openmp is by default always a dependency
+    if(NOT OpenMP_FOUND)
+        find_package(OpenMP) # openmp is by default always a dependency
+    endif()
     unset(@PROJECT_NAME@AutoDeps_PREFIX)
     unset(@PROJECT_NAME@AutoDeps_NO_CATKIN_EXPORT)
 endmacro()

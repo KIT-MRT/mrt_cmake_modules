@@ -168,9 +168,3 @@ This package also contains a collection of [find-scripts](cmake/Modules) for thi
 ## Going further
 After you have saved time writing cmake boilerplate, it is now time to also save time writing ROS boilerplate. You might want to look into the [rosinterface_handler](https://github.com/KIT-MRT/rosinterface_handler) as well. It is already intergrated in the CMakeLists template.
 All you have to do is write a `.rosif` file, and this project will automatically handle reading parameters from the parameter server, creating subscribers and publishers and handling reconfigure callbacks for you!
-
-## Unified Parameter Handling for ROS
-**UPDATE**: the Documentation for the ParameterGenerator can be found [here](https://github.com/cbandera/rosparam_handler).
-The MRT version extends the GitHub version, by allowing the _mrtcfg_ fileending and integrating it into the CMake-Templates.
-
-As always, the [MRT tools](https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_build) provide templates for the config file as well as for a sample node.

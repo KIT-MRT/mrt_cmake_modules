@@ -42,32 +42,7 @@ function(_mrt_export_package)
             )
         set(_mrt_extras_file ${PROJECT_NAME}-extras.cmake)
     elseif(EXISTS ${extras_base_name}.em)
-        # TODO: This one still uses catkins functions. They should be replaced by our stuff..
-        message(STATUS "Installing and configuring extras file '${PROJECT_NAME}-extras.cmake.em'")
-        set(DEVELSPACE TRUE)
-        set(INSTALLSPACE FALSE)
-        set(PROJECT_SPACE_DIR ${CATKIN_DEVEL_PREFIX})
-        set(PKG_INCLUDE_PREFIX ${CMAKE_CURRENT_SOURCE_DIR})
-        set(PKG_CMAKE_DIR ${PROJECT_SPACE_DIR}/share/${PROJECT_NAME}/cmake)
-        em_expand(${catkin_EXTRAS_DIR}/templates/cfg-extras.context.py.in
-            ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${extra}.installspace.context.cmake.py
-            ${extras_base_name}.em
-            ${CATKIN_DEVEL_PREFIX}/share/${PROJECT_NAME}/cmake/${PROJECT_NAME}-extras.cmake
-            )
-        set(DEVELSPACE FALSE)
-        set(INSTALLSPACE TRUE)
-        set(PROJECT_SPACE_DIR ${CMAKE_INSTALL_PREFIX})
-        set(PKG_INCLUDE_PREFIX "\\\${prefix}")
-        set(PKG_CMAKE_DIR "\${${PROJECT_NAME}_DIR}")
-        em_expand(${catkin_EXTRAS_DIR}/templates/cfg-extras.context.py.in
-            ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${extra}.installspace.context.cmake.py
-            ${extras_base_name}.em
-            ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}-extras.cmake
-            )
-        install(FILES ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}-extras.cmake
-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
-            )
-        set(_mrt_extras_file ${PROJECT_NAME}-extras.cmake)
+        message(FATAL_ERROR "The project contains a ${extras_base_name}.em file. These are not supported by mrt_cmake_modules. Please use ${extras_base_name}.in!")
     endif()
 
     # if we dont export something but still have messages or action files that generate a header, we build a dummy
@@ -75,7 +50,6 @@ function(_mrt_export_package)
     if(NOT ARG_EXPORTS AND (ROS_GENERATE_ACTION OR ROS_GENERATE_MESSAGES))
         add_library(project_generated_headers INTERFACE)
         mrt_add_links(project_generated_headers)
-        add_library(${PROJECT_NAME}::project_generated_headers ALIAS project_generated_headers)
         if(TARGET ${PROJECT_NAME}_compiler_flags)
             set(flags ${PROJECT_NAME}_compiler_flags)
         endif()
@@ -130,7 +104,7 @@ function(_mrt_export_package)
         ${CATKIN_DEVEL_PREFIX}/share/${PROJECT_NAME}/cmake/auto_dep_vars.cmake
         COPYONLY
         )
-    # "install" findAutodeps file to the devel folder
+    # "install" AutoDepsConfig file to the devel folder
     configure_file(${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules/FindAutoDeps.cmake
         ${CATKIN_DEVEL_PREFIX}/share/${PROJECT_NAME}/cmake/${PROJECT_NAME}AutoDepsConfig.cmake
         COPYONLY
