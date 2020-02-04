@@ -8,8 +8,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
-message(STATUS "Search for Qt5:")
-
 foreach(_component ${_components})
     set(_libname Qt5${_component})
     if(MrtQt5_FIND_REQUIRED)
