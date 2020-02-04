@@ -1,797 +1,96 @@
+# This file extends ros official base.yamls by packages not yet available within ros.
 aravis:
-  cmake:
-    include_dirs:
-    - Aravis_INCLUDE_DIRS
-    libraries:
-    - Aravis_LIBRARIES
-    library_dirs: []
-    name: Aravis
-  ubuntu:
-  - mrt-libaravis-dev
-pybind11-dev:
-  cmake:
-    # Only find_package pybind as it is needed only for python cpp files.
-    # This is linked manually.
-    name: pybind11
-    include_dirs: []
-    libraries: []
-    library_dirs: []
-  ubuntu:
-  - mrt-pybind11-dev
-armadillo:
-  cmake:
-    include_dirs:
-    - ARMADILLO_INCLUDE_DIRS
-    libraries:
-    - ARMADILLO_LIBRARIES
-    library_dirs: []
-    name: Armadillo
-  ubuntu:
-  - libarmadillo-dev
-coverage:
-  ubuntu:
-  - lcov
-boost:
-  cmake:
-    components:
-    - wserialization thread random serialization log_setup prg_exec_monitor
-      wave system signals chrono filesystem locale timer date_time regex graph 
-      program_options unit_test_framework log atomic
-    include_dirs:
-    - Boost_INCLUDE_DIRS
-    libraries:
-    - Boost_LIBRARIES
-    library_dirs:
-    - Boost_LIBRARY_DIRS
-    name: Boost
+  ubuntu: [mrt-libaravis-dev]
 boost-python:
-  cmake:
-    include_dirs:
-      - BoostPython_INCLUDE_DIRS
-    libraries:
-      - BoostPython_LIBRARIES
-    name: BoostPython
-  ubuntu:
-    - libpython-dev
-    - libboost-python-dev
-libboost-python: # official rosdep key
-  cmake:
-    include_dirs:
-      - BoostPython_INCLUDE_DIRS
-    libraries:
-      - BoostPython_LIBRARIES
-    name: BoostPython
-  ubuntu:
-    - libpython-dev
-    - libboost-python-dev
+  ubuntu: [libpython-dev, libboost-python-dev]
+coverage:
+  ubuntu: [lcov]
 cuda:
-  cmake:
-    components: []
-    include_dirs:
-    - CUDA_INCLUDE_DIRS
-    libraries:
-    - CUDA_LIBRARIES
-    library_dirs: []
-    name: MrtCUDA
   ubuntu:
-    xenial:
-      - cuda-toolkit-9-2
-      - g++-6
-    bionic:
-      - cuda-toolkit-10-0
-      - g++-7
-eigen:
-  cmake:
-    components: []
-    include_dirs:
-    - EIGEN3_INCLUDE_DIR
-    libraries: []
-    library_dirs: []
-    name: Eigen3
-eigen2:
-  cmake:
-    include_dirs:
-    - EIGEN2_INCLUDE_DIR
-    libraries: []
-    name: Eigen2
+    bionic: [cuda-toolkit-10-2, g++-8]
+    xenial: [cuda-toolkit-9-2, g++-6]
 flann:
-  ubuntu:
-    - libflann-dev
-  cmake:
-    include_dirs:
-      - FLANN_INCLUDE_DIRS
-    libraries:
-      - FLANN_LIBRARIES
-    library_dirs: []
-    name: Flann
-glew:
-  ubuntu:
-    - libglew-dev
-  cmake:
-    include_dirs:
-      - GLEW_INCLUDE_DIR
-    libraries:
-      - GLEW_LIBRARIES
-    library_dirs: []
-    name: GLEW
-glfw:
-  ubuntu:
-    - libglfw3-dev
-  cmake:
-    include_dirs:
-      - GLFW3_INCLUDE_DIR
-    libraries:
-      - GLFW3_LIBRARY
-    library_dirs: []
-    name: glfw3
+  ubuntu: [libflann-dev]
 freeglut3-dev:
-  ubuntu:
-  - freeglut3-dev
-glut:
-  cmake:
-    components: []
-    include_dirs:
-    - GLUT_INCLUDE_DIR
-    libraries:
-    - GLUT_LIBRARIES
-    library_dirs: []
-    name: GLUT
-gpsd:
-  ubuntu:
-  - gpsd
-gtest:
-  cmake:
-    include_dirs:
-    - gtest_INCLUDE_DIRS
-    libraries:
-    - gtest_LIBRARIES
-    name: gtest
-gtest-headers:
-  cmake:
-    include_dirs:
-    - GTest-headers_INCLUDE_DIRS
-    libraries: []
-    name: GTest-headers
-  ubuntu:
-  - libgtest-dev
-gtestsrc:
-  cmake:
-    include_dirs: []
-    libraries:
-    - GTEST_LIBRARIES
-    name: MrtGTest
-  ubuntu:
-   - libgtest-dev
-gtkmm:
-  cmake:
-    components: []
-    include_dirs:
-    - GTKMM_INCLUDE_DIRS
-    libraries:
-    - GTKMM_LIBRARIES
-    library_dirs:
-    - GTKMM_LIBRARY_DIRS
-    name: GTKMM
-  ubuntu:
-  - libgtkmm-3.0-dev
-libcairo2-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - CAIRO_INCLUDE_DIRS
-    libraries:
-    - CAIRO_LIBRARIES
-    library_dirs: []
-    name: Cairo
+  ubuntu: [freeglut3-dev]
+libboost-python:
+  ubuntu: [libpython-dev, libboost-python-dev]
 libgeographic-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - GeographicLib_INCLUDE_DIRS
-    libraries:
-    - GeographicLib_LIBRARIES
-    library_dirs: []
-    name: GeographicLib
-  ubuntu:
-  - libgeographic-dev
-geographiclib: # official rosdep key
-  cmake:
-    components: []
-    include_dirs:
-    - GeographicLib_INCLUDE_DIRS
-    libraries:
-    - GeographicLib_LIBRARIES
-    library_dirs: []
-    name: GeographicLib
-  ubuntu:
-  - libgeographic-dev
-libgoogle-glog-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - GLOG_INCLUDE_DIRS
-    libraries:
-    - GLOG_LIBRARY
-    library_dirs: []
-    name: Glog
-libgps:
-  cmake:
-    include_dirs:
-    - LIBGPS_INCLUDE_DIR
-    libraries:
-    - LIBGPS_LIBRARY
-    name: libgps
-libgsl:
-  cmake:
-    components: []
-    include_dirs:
-    - GSL_INCLUDE_DIRS
-    libraries:
-    - GSL_LIBRARIES
-    name: GSL
-  ubuntu:
-  - libgsl-dev
-libigl:
-  cmake:
-    components: []
-    include_dirs: []
-    libraries:
-    - IGL_LIBRARIES
-    library_dirs: []
-    name: IGL
-liblapack-dev:
-  cmake:
-    include_dirs: []
-    libraries:
-    - LAPACK_LIBRARIES
-    name: LAPACK
-libmagick:
-  cmake:
-    components:
-    - Magick++ MagickWand MagickCore
-    include_dirs:
-    - ImageMagick_INCLUDE_DIRS
-    libraries:
-    - ImageMagick_LIBRARIES
-    name: ImageMagick
+  ubuntu: [libgeographic-dev]
 liblmdb:
-  ubuntu:
-  - liblmdb-dev
-libopenscenegraph:
-  cmake:
-    components:
-    - osg osgAnimation osgDB osgFX osgGA osgManipulator osgParticle osgPresentation
-      osgQt osgShadow osgSim osgTerrain osgText osgUtil osgViewer osgVolume osgWidget
-    include_dirs:
-    - OPENSCENEGRAPH_INCLUDE_DIRS
-    libraries:
-    - OPENSCENEGRAPH_LIBRARIES
-    library_dirs: []
-    name: OpenSceneGraph
-libpcap-dev:
-  cmake:
-    include_dirs:
-    - PCAP_INCLUDE_DIR
-    libraries:
-    - PCAP_LIBRARY
-    name: PCAP
-  ubuntu:
-  - libpcap-dev
-libqwt5-qt4-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - QWT_INCLUDE_DIRS
-    libraries:
-    - QWT_LIBRARIES
-    library_dirs: []
-    name: Qwt
-libsqlite3-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - SQLITE3_INCLUDE_DIRS
-    libraries:
-    - SQLITE3_LIBRARIES
-    library_dirs: []
-    name: Sqlite3
-libssl-dev:
-  cmake:
-    include_dirs:
-    - OPENSSL_INCLUDE_DIR
-    libraries:
-    - OPENSSL_LIBRARIES
-    library_dirs: []
-    name: OpenSSL
-libudev-dev:
-  ubuntu:
-   - libudev-dev
+  ubuntu: [liblmdb-dev]
 libxext-dev:
-  ubuntu:
-   - libxext-dev
+  ubuntu: [libxext-dev]
 libxrandr-dev:
-  ubuntu:
-  - libxrandr-dev
+  ubuntu: [libxrandr-dev]
 mbed_cli:
-  ubuntu:
-  - mrt-mbed-cli
-mesa-common-dev:
-  ubuntu:
-  - mesa-common-dev
-minpack:
-  cmake:
-    components: []
-    include_dirs:
-    - MINPACK_INCLUDE_DIRS
-    libraries:
-    - MINPACK_LIBRARIES
-    library_dirs: []
-    name: Minpack
-  ubuntu:
-  - minpack-dev
+  ubuntu: [mrt-mbed-cli]
 mrt_ann:
-  cmake:
-    components: []
-    include_dirs:
-    - ANN_INCLUDE_DIR
-    libraries:
-    - ANN_LIBRARIES
-    library_dirs: []
-    name: MrtANN
-  ubuntu:
-  - libann-dev
+  ubuntu: [libann-dev]
 mrt_benchmark:
-  cmake:
-    components: []
-    include_dirs: []
-    libraries:
-    - benchmark_LIBRARIES
-    library_dirs: []
-    name: Mrtbenchmark
-  ubuntu:
-    - mrt-benchmark-dev
-mrt_caffe:
-  cmake:
-    components: []
-    include_dirs:
-    - Caffe_INCLUDE_DIRS
-    libraries:
-    - Caffe_LIBRARIES
-    library_dirs: []
-    name: MrtCaffe
-  ubuntu:
-    trusty:
-    - mrt-caffe-dev
+  ubuntu: [mrt-benchmark-dev]
+mrt_c_tensorflow:
+  ubuntu: [mrt-tensorflow-dev]
 mrt_cereal:
-  cmake:
-    components: []
-    include_dirs:
-    - Cereal_INCLUDE_DIR
-    libraries: []
-    library_dirs: []
-    name: MrtCereal
-  ubuntu:
-  - libcereal-dev
+  ubuntu: [libcereal-dev]
 mrt_ceres:
-  cmake:
-    components: []
-    include_dirs:
-    - CERES_INCLUDE_DIRS
-    libraries:
-    - CERES_LIBRARIES
-    library_dirs: []
-    name: MrtCeres
-  ubuntu:
-    - mrt-libceres-dev
+  ubuntu: [mrt-libceres-dev]
 mrt_cgal:
-  cmake:
-    components: []
-    include_dirs:
-    - CGAL_INCLUDE_DIRS
-    libraries:
-    - CGAL_LIBRARIES
-    library_dirs: []
-    name: CGAL
-  ubuntu:
-  - libcgal-dev
+  ubuntu: [libcgal-dev]
 mrt_ebus:
-  cmake:
-    components: []
-    include_dirs:
-    - ebus-sdk_INCLUDE_DIR
-    libraries:
-    - ebus-sdk_LIBRARIES
-    library_dirs: []
-    name: Mrtebus-sdk
-  ubuntu:
-  - ebus-sdk
-mrt_f2c_old:
-  cmake:
-    components: []
-    include_dirs:
-    - f2c_INCLUDE_DIR
-    libraries:
-    - f2c_LIBRARIES
-    library_dirs: []
-    name: Mrtf2c
-  ubuntu:
-    trusty:
-    - mrt-ftwoc-dev
+  ubuntu: [ebus-sdk]
 mrt_gnu_arm_embedded_toolchain:
   ubuntu:
-    xenial:
-    - mrt-gnu-arm-embedded-toolchain
-    bionic:
-    - gcc-arm-embedded
+    bionic: [gcc-arm-embedded]
+    xenial: [mrt-gnu-arm-embedded-toolchain]
 mrt_leptonica:
-  cmake:
-    components: []
-    include_dirs:
-    - Leptonica_INCLUDE_DIR
-    libraries:
-    - Leptonica_LIBRARIES
-    library_dirs: []
-    name: MrtLeptonica
-  ubuntu:
-  - libleptonica-dev
+  ubuntu: [libleptonica-dev]
 mrt_metis:
-  cmake:
-    components: []
-    include_dirs:
-    - Metis_INCLUDE_DIR
-    libraries:
-    - Metis_LIBRARIES
-    library_dirs: []
-    name: MrtMetis
-  ubuntu:
-  - libmetis-dev
+  ubuntu: [libmetis-dev]
 mrt_nlopt:
-  cmake:
-    components: []
-    include_dirs:
-    - nlopt_INCLUDE_DIR
-    libraries:
-    - nlopt_LIBRARIES
-    library_dirs: []
-    name: Mrtnlopt
-  ubuntu:
-  - libnlopt-dev
+  ubuntu: [libnlopt-dev]
 mrt_opencv:
-  cmake:
-    components: []
-    include_dirs:
-    - OpenCV_INCLUDE_DIRS
-    libraries:
-    - OpenCV_LIBS
-    library_dirs: []
-    name: MrtOpenCV
-  ubuntu:
-  - mrt-libopencv-dev
+  ubuntu: [mrt-libopencv-dev]
 mrt_pcl:
-  cmake:
-    components: []
-    include_dirs:
-    - PCL_INCLUDE_DIRS
-    libraries:
-    - PCL_LIBRARIES
-    library_dirs:
-    - PCL_LIBRARY_DIRS
-    name: MrtPCL
   ubuntu:
-    xenial:
-    - mrt-libpcl-all-dev
-    bionic:
-    - libpcl-dev
+    bionic: [libpcl-dev]
+    xenial: [mrt-libpcl-all-dev]
 mrt_protobuf:
-  cmake:
-    components: []
-    include_dirs:
-    - PROTOBUF_INCLUDE_DIR
-    libraries:
-    - PROTOBUF_LIBRARIES
-    library_dirs: []
-    name: Protobuf
-  ubuntu:
-  - libprotobuf-dev
-  - protobuf-compiler
-  - libprotoc-dev
-  - python-protobuf
-mrt_qt4-dev:
-  cmake:
-    components:
-    - QtCore QTGui Qt3Support QtDBus QtDesigner QtDesignerComponents QtHelp QtNetwork
-      QtOpenGL QtScript QtScriptTools QtSql QtSvg QtTest QtUiTools QtWebKit QtXml
-      QtXmlPatterns
-    include_dirs:
-    - QT_INCLUDES
-    libraries:
-    - QT_LIBRARIES
-    name: MrtQt4
-  ubuntu:
-  - libqt4-dev
-  - libqt4-opengl-dev
-  - libqtwebkit-dev
+  ubuntu: [libprotobuf-dev, protobuf-compiler, libprotoc-dev, python-protobuf]
 mrt_qt-dev:
-  cmake:
-    components:
-    - Core Gui DBus Network OpenGL OpenGLExtensions Sql Test Xml Widgets Concurrent Svg
-    include_dirs:
-    - QT_INCLUDES
-    libraries:
-    - QT_LIBRARIES
-    name: MrtQt5
-  ubuntu:
-  - qt5-default
-  - libqt5svg5-dev
+  ubuntu: [qt5-default, libqt5svg5-dev]
+mrt_qt4-dev:
+  ubuntu: [libqt4-dev, libqt4-opengl-dev, libqtwebkit-dev]
 mrt_qt5-dev:
-  cmake:
-    components:
-    - Core Gui DBus Network OpenGL OpenGLExtensions Sql Test Xml Widgets Concurrent Svg
-    include_dirs:
-    - QT_INCLUDES
-    libraries:
-    - QT_LIBRARIES
-    name: MrtQt5
-  ubuntu:
-  - qt5-default
-  - libqt5svg5-dev
+  ubuntu: [qt5-default, libqt5svg5-dev]
 mrt_sdl2:
-  cmake:
-    components: []
-    include_dirs:
-    - SDL2_INCLUDE_DIRS
-    libraries:
-    - SDL2_LIBRARIES
-    library_dirs: []
-    name: MrtSDL2
-  ubuntu:
-  - libsdl2-dev
+  ubuntu: [libsdl2-dev]
 mrt_suitesparse:
-  cmake:
-    components: []
-    include_dirs:
-    - SUITESPARSE_INCLUDE_DIRS
-    libraries:
-    - SUITESPARSE_LIBRARIES
-    library_dirs: []
-    name: MrtSuiteSparse
-  ubuntu:
-  - libsuitesparse-dev
+  ubuntu: [libsuitesparse-dev]
 mrt_tensorflow:
-  cmake:
-    components: []
-    include_dirs:
-    - TENSORFLOW_INCLUDE_DIRS
-    libraries:
-    - TENSORFLOW_LIBRARIES
-    library_dirs: []
-    name: MrtTensorflow
-  ubuntu:
-  - mrt-tensorflow-dev
+  ubuntu: [mrt-tensorflow-dev]
 mrt_tensorflow_addons:
-  ubuntu:
-  - mrt-tensorflow-addons
-mrt_c_tensorflow:
-  cmake:
-    components: []
-    include_dirs:
-    - TENSORFLOW_C_INCLUDE_DIRS
-    libraries:
-    - TENSORFLOW_LIBRARIES
-    library_dirs: []
-    name: MrtCTensorflow
-  ubuntu:
-  - mrt-tensorflow-dev
+  ubuntu: [mrt-tensorflow-addons]
 mrt_tesseract:
-  cmake:
-    components: []
-    include_dirs:
-    - Tesseract_INCLUDE_DIR
-    libraries:
-    - Tesseract_LIBRARIES
-    library_dirs: []
-    name: MrtTesseract
-  ubuntu:
-  - libtesseract-dev
+  ubuntu: [libtesseract-dev]
 mrt_vtk:
-  cmake:
-    components: []
-    include_dirs:
-    - VTK_INCLUDE_DIRS
-    libraries:
-    - VTK_LIBRARIES
-    library_dirs: []
-    name: MrtVTK
   ubuntu:
-    trusty:
-    - mrt-vtk-dev
-    xenial:
-    - mrt-libvtk-dev
-    bionic:
-    - libvtk6-dev
+    bionic: [libvtk6-dev]
+    trusty: [mrt-vtk-dev]
+    xenial: [mrt-libvtk-dev]
 opencv:
-  cmake:
-    components: []
-    include_dirs:
-    - OpenCV_INCLUDE_DIRS
-    libraries:
-    - OpenCV_LIBS
-    library_dirs: []
-    name: OpenCV
-  ubuntu:
-  - mrt-libopencv-dev
-python-opencv:
-  ubuntu:
-    bionic:
-    - mrt-libopencv-dev
-python3-opencv:
-  ubuntu:
-    bionic:
-    - mrt-libopencv-dev
-libopencv-contrib-dev:
-  ubuntu:
-    bionic:
-    - mrt-libopencv-dev
-libopencv-dev:
-  cmake:
-    components: []
-    include_dirs:
-    - OpenCV_INCLUDE_DIRS
-    libraries:
-    - OpenCV_LIBS
-    library_dirs: []
-    name: OpenCV
-  ubuntu:
-  - mrt-libopencv-dev
-opengl:
-  cmake:
-    components: []
-    include_dirs:
-    - OPENGL_INCLUDE_DIR
-    libraries:
-    - OPENGL_LIBRARIES
-    library_dirs: []
-    name: OpenGL
-png:
-  cmake:
-    components: []
-    include_dirs:
-    - PNG_INCLUDE_DIRS
-    libraries:
-    - PNG_LIBRARIES
-    library_dirs: []
-    name: PNG
-  ubuntu:
-    xenial:
-    - libpng12-dev
-    bionic:
-    - libpng-dev
+  ubuntu: [mrt-libopencv-dev]
 png++:
-  cmake:
-    components: []
-    include_dirs:
-    - PNG++_INCLUDE_DIRS
-    libraries: []
-    library_dirs: []
-    name: PNG++
-  ubuntu:
-  - libpng++-dev
-poco:
-  cmake:
-    components:
-    - XML Zip Crypto Data Net
-    include_dirs:
-    - Poco_INCLUDE_DIRS
-    libraries:
-    - Poco_LIBRARIES
-    library_dirs: []
-    name: Poco
-  ubuntu:
-  - libpoco-dev
+  ubuntu: [libpng++-dev]
 pugixml:
-  cmake:
-    components: []
-    include_dirs:
-    - PUGIXML_INCLUDE_DIRS
-    libraries:
-    - PUGIXML_LIBRARIES
-    library_dirs: []
-    name: pugixml
-  ubuntu:
-  - libpugixml-dev
-pugixml-dev: # official rosdep key
-  cmake:
-    components: []
-    include_dirs:
-    - PUGIXML_INCLUDE_DIRS
-    libraries:
-    - PUGIXML_LIBRARIES
-    library_dirs: []
-    name: pugixml
-  ubuntu:
-  - libpugixml-dev
-python-cvxopt:
-  ubuntu:
-    pip:
-      packages: [cvxopt]
+  ubuntu: [libpugixml-dev]
+pybind11-dev:
+  ubuntu: [mrt-pybind11-dev]
 python-gdal:
-  ubuntu:
-  - python-gdal
-python-libs:
-  cmake:
-    components: []
-    include_dirs:
-    - PYTHON_INCLUDE_DIRS
-    libraries:
-    - PYTHON_LIBRARIES
-    library_dirs: []
-    name: PythonLibs
-  ubuntu:
-  - libpython2.7-dev
+  ubuntu: [python-gdal]
 python-nlopt:
-  ubuntu:
-  - python-nlopt
-python-vte:
-  ubuntu:
-  - python-vte
+  ubuntu: [python-nlopt]
 range_v3:
-  cmake:
-    include_dirs:
-    - range-v3_INCLUDE_DIR
-    name: range-v3
-  ubuntu:
-  - librange-v3-dev
-sdl2:
-  cmake:
-    components: []
-    include_dirs:
-    - SDL2_INCLUDE_DIRS
-    libraries:
-    - SDL2_LIBRARIES
-    library_dirs: []
-    name: sdl2
-  ubuntu:
-  - libsdl2-dev
-tbb:
-  cmake:
-    include_dirs:
-    - TBB_INCLUDE_DIR
-    libraries:
-    - TBB_LIBRARIES
-    name: TBB
-tinyxml:
-  cmake:
-    components: []
-    include_dirs:
-    - TINYXML_INCLUDE_DIR
-    libraries:
-    - TINYXML_LIBRARIES
-    library_dirs: []
-    name: TinyXML
-  ubuntu:
-  - libtinyxml-dev
+  ubuntu: [librange-v3-dev]
 uuid-dev:
-  ubuntu:
-  - uuid-dev
-xerces-c:
-  ubuntu:
-  - libxerces-c-dev
-yaml-cpp:
-  cmake:
-    components: []
-    include_dirs:
-    - yaml-cpp_INCLUDE_DIRS
-    libraries:
-    - yaml-cpp_LIBRARIES
-    library_dirs: []
-    name: yaml-cpp
-coinor-libipopt-dev:
-  cmake:
-    components: []
-    include_dirs:
-      - IPOPT_INCLUDE_DIRS
-    libraries:
-      - IPOPT_LIBRARIES
-    library_dirs: []
-    name: Ipopt
-  ubuntu: [coinor-libipopt-dev]
+  ubuntu: [uuid-dev]

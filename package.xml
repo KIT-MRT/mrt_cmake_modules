@@ -1,16 +1,16 @@
-<package>
+<package format="2">
   <name>mrt_cmake_modules</name>
   <version>1.0.0</version>
-  <description>CMake Functions and Modules which are commonly used by MRT's ROS packages.</description>
+  <description>CMake Functions and Modules for automating CMake</description>
 
   <license>GPL-3.0+</license>
   <maintainer email="piotr.orzechowski@kit.edu">Piotr Orzechowski</maintainer>
   <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
-  <url type="repository">https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules.git</url>
+  <url type="repository">https://github.com/KIT-MRT/mrt_cmake_modules.git</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <buildtool_depend>lcov</buildtool_depend>
+  <depend>catkin</depend>
 
   <export>
     <architecture_independent/>

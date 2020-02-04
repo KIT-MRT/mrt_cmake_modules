@@ -126,6 +126,28 @@ gl_dependency:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 graph_msgs:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+grid_map:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_core:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_cv:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_demos:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_filters:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_loader:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_msgs:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_octomap:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_ros:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_rviz_plugin:
+  ubuntu: {bionic: mrt-ros-bionic}
+grid_map_visualization:
+  ubuntu: {bionic: mrt-ros-bionic}
 hardware_interface:
   ubuntu: {bionic: mrt-ros-bionic}
 image_common:
@@ -198,6 +220,8 @@ nodelet_tutorial_math:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 octomap:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+octomap_msgs:
+  ubuntu: {bionic: mrt-ros-bionic}
 opencv3:
   ubuntu: {xenial: mrt-ros-xenial}
 orocos_kdl:
@@ -258,6 +282,10 @@ ros_environment:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 ros_tutorials:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+rosapi:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosauth:
+  ubuntu: {bionic: mrt-ros-bionic}
 rosbag:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosbag_migration_rule:
@@ -268,6 +296,12 @@ rosbash:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosboost_cfg:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
+rosbridge_library:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosbridge_msgs:
+  ubuntu: {bionic: mrt-ros-bionic}
+rosbridge_server:
+  ubuntu: {bionic: mrt-ros-bionic}
 rosbuild:
   ubuntu: {bionic: mrt-ros-bionic, xenial: mrt-ros-xenial}
 rosclean:
