@@ -5301,7 +5301,7 @@ tf2_relay:
 tf2_server:
   url: https://github.com/peci1/tf2_server-release.git
   vcs: git
-  version: release/melodic/tf2_server/1.0.3-1
+  version: release/melodic/tf2_server/1.0.4-1
 tf2_tools:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
