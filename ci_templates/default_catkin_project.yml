@@ -101,7 +101,7 @@ test:
   stage: test
   needs: [build]
   only: [branches, tags, merge_requests] # means "always"
-  coverage: '/lines......: \d+.\d+\%/'
+  coverage: 'Total test coverage: \d+.\d+\%/'
   variables:
     MRT_MIN_COVERAGE: $MRT_REQUIRED_COVERAGE
   script:
@@ -112,7 +112,7 @@ test:
   - mrt catkin run_tests --no-status $CI_PROJECT_NAME --no-deps
   # Summarize results
   - catkin_test_results --verbose build_debug/$CI_PROJECT_NAME
-  - cp -r build_debug/$CI_PROJECT_NAME/coverage .. || true
+  - cp -r build_debug/$CI_PROJECT_NAME/mrt_coverage/coverage .. || true
   # make coverage information available in gitlab
   artifacts:
     name: coverage
