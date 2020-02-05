@@ -32,10 +32,14 @@ if(OpenMP_FOUND)
             $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
             $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>
             )
-        target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE
-            $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
-            $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>
-            )
+        if(CMAKE_VERSION VERSION_LESS "3.10")
+            target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE ${OpenMP_CXX_FLAGS})
+        else()
+            target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE
+                $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
+                $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>
+                )
+        endif()
     endif()
 endif()
 
@@ -48,10 +52,14 @@ if(MRT_ENABLE_COVERAGE)
         $<${gcc_like_cxx}:-g;--coverage>
         $<${gcc_like_c}:-g;--coverage>
         )
-    target_link_options(${PROJECT_NAME}_private_compiler_flags INTERFACE
-        $<${gcc_like_cxx}:--coverage>
-        $<${gcc_like_c}:--coverage>
-        )
+    if(CMAKE_VERSION VERSION_LESS "3.13")
+        target_link_libraries(${PROJECT_NAME}_private_compiler_flags INTERFACE --coverage)
+    else()
+        target_link_options(${PROJECT_NAME}_private_compiler_flags INTERFACE
+            $<${gcc_like_cxx}:--coverage>
+            $<${gcc_like_c}:--coverage>
+            )
+    endif()
 endif()
 
 # Include config file if set. This is done last so that the target ${PROJECT_NAME}_compiler_flags can be further modified
