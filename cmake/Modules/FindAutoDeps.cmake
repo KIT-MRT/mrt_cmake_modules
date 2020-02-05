@@ -1,7 +1,6 @@
 #author: Johannes Beck, Fabian Poggenhans
 #email: Johannes.Beck@kit.edu
 #license: GPLv3
-#
 #This package automatically find_package catkin and non-catkin packages.
 #It has to be used together with GatherDeps.cmake.
 #
@@ -36,7 +35,6 @@
 if(NOT ${CMAKE_FIND_PACKAGE_NAME}_PREFIX)
     set(${CMAKE_FIND_PACKAGE_NAME}_PREFIX ${PROJECT_NAME})
 endif()
-
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda INTERFACE IMPORTED)
@@ -116,15 +114,11 @@ macro(_find_dep output_target component)
         elseif(NOT TARGET ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
             # A normal catkin package that doesnt create targets. we have to create a new target.
             add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
-            if(${component}_INCLUDE_DIRS)
-                target_include_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_INCLUDE_DIRS})
-            endif()
-            if(${component}_LIBRARY_DIRS)
-                target_link_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_LIBRARY_DIRS})
-            endif()
-            if(${component}_LIBRARIES)
-                target_link_libraries(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_LIBRARIES})
-            endif()
+            set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
+                INTERFACE_INCLUDE_DIRECTORIES "${${component}_INCLUDE_DIRS}"
+                INTERFACE_LINK_DIRECTORIES "${${component}_LIBRARY_DIRS}"
+                INTERFACE_LINK_LIBRARIES "${${component}_LIBRARIES}"
+                )
             if(${component}_EXPORTED_TARGETS)
                 add_dependencies(${${CMAKE_FIND_PACKAGE_NAME}_targetname} ${${component}_EXPORTED_TARGETS})
             endif()
@@ -154,22 +148,18 @@ macro(_find_dep output_target component)
                 add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
                 set(${CMAKE_FIND_PACKAGE_NAME}_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
                 _cleanup_includes(${CMAKE_FIND_PACKAGE_NAME}_includes)
-                if(${CMAKE_FIND_PACKAGE_NAME}_includes)
-                    target_include_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${CMAKE_FIND_PACKAGE_NAME}_includes})
-                endif()
-                if(${_${component}_CMAKE_LIBRARY_DIRS_})
-                    target_link_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${_${component}_CMAKE_LIBRARY_DIRS_}})
-                endif()
-                if(${_${component}_CMAKE_LIBRARIES_})
-                    target_link_libraries(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${_${component}_CMAKE_LIBRARIES_}})
-                endif()
+                set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
+                    INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
+                    INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
+                    INTERFACE_LINK_LIBRARIES "${${_${component}_CMAKE_LIBRARIES_}}"
+                    )
                 unset(${CMAKE_FIND_PACKAGE_NAME}_includes)
             endif() # package defines targets
         endif() # package definition is valid
     endif() # catkin vs normal package
     # add the target(s) to the output target and cleanup
     if(${CMAKE_FIND_PACKAGE_NAME}_targetname)
-        target_link_libraries(${output_target} INTERFACE ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
+        set_property(TARGET ${output_target} APPEND PROPERTY INTERFACE_LINK_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         unset(${CMAKE_FIND_PACKAGE_NAME}_targetname)
     endif()
     unset(${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
