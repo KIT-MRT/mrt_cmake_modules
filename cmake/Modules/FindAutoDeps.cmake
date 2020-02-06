@@ -140,10 +140,12 @@ macro(_find_dep output_target component)
         elseif(NOT TARGET ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
             # A normal catkin package that doesnt create targets. we have to create a new target.
             add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
+            set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${component}_LIBRARIES})
+            _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
             set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
                 INTERFACE_INCLUDE_DIRECTORIES "${${component}_INCLUDE_DIRS}"
                 INTERFACE_LINK_DIRECTORIES "${${component}_LIBRARY_DIRS}"
-                INTERFACE_LINK_LIBRARIES "${${component}_LIBRARIES}"
+                INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
                 )
             if(${component}_EXPORTED_TARGETS)
                 add_dependencies(${${CMAKE_FIND_PACKAGE_NAME}_targetname} ${${component}_EXPORTED_TARGETS})
