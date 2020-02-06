@@ -174,7 +174,6 @@ macro(_find_dep output_target component)
                 set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${_${component}_CMAKE_LIBRARIES_}})
                 _cleanup_includes(${CMAKE_FIND_PACKAGE_NAME}_includes)
                 _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
-                message("Libs: ${${CMAKE_FIND_PACKAGE_NAME}_libs}")
                 set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
                     INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
                     INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
