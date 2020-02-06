@@ -51,6 +51,30 @@ function(_cleanup_includes var_name_include_dir)
     set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
 endfunction()
 
+function(_cleanup_libraries var_name_libs)
+    # replace "debug", "general" and "optimized" keywords in the libraries list with generator expressions
+    list(LENGTH ${var_name_libs} size)
+    foreach(idx RANGE ${size})
+        if(${idx} EQUAL ${size})
+            continue()
+        endif()
+        list(GET ${var_name_libs} ${idx} statement)
+        if(${statement} STREQUAL "debug")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<CONFIG:DEBUG>:${lib}>")
+        elseif(${statement} STREQUAL "optimized")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<NOT:$<CONFIG:DEBUG>>:${lib}>")
+        endif()
+    endforeach()
+    list(REMOVE_ITEM ${var_name_libs} debug optimized general)
+    set(${var_name_libs} ${${var_name_libs}} PARENT_SCOPE)
+endfunction()
+
 function(_remove_generator_expressions libs_arg)
     set(filtered_libs)
     foreach(lib ${${libs_arg}})
@@ -147,11 +171,14 @@ macro(_find_dep output_target component)
                 # the library defines no target. Create it from the variables it sets.
                 add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
                 set(${CMAKE_FIND_PACKAGE_NAME}_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
+                set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${_${component}_CMAKE_LIBRARIES_}})
                 _cleanup_includes(${CMAKE_FIND_PACKAGE_NAME}_includes)
+                _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
+                message("Libs: ${${CMAKE_FIND_PACKAGE_NAME}_libs}")
                 set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
                     INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
                     INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
-                    INTERFACE_LINK_LIBRARIES "${${_${component}_CMAKE_LIBRARIES_}}"
+                    INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
                     )
                 unset(${CMAKE_FIND_PACKAGE_NAME}_includes)
             endif() # package defines targets
