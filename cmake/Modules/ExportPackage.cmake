@@ -3,7 +3,9 @@ function(_mrt_export_package)
     message(STATUS "Generating cmake exports for ${PROJECT_NAME} to ${CATKIN_DEVEL_PREFIX}/share")
 
     # deduplicate targets (e.g. contained by multiple variables)
-    list(REMOVE_DUPLICATES ARG_TARGETS)
+    if(ARG_TARGETS)
+        list(REMOVE_DUPLICATES ARG_TARGETS)
+    endif()
     # handle extras file
     set(extras_base_name ${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}-extras.cmake)
     if(EXISTS ${extras_base_name})
