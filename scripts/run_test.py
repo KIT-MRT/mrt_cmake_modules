@@ -103,7 +103,7 @@ def main(argv=sys.argv[1:]):
         proc = subprocess.Popen(cmd + " | tee", cwd=args.working_dir, shell=True, env=env, stderr=subprocess.PIPE)
         stdout, stderr = proc.communicate()
         if stderr:
-            print(stderr, stream)
+            print(stderr, file=stream)
             errors.append(stderr)
         if proc.returncode:
             rc = proc.returncode
