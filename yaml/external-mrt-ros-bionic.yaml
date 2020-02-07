@@ -77,31 +77,31 @@ agni_tf_tools:
 ainstein_radar:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar/2.0.2-1
+  version: release/melodic/ainstein_radar/3.0.0-1
 ainstein_radar_drivers:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_drivers/2.0.2-1
+  version: release/melodic/ainstein_radar_drivers/3.0.0-1
 ainstein_radar_filters:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_filters/2.0.2-1
+  version: release/melodic/ainstein_radar_filters/3.0.0-1
 ainstein_radar_gazebo_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.2-1
+  version: release/melodic/ainstein_radar_gazebo_plugins/3.0.0-1
 ainstein_radar_msgs:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_msgs/2.0.2-1
+  version: release/melodic/ainstein_radar_msgs/3.0.0-1
 ainstein_radar_rviz_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_rviz_plugins/2.0.2-1
+  version: release/melodic/ainstein_radar_rviz_plugins/3.0.0-1
 ainstein_radar_tools:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_tools/2.0.2-1
+  version: release/melodic/ainstein_radar_tools/3.0.0-1
 allocators:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -1433,51 +1433,95 @@ executive_smach_visualization:
 exotica:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica/5.0.0-0
+  version: release/melodic/exotica/5.1.0-1
 exotica_aico_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_aico_solver/5.0.0-0
+  version: release/melodic/exotica_aico_solver/5.1.0-1
+exotica_cartpole_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_cartpole_dynamics_solver/5.1.0-1
 exotica_collision_scene_fcl:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl/5.0.0-0
+  version: release/melodic/exotica_collision_scene_fcl/5.1.0-1
 exotica_collision_scene_fcl_latest:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl_latest/5.0.0-0
+  version: release/melodic/exotica_collision_scene_fcl_latest/5.1.0-1
 exotica_core:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core/5.0.0-0
+  version: release/melodic/exotica_core/5.1.0-1
 exotica_core_task_maps:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core_task_maps/5.0.0-0
+  version: release/melodic/exotica_core_task_maps/5.1.0-1
+exotica_ddp_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ddp_solver/5.1.0-1
+exotica_double_integrator_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_double_integrator_dynamics_solver/5.1.0-1
+exotica_dynamics_solvers:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_dynamics_solvers/5.1.0-1
 exotica_examples:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_examples/5.0.0-0
+  version: release/melodic/exotica_examples/5.1.0-1
 exotica_ik_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ik_solver/5.0.0-0
+  version: release/melodic/exotica_ik_solver/5.1.0-1
+exotica_ilqg_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ilqg_solver/5.1.0-1
+exotica_ilqr_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ilqr_solver/5.1.0-1
 exotica_levenberg_marquardt_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_levenberg_marquardt_solver/5.0.0-0
+  version: release/melodic/exotica_levenberg_marquardt_solver/5.1.0-1
+exotica_ompl_control_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ompl_control_solver/5.1.0-1
 exotica_ompl_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ompl_solver/5.0.0-0
+  version: release/melodic/exotica_ompl_solver/5.1.0-1
+exotica_pendulum_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_pendulum_dynamics_solver/5.1.0-1
+exotica_pinocchio_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_pinocchio_dynamics_solver/5.1.0-1
 exotica_python:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_python/5.0.0-0
+  version: release/melodic/exotica_python/5.1.0-1
+exotica_quadrotor_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_quadrotor_dynamics_solver/5.1.0-1
+exotica_scipy_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_scipy_solver/5.1.0-1
 exotica_time_indexed_rrt_connect_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.0.0-0
+  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.1.0-1
 exotica_val_description:
   url: https://github.com/wxmerkt/exotica_val_description-release.git
   vcs: git
@@ -3649,7 +3693,7 @@ pacmod3:
 pacmod_game_control:
   url: https://github.com/astuff/pacmod_game_control-release.git
   vcs: git
-  version: release/melodic/pacmod_game_control/2.3.0-0
+  version: release/melodic/pacmod_game_control/3.0.1-1
 pacmod_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
