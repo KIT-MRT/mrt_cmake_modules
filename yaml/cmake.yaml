@@ -178,10 +178,10 @@ libvtk:
   libraries: [VTK_LIBRARIES]
   library_dirs: []
   name: MrtVTK
-livpng++-dev:
+libpng++-dev:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
-  libraries: []
+  libraries: [PNG++_LIBRARIES]
   library_dirs: []
   name: PNG++
 mrt_ann:
@@ -332,7 +332,7 @@ opengl:
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
-  libraries: []
+  libraries: [PNG++_LIBRARIES]
   library_dirs: []
   name: PNG++
   warning: Usage of png++ in package.xml is deprecated. Use 'libpng++-dev' instead!
