@@ -17,7 +17,7 @@ if(CMAKE_VERSION VERSION_GREATER 3.11)
   find_package(Boost COMPONENTS python${_python_version} numpy${_python_version})
 endif()
 
-if(NOT Boost_FOUND)
+if(NOT (Boost_python${_python_version}_FOUND OR Boost_python_FOUND))
   find_package(Boost REQUIRED COMPONENTS python)
   find_package(Boost QUIET COMPONENTS numpy) # numpy is not available on some boost versions
   set(Python_ADDITIONAL_VERSIONS ${_python_version})
