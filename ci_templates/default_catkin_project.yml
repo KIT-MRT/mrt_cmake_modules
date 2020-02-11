@@ -30,8 +30,8 @@ build:
   # Build project and resolve deps at the same time in debug mode
   - mrt catkin build -s -rd -c --debug --default_yes --no-status $CI_PROJECT_NAME
   # generate documentation
-  - mrt doc build --no-deps $CI_PROJECT_NAME
-  - cp -r build_debug/$CI_PROJECT_NAME/doxygen_doc/html ../doxygen
+  - rm -rf ../doxygen
+  - mrt doc build --no-deps $CI_PROJECT_NAME -o ../doxygen
   # make doxygen documentation available in gitlab
   artifacts:
     name: doxygen
