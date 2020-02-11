@@ -405,7 +405,7 @@ catkin_pip:
 catkin_virtualenv:
   url: https://github.com/locusrobotics/catkin_virtualenv-release.git
   vcs: git
-  version: release/melodic/catkin_virtualenv/0.5.1-1
+  version: release/melodic/catkin_virtualenv/0.5.2-1
 checkerboard_detector:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -1433,95 +1433,95 @@ executive_smach_visualization:
 exotica:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica/5.1.0-1
+  version: release/melodic/exotica/5.1.2-1
 exotica_aico_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_aico_solver/5.1.0-1
+  version: release/melodic/exotica_aico_solver/5.1.2-1
 exotica_cartpole_dynamics_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_cartpole_dynamics_solver/5.1.0-1
+  version: release/melodic/exotica_cartpole_dynamics_solver/5.1.2-1
 exotica_collision_scene_fcl:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl/5.1.0-1
+  version: release/melodic/exotica_collision_scene_fcl/5.1.2-1
 exotica_collision_scene_fcl_latest:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl_latest/5.1.0-1
+  version: release/melodic/exotica_collision_scene_fcl_latest/5.1.2-1
 exotica_core:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core/5.1.0-1
+  version: release/melodic/exotica_core/5.1.2-1
 exotica_core_task_maps:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core_task_maps/5.1.0-1
+  version: release/melodic/exotica_core_task_maps/5.1.2-1
 exotica_ddp_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ddp_solver/5.1.0-1
+  version: release/melodic/exotica_ddp_solver/5.1.2-1
 exotica_double_integrator_dynamics_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_double_integrator_dynamics_solver/5.1.0-1
+  version: release/melodic/exotica_double_integrator_dynamics_solver/5.1.2-1
 exotica_dynamics_solvers:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_dynamics_solvers/5.1.0-1
+  version: release/melodic/exotica_dynamics_solvers/5.1.2-1
 exotica_examples:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_examples/5.1.0-1
+  version: release/melodic/exotica_examples/5.1.2-1
 exotica_ik_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ik_solver/5.1.0-1
+  version: release/melodic/exotica_ik_solver/5.1.2-1
 exotica_ilqg_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ilqg_solver/5.1.0-1
+  version: release/melodic/exotica_ilqg_solver/5.1.2-1
 exotica_ilqr_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ilqr_solver/5.1.0-1
+  version: release/melodic/exotica_ilqr_solver/5.1.2-1
 exotica_levenberg_marquardt_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_levenberg_marquardt_solver/5.1.0-1
+  version: release/melodic/exotica_levenberg_marquardt_solver/5.1.2-1
 exotica_ompl_control_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ompl_control_solver/5.1.0-1
+  version: release/melodic/exotica_ompl_control_solver/5.1.2-1
 exotica_ompl_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ompl_solver/5.1.0-1
+  version: release/melodic/exotica_ompl_solver/5.1.2-1
 exotica_pendulum_dynamics_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_pendulum_dynamics_solver/5.1.0-1
+  version: release/melodic/exotica_pendulum_dynamics_solver/5.1.2-1
 exotica_pinocchio_dynamics_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_pinocchio_dynamics_solver/5.1.0-1
+  version: release/melodic/exotica_pinocchio_dynamics_solver/5.1.2-1
 exotica_python:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_python/5.1.0-1
+  version: release/melodic/exotica_python/5.1.2-1
 exotica_quadrotor_dynamics_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_quadrotor_dynamics_solver/5.1.0-1
+  version: release/melodic/exotica_quadrotor_dynamics_solver/5.1.2-1
 exotica_scipy_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_scipy_solver/5.1.0-1
+  version: release/melodic/exotica_scipy_solver/5.1.2-1
 exotica_time_indexed_rrt_connect_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.1.0-1
+  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.1.2-1
 exotica_val_description:
   url: https://github.com/wxmerkt/exotica_val_description-release.git
   vcs: git
@@ -1549,7 +1549,7 @@ fake_localization:
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
-  version: release/melodic/fcl_catkin/0.5.99-1
+  version: release/melodic/fcl_catkin/0.6.0-1
 fetch_auto_dock_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
@@ -2902,6 +2902,10 @@ microstrain_mips:
   url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
   vcs: git
   version: release/melodic/microstrain_mips/0.0.3-1
+mikrotik_swos_tools:
+  url: https://github.com/peci1/mikrotik_swos_tools-release.git
+  vcs: git
+  version: release/melodic/mikrotik_swos_tools/1.0.1-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3686,6 +3690,10 @@ p2os_urdf:
   url: https://github.com/allenh1/p2os-release.git
   vcs: git
   version: release/melodic/p2os_urdf/2.1.1-3
+pacmod:
+  url: https://github.com/astuff/pacmod-release.git
+  vcs: git
+  version: release/melodic/pacmod/2.1.0-1
 pacmod3:
   url: https://github.com/astuff/pacmod3-release.git
   vcs: git
@@ -5345,7 +5353,7 @@ tf2_relay:
 tf2_server:
   url: https://github.com/peci1/tf2_server-release.git
   vcs: git
-  version: release/melodic/tf2_server/1.0.4-1
+  version: release/melodic/tf2_server/1.0.5-1
 tf2_tools:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
