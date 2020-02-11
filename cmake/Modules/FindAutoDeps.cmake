@@ -40,15 +40,24 @@ add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test INTERFACE IMPOR
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export INTERFACE IMPORTED)
 
-function(_cleanup_includes var_name_include_dir)
-    if(${var_name_include_dir})
-        # remove /usr/include and /usr/local/include
-        # The compiler searches in those folders automatically and this can lead to 
-        # problems if there are different versions of the same library installed
-        # at different places.
-        list(REMOVE_ITEM ${var_name_include_dir} "/usr/include" "/usr/local/include")
-    endif()
-    set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
+function(_cleanup_includes targets)
+    # remove /usr/include and /usr/local/include
+    # The compiler searches in those folders automatically and this can lead to
+    # problems if there are different versions of the same library installed
+    # at different places.
+    foreach(target ${targets})
+        get_target_property(_target_include ${target} INTERFACE_INCLUDE_DIRECTORIES)
+        if(_target_include)
+            list(FIND _target_include /usr/include has_inc)
+            list(FIND _target_include /usr/local/include has_local_inc)
+            if(has_local_inc GREATER -1 OR has_inc GREATER -1)
+                list(REMOVE_ITEM _target_include "/usr/include" "/usr/local/include")
+                set_target_properties(${target} PROPERTIES
+                    INTERFACE_INCLUDE_DIRECTORIES "${_target_include}"
+                    )
+            endif()
+        endif()
+    endforeach()
 endfunction()
 
 function(_cleanup_libraries var_name_libs)
@@ -98,13 +107,8 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
     if(NOT TARGET ${lib})
         set(${out_libs} ${${out_libs}} ${lib} PARENT_SCOPE)
         return()
-    else()
-        get_target_property(_target_type ${lib} TYPE)
-        if(NOT ${_target_type} STREQUAL "INTERFACE_LIBRARY")
-            set(${out_libs} ${${out_libs}} ${lib} PARENT_SCOPE)
-            return()
-        endif()
     endif()
+
     get_target_property(_target_include ${lib} INTERFACE_INCLUDE_DIRECTORIES)
     get_target_property(_target_sys_include ${lib} INTERFACE_SYSTEM_INCLUDE_DIRECTORIES)
     set(inc)
@@ -115,11 +119,15 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
         list(APPEND inc ${_target_sys_include})
     endif()
     get_target_property(_target_link ${lib} INTERFACE_LINK_LIBRARIES)
-    if(_target_link)
-        foreach(lib ${_target_link})
-            _get_libs_and_incs_recursive(${out_libs} ${out_incs} ${lib})
-        endforeach()
+    get_target_property(_target_type ${lib} TYPE)
+    if(${_target_type} STREQUAL "INTERFACE_LIBRARY") 
+        if(_target_link)
+            foreach(lib ${_target_link})
+                _get_libs_and_incs_recursive(${out_libs} ${out_incs} ${lib})
+            endforeach()
+        endif()
     endif()
+    
     set(${out_libs} ${${out_libs}} PARENT_SCOPE)
     set(${out_incs} ${${out_incs}} ${inc} PARENT_SCOPE)
 endfunction()
@@ -176,7 +184,6 @@ macro(_find_dep output_target component)
                 add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
                 set(${CMAKE_FIND_PACKAGE_NAME}_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
                 set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${_${component}_CMAKE_LIBRARIES_}})
-                _cleanup_includes(${CMAKE_FIND_PACKAGE_NAME}_includes)
                 _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
                 set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
                     INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
@@ -189,6 +196,7 @@ macro(_find_dep output_target component)
     endif() # catkin vs normal package
     # add the target(s) to the output target and cleanup
     if(${CMAKE_FIND_PACKAGE_NAME}_targetname)
+        _cleanup_includes(${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         set_property(TARGET ${output_target} APPEND PROPERTY INTERFACE_LINK_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         unset(${CMAKE_FIND_PACKAGE_NAME}_targetname)
     endif()
