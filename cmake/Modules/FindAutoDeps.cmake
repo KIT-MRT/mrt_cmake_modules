@@ -1,7 +1,6 @@
 #author: Johannes Beck, Fabian Poggenhans
 #email: Johannes.Beck@kit.edu
 #license: GPLv3
-#
 #This package automatically find_package catkin and non-catkin packages.
 #It has to be used together with GatherDeps.cmake.
 #
@@ -36,21 +35,55 @@
 if(NOT ${CMAKE_FIND_PACKAGE_NAME}_PREFIX)
     set(${CMAKE_FIND_PACKAGE_NAME}_PREFIX ${PROJECT_NAME})
 endif()
-
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export INTERFACE IMPORTED)
 
-function(_cleanup_includes var_name_include_dir)
-    if(${var_name_include_dir})
-        # remove /usr/include and /usr/local/include
-        # The compiler searches in those folders automatically and this can lead to 
-        # problems if there are different versions of the same library installed
-        # at different places.
-        list(REMOVE_ITEM ${var_name_include_dir} "/usr/include" "/usr/local/include")
+function(_cleanup_includes targets)
+    # remove /usr/include and /usr/local/include
+    # The compiler searches in those folders automatically and this can lead to
+    # problems if there are different versions of the same library installed
+    # at different places.
+    foreach(target ${targets})
+        get_target_property(_target_include ${target} INTERFACE_INCLUDE_DIRECTORIES)
+        if(_target_include)
+            list(FIND _target_include /usr/include has_inc)
+            list(FIND _target_include /usr/local/include has_local_inc)
+            if(has_local_inc GREATER -1 OR has_inc GREATER -1)
+                list(REMOVE_ITEM _target_include "/usr/include" "/usr/local/include")
+                set_target_properties(${target} PROPERTIES
+                    INTERFACE_INCLUDE_DIRECTORIES "${_target_include}"
+                    )
+            endif()
+        endif()
+    endforeach()
+endfunction()
+
+function(_cleanup_libraries var_name_libs)
+    # replace "debug", "general" and "optimized" keywords in the libraries list with generator expressions
+    list(LENGTH ${var_name_libs} size)
+    foreach(idx RANGE ${size})
+        if(${idx} EQUAL ${size})
+            continue()
+        endif()
+        list(GET ${var_name_libs} ${idx} statement)
+        if(${statement} STREQUAL "debug")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<CONFIG:DEBUG>:${lib}>")
+        elseif(${statement} STREQUAL "optimized")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<NOT:$<CONFIG:DEBUG>>:${lib}>")
+        endif()
+    endforeach()
+    if(size)
+        list(REMOVE_ITEM ${var_name_libs} debug optimized general)
     endif()
-    set (${var_name_include_dir} ${${var_name_include_dir}} PARENT_SCOPE)
+    set(${var_name_libs} ${${var_name_libs}} PARENT_SCOPE)
 endfunction()
 
 function(_remove_generator_expressions libs_arg)
@@ -74,13 +107,8 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
     if(NOT TARGET ${lib})
         set(${out_libs} ${${out_libs}} ${lib} PARENT_SCOPE)
         return()
-    else()
-        get_target_property(_target_type ${lib} TYPE)
-        if(NOT ${_target_type} STREQUAL "INTERFACE_LIBRARY")
-            set(${out_libs} ${${out_libs}} ${lib} PARENT_SCOPE)
-            return()
-        endif()
     endif()
+
     get_target_property(_target_include ${lib} INTERFACE_INCLUDE_DIRECTORIES)
     get_target_property(_target_sys_include ${lib} INTERFACE_SYSTEM_INCLUDE_DIRECTORIES)
     set(inc)
@@ -90,12 +118,18 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
     if(_target_sys_include)
         list(APPEND inc ${_target_sys_include})
     endif()
-    get_target_property(_target_link ${lib} INTERFACE_LINK_LIBRARIES)
-    if(_target_link)
-        foreach(lib ${_target_link})
-            _get_libs_and_incs_recursive(${out_libs} ${out_incs} ${lib})
-        endforeach()
+    get_target_property(_target_type ${lib} TYPE)
+    if(${_target_type} STREQUAL "INTERFACE_LIBRARY")
+        get_target_property(_target_link ${lib} INTERFACE_LINK_LIBRARIES)
+        if(_target_link)
+            foreach(lib ${_target_link})
+                _get_libs_and_incs_recursive(${out_libs} ${out_incs} ${lib})
+            endforeach()
+        endif()
+    else()
+        set(${out_libs} ${${out_libs}} ${lib})
     endif()
+
     set(${out_libs} ${${out_libs}} PARENT_SCOPE)
     set(${out_incs} ${${out_incs}} ${inc} PARENT_SCOPE)
 endfunction()
@@ -116,15 +150,13 @@ macro(_find_dep output_target component)
         elseif(NOT TARGET ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
             # A normal catkin package that doesnt create targets. we have to create a new target.
             add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
-            if(${component}_INCLUDE_DIRS)
-                target_include_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_INCLUDE_DIRS})
-            endif()
-            if(${component}_LIBRARY_DIRS)
-                target_link_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_LIBRARY_DIRS})
-            endif()
-            if(${component}_LIBRARIES)
-                target_link_libraries(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${component}_LIBRARIES})
-            endif()
+            set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${component}_LIBRARIES})
+            _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
+            set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
+                INTERFACE_INCLUDE_DIRECTORIES "${${component}_INCLUDE_DIRS}"
+                INTERFACE_LINK_DIRECTORIES "${${component}_LIBRARY_DIRS}"
+                INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
+                )
             if(${component}_EXPORTED_TARGETS)
                 add_dependencies(${${CMAKE_FIND_PACKAGE_NAME}_targetname} ${${component}_EXPORTED_TARGETS})
             endif()
@@ -153,23 +185,21 @@ macro(_find_dep output_target component)
                 # the library defines no target. Create it from the variables it sets.
                 add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
                 set(${CMAKE_FIND_PACKAGE_NAME}_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
-                _cleanup_includes(${CMAKE_FIND_PACKAGE_NAME}_includes)
-                if(${CMAKE_FIND_PACKAGE_NAME}_includes)
-                    target_include_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${CMAKE_FIND_PACKAGE_NAME}_includes})
-                endif()
-                if(${_${component}_CMAKE_LIBRARY_DIRS_})
-                    target_link_directories(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${_${component}_CMAKE_LIBRARY_DIRS_}})
-                endif()
-                if(${_${component}_CMAKE_LIBRARIES_})
-                    target_link_libraries(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE ${${_${component}_CMAKE_LIBRARIES_}})
-                endif()
+                set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${_${component}_CMAKE_LIBRARIES_}})
+                _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
+                set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
+                    INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
+                    INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
+                    INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
+                    )
                 unset(${CMAKE_FIND_PACKAGE_NAME}_includes)
             endif() # package defines targets
         endif() # package definition is valid
     endif() # catkin vs normal package
     # add the target(s) to the output target and cleanup
     if(${CMAKE_FIND_PACKAGE_NAME}_targetname)
-        target_link_libraries(${output_target} INTERFACE ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
+        _cleanup_includes(${${CMAKE_FIND_PACKAGE_NAME}_targetname})
+        set_property(TARGET ${output_target} APPEND PROPERTY INTERFACE_LINK_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         unset(${CMAKE_FIND_PACKAGE_NAME}_targetname)
     endif()
     unset(${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
@@ -237,8 +267,12 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
     unset(_target_include)
     unset(_target_link)
     unset(${CMAKE_FIND_PACKAGE_NAME}_CATKIN_SELECTED_PACKAGES_)
-    list(REMOVE_DUPLICATES mrt_EXPORT_INCLUDE_DIRS)
-    list(REMOVE_DUPLICATES mrt_EXPORT_LIBRARIES)
+    if(mrt_EXPORT_INCLUDE_DIRS)
+        list(REMOVE_DUPLICATES mrt_EXPORT_INCLUDE_DIRS)
+    endif()
+    if(mrt_EXPORT_LIBRARIES)
+        list(REMOVE_DUPLICATES mrt_EXPORT_LIBRARIES)
+    endif()
     _remove_generator_expressions(mrt_EXPORT_LIBRARIES) # catkin cannot handle generator expressions (of type $<CONFIG::DEBUG:...>)
     _remove_generator_expressions(mrt_EXPORT_INCLUDE_DIRS)
 endif()
