@@ -77,31 +77,31 @@ agni_tf_tools:
 ainstein_radar:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar/2.0.2-1
+  version: release/melodic/ainstein_radar/3.0.0-1
 ainstein_radar_drivers:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_drivers/2.0.2-1
+  version: release/melodic/ainstein_radar_drivers/3.0.0-1
 ainstein_radar_filters:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_filters/2.0.2-1
+  version: release/melodic/ainstein_radar_filters/3.0.0-1
 ainstein_radar_gazebo_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.2-1
+  version: release/melodic/ainstein_radar_gazebo_plugins/3.0.0-1
 ainstein_radar_msgs:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_msgs/2.0.2-1
+  version: release/melodic/ainstein_radar_msgs/3.0.0-1
 ainstein_radar_rviz_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_rviz_plugins/2.0.2-1
+  version: release/melodic/ainstein_radar_rviz_plugins/3.0.0-1
 ainstein_radar_tools:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_tools/2.0.2-1
+  version: release/melodic/ainstein_radar_tools/3.0.0-1
 allocators:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -405,7 +405,7 @@ catkin_pip:
 catkin_virtualenv:
   url: https://github.com/locusrobotics/catkin_virtualenv-release.git
   vcs: git
-  version: release/melodic/catkin_virtualenv/0.5.1-1
+  version: release/melodic/catkin_virtualenv/0.5.2-1
 checkerboard_detector:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -909,11 +909,11 @@ costmap_converter:
 costmap_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/costmap_cspace/0.6.0-1
+  version: release/melodic/costmap_cspace/0.7.0-1
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/costmap_cspace_msgs/0.5.0-1
+  version: release/melodic/costmap_cspace_msgs/0.7.0-1
 costmap_queue:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -1145,7 +1145,7 @@ driver_common:
 drone_wrapper:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/melodic/drone_wrapper/1.1.0-1
+  version: release/melodic/drone_wrapper/1.2.0-1
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1433,51 +1433,95 @@ executive_smach_visualization:
 exotica:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica/5.0.0-0
+  version: release/melodic/exotica/5.1.2-1
 exotica_aico_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_aico_solver/5.0.0-0
+  version: release/melodic/exotica_aico_solver/5.1.2-1
+exotica_cartpole_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_cartpole_dynamics_solver/5.1.2-1
 exotica_collision_scene_fcl:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl/5.0.0-0
+  version: release/melodic/exotica_collision_scene_fcl/5.1.2-1
 exotica_collision_scene_fcl_latest:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_collision_scene_fcl_latest/5.0.0-0
+  version: release/melodic/exotica_collision_scene_fcl_latest/5.1.2-1
 exotica_core:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core/5.0.0-0
+  version: release/melodic/exotica_core/5.1.2-1
 exotica_core_task_maps:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_core_task_maps/5.0.0-0
+  version: release/melodic/exotica_core_task_maps/5.1.2-1
+exotica_ddp_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ddp_solver/5.1.2-1
+exotica_double_integrator_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_double_integrator_dynamics_solver/5.1.2-1
+exotica_dynamics_solvers:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_dynamics_solvers/5.1.2-1
 exotica_examples:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_examples/5.0.0-0
+  version: release/melodic/exotica_examples/5.1.2-1
 exotica_ik_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ik_solver/5.0.0-0
+  version: release/melodic/exotica_ik_solver/5.1.2-1
+exotica_ilqg_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ilqg_solver/5.1.2-1
+exotica_ilqr_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ilqr_solver/5.1.2-1
 exotica_levenberg_marquardt_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_levenberg_marquardt_solver/5.0.0-0
+  version: release/melodic/exotica_levenberg_marquardt_solver/5.1.2-1
+exotica_ompl_control_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_ompl_control_solver/5.1.2-1
 exotica_ompl_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_ompl_solver/5.0.0-0
+  version: release/melodic/exotica_ompl_solver/5.1.2-1
+exotica_pendulum_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_pendulum_dynamics_solver/5.1.2-1
+exotica_pinocchio_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_pinocchio_dynamics_solver/5.1.2-1
 exotica_python:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_python/5.0.0-0
+  version: release/melodic/exotica_python/5.1.2-1
+exotica_quadrotor_dynamics_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_quadrotor_dynamics_solver/5.1.2-1
+exotica_scipy_solver:
+  url: https://github.com/ipab-slmc/exotica-release.git
+  vcs: git
+  version: release/melodic/exotica_scipy_solver/5.1.2-1
 exotica_time_indexed_rrt_connect_solver:
   url: https://github.com/ipab-slmc/exotica-release.git
   vcs: git
-  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.0.0-0
+  version: release/melodic/exotica_time_indexed_rrt_connect_solver/5.1.2-1
 exotica_val_description:
   url: https://github.com/wxmerkt/exotica_val_description-release.git
   vcs: git
@@ -1505,7 +1549,7 @@ fake_localization:
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
-  version: release/melodic/fcl_catkin/0.5.99-1
+  version: release/melodic/fcl_catkin/0.6.0-1
 fetch_auto_dock_msgs:
   url: https://github.com/fetchrobotics-gbp/fetch_msgs-release.git
   vcs: git
@@ -2261,7 +2305,7 @@ joystick_drivers:
 joystick_interrupt:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/joystick_interrupt/0.6.0-1
+  version: release/melodic/joystick_interrupt/0.7.0-1
 jpeg_streamer:
   url: https://github.com/ros-drivers-gbp/camera_umd-release.git
   vcs: git
@@ -2705,11 +2749,11 @@ map_merge_3d:
 map_organizer:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/map_organizer/0.6.0-1
+  version: release/melodic/map_organizer/0.7.0-1
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/map_organizer_msgs/0.5.0-1
+  version: release/melodic/map_organizer_msgs/0.7.0-1
 mapviz:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
@@ -2777,7 +2821,7 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2019.12.30-1
+  version: release/melodic/mavlink/2020.2.2-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
@@ -2821,7 +2865,7 @@ mbf_utility:
 mcl_3dl:
   url: https://github.com/at-wat/mcl_3dl-release.git
   vcs: git
-  version: release/melodic/mcl_3dl/0.2.0-1
+  version: release/melodic/mcl_3dl/0.2.1-1
 mcl_3dl_msgs:
   url: https://github.com/at-wat/mcl_3dl_msgs-release.git
   vcs: git
@@ -2858,6 +2902,10 @@ microstrain_mips:
   url: https://github.com/ros-drivers-gbp/microstrain_mips-release.git
   vcs: git
   version: release/melodic/microstrain_mips/0.0.3-1
+mikrotik_swos_tools:
+  url: https://github.com/peci1/mikrotik_swos_tools-release.git
+  vcs: git
+  version: release/melodic/mikrotik_swos_tools/1.0.1-1
 mini_maxwell:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -3317,19 +3365,19 @@ neobotix_usboard_msgs:
 neonavigation:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation/0.6.0-1
+  version: release/melodic/neonavigation/0.7.0-1
 neonavigation_common:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_common/0.6.0-1
+  version: release/melodic/neonavigation_common/0.7.0-1
 neonavigation_launch:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/neonavigation_launch/0.6.0-1
+  version: release/melodic/neonavigation_launch/0.7.0-1
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/neonavigation_msgs/0.5.0-1
+  version: release/melodic/neonavigation_msgs/0.7.0-1
 neonavigation_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
@@ -3417,7 +3465,7 @@ ntpd_driver:
 obj_to_pointcloud:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/obj_to_pointcloud/0.6.0-1
+  version: release/melodic/obj_to_pointcloud/0.7.0-1
 object_recognition_msgs:
   url: https://github.com/ros-gbp/object_recognition_msgs-release.git
   vcs: git
@@ -3642,6 +3690,10 @@ p2os_urdf:
   url: https://github.com/allenh1/p2os-release.git
   vcs: git
   version: release/melodic/p2os_urdf/2.1.1-3
+pacmod:
+  url: https://github.com/astuff/pacmod-release.git
+  vcs: git
+  version: release/melodic/pacmod/2.1.0-1
 pacmod3:
   url: https://github.com/astuff/pacmod3-release.git
   vcs: git
@@ -3649,7 +3701,7 @@ pacmod3:
 pacmod_game_control:
   url: https://github.com/astuff/pacmod_game_control-release.git
   vcs: git
-  version: release/melodic/pacmod_game_control/2.3.0-0
+  version: release/melodic/pacmod_game_control/3.0.1-1
 pacmod_msgs:
   url: https://github.com/astuff/astuff_sensor_msgs-release.git
   vcs: git
@@ -3773,15 +3825,15 @@ pinocchio:
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/planner_cspace/0.6.0-1
+  version: release/melodic/planner_cspace/0.7.0-1
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/planner_cspace_msgs/0.5.0-1
+  version: release/melodic/planner_cspace_msgs/0.7.0-1
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.5.0-1
+  version: release/melodic/plotjuggler/2.5.1-2
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -4281,7 +4333,7 @@ rc_visard_driver:
 rcdiscover:
   url: https://github.com/roboception-gbp/rcdiscover-release.git
   vcs: git
-  version: release/melodic/rcdiscover/1.0.0-1
+  version: release/melodic/rcdiscover/1.0.2-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -4829,11 +4881,15 @@ rqt_controller_manager:
 rqt_drone_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/melodic/rqt_drone_teleop/1.1.0-1
+  version: release/melodic/rqt_drone_teleop/1.2.0-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
   version: release/melodic/rqt_ez_publisher/0.5.0-1
+rqt_ground_robot_teleop:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/melodic/rqt_ground_robot_teleop/1.2.0-1
 rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -4925,11 +4981,11 @@ safe_teleop_stage:
 safety_limiter:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/safety_limiter/0.6.0-1
+  version: release/melodic/safety_limiter/0.7.0-1
 safety_limiter_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/safety_limiter_msgs/0.5.0-1
+  version: release/melodic/safety_limiter_msgs/0.7.0-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -5125,7 +5181,7 @@ spacenav_node:
 sparse_bundle_adjustment:
   url: https://github.com/ros-gbp/sparse_bundle_adjustment-release.git
   vcs: git
-  version: release/melodic/sparse_bundle_adjustment/0.4.2-0
+  version: release/melodic/sparse_bundle_adjustment/0.4.3-1
 spatio_temporal_voxel_layer:
   url: https://github.com/SteveMacenski/spatio_temporal_voxel_layer-release.git
   vcs: git
@@ -5301,7 +5357,7 @@ tf2_relay:
 tf2_server:
   url: https://github.com/peci1/tf2_server-release.git
   vcs: git
-  version: release/melodic/tf2_server/1.0.3-1
+  version: release/melodic/tf2_server/1.0.5-1
 tf2_tools:
   url: https://github.com/ros-gbp/geometry2-release.git
   vcs: git
@@ -5385,15 +5441,15 @@ tracetools:
 track_odometry:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/track_odometry/0.6.0-1
+  version: release/melodic/track_odometry/0.7.0-1
 trajectory_tracker:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker/0.6.0-1
+  version: release/melodic/trajectory_tracker/0.7.0-1
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker_msgs/0.5.0-1
+  version: release/melodic/trajectory_tracker_msgs/0.7.0-1
 trajectory_tracker_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
