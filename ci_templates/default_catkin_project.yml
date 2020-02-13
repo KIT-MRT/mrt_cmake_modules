@@ -154,7 +154,7 @@ deps:
 # It is available under <namespace>.pages.mrt.uni-karlsruhe.de/<pkg_name>/<doxygen/coverage>/index.html
 pages:
   before_script: []
-  needs: [build]
+  needs: [build, test]
   cache: {}
   stage: deploy
   script:
