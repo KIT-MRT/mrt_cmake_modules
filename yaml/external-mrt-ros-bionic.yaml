@@ -2297,7 +2297,7 @@ joy_listener:
 joy_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
-  version: release/melodic/joy_teleop/0.3.0-0
+  version: release/melodic/joy_teleop/0.3.1-1
 joystick_drivers:
   url: https://github.com/ros-gbp/joystick_drivers-release.git
   vcs: git
@@ -2445,7 +2445,7 @@ kartech_linear_actuator_msgs:
 key_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
-  version: release/melodic/key_teleop/0.3.0-0
+  version: release/melodic/key_teleop/0.3.1-1
 kinesis_manager:
   url: https://github.com/aws-gbp/kinesis_manager-release.git
   vcs: git
@@ -2969,7 +2969,7 @@ monocam_settler:
 mouse_teleop:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
-  version: release/melodic/mouse_teleop/0.3.0-0
+  version: release/melodic/mouse_teleop/0.3.1-1
 move_base:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -5313,11 +5313,11 @@ teb_local_planner_tutorials:
 teleop_tools:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
-  version: release/melodic/teleop_tools/0.3.0-0
+  version: release/melodic/teleop_tools/0.3.1-1
 teleop_tools_msgs:
   url: https://github.com/ros-gbp/teleop_tools-release.git
   vcs: git
-  version: release/melodic/teleop_tools_msgs/0.3.0-0
+  version: release/melodic/teleop_tools_msgs/0.3.1-1
 teleop_twist_joy:
   url: https://github.com/ros-teleop/teleop_twist_joy-release.git
   vcs: git
