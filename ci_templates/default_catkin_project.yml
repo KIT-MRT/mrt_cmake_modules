@@ -21,7 +21,7 @@ before_script:
   - mrt ci prepare $CI_PROJECT_NAME -c $CI_COMMIT_SHA
   - cd catkin_ws
   # add current branch name to branch management
-  - mrt ws branches set $CI_COMMIT_REF_NAME
+  - mrt ws branches set $CI_COMMIT_SHA $CI_COMMIT_REF_NAME
 
 build:
   stage: build
