@@ -1236,7 +1236,7 @@ function(mrt_install)
         include(${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules/ExportPackage.cmake)
         _mrt_export_package(
             EXPORTS ${package_exports}
-            LIBRARIES ${${PROJECT_NAME}_GENERATED_LIBRARIES} ${EXPORT_TARGETS}
+            LIBRARIES ${export_targets}
             TARGETS ${remaining_targets} ${${PROJECT_NAME}_EXPORTED_TARGETS}
             )
     endif()
