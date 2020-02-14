@@ -69,15 +69,15 @@ def build_coverage(args):
     cmd = ["lcov", "-o", lcov_full, "-q"] + add_args
     fail = subprocess.call(cmd)
     if fail:
-        return fail
+        print("No C++ coverage was generated")
+        print_coverage("", args.coverage_dir, args.coverage_stderr)
+        return 0
 
     # strip coverage of files outside project
     lcov_project = os.path.join(args.coverage_dir, "project_coverage.lcov")
     cmd = ["lcov", "-o", lcov_project, "--extract", lcov_full, args.project_dir + "/*", "-q"]
     fail = subprocess.call(cmd)
-    if fail:
-        return fail
-    if os.path.getsize(lcov_project) == 0:
+    if fail or os.path.getsize(lcov_project) == 0:
         print("No C++ coverage was generated")
         print_coverage("", args.coverage_dir, args.coverage_stderr)
         return 0
