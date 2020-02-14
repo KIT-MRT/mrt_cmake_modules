@@ -17,6 +17,7 @@ lanelet2:
 sceneshot:
 - sceneshot
 - sceneshot_core
+- sceneshot_critical_areas
 - sceneshot_free_space
 - sceneshot_gridmap
 - sceneshot_gridmap_elevation
