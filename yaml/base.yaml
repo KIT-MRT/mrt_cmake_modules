@@ -19,6 +19,8 @@ libgeographic-dev:
   ubuntu: [libgeographic-dev]
 liblmdb:
   ubuntu: [liblmdb-dev]
+libopencv-dev:
+  ubuntu: [mrt-libopencv-dev]
 libxext-dev:
   ubuntu: [libxext-dev]
 libxrandr-dev:
