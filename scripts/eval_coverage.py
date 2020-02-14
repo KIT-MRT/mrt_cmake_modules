@@ -88,7 +88,9 @@ def build_coverage(args):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     out, err = proc.communicate()
     if proc.returncode:
-        return proc.returncode
+        print("No C++ coverage was generated")
+        print_coverage("", args.coverage_dir, args.coverage_stderr)
+        return 0
 
     # print & show
     print_coverage(out, args.coverage_dir, args.coverage_stderr)
