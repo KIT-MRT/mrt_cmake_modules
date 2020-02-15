@@ -1145,7 +1145,7 @@ driver_common:
 drone_wrapper:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/melodic/drone_wrapper/1.2.0-1
+  version: release/melodic/drone_wrapper/1.3.1-1
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -2217,7 +2217,7 @@ ipr_extern:
 ira_laser_tools:
   url: https://github.com/iralabdisco/ira_laser_tools-release.git
   vcs: git
-  version: release/kinetic/ira_laser_tools/1.0.3-1
+  version: release/melodic/ira_laser_tools/1.0.4-1
 ivcon:
   url: https://github.com/ros-gbp/ivcon-release.git
   vcs: git
@@ -2262,6 +2262,10 @@ jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
   version: release/melodic/jderobot_assets/0.1.0-1
+jderobot_drones:
+  url: https://github.com/JdeRobot/drones-release.git
+  vcs: git
+  version: release/melodic/jderobot_drones/1.3.1-1
 joint_state_publisher_gui:
   url: https://github.com/ros-gbp/joint_state_publisher-release.git
   vcs: git
@@ -4885,7 +4889,7 @@ rqt_controller_manager:
 rqt_drone_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/melodic/rqt_drone_teleop/1.2.0-1
+  version: release/melodic/rqt_drone_teleop/1.3.1-1
 rqt_ez_publisher:
   url: https://github.com/OTL/rqt_ez_publisher-release.git
   vcs: git
@@ -4893,7 +4897,7 @@ rqt_ez_publisher:
 rqt_ground_robot_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
-  version: release/melodic/rqt_ground_robot_teleop/1.2.0-1
+  version: release/melodic/rqt_ground_robot_teleop/1.3.1-1
 rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
