@@ -5,7 +5,7 @@ endif()
 set(_MRT_CMAKE_MODULES_EXTRAS_INCLUDED_ TRUE)
 
 # Check cmakelists version
-set(_MRT_RECOMMENDED_VERSION 2.1)
+set(_MRT_RECOMMENDED_VERSION 4.0)
 if(MRT_PKG_VERSION AND MRT_PKG_VERSION VERSION_LESS _MRT_RECOMMENDED_VERSION )
    message(WARNING "Current CMakeLists.txt version is less than the recommended version ${_MRT_RECOMMENDED_VERSION}. If you are the maintainer, please update it with\n'mrt maintenance update_cmakelists ${PROJECT_NAME}'.")
 endif()
