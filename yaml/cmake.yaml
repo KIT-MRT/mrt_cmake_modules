@@ -108,6 +108,12 @@ libceres-dev:
 libconsole-bridge-dev:
   targets: ["console_bridge"]
   name: console_bridge
+libdl:
+  components: []
+  include_dirs: [LIBDL_INCLUDE_DIR]
+  libraries: [LIBDL_LIBRARIES]
+  library_dirs: []
+  name: LibDL  
 libgeographic-dev:
   components: []
   include_dirs: [GeographicLib_INCLUDE_DIRS]
