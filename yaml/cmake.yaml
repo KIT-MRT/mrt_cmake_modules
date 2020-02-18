@@ -47,6 +47,12 @@ cuda:
   libraries: [CUDA_LIBRARIES]
   library_dirs: []
   name: MrtCUDA
+cppad:
+  components: []
+  include_dirs: [CPPAD_INCLUDE_DIRS]
+  libraries: [CPPAD_LIBRARIES]
+  library_dirs: [CPPAD_LIBRARY_DIRS]
+  name: CppAD
 eigen:
   components: []
   include_dirs: [EIGEN3_INCLUDE_DIR]
@@ -102,6 +108,12 @@ libceres-dev:
 libconsole-bridge-dev:
   targets: ["console_bridge"]
   name: console_bridge
+libdl:
+  components: []
+  include_dirs: [LIBDL_INCLUDE_DIR]
+  libraries: [LIBDL_LIBRARIES]
+  library_dirs: []
+  name: LibDL  
 libgeographic-dev:
   components: []
   include_dirs: [GeographicLib_INCLUDE_DIRS]
