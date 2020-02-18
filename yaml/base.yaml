@@ -15,6 +15,8 @@ freeglut3-dev:
   ubuntu: [freeglut3-dev]
 libboost-python:
   ubuntu: [libpython-dev, libboost-python-dev]
+libdl:
+  ubuntu: [libc-dev]  
 libgeographic-dev:
   ubuntu: [libgeographic-dev]
 liblmdb:
