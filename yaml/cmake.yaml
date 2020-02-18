@@ -47,6 +47,12 @@ cuda:
   libraries: [CUDA_LIBRARIES]
   library_dirs: []
   name: MrtCUDA
+cppad:
+  components: []
+  include_dirs: [CPPAD_INCLUDE_DIRS]
+  libraries: [CPPAD_LIBRARIES]
+  library_dirs: [CPPAD_LIBRARY_DIRS]
+  name: CppAD
 eigen:
   components: []
   include_dirs: [EIGEN3_INCLUDE_DIR]
