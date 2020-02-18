@@ -139,7 +139,12 @@ macro(_find_dep output_target component)
     list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${component} ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
     if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package} EQUAL -1)
         # is catkin package
-        find_package(${component} REQUIRED)
+
+        # only call find_package if it wasn't called already
+        if(NOT (${component}_EXPORTS_TARGETS OR TARGET ${${CMAKE_FIND_PACKAGE_NAME}_targetname}))
+            find_package(${component} REQUIRED)
+        endif()
+
         if(${component}_EXPORTS_TARGETS)
             # Simple case: Its another package that export targets
             if(${component}_LIBRARIES)
@@ -171,10 +176,24 @@ macro(_find_dep output_target component)
             message(FATAL_ERROR "Package ${component} was not found. If it is a catkin package: Make sure it is present. If it is an external package: Make sure it is listed in mrt_cmake_modules/yaml/cmake.yaml!")
         else()
             #find non-catkin modules
-            if(DEFINED _${component}_CMAKE_COMPONENTS_)
-                find_package(${_${component}_CMAKE_NAME_} REQUIRED COMPONENTS ${_${component}_CMAKE_COMPONENTS_})
+
+            # test if was found already
+            set(${CMAKE_FIND_PACKAGE_NAME}_already_found TRUE)
+            if(NOT DEFINED _${component}_CMAKE_TARGETS_ AND NOT TARGET ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
+                set(${CMAKE_FIND_PACKAGE_NAME}_already_found FALSE)
             else()
-                find_package(${_${component}_CMAKE_NAME_} REQUIRED)
+                foreach(target ${_${component}_CMAKE_TARGETS_})
+                    if(NOT TARGET ${target})
+                        set(${CMAKE_FIND_PACKAGE_NAME}_already_found FALSE)
+                    endif()
+                endforeach()
+            endif()
+            if(NOT ${CMAKE_FIND_PACKAGE_NAME}_already_found)
+                if(DEFINED _${component}_CMAKE_COMPONENTS_)
+                    find_package(${_${component}_CMAKE_NAME_} REQUIRED COMPONENTS ${_${component}_CMAKE_COMPONENTS_})
+                else()
+                    find_package(${_${component}_CMAKE_NAME_} REQUIRED)
+                endif()
             endif()
 
             # add them to auto_deps target
