@@ -725,11 +725,11 @@ function(mrt_add_executable execname)
 
     # separate cuda files
     set(_MRT_CPP_SOURCE_FILES )
-    set(_MRT_CUDA_SOURCES_FILES )
+    set(_MRT_CUDA_SOURCE_FILES )
     foreach(SOURCE_FILE ${EXEC_SOURCE_FILES_SRC})
         get_filename_component(FILE_EXT ${SOURCE_FILE} EXT)
         if ("${FILE_EXT}" STREQUAL ".cu")
-            list(APPEND _MRT_CUDA_SOURCES_FILES "${SOURCE_FILE}")
+            list(APPEND _MRT_CUDA_SOURCE_FILES "${SOURCE_FILE}")
         else()
             list(APPEND _MRT_CPP_SOURCE_FILES "${SOURCE_FILE}")
         endif()
@@ -773,10 +773,10 @@ function(mrt_add_executable execname)
         string(REPLACE "-" "_" CUDA_TARGET_NAME ${CUDA_TARGET_NAME})
 
         if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
-            cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCES_FILES})
+            cuda_add_library(${CUDA_TARGET_NAME} STATIC ${_MRT_CUDA_SOURCE_FILES})
         else()
-            message(STATUS "Adding ${_MRT_CUDA_SOURCES_FILES} files.")
-            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCES_FILES})
+            message(STATUS "Adding ${_MRT_CUDA_SOURCE_FILES} files.")
+            add_library(${CUDA_TARGET_NAME} SHARED ${_MRT_CUDA_SOURCE_FILES})
             # We cannot link to all libraries as nvcc does not unterstand all the flags
             # etc. which could be passed to target_link_libraries as a target. So the
             # dependencies were added to the mrt_CUDA_LIBRARIES variable.
