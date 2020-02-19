@@ -985,47 +985,43 @@ dataspeed_ulc_msgs:
 dbw_fca:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca/1.0.6-1
+  version: release/melodic/dbw_fca/1.0.9-1
 dbw_fca_can:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_can/1.0.6-1
+  version: release/melodic/dbw_fca_can/1.0.9-1
 dbw_fca_description:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_description/1.0.6-1
+  version: release/melodic/dbw_fca_description/1.0.9-1
 dbw_fca_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_joystick_demo/1.0.6-1
+  version: release/melodic/dbw_fca_joystick_demo/1.0.9-1
 dbw_fca_msgs:
   url: https://github.com/DataspeedInc-release/dbw_fca_ros-release.git
   vcs: git
-  version: release/melodic/dbw_fca_msgs/1.0.6-1
+  version: release/melodic/dbw_fca_msgs/1.0.9-1
 dbw_mkz:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz/1.2.3-1
+  version: release/melodic/dbw_mkz/1.2.7-1
 dbw_mkz_can:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_can/1.2.3-1
+  version: release/melodic/dbw_mkz_can/1.2.7-1
 dbw_mkz_description:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_description/1.2.3-1
+  version: release/melodic/dbw_mkz_description/1.2.7-1
 dbw_mkz_joystick_demo:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_joystick_demo/1.2.3-1
+  version: release/melodic/dbw_mkz_joystick_demo/1.2.7-1
 dbw_mkz_msgs:
   url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
   vcs: git
-  version: release/melodic/dbw_mkz_msgs/1.2.3-1
-dbw_mkz_twist_controller:
-  url: https://github.com/DataspeedInc-release/dbw_mkz_ros-release.git
-  vcs: git
-  version: release/melodic/dbw_mkz_twist_controller/1.2.3-1
+  version: release/melodic/dbw_mkz_msgs/1.2.7-1
 dccomms_ros:
   url: https://github.com/dcentelles/dccomms_ros_pkgs-release.git
   vcs: git
@@ -1214,6 +1210,10 @@ easy_markers:
   url: https://github.com/wu-robotics/wu_ros_tools.git
   vcs: git
   version: release/melodic/easy_markers/0.2.4-0
+eband_local_planner:
+  url: https://github.com/utexas-bwi-gbp/eband_local_planner-release.git
+  vcs: git
+  version: release/melodic/eband_local_planner/0.4.0-1
 eca_a9_control:
   url: https://github.com/uuvsimulator/eca_a9-release.git
   vcs: git
@@ -1421,7 +1421,7 @@ euscollada:
 euslisp:
   url: https://github.com/tork-a/euslisp-release.git
   vcs: git
-  version: release/melodic/euslisp/9.26.0-1
+  version: release/melodic/euslisp/9.27.0-1
 eusurdf:
   url: https://github.com/tork-a/jsk_model_tools-release.git
   vcs: git
@@ -2105,7 +2105,7 @@ igvc_self_drive_sim:
 iirob_filters:
   url: https://github.com/KITrobotics/iirob_filters-release.git
   vcs: git
-  version: release/melodic/iirob_filters/0.8.1-2
+  version: release/melodic/iirob_filters/0.8.3-2
 image_cb_detector:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -2261,7 +2261,7 @@ jackal_viz:
 jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
-  version: release/melodic/jderobot_assets/0.1.0-1
+  version: release/melodic/jderobot_assets/1.0.0-1
 jderobot_drones:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
@@ -3057,7 +3057,7 @@ moveit_python:
 moveit_resources:
   url: https://github.com/ros-gbp/moveit_resources-release.git
   vcs: git
-  version: release/melodic/moveit_resources/0.6.4-0
+  version: release/melodic/moveit_resources/0.6.5-1
 moveit_ros:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -3829,7 +3829,7 @@ pilz_utils:
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
-  version: release/melodic/pinocchio/2.2.1-1
+  version: release/melodic/pinocchio/2.3.0-1
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
