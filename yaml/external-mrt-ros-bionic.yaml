@@ -5650,6 +5650,10 @@ ublox_serialization:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
   version: release/melodic/ublox_serialization/1.3.0-1
+ubnt_airos_tools:
+  url: https://github.com/peci1/ubnt_airos_tools-release.git
+  vcs: git
+  version: release/melodic/ubnt_airos_tools/1.0.1-1
 um6:
   url: https://github.com/ros-drivers-gbp/um6-release.git
   vcs: git
