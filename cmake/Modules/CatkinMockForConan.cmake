@@ -3,18 +3,15 @@
 set(catkin_FOUND TRUE)
 message(STATUS "testing: ${CATKIN_ENABLE_TESTING}")
 
-set(catkin_LIBRARIES ${CONAN_LIBS})
-set(MRT_ARCH ${CONAN_SETTINGS_ARCH})
-set(mrt_LIBRARIES ${${PROJECT_NAME}_LIBRARIES})
+conan_define_targets()
+target_link_libraries(${PROJECT_NAME}::auto_deps_export INTERFACE ${CONAN_TARGETS})
 
 set(CATKIN_DEVEL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
-set(CATKIN_GLOBAL_PYTHON_DESTINATION ${CMAKE_INSTALL_LIBDIR}/python${PYTHON_VERSION}/dist-packages)
-set(CATKIN_PACKAGE_LIB_DESTINATION ${CMAKE_INSTALL_LIBDIR})
-set(CATKIN_PACKAGE_BIN_DESTINATION ${CMAKE_INSTALL_BINDIR})
-set(CATKIN_PACKAGE_INCLUDE_DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-set(CATKIN_PACKAGE_SHARE_DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+set(${PROJECT_NAME}_CATKIN_PACKAGE True) # avoids that export cmake files are generated, conan does this
 
 function(catkin_package)
+endfunction()
+function(catkin_package_xml)
 endfunction()
 function(catkin_install_python programs)
     cmake_parse_arguments(ARG "OPTIONAL" "DESTINATION" "" ${ARGN})
