@@ -894,6 +894,10 @@ concert_workflow_engine_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
   version: release/melodic/concert_workflow_engine_msgs/0.9.0-0
+control_box_rst:
+  url: https://github.com/rst-tu-dortmund/control_box_rst-release.git
+  vcs: git
+  version: release/melodic/control_box_rst/0.0.2-1
 controller_manager_tests:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -2082,6 +2086,10 @@ ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/melodic/ieee80211_channels/1.0.16-1
+ifm3d_core:
+  url: https://github.com/ifm/ifm3d-release.git
+  vcs: git
+  version: release/melodic/ifm3d_core/0.17.0-5
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
@@ -3829,7 +3837,7 @@ pilz_utils:
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
-  version: release/melodic/pinocchio/2.3.0-1
+  version: release/melodic/pinocchio/2.3.1-1
 planner_cspace:
   url: https://github.com/at-wat/neonavigation-release.git
   vcs: git
@@ -4673,7 +4681,7 @@ rosbash_params:
 rosbridge_suite:
   url: https://github.com/RobotWebTools-release/rosbridge_suite-release.git
   vcs: git
-  version: release/melodic/rosbridge_suite/0.11.3-1
+  version: release/melodic/rosbridge_suite/0.11.4-1
 roscompile:
   url: https://github.com/wu-robotics/roscompile-release.git
   vcs: git
