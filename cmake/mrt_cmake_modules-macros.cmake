@@ -284,6 +284,34 @@ macro(_mrt_register_test)
     set(_mrt_checks_${PROJECT_NAME} TRUE PARENT_SCOPE)
 endmacro()
 
+function(_mrt_get_python_destination output_var)
+    if(PYTHON_VERSION)
+      set(_python_version ${PYTHON_VERSION})
+    elseif(DEFINED ENV{ROS_PYTHON_VERSION})
+      set(_python_version $ENV{ROS_PYTHON_VERSION})
+    endif()
+    # finding python sets PYTHON_VERSION_<MAJOR/MINOR>
+    if(CMAKE_VERSION LESS 3.12)
+        set(Python_ADDITIONAL_VERSIONS ${_python_version})
+        find_package(PythonInterp REQUIRED)
+    elseif(_python_version VERSION_LESS 3)
+        find_package(Python2 REQUIRED)
+    else()
+        find_package(Python3 REQUIRED)
+    endif()
+    if(WIN32)
+        set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages PARENT_SCOPE)
+    elseif(EXISTS "/etc/debian_version")
+        if("${PYTHON_VERSION_MAJOR}" STREQUAL "3")
+            set(${output_var} lib/python${PYTHON_VERSION_MAJOR}/dist-packages PARENT_SCOPE)
+        else()
+            set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/dist-packages PARENT_SCOPE)
+        endif()
+    else()
+        set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages PARENT_SCOPE)
+    endif()
+endfunction()
+
 # Glob for folders in the search directory.
 function(mrt_glob_folders DIRECTORY_LIST SEARCH_DIRECTORY)
     if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
@@ -493,7 +521,8 @@ function(mrt_add_python_api modulename)
 
     # put in devel folder
     set(DEVEL_PREFIX  ${CATKIN_DEVEL_PREFIX})
-    set(PYTHON_MODULE_DIR ${DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}/${PYTHON_API_MODULE_NAME})
+    _mrt_get_python_destination(python_destination)
+    set(PYTHON_MODULE_DIR "${DEVEL_PREFIX}/${python_destination}/${PYTHON_API_MODULE_NAME}")
 
     # add library for each file
     foreach(API_FILE ${MRT_ADD_PYTHON_API_FILES})
@@ -514,8 +543,14 @@ function(mrt_add_python_api modulename)
             PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
             PREFIX ""
             )
-
-        set_target_properties(${TARGET_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${PYTHON_MODULE_DIR}")
+        # Yes for all build types. Someone setting CMAKE_LIBRARY_OUTPUT_DIRS_DEBUG would screw everything...
+        set_target_properties(${TARGET_NAME} PROPERTIES
+            LIBRARY_OUTPUT_DIRECTORY "${PYTHON_MODULE_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY_RELEASE "${PYTHON_MODULE_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY_RELWITHDEBINFO "${PYTHON_MODULE_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY_MINSIZEREL "${PYTHON_MODULE_DIR}"
+            LIBRARY_OUTPUT_DIRECTORY_DEBUG "${PYTHON_MODULE_DIR}"
+            )
 
         target_compile_definitions(${TARGET_NAME} PRIVATE PYTHON_API_MODULE_NAME=${LIBRARY_NAME})
         mrt_add_links(${TARGET_NAME} NO_SANITIZER) # you really don't wont to debug python...
@@ -535,7 +570,7 @@ function(mrt_add_python_api modulename)
     set(${PROJECT_NAME}_PYTHON_API_TARGET ${GENERATED_TARGETS} PARENT_SCOPE)
     # configure setup.py for install
     set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
-    set(PACKAGE_DIR ${DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION})
+    set(PACKAGE_DIR ${DEVEL_PREFIX}/${python_destination})
     set(PACKAGE_DATA "*.so*")
     configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @ONLY)
     configure_file(${MCM_TEMPLATE_DIR}/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py" @ONLY)
