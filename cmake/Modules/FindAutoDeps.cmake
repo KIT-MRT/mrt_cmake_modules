@@ -35,6 +35,10 @@
 if(NOT ${CMAKE_FIND_PACKAGE_NAME}_PREFIX)
     set(${CMAKE_FIND_PACKAGE_NAME}_PREFIX ${PROJECT_NAME})
 endif()
+if(TARGET ${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps)
+    message(FATAL_ERROR "AutoDeps targets are already defined! Please make sure that find_package(AutoDeps) is called only once per projct!")
+endif()
+
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda INTERFACE IMPORTED)
