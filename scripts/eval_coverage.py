@@ -38,14 +38,24 @@ def print_coverage(output, coverage_dir, to_stderr):
     file = sys.stderr if to_stderr else sys.stdout
     print("\n\033[1mTotal test coverage: {:.2%}\033[0m ({} of {} lines)".format(percent, lines, total), file=file)
 
+
+def is_empty(tracefile):
+    # lcov only tells us a tracefile is empty when it is too late.
+    # This function tries to do the check efficently before we pass all tracefiles to lcov.
+    with open(tracefile) as f:
+        for line in f:
+            if line.startswith("DA") or line.startswith("FN"):
+                return False
+    return True
+
+
 def build_coverage(args):
     if not args.coverage_dir:
         return 0
     lcov_baseline = os.path.join(args.coverage_dir, "baseline.lcov")
     # check with --summary that the tracefile has valid records
-    cmd = ["lcov", "-q", "--summary", lcov_baseline]
-    if not os.path.exists(lcov_baseline) or subprocess.call(cmd):
-        # lcov generates an empty file if there is no code for the baseline
+    if not os.path.exists(lcov_baseline) or is_empty(lcov_baseline):
+        print("No C++ coverage files found.")
         return 0
 
     # evaluate individual coverage
@@ -58,7 +68,7 @@ def build_coverage(args):
             continue
         cmd = ["lcov", "-d", path, "-c", "-o", lcov_file, "-t", folder.replace("-", "_"), "-q"]
         fail = subprocess.call(cmd)
-        if not fail:
+        if not fail and not is_empty(lcov_file):
             lcovs.append(lcov_file)
 
     # build full coverage (including files outside project)
@@ -78,6 +88,7 @@ def build_coverage(args):
     cmd = ["lcov", "-o", lcov_project, "--extract", lcov_full, args.project_dir + "/*", "-q"]
     fail = subprocess.call(cmd)
     if fail or os.path.getsize(lcov_project) == 0:
+        # this is most likely because the test did not create any results
         print("No C++ coverage was generated")
         print_coverage("", args.coverage_dir, args.coverage_stderr)
         return 0
