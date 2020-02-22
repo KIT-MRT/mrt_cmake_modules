@@ -291,7 +291,7 @@ function(_mrt_get_python_destination output_var)
       set(_python_version $ENV{ROS_PYTHON_VERSION})
     endif()
     # finding python sets PYTHON_VERSION_<MAJOR/MINOR>
-    if(CMAKE_VERSION LESS 3.12)
+    if(CMAKE_VERSION VERSION_LESS 3.12)
         set(Python_ADDITIONAL_VERSIONS ${_python_version})
         find_package(PythonInterp REQUIRED)
     elseif(_python_version VERSION_LESS 3)
