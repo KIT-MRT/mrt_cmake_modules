@@ -2086,6 +2086,10 @@ ieee80211_channels:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
   version: release/melodic/ieee80211_channels/1.0.16-1
+ifm3d:
+  url: https://github.com/ifm/ifm3d-ros-release.git
+  vcs: git
+  version: release/melodic/ifm3d/0.6.2-1
 ifm3d_core:
   url: https://github.com/ifm/ifm3d-release.git
   vcs: git
@@ -3401,7 +3405,7 @@ neonavigation_rviz_plugins:
 nerian_stereo:
   url: https://github.com/nerian-vision/nerian_stereo-release.git
   vcs: git
-  version: release/melodic/nerian_stereo/3.6.0-1
+  version: release/melodic/nerian_stereo/3.7.0-1
 network_autoconfig:
   url: https://github.com/LucidOne-release/network_autoconfig.git
   vcs: git
