@@ -32,7 +32,7 @@ function(mrt_init_testing)
         message(STATUS "Outputting coverage to ${coverage_dir}")
     endif()
     if(NOT TARGET init_tests)
-        set(pre_test_cmd "${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME} ${CMAKE_BINARY_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
+        set(pre_test_cmd "${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME} ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
         add_custom_target(init_tests
             COMMAND ${pre_test_cmd}
             COMMENT "Initializing unittests"
