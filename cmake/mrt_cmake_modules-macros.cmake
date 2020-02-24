@@ -59,7 +59,8 @@ if(NOT EXISTS ${CATKIN_DEVEL_PREFIX}/include)
 endif()
 
 # set some global variables needed/modified by the functions below
-set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")  # list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
+# list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
+set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")
 set(${PROJECT_NAME}_PYTHON_API_TARGET "")          # contains the list of python api targets
 set(${PROJECT_NAME}_GENERATED_LIBRARIES "")        # the list of library targets built and installed by the tools
 set(${PROJECT_NAME}_MRT_TARGETS "")                # list of all public installable targets created by the functions here
@@ -186,7 +187,7 @@ function(mrt_add_links target)
 
     # add include dirs
     if(NOT target_type STREQUAL "INTERFACE_LIBRARY")
-        # For convenience, targets within the project can omit the project name in the include statement for local headers
+        # For convenience, targets within the project can omit the project name for including local headers
         if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} AND NOT MRT_NO_LOCAL_INCLUDE)
             target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
         endif()
@@ -254,35 +255,6 @@ function(mrt_add_links target)
         add_dependencies(${target} ${_deps})
     endif()
 endfunction()
-
-#
-# Registers the custom check_tests command and adds a dependency for a certain unittest
-#
-# Example:
-# ::
-#
-#  _mrt_register_test(
-#      )
-#
-macro(_mrt_register_test)
-    # we need this only once per project
-    if(MRT_NO_FAIL_ON_TESTS OR _mrt_checks_${PROJECT_NAME} OR NOT TARGET _run_tests_${PROJECT_NAME})
-        return()
-    endif()
-    # pygment formats xml more nicely
-    find_program(CCAT pygmentize)
-    if(CCAT)
-        set(RUN_CCAT | ${CCAT})
-    endif()
-
-    add_custom_command(TARGET _run_tests_${PROJECT_NAME}
-        POST_BUILD
-        COMMAND /bin/bash -c \"set -o pipefail$<SEMICOLON> catkin_test_results --verbose . ${RUN_CCAT} 1>&2\" # redirect to stderr for better output in catkin
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BUILD_DIR}
-        COMMENT "Showing test results"
-        )
-    set(_mrt_checks_${PROJECT_NAME} TRUE PARENT_SCOPE)
-endmacro()
 
 function(_mrt_get_python_destination output_var)
     if(PYTHON_VERSION)
