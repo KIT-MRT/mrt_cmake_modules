@@ -2117,7 +2117,7 @@ igvc_self_drive_sim:
 iirob_filters:
   url: https://github.com/KITrobotics/iirob_filters-release.git
   vcs: git
-  version: release/melodic/iirob_filters/0.8.3-2
+  version: release/melodic/iirob_filters/0.9.1-1
 image_cb_detector:
   url: https://github.com/ros-gbp/calibration-release.git
   vcs: git
@@ -3853,7 +3853,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.5.1-2
+  version: release/melodic/plotjuggler/2.6.1-6
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
