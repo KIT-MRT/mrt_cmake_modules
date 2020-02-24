@@ -10,8 +10,10 @@ set(CATKIN_DEVEL_PREFIX ${CMAKE_CURRENT_BINARY_DIR})
 set(${PROJECT_NAME}_CATKIN_PACKAGE True) # avoids that export cmake files are generated, conan does this
 
 function(catkin_package)
+
 endfunction()
 function(catkin_package_xml)
+
 endfunction()
 function(catkin_install_python programs)
     cmake_parse_arguments(ARG "OPTIONAL" "DESTINATION" "" ${ARGN})
@@ -19,6 +21,9 @@ function(catkin_install_python programs)
         set(optional_flag "OPTIONAL")
     endif()
     foreach(file ${ARG_UNPARSED_ARGUMENTS})
-        install(PROGRAMS "${file}" DESTINATION "${ARG_DESTINATION}" ${optional_flag})
+        install(
+            PROGRAMS "${file}"
+            DESTINATION "${ARG_DESTINATION}"
+            ${optional_flag})
     endforeach()
 endfunction()

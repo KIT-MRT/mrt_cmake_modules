@@ -23,35 +23,30 @@
 # also defined, but not for general use are
 #  LIBGPS_LIBRARY, where to find the GPSD library.
 
-INCLUDE(FindPkgConfig)
-PKG_CHECK_MODULES(PC_GPSD "libgps")
+include(FindPkgConfig)
+pkg_check_modules(PC_GPSD "libgps")
 
-IF(PC_GPSD_FOUND)
-  FIND_PATH(
-      LIBGPS_INCLUDE_DIR
-      NAMES gps.h
-      HINTS ${PC_GPSD_INCLUDE_DIR}
-  )
+if(PC_GPSD_FOUND)
+    find_path(
+        LIBGPS_INCLUDE_DIR
+        NAMES gps.h
+        HINTS ${PC_GPSD_INCLUDE_DIR})
 
-  SET(
-      LIBGPS_NAMES
-      ${LIBGPS_NAMES} gps
-  )
+    set(LIBGPS_NAMES ${LIBGPS_NAMES} gps)
 
-  FIND_LIBRARY(
-      LIBGPS_LIBRARY
-      NAMES ${LIBGPS_NAMES}
-      HINTS ${PC_GPSD_LIBDIR}
-  )
-ENDIF(PC_GPSD_FOUND)
+    find_library(
+        LIBGPS_LIBRARY
+        NAMES ${LIBGPS_NAMES}
+        HINTS ${PC_GPSD_LIBDIR})
+endif(PC_GPSD_FOUND)
 
 # handle the QUIETLY and REQUIRED arguments and set LIBGPS_FOUND to TRUE if
 # all listed variables are TRUE
-INCLUDE(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(LIBGPS DEFAULT_MSG LIBGPS_LIBRARY LIBGPS_INCLUDE_DIR)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(LIBGPS DEFAULT_MSG LIBGPS_LIBRARY LIBGPS_INCLUDE_DIR)
 
-IF(LIBGPS_FOUND)
-  SET(LIBGPS_LIBRARIES ${LIBGPS_LIBRARY})
-ENDIF(LIBGPS_FOUND)
+if(LIBGPS_FOUND)
+    set(LIBGPS_LIBRARIES ${LIBGPS_LIBRARY})
+endif(LIBGPS_FOUND)
 
-MARK_AS_ADVANCED(LIBGPS_LIBRARY LIBGPS_INCLUDE_DIR)
+mark_as_advanced(LIBGPS_LIBRARY LIBGPS_INCLUDE_DIR)

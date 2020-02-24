@@ -36,7 +36,10 @@ if(NOT ${CMAKE_FIND_PACKAGE_NAME}_PREFIX)
     set(${CMAKE_FIND_PACKAGE_NAME}_PREFIX ${PROJECT_NAME})
 endif()
 if(TARGET ${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps)
-    message(FATAL_ERROR "AutoDeps targets are already defined! Please make sure that find_package(AutoDeps) is called only once per projct!")
+    message(
+        FATAL_ERROR
+            "AutoDeps targets are already defined! Please make sure that find_package(AutoDeps) is called only once per projct!"
+    )
 endif()
 
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps INTERFACE IMPORTED)
@@ -56,9 +59,7 @@ function(_cleanup_includes targets)
             list(FIND _target_include /usr/local/include has_local_inc)
             if(has_local_inc GREATER -1 OR has_inc GREATER -1)
                 list(REMOVE_ITEM _target_include "/usr/include" "/usr/local/include")
-                set_target_properties(${target} PROPERTIES
-                    INTERFACE_INCLUDE_DIRECTORIES "${_target_include}"
-                    )
+                set_target_properties(${target} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_target_include}")
             endif()
         endif()
     endforeach()
@@ -87,13 +88,15 @@ function(_cleanup_libraries var_name_libs)
     if(size)
         list(REMOVE_ITEM ${var_name_libs} debug optimized general)
     endif()
-    set(${var_name_libs} ${${var_name_libs}} PARENT_SCOPE)
+    set(${var_name_libs}
+        ${${var_name_libs}}
+        PARENT_SCOPE)
 endfunction()
 
 function(_remove_generator_expressions libs_arg)
     set(filtered_libs)
     foreach(lib ${${libs_arg}})
-        if(NOT lib MATCHES  "^\\$<\\$<CONFIG:DEBUG>:(.*)>")
+        if(NOT lib MATCHES "^\\$<\\$<CONFIG:DEBUG>:(.*)>")
             string(REGEX REPLACE "^\\$<\\$<NOT:\\$<CONFIG:DEBUG>>:(.*)>" "\\0" found ${lib})
             if(lib MATCHES "^\\$<\\$<NOT:\\$<CONFIG:DEBUG>>:(.*)>")
                 list(APPEND filtered_libs ${CMAKE_MATCH_1})
@@ -104,12 +107,16 @@ function(_remove_generator_expressions libs_arg)
             endif()
         endif()
     endforeach()
-    set(${libs_arg} ${filtered_libs} PARENT_SCOPE)
+    set(${libs_arg}
+        ${filtered_libs}
+        PARENT_SCOPE)
 endfunction()
 
 function(_get_libs_and_incs_recursive out_libs out_incs lib)
     if(NOT TARGET ${lib})
-        set(${out_libs} ${${out_libs}} ${lib} PARENT_SCOPE)
+        set(${out_libs}
+            ${${out_libs}} ${lib}
+            PARENT_SCOPE)
         return()
     endif()
 
@@ -134,13 +141,18 @@ function(_get_libs_and_incs_recursive out_libs out_incs lib)
         set(${out_libs} ${${out_libs}} ${lib})
     endif()
 
-    set(${out_libs} ${${out_libs}} PARENT_SCOPE)
-    set(${out_incs} ${${out_incs}} ${inc} PARENT_SCOPE)
+    set(${out_libs}
+        ${${out_libs}}
+        PARENT_SCOPE)
+    set(${out_incs}
+        ${${out_incs}} ${inc}
+        PARENT_SCOPE)
 endfunction()
 
 macro(_find_dep output_target component)
     set(${CMAKE_FIND_PACKAGE_NAME}_targetname ${component}::${component})
-    list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${component} ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
+    list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${component}
+         ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
     if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package} EQUAL -1)
         # is catkin package
 
@@ -161,11 +173,13 @@ macro(_find_dep output_target component)
             add_library(${${CMAKE_FIND_PACKAGE_NAME}_targetname} INTERFACE IMPORTED)
             set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${component}_LIBRARIES})
             _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
-            set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${${component}_INCLUDE_DIRS}"
-                INTERFACE_LINK_DIRECTORIES "${${component}_LIBRARY_DIRS}"
-                INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
-                )
+            # cmake-format: off
+            set_target_properties(
+                ${${CMAKE_FIND_PACKAGE_NAME}_targetname}
+                PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${${component}_INCLUDE_DIRS}"
+                           INTERFACE_LINK_DIRECTORIES "${${component}_LIBRARY_DIRS}"
+                           INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}")
+            # cmake-format: on
             if(${component}_EXPORTED_TARGETS)
                 add_dependencies(${${CMAKE_FIND_PACKAGE_NAME}_targetname} ${${component}_EXPORTED_TARGETS})
             endif()
@@ -177,7 +191,10 @@ macro(_find_dep output_target component)
             # package is known to set no variables. do nothing.
             unset(${CMAKE_FIND_PACKAGE_NAME}_targetname)
         elseif(NOT DEFINED _${component}_CMAKE_NAME_)
-            message(FATAL_ERROR "Package ${component} was not found. If it is a catkin package: Make sure it is present. If it is an external package: Make sure it is listed in mrt_cmake_modules/yaml/cmake.yaml!")
+            message(
+                FATAL_ERROR
+                    "Package ${component} was not found. If it is a catkin package: Make sure it is present. If it is an external package: Make sure it is listed in mrt_cmake_modules/yaml/cmake.yaml!"
+            )
         else()
             #find non-catkin modules
 
@@ -210,11 +227,11 @@ macro(_find_dep output_target component)
                 set(${CMAKE_FIND_PACKAGE_NAME}_includes ${${_${component}_CMAKE_INCLUDE_DIRS_}})
                 set(${CMAKE_FIND_PACKAGE_NAME}_libs ${${_${component}_CMAKE_LIBRARIES_}})
                 _cleanup_libraries(${CMAKE_FIND_PACKAGE_NAME}_libs)
-                set_target_properties(${${CMAKE_FIND_PACKAGE_NAME}_targetname} PROPERTIES
-                    INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
-                    INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
-                    INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}"
-                    )
+                set_target_properties(
+                    ${${CMAKE_FIND_PACKAGE_NAME}_targetname}
+                    PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${${CMAKE_FIND_PACKAGE_NAME}_includes}"
+                               INTERFACE_LINK_DIRECTORIES "${${_${component}_CMAKE_LIBRARY_DIRS_}}"
+                               INTERFACE_LINK_LIBRARIES "${${CMAKE_FIND_PACKAGE_NAME}_libs}")
                 unset(${CMAKE_FIND_PACKAGE_NAME}_includes)
             endif() # package defines targets
         endif() # package definition is valid
@@ -222,7 +239,10 @@ macro(_find_dep output_target component)
     # add the target(s) to the output target and cleanup
     if(${CMAKE_FIND_PACKAGE_NAME}_targetname)
         _cleanup_includes(${${CMAKE_FIND_PACKAGE_NAME}_targetname})
-        set_property(TARGET ${output_target} APPEND PROPERTY INTERFACE_LINK_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
+        set_property(
+            TARGET ${output_target}
+            APPEND
+            PROPERTY INTERFACE_LINK_LIBRARIES ${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         unset(${CMAKE_FIND_PACKAGE_NAME}_targetname)
     endif()
     unset(${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
@@ -236,19 +256,25 @@ if(CONAN_PACKAGE_NAME OR EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     include(CatkinMockForConan)
     return()
 endif()
-if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
+if(${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
     set(${CMAKE_FIND_PACKAGE_NAME}_CATKIN_SELECTED_PACKAGES_)
     foreach(${CMAKE_FIND_PACKAGE_NAME}_component ${${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS})
         # figure out where this variable goes
-        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_package)
-        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_EXPORT_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_export_package)
-        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_TEST_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_test_package)
-        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CUDA_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_cuda_package)
+        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component}
+             ${CMAKE_FIND_PACKAGE_NAME}_is_package)
+        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_EXPORT_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component}
+             ${CMAKE_FIND_PACKAGE_NAME}_is_export_package)
+        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_TEST_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component}
+             ${CMAKE_FIND_PACKAGE_NAME}_is_test_package)
+        list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CUDA_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component}
+             ${CMAKE_FIND_PACKAGE_NAME}_is_cuda_package)
         if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_export_package} EQUAL -1)
             _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export ${${CMAKE_FIND_PACKAGE_NAME}_component})
-            list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component} ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
+            list(FIND _${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}_CATKIN_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component}
+                 ${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
             if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package} EQUAL -1)
-                list(APPEND ${CMAKE_FIND_PACKAGE_NAME}_CATKIN_SELECTED_PACKAGES_ ${${CMAKE_FIND_PACKAGE_NAME}_component})
+                list(APPEND ${CMAKE_FIND_PACKAGE_NAME}_CATKIN_SELECTED_PACKAGES_
+                     ${${CMAKE_FIND_PACKAGE_NAME}_component})
             endif()
             unset(${CMAKE_FIND_PACKAGE_NAME}_is_catkin_package)
         elseif(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_package} EQUAL -1)
@@ -258,7 +284,10 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
                 _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test ${${CMAKE_FIND_PACKAGE_NAME}_component})
             endif()
         else()
-            message(SEND_ERROR "Package ${${CMAKE_FIND_PACKAGE_NAME}_component} specified but not found in package.xml. This package is ignored.")
+            message(
+                SEND_ERROR
+                    "Package ${${CMAKE_FIND_PACKAGE_NAME}_component} specified but not found in package.xml. This package is ignored."
+            )
         endif()
         if(NOT ${${CMAKE_FIND_PACKAGE_NAME}_is_cuda_package} EQUAL -1)
             _find_dep(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda ${${CMAKE_FIND_PACKAGE_NAME}_component})
@@ -296,6 +325,7 @@ if (${CMAKE_FIND_PACKAGE_NAME}_FIND_COMPONENTS)
     if(mrt_EXPORT_LIBRARIES)
         list(REMOVE_DUPLICATES mrt_EXPORT_LIBRARIES)
     endif()
-    _remove_generator_expressions(mrt_EXPORT_LIBRARIES) # catkin cannot handle generator expressions (of type $<CONFIG::DEBUG:...>)
+    # catkin cannot handle generator expressions (of type $<CONFIG::DEBUG:...>)
+    _remove_generator_expressions(mrt_EXPORT_LIBRARIES)
     _remove_generator_expressions(mrt_EXPORT_INCLUDE_DIRS)
 endif()

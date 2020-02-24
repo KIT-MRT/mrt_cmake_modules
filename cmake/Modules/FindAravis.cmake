@@ -14,4 +14,3 @@ include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Aravis DEFAULT_MSG PC_ARAVIS_LIBRARIES PC_ARAVIS_LIBRARY_DIRS PC_ARAVIS_INCLUDE_DIRS)
 
 mark_as_advanced(Aravis_LIBRARIES Aravis_INCLUDE_DIRS)
-
