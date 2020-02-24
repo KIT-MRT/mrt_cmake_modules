@@ -6,6 +6,7 @@ import argparse
 import shutil
 import os
 
+
 def get_source_file(gcno_file, build_dir):
     # the gcno path should have the structure: <builddir>/CMakeFiles/<target dir>/<sourcepath>.gcno.
     # We want to extract the sourcepath part
@@ -27,7 +28,8 @@ def cleanup_orphaned_gcnos(build_dir, project_dir):
 
 
 def main(argv=sys.argv[1:]):
-    parser = argparse.ArgumentParser(description='Cleans up results of old tests and coverage runs, initializes coverage counters.')
+    parser = argparse.ArgumentParser(
+        description='Cleans up results of old tests and coverage runs, initializes coverage counters.')
     parser.add_argument('project_name', help='Name of the project')
     parser.add_argument('build_dir', help='The path where cmake was configured')
     parser.add_argument('project_dir', help='Path to the project')
@@ -54,6 +56,7 @@ def main(argv=sys.argv[1:]):
     cmd = ["lcov", "-i", "-c", "-o", out_file, "--directory", args.build_dir, "-q"]
     print("Initializing counters")
     return subprocess.call(cmd)
+
 
 if __name__ == '__main__':
     sys.exit(main())

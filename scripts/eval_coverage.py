@@ -8,6 +8,7 @@ import shutil
 import os
 import re
 
+
 def sync_gcno_files(path, build_dir):
     # sync the gcno files into this folder
     copied_something = False
@@ -21,6 +22,7 @@ def sync_gcno_files(path, build_dir):
                 shutil.copy(gcda_file, os.path.join(root, file_gcno))
                 copied_something = True
     return copied_something
+
 
 def print_coverage(output, coverage_dir, to_stderr):
     regex = re.search(r"\((?P<lines>\d*) of (?P<total>\d*) lines\)", output)
@@ -114,7 +116,8 @@ def build_coverage(args):
 
 
 def main(argv=sys.argv[1:]):
-    parser = argparse.ArgumentParser(description='Cleans up results of old tests and coverage runs, initializes coverage counters.')
+    parser = argparse.ArgumentParser(
+        description='Cleans up results of old tests and coverage runs, initializes coverage counters.')
     parser.add_argument('project_dir', help='Path of the project')
     parser.add_argument('build_dir', help='The path where cmake was configured')
     parser.add_argument('test_results_dir', help='The directory where test results will be written')
@@ -133,12 +136,14 @@ def main(argv=sys.argv[1:]):
         ccat_cmd = " | pygmentize" if has_ccat else ""
     verbose = " --verbose" if args.coverage_stderr else ""
     to_err = " 1>&2" if args.coverage_stderr else ""
-    cmd = '/bin/bash -c "set -o pipefail; catkin_test_results{} {}{}{}"'.format(verbose, args.test_results_dir, ccat_cmd, to_err)
+    cmd = '/bin/bash -c "set -o pipefail; catkin_test_results{} {}{}{}"'.format(
+        verbose, args.test_results_dir, ccat_cmd, to_err)
     fail = subprocess.call(cmd, shell=True)
     sys.stderr.write("\n")
     if args.fail_on_test:
         return fail
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main())

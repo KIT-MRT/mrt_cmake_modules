@@ -33,7 +33,7 @@ except ImportError:
 if sys.version_info >= (3, 0):
     import ast.literal_eval as eval_expr
 else:
-    eval_expr = eval # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
+    eval_expr = eval  # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
 
 
 def eprint(*args, **kwargs):
@@ -57,8 +57,8 @@ class Dependency:
         return self.packageType == PackageType.catkin
 
     def __repr__(self):
-        return "Dependency(name:%s type:%s buld_depend:%s build_export_depend:%s test_depend:%s)" % (self.name, self.packageType, self.build_depend,
-                                                                                                     self.build_export_depend, self.test_depend)
+        return "Dependency(name:%s type:%s buld_depend:%s build_export_depend:%s test_depend:%s)" % (
+            self.name, self.packageType, self.build_depend, self.build_export_depend, self.test_depend)
 
 
 class PackageCMakeData:
@@ -155,7 +155,7 @@ def readPackageCMakeData(rosDebYamlFileName):
         elif distro in packageCMakeData:
             data[packageName] = PackageCMakeData(packageCMakeData[distro])
         elif not packageCMakeData:
-            data[packageName] = PackageCMakeData() # placeholder
+            data[packageName] = PackageCMakeData()  # placeholder
     return data
 
 
@@ -236,7 +236,7 @@ def getCatkinPackages(workspaceRoot):
                 # ignore metapackages
                 if export is None or export.find("metapackage") is None:
                     name = package.find("name").text
-                    if not name in packages:
+                    if name not in packages:
                         packages[name] = package
                 dirs[:] = []
                 continue
@@ -292,9 +292,9 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     out = {}
     out["dependend_packages"] = " ".join(depend.name for depend in depends)
     out["catkin_pkgs"] = " ".join(s.name for s in depends if s.isCatkin())
-    out["pkgs"] = " ".join(s.name  for s in depends if s.build_depend)
-    out["exp_pkgs"] = " ".join(s.name  for s in depends if s.build_export_depend)
-    out["test_pkgs"] = " ".join(s.name  for s in depends if s.test_depend)
+    out["pkgs"] = " ".join(s.name for s in depends if s.build_depend)
+    out["exp_pkgs"] = " ".join(s.name for s in depends if s.build_export_depend)
+    out["test_pkgs"] = " ".join(s.name for s in depends if s.test_depend)
     out["cuda_pkgs"] = " ".join(cuda_depends)
     out["pkg_name"] = pkg_name
 
