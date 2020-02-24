@@ -24,25 +24,20 @@
 #  License text for the above reference.)
 
 if(PNG_FIND_QUIETLY)
-  set(_FIND_ZLIB_ARG QUIET)
+    set(_FIND_ZLIB_ARG QUIET)
 endif()
 find_package(ZLIB ${_FIND_ZLIB_ARG})
 find_package(PNG REQUIRED)
 
 if(ZLIB_FOUND)
-  find_path(
-    PNG++_INCLUDE_DIR
-    png.hpp
-    /usr/local/include/png++
-    /usr/include/png++
-  )
+    find_path(PNG++_INCLUDE_DIR png.hpp /usr/local/include/png++ /usr/include/png++)
 
-  set(PNG++_LIBRARIES ${PNG_LIBRARIES})
+    set(PNG++_LIBRARIES ${PNG_LIBRARIES})
 
-  if (PNG++_INCLUDE_DIR)
-      set(PNG++_INCLUDE_DIRS ${PNG++_INCLUDE_DIR} ${ZLIB_INCLUDE_DIR} )
-      unset(PNG++_INCLUDE_DIR)
-  endif ()
+    if(PNG++_INCLUDE_DIR)
+        set(PNG++_INCLUDE_DIRS ${PNG++_INCLUDE_DIR} ${ZLIB_INCLUDE_DIR})
+        unset(PNG++_INCLUDE_DIR)
+    endif()
 endif()
 
 # handle the QUIETLY and REQUIRED arguments and set PNG_FOUND to TRUE if

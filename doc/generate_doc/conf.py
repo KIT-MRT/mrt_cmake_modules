@@ -190,8 +190,8 @@ htmlhelp_basename = 'catkin-cmakedoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('generated_cmake_api', 'api.tex', ur'CMAKE API',
-   ur'Fabian Poggenhans', 'manual'),
+    ('generated_cmake_api', 'api.tex', ur'CMAKE API',
+     ur'Fabian Poggenhans', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -217,10 +217,10 @@ intersphinx_mapping = {
     'rosinstall': ('http://docs.ros.org/independent/api/rosinstall/html', None),
     'rospkg': ('http://docs.ros.org/independent/api/rospkg/html', None),
     'rosdep': ('http://docs.ros.org/independent/api/rosdep/html', None),
-    }
+}
 
 
-rst_epilog="""
+rst_epilog = """
 
 
 """

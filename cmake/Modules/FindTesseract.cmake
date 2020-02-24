@@ -5,5 +5,5 @@ find_path(Tesseract_INCLUDE_DIR NAMES ${PACKAGE_HEADER_FILES})
 find_library(Tesseract_LIBRARIES NAMES ${PACKAGE_LIBRARIES})
 
 include(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(Tesseract FOUND_VAR Tesseract_FOUND REQUIRED_VARS Tesseract_INCLUDE_DIR Tesseract_LIBRARIES)
-
+find_package_handle_standard_args(Tesseract FOUND_VAR Tesseract_FOUND REQUIRED_VARS Tesseract_INCLUDE_DIR
+                                  Tesseract_LIBRARIES)

@@ -7,15 +7,11 @@
 #  GeographicLib_LIBRARY_DIRS = /usr/local/lib
 
 find_package(PkgConfig)
-find_path(GeographicLib_INCLUDE_DIR GeographicLib/Config.h
-  PATH_SUFFIXES GeographicLib
-  )
+find_path(GeographicLib_INCLUDE_DIR GeographicLib/Config.h PATH_SUFFIXES GeographicLib)
 set(GeographicLib_INCLUDE_DIRS ${GeographicLib_INCLUDE_DIR})
 
-find_library(GeographicLib_LIBRARIES
-  NAMES Geographic
-  )
+find_library(GeographicLib_LIBRARIES NAMES Geographic)
 
-include (FindPackageHandleStandardArgs)
-find_package_handle_standard_args (GeographicLib DEFAULT_MSG GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS)
-mark_as_advanced (GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(GeographicLib DEFAULT_MSG GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS)
+mark_as_advanced(GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS)

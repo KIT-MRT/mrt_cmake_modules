@@ -15,11 +15,13 @@ endif()
 
 # Add _DEBUG and _GLIBCXX_ASSERTIONS for debug configuration. This enables e.g. assertions in OpenCV and the STL.
 if(CMAKE_VERSION VERSION_GREATER "3.12")
-    target_compile_definitions(${PROJECT_NAME}_private_compiler_flags INTERFACE $<$<CONFIG:Debug>:_DEBUG> $<$<CONFIG:Debug>:_GLIBCXX_ASSERTIONS>)
+    target_compile_definitions(${PROJECT_NAME}_private_compiler_flags INTERFACE $<$<CONFIG:Debug>:_DEBUG>
+                                                                                $<$<CONFIG:Debug>:_GLIBCXX_ASSERTIONS>)
 endif()
 
 # Add support for std::filesystem. For GCC version <= 8 one needs to link against -lstdc++fs.
-target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
+target_link_libraries(${PROJECT_NAME}_compiler_flags
+                      INTERFACE $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
 
 # add OpenMP if present
 # it would be great to have this in package.xmls instead, but catkin cannot handle setting the required cmake flags for dependencies
@@ -28,17 +30,14 @@ if(OpenMP_FOUND)
     if(TARGET OpenMP::OpenMP_CXX)
         target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE OpenMP::OpenMP_CXX)
     else()
-        target_compile_options(${PROJECT_NAME}_compiler_flags INTERFACE
-            $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
-            $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>
-            )
+        target_compile_options(${PROJECT_NAME}_compiler_flags INTERFACE $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
+                                                                        $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>)
         if(CMAKE_VERSION VERSION_LESS "3.10")
             target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE ${OpenMP_CXX_FLAGS})
         else()
-            target_link_libraries(${PROJECT_NAME}_compiler_flags INTERFACE
-                $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
-                $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>
-                )
+            target_link_libraries(
+                ${PROJECT_NAME}_compiler_flags INTERFACE $<$<COMPILE_LANGUAGE:CXX>:${OpenMP_CXX_FLAGS}>
+                                                         $<$<COMPILE_LANGUAGE:C>:${OpenMP_C_FLAGS}>)
         endif()
     endif()
 endif()
@@ -48,17 +47,13 @@ set(gcc_like_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,Apple
 set(gcc_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>>")
 set(gcc_like_c "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,AppleClang,Clang,GNU>>")
 if(MRT_ENABLE_COVERAGE)
-    target_compile_options(${PROJECT_NAME}_private_compiler_flags INTERFACE
-        $<${gcc_like_cxx}:-g;--coverage>
-        $<${gcc_like_c}:-g;--coverage>
-        )
+    target_compile_options(${PROJECT_NAME}_private_compiler_flags INTERFACE $<${gcc_like_cxx}:-g;--coverage>
+                                                                            $<${gcc_like_c}:-g;--coverage>)
     if(CMAKE_VERSION VERSION_LESS "3.13")
         target_link_libraries(${PROJECT_NAME}_private_compiler_flags INTERFACE --coverage)
     else()
-        target_link_options(${PROJECT_NAME}_private_compiler_flags INTERFACE
-            $<${gcc_like_cxx}:--coverage>
-            $<${gcc_like_c}:--coverage>
-            )
+        target_link_options(${PROJECT_NAME}_private_compiler_flags INTERFACE $<${gcc_like_cxx}:--coverage>
+                            $<${gcc_like_c}:--coverage>)
     endif()
 endif()
 

@@ -1,5 +1,12 @@
 if(NOT MrtQt5_FIND_COMPONENTS)
-    set(_components QtCore QtDBus QtGui QtNetwork QtTest QtWidgets QtXml)
+    set(_components
+        QtCore
+        QtDBus
+        QtGui
+        QtNetwork
+        QtTest
+        QtWidgets
+        QtXml)
 else()
     set(_components ${MrtQt5_FIND_COMPONENTS})
 endif()
@@ -17,8 +24,8 @@ foreach(_component ${_components})
     endif()
 
     if(${_libname}_FOUND)
-      message(STATUS "  Found ${_libname}")
-      list(APPEND QT_INCLUDES ${${_libname}_INCLUDE_DIRS})
-      list(APPEND QT_LIBRARIES "Qt5::${_component}")
+        message(STATUS "  Found ${_libname}")
+        list(APPEND QT_INCLUDES ${${_libname}_INCLUDE_DIRS})
+        list(APPEND QT_LIBRARIES "Qt5::${_component}")
     endif()
 endforeach()

@@ -5,5 +5,5 @@ find_path(Leptonica_INCLUDE_DIR NAMES ${PACKAGE_HEADER_FILES})
 find_library(Leptonica_LIBRARIES NAMES ${PACKAGE_LIBRARIES})
 
 include(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(Leptonica FOUND_VAR Leptonica_FOUND REQUIRED_VARS Leptonica_INCLUDE_DIR Leptonica_LIBRARIES)
-
+find_package_handle_standard_args(Leptonica FOUND_VAR Leptonica_FOUND REQUIRED_VARS Leptonica_INCLUDE_DIR
+                                  Leptonica_LIBRARIES)
