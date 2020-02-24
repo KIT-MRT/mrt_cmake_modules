@@ -52,7 +52,6 @@ class Dependency:
     build_depend = False
     build_export_depend = False
     test_depend = False
-    optional = True
 
     def isCatkin(self):
         return self.packageType == PackageType.catkin
@@ -281,8 +280,6 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
     cmakeVarData = readPackageCMakeData(rosDepYamlFileName)
 
     depends, cuda_depends = parseManifest(tree, catkin_packages)
-    # clear optional deps for which no cmake data is available
-    depends = [d for d in depends if d.isCatkin() or not d.optional or d.name in cmakeVarData]
     # check CUDA depends and categorize them as either catkin or other package
     depends_names = {d.name for d in depends}
     for cuda_depend in cuda_depends:
@@ -344,7 +341,7 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
         if cmakeData.targets:
             f.write("set(_" + depend.name + "_CMAKE_TARGETS_ " +
                     ' '.join(cmakeData.targets) + ")\n")
-        if cmakeData.warning and not depend.optional:
+        if cmakeData.warning:
             eprint(cmakeData.warning)
 
 
