@@ -877,11 +877,11 @@ collada_urdf_jsk_patch:
 combined_robot_hw:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
-  version: release/melodic/combined_robot_hw/0.16.0-1
+  version: release/melodic/combined_robot_hw/0.17.0-1
 combined_robot_hw_tests:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
-  version: release/melodic/combined_robot_hw_tests/0.16.0-1
+  version: release/melodic/combined_robot_hw_tests/0.17.0-1
 concert_msgs:
   url: https://github.com/yujinrobot-release/rocon_msgs-release.git
   vcs: git
@@ -901,7 +901,7 @@ control_box_rst:
 controller_manager_tests:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
-  version: release/melodic/controller_manager_tests/0.16.0-1
+  version: release/melodic/controller_manager_tests/0.17.0-1
 convex_decomposition:
   url: https://github.com/ros-gbp/convex_decomposition-release.git
   vcs: git
@@ -1726,6 +1726,10 @@ fmi_adapter_examples:
   url: https://github.com/boschresearch/fmi_adapter-release.git
   vcs: git
   version: release/melodic/fmi_adapter_examples/1.0.3-1
+force_torque_sensor:
+  url: https://github.com/KITrobotics/force_torque_sensor-release.git
+  vcs: git
+  version: release/melodic/force_torque_sensor/0.9.3-1
 force_torque_sensor_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -3449,7 +3453,7 @@ nmea_msgs:
 nmea_navsat_driver:
   url: https://github.com/ros-drivers-gbp/nmea_navsat_driver-release.git
   vcs: git
-  version: release/melodic/nmea_navsat_driver/0.5.1-0
+  version: release/melodic/nmea_navsat_driver/0.5.2-1
 nmea_to_geopose:
   url: https://github.com/OUXT-Polaris/nmea_to_geopose-release.git
   vcs: git
@@ -4617,7 +4621,7 @@ ros_canopen:
 ros_control:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
-  version: release/melodic/ros_control/0.16.0-1
+  version: release/melodic/ros_control/0.17.0-1
 ros_control_boilerplate:
   url: https://github.com/PickNikRobotics/ros_control_boilerplate-release.git
   vcs: git
@@ -4897,7 +4901,7 @@ rqt:
 rqt_controller_manager:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
-  version: release/melodic/rqt_controller_manager/0.16.0-1
+  version: release/melodic/rqt_controller_manager/0.17.0-1
 rqt_drone_teleop:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
