@@ -77,31 +77,31 @@ agni_tf_tools:
 ainstein_radar:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar/3.0.1-1
+  version: release/melodic/ainstein_radar/2.0.2-1
 ainstein_radar_drivers:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_drivers/3.0.1-1
+  version: release/melodic/ainstein_radar_drivers/2.0.2-1
 ainstein_radar_filters:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_filters/3.0.1-1
+  version: release/melodic/ainstein_radar_filters/2.0.2-1
 ainstein_radar_gazebo_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_gazebo_plugins/3.0.1-1
+  version: release/melodic/ainstein_radar_gazebo_plugins/2.0.2-1
 ainstein_radar_msgs:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_msgs/3.0.1-1
+  version: release/melodic/ainstein_radar_msgs/2.0.2-1
 ainstein_radar_rviz_plugins:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_rviz_plugins/3.0.1-1
+  version: release/melodic/ainstein_radar_rviz_plugins/2.0.2-1
 ainstein_radar_tools:
   url: https://github.com/AinsteinAI/ainstein_radar-release.git
   vcs: git
-  version: release/melodic/ainstein_radar_tools/3.0.1-1
+  version: release/melodic/ainstein_radar_tools/2.0.2-1
 allocators:
   url: https://github.com/ros-gbp/ros_realtime-release.git
   vcs: git
@@ -194,6 +194,10 @@ async_web_server_cpp:
   url: https://github.com/gt-rail-release/async_web_server_cpp-release.git
   vcs: git
   version: release/melodic/async_web_server_cpp/0.0.3-0
+ati_force_torque:
+  url: https://github.com/KITrobotics/ati_force_torque-release.git
+  vcs: git
+  version: release/melodic/ati_force_torque/1.1.1-3
 audibot:
   url: https://github.com/robustify/audibot-release.git
   vcs: git
@@ -1729,7 +1733,7 @@ fmi_adapter_examples:
 force_torque_sensor:
   url: https://github.com/KITrobotics/force_torque_sensor-release.git
   vcs: git
-  version: release/melodic/force_torque_sensor/0.9.3-1
+  version: release/melodic/force_torque_sensor/1.0.0-1
 force_torque_sensor_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
@@ -2093,11 +2097,11 @@ ieee80211_channels:
 ifm3d:
   url: https://github.com/ifm/ifm3d-ros-release.git
   vcs: git
-  version: release/melodic/ifm3d/0.6.2-1
+  version: release/melodic/ifm3d/0.6.2-2
 ifm3d_core:
   url: https://github.com/ifm/ifm3d-release.git
   vcs: git
-  version: release/melodic/ifm3d_core/0.17.0-5
+  version: release/melodic/ifm3d_core/0.17.0-6
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
@@ -3142,6 +3146,18 @@ movie_publisher:
   url: https://github.com/peci1/movie_publisher-release.git
   vcs: git
   version: release/melodic/movie_publisher/1.3.0-1
+mpc_local_planner:
+  url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
+  vcs: git
+  version: release/melodic/mpc_local_planner/0.0.1-2
+mpc_local_planner_examples:
+  url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
+  vcs: git
+  version: release/melodic/mpc_local_planner_examples/0.0.1-2
+mpc_local_planner_msgs:
+  url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
+  vcs: git
+  version: release/melodic/mpc_local_planner_msgs/0.0.1-2
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
@@ -3857,7 +3873,7 @@ planner_cspace_msgs:
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
-  version: release/melodic/plotjuggler/2.6.1-6
+  version: release/melodic/plotjuggler/2.6.2-1
 point_cloud_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
