@@ -4281,11 +4281,11 @@ qpoases_vendor:
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_app/0.3.16-1
+  version: release/melodic/qt_gui_app/0.4.0-1
 qt_gui_core:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
-  version: release/melodic/qt_gui_core/0.3.16-1
+  version: release/melodic/qt_gui_core/0.4.0-1
 qt_qmake:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
