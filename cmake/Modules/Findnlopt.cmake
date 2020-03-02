@@ -1,4 +1,3 @@
-
 # - Find NLopt
 # Find the native NLopt includes and library
 #
@@ -6,28 +5,25 @@
 #  nlopt_LIBRARIES   - List of libraries when using nlopt.
 #  nlopt_FOUND       - True if nlopt found.
 
+if(nlopt_INCLUDE_DIR)
+    # Already in cache, be silent
+    set(nlopt_FIND_QUIETLY TRUE)
+endif(nlopt_INCLUDE_DIR)
 
-IF (nlopt_INCLUDE_DIR)
-  # Already in cache, be silent
-  SET (nlopt_FIND_QUIETLY TRUE)
-ENDIF (nlopt_INCLUDE_DIR)
+find_path(nlopt_INCLUDE_DIR nlopt.h)
 
-FIND_PATH(nlopt_INCLUDE_DIR nlopt.h)
+set(nlopt_NAMES nlopt nlopt_cxx)
+find_library(nlopt_LIBRARY NAMES ${nlopt_NAMES})
 
-SET (nlopt_NAMES nlopt nlopt_cxx)
-FIND_LIBRARY (nlopt_LIBRARY NAMES ${nlopt_NAMES})
-
-# handle the QUIETLY and REQUIRED arguments and set nlopt_FOUND to TRUE if 
+# handle the QUIETLY and REQUIRED arguments and set nlopt_FOUND to TRUE if
 # all listed variables are TRUE
-INCLUDE (FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS (nlopt DEFAULT_MSG 
-  nlopt_LIBRARY 
-  nlopt_INCLUDE_DIR)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(nlopt DEFAULT_MSG nlopt_LIBRARY nlopt_INCLUDE_DIR)
 
-IF(nlopt_FOUND)
-  SET (nlopt_LIBRARIES ${nlopt_LIBRARY})
-ELSE (nlopt_FOUND)
-  SET (nlopt_LIBRARIES)
-ENDIF (nlopt_FOUND)
+if(nlopt_FOUND)
+    set(nlopt_LIBRARIES ${nlopt_LIBRARY})
+else(nlopt_FOUND)
+    set(nlopt_LIBRARIES)
+endif(nlopt_FOUND)
 
-MARK_AS_ADVANCED (nlopt_LIBRARY nlopt_INCLUDE_DIR)
+mark_as_advanced(nlopt_LIBRARY nlopt_INCLUDE_DIR)

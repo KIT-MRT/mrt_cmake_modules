@@ -29,6 +29,7 @@ boost-python:
   include_dirs: [BoostPython_INCLUDE_DIRS]
   libraries: [BoostPython_LIBRARIES]
   name: BoostPython
+  warning: Usage of boost-python in package.xml is deprecated. Use 'libboost-python-dev' instead!
 cgal:
   components: []
   include_dirs: [CGAL_INCLUDE_DIRS]
@@ -81,6 +82,11 @@ libann-dev:
   library_dirs: []
   name: ANN
 libboost-python:
+  include_dirs: [BoostPython_INCLUDE_DIRS]
+  libraries: [BoostPython_LIBRARIES]
+  name: BoostPython
+  warning: Usage of libboost-python in package.xml is deprecated. Use 'libboost-python-dev' instead!
+libboost-python-dev:
   include_dirs: [BoostPython_INCLUDE_DIRS]
   libraries: [BoostPython_LIBRARIES]
   name: BoostPython

@@ -15,10 +15,16 @@ freeglut3-dev:
   ubuntu: [freeglut3-dev]
 libboost-python:
   ubuntu: [libpython-dev, libboost-python-dev]
+libboost-python-dev:
+  ubuntu: [libpython-dev, libboost-python-dev]
+libceres-dev:
+  ubuntu: [mrt-libceres-dev]
 libgeographic-dev:
   ubuntu: [libgeographic-dev]
 liblmdb:
   ubuntu: [liblmdb-dev]
+libopencv-dev:
+  ubuntu: [mrt-libopencv-dev]
 libxext-dev:
   ubuntu: [libxext-dev]
 libxrandr-dev:

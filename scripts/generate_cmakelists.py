@@ -6,7 +6,7 @@ import sys
 import subprocess
 
 parser = argparse.ArgumentParser(description='Generates a CMakeLists.txt for a project.')
-parser.add_argument('package_name',type=str, help='name of the package')
+parser.add_argument('package_name', type=str, help='name of the package')
 parser.add_argument('-r', '--ros', action='store_true', help='add ROS support (messages, ...)')
 parser.add_argument('-e', '--exe', action='store_true', help='create an executable/node package')
 args = parser.parse_args()
@@ -42,5 +42,5 @@ with open("CMakeLists.txt", "w") as file:
 subprocess.call("sed -i " +
                 "-e 's/^" + pattern + " //g' " +
                 "-e '/^@..|..@/d' " +
-                "-e 's/\${CMAKE_PACKAGE_NAME}/" + args.package_name + "/g' " +
+                r"-e 's/\${CMAKE_PACKAGE_NAME}/" + args.package_name + "/g' " +
                 "CMakeLists.txt", shell=True)

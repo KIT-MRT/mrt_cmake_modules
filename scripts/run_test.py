@@ -11,8 +11,10 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+
 def get_missing_junit_result_filename(filename):
     return os.path.join(os.path.dirname(filename), 'MISSING-%s' % os.path.basename(filename))
+
 
 def remove_junit_result(filename):
     # if result file exists remove it before test execution
@@ -53,26 +55,29 @@ def ensure_junit_result_exist(filename, errors):
     with open(missing_filename, 'w') as f:
         data = {'test': os.path.basename(filename), 'test_file': filename, 'cdata': cdata}
         f.write(
-            (
-                '<?xml version="1.1" encoding="UTF-8"?>\n'
-                '<testsuite tests="1" failures="0" time="1" errors="1" name="%(test)s">\n'
-                '  <testcase name="%(test)s" status="run" time="1" classname="Results">\n'
-                '    <failure message="Unable to find test results for %(test)s, test most probably crashed.\nExpected results in %(test_file)s" type="">'
-                '%(cdata)s'
-                '    </failure>\n'
-                '  </testcase>\n'
-                '</testsuite>\n'
-            ) % data)
+            ('<?xml version="1.1" encoding="UTF-8"?>\n'
+             '<testsuite tests="1" failures="0" time="1" errors="1" name="%(test)s">\n'
+             '  <testcase name="%(test)s" status="run" time="1" classname="Results">\n'
+             '    <failure message="Unable to find test results for %(test)s, test most probably crashed.\nExpected results in %(test_file)s" type="">'
+             '%(cdata)s'
+             '    </failure>\n'
+             '  </testcase>\n'
+             '</testsuite>\n') %
+            data)
     return False
 
 
 def main(argv=sys.argv[1:]):
-    parser = argparse.ArgumentParser(description='Runs the test command passed as an argument and verifies that the expected result file has been generated.')
+    parser = argparse.ArgumentParser(
+        description='Runs the test command passed as an argument and verifies that the expected result file has been generated.')
     parser.add_argument('results', help='The path to the xunit result file')
     parser.add_argument('command', nargs='+', help='The test command to execute')
     parser.add_argument('--working-dir', nargs='?', help='The working directory for the executed command')
     parser.add_argument('--coverage-dir', nargs='?', help='The directory where coverage data should be generated')
-    parser.add_argument('--return-code', action='store_true', help='Set the return code based on the success of the test command')
+    parser.add_argument(
+        '--return-code',
+        action='store_true',
+        help='Set the return code based on the success of the test command')
     parser.add_argument('--redirect-stderr', action='store_true', help='Redirect stderr to stdout')
     args = parser.parse_args(argv)
 

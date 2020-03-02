@@ -80,7 +80,7 @@ def generate_rst(files):
                 else:
                     last_block.append(line.rstrip('\n'))
             else:
-                declaration = re.match('[a-zA-Z]+\([a-zA-Z_ ]+\)', line)
+                declaration = re.match(r'[a-zA-Z]+\([a-zA-Z_ ]+\)', line)
                 if declaration is None:
                     last_block = []
                     last_block_public = False
@@ -92,7 +92,8 @@ def generate_rst(files):
                     if dec_type == 'function' or dec_type == 'macro':
                         rst = []
                         # directives defined in catkin-sphinx
-                        dec_line = '.. _`%s_ref`:\n\n`%s`\n%s\n\n.. cmake:macro:: %s(%s)' % (dec_args[0],dec_args[0], '-' * (len(dec_args[0]) + 2), dec_args[0], ', '.join(dec_args[1:]))
+                        dec_line = '.. _`%s_ref`:\n\n`%s`\n%s\n\n.. cmake:macro:: %s(%s)' % (
+                            dec_args[0], dec_args[0], '-' * (len(dec_args[0]) + 2), dec_args[0], ', '.join(dec_args[1:]))
                         rst.append(dec_line)
                         rst.append('')
                         rst.append(' *[%s defined in %s]*' % (dec_type, relpath))
@@ -114,7 +115,7 @@ def generate_rst(files):
 
     rst = ['Extracted CMake API reference',
            '=============================']
-    rst.append('This page was auto-generated from cmake source files using %s\n'%os.path.basename(__file__))
+    rst.append('This page was auto-generated from cmake source files using %s\n' % os.path.basename(__file__))
     rst.append('.. ' + '!' * 70)
     rst.append('.. !!!!!! Auto-generated file, do not modify')
     rst.append('.. ' + '!' * 70)
@@ -152,7 +153,8 @@ def generate_rst(files):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Crawls a path for .cmake files and extract documentation of functions and macros into reStructured text.')
+    parser = argparse.ArgumentParser(
+        description='Crawls a path for .cmake files and extract documentation of functions and macros into reStructured text.')
     parser.add_argument('path', nargs='?', default='.', help='The path to be crawled')
     parser.add_argument('-o', '--output', help='The name of the generated rst file')
     args = parser.parse_args()

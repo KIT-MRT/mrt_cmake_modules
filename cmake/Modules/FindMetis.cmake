@@ -5,5 +5,4 @@ find_path(Metis_INCLUDE_DIR NAMES ${PACKAGE_HEADER_FILES})
 find_library(Metis_LIBRARIES NAMES ${PACKAGE_LIBRARIES})
 
 include(FindPackageHandleStandardArgs)
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(Metis FOUND_VAR Metis_FOUND REQUIRED_VARS Metis_INCLUDE_DIR Metis_LIBRARIES)
-
+find_package_handle_standard_args(Metis FOUND_VAR Metis_FOUND REQUIRED_VARS Metis_INCLUDE_DIR Metis_LIBRARIES)
