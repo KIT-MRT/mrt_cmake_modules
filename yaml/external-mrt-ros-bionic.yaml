@@ -2282,6 +2282,10 @@ jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
   version: release/melodic/jderobot_assets/1.0.0-1
+jderobot_color_tuner:
+  url: https://github.com/JdeRobot/ColorTuner-release.git
+  vcs: git
+  version: release/melodic/jderobot_color_tuner/0.0.3-6
 jderobot_drones:
   url: https://github.com/JdeRobot/drones-release.git
   vcs: git
@@ -3222,6 +3226,10 @@ mrpt_tutorials:
   url: https://github.com/mrpt-ros-pkg-release/mrpt_navigation-release.git
   vcs: git
   version: release/melodic/mrpt_tutorials/0.1.26-1
+mrt_cmake_modules:
+  url: https://github.com/KIT-MRT/mrt_cmake_modules-release.git
+  vcs: git
+  version: release/melodic/mrt_cmake_modules/1.0.0-1
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -4658,6 +4666,10 @@ ros_monitoring_msgs:
   url: https://github.com/aws-gbp/ros_monitoring_msgs-release.git
   vcs: git
   version: release/melodic/ros_monitoring_msgs/1.0.1-1
+ros_numpy:
+  url: https://github.com/eric-wieser/ros_numpy-release.git
+  vcs: git
+  version: release/melodic/ros_numpy/0.0.3-1
 ros_pytest:
   url: https://github.com/machinekoder/ros_pytest-release.git
   vcs: git
@@ -5421,31 +5433,31 @@ timestamp_tools:
 toposens:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens/2.0.1-1
+  version: release/melodic/toposens/2.0.2-1
 toposens_description:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_description/2.0.1-1
+  version: release/melodic/toposens_description/2.0.2-1
 toposens_driver:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_driver/2.0.1-1
+  version: release/melodic/toposens_driver/2.0.2-1
 toposens_markers:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_markers/2.0.1-1
+  version: release/melodic/toposens_markers/2.0.2-1
 toposens_msgs:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_msgs/2.0.1-1
+  version: release/melodic/toposens_msgs/2.0.2-1
 toposens_pointcloud:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_pointcloud/2.0.1-1
+  version: release/melodic/toposens_pointcloud/2.0.2-1
 toposens_sync:
   url: https://gitlab.com/toposens/public/toposens-release.git
   vcs: git
-  version: release/melodic/toposens_sync/2.0.1-1
+  version: release/melodic/toposens_sync/2.0.2-1
 towr:
   url: https://github.com/ethz-adrl/towr-release.git
   vcs: git
@@ -5933,7 +5945,7 @@ vision_visp:
 visp:
   url: https://github.com/lagadic/visp-release.git
   vcs: git
-  version: release/melodic/visp/3.2.0-1
+  version: release/melodic/visp/3.3.0-3
 visp_auto_tracker:
   url: https://github.com/lagadic/vision_visp-release.git
   vcs: git
@@ -5961,7 +5973,7 @@ visualization_osg:
 visualstates:
   url: https://github.com/JdeRobot/VisualStates-release.git
   vcs: git
-  version: release/melodic/visualstates/0.2.3-2
+  version: release/melodic/visualstates/0.2.3-3
 voice_text:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
