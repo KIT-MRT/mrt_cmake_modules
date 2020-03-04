@@ -921,7 +921,7 @@ costmap_cspace:
 costmap_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/costmap_cspace_msgs/0.7.0-1
+  version: release/melodic/costmap_cspace_msgs/0.8.0-1
 costmap_queue:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -2042,6 +2042,10 @@ husky_bringup:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
   version: release/melodic/husky_bringup/0.4.2-1
+husky_cartographer_navigation:
+  url: https://github.com/clearpath-gbp/husky_cartographer_navigation-release.git
+  vcs: git
+  version: release/melodic/husky_cartographer_navigation/0.0.2-1
 husky_control:
   url: https://github.com/clearpath-gbp/husky-release.git
   vcs: git
@@ -2242,6 +2246,10 @@ ivcon:
   url: https://github.com/ros-gbp/ivcon-release.git
   vcs: git
   version: release/melodic/ivcon/0.1.7-0
+jackal_cartographer_navigation:
+  url: https://github.com/clearpath-gbp/jackal_cartographer_navigation-release.git
+  vcs: git
+  version: release/melodic/jackal_cartographer_navigation/0.0.1-1
 jackal_control:
   url: https://github.com/clearpath-gbp/jackal-release.git
   vcs: git
@@ -2785,7 +2793,7 @@ map_organizer:
 map_organizer_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/map_organizer_msgs/0.7.0-1
+  version: release/melodic/map_organizer_msgs/0.8.0-1
 mapviz:
   url: https://github.com/swri-robotics-gbp/mapviz-release.git
   vcs: git
@@ -2853,7 +2861,7 @@ mav_planning_msgs:
 mavlink:
   url: https://github.com/mavlink/mavlink-gbp-release.git
   vcs: git
-  version: release/melodic/mavlink/2020.2.2-1
+  version: release/melodic/mavlink/2020.3.3-1
 mavros:
   url: https://github.com/mavlink/mavros-release.git
   vcs: git
@@ -3425,7 +3433,7 @@ neonavigation_launch:
 neonavigation_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/neonavigation_msgs/0.7.0-1
+  version: release/melodic/neonavigation_msgs/0.8.0-1
 neonavigation_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
@@ -3877,7 +3885,7 @@ planner_cspace:
 planner_cspace_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/planner_cspace_msgs/0.7.0-1
+  version: release/melodic/planner_cspace_msgs/0.8.0-1
 plotjuggler:
   url: https://github.com/facontidavide/plotjuggler-release.git
   vcs: git
@@ -4442,6 +4450,10 @@ rgbd_launch:
   url: https://github.com/ros-gbp/rgbd_launch-release.git
   vcs: git
   version: release/melodic/rgbd_launch/2.2.2-0
+ridgeback_cartographer_navigation:
+  url: https://github.com/clearpath-gbp/ridgeback_cartographer_navigation-release.git
+  vcs: git
+  version: release/melodic/ridgeback_cartographer_navigation/0.0.1-1
 ridgeback_control:
   url: https://github.com/clearpath-gbp/ridgeback-release.git
   vcs: git
@@ -5037,7 +5049,7 @@ safety_limiter:
 safety_limiter_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/safety_limiter_msgs/0.7.0-1
+  version: release/melodic/safety_limiter_msgs/0.8.0-1
 sainsmart_relay_usb:
   url: https://github.com/DataspeedInc-release/sainsmart_relay_usb-release.git
   vcs: git
@@ -5501,7 +5513,7 @@ trajectory_tracker:
 trajectory_tracker_msgs:
   url: https://github.com/at-wat/neonavigation_msgs-release.git
   vcs: git
-  version: release/melodic/trajectory_tracker_msgs/0.7.0-1
+  version: release/melodic/trajectory_tracker_msgs/0.8.0-1
 trajectory_tracker_rviz_plugins:
   url: https://github.com/at-wat/neonavigation_rviz_plugins-release.git
   vcs: git
