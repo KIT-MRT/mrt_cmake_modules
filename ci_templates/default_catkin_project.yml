@@ -42,9 +42,6 @@ build:
 general_code_quality:
   stage: build
   only: [master, release, merge_requests]
-  except:
-    changes:
-    - package.xml
   allow_failure: true
   cache: {}
   image: 
@@ -65,9 +62,6 @@ general_code_quality:
 code_quality:
   dependencies:
     - general_code_quality
-  except:
-    changes:
-    - package.xml
   cache:
     policy: pull
   needs: [general_code_quality]
@@ -88,9 +82,6 @@ code_quality:
   - cp codeclimate.json ../../../gl-code-quality-report.json
 
 check_code_quality:
-  except:
-    changes:
-    - package.xml
   dependencies:
     - code_quality
   cache:
@@ -149,9 +140,6 @@ deps:
   stage: verify
   needs: [build]
   only: [master, release, merge_requests]
-  except:
-    changes:
-    - package.xml
   variables:
     MRT_CI_NO_TIDY: 1
   cache:
