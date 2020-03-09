@@ -374,6 +374,10 @@ capabilities:
   url: https://github.com/ros-gbp/capabilities-release.git
   vcs: git
   version: release/melodic/capabilities/0.2.0-0
+carla_msgs:
+  url: https://github.com/carla-simulator/ros-carla-msgs-release.git
+  vcs: git
+  version: release/melodic/carla_msgs/1.0.0-1
 carrot_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1849,15 +1853,15 @@ goal_passer:
 gps_common:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gps_common/0.3.0-1
+  version: release/melodic/gps_common/0.3.1-1
 gps_umd:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gps_umd/0.3.0-1
+  version: release/melodic/gps_umd/0.3.1-1
 gpsd_client:
   url: https://github.com/swri-robotics-gbp/gps_umd-release.git
   vcs: git
-  version: release/melodic/gpsd_client/0.3.0-1
+  version: release/melodic/gpsd_client/0.3.1-1
 graft:
   url: https://github.com/ros-gbp/graft-release.git
   vcs: git
@@ -2105,7 +2109,7 @@ ifm3d:
 ifm3d_core:
   url: https://github.com/ifm/ifm3d-release.git
   vcs: git
-  version: release/melodic/ifm3d_core/0.17.0-6
+  version: release/melodic/ifm3d_core/0.17.0-7
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
@@ -2625,7 +2629,7 @@ lex_node:
 lgsvl_msgs:
   url: https://github.com/lgsvl/lgsvl_msgs-release.git
   vcs: git
-  version: release/melodic/lgsvl_msgs/0.0.1-0
+  version: release/melodic/lgsvl_msgs/0.0.2-1
 libcmt:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -4177,7 +4181,7 @@ ps3joy:
 psen_scan:
   url: https://github.com/PilzDE/psen_scan-release.git
   vcs: git
-  version: release/melodic/psen_scan/1.0.3-1
+  version: release/melodic/psen_scan/1.0.4-1
 px4_msgs:
   url: https://github.com/PX4/px4_msgs-release.git
   vcs: git
@@ -4357,7 +4361,7 @@ rc_dynamics_api:
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/melodic/rc_genicam_api/2.2.3-1
+  version: release/melodic/rc_genicam_api/2.3.3-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
@@ -5201,7 +5205,11 @@ slam_karto:
 slam_toolbox:
   url: https://github.com/SteveMacenski/slam_toolbox-release.git
   vcs: git
-  version: release/melodic/slam_toolbox/1.1.2-1
+  version: release/melodic/slam_toolbox/1.1.3-1
+slam_toolbox_msgs:
+  url: https://github.com/SteveMacenski/slam_toolbox-release.git
+  vcs: git
+  version: release/melodic/slam_toolbox_msgs/1.1.3-1
 slic:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
