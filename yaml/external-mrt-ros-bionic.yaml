@@ -61,7 +61,7 @@ ackermann_msgs:
 ackermann_steering_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/ackermann_steering_controller/0.15.0-0
+  version: release/melodic/ackermann_steering_controller/0.15.1-1
 actionlib_lisp:
   url: https://github.com/ros-gbp/roslisp_common-release.git
   vcs: git
@@ -377,7 +377,7 @@ capabilities:
 carla_msgs:
   url: https://github.com/carla-simulator/ros-carla-msgs-release.git
   vcs: git
-  version: release/melodic/carla_msgs/1.0.0-1
+  version: release/melodic/carla_msgs/1.0.1-1
 carrot_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
@@ -1397,7 +1397,7 @@ ecl_utilities:
 effort_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/effort_controllers/0.15.0-0
+  version: release/melodic/effort_controllers/0.15.1-1
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
@@ -1741,11 +1741,11 @@ force_torque_sensor:
 force_torque_sensor_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/force_torque_sensor_controller/0.15.0-0
+  version: release/melodic/force_torque_sensor_controller/0.15.1-1
 four_wheel_steering_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/four_wheel_steering_controller/0.15.0-0
+  version: release/melodic/four_wheel_steering_controller/0.15.1-1
 four_wheel_steering_msgs:
   url: https://github.com/ros-drivers-gbp/four_wheel_steering_msgs-release.git
   vcs: git
@@ -1885,7 +1885,7 @@ grid_map_sdf:
 gripper_action_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/gripper_action_controller/0.15.0-0
+  version: release/melodic/gripper_action_controller/0.15.1-1
 grpc:
   url: https://github.com/CogRobRelease/catkin_grpc-release.git
   vcs: git
@@ -2177,7 +2177,7 @@ imu_processors:
 imu_sensor_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/imu_sensor_controller/0.15.0-0
+  version: release/melodic/imu_sensor_controller/0.15.1-1
 imu_tools:
   url: https://github.com/uos-gbp/imu_tools-release.git
   vcs: git
@@ -2321,7 +2321,7 @@ joint_trajectory_action_tools:
 joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/joint_trajectory_controller/0.15.0-0
+  version: release/melodic/joint_trajectory_controller/0.15.1-1
 joint_trajectory_generator:
   url: https://github.com/pr2-gbp/pr2_common_actions-release.git
   vcs: git
@@ -2713,7 +2713,7 @@ libqt_widgets:
 librealsense2:
   url: https://github.com/IntelRealSense/librealsense2-release.git
   vcs: git
-  version: release/melodic/librealsense2/2.31.0-3
+  version: release/melodic/librealsense2/2.33.1-2
 libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
@@ -4353,7 +4353,7 @@ rc_cloud_accumulator:
 rc_common_msgs:
   url: https://github.com/roboception-gbp/rc_common_msgs-release.git
   vcs: git
-  version: release/melodic/rc_common_msgs/0.4.0-1
+  version: release/melodic/rc_common_msgs/0.4.1-1
 rc_dynamics_api:
   url: https://github.com/roboception-gbp/rc_dynamics_api-release.git
   vcs: git
@@ -4425,11 +4425,11 @@ rdl_urdfreader:
 realsense2_camera:
   url: https://github.com/IntelRealSense/realsense-ros-release.git
   vcs: git
-  version: release/melodic/realsense2_camera/2.2.12-1
+  version: release/melodic/realsense2_camera/2.2.13-1
 realsense2_description:
   url: https://github.com/IntelRealSense/realsense-ros-release.git
   vcs: git
-  version: release/melodic/realsense2_description/2.2.12-1
+  version: release/melodic/realsense2_description/2.2.13-1
 resized_image_transport:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -4669,7 +4669,7 @@ ros_control_boilerplate:
 ros_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/ros_controllers/0.15.0-0
+  version: release/melodic/ros_controllers/0.15.1-1
 ros_emacs_utils:
   url: https://github.com/code-iai-release/ros_emacs_utils-release.git
   vcs: git
@@ -4961,7 +4961,7 @@ rqt_ground_robot_teleop:
 rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/rqt_joint_trajectory_controller/0.15.0-0
+  version: release/melodic/rqt_joint_trajectory_controller/0.15.1-1
 rqt_launchtree:
   url: https://github.com/pschillinger/rqt_launchtree-release.git
   vcs: git
@@ -5909,7 +5909,7 @@ vector_map_msgs:
 velocity_controllers:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
-  version: release/melodic/velocity_controllers/0.15.0-0
+  version: release/melodic/velocity_controllers/0.15.1-1
 velodyne:
   url: https://github.com/ros-drivers-gbp/velodyne-release.git
   vcs: git
