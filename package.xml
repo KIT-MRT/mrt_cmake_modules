@@ -1,16 +1,21 @@
-<package format="2">
+<package format="3">
   <name>mrt_cmake_modules</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>CMake Functions and Modules for automating CMake</description>
 
   <license>GPL-3.0+</license>
-  <maintainer email="piotr.orzechowski@kit.edu">Piotr Orzechowski</maintainer>
+  <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
   <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
   <url type="repository">https://github.com/KIT-MRT/mrt_cmake_modules.git</url>
+  <url type="website">http://wiki.ros.org/mrt_cmake_modules</url>
+  <url type="bugdracker">http://wiki.ros.org/mrt_cmake_modules/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>catkin</depend>
+  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</buildtool_export_depend>
+  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</exec_depend>
+  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_export_depend>
+  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 3">python3-yaml</buildtool_export_depend>
 
   <export>
     <architecture_independent/>

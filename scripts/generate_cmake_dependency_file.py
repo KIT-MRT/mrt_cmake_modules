@@ -222,8 +222,9 @@ def getCatkinPackages(workspaceRoot):
     """Get all available catkin packages"""
     manifest = "package.xml"
     catkin_ignore = "CATKIN_IGNORE"
+    catkin_marker = ".catkin"
     nosubdirs = "rospack_nosubdirs"
-    ros_package_env = "ROS_PACKAGE_PATH"
+    cmake_env = "CMAKE_PREFIX_PATH"
 
     def getPackagesInPath(packages, path):
         for root, dirs, files in os.walk(path, topdown=True, followlinks=True):
@@ -244,8 +245,8 @@ def getCatkinPackages(workspaceRoot):
                 dirs[:] = []  # package is tagged to not recurse
                 continue
 
-    package_paths = {}
-    paths = os.environ.get(ros_package_env, "").split(":")
+    cmake_paths = os.environ.get(cmake_env, '').split(os.pathsep)
+    paths = [path for path in cmake_paths if path and os.path.isfile(os.path.join(path, catkin_marker))]
     paths.append(workspaceRoot)
     packages = {}
     for path in paths:
