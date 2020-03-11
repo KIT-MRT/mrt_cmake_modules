@@ -4298,6 +4298,14 @@ qpoases_vendor:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/qpoases_vendor-release.git
   vcs: git
   version: release/melodic/qpoases_vendor/3.2.1-1
+qt_build:
+  url: https://github.com/yujinrobot-release/qt_ros-release.git
+  vcs: git
+  version: release/melodic/qt_build/0.2.10-1
+qt_create:
+  url: https://github.com/yujinrobot-release/qt_ros-release.git
+  vcs: git
+  version: release/melodic/qt_create/0.2.10-1
 qt_gui_app:
   url: https://github.com/ros-gbp/qt_gui_core-release.git
   vcs: git
@@ -4310,6 +4318,14 @@ qt_qmake:
   url: https://github.com/swri-robotics-gbp/qt_metapackages-release.git
   vcs: git
   version: release/melodic/qt_qmake/1.0.1-0
+qt_ros:
+  url: https://github.com/yujinrobot-release/qt_ros-release.git
+  vcs: git
+  version: release/melodic/qt_ros/0.2.10-1
+qt_tutorials:
+  url: https://github.com/yujinrobot-release/qt_ros-release.git
+  vcs: git
+  version: release/melodic/qt_tutorials/0.2.10-1
 quaternion_operation:
   url: https://github.com/OUXT-Polaris/quaternion_operation-release.git
   vcs: git
@@ -4941,7 +4957,7 @@ rplidar_ros:
 rqt:
   url: https://github.com/ros-gbp/rqt-release.git
   vcs: git
-  version: release/melodic/rqt/0.5.0-0
+  version: release/melodic/rqt/0.5.1-1
 rqt_controller_manager:
   url: https://github.com/ros-gbp/ros_control-release.git
   vcs: git
@@ -4962,6 +4978,10 @@ rqt_joint_trajectory_controller:
   url: https://github.com/ros-gbp/ros_controllers-release.git
   vcs: git
   version: release/melodic/rqt_joint_trajectory_controller/0.15.1-1
+rqt_joint_trajectory_plot:
+  url: https://github.com/tork-a/rqt_joint_trajectory_plot-release.git
+  vcs: git
+  version: release/melodic/rqt_joint_trajectory_plot/0.0.5-1
 rqt_launchtree:
   url: https://github.com/pschillinger/rqt_launchtree-release.git
   vcs: git
