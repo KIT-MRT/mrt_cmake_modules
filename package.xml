@@ -4,7 +4,7 @@
   <description>CMake Functions and Modules for automating CMake</description>
 
   <license>GPL-3.0+</license>
-  <maintainer email="piotr.orzechowski@kit.edu">Piotr Orzechowski</maintainer>
+  <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
   <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
   <url type="repository">https://github.com/KIT-MRT/mrt_cmake_modules.git</url>
