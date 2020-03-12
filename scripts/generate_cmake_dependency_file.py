@@ -31,7 +31,7 @@ try:
 except ImportError:
     from yaml import Loader
 if sys.version_info >= (3, 0):
-    import ast.literal_eval as eval_expr
+    from ast import literal_eval as eval_expr
 else:
     eval_expr = eval  # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
 
@@ -245,11 +245,23 @@ def getCatkinPackages(workspaceRoot):
                 dirs[:] = []  # package is tagged to not recurse
                 continue
 
-    cmake_paths = os.environ.get(cmake_env, '').split(os.pathsep)
-    paths = [path for path in cmake_paths if path and os.path.isfile(os.path.join(path, catkin_marker))]
-    paths.append(workspaceRoot)
+    def getWorkspacesInPath(path, workspaces):
+        markerfile = os.path.join(path, catkin_marker)
+        if not os.path.isfile(markerfile):
+            return
+        with open(markerfile) as f:
+            data = f.read()
+        if not data:
+            # catkin_marker contains no refernce to a source dir, the whole path is a ws
+            workspaces.append(path)
+            return
+        workspaces += data.split(";")
+    workspaces = []
+    for path in os.environ.get(cmake_env, '').split(os.pathsep):
+        getWorkspacesInPath(path, workspaces)
+
     packages = {}
-    for path in paths:
+    for path in set(workspaces):
         getPackagesInPath(packages, path)
     return packages
 
