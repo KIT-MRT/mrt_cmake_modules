@@ -2241,7 +2241,7 @@ ipa_3d_fov_visualization:
 ipr_extern:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
-  version: release/melodic/ipr_extern/0.8.8-1
+  version: release/melodic/ipr_extern/0.9.0-1
 ira_laser_tools:
   url: https://github.com/iralabdisco/ira_laser_tools-release.git
   vcs: git
@@ -2657,7 +2657,7 @@ libmavconn:
 libmodbus:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
-  version: release/melodic/libmodbus/0.8.8-1
+  version: release/melodic/libmodbus/0.9.0-1
 libntcan:
   url: https://github.com/ipa320/cob_extern-release.git
   vcs: git
@@ -2717,7 +2717,7 @@ librealsense2:
 libreflexxestype2:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
-  version: release/melodic/libreflexxestype2/0.8.8-1
+  version: release/melodic/libreflexxestype2/0.9.0-1
 libsensors_monitor:
   url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
   vcs: git
@@ -3165,15 +3165,15 @@ movie_publisher:
 mpc_local_planner:
   url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
   vcs: git
-  version: release/melodic/mpc_local_planner/0.0.1-2
+  version: release/melodic/mpc_local_planner/0.0.2-1
 mpc_local_planner_examples:
   url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
   vcs: git
-  version: release/melodic/mpc_local_planner_examples/0.0.1-2
+  version: release/melodic/mpc_local_planner_examples/0.0.2-1
 mpc_local_planner_msgs:
   url: https://github.com/rst-tu-dortmund/mpc_local_planner-release.git
   vcs: git
-  version: release/melodic/mpc_local_planner_msgs/0.0.1-2
+  version: release/melodic/mpc_local_planner_msgs/0.0.2-1
 mrpt1:
   url: https://github.com/mrpt-ros-pkg-release/mrpt1-release.git
   vcs: git
@@ -3241,7 +3241,7 @@ mrpt_tutorials:
 mrt_cmake_modules:
   url: https://github.com/KIT-MRT/mrt_cmake_modules-release.git
   vcs: git
-  version: release/melodic/mrt_cmake_modules/1.0.0-1
+  version: release/melodic/mrt_cmake_modules/1.0.1-1
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -3841,7 +3841,7 @@ pid:
 pilz_control:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_control/0.5.13-1
+  version: release/melodic/pilz_control/0.5.14-1
 pilz_extensions:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -3865,11 +3865,15 @@ pilz_robot_programming:
 pilz_robots:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_robots/0.5.13-1
+  version: release/melodic/pilz_robots/0.5.14-1
+pilz_status_indicator_rqt:
+  url: https://github.com/PilzDE/pilz_robots-release.git
+  vcs: git
+  version: release/melodic/pilz_status_indicator_rqt/0.5.14-1
 pilz_testutils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_testutils/0.5.13-1
+  version: release/melodic/pilz_testutils/0.5.14-1
 pilz_trajectory_generation:
   url: https://github.com/PilzDE/pilz_industrial_motion-release.git
   vcs: git
@@ -3877,7 +3881,7 @@ pilz_trajectory_generation:
 pilz_utils:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/pilz_utils/0.5.13-1
+  version: release/melodic/pilz_utils/0.5.14-1
 pinocchio:
   url: https://github.com/ipab-slmc/pinocchio_catkin-release.git
   vcs: git
@@ -4141,7 +4145,7 @@ pr2eus_tutorials:
 prbt_gazebo:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_gazebo/0.5.13-1
+  version: release/melodic/prbt_gazebo/0.5.14-1
 prbt_grippers:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -4149,15 +4153,15 @@ prbt_grippers:
 prbt_hardware_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_hardware_support/0.5.13-1
+  version: release/melodic/prbt_hardware_support/0.5.14-1
 prbt_ikfast_manipulator_plugin:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.13-1
+  version: release/melodic/prbt_ikfast_manipulator_plugin/0.5.14-1
 prbt_moveit_config:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_moveit_config/0.5.13-1
+  version: release/melodic/prbt_moveit_config/0.5.14-1
 prbt_pg70_support:
   url: https://github.com/PilzDE/prbt_grippers-release.git
   vcs: git
@@ -4165,7 +4169,7 @@ prbt_pg70_support:
 prbt_support:
   url: https://github.com/PilzDE/pilz_robots-release.git
   vcs: git
-  version: release/melodic/prbt_support/0.5.13-1
+  version: release/melodic/prbt_support/0.5.14-1
 prosilica_camera:
   url: https://github.com/ros-drivers-gbp/prosilica_driver-release.git
   vcs: git
@@ -4713,7 +4717,7 @@ ros_realtime:
 ros_reflexxes:
   url: https://github.com/KITrobotics/ipr_extern-release.git
   vcs: git
-  version: release/melodic/ros_reflexxes/0.8.8-1
+  version: release/melodic/ros_reflexxes/0.9.0-1
 ros_speech_recognition:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -5721,19 +5725,19 @@ ubiquity_motor:
 ublox:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox/1.3.0-1
+  version: release/melodic/ublox/1.3.1-1
 ublox_gps:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_gps/1.3.0-1
+  version: release/melodic/ublox_gps/1.3.1-1
 ublox_msgs:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_msgs/1.3.0-1
+  version: release/melodic/ublox_msgs/1.3.1-1
 ublox_serialization:
   url: https://github.com/KumarRobotics/ublox-release.git
   vcs: git
-  version: release/melodic/ublox_serialization/1.3.0-1
+  version: release/melodic/ublox_serialization/1.3.1-1
 ubnt_airos_tools:
   url: https://github.com/peci1/ubnt_airos_tools-release.git
   vcs: git
