@@ -7,6 +7,20 @@ code_quality:
   script:
   - ls
 
+cmake_format:
+  # check for formatting issues in cmake files
+  stage: test
+  dependencies: []
+  only: [master, merge_requests]
+  cache: {}
+  variables:
+    GIT_STRATEGY: fetch
+  before_script: []
+  script:
+    - pip install --user cmake_format pyyaml
+    - env PATH=~/.local/bin:$PATH find . -name "*.cmake" -exec cmake-format -i {} +
+    - git diff --exit-code || (echo "CMake formatting issues found. Please fix them first!"; $(exit 1))
+
 deps:
   script:
   # test only a few dependencies. There are too many
