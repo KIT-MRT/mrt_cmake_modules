@@ -2109,7 +2109,7 @@ ifm3d:
 ifm3d_core:
   url: https://github.com/ifm/ifm3d-release.git
   vcs: git
-  version: release/melodic/ifm3d_core/0.17.0-7
+  version: release/melodic/ifm3d_core/0.17.0-9
 ifopt:
   url: https://github.com/ethz-adrl/ifopt-release.git
   vcs: git
