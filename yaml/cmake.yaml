@@ -136,6 +136,12 @@ libigl:
   libraries: [IGL_LIBRARIES]
   library_dirs: []
   name: IGL
+libjsoncpp-dev:
+  components: []
+  include_dirs: [JSONCPP_INCLUDE_DIRS]
+  libraries: [JSONCPP_LIBRARY]
+  library_dirs: []
+  name: JsonCpp
 liblapack-dev:
   name: LAPACK
   libraries: [LAPACK_LIBRARIES]
