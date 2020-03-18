@@ -21,6 +21,8 @@ libceres-dev:
   ubuntu: [mrt-libceres-dev]
 libgeographic-dev:
   ubuntu: [libgeographic-dev]
+libjsoncpp-dev:
+  ubuntu: [libjsoncpp-dev]
 liblmdb:
   ubuntu: [liblmdb-dev]
 libopencv-dev:
