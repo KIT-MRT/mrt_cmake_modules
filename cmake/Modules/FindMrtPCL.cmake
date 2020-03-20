@@ -13,7 +13,7 @@ else()
 endif()
 
 add_library(pcl_target INTERFACE)
-target_include_directories(pcl_target INTERFACE ${PCL_INCLUDE_DIRS})
+target_include_directories(pcl_target SYSTEM INTERFACE ${PCL_INCLUDE_DIRS})
 target_link_directories(pcl_target INTERFACE ${PCL_LIBRARY_DIRS})
 target_link_libraries(pcl_target INTERFACE ${PCL_LIBRARIES})
 
