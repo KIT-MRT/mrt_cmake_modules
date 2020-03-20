@@ -14,12 +14,12 @@ endif()
 
 add_library(mrt_pcl INTERFACE)
 
-target_include_directories(mrt_pcl SYSTEM INTERFACE "${PCL_INCLUDE_DIRS}")
+target_include_directories(mrt_pcl SYSTEM INTERFACE ${PCL_INCLUDE_DIRS})
 set_target_properties(mrt_pcl
-    PROPERTIES INTERFACE_LINK_DIRECTORIES "${PCL_LIBRARY_DIRS}")
-target_link_libraries(mrt_pcl INTERFACE "${PCL_LIBRARIES}")
+    PROPERTIES INTERFACE_LINK_DIRECTORIES ${PCL_LIBRARY_DIRS})
+target_link_libraries(mrt_pcl INTERFACE ${PCL_LIBRARIES})
 
 # Add PCL_NO_PRECOMPILE as this resolves Eigen issues.
-target_compile_definitions(pcl_target INTERFACE PCL_NO_PRECOMPILE)
+target_compile_definitions(mrt_pcl INTERFACE PCL_NO_PRECOMPILE)
 
 cmake_policy(POP)
