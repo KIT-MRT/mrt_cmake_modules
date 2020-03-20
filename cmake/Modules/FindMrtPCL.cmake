@@ -15,8 +15,7 @@ endif()
 add_library(mrt_pcl INTERFACE)
 
 target_include_directories(mrt_pcl SYSTEM INTERFACE ${PCL_INCLUDE_DIRS})
-set_target_properties(mrt_pcl
-    PROPERTIES INTERFACE_LINK_DIRECTORIES ${PCL_LIBRARY_DIRS})
+set_target_properties(mrt_pcl PROPERTIES INTERFACE_LINK_DIRECTORIES ${PCL_LIBRARY_DIRS})
 target_link_libraries(mrt_pcl INTERFACE ${PCL_LIBRARIES})
 
 # Add PCL_NO_PRECOMPILE as this resolves Eigen issues.
