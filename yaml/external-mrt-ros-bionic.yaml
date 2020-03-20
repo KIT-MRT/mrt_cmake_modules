@@ -1405,7 +1405,7 @@ effort_controllers:
 eigenpy:
   url: https://github.com/ipab-slmc/eigenpy_catkin-release.git
   vcs: git
-  version: release/melodic/eigenpy/2.1.2-1
+  version: release/melodic/eigenpy/1.6.9-1
 eml:
   url: https://github.com/ros-gbp/eml-release.git
   vcs: git
