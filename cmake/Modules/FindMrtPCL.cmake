@@ -12,10 +12,12 @@ else()
     find_package(PCL QUIET)
 endif()
 
-add_library(pcl_target INTERFACE)
-target_include_directories(pcl_target SYSTEM INTERFACE ${PCL_INCLUDE_DIRS})
-target_link_directories(pcl_target INTERFACE ${PCL_LIBRARY_DIRS})
-target_link_libraries(pcl_target INTERFACE ${PCL_LIBRARIES})
+add_library(mrt_pcl INTERFACE)
+
+target_include_directories(mrt_pcl SYSTEM INTERFACE "${PCL_INCLUDE_DIRS}")
+set_target_properties(mrt_pcl
+    PROPERTIES INTERFACE_LINK_DIRECTORIES "${PCL_LIBRARY_DIRS}")
+target_link_libraries(mrt_pcl INTERFACE "${PCL_LIBRARIES}")
 
 # Add PCL_NO_PRECOMPILE as this resolves Eigen issues.
 target_compile_definitions(pcl_target INTERFACE PCL_NO_PRECOMPILE)
