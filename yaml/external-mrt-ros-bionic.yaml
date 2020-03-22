@@ -505,7 +505,7 @@ cob_android_settings:
 cob_base_controller_utils:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_controller_utils/0.8.10-1
+  version: release/melodic/cob_base_controller_utils/0.8.11-1
 cob_base_drive_chain:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -513,7 +513,7 @@ cob_base_drive_chain:
 cob_base_velocity_smoother:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_base_velocity_smoother/0.8.10-1
+  version: release/melodic/cob_base_velocity_smoother/0.8.11-1
 cob_bms_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -537,7 +537,7 @@ cob_canopen_motor:
 cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_cartesian_controller/0.8.10-1
+  version: release/melodic/cob_cartesian_controller/0.8.11-1
 cob_collision_monitor:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -545,7 +545,7 @@ cob_collision_monitor:
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_collision_velocity_filter/0.8.10-1
+  version: release/melodic/cob_collision_velocity_filter/0.8.11-1
 cob_command_gui:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -561,15 +561,15 @@ cob_common:
 cob_control:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control/0.8.10-1
+  version: release/melodic/cob_control/0.8.11-1
 cob_control_mode_adapter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_mode_adapter/0.8.10-1
+  version: release/melodic/cob_control_mode_adapter/0.8.11-1
 cob_control_msgs:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_control_msgs/0.8.10-1
+  version: release/melodic/cob_control_msgs/0.8.11-1
 cob_dashboard:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -613,11 +613,11 @@ cob_extern:
 cob_footprint_observer:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_footprint_observer/0.8.10-1
+  version: release/melodic/cob_footprint_observer/0.8.11-1
 cob_frame_tracker:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_frame_tracker/0.8.10-1
+  version: release/melodic/cob_frame_tracker/0.8.11-1
 cob_gazebo_objects:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
@@ -661,7 +661,7 @@ cob_hardware_config:
 cob_hardware_emulation:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_hardware_emulation/0.8.10-1
+  version: release/melodic/cob_hardware_emulation/0.8.11-1
 cob_helper_tools:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -701,7 +701,7 @@ cob_mapping_slam:
 cob_mecanum_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_mecanum_controller/0.8.10-1
+  version: release/melodic/cob_mecanum_controller/0.8.11-1
 cob_mimic:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -709,7 +709,7 @@ cob_mimic:
 cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_model_identifier/0.8.10-1
+  version: release/melodic/cob_model_identifier/0.8.11-1
 cob_monitoring:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -761,7 +761,7 @@ cob_object_detection_visualizer:
 cob_obstacle_distance:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_obstacle_distance/0.8.10-1
+  version: release/melodic/cob_obstacle_distance/0.8.11-1
 cob_obstacle_distance_moveit:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -769,7 +769,7 @@ cob_obstacle_distance_moveit:
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_omni_drive_controller/0.8.10-1
+  version: release/melodic/cob_omni_drive_controller/0.8.11-1
 cob_perception_common:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -841,15 +841,15 @@ cob_teleop:
 cob_trajectory_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_trajectory_controller/0.8.10-1
+  version: release/melodic/cob_trajectory_controller/0.8.11-1
 cob_tricycle_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_tricycle_controller/0.8.10-1
+  version: release/melodic/cob_tricycle_controller/0.8.11-1
 cob_twist_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
-  version: release/melodic/cob_twist_controller/0.8.10-1
+  version: release/melodic/cob_twist_controller/0.8.11-1
 cob_undercarriage_ctrl:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
