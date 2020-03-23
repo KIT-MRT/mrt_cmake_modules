@@ -616,6 +616,10 @@ endfunction()
 #
 # The files are automatically added to the list of installable targets so that ``mrt_install`` can mark them for installation.
 #
+# The passed header files are automatically added to a second library that is only built together with unittests. This ensures that even
+# header that are not used by any cpp file can be compiled. This behaviour can be disabled by passing NO_HEADER_TESTING or globally by setting
+# the cmake variable MRT_NO_HEADER_TESTING.
+#
 # :param libname: Name of the library to generate as first argument (without lib or .so)
 # :type libname: string
 # :param INCLUDES: Public include files needed to use the library, absolute or relative to ${PROJECT_SOURCE_DIR}
@@ -626,6 +630,7 @@ endfunction()
 # :type DEPENDS: list of strings
 # :param LIBRARIES: Extra (non-catkin, non-mrt) libraries to link to. This should only be required for external projects
 # :type LIBRARIES: list of strings
+# :param NO_HEADER_TESTING: disables building of public headers for testing purposes
 #
 # Example:
 # ::
@@ -642,7 +647,7 @@ function(mrt_add_library libname)
     if(NOT LIBRARY_NAME)
         message(FATAL_ERROR "No library name specified for call to mrt_add_library!")
     endif()
-    cmake_parse_arguments(MRT_ADD_LIBRARY "" "" "INCLUDES;SOURCES;DEPENDS;LIBRARIES" ${ARGN})
+    cmake_parse_arguments(MRT_ADD_LIBRARY "NO_HEADER_TESTING" "" "INCLUDES;SOURCES;DEPENDS;LIBRARIES" ${ARGN})
     set(LIBRARY_TARGET_NAME ${LIBRARY_NAME})
 
     # generate the library target
@@ -684,6 +689,27 @@ function(mrt_add_library libname)
         if(MRT_ADD_LIBRARY_LIBRARIES)
             target_link_libraries(${LIBRARY_TARGET_NAME} PRIVATE ${MRT_ADD_LIBRARY_LIBRARIES})
         endif()
+    endif()
+    # generate the header library when testing
+    if(MRT_ADD_LIBRARY_INCLUDES AND CATKIN_ENABLE_TESTING AND NOT MRT_ADD_LIBARY_NO_HEADER_TESTING AND NOT MRT_NO_HEADER_TESTING)
+        list(LENGTH ${PROJECT_NAME}_GENERATED_LIBRARIES _num) # to estimate how often mrt_add_library was called
+        set(_header_target ${PROJECT_NAME}-${LIBRARY_NAME}-header-test-${_num})
+        set(_cpp_file ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/header_test_${_num}.cpp)
+        set(_content "")
+        message(STATUS "Adding header compile test with ${MRT_ADD_LIBRARY_INCLUDES}")
+        foreach(_file ${MRT_ADD_LIBRARY_INCLUDES})
+            list(APPEND _content "#include \"${_file}\"\n")
+                message(STATUS ${_content})
+        endforeach()
+        list(APPEND _content "int main(){}\n")
+        file(WRITE ${_cpp_file} ${_content})
+        add_executable(${_header_target} ${_cpp_file})
+        set_target_properties(${_header_target} PROPERTIES EXCLUDE_FROM_ALL TRUE)
+        target_include_directories(${_header_target} PRIVATE ${CMAKE_CURRENT_LIST_DIR})
+        mrt_init_testing()
+        add_dependencies(tests_${PROJECT_NAME} ${_header_target})
+        target_link_libraries(${_header_target} PRIVATE ${LIBRARY_TARGET_NAME})
+        mrt_add_links(${_header_target} NO_SANITIZER)
     endif()
     # link to python_api if existing (needs to be declared before this library)
     foreach(_py_api_target ${${PROJECT_NAME}_PYTHON_API_TARGET})
