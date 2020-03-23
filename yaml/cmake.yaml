@@ -159,7 +159,7 @@ libopencv-dev:
   name: OpenCV
 libpcl-all-dev:
   components: []
-  targets: ['mrt_pcl']
+  targets: ['mrt_pcl::pcl']
   name: MrtPCL
 libpoco-dev:
   components: [Foundation]
