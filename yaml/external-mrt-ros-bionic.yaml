@@ -109,7 +109,7 @@ allocators:
 amcl:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/amcl/1.16.5-1
+  version: release/melodic/amcl/1.16.6-1
 app_manager:
   url: https://github.com/ros-gbp/app_manager-release.git
   vcs: git
@@ -297,7 +297,7 @@ baldor:
 base_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/base_local_planner/1.16.5-1
+  version: release/melodic/base_local_planner/1.16.6-1
 bayesian_belief_networks:
   url: https://github.com/tork-a/jsk_3rdparty-release.git
   vcs: git
@@ -381,7 +381,7 @@ carla_msgs:
 carrot_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/carrot_planner/1.16.5-1
+  version: release/melodic/carrot_planner/1.16.6-1
 cartesian_msgs:
   url: https://github.com/PickNikRobotics/cartesian_msgs-release.git
   vcs: git
@@ -453,7 +453,7 @@ cl_utils:
 clear_costmap_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/clear_costmap_recovery/1.16.5-1
+  version: release/melodic/clear_costmap_recovery/1.16.6-1
 clock_relay:
   url: https://github.com/clearpath-gbp/cpr_multimaster_tools-release.git
   vcs: git
@@ -509,7 +509,7 @@ cob_base_controller_utils:
 cob_base_drive_chain:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_base_drive_chain/0.7.1-1
+  version: release/melodic/cob_base_drive_chain/0.7.3-1
 cob_base_velocity_smoother:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -517,7 +517,7 @@ cob_base_velocity_smoother:
 cob_bms_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_bms_driver/0.7.1-1
+  version: release/melodic/cob_bms_driver/0.7.3-1
 cob_calibration_data:
   url: https://github.com/ipa320/cob_calibration_data-release.git
   vcs: git
@@ -529,11 +529,11 @@ cob_cam3d_throttle:
 cob_camera_sensors:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_camera_sensors/0.7.1-1
+  version: release/melodic/cob_camera_sensors/0.7.3-1
 cob_canopen_motor:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_canopen_motor/0.7.1-1
+  version: release/melodic/cob_canopen_motor/0.7.3-1
 cob_cartesian_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -597,11 +597,11 @@ cob_docker_control:
 cob_driver:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_driver/0.7.1-1
+  version: release/melodic/cob_driver/0.7.3-1
 cob_elmo_homing:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_elmo_homing/0.7.1-1
+  version: release/melodic/cob_elmo_homing/0.7.3-1
 cob_environments:
   url: https://github.com/ipa320/cob_environments-release.git
   vcs: git
@@ -641,7 +641,7 @@ cob_gazebo_worlds:
 cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_generic_can/0.7.1-1
+  version: release/melodic/cob_generic_can/0.7.3-1
 cob_grasp_generation:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
@@ -649,11 +649,11 @@ cob_grasp_generation:
 cob_hand:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
-  version: release/melodic/cob_hand/0.6.6-1
+  version: release/melodic/cob_hand/0.6.7-1
 cob_hand_bridge:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
-  version: release/melodic/cob_hand_bridge/0.6.6-1
+  version: release/melodic/cob_hand_bridge/0.6.7-1
 cob_hardware_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
@@ -677,7 +677,7 @@ cob_interactive_teleop:
 cob_light:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_light/0.7.1-1
+  version: release/melodic/cob_light/0.7.3-1
 cob_linear_nav:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
@@ -705,7 +705,7 @@ cob_mecanum_controller:
 cob_mimic:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_mimic/0.7.1-1
+  version: release/melodic/cob_mimic/0.7.3-1
 cob_model_identifier:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -781,15 +781,15 @@ cob_perception_msgs:
 cob_phidget_em_state:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_phidget_em_state/0.7.1-1
+  version: release/melodic/cob_phidget_em_state/0.7.3-1
 cob_phidget_power_state:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_phidget_power_state/0.7.1-1
+  version: release/melodic/cob_phidget_power_state/0.7.3-1
 cob_phidgets:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_phidgets/0.7.1-1
+  version: release/melodic/cob_phidgets/0.7.3-1
 cob_reflector_referencing:
   url: https://github.com/ipa320/cob_substitute-release.git
   vcs: git
@@ -797,7 +797,7 @@ cob_reflector_referencing:
 cob_relayboard:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_relayboard/0.7.1-1
+  version: release/melodic/cob_relayboard/0.7.3-1
 cob_safety_controller:
   url: https://github.com/ipa320/cob_substitute-release.git
   vcs: git
@@ -805,7 +805,7 @@ cob_safety_controller:
 cob_scan_unifier:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_scan_unifier/0.7.1-1
+  version: release/melodic/cob_scan_unifier/0.7.3-1
 cob_script_server:
   url: https://github.com/ipa320/cob_command_tools-release.git
   vcs: git
@@ -813,15 +813,15 @@ cob_script_server:
 cob_sick_lms1xx:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_sick_lms1xx/0.7.1-1
+  version: release/melodic/cob_sick_lms1xx/0.7.3-1
 cob_sick_s300:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_sick_s300/0.7.1-1
+  version: release/melodic/cob_sick_s300/0.7.3-1
 cob_sound:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_sound/0.7.1-1
+  version: release/melodic/cob_sound/0.7.3-1
 cob_srvs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -853,11 +853,11 @@ cob_twist_controller:
 cob_undercarriage_ctrl:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_undercarriage_ctrl/0.7.1-1
+  version: release/melodic/cob_undercarriage_ctrl/0.7.3-1
 cob_utilities:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_utilities/0.7.1-1
+  version: release/melodic/cob_utilities/0.7.3-1
 cob_vision_utils:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -865,7 +865,7 @@ cob_vision_utils:
 cob_voltage_control:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/cob_voltage_control/0.7.1-1
+  version: release/melodic/cob_voltage_control/0.7.3-1
 code_coverage:
   url: https://github.com/mikeferguson/code_coverage-gbp.git
   vcs: git
@@ -1161,7 +1161,7 @@ drone_wrapper:
 dwa_local_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/dwa_local_planner/1.16.5-1
+  version: release/melodic/dwa_local_planner/1.16.6-1
 dwb_critics:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -1561,7 +1561,7 @@ fake_joint_launch:
 fake_localization:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/fake_localization/1.16.5-1
+  version: release/melodic/fake_localization/1.16.6-1
 fcl_catkin:
   url: https://github.com/wxmerkt/fcl_catkin-release.git
   vcs: git
@@ -1786,6 +1786,18 @@ franka_visualization:
   url: https://github.com/frankaemika/franka_ros-release.git
   vcs: git
   version: release/melodic/franka_visualization/0.6.0-1
+freenect_camera:
+  url: https://github.com/ros-drivers-gbp/freenect_stack-release.git
+  vcs: git
+  version: release/melodic/freenect_camera/0.4.3-2
+freenect_launch:
+  url: https://github.com/ros-drivers-gbp/freenect_stack-release.git
+  vcs: git
+  version: release/melodic/freenect_launch/0.4.3-2
+freenect_stack:
+  url: https://github.com/ros-drivers-gbp/freenect_stack-release.git
+  vcs: git
+  version: release/melodic/freenect_stack/0.4.3-2
 freight_bringup:
   url: https://github.com/fetchrobotics-gbp/fetch_robots-release.git
   vcs: git
@@ -1841,7 +1853,7 @@ geometry2:
 global_planner:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/global_planner/1.16.5-1
+  version: release/melodic/global_planner/1.16.6-1
 global_planner_tests:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -2573,7 +2585,7 @@ laser_proc:
 laser_scan_densifier:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
-  version: release/melodic/laser_scan_densifier/0.7.1-1
+  version: release/melodic/laser_scan_densifier/0.7.3-1
 laser_scan_publisher_tutorial:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
@@ -3025,7 +3037,7 @@ mouse_teleop:
 move_base:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/move_base/1.16.5-1
+  version: release/melodic/move_base/1.16.6-1
 move_base_flex:
   url: https://github.com/uos-gbp/move_base_flex-release.git
   vcs: git
@@ -3037,7 +3049,7 @@ move_base_msgs:
 move_slow_and_clear:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/move_slow_and_clear/1.16.5-1
+  version: release/melodic/move_slow_and_clear/1.16.6-1
 moveit:
   url: https://github.com/ros-gbp/moveit-release.git
   vcs: git
@@ -3381,7 +3393,7 @@ nav_2d_utils:
 nav_core:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/nav_core/1.16.5-1
+  version: release/melodic/nav_core/1.16.6-1
 nav_core2:
   url: https://github.com/DLu/robot_navigation-release.git
   vcs: git
@@ -3405,11 +3417,11 @@ nav_grid_pub_sub:
 navfn:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/navfn/1.16.5-1
+  version: release/melodic/navfn/1.16.6-1
 navigation:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/navigation/1.16.5-1
+  version: release/melodic/navigation/1.16.6-1
 navigation_experimental:
   url: https://github.com/ros-gbp/navigation_experimental-release.git
   vcs: git
@@ -4389,7 +4401,7 @@ rc_dynamics_api:
 rc_genicam_api:
   url: https://github.com/roboception-gbp/rc_genicam_api-release.git
   vcs: git
-  version: release/melodic/rc_genicam_api/2.3.3-1
+  version: release/melodic/rc_genicam_api/2.3.4-1
 rc_hand_eye_calibration_client:
   url: https://github.com/roboception-gbp/rc_visard-release.git
   vcs: git
@@ -4421,7 +4433,7 @@ rc_visard_driver:
 rcdiscover:
   url: https://github.com/roboception-gbp/rcdiscover-release.git
   vcs: git
-  version: release/melodic/rcdiscover/1.0.2-1
+  version: release/melodic/rcdiscover/1.0.3-1
 rdl:
   url: https://gitlab.com/jlack/rdl_release.git
   vcs: git
@@ -4682,6 +4694,14 @@ roomba_stage:
   url: https://github.com/ros-gbp/navigation_tutorials-release.git
   vcs: git
   version: release/melodic/roomba_stage/0.2.3-1
+ros_babel_fish:
+  url: https://github.com/StefanFabian/ros_babel_fish-release.git
+  vcs: git
+  version: release/melodic/ros_babel_fish/0.8.0-1
+ros_babel_fish_test_msgs:
+  url: https://github.com/StefanFabian/ros_babel_fish-release.git
+  vcs: git
+  version: release/melodic/ros_babel_fish_test_msgs/0.8.0-1
 ros_canopen:
   url: https://github.com/ros-industrial-release/ros_canopen-release.git
   vcs: git
@@ -4794,6 +4814,30 @@ roseus_tutorials:
   url: https://github.com/tork-a/jsk_roseus-release.git
   vcs: git
   version: release/melodic/roseus_tutorials/1.7.4-1
+rosflight:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight/1.3.0-1
+rosflight_firmware:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight_firmware/1.3.0-1
+rosflight_msgs:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight_msgs/1.3.0-1
+rosflight_pkgs:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight_pkgs/1.3.0-1
+rosflight_sim:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight_sim/1.3.0-1
+rosflight_utils:
+  url: https://github.com/rosflight/rosflight-release.git
+  vcs: git
+  version: release/melodic/rosflight_utils/1.3.0-1
 rosfmt:
   url: https://github.com/xqms/rosfmt-release.git
   vcs: git
@@ -4921,7 +4965,7 @@ roswww:
 rotate_recovery:
   url: https://github.com/ros-gbp/navigation-release.git
   vcs: git
-  version: release/melodic/rotate_recovery/1.16.5-1
+  version: release/melodic/rotate_recovery/1.16.6-1
 rotors_comm:
   url: https://github.com/ethz-asl/rotors_simulator-release.git
   vcs: git
@@ -6265,7 +6309,7 @@ yosemite_valley:
 ypspur:
   url: https://github.com/openspur/yp-spur-release.git
   vcs: git
-  version: release/melodic/ypspur/1.17.1-1
+  version: release/melodic/ypspur/1.18.0-1
 ypspur_ros:
   url: https://github.com/openspur/ypspur_ros-release.git
   vcs: git
