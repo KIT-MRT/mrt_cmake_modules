@@ -39,18 +39,16 @@ function(_cleanup_libraries var_name_libs)
         list(REMOVE_ITEM ${var_name_libs} debug optimized general)
     endif()
     set(${var_name_libs}
-            ${${var_name_libs}}
-            PARENT_SCOPE)
+        ${${var_name_libs}}
+        PARENT_SCOPE)
 endfunction()
 
 _cleanup_libraries(PCL_LIBRARIES)
 
 # Add PCL_NO_PRECOMPILE as this resolves Eigen issues.
-set_target_properties(mrt_pcl::pcl PROPERTIES
-        INTERFACE_INCLUDE_DIRECTORIES "${PCL_INCLUDE_DIRS}"
-        INTERFACE_LINK_DIRECTORIES "${PCL_LIBRARY_DIRS}"
-        INTERFACE_LINK_LIBRARIES "${PCL_LIBRARIES}"
-        INTERFACE_COMPILE_DEFINITIONS "PCL_NO_PRECOMPILE"
-        )
+set_target_properties(
+    mrt_pcl::pcl
+    PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PCL_INCLUDE_DIRS}" INTERFACE_LINK_DIRECTORIES "${PCL_LIBRARY_DIRS}"
+               INTERFACE_LINK_LIBRARIES "${PCL_LIBRARIES}" INTERFACE_COMPILE_DEFINITIONS "PCL_NO_PRECOMPILE")
 
 cmake_policy(POP)
