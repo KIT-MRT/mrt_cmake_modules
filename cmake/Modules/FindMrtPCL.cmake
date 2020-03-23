@@ -12,13 +12,45 @@ else()
     find_package(PCL QUIET)
 endif()
 
-add_library(mrt_pcl INTERFACE)
+add_library(mrt_pcl::pcl INTERFACE IMPORTED)
 
-target_include_directories(mrt_pcl SYSTEM INTERFACE ${PCL_INCLUDE_DIRS})
-set_target_properties(mrt_pcl PROPERTIES INTERFACE_LINK_DIRECTORIES ${PCL_LIBRARY_DIRS})
-target_link_libraries(mrt_pcl INTERFACE ${PCL_LIBRARIES})
+# Copied from FindAutoDeps.cmake
+function(_cleanup_libraries var_name_libs)
+    # replace "debug", "general" and "optimized" keywords in the libraries list with generator expressions
+    list(LENGTH ${var_name_libs} size)
+    foreach(idx RANGE ${size})
+        if(${idx} EQUAL ${size})
+            continue()
+        endif()
+        list(GET ${var_name_libs} ${idx} statement)
+        if(${statement} STREQUAL "debug")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<CONFIG:DEBUG>:${lib}>")
+        elseif(${statement} STREQUAL "optimized")
+            math(EXPR next ${idx}+1)
+            list(GET ${var_name_libs} ${next} lib)
+            list(REMOVE_AT ${var_name_libs} ${next})
+            list(INSERT ${var_name_libs} ${next} "$<$<NOT:$<CONFIG:DEBUG>>:${lib}>")
+        endif()
+    endforeach()
+    if(size)
+        list(REMOVE_ITEM ${var_name_libs} debug optimized general)
+    endif()
+    set(${var_name_libs}
+            ${${var_name_libs}}
+            PARENT_SCOPE)
+endfunction()
+
+_cleanup_libraries(PCL_LIBRARIES)
 
 # Add PCL_NO_PRECOMPILE as this resolves Eigen issues.
-target_compile_definitions(mrt_pcl INTERFACE PCL_NO_PRECOMPILE)
+set_target_properties(mrt_pcl::pcl PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${PCL_INCLUDE_DIRS}"
+        INTERFACE_LINK_DIRECTORIES "${PCL_LIBRARY_DIRS}"
+        INTERFACE_LINK_LIBRARIES "${PCL_LIBRARIES}"
+        INTERFACE_COMPILE_DEFINITIONS "PCL_NO_PRECOMPILE"
+        )
 
 cmake_policy(POP)
