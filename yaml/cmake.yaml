@@ -159,9 +159,7 @@ libopencv-dev:
   name: OpenCV
 libpcl-all-dev:
   components: []
-  include_dirs: [PCL_INCLUDE_DIRS]
-  libraries: [PCL_LIBRARIES]
-  library_dirs: [PCL_LIBRARY_DIRS]
+  targets: ['mrt_pcl::pcl']
   name: MrtPCL
 libpoco-dev:
   components: [Foundation]
