@@ -30,7 +30,8 @@ elseif(_python_version VERSION_LESS 3)
 else()
     find_package(Python3 REQUIRED COMPONENTS Development)
     set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${Python3_INCLUDE_DIRS})
-    set(BoostPython_LIBRARIES ${Boost_PYTHON${_python_version}_LIBRARY} ${Boost_NUMPY${_python_version}_LIBRARY} ${Python3_LIBRARIES})
+    set(BoostPython_LIBRARIES ${Boost_PYTHON${_python_version}_LIBRARY} ${Boost_NUMPY${_python_version}_LIBRARY}
+                              ${Python3_LIBRARIES})
 endif()
 
 find_package_handle_standard_args(BoostPython DEFAULT_MSG BoostPython_LIBRARIES BoostPython_INCLUDE_DIRS)
