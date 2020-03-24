@@ -541,7 +541,7 @@ cob_cartesian_controller:
 cob_collision_monitor:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_collision_monitor/0.7.3-1
+  version: release/melodic/cob_collision_monitor/0.7.4-1
 cob_collision_velocity_filter:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -581,11 +581,11 @@ cob_default_env_config:
 cob_default_robot_behavior:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/melodic/cob_default_robot_behavior/0.7.2-1
+  version: release/melodic/cob_default_robot_behavior/0.7.4-1
 cob_default_robot_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/melodic/cob_default_robot_config/0.7.2-1
+  version: release/melodic/cob_default_robot_config/0.7.4-1
 cob_description:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -621,7 +621,7 @@ cob_frame_tracker:
 cob_gazebo_objects:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/melodic/cob_gazebo_objects/0.7.3-1
+  version: release/melodic/cob_gazebo_objects/0.7.4-1
 cob_gazebo_plugins:
   url: https://github.com/ipa320/cob_gazebo_plugins-release.git
   vcs: git
@@ -633,11 +633,11 @@ cob_gazebo_ros_control:
 cob_gazebo_tools:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/melodic/cob_gazebo_tools/0.7.3-1
+  version: release/melodic/cob_gazebo_tools/0.7.4-1
 cob_gazebo_worlds:
   url: https://github.com/ipa320/cob_simulation-release.git
   vcs: git
-  version: release/melodic/cob_gazebo_worlds/0.7.3-1
+  version: release/melodic/cob_gazebo_worlds/0.7.4-1
 cob_generic_can:
   url: https://github.com/ipa320/cob_driver-release.git
   vcs: git
@@ -645,7 +645,7 @@ cob_generic_can:
 cob_grasp_generation:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_grasp_generation/0.7.3-1
+  version: release/melodic/cob_grasp_generation/0.7.4-1
 cob_hand:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
@@ -657,7 +657,7 @@ cob_hand_bridge:
 cob_hardware_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/melodic/cob_hardware_config/0.7.2-1
+  version: release/melodic/cob_hardware_config/0.7.4-1
 cob_hardware_emulation:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -681,23 +681,23 @@ cob_light:
 cob_linear_nav:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_linear_nav/0.6.9-1
+  version: release/melodic/cob_linear_nav/0.6.10-1
 cob_lookat_action:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_lookat_action/0.7.3-1
+  version: release/melodic/cob_lookat_action/0.7.4-1
 cob_manipulation:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_manipulation/0.7.3-1
+  version: release/melodic/cob_manipulation/0.7.4-1
 cob_map_accessibility_analysis:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_map_accessibility_analysis/0.6.9-1
+  version: release/melodic/cob_map_accessibility_analysis/0.6.10-1
 cob_mapping_slam:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_mapping_slam/0.6.9-1
+  version: release/melodic/cob_mapping_slam/0.6.10-1
 cob_mecanum_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -717,15 +717,15 @@ cob_monitoring:
 cob_moveit_bringup:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_moveit_bringup/0.7.3-1
+  version: release/melodic/cob_moveit_bringup/0.7.4-1
 cob_moveit_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
-  version: release/melodic/cob_moveit_config/0.7.2-1
+  version: release/melodic/cob_moveit_config/0.7.4-1
 cob_moveit_interface:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_moveit_interface/0.7.3-1
+  version: release/melodic/cob_moveit_interface/0.7.4-1
 cob_msgs:
   url: https://github.com/ipa320/cob_common-release.git
   vcs: git
@@ -733,23 +733,23 @@ cob_msgs:
 cob_navigation:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_navigation/0.6.9-1
+  version: release/melodic/cob_navigation/0.6.10-1
 cob_navigation_config:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_navigation_config/0.6.9-1
+  version: release/melodic/cob_navigation_config/0.6.10-1
 cob_navigation_global:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_navigation_global/0.6.9-1
+  version: release/melodic/cob_navigation_global/0.6.10-1
 cob_navigation_local:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_navigation_local/0.6.9-1
+  version: release/melodic/cob_navigation_local/0.6.10-1
 cob_navigation_slam:
   url: https://github.com/ipa320/cob_navigation-release.git
   vcs: git
-  version: release/melodic/cob_navigation_slam/0.6.9-1
+  version: release/melodic/cob_navigation_slam/0.6.10-1
 cob_object_detection_msgs:
   url: https://github.com/ipa320/cob_perception_common-release.git
   vcs: git
@@ -765,7 +765,7 @@ cob_obstacle_distance:
 cob_obstacle_distance_moveit:
   url: https://github.com/ipa320/cob_manipulation-release.git
   vcs: git
-  version: release/melodic/cob_obstacle_distance_moveit/0.7.3-1
+  version: release/melodic/cob_obstacle_distance_moveit/0.7.4-1
 cob_omni_drive_controller:
   url: https://github.com/ipa320/cob_control-release.git
   vcs: git
@@ -2562,6 +2562,46 @@ kvh_geo_fog_3d_rviz:
   url: https://github.com/MITRE/kvh_geo_fog_3d-release.git
   vcs: git
   version: release/melodic/kvh_geo_fog_3d_rviz/1.3.3-1
+lanelet2:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2/1.0.0-1
+lanelet2_core:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_core/1.0.0-1
+lanelet2_examples:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_examples/1.0.0-1
+lanelet2_io:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_io/1.0.0-1
+lanelet2_maps:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_maps/1.0.0-1
+lanelet2_projection:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_projection/1.0.0-1
+lanelet2_python:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_python/1.0.0-1
+lanelet2_routing:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_routing/1.0.0-1
+lanelet2_traffic_rules:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_traffic_rules/1.0.0-1
+lanelet2_validation:
+  url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
+  vcs: git
+  version: release/melodic/lanelet2_validation/1.0.0-1
 laptop_battery_monitor:
   url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
   vcs: git
@@ -4470,6 +4510,10 @@ realsense2_description:
   url: https://github.com/IntelRealSense/realsense-ros-release.git
   vcs: git
   version: release/melodic/realsense2_description/2.2.13-1
+remote_rosbag_record:
+  url: https://github.com/yoshito-n-students/remote_rosbag_record-release.git
+  vcs: git
+  version: release/melodic/remote_rosbag_record/0.0.1-1
 resized_image_transport:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
