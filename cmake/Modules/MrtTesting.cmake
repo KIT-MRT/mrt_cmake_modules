@@ -22,9 +22,13 @@ function(mrt_init_testing)
     if(_combined_deps)
         add_dependencies(tests ${_combined_deps})
     endif()
-
+    set(_test_results ${CMAKE_BINARY_DIR}/test_results)
+    if(DEFINED CATKIN_TEST_RESULTS_DIR)
+        # support overriding to be compatible with catkin
+        set(_test_results ${CATKIN_TEST_RESULTS_DIR})
+    endif()
     set(MRT_TEST_RESULTS_DIR
-        ${CMAKE_BINARY_DIR}/test_results
+        ${_test_results}
         CACHE INTERNAL "basedir where test xmls will be written (in subfolder <project_name>)")
     if(MRT_ENABLE_COVERAGE)
         # these variables are global (for compability with toplevel cmakelists)
