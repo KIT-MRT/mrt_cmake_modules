@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.2 (2020-03-24)
+------------------
 * Fix PCL findscript, disable precompiling
 * added jsoncpp
 * Make sure packages search for mrt_cmake_modules in their package config
