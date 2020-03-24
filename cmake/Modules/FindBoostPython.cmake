@@ -16,7 +16,7 @@ if(CMAKE_VERSION VERSION_GREATER 3.11)
     find_package(Boost COMPONENTS python${_python_version} numpy${_python_version})
 endif()
 
-if(NOT (Boost_python${_python_version}_FOUND OR Boost_python_FOUND))
+if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
     find_package(Boost REQUIRED COMPONENTS python)
     find_package(Boost QUIET COMPONENTS numpy) # numpy is not available on some boost versions
     set(Python_ADDITIONAL_VERSIONS ${_python_version})
@@ -30,7 +30,8 @@ elseif(_python_version VERSION_LESS 3)
 else()
     find_package(Python3 REQUIRED COMPONENTS Development)
     set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${Python3_INCLUDE_DIRS})
-    set(BoostPython_LIBRARIES ${Boost_PYTHON3.6_LIBRARY} ${Boost_NUMPY3.6_LIBRARY} ${Python3_LIBRARIES})
+    set(BoostPython_LIBRARIES ${Boost_PYTHON${_python_version}_LIBRARY} ${Boost_NUMPY${_python_version}_LIBRARY}
+                              ${Python3_LIBRARIES})
 endif()
 
 find_package_handle_standard_args(BoostPython DEFAULT_MSG BoostPython_LIBRARIES BoostPython_INCLUDE_DIRS)
