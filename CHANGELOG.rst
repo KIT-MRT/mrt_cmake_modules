@@ -2,6 +2,15 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix PCL findscript, disable precompiling
+* added jsoncpp
+* Make sure packages search for mrt_cmake_modules in their package config
+* Fix resolution of packages in underlaying workspaces
+* Mention rosdoc.yaml in package.xml
+* Contributors: Fabian Poggenhans, Johannes Beck, Johannes Janosovits
+
 1.0.1 (2020-03-11)
 ------------------
 * Update maintainer
