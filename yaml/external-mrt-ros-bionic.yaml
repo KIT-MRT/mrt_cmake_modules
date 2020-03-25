@@ -2565,43 +2565,43 @@ kvh_geo_fog_3d_rviz:
 lanelet2:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2/1.0.0-1
+  version: release/melodic/lanelet2/1.0.1-1
 lanelet2_core:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_core/1.0.0-1
+  version: release/melodic/lanelet2_core/1.0.1-1
 lanelet2_examples:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_examples/1.0.0-1
+  version: release/melodic/lanelet2_examples/1.0.1-1
 lanelet2_io:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_io/1.0.0-1
+  version: release/melodic/lanelet2_io/1.0.1-1
 lanelet2_maps:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_maps/1.0.0-1
+  version: release/melodic/lanelet2_maps/1.0.1-1
 lanelet2_projection:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_projection/1.0.0-1
+  version: release/melodic/lanelet2_projection/1.0.1-1
 lanelet2_python:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_python/1.0.0-1
+  version: release/melodic/lanelet2_python/1.0.1-1
 lanelet2_routing:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_routing/1.0.0-1
+  version: release/melodic/lanelet2_routing/1.0.1-1
 lanelet2_traffic_rules:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_traffic_rules/1.0.0-1
+  version: release/melodic/lanelet2_traffic_rules/1.0.1-1
 lanelet2_validation:
   url: https://github.com/fzi-forschungszentrum-informatik/lanelet2-release.git
   vcs: git
-  version: release/melodic/lanelet2_validation/1.0.0-1
+  version: release/melodic/lanelet2_validation/1.0.1-1
 laptop_battery_monitor:
   url: https://github.com/ros-gbp/linux_peripheral_interfaces-release.git
   vcs: git
@@ -3633,7 +3633,7 @@ ompl:
 omron_os32c_driver:
   url: https://github.com/ros-drivers-gbp/omron-release.git
   vcs: git
-  version: release/melodic/omron_os32c_driver/1.0.0-0
+  version: release/melodic/omron_os32c_driver/1.1.0-0
 open_karto:
   url: https://github.com/ros-gbp/open_karto-release.git
   vcs: git
