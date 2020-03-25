@@ -255,9 +255,7 @@ mrt_opencv:
   warning: Usage of mrt_opencv in package.xml is deprecated. Use 'libopencv-dev' instead!
 mrt_pcl:
   components: []
-  include_dirs: [PCL_INCLUDE_DIRS]
-  libraries: [PCL_LIBRARIES]
-  library_dirs: [PCL_LIBRARY_DIRS]
+  targets: ['mrt_pcl::pcl']
   name: MrtPCL
   warning: Usage of mrt_pcl in package.xml is deprecated. Use 'libpcl-all-dev' instead!
 mrt_protobuf:
