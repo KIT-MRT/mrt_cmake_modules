@@ -136,6 +136,12 @@ libigl:
   libraries: [IGL_LIBRARIES]
   library_dirs: []
   name: IGL
+libjsoncpp-dev:
+  components: []
+  include_dirs: [JSONCPP_INCLUDE_DIRS]
+  libraries: [JSONCPP_LIBRARY]
+  library_dirs: []
+  name: JsonCpp
 liblapack-dev:
   name: LAPACK
   libraries: [LAPACK_LIBRARIES]
@@ -153,9 +159,7 @@ libopencv-dev:
   name: OpenCV
 libpcl-all-dev:
   components: []
-  include_dirs: [PCL_INCLUDE_DIRS]
-  libraries: [PCL_LIBRARIES]
-  library_dirs: [PCL_LIBRARY_DIRS]
+  targets: ['mrt_pcl::pcl']
   name: MrtPCL
 libpoco-dev:
   components: [Foundation]

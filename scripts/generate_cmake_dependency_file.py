@@ -31,7 +31,7 @@ try:
 except ImportError:
     from yaml import Loader
 if sys.version_info >= (3, 0):
-    import ast.literal_eval as eval_expr
+    from ast import literal_eval as eval_expr
 else:
     eval_expr = eval  # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
 
@@ -222,8 +222,9 @@ def getCatkinPackages(workspaceRoot):
     """Get all available catkin packages"""
     manifest = "package.xml"
     catkin_ignore = "CATKIN_IGNORE"
+    catkin_marker = ".catkin"
     nosubdirs = "rospack_nosubdirs"
-    ros_package_env = "ROS_PACKAGE_PATH"
+    cmake_env = "CMAKE_PREFIX_PATH"
 
     def getPackagesInPath(packages, path):
         for root, dirs, files in os.walk(path, topdown=True, followlinks=True):
@@ -244,11 +245,23 @@ def getCatkinPackages(workspaceRoot):
                 dirs[:] = []  # package is tagged to not recurse
                 continue
 
-    package_paths = {}
-    paths = os.environ.get(ros_package_env, "").split(":")
-    paths.append(workspaceRoot)
+    def getWorkspacesInPath(path, workspaces):
+        markerfile = os.path.join(path, catkin_marker)
+        if not os.path.isfile(markerfile):
+            return
+        with open(markerfile) as f:
+            data = f.read()
+        if not data:
+            # catkin_marker contains no refernce to a source dir, the whole path is a ws
+            workspaces.append(path)
+            return
+        workspaces += data.split(";")
+    workspaces = []
+    for path in os.environ.get(cmake_env, '').split(os.pathsep):
+        getWorkspacesInPath(path, workspaces)
+
     packages = {}
-    for path in paths:
+    for path in set(workspaces):
         getPackagesInPath(packages, path)
     return packages
 
