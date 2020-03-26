@@ -47,24 +47,6 @@ add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_test INTERFACE IMPOR
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_cuda INTERFACE IMPORTED)
 add_library(${${CMAKE_FIND_PACKAGE_NAME}_PREFIX}::auto_deps_export INTERFACE IMPORTED)
 
-function(_cleanup_includes targets)
-    # remove /usr/include and /usr/local/include
-    # The compiler searches in those folders automatically and this can lead to
-    # problems if there are different versions of the same library installed
-    # at different places.
-    foreach(target ${targets})
-        get_target_property(_target_include ${target} INTERFACE_INCLUDE_DIRECTORIES)
-        if(_target_include)
-            list(FIND _target_include /usr/include has_inc)
-            list(FIND _target_include /usr/local/include has_local_inc)
-            if(has_local_inc GREATER -1 OR has_inc GREATER -1)
-                list(REMOVE_ITEM _target_include "/usr/include" "/usr/local/include")
-                set_target_properties(${target} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_target_include}")
-            endif()
-        endif()
-    endforeach()
-endfunction()
-
 function(_cleanup_libraries var_name_libs)
     # replace "debug", "general" and "optimized" keywords in the libraries list with generator expressions
     list(LENGTH ${var_name_libs} size)
@@ -238,7 +220,6 @@ macro(_find_dep output_target component)
     endif() # catkin vs normal package
     # add the target(s) to the output target and cleanup
     if(${CMAKE_FIND_PACKAGE_NAME}_targetname)
-        _cleanup_includes(${${CMAKE_FIND_PACKAGE_NAME}_targetname})
         set_property(
             TARGET ${output_target}
             APPEND
