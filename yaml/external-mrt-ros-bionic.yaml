@@ -649,11 +649,11 @@ cob_grasp_generation:
 cob_hand:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
-  version: release/melodic/cob_hand/0.6.7-1
+  version: release/melodic/cob_hand/0.6.8-1
 cob_hand_bridge:
   url: https://github.com/ipa320/cob_hand-release.git
   vcs: git
-  version: release/melodic/cob_hand_bridge/0.6.7-1
+  version: release/melodic/cob_hand_bridge/0.6.8-1
 cob_hardware_config:
   url: https://github.com/ipa320/cob_robots-release.git
   vcs: git
@@ -1693,39 +1693,39 @@ flatbuffers:
 flexbe_behavior_engine:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_behavior_engine/1.2.3-1
+  version: release/melodic/flexbe_behavior_engine/1.2.4-1
 flexbe_core:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_core/1.2.3-1
+  version: release/melodic/flexbe_core/1.2.4-1
 flexbe_input:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_input/1.2.3-1
+  version: release/melodic/flexbe_input/1.2.4-1
 flexbe_mirror:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_mirror/1.2.3-1
+  version: release/melodic/flexbe_mirror/1.2.4-1
 flexbe_msgs:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_msgs/1.2.3-1
+  version: release/melodic/flexbe_msgs/1.2.4-1
 flexbe_onboard:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_onboard/1.2.3-1
+  version: release/melodic/flexbe_onboard/1.2.4-1
 flexbe_states:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_states/1.2.3-1
+  version: release/melodic/flexbe_states/1.2.4-1
 flexbe_testing:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_testing/1.2.3-1
+  version: release/melodic/flexbe_testing/1.2.4-1
 flexbe_widget:
   url: https://github.com/FlexBE/flexbe_behavior_engine-release.git
   vcs: git
-  version: release/melodic/flexbe_widget/1.2.3-1
+  version: release/melodic/flexbe_widget/1.2.4-1
 flir_boson_usb:
   url: https://github.com/astuff/flir_boson_usb-release.git
   vcs: git
@@ -2881,7 +2881,7 @@ marti_common_msgs:
 marti_data_structures:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/marti_data_structures/2.11.0-1
+  version: release/melodic/marti_data_structures/2.12.0-1
 marti_nav_msgs:
   url: https://github.com/swri-robotics-gbp/marti_messages-release.git
   vcs: git
@@ -3301,7 +3301,7 @@ mrpt_tutorials:
 mrt_cmake_modules:
   url: https://github.com/KIT-MRT/mrt_cmake_modules-release.git
   vcs: git
-  version: release/melodic/mrt_cmake_modules/1.0.1-1
+  version: release/melodic/mrt_cmake_modules/1.0.2-1
 multi_interface_roam:
   url: https://github.com/pr2-gbp/linux_networking-release.git
   vcs: git
@@ -4513,7 +4513,7 @@ realsense2_description:
 remote_rosbag_record:
   url: https://github.com/yoshito-n-students/remote_rosbag_record-release.git
   vcs: git
-  version: release/melodic/remote_rosbag_record/0.0.1-1
+  version: release/melodic/remote_rosbag_record/0.0.2-1
 resized_image_transport:
   url: https://github.com/tork-a/jsk_recognition-release.git
   vcs: git
@@ -5409,35 +5409,35 @@ swri_console:
 swri_console_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_console_util/2.11.0-1
+  version: release/melodic/swri_console_util/2.12.0-1
 swri_dbw_interface:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_dbw_interface/2.11.0-1
+  version: release/melodic/swri_dbw_interface/2.12.0-1
 swri_geometry_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_geometry_util/2.11.0-1
+  version: release/melodic/swri_geometry_util/2.12.0-1
 swri_image_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_image_util/2.11.0-1
+  version: release/melodic/swri_image_util/2.12.0-1
 swri_math_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_math_util/2.11.0-1
+  version: release/melodic/swri_math_util/2.12.0-1
 swri_nodelet:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_nodelet/2.11.0-1
+  version: release/melodic/swri_nodelet/2.12.0-1
 swri_opencv_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_opencv_util/2.11.0-1
+  version: release/melodic/swri_opencv_util/2.12.0-1
 swri_prefix_tools:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_prefix_tools/2.11.0-1
+  version: release/melodic/swri_prefix_tools/2.12.0-1
 swri_profiler:
   url: https://github.com/swri-robotics-gbp/swri_profiler-release.git
   vcs: git
@@ -5453,35 +5453,35 @@ swri_profiler_tools:
 swri_roscpp:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_roscpp/2.11.0-1
+  version: release/melodic/swri_roscpp/2.12.0-1
 swri_rospy:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_rospy/2.11.0-1
+  version: release/melodic/swri_rospy/2.12.0-1
 swri_route_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_route_util/2.11.0-1
+  version: release/melodic/swri_route_util/2.12.0-1
 swri_serial_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_serial_util/2.11.0-1
+  version: release/melodic/swri_serial_util/2.12.0-1
 swri_string_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_string_util/2.11.0-1
+  version: release/melodic/swri_string_util/2.12.0-1
 swri_system_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_system_util/2.11.0-1
+  version: release/melodic/swri_system_util/2.12.0-1
 swri_transform_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_transform_util/2.11.0-1
+  version: release/melodic/swri_transform_util/2.12.0-1
 swri_yaml_util:
   url: https://github.com/swri-robotics-gbp/marti_common-release.git
   vcs: git
-  version: release/melodic/swri_yaml_util/2.11.0-1
+  version: release/melodic/swri_yaml_util/2.12.0-1
 tablet_socket_msgs:
   url: https://gitlab.com/autowarefoundation/autoware.ai-ros-releases/messages-release.git
   vcs: git
