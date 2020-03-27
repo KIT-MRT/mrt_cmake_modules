@@ -1,4 +1,4 @@
-#version=1.5
+#version=1.6
 include:
    - local: '/ci_templates/default_catkin_project.yml'
 
