@@ -2309,7 +2309,7 @@ jackal_viz:
 jderobot_assets:
   url: https://github.com/JdeRobot/assets-release.git
   vcs: git
-  version: release/melodic/jderobot_assets/1.0.0-1
+  version: release/melodic/jderobot_assets/1.0.1-1
 jderobot_camviz:
   url: https://github.com/JdeRobot/CamViz-release.git
   vcs: git
