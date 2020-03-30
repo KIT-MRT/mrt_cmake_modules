@@ -17,12 +17,17 @@ if(CMAKE_VERSION VERSION_GREATER 3.11)
 endif()
 
 if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
-    find_package(Boost REQUIRED COMPONENTS python)
-    find_package(Boost QUIET COMPONENTS numpy) # numpy is not available on some boost versions
+    # on older cmake versions, "python" finds python2, otherwise python3
+    set(_search_version)
+    if(_python_version VERSION_GREATER 3)
+        set(_search_version 3)
+    endif()
+    find_package(Boost REQUIRED COMPONENTS python${_search_version})
+    find_package(Boost QUIET COMPONENTS numpy${_search_version}) # numpy is not available on some boost versions
     set(Python_ADDITIONAL_VERSIONS ${_python_version})
     find_package(PythonLibs REQUIRED)
     set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${PYTHON_INCLUDE_DIR})
-    set(BoostPython_LIBRARIES ${Boost_PYTHON_LIBRARIES} ${Boost_NUMPY_LIBRARIES} ${PYTHON_LIBRARIES})
+    set(BoostPython_LIBRARIES ${Boost_PYTHON${_search_version}_LIBRARIES} ${Boost_NUMPY${_search_version}_LIBRARIES} ${PYTHON_LIBRARIES})
 elseif(_python_version VERSION_LESS 3)
     find_package(Python2 REQUIRED COMPONENTS Development)
     set(BoostPython_INCLUDE_DIRS ${Boost_INCLUDE_DIR} ${Python2_INCLUDE_DIRS})
