@@ -137,11 +137,9 @@ libigl:
   library_dirs: []
   name: IGL
 libjsoncpp-dev:
-  components: []
-  include_dirs: [JSONCPP_INCLUDE_DIRS]
-  libraries: [JSONCPP_LIBRARY]
-  library_dirs: []
   name: JsonCpp
+  targets: ['JsonCpp::JsonCpp']
+  components: []
 liblapack-dev:
   name: LAPACK
   libraries: [LAPACK_LIBRARIES]
@@ -257,9 +255,7 @@ mrt_opencv:
   warning: Usage of mrt_opencv in package.xml is deprecated. Use 'libopencv-dev' instead!
 mrt_pcl:
   components: []
-  include_dirs: [PCL_INCLUDE_DIRS]
-  libraries: [PCL_LIBRARIES]
-  library_dirs: [PCL_LIBRARY_DIRS]
+  targets: ['mrt_pcl::pcl']
   name: MrtPCL
   warning: Usage of mrt_pcl in package.xml is deprecated. Use 'libpcl-all-dev' instead!
 mrt_protobuf:

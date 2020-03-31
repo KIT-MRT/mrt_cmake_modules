@@ -1,5 +1,1 @@
 * @orzechowski @poggenhans @beck
-
-# Allow mrtbuild to update ROS yaml files.
-/yaml/external-mrt-ros-*.yaml @mrtbuild
-/yaml/mrt-ros.yaml @mrtbuild

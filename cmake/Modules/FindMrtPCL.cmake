@@ -1,3 +1,8 @@
+# protect agains multiple inclusion
+if(TARGET mrt_pcl::pcl)
+    return()
+endif()
+
 cmake_policy(PUSH)
 if(POLICY CMP0074)
     cmake_policy(SET CMP0074 NEW)
