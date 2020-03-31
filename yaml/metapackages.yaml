@@ -30,6 +30,13 @@ sceneshot:
 - sceneshot_io_simulation
 - sceneshot_object_tracking
 
+object_state:
+- object_state
+- object_state_io
+- object_state_metrics
+- object_state_simulation
+- object_state_types
+
 sceneshot_ros_tool:
 - sceneshot_dynamic_reconfigure_ros
 - sceneshot_ros
