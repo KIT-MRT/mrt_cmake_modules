@@ -67,6 +67,10 @@ if(NOT EXISTS ${CATKIN_DEVEL_PREFIX}/include)
     file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 endif()
 
+if (MRT_ENABLE_PACKAGING)
+  include(MrtAptPackage)
+endif()
+
 # set some global variables needed/modified by the functions below
 # list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
 set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")
