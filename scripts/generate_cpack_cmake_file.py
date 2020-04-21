@@ -13,6 +13,7 @@ import platform
 import sys
 import os
 import traceback
+import codecs
 
 from bloom.generators.debian.generator import generate_substitutions_from_package
 from catkin_pkg.packages import find_packages
@@ -55,7 +56,7 @@ class MrtCPackCMakeGenerator(object):
         bloom_apt_data = self._get_bloom_apt_data(
             root_workspace, package_name, os_distro, ros_distro)
 
-        with open(output_file, "w") as f:
+        with codecs.open(output_file, "w", "utf-8") as f:
             apt_package_name = self._get_apt_package_name(package_name)
             f.write('set(CATKIN_BUILD_BINARY_PACKAGE "1")\n')
             f.write('set(CPACK_SET_DESTDIR true)\n')
@@ -64,9 +65,9 @@ class MrtCPackCMakeGenerator(object):
             f.write('set(CPACK_PACKAGE_FILE_NAME "{}")\n'.format(apt_package_name))
             f.write(
                 'set(CPACK_PACKAGE_VERSION "{}-${{MRT_CMAKE_MODULES_PKG_TIMESTAMP}}")\n'.format(bloom_apt_data['Version']))
-            f.write('set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "{}")\n'.format(
+            f.write(u'set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "{}")\n'.format(
                 bloom_apt_data['Description']))
-            f.write('set(CPACK_DEBIAN_PACKAGE_MAINTAINER "{}")\n'.format(
+            f.write(u'set(CPACK_DEBIAN_PACKAGE_MAINTAINER "{}")\n'.format(
                 bloom_apt_data['Maintainer']))
 
             self._write_package_deps(f, bloom_apt_data, 'Depends')
