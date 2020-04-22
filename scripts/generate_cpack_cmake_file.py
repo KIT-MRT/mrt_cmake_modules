@@ -62,7 +62,7 @@ class MrtCPackCMakeGenerator(object):
             f.write('set(CPACK_SET_DESTDIR true)\n')
             f.write('set(CPACK_GENERATOR DEB)\n')
             f.write('set(CPACK_PACKAGE_NAME "{}")\n'.format(apt_package_name))
-            f.write('set(CPACK_PACKAGE_FILE_NAME "{}")\n'.format(apt_package_name))
+            f.write('set(CPACK_PACKAGE_FILE_NAME "{}_${{MRT_CMAKE_MODULES_PKG_TIMESTAMP}}")\n'.format(apt_package_name))
             f.write(
                 'set(CPACK_PACKAGE_VERSION "{}-${{MRT_CMAKE_MODULES_PKG_TIMESTAMP}}")\n'.format(bloom_apt_data['Version']))
             f.write(u'set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "{}")\n'.format(
@@ -132,7 +132,7 @@ class MrtCPackCMakeGenerator(object):
         return ros_distro
 
     def _get_apt_package_name(self, name):
-        return "mrt-ros-{}".format(name.replace('_', '-'))
+        return "mrt-deb-{}".format(name.replace('_', '-'))
 
 
 if __name__ == "__main__":
