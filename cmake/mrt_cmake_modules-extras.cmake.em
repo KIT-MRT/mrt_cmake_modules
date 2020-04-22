@@ -21,9 +21,6 @@ set(MRT_CMAKE_MODULES_ROOT_PATH "@(PKG_CMAKE_DIR)/..")
 set(MRT_CMAKE_MODULES_CMAKE_PATH "@(PKG_CMAKE_DIR)")
 @[end if]@
 
-@{import datetime}
-set(MRT_CMAKE_MODULES_PKG_TIMESTAMP "@(datetime.datetime.today().strftime('%Y.%m.%d.%H.%M.%S.%f'))")
-
 list(APPEND CMAKE_MODULE_PATH "${MRT_CMAKE_MODULES_CMAKE_PATH}/Modules")
 set(MCM_TEMPLATE_DIR "${MRT_CMAKE_MODULES_CMAKE_PATH}/Templates")
 include(${MRT_CMAKE_MODULES_CMAKE_PATH}/mrt_cmake_modules-macros.cmake)
