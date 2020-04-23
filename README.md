@@ -38,8 +38,8 @@ Interested? In order to get the CMake template file, you have to run a small scr
 This will create a CMakeLists.txt file ready to be used in your project. We distinguish four different types of packages (this the `--ros` and `--exe` flags):
 - **Library package**: They have no dependency to ros (except catkin). Their goal is to either build a `lib<package>.so`, contain only headers, contain a python module, contain python bindings. Or a mixture of these. And unittests, of course.
 - **Ros library package (--ros)**: Similar to the above, but can also contain message, action or configuration files
-- **Executable package (--exec)**: Provides either a number of executables, scripts or python modules for these scripts. And unittests of course.
-- **Node/Nodelet package (--ros --exec)**: Provides a number of nodes or nodelets, python nodes and launchfiles. And rostests of course.
+- **Executable package (--exe)**: Provides either a number of executables, scripts or python modules for these scripts. And unittests of course.
+- **Node/Nodelet package (--ros --exe)**: Provides a number of nodes or nodelets, python nodes and launchfiles. And rostests of course.
 
 ## Package structure
 
