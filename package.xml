@@ -12,6 +12,7 @@
   <url type="bugdracker">http://wiki.ros.org/mrt_cmake_modules/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_export_depend>lcov</buildtool_export_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</buildtool_export_depend>
   <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</exec_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_export_depend>
