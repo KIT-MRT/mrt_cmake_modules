@@ -263,12 +263,9 @@ if(NOT TBB_FOUND)
 
     find_package_handle_standard_args(
         TBB
-        REQUIRED_VARS
-        TBB_INCLUDE_DIRS
-        TBB_LIBRARIES
+        REQUIRED_VARS TBB_INCLUDE_DIRS TBB_LIBRARIES
         HANDLE_COMPONENTS
-        VERSION_VAR
-        TBB_VERSION)
+        VERSION_VAR TBB_VERSION)
 
     ##################################
     # Create targets
