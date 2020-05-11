@@ -604,7 +604,7 @@ function(mrt_add_python_api modulename)
     configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @ONLY)
     configure_file(${MCM_TEMPLATE_DIR}/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py"
                    @ONLY)
-    install(CODE "execute_process(COMMAND ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
+    install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
 endfunction()
 
 #
