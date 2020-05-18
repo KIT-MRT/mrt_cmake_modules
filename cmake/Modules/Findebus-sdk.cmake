@@ -53,6 +53,8 @@ foreach(library ${PACKAGE_LIBRARIES})
 endforeach()
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(ebus-sdk FOUND_VAR ebus-sdk_FOUND REQUIRED_VARS ${ebus-sdk_INCLUDE_DIR_VAR_NAMES}
-                                  ${ebus-sdk_LIBRARY_VAR_NAMES})
+find_package_handle_standard_args(
+    ebus-sdk
+    FOUND_VAR ebus-sdk_FOUND
+    REQUIRED_VARS ${ebus-sdk_INCLUDE_DIR_VAR_NAMES} ${ebus-sdk_LIBRARY_VAR_NAMES})
 mark_as_advanced(${ebus-sdk_INCLUDE_DIR_VAR_NAMES} ${ebus-sdk_LIBRARY_VAR_NAMES})
