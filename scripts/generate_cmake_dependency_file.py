@@ -18,7 +18,7 @@ from __future__ import print_function
 import os
 import sys
 import subprocess
-import platform
+import distro
 import yaml
 from catkin_pkg.packages import find_packages
 from string import Template
@@ -142,18 +142,18 @@ def readPackageCMakeData(rosDebYamlFileName):
     # dictionary for storing cmake dependencies
     # e.g. { "<package name 1>" -> PackageCMakeData, "<package name 2>" -> PackageCMakeData ... }
     data = {}
-    distro = platform.dist()[2]
+    linux_distribution = distro.linux_distribution()[2]
     if 'ROS_OS_OVERRIDE' in os.environ:
         ros_os_override = os.environ['ROS_OS_OVERRIDE'].split(':')
         if len(ros_os_override) == 2:
-            distro = ros_os_override[1]
+            linux_distribution = ros_os_override[1]
 
     for packageName, packageCMakeData in rosDebYamlData.items():
         # find out which distribution
         if "name" in packageCMakeData:
             data[packageName] = PackageCMakeData(packageCMakeData)
-        elif distro in packageCMakeData:
-            data[packageName] = PackageCMakeData(packageCMakeData[distro])
+        elif linux_distribution in packageCMakeData:
+            data[packageName] = PackageCMakeData(packageCMakeData[linux_distribution])
         elif not packageCMakeData:
             data[packageName] = PackageCMakeData()  # placeholder
     return data
