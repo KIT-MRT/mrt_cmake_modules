@@ -17,6 +17,8 @@
   <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</exec_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_export_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 3">python3-yaml</buildtool_export_depend>
+  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-distro</buildtool_export_depend>
+  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 3">python3-distro</buildtool_export_depend>
 
   <export>
     <rosdoc config="rosdoc.yaml"/>
