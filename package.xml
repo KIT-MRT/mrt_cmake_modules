@@ -24,6 +24,13 @@
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</buildtool_depend>
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-rospkg</buildtool_depend>
 
+  <!-- required as a workaround for rosdep 0.19 and below where buildtool_export_depends are not installed -->
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-yaml</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-distro</buildtool_depend>
+  <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-distro</buildtool_depend>
+
   <export>
     <rosdoc config="rosdoc.yaml"/>
     <architecture_independent/>
