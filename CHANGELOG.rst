@@ -2,6 +2,20 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Replace deprecated platform.distro call with distro module
+* Raise required CMake version to 3.0.2 to suppress warning with Noetic
+* Remove boost signals component that is no longer part of boost
+* Fixed c++14 test path include.
+* Fix installation of python api files
+* Update README.md
+* Reformat with new version of cmake-format
+* Add lcov as dependency again
+* Fix FindBoostPython.cmake for cmake below 3.11 and python3
+* Fix multiple include of MrtPCL
+* Contributors: Christian-Eike Framing, Fabian Poggenhans, Johannes Beck, Johannes Janosovits, Moritz Cremer
+
 1.0.2 (2020-03-24)
 ------------------
 * Fix PCL findscript, disable precompiling
