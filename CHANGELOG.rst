@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.3 (2020-05-25)
+------------------
 * Replace deprecated platform.distro call with distro module
 * Raise required CMake version to 3.0.2 to suppress warning with Noetic
 * Remove boost signals component that is no longer part of boost
