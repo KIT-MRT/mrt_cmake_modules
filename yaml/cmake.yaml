@@ -19,7 +19,7 @@ benchmark:
   targets: ['benchmark::benchmark']
 boost:
   components: [wserialization thread random serialization log_setup prg_exec_monitor
-      wave system signals chrono filesystem locale timer date_time regex graph program_options
+      wave system chrono filesystem locale timer date_time regex graph program_options
       unit_test_framework log atomic]
   include_dirs: [Boost_INCLUDE_DIRS]
   libraries: [Boost_LIBRARIES]
