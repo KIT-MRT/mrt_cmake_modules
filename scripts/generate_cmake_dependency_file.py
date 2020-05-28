@@ -30,10 +30,11 @@ try:
     from yaml import CLoader as Loader
 except ImportError:
     from yaml import Loader
-if sys.version_info >= (3, 0):
-    from ast import literal_eval as eval_expr
-else:
-    eval_expr = eval  # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
+# might be useful to do this in the future but it can not even handle 1==1
+# from ast import literal_eval as eval_expr
+
+# ... so we just hope no one uses "rm -rf /" as condition in his package.xml...
+eval_expr = eval
 
 
 def eprint(*args, **kwargs):
@@ -179,7 +180,11 @@ def parseManifest(parsed_xml, catkin_packages):
         # check conditions
         condition = child.get("condition")
         if condition:
-            is_fulfilled = eval_expr(Template(condition).substitute(os.environ))
+            expr = Template(condition).substitute(os.environ)
+            if len(expr) > 10:
+                # limit the number of characters to minimize risk
+                continue
+            is_fulfilled = eval_expr(expr)
             if not is_fulfilled:
                 continue
 
@@ -224,7 +229,8 @@ def getCatkinPackages(workspaceRoot):
     catkin_ignore = "CATKIN_IGNORE"
     catkin_marker = ".catkin"
     nosubdirs = "rospack_nosubdirs"
-    cmake_env = "CMAKE_PREFIX_PATH"
+    ros2 = os.environ.get("ROS_VERSION", "1") == "2"
+    cmake_env = "CMAKE_PREFIX_PATH" if not ros2 else "AMENT_PREFIX_PATH"
 
     def getPackagesInPath(packages, path):
         for root, dirs, files in os.walk(path, topdown=True, followlinks=True):
@@ -246,8 +252,12 @@ def getCatkinPackages(workspaceRoot):
                 continue
 
     def getWorkspacesInPath(path, workspaces):
+        # in ros2 every path is a package, no need to search markerfiles
+        if ros2:
+            workspaces.append(path)
+            return
         markerfile = os.path.join(path, catkin_marker)
-        if not os.path.isfile(markerfile):
+        if os.path.isfile(markerfile):
             return
         with open(markerfile) as f:
             data = f.read()

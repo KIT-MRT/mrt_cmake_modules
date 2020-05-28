@@ -130,6 +130,10 @@ def main(argv=sys.argv[1:]):
     if fail:
         return fail
 
+    # for ros2 we currently don't handle processing the results
+    if os.environ.get("ROS_VERSION", "1") == "2":
+        return 0
+
     # print unittests
     with open(os.devnull, "w") as f:
         has_ccat = subprocess.call(["which", "pygmentize"], stdout=f, stderr=f) == 0
