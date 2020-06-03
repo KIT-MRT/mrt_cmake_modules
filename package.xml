@@ -13,8 +13,6 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_export_depend>lcov</buildtool_export_depend>
-  <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</buildtool_export_depend>
-  <exec_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</exec_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_export_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 3">python3-yaml</buildtool_export_depend>
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</buildtool_export_depend>
@@ -23,7 +21,6 @@
   <buildtool_export_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_export_depend>
 
   <!-- required as a workaround for rosdep 0.19 and below where buildtool_export_depends are not installed -->
-  <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-argparse</buildtool_depend>
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-yaml</buildtool_depend>
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-yaml</buildtool_depend>
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 2">python-rospkg</buildtool_depend>
