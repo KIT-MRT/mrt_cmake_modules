@@ -166,22 +166,21 @@ function(mrt_add_rostest target launch_file)
     set(cmd
         "${PYTHON_EXECUTABLE} ${ROSTEST_EXE} --pkgdir=${PROJECT_SOURCE_DIR} --package=${PROJECT_NAME} --results-filename ${test_name}.xml --results-base-dir \"${MRT_TEST_RESULTS_DIR}\" ${CMAKE_CURRENT_LIST_DIR}/${launch_file}"
     )
+    if(MRT_ENABLE_COVERAGE)
+        set(coverage_arg COVERAGE_DIR ${MRT_COVERAGE_DIR}/${target})
+    endif()
 
     get_filename_component(test_name ${launch_file} NAME_WE)
     # rostest appends "rostest-" to the file name. This behaviour is apparently undocumented...
     set(result_xml_path "${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME}/rostest-${test_name}.xml")
-    _mrt_run_test(${target} ${CMAKE_CURRENT_BINARY_DIR} ${result_xml_path} ${ARGN} COMMAND ${cmd})
+    _mrt_run_test(${target} ${CMAKE_CURRENT_BINARY_DIR} ${result_xml_path} ${coverage_arg} COMMAND ${cmd})
 endfunction()
 
 function(mrt_add_rostest_gtest target launch_file cpp_file)
     mrt_init_testing()
     _mrt_create_executable_gtest(${target} ${cpp_file})
     add_dependencies(tests_${PROJECT_NAME} ${target})
-    if(MRT_ENABLE_COVERAGE)
-        mrt_add_rostest(${target} ${launch_file} COVERAGE_DIR ${MRT_COVERAGE_DIR}/${target})
-    else()
-        mrt_add_rostest(${target} ${launch_file})
-    endif()
+    mrt_add_rostest(${target} ${launch_file})
 endfunction()
 
 function(_mrt_add_nosetests_impl folder)
