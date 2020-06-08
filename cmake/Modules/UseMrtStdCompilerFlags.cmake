@@ -1,7 +1,10 @@
-# this file creates the target ${PROJECT_NAME}_${PROJECT_NAME}_compiler_flags and ${PROJECT_NAME}_${PROJECT_NAME}_private_compiler_flags that will be used by all targets created by mrt_cmake_modules
+# this file creates the target ${PROJECT_NAME}_${PROJECT_NAME}_compiler_flags and ${PROJECT_NAME}_${PROJECT_NAME}_private_compiler_flags that will be used by all targets created by mrt_cmake_modules. It also sets some basic configurations that generally make sens with cmake and ROS.
 
 # export compile commands
 set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
+
+# default to building shared libraries. This can be changed by passing "-DBUILD_SHARED_LIBS=Off" to cmake.
+option(BUILD_SHARED_LIBS "Build libraries as shared libraries by default." ON)
 
 add_library(${PROJECT_NAME}_compiler_flags INTERFACE)
 add_library(${PROJECT_NAME}_private_compiler_flags INTERFACE)
