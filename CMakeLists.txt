@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(mrt_cmake_modules)
 
-
 if($ENV{ROS_VERSION} EQUAL 1)
     find_package(catkin REQUIRED)
     catkin_package(CFG_EXTRAS mrt_cmake_modules-extras.cmake)
