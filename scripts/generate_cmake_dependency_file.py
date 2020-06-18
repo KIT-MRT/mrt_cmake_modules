@@ -18,7 +18,7 @@ from __future__ import print_function
 import os
 import sys
 import subprocess
-import platform
+from rospkg.os_detect import OsDetect
 import yaml
 from catkin_pkg.packages import find_packages
 from string import Template
@@ -30,10 +30,11 @@ try:
     from yaml import CLoader as Loader
 except ImportError:
     from yaml import Loader
-if sys.version_info >= (3, 0):
-    from ast import literal_eval as eval_expr
-else:
-    eval_expr = eval  # with python2 we have to just hope no one uses "rm -rf /" as condition in his package.xml...
+# might be useful to do this in the future but it can not even handle 1==1
+# from ast import literal_eval as eval_expr
+
+# ... so we just hope no one uses "rm -rf /" as condition in his package.xml...
+eval_expr = eval
 
 
 def eprint(*args, **kwargs):
@@ -142,18 +143,14 @@ def readPackageCMakeData(rosDebYamlFileName):
     # dictionary for storing cmake dependencies
     # e.g. { "<package name 1>" -> PackageCMakeData, "<package name 2>" -> PackageCMakeData ... }
     data = {}
-    distro = platform.dist()[2]
-    if 'ROS_OS_OVERRIDE' in os.environ:
-        ros_os_override = os.environ['ROS_OS_OVERRIDE'].split(':')
-        if len(ros_os_override) == 2:
-            distro = ros_os_override[1]
+    distribution = OsDetect().detect_os()[2]
 
     for packageName, packageCMakeData in rosDebYamlData.items():
         # find out which distribution
         if "name" in packageCMakeData:
             data[packageName] = PackageCMakeData(packageCMakeData)
-        elif distro in packageCMakeData:
-            data[packageName] = PackageCMakeData(packageCMakeData[distro])
+        elif distribution in packageCMakeData:
+            data[packageName] = PackageCMakeData(packageCMakeData[distribution])
         elif not packageCMakeData:
             data[packageName] = PackageCMakeData()  # placeholder
     return data
@@ -179,7 +176,11 @@ def parseManifest(parsed_xml, catkin_packages):
         # check conditions
         condition = child.get("condition")
         if condition:
-            is_fulfilled = eval_expr(Template(condition).substitute(os.environ))
+            expr = Template(condition).substitute(os.environ)
+            if len(expr) > 10:
+                # limit the number of characters to minimize risk
+                continue
+            is_fulfilled = eval_expr(expr)
             if not is_fulfilled:
                 continue
 
