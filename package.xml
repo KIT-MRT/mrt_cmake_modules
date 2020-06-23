@@ -3,7 +3,7 @@
   <version>1.0.3</version>
   <description>CMake Functions and Modules for automating CMake</description>
 
-  <license>GPL-3.0+</license>
+  <license>BSD</license>
   <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
   <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
