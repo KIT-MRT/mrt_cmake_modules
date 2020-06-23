@@ -121,10 +121,6 @@ libgoogle-glog-dev:
   libraries: [GLOG_LIBRARY]
   library_dirs: []
   name: Glog
-libgps:
-  include_dirs: [LIBGPS_INCLUDE_DIR]
-  libraries: [LIBGPS_LIBRARY]
-  name: libgps
 libgsl:
   components: []
   include_dirs: [GSL_INCLUDE_DIRS]
