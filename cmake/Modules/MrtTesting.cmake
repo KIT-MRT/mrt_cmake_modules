@@ -4,8 +4,8 @@ function(mrt_init_testing)
         return() # mrt_init_testing was already called
     endif()
     if(NOT TARGET tests)
-        if($ENV{ROS_VERSION} EQUAL 2)
-            # for ros2 tests are always built by default, so we add it to the all target
+        if(NOT ROS_VERSION EQUAL 1)
+            # out of ros1 tests are always built by default, so we add it to the all target
             set(all ALL)
         endif()
         add_custom_target(tests ${all})
@@ -44,7 +44,7 @@ function(mrt_init_testing)
         message(STATUS "Outputting coverage to ${coverage_dir}")
     endif()
     if(NOT TARGET init_tests)
-        set(pre_test_cmd "${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME} ${CMAKE_BINARY_DIR}
+        set(pre_test_cmd "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME} ${CMAKE_BINARY_DIR}
                          ${CMAKE_CURRENT_LIST_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
         add_custom_target(
             init_tests
@@ -54,7 +54,7 @@ function(mrt_init_testing)
         if(MRT_ENABLE_COVERAGE AND MRT_ENABLE_COVERAGE GREATER 1)
             set(show_result "--show")
         endif()
-        set(post_test_cmd "${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py" ${CMAKE_SOURCE_DIR}
+        set(post_test_cmd "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py" ${CMAKE_SOURCE_DIR}
                           ${CMAKE_BINARY_DIR} ${MRT_TEST_RESULTS_DIR} ${coverage_dir} ${show_result})
         if(NOT MRT_NO_FAIL_ON_TESTS)
             set(fail_on_test --fail_on_test)
@@ -129,16 +129,17 @@ endfunction()
 function(_mrt_create_executable_gtest target file)
     if(NOT TARGET gtest_main)
         # add googletest as subdir to this project
-        find_file(gtest_sources "gtest.cc" PATH_SUFFIXES "../src/googletest/googletest/src")
+        find_file(gtest_sources "gtest.cc" PATH_SUFFIXES "../src/googletest/googletest/src" "googletest/googletest/src" HINTS ${CMAKE_CURRENT_LIST_DIR} ${MRT_GTEST_DIR})
         if(NOT gtest_sources)
             message(FATAL_ERROR "Failed to find the source files of googletest!")
         endif()
         get_filename_component(gtest_src ${gtest_sources} PATH)
         get_filename_component(gtest_base ${gtest_src} PATH)
-        if(NOT EXISTS ${gtest_base}/CMakeLists.txt)
+        get_filename_component(google_dir ${gtest_base} PATH)
+        if(NOT EXISTS ${google_dir}/CMakeLists.txt)
             message(FATAL_ERROR "Failed to find googletest base directory at: ${gtest_base}!")
         endif()
-        add_subdirectory(${gtest_base} ${CMAKE_CURRENT_BINARY_DIR}/gtest EXCLUDE_FROM_ALL)
+        add_subdirectory(${google_dir} ${CMAKE_CURRENT_BINARY_DIR}/gtest EXCLUDE_FROM_ALL)
         if(NOT TARGET gtest_main)
             message(FATAL_ERROR "Gtest seems not to build gtest_main!")
         endif()
