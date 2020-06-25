@@ -26,6 +26,7 @@ On the other hand, you get a lot of things for free:
 - Support for [sanitizers](#sanitizing-your-code)
 - Support for [running clang-tidy](#using-clang-tidy)
 - Automated install of your scripts/launchfiles/executables/libraries... to the correct location
+- experimental support for **ROS2** and Conan builds
 
 *) Actually MRT stands for *Institut für Mess- und Regelungstechnik*, the institute that develops this package.
 
