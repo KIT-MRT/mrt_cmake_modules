@@ -44,8 +44,9 @@ function(mrt_init_testing)
         message(STATUS "Outputting coverage to ${coverage_dir}")
     endif()
     if(NOT TARGET init_tests)
-        set(pre_test_cmd "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME} ${CMAKE_BINARY_DIR}
-                         ${CMAKE_CURRENT_LIST_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
+        set(pre_test_cmd
+            "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME}
+            ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
         add_custom_target(
             init_tests
             COMMAND ${pre_test_cmd}
@@ -54,8 +55,9 @@ function(mrt_init_testing)
         if(MRT_ENABLE_COVERAGE AND MRT_ENABLE_COVERAGE GREATER 1)
             set(show_result "--show")
         endif()
-        set(post_test_cmd "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py" ${CMAKE_SOURCE_DIR}
-                          ${CMAKE_BINARY_DIR} ${MRT_TEST_RESULTS_DIR} ${coverage_dir} ${show_result})
+        set(post_test_cmd
+            "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py" ${CMAKE_SOURCE_DIR}
+            ${CMAKE_BINARY_DIR} ${MRT_TEST_RESULTS_DIR} ${coverage_dir} ${show_result})
         if(NOT MRT_NO_FAIL_ON_TESTS)
             set(fail_on_test --fail_on_test)
         endif()
@@ -129,7 +131,10 @@ endfunction()
 function(_mrt_create_executable_gtest target file)
     if(NOT TARGET gtest_main)
         # add googletest as subdir to this project
-        find_file(gtest_sources "gtest.cc" PATH_SUFFIXES "../src/googletest/googletest/src" "googletest/googletest/src" HINTS ${CMAKE_CURRENT_LIST_DIR} ${MRT_GTEST_DIR})
+        find_file(
+            gtest_sources "gtest.cc"
+            PATH_SUFFIXES "../src/googletest/googletest/src" "googletest/googletest/src"
+            HINTS ${CMAKE_CURRENT_LIST_DIR} ${MRT_GTEST_DIR})
         if(NOT gtest_sources)
             message(FATAL_ERROR "Failed to find the source files of googletest!")
         endif()
