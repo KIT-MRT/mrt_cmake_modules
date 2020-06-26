@@ -68,7 +68,7 @@ if(NOT EXISTS ${CATKIN_DEVEL_PREFIX}/include)
 endif()
 
 # set the ros version
-if(DEFINED $ENV{ROS_VERSION})
+if(DEFINED ENV{ROS_VERSION})
     set(ROS_VERSION $ENV{ROS_VERSION})
 endif()
 
@@ -78,6 +78,7 @@ if(NOT PYTHON_VERSION AND DEFINED $ENV{ROS_PYTHON_VERSION})
         $ENV{ROS_PYTHON_VERSION}
         CACHE STRING "Python version to use ('major.minor' or 'major')")
 endif()
+
 if(ROS_VERSION EQUAL 1)
     find_package(catkin REQUIRED)
     set(MRT_CMAKE_ENV sh ${CATKIN_ENV})

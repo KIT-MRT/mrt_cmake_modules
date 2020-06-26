@@ -253,7 +253,7 @@ def getCatkinPackages(workspaceRoot):
             workspaces.append(path)
             return
         markerfile = os.path.join(path, catkin_marker)
-        if os.path.isfile(markerfile):
+        if not os.path.isfile(markerfile):
             return
         with open(markerfile) as f:
             data = f.read()
