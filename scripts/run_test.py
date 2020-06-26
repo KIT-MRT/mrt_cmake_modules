@@ -109,13 +109,13 @@ def main(argv=sys.argv[1:]):
         stdout, stderr = proc.communicate()
         if stderr:
             print(stderr, file=stream)
-            errors.append(stderr)
+            errors.append(stderr.decode("utf-8"))
         if proc.returncode:
             rc = proc.returncode
             break
 
     print('-- run_test.py: verify result "%s"' % args.results)
-    exists = ensure_junit_result_exist(args.results, "\n".join(errors))
+    exists = ensure_junit_result_exist(args.results, u"\n".join(errors))
     if not exists:
         rc = 1
 

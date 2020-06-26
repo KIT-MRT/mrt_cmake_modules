@@ -41,7 +41,7 @@ def main(argv=sys.argv[1:]):
     print("Removing {}".format(test_dir))
     if os.path.exists(test_dir):
         shutil.rmtree(test_dir)
-    os.mkdir(test_dir)
+    os.makedirs(test_dir)
 
     if not args.coverage_dir:
         return
