@@ -45,7 +45,7 @@ function(mrt_init_testing)
     endif()
     if(NOT TARGET init_tests)
         set(pre_test_cmd
-            "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py" ${PROJECT_NAME}
+            ${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/init_coverage.py ${PROJECT_NAME}
             ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_LIST_DIR} ${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME} ${coverage_dir})
         add_custom_target(
             init_tests
@@ -56,7 +56,7 @@ function(mrt_init_testing)
             set(show_result "--show")
         endif()
         set(post_test_cmd
-            "${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py" ${CMAKE_SOURCE_DIR}
+            ${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/eval_coverage.py ${CMAKE_SOURCE_DIR}
             ${CMAKE_BINARY_DIR} ${MRT_TEST_RESULTS_DIR} ${coverage_dir} ${show_result})
         if(NOT MRT_NO_FAIL_ON_TESTS)
             set(fail_on_test --fail_on_test)
