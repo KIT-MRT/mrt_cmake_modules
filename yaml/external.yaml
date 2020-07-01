@@ -49,3 +49,4 @@ util_eigen_geometry: https://github.com/coincar-sim/util_eigen_geometry.git
 util_geometry_msgs: https://github.com/coincar-sim/util_geometry_msgs.git
 util_rviz: https://github.com/coincar-sim/util_rviz.git
 util_simulation_only_msgs: https://github.com/coincar-sim/util_simulation_only_msgs.git
+flir_camera_driver: https://github.com/ros-drivers/flir_camera_driver.git
