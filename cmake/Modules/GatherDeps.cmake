@@ -19,7 +19,7 @@ find_package(catkin REQUIRED)
 set(_gather_cmd
     sh
     ${CATKIN_ENV}
-    python
+    python${PYTHON_VERSION}
     ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/generate_cmake_dependency_file.py
     "${CMAKE_CURRENT_SOURCE_DIR}/package.xml"
     "${MRT_CMAKE_MODULES_ROOT_PATH}/yaml/cmake.yaml"
