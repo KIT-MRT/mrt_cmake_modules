@@ -917,17 +917,17 @@ function(mrt_add_nodelet nodeletname)
 
     # get the files
     mrt_glob_files(NODELET_SOURCE_FILES_INC "${MRT_ADD_NODELET_FOLDER}/*.h" "${MRT_ADD_NODELET_FOLDER}/*.hpp"
-                   "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh")
-    mrt_glob_files(NODELET_SOURCE_FILES_SRC "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc")
+                   "${MRT_ADD_EXECUTABLE_FOLDER}/*.hh" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cuh")
+    mrt_glob_files(NODELET_SOURCE_FILES_SRC "${MRT_ADD_NODELET_FOLDER}/*.cpp" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cc" "${MRT_ADD_EXECUTABLE_FOLDER}/*.cu")
 
     # Find nodelet
-    mrt_glob_files(NODELET_CPP "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc")
+    mrt_glob_files(NODELET_CPP "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cpp" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cc" "${MRT_ADD_NODELET_FOLDER}/*_nodelet.cu")
     if(NOT NODELET_CPP)
         return()
     endif()
 
     # Remove nodes (with their main) from src-files
-    mrt_glob_files(NODE_CPP "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc")
+    mrt_glob_files(NODE_CPP "${MRT_ADD_NODELET_FOLDER}/*_node.cpp" "${MRT_ADD_NODELET_FOLDER}/*_node.cc" "${MRT_ADD_NODELET_FOLDER}/*_node.cu")
     if(NODE_CPP)
         list(REMOVE_ITEM NODELET_SOURCE_FILES_SRC ${NODE_CPP})
     endif()
@@ -1023,14 +1023,14 @@ function(mrt_add_node_and_nodelet basename)
     # search the files we have to build with
     if(NOT TARGET ${NODELET_TARGET_NAME})
         unset(NODELET_TARGET_NAME)
-        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc")
+        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*.cpp" "${MRT_ADD_NN_FOLDER}/*.cc" "${MRT_ADD_NN_FOLDER}/*.cu")
     else()
-        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+        mrt_glob_files(NODE_CPP "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc" "${MRT_ADD_NN_FOLDER}/*_node.cu")
     endif()
 
     # find *_node file containing the main() and add the executable
-    mrt_glob_files(NODE_H "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh")
-    mrt_glob_files(NODE_MAIN "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc")
+    mrt_glob_files(NODE_H "${MRT_ADD_NN_FOLDER}/*.h" "${MRT_ADD_NN_FOLDER}/*.hpp" "${MRT_ADD_NN_FOLDER}/*.hh" "${MRT_ADD_NN_FOLDER}/*.cuh")
+    mrt_glob_files(NODE_MAIN "${MRT_ADD_NN_FOLDER}/*_node.cpp" "${MRT_ADD_NN_FOLDER}/*_node.cc" "${MRT_ADD_NN_FOLDER}/*_node.cu")
     if(NODE_MAIN)
         mrt_add_executable(
             ${BASE_NAME}
