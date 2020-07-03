@@ -47,6 +47,10 @@ set(gcc_like_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,Apple
 set(gcc_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>>")
 set(gcc_like_c "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:ARMClang,AppleClang,Clang,GNU>>")
 if(MRT_ENABLE_COVERAGE)
+    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        message(WARNING "Code coverage results with an optimised (non-Debug) build may be misleading")
+    endif()
+
     target_compile_options(${PROJECT_NAME}_private_compiler_flags INTERFACE $<${gcc_like_cxx}:-g;--coverage>
                                                                             $<${gcc_like_c}:-g;--coverage>)
     if(CMAKE_VERSION VERSION_LESS "3.13")
