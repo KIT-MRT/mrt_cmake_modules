@@ -93,7 +93,7 @@ It works out of the box with a *CMakeLists.txt* created with `generate_cmakelist
 │   └── params                            # Contains parameter files that will be installed
 │       ├── some_parameters.yaml
 │       └── some_python_parameters.yaml
-├── nodelet_plugins.xml                   # Should reference the nodelet library at lib/libnodename_nodelet
+├── nodelet_plugins.xml                   # Should reference the nodelet library at lib/lib<package_name>-<nodename>-nodelet
 ├── package.xml                           # The manifest. It should reference the nodelet_plugins.xml
 ├── README.md
 ├── scripts                               # Executable scripts that will be installed. These can be python nodes as well
