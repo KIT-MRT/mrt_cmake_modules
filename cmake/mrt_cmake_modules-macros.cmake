@@ -969,7 +969,7 @@ endfunction()
 #
 # Adds a node and a corresponding nodelet.
 #
-# This command ensures the node/nodelet are compiled with all necessary dependencies. Make sure to add lib{NAME}_nodelet to the ``nodelet_plugins.xml`` file.
+# This command ensures the node/nodelet are compiled with all necessary dependencies. Make sure to add lib<package_name>-<basename>-nodelet to the ``nodelet_plugins.xml`` file.
 #
 # .. note:: Make sure to call this after all messages and parameter generation CMAKE-Commands so that all dependencies are visible.
 #
@@ -995,7 +995,7 @@ endfunction()
 #       FOLDER src/example_package
 #       )
 #
-# The resulting entry in the ``nodelet_plugins.xml`` is thus: <library path="lib/libexample_package_nodelet">
+# The resulting entry in the ``nodelet_plugins.xml`` is thus (for a package named example_package): <library path="lib/libexample_package-example_package-nodelet">
 #
 # @public
 #
