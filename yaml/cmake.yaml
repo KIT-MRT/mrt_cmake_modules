@@ -264,7 +264,7 @@ mrt_protobuf:
     instead!
 mrt_qt-dev:
   components: [Core Gui DBus Network OpenGL OpenGLExtensions Sql Test Xml Widgets
-      Concurrent Svg]
+      Concurrent Svg Script]
   include_dirs: [QT_INCLUDES]
   libraries: [QT_LIBRARIES]
   name: MrtQt5
@@ -278,7 +278,7 @@ mrt_qt4-dev:
   warning: Usage of mrt_qt4-dev in package.xml is deprecated. Use 'mrt_qt-dev' instead!
 mrt_qt5-dev:
   components: [Core Gui DBus Network OpenGL OpenGLExtensions Sql Test Xml Widgets
-      Concurrent Svg]
+      Concurrent Svg Script]
   include_dirs: [QT_INCLUDES]
   libraries: [QT_LIBRARIES]
   name: MrtQt5
