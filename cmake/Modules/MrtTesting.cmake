@@ -66,7 +66,7 @@ function(mrt_init_testing)
 
         if(CMAKE_VERSION VERSION_GREATER "3.12")
             include(ProcessorCount)
-            processorcount(cores)
+            ProcessorCount(cores)
             set(make_jobs "--parallel ${cores}")
         endif()
 
@@ -152,7 +152,10 @@ function(mrt_add_gtest target file)
     if(MRT_ENABLE_COVERAGE)
         set(coverage_arg COVERAGE_DIR ${MRT_COVERAGE_DIR}/${target})
     endif()
-    _mrt_run_test(${target} ${ARG_WORKING_DIRECTORY} ${result_xml_path} ${coverage_arg} COMMAND ${cmd})
+    _mrt_run_test(
+        ${target} ${ARG_WORKING_DIRECTORY} ${result_xml_path}
+        ${coverage_arg}
+        COMMAND ${cmd})
 endfunction()
 
 function(mrt_add_rostest target launch_file)
@@ -173,7 +176,10 @@ function(mrt_add_rostest target launch_file)
     get_filename_component(test_name ${launch_file} NAME_WE)
     # rostest appends "rostest-" to the file name. This behaviour is apparently undocumented...
     set(result_xml_path "${MRT_TEST_RESULTS_DIR}/${PROJECT_NAME}/rostest-${test_name}.xml")
-    _mrt_run_test(${target} ${CMAKE_CURRENT_BINARY_DIR} ${result_xml_path} ${coverage_arg} COMMAND ${cmd})
+    _mrt_run_test(
+        ${target} ${CMAKE_CURRENT_BINARY_DIR} ${result_xml_path}
+        ${coverage_arg}
+        COMMAND ${cmd})
 endfunction()
 
 function(mrt_add_rostest_gtest target launch_file cpp_file)
@@ -243,8 +249,11 @@ function(_mrt_add_nosetests_impl folder)
     set(cmd
         "${NOSETESTS} -P --process-timeout=${_nose_TIMEOUT} ${tests} --with-xunit --xunit-file=\"${result_xml_path}\" ${covarg}"
     )
-    _mrt_run_test(${test_name} ${CMAKE_CURRENT_LIST_DIR} ${result_xml_path} ${coverage_arg}
-                  COMMAND ${cmd} ${cover_dir_arg} REDIRECT_STDERR)
+    _mrt_run_test(
+        ${test_name} ${CMAKE_CURRENT_LIST_DIR} ${result_xml_path}
+        ${coverage_arg}
+        COMMAND ${cmd} ${cover_dir_arg}
+        REDIRECT_STDERR)
     if(ARG_DEPENDS)
         add_dependencies(tests_{PROJECT_NAME} ${ARG_DEPENDS})
     endif()
