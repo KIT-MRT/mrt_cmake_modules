@@ -67,6 +67,35 @@ if(NOT EXISTS ${CATKIN_DEVEL_PREFIX}/include)
     file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 endif()
 
+# set the ros version
+if(DEFINED ENV{ROS_VERSION})
+    set(ROS_VERSION $ENV{ROS_VERSION})
+endif()
+
+# make sure catkin/ament are found so that PYTHON_EXECUTABLE (and CATKIN_ENV) is set.
+if(NOT PYTHON_VERSION AND DEFINED $ENV{ROS_PYTHON_VERSION})
+    set(PYTHON_VERSION
+        $ENV{ROS_PYTHON_VERSION}
+        CACHE STRING "Python version to use ('major.minor' or 'major')")
+endif()
+
+if(ROS_VERSION EQUAL 1)
+    find_package(catkin REQUIRED)
+    set(MRT_CMAKE_ENV sh ${CATKIN_ENV})
+elseif(ROS_VERSION EQUAL 2)
+    find_package(ament_cmake_core REQUIRED)
+    if(NOT DEFINED BUILD_TESTING OR BUILD_TESTING)
+        # our cmake template still relies on CATKIN_ENABLE_TESTING
+        set(CATKIN_ENABLE_TESTING TRUE)
+    endif()
+else()
+    set(CATKIN_ENABLE_TESTING TRUE)
+endif()
+# would be nicer to put this in a function, but cmake requires this at global scope
+if(CATKIN_ENABLE_TESTING)
+    enable_testing()
+endif()
+
 # set some global variables needed/modified by the functions below
 # list of folders containing a folder "<PROJECT_NAME>" with headers required by this project. These will be installed by mrt_install.
 set(${PROJECT_NAME}_LOCAL_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include;${CATKIN_DEVEL_PREFIX}/include")
@@ -142,6 +171,24 @@ macro(_setup_coverage_info)
     endif()
 endmacro()
 
+macro(_mrt_register_ament_python_hook)
+    # ament is different in catkin that you have to register environment hooks for everything
+    # code was taken from ament_cmake_python
+    if(NOT _MRT_AMENT_PYTHON_HOOK_REGISTERED)
+        find_package(ament_cmake_core QUIET REQUIRED)
+        # use native separators in environment hook to match what pure Python packages do
+        file(TO_NATIVE_PATH "${destination}" destination)
+
+        # register information for .dsv generation
+        _mrt_get_python_destination(PYTHON_INSTALL_DIR)
+        set(AMENT_CMAKE_ENVIRONMENT_HOOKS_DESC_pythonpath "prepend-non-duplicate;PYTHONPATH;${destination}")
+        ament_environment_hooks("${ament_cmake_package_templates_ENVIRONMENT_HOOK_PYTHONPATH}")
+        set(_MRT_AMENT_PYTHON_HOOK_REGISTERED
+            TRUE
+            PARENT_SCOPE)
+    endif()
+endmacro()
+
 #
 # Parses the package.xml and sets its information in form of cmake variables as ${PACKAGE_NAME}_<info>, where info is
 # one of version, VERSION, MAINTAINER, PACKAGE_FORMAT, <BUILD/BUILD_EXPORT/TEST/EXEC/...>_DEPENDS, URL_<WEBSITE/BUGTRACKER/REPOSITORY>
@@ -151,11 +198,17 @@ endmacro()
 # @public
 #
 macro(mrt_parse_package_xml)
-    if(COMMAND catkin_package_xml)
-        find_package(catkin)
-    endif()
     # TODO: replace this by our own stuff.
-    catkin_package_xml()
+    if(NOT COMMAND catkin_package_xml AND ROS_VERSION EQUAL 1)
+        find_package(catkin REQUIRED)
+    elseif(NOT COMMAND ament_package_xml AND ROS_VERSION EQUAL 2)
+        find_package(ament_cmake_core REQUIRED)
+    endif()
+    if(ROS_VERSION EQUAL 1)
+        catkin_package_xml()
+    elseif(ROS_VERSION EQUAL 2)
+        ament_package_xml()
+    endif()
 endmacro()
 
 #
@@ -274,6 +327,12 @@ function(mrt_add_links target)
 endfunction()
 
 function(_mrt_get_python_destination output_var)
+    if(DEFINED MRT_PYTHON_INSTALL_DESTINATION)
+        set(${output_var}
+            ${MRT_PYTHON_INSTALL_DESTINATION}
+            PARENT_SCOPE)
+        return()
+    endif()
     if(PYTHON_VERSION)
         set(_python_version ${PYTHON_VERSION})
     elseif(DEFINED ENV{ROS_PYTHON_VERSION})
@@ -288,25 +347,36 @@ function(_mrt_get_python_destination output_var)
     else()
         find_package(Python3 REQUIRED)
     endif()
-    if(WIN32)
-        set(${output_var}
-            lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
-            PARENT_SCOPE)
+    # seems ros2 found an even more complex way to determine the install location...
+    if(NOT ROS_VERSION EQUAL 1)
+        set(_python_code
+            "from distutils.sysconfig import get_python_lib"
+            "import os"
+            "print(os.path.relpath(get_python_lib(prefix='${CMAKE_INSTALL_PREFIX}'), start='${CMAKE_INSTALL_PREFIX}').replace(os.sep, '/'))"
+        )
+        execute_process(
+            COMMAND "${PYTHON_EXECUTABLE}" "-c" "${_python_code}"
+            OUTPUT_VARIABLE _output
+            RESULT_VARIABLE _result
+            OUTPUT_STRIP_TRAILING_WHITESPACE)
+        set(${output_var} ${_output})
+    elseif(WIN32)
+        set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
     elseif(EXISTS "/etc/debian_version")
         if("${PYTHON_VERSION_MAJOR}" STREQUAL "3")
-            set(${output_var}
-                lib/python${PYTHON_VERSION_MAJOR}/dist-packages
-                PARENT_SCOPE)
+            set(${output_var} lib/python${PYTHON_VERSION_MAJOR}/dist-packages)
         else()
-            set(${output_var}
-                lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/dist-packages
-                PARENT_SCOPE)
+            set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/dist-packages)
         endif()
     else()
-        set(${output_var}
-            lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
-            PARENT_SCOPE)
+        set(${output_var} lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages)
     endif()
+    set(${output_var}
+        ${${output_var}}
+        PARENT_SCOPE)
+    set(MRT_PYTHON_INSTALL_DESTINATION
+        ${${output_var}}
+        CACHE INTERNAL "Installation dir for python files")
 endfunction()
 
 # Glob for folders in the search directory.
@@ -452,7 +522,7 @@ endfunction()
 #
 # The python folder (under src/${PROJECT_NAME}) is required to have an __init__.py file.
 #
-# The command will automatically generate a setup.py in your project folder.
+# On Ros1, the command will automatically generate a setup.py in your project folder.
 # This file should not be commited, as it will be regenerated at every new CMAKE run.
 # Due to restrictions imposed by catkin (searches hardcoded for this setup.py), the file cannot
 # be placed elsewhere.
@@ -465,22 +535,43 @@ endfunction()
 # @public
 #
 function(mrt_python_module_setup)
-    if(NOT catkin_FOUND)
-        find_package(catkin REQUIRED)
-    endif()
     if(ARGN)
         message(FATAL_ERROR "mrt_python_module_setup() called with unused arguments: ${ARGN}")
     endif()
-    if(NOT EXISTS "${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}/__init__.py")
+    set(module_folder ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
+    if(NOT EXISTS "${module_folder}/__init__.py")
         return()
     endif()
-    set(PKG_PYTHON_MODULE ${PROJECT_NAME})
     set(${PROJECT_NAME}_PYTHON_MODULE
         ${PROJECT_NAME}
         PARENT_SCOPE)
-    set(PACKAGE_DIR "src")
-    configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${PROJECT_SOURCE_DIR}/setup.py" @ONLY)
-    catkin_python_setup()
+    if(ROS_VERSION EQUAL 1)
+        if(NOT catkin_FOUND)
+            find_package(catkin REQUIRED)
+        endif()
+        set(PKG_PYTHON_MODULE ${PROJECT_NAME})
+        set(PACKAGE_DIR "src")
+        configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${PROJECT_SOURCE_DIR}/setup.py" @ONLY)
+        catkin_python_setup()
+    else()
+        _mrt_get_python_destination(python_destination)
+        set(destination "${python_destination}/${PROJECT_NAME}")
+        install(
+            DIRECTORY "${module_folder}/"
+            DESTINATION "${python_destination}/${PROJECT_NAME}"
+            PATTERN "*.pyc" EXCLUDE
+            PATTERN "__pycache__" EXCLUDE)
+        # compile Python files
+        install(
+            CODE "execute_process(
+            COMMAND
+             \"${PYTHON_EXECUTABLE}\" \"-m\" \"compileall\"
+             \"${CMAKE_INSTALL_PREFIX}/${python_destination}/${PROJECT_NAME}\"
+             )")
+        if(ROS_VERSION EQUAL 2)
+            _mrt_register_ament_python_hook()
+        endif()
+    endif()
 endfunction()
 
 #
@@ -580,7 +671,7 @@ function(mrt_add_python_api modulename)
                        LIBRARY_OUTPUT_DIRECTORY_DEBUG "${PYTHON_MODULE_DIR}")
 
         target_compile_definitions(${TARGET_NAME} PRIVATE PYTHON_API_MODULE_NAME=${LIBRARY_NAME})
-        mrt_add_links(${TARGET_NAME} NO_SANITIZER) # you really don't wont to debug python...
+        mrt_add_links(${TARGET_NAME} NO_SANITIZER) # you really don't want to debug python...
         list(APPEND GENERATED_TARGETS ${TARGET_NAME})
     endforeach()
     if(NOT "${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
@@ -597,14 +688,23 @@ function(mrt_add_python_api modulename)
     set(${PROJECT_NAME}_PYTHON_API_TARGET
         ${GENERATED_TARGETS}
         PARENT_SCOPE)
-    # configure setup.py for install
-    set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
-    set(PACKAGE_DIR ${DEVEL_PREFIX}/${python_destination})
-    set(PACKAGE_DATA "*.so*")
-    configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @ONLY)
-    configure_file(${MCM_TEMPLATE_DIR}/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py"
-                   @ONLY)
-    install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
+    if(ROS_VERSION EQUAL 1)
+        # configure setup.py for install
+        set(PKG_PYTHON_MODULE ${PYTHON_API_MODULE_NAME})
+        set(PACKAGE_DIR ${DEVEL_PREFIX}/${python_destination})
+        set(PACKAGE_DATA "*.so*")
+        configure_file(${MCM_TEMPLATE_DIR}/setup.py.in "${CMAKE_CURRENT_BINARY_DIR}/setup.py" @ONLY)
+        configure_file(${MCM_TEMPLATE_DIR}/python_api_install.py.in "${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py"
+                       @ONLY)
+        install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/python_api_install.py)")
+    else()
+        if(ROS_VERSION EQUAL 2)
+            _mrt_register_ament_python_hook()
+        endif()
+        set(install_destination ${python_destination}/${PYTHON_API_MODULE_NAME})
+        install(FILES ${PYTHON_MODULE_DIR}/__init__.py DESTINATION ${install_destination})
+        install(TARGETS ${GENERATED_TARGETS} DESTINATION ${install_destination})
+    endif()
 endfunction()
 
 #
@@ -675,11 +775,18 @@ function(mrt_add_library libname)
                 "Adding library \"${LIBRARY_NAME}\" with source ${_MRT_CPP_SOURCE_FILES}, includes ${MRT_ADD_LIBRARY_INCLUDES}"
         )
         add_library(${LIBRARY_TARGET_NAME} ${MRT_ADD_LIBRARY_INCLUDES} ${_MRT_CPP_SOURCE_FILES})
+
+        # we always build with fPIC to avoid problems when mixing static and shared libs
+        set_property(TARGET ${LIBRARY_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
+
         # extract the major version
-        string(REPLACE "." ";" versions ${${PROJECT_NAME}_VERSION})
-        list(GET versions 0 version_major)
-        set_target_properties(${LIBRARY_TARGET_NAME} PROPERTIES OUTPUT_NAME ${LIBRARY_NAME} SOVERSION ${version_major}
-                                                                VERSION ${${PROJECT_NAME}_VERSION})
+        if({${PROJECT_NAME}_VERSION)
+            string(REPLACE "." ";" versions ${${PROJECT_NAME}_VERSION})
+            list(GET versions 0 version_major)
+            set_target_properties(
+                ${LIBRARY_TARGET_NAME} PROPERTIES OUTPUT_NAME ${LIBRARY_NAME} SOVERSION ${version_major}
+                                                  VERSION ${${PROJECT_NAME}_VERSION})
+        endif()
         target_compile_options(${LIBRARY_TARGET_NAME} PRIVATE ${MRT_SANITIZER_CXX_FLAGS})
         if(MRT_ADD_LIBRARY_LIBRARIES)
             target_link_libraries(${LIBRARY_TARGET_NAME} PRIVATE ${MRT_ADD_LIBRARY_LIBRARIES})
@@ -1197,6 +1304,38 @@ function(mrt_add_nosetests folder)
     _mrt_add_nosetests_impl(${TEST_FOLDER} DEPENDS ${ARG_DEPENDS} ${ARG_DEPENDENCIES})
 endfunction()
 
+function(_mrt_install_python source_file destination)
+    if(ROS_VERSION EQUAL 1)
+        # we can just use catkin
+        catkin_install_python(PROGRAMS ${file} DESTINATION ${destination})
+        return()
+    endif()
+    # for ament, we have to fix the shebang before we can install (ament does not provide this feature)
+
+    # read file and check shebang line
+    file(READ ${source_file} data)
+    set(regex "^#![ \t]*/([^\r\n]+)/env[ \t]+python([\r\n])")
+    string(REGEX MATCH "${regex}" shebang_line "${data}")
+    string(LENGTH "${shebang_line}" length)
+    string(SUBSTRING "${data}" 0 ${length} prefix)
+    if("${shebang_line}" STREQUAL "${prefix}")
+        # write modified file with modified shebang line
+        get_filename_component(python_name ${PYTHON_EXECUTABLE} NAME)
+        string(REGEX REPLACE "${regex}" "#!/\\1/env ${python_name}\\2" data "${data}")
+        get_filename_component(filename ${source_file} NAME)
+        set(rewritten_file "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/python_files")
+        file(MAKE_DIRECTORY ${rewritten_file})
+        set(rewritten_file "${rewritten_file}/${filename}")
+        file(WRITE ${rewritten_file} "${data}")
+    else()
+        # Shebang did not match, install file unmodified
+        set(rewritten_file "${source_file}")
+    endif()
+    # install (modified) file to destination
+    # Install copy of file with re-written shebang to install space
+    install(PROGRAMS "${rewritten_file}" DESTINATION "${destination}")
+endfunction()
+
 # Installs all relevant project files.
 #
 # All targets added by the mrt_add_<library/executable/nodelet/...> commands will be installed automatically when using this command. Other files/folders (launchfiles, scripts) need to be specified explicitly.
@@ -1230,8 +1369,25 @@ function(mrt_install)
         # export the public compiler flags of this project
         list(APPEND export_targets ${PROJECT_NAME}_compiler_flags)
     endif()
-    set(install_bin ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME}
-    )# this is how catkin does it (instead of "bin"). We might think about adding a way to override this...
+
+    # static libs require our private flags to be in the export set
+    foreach(target ${export_targets})
+        get_target_property(target_type ${target} TYPE)
+        if(target_type STREQUAL "STATIC_LIBRARY")
+            set(has_static True)
+            break()
+        endif()
+    endforeach()
+    if(has_static AND TARGET ${PROJECT_NAME}_private_compiler_flags)
+        list(APPEND export_targets ${PROJECT_NAME}_private_compiler_flags)
+    endif()
+    if(has_static AND TARGET ${PROJECT_NAME}_sanitizer_lib_flags)
+        list(APPEND export_targets ${PROJECT_NAME}_sanitizer_lib_flags)
+    endif()
+
+    set(install_bin ${CMAKE_INSTALL_LIBDIR}/${PROJECT_NAME})
+
+    # this is how catkin does it (instead of "bin"). We might think about adding a way to override this...
     if(export_targets)
         message(
             STATUS
@@ -1283,7 +1439,7 @@ function(mrt_install)
         get_filename_component(program ${program_path} NAME)
         if("${extension}" STREQUAL ".py")
             message(STATUS "Marking PYTHON PROGRAM \"${program}\" of package \"${PROJECT_NAME}\" for installation")
-            catkin_install_python(PROGRAMS ${program_path} DESTINATION ${install_bin})
+            _mrt_install_python(${program_path} ${install_bin})
         else()
             message(STATUS "Marking PROGRAM \"${program}\" of package \"${PROJECT_NAME}\" for installation")
             install(PROGRAMS ${program_path} DESTINATION ${install_bin})
@@ -1325,5 +1481,11 @@ function(mrt_install)
             EXPORTS ${package_exports}
             LIBRARIES ${export_targets}
             TARGETS ${remaining_targets} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+    endif()
+
+    # generate environment files for ros2
+    if(ROS_VERSION EQUAL 2)
+        find_package(ament_cmake_core REQUIRED)
+        ament_execute_extensions(ament_package)
     endif()
 endfunction()

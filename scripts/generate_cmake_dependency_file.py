@@ -225,7 +225,8 @@ def getCatkinPackages(workspaceRoot):
     catkin_ignore = "CATKIN_IGNORE"
     catkin_marker = ".catkin"
     nosubdirs = "rospack_nosubdirs"
-    cmake_env = "CMAKE_PREFIX_PATH"
+    ros2 = os.environ.get("ROS_VERSION", "1") == "2"
+    cmake_env = "CMAKE_PREFIX_PATH" if not ros2 else "AMENT_PREFIX_PATH"
 
     def getPackagesInPath(packages, path):
         for root, dirs, files in os.walk(path, topdown=True, followlinks=True):
@@ -247,6 +248,10 @@ def getCatkinPackages(workspaceRoot):
                 continue
 
     def getWorkspacesInPath(path, workspaces):
+        # in ros2 every path is a package, no need to search markerfiles
+        if ros2:
+            workspaces.append(path)
+            return
         markerfile = os.path.join(path, catkin_marker)
         if not os.path.isfile(markerfile):
             return

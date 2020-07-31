@@ -8,23 +8,13 @@ endif()
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/package.xml"
                "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/package.xml" COPYONLY)
 
-#use find package catkin here so that the cmake variable CATKIN_ENV is set. This variable is used
-#so that rospack can find the packages in this workspace
-find_package(catkin REQUIRED)
-
 #gather dependencies from package.xml. The command runs in python with the ros environemnt
 #variable set. This is used, because the python script is calling some ros tools to distinguish
 #between catkin and non catkin packages.
-
 set(_gather_cmd
-    sh
-    ${CATKIN_ENV}
-    python
-    ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/generate_cmake_dependency_file.py
-    "${CMAKE_CURRENT_SOURCE_DIR}/package.xml"
-    "${MRT_CMAKE_MODULES_ROOT_PATH}/yaml/cmake.yaml"
+    ${MRT_CMAKE_ENV} ${PYTHON_EXECUTABLE} ${MRT_CMAKE_MODULES_ROOT_PATH}/scripts/generate_cmake_dependency_file.py
+    "${CMAKE_CURRENT_SOURCE_DIR}/package.xml" "${MRT_CMAKE_MODULES_ROOT_PATH}/yaml/cmake.yaml"
     "${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/auto_dep_vars.cmake")
-
 execute_process(
     COMMAND ${_gather_cmd}
     RESULT_VARIABLE _GEN_DEPS_RES_
