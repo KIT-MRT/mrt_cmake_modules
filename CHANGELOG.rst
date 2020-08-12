@@ -2,6 +2,27 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Deleted deprecated configuration files
+* Fix cuda host compiler used for cuda 11
+* Fix __init__.py template for python3
+* Fix target handling for ros2
+* Fix build failures on ROS1
+* Fix the conan support
+* Add a dependency on ros_environment to ensure ROS_VERSION is set
+* Default to building shared libraries
+* Add QtScript to the list of qt components
+* Change license to BSD
+* Remove traces of GPL-licensed libgps
+* Remove unnecessary includes of cuda files
+* Update tensorflow c findscript to set new tensorflow include paths
+* Add cuda support for node and nodelet.
+* Remove usage of ast package for evaulating package.xml conditions
+* Fix crash if eval_coverage.py runs with python3
+* Ensure that coverage is also generated for cpp code called from plain rostests
+* Contributors: Fabian Poggenhans, Ilia Baltashov, Sven Richter
+
 1.0.3 (2020-05-25)
 ------------------
 * Replace deprecated platform.distro call with distro module
