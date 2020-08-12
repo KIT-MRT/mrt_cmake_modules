@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.4 (2020-08-12)
+------------------
 * Deleted deprecated configuration files
 * Fix cuda host compiler used for cuda 11
 * Fix __init__.py template for python3
