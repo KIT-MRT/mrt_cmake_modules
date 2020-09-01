@@ -362,6 +362,11 @@ pybind11-dev:
   libraries: []
   library_dirs: []
   name: pybind11
+qtbase5-dev:
+  components: [Core Gui Network]
+  include_dirs: [QT_INCLUDES]
+  libraries: [QT_LIBRARIES]
+  name: MrtQt5
 range_v3:
   name: range-v3
   targets: [range-v3]
