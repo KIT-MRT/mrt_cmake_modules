@@ -784,8 +784,10 @@ function(mrt_add_library libname)
             string(REPLACE "." ";" versions ${${PROJECT_NAME}_VERSION})
             list(GET versions 0 version_major)
             set_target_properties(
-                ${LIBRARY_TARGET_NAME} PROPERTIES OUTPUT_NAME ${LIBRARY_NAME} SOVERSION ${version_major}
-                                                  VERSION ${${PROJECT_NAME}_VERSION})
+                ${LIBRARY_TARGET_NAME}
+                PROPERTIES OUTPUT_NAME ${LIBRARY_NAME}
+                           SOVERSION ${version_major}
+                           VERSION ${${PROJECT_NAME}_VERSION})
         endif()
         target_compile_options(${LIBRARY_TARGET_NAME} PRIVATE ${MRT_SANITIZER_CXX_FLAGS})
         if(MRT_ADD_LIBRARY_LIBRARIES)
