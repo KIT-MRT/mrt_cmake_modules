@@ -608,12 +608,7 @@ function(mrt_add_python_api modulename)
 
     #set and check target name
     set(PYTHON_API_MODULE_NAME ${modulename})
-    if("${${PROJECT_NAME}_PYTHON_MODULE}" STREQUAL "${PYTHON_API_MODULE_NAME}")
-        message(
-            FATAL_ERROR
-                "The name of the python_api module conflicts with the name of the python module. Please choose a different name"
-        )
-    endif()
+
 
     if("${PYTHON_API_MODULE_NAME}" STREQUAL "${PROJECT_NAME}")
         # mark that catkin_python_setup() was called and the setup.py file contains a package with the same name as the current project
