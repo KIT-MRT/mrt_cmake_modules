@@ -609,7 +609,6 @@ function(mrt_add_python_api modulename)
     #set and check target name
     set(PYTHON_API_MODULE_NAME ${modulename})
 
-
     if("${PYTHON_API_MODULE_NAME}" STREQUAL "${PROJECT_NAME}")
         # mark that catkin_python_setup() was called and the setup.py file contains a package with the same name as the current project
         # in order to disable installation of generated __init__.py files in generate_messages() and generate_dynamic_reconfigure_options()
