@@ -1296,7 +1296,7 @@ function(mrt_add_nosetests folder)
         return()
     endif()
 
-    message(STATUS "Adding nosetests in folder ${TEST_FOLDER}")
+    message(STATUS "Adding nosetests in folder ${PROJECT_SOURCE_DIR}/${TEST_FOLDER}")
     _mrt_add_nosetests_impl(${TEST_FOLDER} DEPENDS ${ARG_DEPENDS} ${ARG_DEPENDENCIES})
 endfunction()
 
