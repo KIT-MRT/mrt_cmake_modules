@@ -626,7 +626,7 @@ function(mrt_add_python_api modulename)
     if(NOT pybind11_FOUND AND NOT BoostPython_FOUND)
         message(
             FATAL_ERROR
-                "Missing dependency to pybind11 or boost python. Add either '<depend>pybind11-dev</depend>' or '<depend>libboost-python</depend>' to 'package.xml'"
+                "Missing dependency to pybind11 or boost python. Add either '<depend>pybind11-dev</depend>' or '<depend>libboost-python-dev</depend>' to 'package.xml'"
         )
     endif()
 
