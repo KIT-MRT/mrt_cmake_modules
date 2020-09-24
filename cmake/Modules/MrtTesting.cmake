@@ -248,6 +248,7 @@ function(_mrt_add_nosetests_impl folder)
     string(REPLACE ":" "." output_file_name ${output_file_name})
 
     set(test_name nosetests-${PROJECT_NAME}-${output_file_name})
+    message(STATUS "Adding nosetest ${test_name}")
     # check if coverage reports are being requested
     if(MRT_ENABLE_COVERAGE)
         # we dont want to enable coverage when there are only python rostests around (ie executable python files)
