@@ -61,18 +61,19 @@ Here is the structure of a package called `example_package`. It works out of the
 │   └── a_message.msg                 # Messages files that will be automatically generated (only available for --ros)
 ├── package.xml                       # You should know that. Should contain at least pybind11-dev for the bindings
 ├── python_api                        # Folder for python bindings. Every file here becoms a module
-│   ├── python_bindings.cpp           # Will be available as "import example_package.python_bindings
+│   ├── python_bindings.cpp           # Will be available as "import example_package.python_bindings"
 │   └── more_python_bindings.cpp      # Refer to the pybind11 doc for the content of this file
 ├── README.md                         # The readme
 ├── src                               # Every cpp file in this filder will become part of libexample_package.so
 │   ├── examplefile.cpp
 │   ├── onemorefile.cpp
-│   └── example_package               # Python modules have to go to src/<package_name>.
+│   └── example_package               # Python modules have to go to src/<package_name>
 │       ├── pythonmodule.py           # Will be available as "import example_package.pythonmodule"
 │       └── __init__.py
 └── test                              # Contains the unittests. Will be executed when running the test or run_tests target
     ├── test_example_package.cpp      # Every file here will be a separate unittest executable
-    └── test_pyapi.py                 # Every py file here will be executed using nosetest. Should not be executable!
+    └── test_pyapi.py                 # Every py file that matches the testMatch regular expression will be executed
+                                      # using nosetest. Executables are ignored. See https://nose.readthedocs.io/
 ```
 
 Note that everything in this structure is optional and can be left away if you don't need it (except for the CMakeLists.txt of course).
