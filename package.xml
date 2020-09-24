@@ -4,7 +4,7 @@
   <description>CMake Functions and Modules for automating CMake</description>
 
   <license>BSD</license>
-  <maintainer email="fabian.poggenhans@kit.edu">Fabian Poggenhans</maintainer>
+  <maintainer email="kevin.roesch@kit.edu">Kevin Rösch</maintainer>
   <author email="fabian.poggenhans@kit.edu">Fabian Poggenhans</author>
   <author email="johannes.beck@kit.edu">Johannes Beck</author>
   <url type="repository">https://github.com/KIT-MRT/mrt_cmake_modules.git</url>
