@@ -676,8 +676,6 @@ function(mrt_add_python_api modulename)
         endif()
     endif()
 
-    configure_file(${MCM_TEMPLATE_DIR}/__init__.py.in ${PYTHON_MODULE_DIR}/__init__.py)
-
     # append to list of all targets in this project
     set(${PROJECT_NAME}_PYTHON_API_TARGET
         ${GENERATED_TARGETS}
