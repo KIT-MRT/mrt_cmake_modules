@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.5 (2020-09-29)
+------------------
 * Fix build for ROS2, gtest should no longer be installed in ROS2 mode
 * Improve python nosetest info
 * Update boost-python depend message
