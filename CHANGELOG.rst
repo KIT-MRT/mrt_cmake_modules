@@ -2,6 +2,16 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix build for ROS2, gtest should no longer be installed in ROS2 mode
+* Improve python nosetest info
+* Update boost-python depend message
+* Fix python module setup
+* Packages can now have both a python module and a python api
+* Add qtbase5-dev key
+* Contributors: Fabian Poggenhans, Kevin Rösch, Maximilian Naumann
+
 1.0.4 (2020-08-12)
 ------------------
 * Deleted deprecated configuration files
