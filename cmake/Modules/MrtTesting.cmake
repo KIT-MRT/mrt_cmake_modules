@@ -140,24 +140,32 @@ endfunction()
 
 function(_mrt_create_executable_gtest target file)
     if(NOT TARGET gtest_main)
+        # gtest_vendor is used on ros2 and should be preferred if available
+        find_package(gtest_vendor QUIET)
         # add googletest as subdir to this project
         find_file(
             gtest_sources "gtest.cc"
-            PATH_SUFFIXES "../src/googletest/googletest/src" "googletest/googletest/src"
-            HINTS ${CMAKE_CURRENT_LIST_DIR} ${MRT_GTEST_DIR})
+            PATH_SUFFIXES "../src/googletest/googletest/src" "googletest/googletest/src" "src"
+            HINTS ${CMAKE_CURRENT_LIST_DIR} ${MRT_GTEST_DIR} ${gtest_vendor_BASE_DIR})
         if(NOT gtest_sources)
             message(FATAL_ERROR "Failed to find the source files of googletest!")
         endif()
         get_filename_component(gtest_src ${gtest_sources} PATH)
         get_filename_component(gtest_base ${gtest_src} PATH)
-        get_filename_component(google_dir ${gtest_base} PATH)
-        if(NOT EXISTS ${google_dir}/CMakeLists.txt)
+        if(NOT gtest_vendor_BASE_DIR)
+            get_filename_component(gtest_base ${gtest_base} PATH)
+        endif()
+        if(NOT EXISTS ${gtest_base}/CMakeLists.txt)
             message(FATAL_ERROR "Failed to find googletest base directory at: ${gtest_base}!")
         endif()
         if(NOT ROS_VERSION EQUAL 2)
             set(exclude EXCLUDE_FROM_ALL) # ament has trouble if library targets are not built in the all target
         endif()
-        add_subdirectory(${google_dir} ${CMAKE_CURRENT_BINARY_DIR}/gtest ${exclude})
+        # by default, googletest installs itself too. We have to disable this behaviour.
+        set(INSTALL_GTEST
+            OFF
+            CACHE BOOL "Enable installation of googletest")
+        add_subdirectory(${gtest_base} ${CMAKE_CURRENT_BINARY_DIR}/gtest ${exclude})
         if(NOT TARGET gtest_main)
             message(FATAL_ERROR "Gtest seems not to build gtest_main!")
         endif()
