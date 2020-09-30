@@ -19,8 +19,8 @@ endif()
 if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
     # on older cmake versions, "python" finds python2, otherwise python3
     set(_search_version)
-    if(_python_version VERSION_GREATER 3)
-        set(_search_version 3)
+    if(_python_version VERSION_GREATER 2)
+        set(_search_version ${_python_version})
     endif()
     find_package(Boost REQUIRED COMPONENTS python${_search_version})
     find_package(Boost QUIET COMPONENTS numpy${_search_version}) # numpy is not available on some boost versions
