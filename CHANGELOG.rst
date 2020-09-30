@@ -2,6 +2,12 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix versioning of sofiles
+* Ensure unittests use the right gtest include dir
+* Contributors: Fabian Poggenhans
+
 1.0.6 (2020-09-30)
 ------------------
 * Fix boost python building for python3
