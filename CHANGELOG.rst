@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.7 (2020-09-30)
+------------------
 * Fix versioning of sofiles
 * Ensure unittests use the right gtest include dir
 * Contributors: Fabian Poggenhans
