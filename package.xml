@@ -1,6 +1,6 @@
 <package format="3">
   <name>mrt_cmake_modules</name>
-  <version>1.0.7</version>
+  <version>1.0.8</version>
   <description>CMake Functions and Modules for automating CMake</description>
 
   <license>BSD</license>
