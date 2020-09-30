@@ -10,16 +10,29 @@ if(PYTHON_VERSION)
 else()
     set(_python_version 2.7)
 endif()
+if(_python_version VERSION_EQUAL 3 AND CMAKE_VERSION VERSION_GREATER 3.15)
+    # we also need the subversion
+    find_package(Python3 REQUIRED)
+    set(_python_version ${Python3_VERSION})
+endif()
 
 # this only works with a recent cmake/boost combination
 if(CMAKE_VERSION VERSION_GREATER 3.11)
     find_package(Boost COMPONENTS python${_python_version} numpy${_python_version})
+    # ...unless we are dealing with boost 1.70 and above where we can only hope this finds the right version
+    if(NOT Boost_PYTHON${_python_version}_FOUND)
+        set(Boost_PYTHON_VERSION ${_python_version})
+        find_package(Boost COMPONENTS python numpy)
+        set(Boost_PYTHON${_python_version}_FOUND ${Boost_PYTHON_FOUND})
+        set(Boost_PYTHON${_python_version}_LIBRARY ${Boost_PYTHON_LIBRARY})
+        set(Boost_NUMPY${_python_version}_LIBRARY ${Boost_NUMPY_LIBRARY})
+    endif()
 endif()
 
 if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
     # on older cmake versions, "python" finds python2, otherwise python3
     set(_search_version)
-    if(_python_version VERSION_GREATER 2)
+    if(NOT _python_version VERSION_LESS 3)
         set(_search_version ${_python_version})
     endif()
     find_package(Boost REQUIRED COMPONENTS python${_search_version})
