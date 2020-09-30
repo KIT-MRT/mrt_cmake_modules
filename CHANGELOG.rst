@@ -2,6 +2,11 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix boost python building for python3
+* Contributors: Fabian Poggenhans
+
 1.0.5 (2020-09-29)
 ------------------
 * Fix build for ROS2, gtest should no longer be installed in ROS2 mode
