@@ -772,7 +772,7 @@ function(mrt_add_library libname)
         set_property(TARGET ${LIBRARY_TARGET_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 
         # extract the major version
-        if({${PROJECT_NAME}_VERSION)
+        if(${PROJECT_NAME}_VERSION)
             string(REPLACE "." ";" versions ${${PROJECT_NAME}_VERSION})
             list(GET versions 0 version_major)
             set_target_properties(
