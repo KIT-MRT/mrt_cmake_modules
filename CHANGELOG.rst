@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.6 (2020-09-30)
+------------------
 * Fix boost python building for python3
 * Contributors: Fabian Poggenhans
 
