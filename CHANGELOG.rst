@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.8 (2020-09-30)
+------------------
 * Fix finding boost python on versions with old cmake but new boost
 * Contributors: Fabian Poggenhans
 
