@@ -1,6 +1,6 @@
 find_package(PkgConfig REQUIRED)
 include(FindPkgConfig)
-pkg_check_modules(PC_ARAVIS REQUIRED aravis-0.6)
+pkg_check_modules(PC_ARAVIS REQUIRED aravis-0.8)
 
 set(Aravis_INCLUDE_DIRS ${PC_ARAVIS_INCLUDE_DIRS})
 
