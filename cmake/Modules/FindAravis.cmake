@@ -1,6 +1,6 @@
 find_package(PkgConfig REQUIRED)
 include(FindPkgConfig)
-pkg_check_modules(PC_ARAVIS REQUIRED aravis-0.6)
+pkg_check_modules(PC_ARAVIS REQUIRED aravis-0.8)
 
 set(Aravis_INCLUDE_DIRS ${PC_ARAVIS_INCLUDE_DIRS})
 
@@ -11,6 +11,6 @@ foreach(LIB ${PC_ARAVIS_LIBRARIES})
 endforeach()
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Aravis DEFAULT_MSG PC_ARAVIS_LIBRARIES PC_ARAVIS_LIBRARY_DIRS PC_ARAVIS_INCLUDE_DIRS)
+find_package_handle_standard_args(Aravis DEFAULT_MSG PC_ARAVIS_LIBRARIES PC_ARAVIS_INCLUDE_DIRS)
 
 mark_as_advanced(Aravis_LIBRARIES Aravis_INCLUDE_DIRS)
