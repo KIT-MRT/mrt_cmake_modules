@@ -177,10 +177,12 @@ def parseManifest(parsed_xml, catkin_packages):
         condition = child.get("condition")
         if condition:
             expr = Template(condition).substitute(os.environ)
-            if len(expr) > 10:
+            print(expr)
+            if len(expr) > 20:
                 # limit the number of characters to minimize risk
                 continue
             is_fulfilled = eval_expr(expr)
+            print("is fulfilled: {}".format(is_fulfilled))
             if not is_fulfilled:
                 continue
 
@@ -365,4 +367,5 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
 
 
 if __name__ == "__main__":
+    print("called: {}".format(" ".join(sys.argv)))
     main(sys.argv[1], sys.argv[2], sys.argv[3])
