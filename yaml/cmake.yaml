@@ -406,7 +406,7 @@ mrt-osqp:
   libraries: [osqp_LIBRARIES]
   targets: ['osqp::osqp']
 mrt-osqp-eigen:
-  name: osqp-eigen
+  name: OsqpEigen
   include_dirs: [osqp_eigen_INCLUDE-DIR]
   libraries: [osqp_eigen_LIBRARIES]
   targets: ['OsqpEigen::OsqpEigen']
