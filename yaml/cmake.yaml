@@ -400,3 +400,13 @@ tinyxml2:
 yaml-cpp:
   name: yaml-cpp
   targets: [yaml-cpp]
+mrt-osqp:
+  name: osqp
+  include_dirs: [osqp_INCLUDE_DIR]
+  libraries: [osqp_LIBRARIES]
+  targets: ['osqp::osqp']
+mrt-osqp-eigen:
+  name: OsqpEigen
+  include_dirs: [osqp_eigen_INCLUDE-DIR]
+  libraries: [osqp_eigen_LIBRARIES]
+  targets: ['OsqpEigen::OsqpEigen']
