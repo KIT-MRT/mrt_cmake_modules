@@ -199,6 +199,11 @@ mrt_benchmark:
   name: benchmark
   targets: ['benchmark::benchmark']
   warning: Usage of mrt_benchmark in package.xml is deprecated. Use 'benchmark' instead!
+mrt_blasfeo:
+  include_dirs: [BLASFEO_INCLUDE_DIR]
+  libraries: [BLASFEO_LIBRARIES]
+  library_dirs: []
+  name: BLASFEO
 mrt_c_tensorflow:
   components: []
   include_dirs: [TENSORFLOW_C_INCLUDE_DIRS]
