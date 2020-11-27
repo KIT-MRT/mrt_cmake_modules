@@ -234,6 +234,11 @@ mrt_ebus:
   libraries: [ebus-sdk_LIBRARIES]
   library_dirs: []
   name: ebus-sdk
+mrt_hpipm:
+  name: hpipm
+  include_dirs: [hpipm_INCLUDE_DIR]
+  libraries: [hpipm_LIBRARIES]
+  targets: ['hpipm']
 mrt_metis:
   components: []
   include_dirs: [Metis_INCLUDE_DIR]
