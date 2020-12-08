@@ -210,6 +210,11 @@ mrt_c_tensorflow:
   libraries: [TENSORFLOW_LIBRARIES]
   library_dirs: []
   name: CTensorflow
+mrt_casadi:
+  name: casadi
+  include_dirs: [casadi_INCLUDE_DIR]
+  libraries: [casadi_LIBRARIES]
+  targets: ['casadi']
 mrt_cereal:
   components: []
   include_dirs: [Cereal_INCLUDE_DIR]
