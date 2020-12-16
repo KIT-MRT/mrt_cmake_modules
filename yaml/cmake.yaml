@@ -75,6 +75,10 @@ gtest:
   include_dirs: [gtest_INCLUDE_DIRS]
   libraries: [gtest_LIBRARIES]
   name: gtest
+gmock:
+  include_dirs: [gmock_INCLUDE_DIRS]
+  libraries: [gmock_LIBRARIES]
+  name: gmock
 libann-dev:
   components: []
   include_dirs: [ANN_INCLUDE_DIR]
