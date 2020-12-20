@@ -9,6 +9,13 @@
 # library_dirs (optional): [<list of variables set by findscript containing the packages library dirs>]
 # targets (optional): [<list of cmake targets defined by findscript (for newer versions)>]
 # warning (optional): Outputs this as a cmake warning whenever this dependency is used (useful for deprecating things)
+
+gvc:
+  name: gvc
+  targets: [gvc]
+cgraph:
+  name: cgraph
+  targets: [cgraph]
 aravis:
   include_dirs: [Aravis_INCLUDE_DIRS]
   libraries: [Aravis_LIBRARIES]
