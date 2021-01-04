@@ -1301,7 +1301,7 @@ endfunction()
 function(_mrt_install_python source_file destination)
     if(ROS_VERSION EQUAL 1)
         # we can just use catkin
-        catkin_install_python(PROGRAMS ${file} DESTINATION ${destination})
+        catkin_install_python(PROGRAMS ${source_file} DESTINATION ${destination})
         return()
     endif()
     # for ament, we have to fix the shebang before we can install (ament does not provide this feature)
