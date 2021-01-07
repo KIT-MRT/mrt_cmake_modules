@@ -139,6 +139,12 @@ libjsoncpp-dev:
 liblapack-dev:
   name: LAPACK
   libraries: [LAPACK_LIBRARIES]
+libnlopt-cxx-dev:
+  components: []
+  include_dirs: [nlopt_INCLUDE_DIR]
+  libraries: [nlopt_LIBRARIES]
+  library_dirs: []
+  name: nlopt
 libnlopt-dev:
   components: []
   include_dirs: [nlopt_INCLUDE_DIR]

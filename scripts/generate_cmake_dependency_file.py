@@ -30,10 +30,6 @@ try:
     from yaml import CLoader as Loader
 except ImportError:
     from yaml import Loader
-# might be useful to do this in the future but it can not even handle 1==1
-# from ast import literal_eval as eval_expr
-
-# ... so we just hope no one uses "rm -rf /" as condition in his package.xml...
 eval_expr = eval
 
 
@@ -176,10 +172,11 @@ def parseManifest(parsed_xml, catkin_packages):
         # check conditions
         condition = child.get("condition")
         if condition:
+            import re
+            # according to REP149, unquoted literals are also strings, except and and or
             expr = Template(condition).substitute(os.environ)
-            if len(expr) > 10:
-                # limit the number of characters to minimize risk
-                continue
+            quote_literals = lambda m: m.group(0) if m.group(0).startswith(('"', "'")) or m.group(0) in ("or", "and") else '"{}"'.format(m.group(0))
+            expr = re.sub(r'"?\'?([a-zA-Z-_]+)', quote_literals, expr)
             is_fulfilled = eval_expr(expr)
             if not is_fulfilled:
                 continue
@@ -365,4 +362,5 @@ def main(packageXmlFile, rosDepYamlFileName, outputFile):
 
 
 if __name__ == "__main__":
+    print("called: {}".format(" ".join(sys.argv)))
     main(sys.argv[1], sys.argv[2], sys.argv[3])
