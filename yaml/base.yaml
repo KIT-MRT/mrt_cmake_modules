@@ -795,3 +795,33 @@ coinor-libipopt-dev:
     library_dirs: []
     name: Ipopt
   ubuntu: [coinor-libipopt-dev]
+casadi:
+  cmake:
+    include_dirs:
+      - CASADI_INCLUDE_DIR
+    libraries:
+      - CASADI_LIBRARIES
+    name: casadi
+blasfeo:
+  cmake:
+    include_dirs:
+      - BLASFEO_INCLUDE_DIR
+    libraries:
+      - BLASFEO_LIBRARIES
+    name: blasfeo
+hpipm:
+  cmake:
+    include_dirs:
+      - HPIPM_INCLUDE_DIR
+    libraries:
+      - HPIPM_LIBRARIES
+    name: hpipm
+qpOASES:
+  cmake:
+    include_dirs:
+      - QPOASES_INCLUDE_DIR
+    libraries:
+      - QPOASES_LIBRARIES
+    name: qpOASES
+
+
