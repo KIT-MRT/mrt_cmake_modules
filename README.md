@@ -1,8 +1,8 @@
 # MRT CMake Modules (Massively Reduced Time writing CMake Modules(*))
 
 Maintainer status: maintained
-- Maintainer: Johannes Beck <johannes.beck@kit.edu>, Fabian Poggenhans <fabian.poggenhans@kit.edu>
-- Author: Johannes Beck <johannes.beck@kit.edu>, Claudio Bandera claudio.bandera@kit.edu, Fabian Poggenhans <fabian.poggenhans@kit.edu>
+- Maintainer: Kevin Rösch, Fabian Poggenhans
+- Author: Johannes Beck, Claudio Bandera, Fabian Poggenhans
 - License: BSD, some files MIT
 - Bug / feature tracker: https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules/issues
 - Source: git https://gitlab.mrt.uni-karlsruhe.de/MRT/mrt_cmake_modules.git (branch: master)
