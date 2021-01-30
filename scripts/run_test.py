@@ -105,7 +105,7 @@ def main(argv=sys.argv[1:]):
     errors = []
     for cmd in args.command:
         stream = sys.stderr if not args.redirect_stderr else sys.stdout
-        proc = subprocess.Popen(cmd + " | tee", cwd=args.working_dir, shell=True, env=env, stderr=subprocess.PIPE)
+        proc = subprocess.Popen(cmd + " | tee", cwd=args.working_dir, shell=True, env=env, stderr=subprocess.PIPE, universal_newlines=True)
         stdout, stderr = proc.communicate()
         if stderr:
             print(stderr, file=stream)
