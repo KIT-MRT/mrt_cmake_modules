@@ -27,19 +27,21 @@ if(NOT TARGET ${PROJECT_NAME}_sanitizer_lib_flags AND NOT TARGET ${PROJECT_NAME}
     add_library(${PROJECT_NAME}_sanitizer_exe_flags INTERFACE)
     set(gcc_cxx "$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU>,$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,6.3>>")
     if(MRT_SANITIZER STREQUAL "checks" OR MRT_SANITIZER STREQUAL "check_race")
+        # note: in no-recover mode, we still recover from nullptr issues. This mitigates problems with serialization libs
+        # (like boost::serialzation and cereal) that use this hack to force template instanciation.
         target_compile_options(
             ${PROJECT_NAME}_sanitizer_lib_flags
             INTERFACE
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=null>
         )
         target_compile_options(
             ${PROJECT_NAME}_sanitizer_exe_flags
             INTERFACE
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow>
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=null>
         )
         target_link_options(
             ${PROJECT_NAME}_sanitizer_lib_flags
