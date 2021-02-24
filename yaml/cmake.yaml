@@ -36,6 +36,7 @@ cgal:
   libraries: [CGAL_LIBRARIES]
   library_dirs: []
   name: CGAL
+  warning: Usage of cgal in package.xml is deprecated. Use 'mrt_cgal' instead!
 coinor-libipopt-dev:
   components: []
   include_dirs: [IPOPT_INCLUDE_DIRS]
@@ -238,7 +239,6 @@ mrt_cgal:
   libraries: [CGAL_LIBRARIES]
   library_dirs: []
   name: CGAL
-  warning: Usage of mrt_cgal in package.xml is deprecated. Use 'cgal' instead!
 mrt_ebus:
   components: []
   include_dirs: [ebus-sdk_INCLUDE_DIR]
