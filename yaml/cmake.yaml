@@ -431,3 +431,6 @@ mrt-osqp-eigen:
   include_dirs: [osqp_eigen_INCLUDE-DIR]
   libraries: [osqp_eigen_LIBRARIES]
   targets: ['OsqpEigen::OsqpEigen']
+or-tools:
+  name: ortools
+  targets: [' ortools::ortools']
