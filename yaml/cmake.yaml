@@ -20,7 +20,7 @@ benchmark:
 boost:
   components: [wserialization thread random serialization log_setup prg_exec_monitor
       wave system chrono filesystem locale timer date_time regex graph program_options
-      unit_test_framework log atomic]
+      unit_test_framework log atomic iostreams]
   include_dirs: [Boost_INCLUDE_DIRS]
   libraries: [Boost_LIBRARIES]
   library_dirs: [Boost_LIBRARY_DIRS]
