@@ -32,16 +32,18 @@ if(NOT TARGET ${PROJECT_NAME}_sanitizer_lib_flags AND NOT TARGET ${PROJECT_NAME}
         target_compile_options(
             ${PROJECT_NAME}_sanitizer_lib_flags
             INTERFACE
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=null>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:$<IF:$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>,-fsanitize-recover=alignment$<COMMA>null,-fsanitize-recover=null>>
         )
         target_compile_options(
             ${PROJECT_NAME}_sanitizer_exe_flags
             INTERFACE
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=alignment>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:-fsanitize=address,leak,undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
                 $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},check_race>>:-fsanitize=thread,undefined,float-divide-by-zero,float-cast-overflow>
-                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow;-fsanitize-recover=null>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>>:-fno-sanitize-recover=undefined,bounds-strict,float-divide-by-zero,float-cast-overflow>
+                $<$<AND:${gcc_cxx},$<STREQUAL:${MRT_SANITIZER},checks>>:$<IF:$<STREQUAL:${MRT_SANITIZER_RECOVER},no_recover>,-fsanitize-recover=alignment$<COMMA>null,-fsanitize-recover=null>>
         )
         target_link_options(
             ${PROJECT_NAME}_sanitizer_lib_flags
