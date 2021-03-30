@@ -352,6 +352,10 @@ opengl:
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
   name: MrtOpenGL
+pangolin:
+  include_dirs: [Pangolin_INCLUDE_DIRS]
+  libraries: [Pangolin_LIBRARIES]
+  name: Pangolin
 png++:
   components: []
   include_dirs: [PNG++_INCLUDE_DIRS]
