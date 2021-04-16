@@ -60,6 +60,13 @@ if(MRT_ENABLE_COVERAGE)
     endif()
 endif()
 
+# Set ccache basedir if ccache is available to enable cache hits across multiple workspaces.
+# But still leave it to the user to activate ccache (e.g. with `export PATH=/usr/lib/ccache:$PATH` in `~/.bashrc`)
+find_program(CCACHE_FOUND ccache)
+if(CCACHE_FOUND AND CCACHE_BASEDIR)
+    set(CMAKE_CXX_COMPILER_LAUNCHER CCACHE_BASEDIR=${CCACHE_BASEDIR})
+endif()
+
 # Include config file if set. This is done last so that the target ${PROJECT_NAME}_compiler_flags can be further modified
 # The config file is supposed to contain system-specific configurations (basically like a cmake toolchain file) and personal preferences (e.g. warning options)
 if(MRT_CMAKE_CONFIG_FILE)
