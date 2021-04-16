@@ -422,6 +422,11 @@ tinyxml2:
   libraries: [TinyXML2_LIBRARIES]
   library_dirs: []
   name: TinyXML2
+torch:
+  components: []
+  include_dirs: [TORCH_INCLUDE_DIRS]
+  libraries: [TORCH_LIBRARIES]
+  name: Torch
 yaml-cpp:
   name: yaml-cpp
   targets: [yaml-cpp]
