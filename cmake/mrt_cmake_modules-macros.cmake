@@ -310,7 +310,7 @@ function(mrt_add_links target)
         # mark all include include dirs from parent workspaces as "system" (silence warnings from these)
         _get_parent_workspace_include_dirs(workspace_include_dirs)
         if(workspace_include_dirs)
-            target_include_directories(${target} SYSTEM AFTER PRIVATE ${workspace_include_dirs})
+            target_include_directories(${target} SYSTEM PRIVATE ${workspace_include_dirs})
         endif()
     else()
         # set the include dir for installation and dependent targets.
