@@ -10,6 +10,10 @@ else()
     set(_CUDA_HOST_COMPILER "g++-9")
 endif()
 
+if(POLICY CMP0104)
+    cmake_policy(SET CMP0104 NEW)
+endif()
+
 if(NOT TARGET cuda_compiler_flags)
     add_library(cuda_compiler_flags INTERFACE IMPORTED)
     if(${CMAKE_VERSION} VERSION_LESS "3.9.0")
