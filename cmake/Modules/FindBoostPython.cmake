@@ -21,7 +21,6 @@ if(_python_version VERSION_EQUAL 3 AND CMAKE_VERSION VERSION_GREATER 3.15)
     endif()
 endif()
 
-
 # this only works with a recent cmake/boost combination
 if(CMAKE_VERSION VERSION_GREATER 3.11)
     find_package(Boost COMPONENTS python${_python_version} numpy${_python_version})
