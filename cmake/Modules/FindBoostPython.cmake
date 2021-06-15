@@ -40,7 +40,6 @@ if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
     if(NOT _python_version VERSION_LESS 3)
         set(_search_version ${_python_version})
     endif()
-    # message(FATAL_ERROR "_search_version: ${_search_version}")
     find_package(Boost REQUIRED COMPONENTS python${_search_version})
     find_package(Boost QUIET COMPONENTS numpy${_search_version}) # numpy is not available on some boost versions
     set(Python_ADDITIONAL_VERSIONS ${_python_version})
