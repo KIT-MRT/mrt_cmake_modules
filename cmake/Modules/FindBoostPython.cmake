@@ -13,7 +13,12 @@ endif()
 if(_python_version VERSION_EQUAL 3 AND CMAKE_VERSION VERSION_GREATER 3.15)
     # we also need the subversion
     find_package(Python3 REQUIRED)
-    set(_python_version ${Python3_VERSION})
+
+    if(CMAKE_VERSION VERSION_GREATER 3.19)
+        set(_python_version "${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+    else()
+        set(_python_version ${Python3_VERSION})
+    endif()
 endif()
 
 # this only works with a recent cmake/boost combination
@@ -35,6 +40,7 @@ if(NOT (Boost_PYTHON${_python_version}_FOUND OR Boost_python_FOUND))
     if(NOT _python_version VERSION_LESS 3)
         set(_search_version ${_python_version})
     endif()
+    # message(FATAL_ERROR "_search_version: ${_search_version}")
     find_package(Boost REQUIRED COMPONENTS python${_search_version})
     find_package(Boost QUIET COMPONENTS numpy${_search_version}) # numpy is not available on some boost versions
     set(Python_ADDITIONAL_VERSIONS ${_python_version})
