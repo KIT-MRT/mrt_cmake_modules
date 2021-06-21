@@ -49,6 +49,11 @@ cuda:
   libraries: [CUDA_LIBRARIES]
   library_dirs: []
   name: MrtCUDA
+curl:
+  components: []
+  include_dirs: [CURL_INCLUDE_DIRS]
+  libraries: [CURL_LIBRARIES]
+  name: CURL
 eigen:
   components: []
   include_dirs: [EIGEN3_INCLUDE_DIR]
@@ -422,6 +427,11 @@ tinyxml2:
   libraries: [TinyXML2_LIBRARIES]
   library_dirs: []
   name: TinyXML2
+xerces:
+  components: []
+  include_dirs: [XercesC_INCLUDE_DIRS]
+  libraries: [XercesC_LIBRARIES]
+  name: XercesC
 yaml-cpp:
   name: yaml-cpp
   targets: [yaml-cpp]
