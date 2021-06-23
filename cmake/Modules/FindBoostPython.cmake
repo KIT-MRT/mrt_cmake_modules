@@ -13,7 +13,12 @@ endif()
 if(_python_version VERSION_EQUAL 3 AND CMAKE_VERSION VERSION_GREATER 3.15)
     # we also need the subversion
     find_package(Python3 REQUIRED)
-    set(_python_version ${Python3_VERSION})
+
+    if(CMAKE_VERSION VERSION_GREATER 3.19)
+        set(_python_version "${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+    else()
+        set(_python_version ${Python3_VERSION})
+    endif()
 endif()
 
 # this only works with a recent cmake/boost combination
