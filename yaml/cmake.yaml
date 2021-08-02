@@ -81,6 +81,10 @@ gtest:
   include_dirs: [gtest_INCLUDE_DIRS]
   libraries: [gtest_LIBRARIES]
   name: gtest
+gtsam-dev:
+  include_dirs: [gtsam_INCLUDE_DIRS]
+  libraries: [gtsam_LIBRARIES]
+  name: GTSAM
 libann-dev:
   components: []
   include_dirs: [ANN_INCLUDE_DIR]
