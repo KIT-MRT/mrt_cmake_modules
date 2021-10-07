@@ -61,10 +61,8 @@ eigen:
   library_dirs: []
   name: Eigen3
 flann:
-  include_dirs: [FLANN_INCLUDE_DIRS]
-  libraries: [FLANN_LIBRARIES]
-  library_dirs: []
-  name: Flann
+  targets: ["FLANN::FLANN"]
+  name: FLANN
 geographiclib:
   components: []
   include_dirs: [GeographicLib_INCLUDE_DIRS]
