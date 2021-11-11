@@ -366,6 +366,11 @@ png++:
   library_dirs: []
   name: PNG++
   warning: Usage of png++ in package.xml is deprecated. Use 'libpng++-dev' instead!
+proj:
+  name: MrtProj
+  include_dirs: [proj_INCLUDE_DIRS]
+  libraries: [proj_LIBRARIES]
+  library_dirs: [proj_LIBRARIY_DIRS]
 protobuf-dev:
   components: []
   include_dirs: [PROTOBUF_INCLUDE_DIR]
