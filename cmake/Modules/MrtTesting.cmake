@@ -174,6 +174,8 @@ function(_mrt_create_executable_gtest target file)
             target_include_directories(gtest_main BEFORE PUBLIC "${gtest_vendor_BASE_DIR}/include")
         endif()
     endif()
+    # newer gcc versions are more pedantic and find uninitialized variables in gtest
+    target_compile_options(gtest PRIVATE $<${gcc_like_cxx}:-Wno-maybe-uninitialized>)
     message(STATUS "Creating gtest '${target}' from ${file}")
     add_executable(${target} ${file})
     set_target_properties(${target} PROPERTIES EXCLUDE_FROM_ALL TRUE)
