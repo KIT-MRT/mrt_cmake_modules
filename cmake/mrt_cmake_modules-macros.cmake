@@ -93,11 +93,14 @@ if(ROS_VERSION EQUAL 1)
 elseif(ROS_VERSION EQUAL 2)
     find_package(ament_cmake_core REQUIRED)
     if(NOT DEFINED PYTHON_EXECUTABLE)
-	# rolling uses FindPython3 instead of FindPythonInterp
+        # rolling uses FindPython3 instead of FindPythonInterp
         if (NOT TARGET Python3::Interpreter)
             find_package(Python3 REQUIRED COMPONENTS Interpreter)
         endif()
-	get_executable_path(PYTHON_EXECUTABLE Python3::Interpreter CONFIGURE)
+        get_executable_path(PYTHON_EXECUTABLE Python3::Interpreter CONFIGURE)
+        set(PYTHON_VERSION ${Python3_VERSION})
+        set(PYTHON_VERSION_MAJOR ${Python3_VERSION_MAJOR})
+        set(PYTHON_VERSION_MINOR ${Python3_VERSION_MINOR})
     endif()
     if(NOT DEFINED BUILD_TESTING OR BUILD_TESTING)
         # our cmake template still relies on CATKIN_ENABLE_TESTING
