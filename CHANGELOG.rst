@@ -2,6 +2,50 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.9 (2021-11-24)
+------------------
+* Format cmake files
+* Set PYTHON_EXECUTABLE for rolling
+* Add find script and cmake.yml entry for proj.
+* Run cmake-format.
+* Update FLANN find script to work with newer versions.
+* add boost iostreams component
+* Removed debug message.
+* Fix formatting.
+* Fix find boost python for cmake 3.20.
+* add xerces and curl to camke.yaml
+* Fix warnings in CUDA code.
+* Remove cmake 3.20-only syntax
+* Headers from dependencies are no longer marked as system, except from overlayed workspaces
+* Set the ccache base dir as environment variable of the compiler command
+* add pangolin
+* Fix formatting of test failures on python3
+* Fix recovering from sanitizer issues by making sure the flag is set only once
+  resolves MRT/draft/simulation_adenauerring#34
+* fix action build
+* Use mrt_cgal again (brings a newer version than ubuntu)
+* Adding or-tools to cmake.yaml.
+* Sanitizers: enable recovering form nullptr issues even in no_recover mode
+  this fixes otherwise unfixable issues e.g. in boost::serialization using this
+* Update/remove old maintainer emails
+* Improve evaluation of conditions in package.xml
+  in order to make it more compliant with REP149
+* Increase character limits for conditions specified package.xml
+  This is necessary so that conditions that are based on ROS_DISTRO can be specified
+* Add cmake entry for libnlopt-cpp-dev, new for focal
+* Fix python script installation
+  (shebang replacement)
+* Add mrt_casadi to cmake.yaml
+* Add mrt_hpipm to cmake.yaml
+* Add mrt_blasfeo to cmake.yaml
+* Add a small Readme pointing to cmake-format
+* change name to match internal name
+* add mrt-osqp-eigen
+* add osqp
+* Fix aravis find script.
+* Switch to use aravis 0.8.
+* Contributors: Fabian, Fabian Poggenhans, Ilia Baltashov, Johannes Beck, Kevin Rösch, Maximilian Naumann, Piotr Orzechowski, kroeper, wep21
+
 1.0.8 (2020-09-30)
 ------------------
 * Fix finding boost python on versions with old cmake but new boost
