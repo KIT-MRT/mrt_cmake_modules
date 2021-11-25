@@ -431,3 +431,8 @@ mrt-osqp-eigen:
   include_dirs: [osqp_eigen_INCLUDE-DIR]
   libraries: [osqp_eigen_LIBRARIES]
   targets: ['OsqpEigen::OsqpEigen']
+proj:
+  name: PROJ
+  include_dirs: [PROJ_INCLUDE_DIR]
+  libraries: [PROJ_LIBRARIES]
+  targets: ['PROJ::proj']
