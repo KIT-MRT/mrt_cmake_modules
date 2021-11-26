@@ -94,7 +94,7 @@ elseif(ROS_VERSION EQUAL 2)
     find_package(ament_cmake_core REQUIRED)
     if(NOT DEFINED PYTHON_EXECUTABLE)
         # rolling uses FindPython3 instead of FindPythonInterp
-        if (NOT TARGET Python3::Interpreter)
+        if(NOT TARGET Python3::Interpreter)
             find_package(Python3 REQUIRED COMPONENTS Interpreter)
         endif()
         get_executable_path(PYTHON_EXECUTABLE Python3::Interpreter CONFIGURE)
