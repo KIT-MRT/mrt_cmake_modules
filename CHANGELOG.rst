@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.9 (2021-11-26)
+------------------
 * Set python version
 * Set PYTHON_EXECUTABLE for rolling
 * Add find script and cmake.yml entry for proj.
