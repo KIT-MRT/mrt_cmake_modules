@@ -14,6 +14,10 @@ def sync_gcno_files(path, build_dir):
     copied_something = False
     for root, dirs, files in os.walk(path):
         for file in files:
+            # we remove the mocs file that is auto generated because there is no .gcno file generated and I don't know why
+            if file.startswith("mocs_compilation"):
+                os.remove(os.path.join(root,file))
+                continue
             if file.endswith(".gcda"):
                 file_gcno = file[:len(file) - 4] + "gcno"
                 gcda_file = os.path.join(root, file_gcno)[len(path):]
