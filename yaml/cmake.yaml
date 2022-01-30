@@ -451,3 +451,6 @@ mrt-osqp-eigen:
 or-tools:
   name: ortools
   targets: [' ortools::ortools']
+zxing-cpp:
+  name: ZXing
+  targets: ['ZXing::Core']
