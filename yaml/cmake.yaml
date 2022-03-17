@@ -454,3 +454,7 @@ or-tools:
 zxing-cpp:
   name: ZXing
   targets: ['ZXing::Core']
+zeromq:
+  include_dirs: [ZMQ_INCLUDE_DIRS]
+  libraries: [ZMQ_LIBRARIES]
+  name: ZeroMQ
