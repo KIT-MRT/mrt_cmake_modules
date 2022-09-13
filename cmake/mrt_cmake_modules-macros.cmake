@@ -841,7 +841,10 @@ function(mrt_add_library libname)
         endif()
     endif()
     # generate the header library when testing
-    if(MRT_ADD_LIBRARY_INCLUDES AND CATKIN_ENABLE_TESTING AND NOT MRT_ADD_LIBARY_NO_HEADER_TESTING AND NOT MRT_NO_HEADER_TESTING)
+    if(MRT_ADD_LIBRARY_INCLUDES
+       AND CATKIN_ENABLE_TESTING
+       AND NOT MRT_ADD_LIBARY_NO_HEADER_TESTING
+       AND NOT MRT_NO_HEADER_TESTING)
         list(LENGTH ${PROJECT_NAME}_GENERATED_LIBRARIES _num) # to estimate how often mrt_add_library was called
         set(_header_target ${PROJECT_NAME}-${LIBRARY_NAME}-header-test-${_num})
         set(_cpp_file ${CMAKE_CURRENT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/header_test_${_num}.cpp)
@@ -849,7 +852,7 @@ function(mrt_add_library libname)
         message(STATUS "Adding header compile test with ${MRT_ADD_LIBRARY_INCLUDES}")
         foreach(_file ${MRT_ADD_LIBRARY_INCLUDES})
             list(APPEND _content "#include \"${_file}\"\n")
-                message(STATUS ${_content})
+            message(STATUS ${_content})
         endforeach()
         list(APPEND _content "int main(){}\n")
         file(WRITE ${_cpp_file} ${_content})
