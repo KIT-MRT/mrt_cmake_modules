@@ -355,6 +355,11 @@ opengl:
   libraries: [OPENGL_LIBRARIES]
   library_dirs: []
   name: MrtOpenGL
+ortools:
+  name: ortools
+  targets: ['ortools::ortools']
+  include_dirs: [ortools_INCLUDE_DIR]
+  libraries: [ortools_LIBRARIES]
 pangolin:
   include_dirs: [Pangolin_INCLUDE_DIRS]
   libraries: [Pangolin_LIBRARIES]
