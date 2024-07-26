@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.10 (2024-07-26)
+-------------------
 * FindGeographicLib: Fix for GeographicLib 2.* and Windows
   Since GeographicLib version 2, the library name changed from `libGeographic.so` to `libGeographicLib.so`, see https://github.com/geographiclib/geographiclib/blob/5e4425da84a46eb70e59656d71b4c99732a570ec/NEWS#L208 .
   To ensure that GeographicLib 2.* is found correcty, I think we should add also `GeographicLib` to the names used by `find_library`.
