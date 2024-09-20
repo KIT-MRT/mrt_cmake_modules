@@ -2,6 +2,12 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request #38 from nobleo/fix/find-flann-cmake-module
+  fix(FindFLANN): set(FLANN_FOUND ON) if target already defined
+* Contributors: keroe
+
 1.0.10 (2024-07-26)
 -------------------
 * FindGeographicLib: Fix for GeographicLib 2.* and Windows
