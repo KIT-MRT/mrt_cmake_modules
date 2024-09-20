@@ -2,8 +2,8 @@
 Changelog for package mrt_cmake_modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.11 (2024-09-20)
+-------------------
 * Merge pull request #38 from nobleo/fix/find-flann-cmake-module
   fix(FindFLANN): set(FLANN_FOUND ON) if target already defined
 * Contributors: keroe
