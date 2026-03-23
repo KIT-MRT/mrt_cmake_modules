@@ -92,7 +92,7 @@
 
 include(FindPackageHandleStandardArgs)
 
-if(NOT TBB_FOUND)
+if(NOT TBB_FOUND AND NOT TARGET tbb)
 
     ##################################
     # Check the build type
