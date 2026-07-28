@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5.1)
 project(mrt_cmake_modules)
 
 if($ENV{ROS_VERSION} EQUAL 1)
